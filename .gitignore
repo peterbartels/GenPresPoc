@@ -1,0 +1,17 @@
+GenPres.Database/bin
+GenPres.Database/obj
+GenPres.Library/bin
+GenPres.Library/obj
+GenPres.ObjectModel/bin
+GenPres.ObjectModel/obj
+GenPres.Settings/bin
+GenPres.Settings/obj
+GenPres.Test/bin
+GenPres.Test/obj
+GenPres.Web/bin
+GenPres.Web/obj
+TestResults
+*.user
+*.suo
+_ReSharper.*
+*.sln.cache
