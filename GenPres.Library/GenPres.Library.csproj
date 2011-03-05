@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CA2BA7EC-ED33-4ADD-9E65-6A36F59DCE08}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenPres.Business</RootNamespace>
+    <AssemblyName>GenPres.Business</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=2.0.9999.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Loesje, Version=1.0.0.0, Culture=neutral, PublicKeyToken=438e527110e6a354, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Loesje.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\Prescription\Prescription.DataAccess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Prescription\Prescription.Factory.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Prescription\Prescription.Operations.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\PropertyAbstract.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\BusinessBase\DataBusinessBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\DataCache.cs" />
+    <Compile Include="Business\Drug\Component.cs" />
+    <Compile Include="Business\Drug\ComponentCollection.cs" />
+    <Compile Include="Business\Drug\Drug.cs" />
+    <Compile Include="Business\Drug\Substance.cs" />
+    <Compile Include="Business\Drug\SubstanceCollection.cs" />
+    <Compile Include="Business\IDataBusinessBase.cs" />
+    <Compile Include="Business\IDataCollection.cs" />
+    <Compile Include="Business\Prescription\Medicine\Medicine.cs" />
+    <Compile Include="Business\Patient\Department.cs" />
+    <Compile Include="Business\Patient\LogicalUnit.cs" />
+    <Compile Include="Business\Patient\Patient.cs" />
+    <Compile Include="Business\Patient\PatientFactory.cs" />
+    <Compile Include="Business\PDMS\UnitRetriever.cs" />
+    <Compile Include="Business\PrescriptionSaveProcess.cs" />
+    <Compile Include="Business\Prescription\Dose\Dose.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Prescription\Dose\DoseCollection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Prescription\Prescription.Business.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Prescription\Prescription.Collection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\StateBusinessBase.cs" />
+    <Compile Include="Business\StateManagement\StateManager.cs" />
+    <Compile Include="Business\Unit\Factor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Business\Unit\Unit.cs" />
+    <Compile Include="Business\Unit\UnitValue.cs" />
+    <Compile Include="Data\DAL\DataAccessCache.cs" />
+    <Compile Include="Data\DAL\DataAccessGateway.cs" />
+    <Compile Include="Data\DAL\DataAccessMapper.cs" />
+    <Compile Include="Data\DAL\DataAccessManager.cs" />
+    <Compile Include="Data\DAL\DataKeyMap.cs" />
+    <Compile Include="Data\DAL\Servives\IDataService.cs" />
+    <Compile Include="Data\DAL\Servives\SQLDataService.cs" />
+    <Compile Include="Data\DAO\PrescriptionDAO.cs" />
+    <Compile Include="Data\DTO\PrescribeMedicationDTO.cs" />
+    <Compile Include="Operations\Calculation\CalculationProcess.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Calculation\Continuous\ContinuousCalculation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Calculation\PropertyCombinationCalculate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Calculation\PropertyValueCorrect.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Combination\AbstractCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Combination\ContinuousCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Combination\ICalculationCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Combination\MultiplierCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\IncrementDetermination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Math\MathExt.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Property\PropertyManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Calculation\Property\PropertySequenceList.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\DataMapper.cs" />
+    <Compile Include="Operations\Determination\IDetermination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\PrescriptionDetermination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\Continuous.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\FromAdjust.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\IncrementDetermination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\InfusionTime.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\RetrieveIncrements.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\SetComponents.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\SetStates.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\Solution.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\ToAdjust.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\TPNSolution.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Operations\Determination\Rules\UpdateIncrements.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Operations\UnitConversion\UnitConverter.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Logging.cs" />
+    <Compile Include="Utils\Settings.cs" />
+    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Web References\GenForm.Products\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/GenForm/Products.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\GenForm.Products\</RelPath>
+      <UpdateFromURL>http://localhost/GenForm/Products.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>GenPres_Business_GenForm_Products_Products</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Business\Prescription\Dose\.svn\all-wcprops" />
+    <None Include="Business\Prescription\Dose\.svn\entries" />
+    <None Include="Business\Prescription\Dose\.svn\text-base\Dose.cs.svn-base" />
+    <None Include="Business\Prescription\Dose\.svn\text-base\DoseCollection.cs.svn-base" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\GenForm.Products\DrugData.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GenForm.Products\GenericInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GenForm.Products\PrescriptionUnits.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GenForm.Products\ProductInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GenForm.Products\Products.disco" />
+    <None Include="Web References\GenForm.Products\Products.wsdl" />
+    <None Include="Web References\GenForm.Products\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\GenForm.Products\UnitGroupInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\GenForm.Products\UnitInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\GenForm\GenForm\cslacs\Csla\Csla.csproj">
+      <Project>{9DA591ED-C570-47AC-8E5D-35B039E07973}</Project>
+      <Name>Csla</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
+      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
+      <Name>GenPres.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
+      <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
+      <Name>GenPres.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Business\Prescription\Prescription.Factory.resx">
+      <DependentUpon>Prescription.Factory.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\Prescription\Dose\.svn\prop-base\" />
+    <Folder Include="Business\Prescription\Dose\.svn\props\" />
+    <Folder Include="Business\Prescription\Dose\.svn\tmp\prop-base\" />
+    <Folder Include="Business\Prescription\Dose\.svn\tmp\props\" />
+    <Folder Include="Business\Prescription\Dose\.svn\tmp\text-base\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
