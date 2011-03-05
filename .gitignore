@@ -15,4 +15,4 @@ TestResults
 *.suo
 _ReSharper.*
 *.sln.cache
-SecurityKey.cs
+GenPres.Settings/SecurityKey.cs
