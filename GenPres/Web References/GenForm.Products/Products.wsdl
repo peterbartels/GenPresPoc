@@ -1,0 +1,1322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetProductsInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filter" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProductsInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProductsInfoResult" type="tns:ArrayOfProductInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProductInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductInfo" nillable="true" type="tns:ProductInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReadOnlyBaseOfProductInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Generic" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="GenericQuantity" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="GenericQuantityUnit" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DefaultName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Brand" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Shape" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="KAE" type="s:float" />
+              <s:element minOccurs="0" maxOccurs="1" name="Package" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UnitGroup" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Substances" type="tns:ArrayOfProductSubstanceInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Routes" type="tns:ArrayOfProductRouteInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReadOnlyBaseOfProductInfo" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BindableBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BindableBase" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MobileObject" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MobileObject" abstract="true" />
+      <s:complexType name="ReadOnlyBaseOfProductRouteInfo" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BindableBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ProductRouteInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReadOnlyBaseOfProductRouteInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ProductId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ProductName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RouteId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="RouteName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReadOnlyBaseOfProductSubstanceInfo" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BindableBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ProductSubstanceInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReadOnlyBaseOfProductSubstanceInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Order" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="SubstanceId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UnitId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Concentration" type="s:double" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfProductSubstanceInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductSubstanceInfo" nillable="true" type="tns:ProductSubstanceInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfProductRouteInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductRouteInfo" nillable="true" type="tns:ProductRouteInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUnitsInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Abbreviation" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitsInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitsInfoResult" type="tns:ArrayOfUnitInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUnitInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UnitInfo" nillable="true" type="tns:UnitInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UnitInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReadOnlyBaseOfUnitInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UnitGroup" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UnitGroupId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Multiplier" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Abbreviation" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReadOnlyBaseOfUnitInfo" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BindableBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetGenericsInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Generic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGenericsInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGenericsInfoResult" type="tns:ArrayOfGenericInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfGenericInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GenericInfo" nillable="true" type="tns:GenericInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GenericInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReadOnlyBaseOfGenericInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Group" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="GroupId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReadOnlyBaseOfGenericInfo" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BindableBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetGenerics">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenericGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Shape" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Route" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGenericsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGenericsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetKAE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shape" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKAEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetKAEResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShapes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unitgroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="route" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShapesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShapesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitGroupInfoByUnit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="unit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitGroupInfoByUnitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitGroupInfoByUnitResult" type="tns:UnitGroupInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UnitGroupInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:ReadOnlyBaseOfUnitGroupInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UnitsInfo" type="tns:ArrayOfUnitInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReadOnlyBaseOfUnitGroupInfo" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BindableBase" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetUnitsByUnitGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="unitgroup" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitsByUnitGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitsByUnitGroupResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitGroupsInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="shape" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="route" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnitGroupsInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnitGroupsInfoResult" type="tns:ArrayOfUnitGroupInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUnitGroupInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UnitGroupInfo" nillable="true" type="tns:UnitGroupInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoutes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Generic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Shape" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnitGroup" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoutesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRoutesResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGenPresDrugData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Generic" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GenericUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GenericUnitGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Product" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductUnitGroup" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Shape" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Route" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGenPresDrugDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGenPresDrugDataResult" type="tns:DrugData" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DrugData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Substances" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Components" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ConcentrationKAEs" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubstanceUnits" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubstanceUnitGroups" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shapes" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Routes" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComponentKAEs" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComponentUnits" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ComponentUnitGroups" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGenPresPrescriptionUnits">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenericUnit" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ProductUnit" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGenPresPrescriptionUnitsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGenPresPrescriptionUnitsResult" type="tns:PrescriptionUnits" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PrescriptionUnits">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AdministerUnits" type="tns:ArrayOfUnitData" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoseUnits" type="tns:ArrayOfUnitData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUnitData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="UnitData" nillable="true" type="tns:UnitData" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UnitData">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Unit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnitGroup" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Multiplier" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InvalidateCache">
+        <s:complexType />
+      </s:element>
+      <s:element name="InvalidateCacheResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ArrayOfProductInfo" nillable="true" type="tns:ArrayOfProductInfo" />
+      <s:element name="ArrayOfUnitInfo" nillable="true" type="tns:ArrayOfUnitInfo" />
+      <s:element name="ArrayOfGenericInfo" nillable="true" type="tns:ArrayOfGenericInfo" />
+      <s:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+      <s:element name="double" type="s:double" />
+      <s:element name="UnitGroupInfo" nillable="true" type="tns:UnitGroupInfo" />
+      <s:element name="ArrayOfUnitGroupInfo" nillable="true" type="tns:ArrayOfUnitGroupInfo" />
+      <s:element name="DrugData" nillable="true" type="tns:DrugData" />
+      <s:element name="PrescriptionUnits" nillable="true" type="tns:PrescriptionUnits" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetProductsInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProductsInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetProductsInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProductsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnitsInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGenericsInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGenericsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGenerics" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGenericsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetKAESoapIn">
+    <wsdl:part name="parameters" element="tns:GetKAE" />
+  </wsdl:message>
+  <wsdl:message name="GetKAESoapOut">
+    <wsdl:part name="parameters" element="tns:GetKAEResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetShapesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetShapes" />
+  </wsdl:message>
+  <wsdl:message name="GetShapesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetShapesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupInfoByUnitSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnitGroupInfoByUnit" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupInfoByUnitSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitGroupInfoByUnitResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByUnitGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnitsByUnitGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByUnitGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitsByUnitGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupsInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnitGroupsInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupsInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnitGroupsInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoutes" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoutesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresDrugDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGenPresDrugData" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresDrugDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGenPresDrugDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresPrescriptionUnitsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGenPresPrescriptionUnits" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresPrescriptionUnitsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGenPresPrescriptionUnitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheSoapIn">
+    <wsdl:part name="parameters" element="tns:InvalidateCache" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheSoapOut">
+    <wsdl:part name="parameters" element="tns:InvalidateCacheResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProductsInfoHttpGetIn">
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetProductsInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProductInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsInfoHttpGetIn">
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="Abbreviation" type="s:string" />
+    <wsdl:part name="Group" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUnitInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsInfoHttpGetIn">
+    <wsdl:part name="Generic" type="s:string" />
+    <wsdl:part name="Group" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGenericInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsHttpGetIn">
+    <wsdl:part name="GenericGroup" type="s:string" />
+    <wsdl:part name="UnitGroup" type="s:string" />
+    <wsdl:part name="Shape" type="s:string" />
+    <wsdl:part name="Route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetKAEHttpGetIn">
+    <wsdl:part name="generic" type="s:string" />
+    <wsdl:part name="shape" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetKAEHttpGetOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetShapesHttpGetIn">
+    <wsdl:part name="generic" type="s:string" />
+    <wsdl:part name="unitgroup" type="s:string" />
+    <wsdl:part name="route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetShapesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupInfoByUnitHttpGetIn">
+    <wsdl:part name="unit" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupInfoByUnitHttpGetOut">
+    <wsdl:part name="Body" element="tns:UnitGroupInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByUnitGroupHttpGetIn">
+    <wsdl:part name="unitgroup" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByUnitGroupHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupsInfoHttpGetIn">
+    <wsdl:part name="generic" type="s:string" />
+    <wsdl:part name="shape" type="s:string" />
+    <wsdl:part name="route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupsInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUnitGroupInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutesHttpGetIn">
+    <wsdl:part name="Generic" type="s:string" />
+    <wsdl:part name="Shape" type="s:string" />
+    <wsdl:part name="UnitGroup" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresDrugDataHttpGetIn">
+    <wsdl:part name="Generic" type="s:string" />
+    <wsdl:part name="GenericUnit" type="s:string" />
+    <wsdl:part name="GenericUnitGroup" type="s:string" />
+    <wsdl:part name="Product" type="s:string" />
+    <wsdl:part name="ProductUnit" type="s:string" />
+    <wsdl:part name="ProductUnitGroup" type="s:string" />
+    <wsdl:part name="Shape" type="s:string" />
+    <wsdl:part name="Route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresDrugDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:DrugData" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresPrescriptionUnitsHttpGetIn">
+    <wsdl:part name="GenericUnit" type="s:string" />
+    <wsdl:part name="ProductUnit" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresPrescriptionUnitsHttpGetOut">
+    <wsdl:part name="Body" element="tns:PrescriptionUnits" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheHttpGetIn" />
+  <wsdl:message name="InvalidateCacheHttpGetOut" />
+  <wsdl:message name="GetProductsInfoHttpPostIn">
+    <wsdl:part name="filter" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetProductsInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfProductInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsInfoHttpPostIn">
+    <wsdl:part name="Name" type="s:string" />
+    <wsdl:part name="Abbreviation" type="s:string" />
+    <wsdl:part name="Group" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUnitInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsInfoHttpPostIn">
+    <wsdl:part name="Generic" type="s:string" />
+    <wsdl:part name="Group" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGenericInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsHttpPostIn">
+    <wsdl:part name="GenericGroup" type="s:string" />
+    <wsdl:part name="UnitGroup" type="s:string" />
+    <wsdl:part name="Shape" type="s:string" />
+    <wsdl:part name="Route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenericsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetKAEHttpPostIn">
+    <wsdl:part name="generic" type="s:string" />
+    <wsdl:part name="shape" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetKAEHttpPostOut">
+    <wsdl:part name="Body" element="tns:double" />
+  </wsdl:message>
+  <wsdl:message name="GetShapesHttpPostIn">
+    <wsdl:part name="generic" type="s:string" />
+    <wsdl:part name="unitgroup" type="s:string" />
+    <wsdl:part name="route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetShapesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupInfoByUnitHttpPostIn">
+    <wsdl:part name="unit" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupInfoByUnitHttpPostOut">
+    <wsdl:part name="Body" element="tns:UnitGroupInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByUnitGroupHttpPostIn">
+    <wsdl:part name="unitgroup" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitsByUnitGroupHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupsInfoHttpPostIn">
+    <wsdl:part name="generic" type="s:string" />
+    <wsdl:part name="shape" type="s:string" />
+    <wsdl:part name="route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnitGroupsInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUnitGroupInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutesHttpPostIn">
+    <wsdl:part name="Generic" type="s:string" />
+    <wsdl:part name="Shape" type="s:string" />
+    <wsdl:part name="UnitGroup" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetRoutesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresDrugDataHttpPostIn">
+    <wsdl:part name="Generic" type="s:string" />
+    <wsdl:part name="GenericUnit" type="s:string" />
+    <wsdl:part name="GenericUnitGroup" type="s:string" />
+    <wsdl:part name="Product" type="s:string" />
+    <wsdl:part name="ProductUnit" type="s:string" />
+    <wsdl:part name="ProductUnitGroup" type="s:string" />
+    <wsdl:part name="Shape" type="s:string" />
+    <wsdl:part name="Route" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresDrugDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:DrugData" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresPrescriptionUnitsHttpPostIn">
+    <wsdl:part name="GenericUnit" type="s:string" />
+    <wsdl:part name="ProductUnit" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetGenPresPrescriptionUnitsHttpPostOut">
+    <wsdl:part name="Body" element="tns:PrescriptionUnits" />
+  </wsdl:message>
+  <wsdl:message name="InvalidateCacheHttpPostIn" />
+  <wsdl:message name="InvalidateCacheHttpPostOut" />
+  <wsdl:portType name="ProductsSoap">
+    <wsdl:operation name="GetProductsInfo">
+      <wsdl:input message="tns:GetProductsInfoSoapIn" />
+      <wsdl:output message="tns:GetProductsInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsInfo">
+      <wsdl:input message="tns:GetUnitsInfoSoapIn" />
+      <wsdl:output message="tns:GetUnitsInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericsInfo">
+      <wsdl:input message="tns:GetGenericsInfoSoapIn" />
+      <wsdl:output message="tns:GetGenericsInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenerics">
+      <wsdl:input message="tns:GetGenericsSoapIn" />
+      <wsdl:output message="tns:GetGenericsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKAE">
+      <wsdl:input message="tns:GetKAESoapIn" />
+      <wsdl:output message="tns:GetKAESoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShapes">
+      <wsdl:input message="tns:GetShapesSoapIn" />
+      <wsdl:output message="tns:GetShapesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupInfoByUnit">
+      <wsdl:input message="tns:GetUnitGroupInfoByUnitSoapIn" />
+      <wsdl:output message="tns:GetUnitGroupInfoByUnitSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByUnitGroup">
+      <wsdl:input message="tns:GetUnitsByUnitGroupSoapIn" />
+      <wsdl:output message="tns:GetUnitsByUnitGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupsInfo">
+      <wsdl:input message="tns:GetUnitGroupsInfoSoapIn" />
+      <wsdl:output message="tns:GetUnitGroupsInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <wsdl:input message="tns:GetRoutesSoapIn" />
+      <wsdl:output message="tns:GetRoutesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresDrugData">
+      <wsdl:input message="tns:GetGenPresDrugDataSoapIn" />
+      <wsdl:output message="tns:GetGenPresDrugDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresPrescriptionUnits">
+      <wsdl:input message="tns:GetGenPresPrescriptionUnitsSoapIn" />
+      <wsdl:output message="tns:GetGenPresPrescriptionUnitsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <wsdl:input message="tns:InvalidateCacheSoapIn" />
+      <wsdl:output message="tns:InvalidateCacheSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ProductsHttpGet">
+    <wsdl:operation name="GetProductsInfo">
+      <wsdl:input message="tns:GetProductsInfoHttpGetIn" />
+      <wsdl:output message="tns:GetProductsInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsInfo">
+      <wsdl:input message="tns:GetUnitsInfoHttpGetIn" />
+      <wsdl:output message="tns:GetUnitsInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericsInfo">
+      <wsdl:input message="tns:GetGenericsInfoHttpGetIn" />
+      <wsdl:output message="tns:GetGenericsInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenerics">
+      <wsdl:input message="tns:GetGenericsHttpGetIn" />
+      <wsdl:output message="tns:GetGenericsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKAE">
+      <wsdl:input message="tns:GetKAEHttpGetIn" />
+      <wsdl:output message="tns:GetKAEHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShapes">
+      <wsdl:input message="tns:GetShapesHttpGetIn" />
+      <wsdl:output message="tns:GetShapesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupInfoByUnit">
+      <wsdl:input message="tns:GetUnitGroupInfoByUnitHttpGetIn" />
+      <wsdl:output message="tns:GetUnitGroupInfoByUnitHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByUnitGroup">
+      <wsdl:input message="tns:GetUnitsByUnitGroupHttpGetIn" />
+      <wsdl:output message="tns:GetUnitsByUnitGroupHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupsInfo">
+      <wsdl:input message="tns:GetUnitGroupsInfoHttpGetIn" />
+      <wsdl:output message="tns:GetUnitGroupsInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <wsdl:input message="tns:GetRoutesHttpGetIn" />
+      <wsdl:output message="tns:GetRoutesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresDrugData">
+      <wsdl:input message="tns:GetGenPresDrugDataHttpGetIn" />
+      <wsdl:output message="tns:GetGenPresDrugDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresPrescriptionUnits">
+      <wsdl:input message="tns:GetGenPresPrescriptionUnitsHttpGetIn" />
+      <wsdl:output message="tns:GetGenPresPrescriptionUnitsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <wsdl:input message="tns:InvalidateCacheHttpGetIn" />
+      <wsdl:output message="tns:InvalidateCacheHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ProductsHttpPost">
+    <wsdl:operation name="GetProductsInfo">
+      <wsdl:input message="tns:GetProductsInfoHttpPostIn" />
+      <wsdl:output message="tns:GetProductsInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsInfo">
+      <wsdl:input message="tns:GetUnitsInfoHttpPostIn" />
+      <wsdl:output message="tns:GetUnitsInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericsInfo">
+      <wsdl:input message="tns:GetGenericsInfoHttpPostIn" />
+      <wsdl:output message="tns:GetGenericsInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenerics">
+      <wsdl:input message="tns:GetGenericsHttpPostIn" />
+      <wsdl:output message="tns:GetGenericsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKAE">
+      <wsdl:input message="tns:GetKAEHttpPostIn" />
+      <wsdl:output message="tns:GetKAEHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShapes">
+      <wsdl:input message="tns:GetShapesHttpPostIn" />
+      <wsdl:output message="tns:GetShapesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupInfoByUnit">
+      <wsdl:input message="tns:GetUnitGroupInfoByUnitHttpPostIn" />
+      <wsdl:output message="tns:GetUnitGroupInfoByUnitHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByUnitGroup">
+      <wsdl:input message="tns:GetUnitsByUnitGroupHttpPostIn" />
+      <wsdl:output message="tns:GetUnitsByUnitGroupHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupsInfo">
+      <wsdl:input message="tns:GetUnitGroupsInfoHttpPostIn" />
+      <wsdl:output message="tns:GetUnitGroupsInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <wsdl:input message="tns:GetRoutesHttpPostIn" />
+      <wsdl:output message="tns:GetRoutesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresDrugData">
+      <wsdl:input message="tns:GetGenPresDrugDataHttpPostIn" />
+      <wsdl:output message="tns:GetGenPresDrugDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresPrescriptionUnits">
+      <wsdl:input message="tns:GetGenPresPrescriptionUnitsHttpPostIn" />
+      <wsdl:output message="tns:GetGenPresPrescriptionUnitsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <wsdl:input message="tns:InvalidateCacheHttpPostIn" />
+      <wsdl:output message="tns:InvalidateCacheHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProductsSoap" type="tns:ProductsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProductsInfo">
+      <soap:operation soapAction="http://tempuri.org/GetProductsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUnitsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericsInfo">
+      <soap:operation soapAction="http://tempuri.org/GetGenericsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenerics">
+      <soap:operation soapAction="http://tempuri.org/GetGenerics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKAE">
+      <soap:operation soapAction="http://tempuri.org/GetKAE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShapes">
+      <soap:operation soapAction="http://tempuri.org/GetShapes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupInfoByUnit">
+      <soap:operation soapAction="http://tempuri.org/GetUnitGroupInfoByUnit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByUnitGroup">
+      <soap:operation soapAction="http://tempuri.org/GetUnitsByUnitGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupsInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUnitGroupsInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <soap:operation soapAction="http://tempuri.org/GetRoutes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresDrugData">
+      <soap:operation soapAction="http://tempuri.org/GetGenPresDrugData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresPrescriptionUnits">
+      <soap:operation soapAction="http://tempuri.org/GetGenPresPrescriptionUnits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <soap:operation soapAction="http://tempuri.org/InvalidateCache" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProductsSoap12" type="tns:ProductsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProductsInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetProductsInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUnitsInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericsInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetGenericsInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenerics">
+      <soap12:operation soapAction="http://tempuri.org/GetGenerics" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKAE">
+      <soap12:operation soapAction="http://tempuri.org/GetKAE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShapes">
+      <soap12:operation soapAction="http://tempuri.org/GetShapes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupInfoByUnit">
+      <soap12:operation soapAction="http://tempuri.org/GetUnitGroupInfoByUnit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByUnitGroup">
+      <soap12:operation soapAction="http://tempuri.org/GetUnitsByUnitGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupsInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUnitGroupsInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <soap12:operation soapAction="http://tempuri.org/GetRoutes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresDrugData">
+      <soap12:operation soapAction="http://tempuri.org/GetGenPresDrugData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresPrescriptionUnits">
+      <soap12:operation soapAction="http://tempuri.org/GetGenPresPrescriptionUnits" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <soap12:operation soapAction="http://tempuri.org/InvalidateCache" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProductsHttpGet" type="tns:ProductsHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetProductsInfo">
+      <http:operation location="/GetProductsInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsInfo">
+      <http:operation location="/GetUnitsInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericsInfo">
+      <http:operation location="/GetGenericsInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenerics">
+      <http:operation location="/GetGenerics" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKAE">
+      <http:operation location="/GetKAE" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShapes">
+      <http:operation location="/GetShapes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupInfoByUnit">
+      <http:operation location="/GetUnitGroupInfoByUnit" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByUnitGroup">
+      <http:operation location="/GetUnitsByUnitGroup" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupsInfo">
+      <http:operation location="/GetUnitGroupsInfo" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <http:operation location="/GetRoutes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresDrugData">
+      <http:operation location="/GetGenPresDrugData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresPrescriptionUnits">
+      <http:operation location="/GetGenPresPrescriptionUnits" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <http:operation location="/InvalidateCache" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProductsHttpPost" type="tns:ProductsHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetProductsInfo">
+      <http:operation location="/GetProductsInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsInfo">
+      <http:operation location="/GetUnitsInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenericsInfo">
+      <http:operation location="/GetGenericsInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenerics">
+      <http:operation location="/GetGenerics" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKAE">
+      <http:operation location="/GetKAE" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShapes">
+      <http:operation location="/GetShapes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupInfoByUnit">
+      <http:operation location="/GetUnitGroupInfoByUnit" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitsByUnitGroup">
+      <http:operation location="/GetUnitsByUnitGroup" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnitGroupsInfo">
+      <http:operation location="/GetUnitGroupsInfo" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoutes">
+      <http:operation location="/GetRoutes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresDrugData">
+      <http:operation location="/GetGenPresDrugData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGenPresPrescriptionUnits">
+      <http:operation location="/GetGenPresPrescriptionUnits" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateCache">
+      <http:operation location="/InvalidateCache" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output />
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Products">
+    <wsdl:port name="ProductsSoap" binding="tns:ProductsSoap">
+      <soap:address location="http://localhost/GenForm/Products.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProductsSoap12" binding="tns:ProductsSoap12">
+      <soap12:address location="http://localhost/GenForm/Products.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProductsHttpGet" binding="tns:ProductsHttpGet">
+      <http:address location="http://localhost/GenForm/Products.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProductsHttpPost" binding="tns:ProductsHttpPost">
+      <http:address location="http://localhost/GenForm/Products.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

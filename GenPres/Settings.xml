@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <serversettings>
+    <machine>
+      <key>92AE58oW+HagayRwcLWyiw==</key>
+      <GenPresDBConnectionString>A0WfIz9appfr0+wGT6nYlzvrSvEtGFWuY89g6dHef/t2zfVDxQNUrTqHs6tsRsGhUMHIH189akeIBlBDSVumgWaaqZ1nm0sLfkNXTTimNlc=</GenPresDBConnectionString>
+      <PatientDBConnectionString>/MIoRGPJdHhnv7Iao+xZhHkr/lUAElomdEju9JMNNBSulgySCwFyc13lnyA92rzAfGID7rC9LWivdXA49fPALt/JzxV/xzRm16PadJLLQPtpmvgDDEjfy2icoXjDCbN0</PatientDBConnectionString>
+      <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
+    </machine>
+    <machine>
+      <key>XBoOLMopK6+KVqdpUdhc7Q==</key>
+      <GenPresDBConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Itp2j1udT81pEGE7Fj55Zp9PUXYzdiF4KfA1+pcvLlS8jnQlFB9H8Q2J52eYjftm52n0ugaJe5TLczUOI6JnG9g</GenPresDBConnectionString>
+      <PatientDBConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IsW0LUsvHUz1Ct61wYRjLylE58oI6nlcyZbDgNCrQ8si5DGX3VmmzJ+EBHESV+WcXA=</PatientDBConnectionString>
+      <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
+    </machine>
+  </serversettings>
+</settings>
