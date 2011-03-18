@@ -194,10 +194,10 @@ namespace GenPres.Test
             string connectionString = DB.DatabaseConnection.GetConnectionString(DB.DatabaseConnection.DatabaseName.GENPRES);
             using (var DataAccess = new DataAccessManager(Csla.Data.ContextManager<DB.PrescriptionDataContext>.GetManager(connectionString, false).DataContext))
             {
-                PrescriptionDAO.LoadMapping();
-                prescriptionDAO = ((DB.PrescriptionDataContext)(DataAccess.DataContext)).Prescriptions.Single<Database.Prescription>(c => c.Id == 1);
-                Prescription p = pf.CalculateParacetamol();
-                PrescriptionDAO.MapTo(prescriptionDAO, p);
+                //PrescriptionDAO.LoadMapping();
+                //prescriptionDAO = ((DB.PrescriptionDataContext)(DataAccess.DataContext)).Prescriptions.Single<Database.Prescription>(c => c.Id == 1);
+                //Prescription p = pf.CalculateParacetamol();
+                //PrescriptionDAO.MapTo(prescriptionDAO, p);
             }
         }
     }
