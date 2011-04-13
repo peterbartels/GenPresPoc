@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{19BF7BC9-59BB-4E58-832E-55150F404603}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Enterprise.Data</RootNamespace>
+    <AssemblyName>Enterprise.Data</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Access\IDAL.cs" />
+    <Compile Include="Access\ObjectRepository.cs" />
+    <Compile Include="Adapter\Configuration\CslaLinqMappingConfiguration.cs" />
+    <Compile Include="Adapter\SimpleAdapter.cs" />
+    <Compile Include="Adapter\CslaLinqAdapter.cs" />
+    <Compile Include="Adapter\IDataAdapter.cs" />
+    <Compile Include="Adapter\Configuration\IMappingConfiguration.cs" />
+    <Compile Include="Adapter\Configuration\IMappingValueConfiguration.cs" />
+    <Compile Include="Adapter\Configuration\SimpleMappingConfiguration.cs" />
+    <Compile Include="Adapter\Configuration\ValueMapping.cs" />
+    <Compile Include="Adapter\ITypeConverter.cs" />
+    <Compile Include="Adapter\MappingTypes\AutoMap.cs" />
+    <Compile Include="Adapter\MappingTypes\IMappingType.cs" />
+    <Compile Include="Adapter\MappingTypes\IMemberAccessor.cs" />
+    <Compile Include="Adapter\MappingTypes\IMemberGetter.cs" />
+    <Compile Include="Adapter\MappingTypes\MapUsingTypeConverter.cs" />
+    <Compile Include="Adapter\MappingTypes\MemberAccessor.cs" />
+    <Compile Include="Adapter\MappingTypes\MemberGetter.cs" />
+    <Compile Include="Adapter\MappingTypes\MemberMap.cs" />
+    <Compile Include="Adapter\ObjectMapper.cs" />
+    <Compile Include="Adapter\ReflectionFunctions\ReflectionHelper.cs" />
+    <Compile Include="Adapter\ReflectionFunctions\LambdaFunctions.cs" />
+    <Compile Include="IDataObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Access\IObjectRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Adapter\Configuration\CslaDataConfiguration\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

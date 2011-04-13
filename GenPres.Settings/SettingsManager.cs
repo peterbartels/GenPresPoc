@@ -59,7 +59,7 @@ namespace Settings
             {
                 computerName = Environment.MachineName;
             }
-            return _crypt.Encrypt(computerName);
+            return _crypt.Encrypt(computerName.ToLower());
         }
 
         private string GetSecureSetting(string value)
@@ -75,7 +75,7 @@ namespace Settings
             XmlNode machineNode = _settingsDoc.SelectSingleNode(machineStr);
             if (machineNode == null)
             {
-                throw new Exception("The setting " + name + " could not be found for this machine: " + _key);
+                throw new Exception("The setting " + name + " could not be found for this machine: " + machineCrypt);
             }
             _crypt.Key = _key;
             return _crypt.Decrypt(machineNode.InnerText);

@@ -7,14 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using Ext.Direct.Mvc;
-using GenPres.Business;
 using Csla;
 using Newtonsoft.Json.Linq;
-using GenPres.Business.Data;
 
 namespace GenPres.Controllers
-{
-    
+{    
     public class PrescriptionController : Controller
     {
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
@@ -25,8 +22,12 @@ namespace GenPres.Controllers
 
         public ActionResult Index()
         {
-            //Settings.SettingsManager.Instance
             return View();
         }
-    }
+
+        public ActionResult NewPrescription()
+        {
+            throw new NotImplementedException();
+        }
+   }
 }

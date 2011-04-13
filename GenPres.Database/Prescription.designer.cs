@@ -33,9 +33,9 @@ namespace GenPres.Database
     partial void InsertComponent(Component instance);
     partial void UpdateComponent(Component instance);
     partial void DeleteComponent(Component instance);
-    partial void InsertSubstance(Substance instance);
-    partial void UpdateSubstance(Substance instance);
-    partial void DeleteSubstance(Substance instance);
+    partial void InsertUnitValue(UnitValue instance);
+    partial void UpdateUnitValue(UnitValue instance);
+    partial void DeleteUnitValue(UnitValue instance);
     partial void InsertDose(Dose instance);
     partial void UpdateDose(Dose instance);
     partial void DeleteDose(Dose instance);
@@ -51,9 +51,9 @@ namespace GenPres.Database
     partial void InsertPrescription(Prescription instance);
     partial void UpdatePrescription(Prescription instance);
     partial void DeletePrescription(Prescription instance);
-    partial void InsertUnitValue(UnitValue instance);
-    partial void UpdateUnitValue(UnitValue instance);
-    partial void DeleteUnitValue(UnitValue instance);
+    partial void InsertSubstance(Substance instance);
+    partial void UpdateSubstance(Substance instance);
+    partial void DeleteSubstance(Substance instance);
     #endregion
 		
 		public PrescriptionDataContext() : 
@@ -94,11 +94,11 @@ namespace GenPres.Database
 			}
 		}
 		
-		public System.Data.Linq.Table<Substance> Substances
+		public System.Data.Linq.Table<UnitValue> UnitValues
 		{
 			get
 			{
-				return this.GetTable<Substance>();
+				return this.GetTable<UnitValue>();
 			}
 		}
 		
@@ -142,11 +142,11 @@ namespace GenPres.Database
 			}
 		}
 		
-		public System.Data.Linq.Table<UnitValue> UnitValues
+		public System.Data.Linq.Table<Substance> Substances
 		{
 			get
 			{
-				return this.GetTable<UnitValue>();
+				return this.GetTable<Substance>();
 			}
 		}
 	}
@@ -173,11 +173,11 @@ namespace GenPres.Database
 		
 		private EntitySet<Substance> _Substances;
 		
-		private EntityRef<Drug> _Drug;
-		
 		private EntityRef<UnitValue> _UnitValue;
 		
 		private EntityRef<UnitValue> _UnitValue1;
+		
+		private EntityRef<Drug> _Drug;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -202,9 +202,9 @@ namespace GenPres.Database
 		public Component()
 		{
 			this._Substances = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances), new Action<Substance>(this.detach_Substances));
-			this._Drug = default(EntityRef<Drug>);
 			this._UnitValue = default(EntityRef<UnitValue>);
 			this._UnitValue1 = default(EntityRef<UnitValue>);
+			this._Drug = default(EntityRef<Drug>);
 			OnCreated();
 		}
 		
@@ -373,40 +373,6 @@ namespace GenPres.Database
 			}
 		}
 		
-		[Association(Name="Drug_Component", Storage="_Drug", ThisKey="DrugId", OtherKey="Id", IsForeignKey=true)]
-		public Drug DrugRef
-		{
-			get
-			{
-				return this._Drug.Entity;
-			}
-			set
-			{
-				Drug previousValue = this._Drug.Entity;
-				if (((previousValue != value) 
-							|| (this._Drug.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Drug.Entity = null;
-						previousValue.Components.Remove(this);
-					}
-					this._Drug.Entity = value;
-					if ((value != null))
-					{
-						value.Components.Add(this);
-						this._DrugId = value.Id;
-					}
-					else
-					{
-						this._DrugId = default(int);
-					}
-					this.SendPropertyChanged("DrugRef");
-				}
-			}
-		}
-		
 		[Association(Name="UnitValue_Component", Storage="_UnitValue", ThisKey="Quantity", OtherKey="Id", IsForeignKey=true)]
 		public UnitValue UnitValue
 		{
@@ -475,6 +441,40 @@ namespace GenPres.Database
 			}
 		}
 		
+		[Association(Name="Drug_Component", Storage="_Drug", ThisKey="DrugId", OtherKey="Id", IsForeignKey=true)]
+		public Drug Drug
+		{
+			get
+			{
+				return this._Drug.Entity;
+			}
+			set
+			{
+				Drug previousValue = this._Drug.Entity;
+				if (((previousValue != value) 
+							|| (this._Drug.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Drug.Entity = null;
+						previousValue.Components.Remove(this);
+					}
+					this._Drug.Entity = value;
+					if ((value != null))
+					{
+						value.Components.Add(this);
+						this._DrugId = value.Id;
+					}
+					else
+					{
+						this._DrugId = default(int);
+					}
+					this.SendPropertyChanged("Drug");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -498,45 +498,77 @@ namespace GenPres.Database
 		private void attach_Substances(Substance entity)
 		{
 			this.SendPropertyChanging();
-			entity.ComponentRef = this;
+			entity.Component = this;
 		}
 		
 		private void detach_Substances(Substance entity)
 		{
 			this.SendPropertyChanging();
-			entity.ComponentRef = null;
+			entity.Component = null;
 		}
 	}
 	
-	[Table(Name="dbo.Substance")]
-	public partial class Substance : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.UnitValue")]
+	public partial class UnitValue : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
-		private int _ComponentId;
+		private System.Nullable<double> _BaseValue;
 		
-		private string _SubstanceName;
+		private string _Unit;
 		
-		private System.Nullable<int> _ComponentConcentration;
+		private System.Nullable<double> _Value;
 		
-		private System.Nullable<int> _DrugConcentration;
+		private string _UIState;
 		
-		private System.Nullable<int> _Quantity;
+		private string _Time;
 		
-		private System.Nullable<int> _CustomIncrement;
+		private string _Total;
 		
-		private EntityRef<Component> _Component;
+		private string _Adjust;
 		
-		private EntityRef<UnitValue> _UnitValue;
+		private EntitySet<Component> _Components;
 		
-		private EntityRef<UnitValue> _UnitValue1;
+		private EntitySet<Component> _Components1;
 		
-		private EntityRef<UnitValue> _UnitValue2;
+		private EntitySet<Dose> _Doses;
 		
-		private EntityRef<UnitValue> _UnitValue3;
+		private EntitySet<Dose> _Doses1;
+		
+		private EntitySet<Dose> _Doses2;
+		
+		private EntitySet<Drug> _Drugs;
+		
+		private EntitySet<Medicine> _Medicines;
+		
+		private EntitySet<Medicine> _Medicines1;
+		
+		private EntitySet<Medicine> _Medicines2;
+		
+		private EntitySet<Prescription> _Prescriptions;
+		
+		private EntitySet<Prescription> _Prescriptions1;
+		
+		private EntitySet<Prescription> _Prescriptions2;
+		
+		private EntitySet<Prescription> _Prescriptions3;
+		
+		private EntitySet<Prescription> _Prescriptions4;
+		
+		private EntitySet<Prescription> _Prescriptions5;
+		
+		private EntitySet<Prescription> _Prescriptions6;
+		
+		private EntitySet<Substance> _Substances;
+		
+		private EntitySet<Substance> _Substances1;
+		
+		private EntitySet<Substance> _Substances2;
+		
+		private EntitySet<Substance> _Substances3;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -544,27 +576,44 @@ namespace GenPres.Database
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnComponentIdChanging(int value);
-    partial void OnComponentIdChanged();
-    partial void OnSubstanceNameChanging(string value);
-    partial void OnSubstanceNameChanged();
-    partial void OnComponentConcentrationChanging(System.Nullable<int> value);
-    partial void OnComponentConcentrationChanged();
-    partial void OnDrugConcentrationChanging(System.Nullable<int> value);
-    partial void OnDrugConcentrationChanged();
-    partial void OnQuantityChanging(System.Nullable<int> value);
-    partial void OnQuantityChanged();
-    partial void OnCustomIncrementChanging(System.Nullable<int> value);
-    partial void OnCustomIncrementChanged();
+    partial void OnBaseValueChanging(System.Nullable<double> value);
+    partial void OnBaseValueChanged();
+    partial void OnUnitChanging(string value);
+    partial void OnUnitChanged();
+    partial void OnValueChanging(System.Nullable<double> value);
+    partial void OnValueChanged();
+    partial void OnUIStateChanging(string value);
+    partial void OnUIStateChanged();
+    partial void OnTimeChanging(string value);
+    partial void OnTimeChanged();
+    partial void OnTotalChanging(string value);
+    partial void OnTotalChanged();
+    partial void OnAdjustChanging(string value);
+    partial void OnAdjustChanged();
     #endregion
 		
-		public Substance()
+		public UnitValue()
 		{
-			this._Component = default(EntityRef<Component>);
-			this._UnitValue = default(EntityRef<UnitValue>);
-			this._UnitValue1 = default(EntityRef<UnitValue>);
-			this._UnitValue2 = default(EntityRef<UnitValue>);
-			this._UnitValue3 = default(EntityRef<UnitValue>);
+			this._Components = new EntitySet<Component>(new Action<Component>(this.attach_Components), new Action<Component>(this.detach_Components));
+			this._Components1 = new EntitySet<Component>(new Action<Component>(this.attach_Components1), new Action<Component>(this.detach_Components1));
+			this._Doses = new EntitySet<Dose>(new Action<Dose>(this.attach_Doses), new Action<Dose>(this.detach_Doses));
+			this._Doses1 = new EntitySet<Dose>(new Action<Dose>(this.attach_Doses1), new Action<Dose>(this.detach_Doses1));
+			this._Doses2 = new EntitySet<Dose>(new Action<Dose>(this.attach_Doses2), new Action<Dose>(this.detach_Doses2));
+			this._Drugs = new EntitySet<Drug>(new Action<Drug>(this.attach_Drugs), new Action<Drug>(this.detach_Drugs));
+			this._Medicines = new EntitySet<Medicine>(new Action<Medicine>(this.attach_Medicines), new Action<Medicine>(this.detach_Medicines));
+			this._Medicines1 = new EntitySet<Medicine>(new Action<Medicine>(this.attach_Medicines1), new Action<Medicine>(this.detach_Medicines1));
+			this._Medicines2 = new EntitySet<Medicine>(new Action<Medicine>(this.attach_Medicines2), new Action<Medicine>(this.detach_Medicines2));
+			this._Prescriptions = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions), new Action<Prescription>(this.detach_Prescriptions));
+			this._Prescriptions1 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions1), new Action<Prescription>(this.detach_Prescriptions1));
+			this._Prescriptions2 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions2), new Action<Prescription>(this.detach_Prescriptions2));
+			this._Prescriptions3 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions3), new Action<Prescription>(this.detach_Prescriptions3));
+			this._Prescriptions4 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions4), new Action<Prescription>(this.detach_Prescriptions4));
+			this._Prescriptions5 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions5), new Action<Prescription>(this.detach_Prescriptions5));
+			this._Prescriptions6 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions6), new Action<Prescription>(this.detach_Prescriptions6));
+			this._Substances = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances), new Action<Substance>(this.detach_Substances));
+			this._Substances1 = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances1), new Action<Substance>(this.detach_Substances1));
+			this._Substances2 = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances2), new Action<Substance>(this.detach_Substances2));
+			this._Substances3 = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances3), new Action<Substance>(this.detach_Substances3));
 			OnCreated();
 		}
 		
@@ -588,313 +637,403 @@ namespace GenPres.Database
 			}
 		}
 		
-		[Column(Storage="_ComponentId", DbType="Int NOT NULL")]
-		public int ComponentId
+		[Column(Storage="_BaseValue", DbType="Float")]
+		public System.Nullable<double> BaseValue
 		{
 			get
 			{
-				return this._ComponentId;
+				return this._BaseValue;
 			}
 			set
 			{
-				if ((this._ComponentId != value))
+				if ((this._BaseValue != value))
 				{
-					if (this._Component.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnComponentIdChanging(value);
+					this.OnBaseValueChanging(value);
 					this.SendPropertyChanging();
-					this._ComponentId = value;
-					this.SendPropertyChanged("ComponentId");
-					this.OnComponentIdChanged();
+					this._BaseValue = value;
+					this.SendPropertyChanged("BaseValue");
+					this.OnBaseValueChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_SubstanceName", DbType="NVarChar(MAX)")]
-		public string SubstanceName
+		[Column(Storage="_Unit", DbType="NVarChar(MAX)")]
+		public string Unit
 		{
 			get
 			{
-				return this._SubstanceName;
+				return this._Unit;
 			}
 			set
 			{
-				if ((this._SubstanceName != value))
+				if ((this._Unit != value))
 				{
-					this.OnSubstanceNameChanging(value);
+					this.OnUnitChanging(value);
 					this.SendPropertyChanging();
-					this._SubstanceName = value;
-					this.SendPropertyChanged("SubstanceName");
-					this.OnSubstanceNameChanged();
+					this._Unit = value;
+					this.SendPropertyChanged("Unit");
+					this.OnUnitChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_ComponentConcentration", DbType="Int")]
-		public System.Nullable<int> ComponentConcentration
+		[Column(Storage="_Value", DbType="Float")]
+		public System.Nullable<double> Value
 		{
 			get
 			{
-				return this._ComponentConcentration;
+				return this._Value;
 			}
 			set
 			{
-				if ((this._ComponentConcentration != value))
+				if ((this._Value != value))
 				{
-					if (this._UnitValue.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnComponentConcentrationChanging(value);
+					this.OnValueChanging(value);
 					this.SendPropertyChanging();
-					this._ComponentConcentration = value;
-					this.SendPropertyChanged("ComponentConcentration");
-					this.OnComponentConcentrationChanged();
+					this._Value = value;
+					this.SendPropertyChanged("Value");
+					this.OnValueChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_DrugConcentration", DbType="Int")]
-		public System.Nullable<int> DrugConcentration
+		[Column(Storage="_UIState", DbType="NVarChar(MAX)")]
+		public string UIState
 		{
 			get
 			{
-				return this._DrugConcentration;
+				return this._UIState;
 			}
 			set
 			{
-				if ((this._DrugConcentration != value))
+				if ((this._UIState != value))
 				{
-					if (this._UnitValue1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnDrugConcentrationChanging(value);
+					this.OnUIStateChanging(value);
 					this.SendPropertyChanging();
-					this._DrugConcentration = value;
-					this.SendPropertyChanged("DrugConcentration");
-					this.OnDrugConcentrationChanged();
+					this._UIState = value;
+					this.SendPropertyChanged("UIState");
+					this.OnUIStateChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Quantity", DbType="Int")]
-		public System.Nullable<int> Quantity
+		[Column(Storage="_Time", DbType="NVarChar(MAX)")]
+		public string Time
 		{
 			get
 			{
-				return this._Quantity;
+				return this._Time;
 			}
 			set
 			{
-				if ((this._Quantity != value))
+				if ((this._Time != value))
 				{
-					if (this._UnitValue2.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnQuantityChanging(value);
+					this.OnTimeChanging(value);
 					this.SendPropertyChanging();
-					this._Quantity = value;
-					this.SendPropertyChanged("Quantity");
-					this.OnQuantityChanged();
+					this._Time = value;
+					this.SendPropertyChanged("Time");
+					this.OnTimeChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_CustomIncrement", DbType="Int")]
-		public System.Nullable<int> CustomIncrement
+		[Column(Storage="_Total", DbType="NVarChar(MAX)")]
+		public string Total
 		{
 			get
 			{
-				return this._CustomIncrement;
+				return this._Total;
 			}
 			set
 			{
-				if ((this._CustomIncrement != value))
+				if ((this._Total != value))
 				{
-					if (this._UnitValue3.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCustomIncrementChanging(value);
+					this.OnTotalChanging(value);
 					this.SendPropertyChanging();
-					this._CustomIncrement = value;
-					this.SendPropertyChanged("CustomIncrement");
-					this.OnCustomIncrementChanged();
+					this._Total = value;
+					this.SendPropertyChanged("Total");
+					this.OnTotalChanged();
 				}
 			}
 		}
 		
-		[Association(Name="Component_Substance", Storage="_Component", ThisKey="ComponentId", OtherKey="Id", IsForeignKey=true)]
-		public Component ComponentRef
+		[Column(Storage="_Adjust", DbType="NVarChar(MAX)")]
+		public string Adjust
 		{
 			get
 			{
-				return this._Component.Entity;
+				return this._Adjust;
 			}
 			set
 			{
-				Component previousValue = this._Component.Entity;
-				if (((previousValue != value) 
-							|| (this._Component.HasLoadedOrAssignedValue == false)))
+				if ((this._Adjust != value))
 				{
+					this.OnAdjustChanging(value);
 					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Component.Entity = null;
-						previousValue.Substances.Remove(this);
-					}
-					this._Component.Entity = value;
-					if ((value != null))
-					{
-						value.Substances.Add(this);
-						this._ComponentId = value.Id;
-					}
-					else
-					{
-						this._ComponentId = default(int);
-					}
-					this.SendPropertyChanged("ComponentRef");
+					this._Adjust = value;
+					this.SendPropertyChanged("Adjust");
+					this.OnAdjustChanged();
 				}
 			}
 		}
 		
-		[Association(Name="UnitValue_Substance", Storage="_UnitValue", ThisKey="ComponentConcentration", OtherKey="Id", IsForeignKey=true)]
-		public UnitValue UnitValue
+		[Association(Name="UnitValue_Component", Storage="_Components", ThisKey="Id", OtherKey="Quantity")]
+		public EntitySet<Component> Components
 		{
 			get
 			{
-				return this._UnitValue.Entity;
+				return this._Components;
 			}
 			set
 			{
-				UnitValue previousValue = this._UnitValue.Entity;
-				if (((previousValue != value) 
-							|| (this._UnitValue.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UnitValue.Entity = null;
-						previousValue.Substances.Remove(this);
-					}
-					this._UnitValue.Entity = value;
-					if ((value != null))
-					{
-						value.Substances.Add(this);
-						this._ComponentConcentration = value.Id;
-					}
-					else
-					{
-						this._ComponentConcentration = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("UnitValue");
-				}
+				this._Components.Assign(value);
 			}
 		}
 		
-		[Association(Name="UnitValue_Substance1", Storage="_UnitValue1", ThisKey="DrugConcentration", OtherKey="Id", IsForeignKey=true)]
-		public UnitValue UnitValue1
+		[Association(Name="UnitValue_Component1", Storage="_Components1", ThisKey="Id", OtherKey="DrugConcentration")]
+		public EntitySet<Component> Components1
 		{
 			get
 			{
-				return this._UnitValue1.Entity;
+				return this._Components1;
 			}
 			set
 			{
-				UnitValue previousValue = this._UnitValue1.Entity;
-				if (((previousValue != value) 
-							|| (this._UnitValue1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UnitValue1.Entity = null;
-						previousValue.Substances1.Remove(this);
-					}
-					this._UnitValue1.Entity = value;
-					if ((value != null))
-					{
-						value.Substances1.Add(this);
-						this._DrugConcentration = value.Id;
-					}
-					else
-					{
-						this._DrugConcentration = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("UnitValue1");
-				}
+				this._Components1.Assign(value);
 			}
 		}
 		
-		[Association(Name="UnitValue_Substance2", Storage="_UnitValue2", ThisKey="Quantity", OtherKey="Id", IsForeignKey=true)]
-		public UnitValue UnitValue2
+		[Association(Name="UnitValue_Dose", Storage="_Doses", ThisKey="Id", OtherKey="Quantity")]
+		public EntitySet<Dose> Doses
 		{
 			get
 			{
-				return this._UnitValue2.Entity;
+				return this._Doses;
 			}
 			set
 			{
-				UnitValue previousValue = this._UnitValue2.Entity;
-				if (((previousValue != value) 
-							|| (this._UnitValue2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UnitValue2.Entity = null;
-						previousValue.Substances2.Remove(this);
-					}
-					this._UnitValue2.Entity = value;
-					if ((value != null))
-					{
-						value.Substances2.Add(this);
-						this._Quantity = value.Id;
-					}
-					else
-					{
-						this._Quantity = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("UnitValue2");
-				}
+				this._Doses.Assign(value);
 			}
 		}
 		
-		[Association(Name="UnitValue_Substance3", Storage="_UnitValue3", ThisKey="CustomIncrement", OtherKey="Id", IsForeignKey=true)]
-		public UnitValue UnitValue3
+		[Association(Name="UnitValue_Dose1", Storage="_Doses1", ThisKey="Id", OtherKey="Total")]
+		public EntitySet<Dose> Doses1
 		{
 			get
 			{
-				return this._UnitValue3.Entity;
+				return this._Doses1;
 			}
 			set
 			{
-				UnitValue previousValue = this._UnitValue3.Entity;
-				if (((previousValue != value) 
-							|| (this._UnitValue3.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._UnitValue3.Entity = null;
-						previousValue.Substances3.Remove(this);
-					}
-					this._UnitValue3.Entity = value;
-					if ((value != null))
-					{
-						value.Substances3.Add(this);
-						this._CustomIncrement = value.Id;
-					}
-					else
-					{
-						this._CustomIncrement = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("UnitValue3");
-				}
+				this._Doses1.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Dose2", Storage="_Doses2", ThisKey="Id", OtherKey="Rate")]
+		public EntitySet<Dose> Doses2
+		{
+			get
+			{
+				return this._Doses2;
+			}
+			set
+			{
+				this._Doses2.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Drug", Storage="_Drugs", ThisKey="Id", OtherKey="Quantity")]
+		public EntitySet<Drug> Drugs
+		{
+			get
+			{
+				return this._Drugs;
+			}
+			set
+			{
+				this._Drugs.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Medicine", Storage="_Medicines", ThisKey="Id", OtherKey="ComponentIncrement")]
+		public EntitySet<Medicine> Medicines
+		{
+			get
+			{
+				return this._Medicines;
+			}
+			set
+			{
+				this._Medicines.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Medicine1", Storage="_Medicines1", ThisKey="Id", OtherKey="DoseIncrement")]
+		public EntitySet<Medicine> Medicines1
+		{
+			get
+			{
+				return this._Medicines1;
+			}
+			set
+			{
+				this._Medicines1.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Medicine2", Storage="_Medicines2", ThisKey="Id", OtherKey="Quantity")]
+		public EntitySet<Medicine> Medicines2
+		{
+			get
+			{
+				return this._Medicines2;
+			}
+			set
+			{
+				this._Medicines2.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Prescription", Storage="_Prescriptions", ThisKey="Id", OtherKey="Frequency")]
+		public EntitySet<Prescription> Prescriptions
+		{
+			get
+			{
+				return this._Prescriptions;
+			}
+			set
+			{
+				this._Prescriptions.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Prescription1", Storage="_Prescriptions1", ThisKey="Id", OtherKey="Quantity")]
+		public EntitySet<Prescription> Prescriptions1
+		{
+			get
+			{
+				return this._Prescriptions1;
+			}
+			set
+			{
+				this._Prescriptions1.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Prescription2", Storage="_Prescriptions2", ThisKey="Id", OtherKey="Total")]
+		public EntitySet<Prescription> Prescriptions2
+		{
+			get
+			{
+				return this._Prescriptions2;
+			}
+			set
+			{
+				this._Prescriptions2.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Prescription3", Storage="_Prescriptions3", ThisKey="Id", OtherKey="Rate")]
+		public EntitySet<Prescription> Prescriptions3
+		{
+			get
+			{
+				return this._Prescriptions3;
+			}
+			set
+			{
+				this._Prescriptions3.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Prescription4", Storage="_Prescriptions4", ThisKey="Id", OtherKey="Time")]
+		public EntitySet<Prescription> Prescriptions4
+		{
+			get
+			{
+				return this._Prescriptions4;
+			}
+			set
+			{
+				this._Prescriptions4.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Prescription5", Storage="_Prescriptions5", ThisKey="Id", OtherKey="AdjustLength")]
+		public EntitySet<Prescription> Prescriptions5
+		{
+			get
+			{
+				return this._Prescriptions5;
+			}
+			set
+			{
+				this._Prescriptions5.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Prescription6", Storage="_Prescriptions6", ThisKey="Id", OtherKey="AdjustWeight")]
+		public EntitySet<Prescription> Prescriptions6
+		{
+			get
+			{
+				return this._Prescriptions6;
+			}
+			set
+			{
+				this._Prescriptions6.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Substance", Storage="_Substances", ThisKey="Id", OtherKey="ComponentConcentration")]
+		public EntitySet<Substance> Substances
+		{
+			get
+			{
+				return this._Substances;
+			}
+			set
+			{
+				this._Substances.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Substance1", Storage="_Substances1", ThisKey="Id", OtherKey="DrugConcentration")]
+		public EntitySet<Substance> Substances1
+		{
+			get
+			{
+				return this._Substances1;
+			}
+			set
+			{
+				this._Substances1.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Substance2", Storage="_Substances2", ThisKey="Id", OtherKey="Quantity")]
+		public EntitySet<Substance> Substances2
+		{
+			get
+			{
+				return this._Substances2;
+			}
+			set
+			{
+				this._Substances2.Assign(value);
+			}
+		}
+		
+		[Association(Name="UnitValue_Substance3", Storage="_Substances3", ThisKey="Id", OtherKey="CustomIncrement")]
+		public EntitySet<Substance> Substances3
+		{
+			get
+			{
+				return this._Substances3;
+			}
+			set
+			{
+				this._Substances3.Assign(value);
 			}
 		}
 		
@@ -917,6 +1056,246 @@ namespace GenPres.Database
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
+		
+		private void attach_Components(Component entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = this;
+		}
+		
+		private void detach_Components(Component entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = null;
+		}
+		
+		private void attach_Components1(Component entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = this;
+		}
+		
+		private void detach_Components1(Component entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = null;
+		}
+		
+		private void attach_Doses(Dose entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = this;
+		}
+		
+		private void detach_Doses(Dose entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = null;
+		}
+		
+		private void attach_Doses1(Dose entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = this;
+		}
+		
+		private void detach_Doses1(Dose entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = null;
+		}
+		
+		private void attach_Doses2(Dose entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = this;
+		}
+		
+		private void detach_Doses2(Dose entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = null;
+		}
+		
+		private void attach_Drugs(Drug entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = this;
+		}
+		
+		private void detach_Drugs(Drug entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = null;
+		}
+		
+		private void attach_Medicines(Medicine entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = this;
+		}
+		
+		private void detach_Medicines(Medicine entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = null;
+		}
+		
+		private void attach_Medicines1(Medicine entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = this;
+		}
+		
+		private void detach_Medicines1(Medicine entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = null;
+		}
+		
+		private void attach_Medicines2(Medicine entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = this;
+		}
+		
+		private void detach_Medicines2(Medicine entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = null;
+		}
+		
+		private void attach_Prescriptions(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = this;
+		}
+		
+		private void detach_Prescriptions(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = null;
+		}
+		
+		private void attach_Prescriptions1(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = this;
+		}
+		
+		private void detach_Prescriptions1(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = null;
+		}
+		
+		private void attach_Prescriptions2(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = this;
+		}
+		
+		private void detach_Prescriptions2(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = null;
+		}
+		
+		private void attach_Prescriptions3(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue3 = this;
+		}
+		
+		private void detach_Prescriptions3(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue3 = null;
+		}
+		
+		private void attach_Prescriptions4(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue4 = this;
+		}
+		
+		private void detach_Prescriptions4(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue4 = null;
+		}
+		
+		private void attach_Prescriptions5(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue5 = this;
+		}
+		
+		private void detach_Prescriptions5(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue5 = null;
+		}
+		
+		private void attach_Prescriptions6(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue6 = this;
+		}
+		
+		private void detach_Prescriptions6(Prescription entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue6 = null;
+		}
+		
+		private void attach_Substances(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = this;
+		}
+		
+		private void detach_Substances(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue = null;
+		}
+		
+		private void attach_Substances1(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = this;
+		}
+		
+		private void detach_Substances1(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue1 = null;
+		}
+		
+		private void attach_Substances2(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = this;
+		}
+		
+		private void detach_Substances2(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue2 = null;
+		}
+		
+		private void attach_Substances3(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue3 = this;
+		}
+		
+		private void detach_Substances3(Substance entity)
+		{
+			this.SendPropertyChanging();
+			entity.UnitValue3 = null;
+		}
 	}
 	
 	[Table(Name="dbo.Dose")]
@@ -935,13 +1314,13 @@ namespace GenPres.Database
 		
 		private System.Nullable<int> _Rate;
 		
-		private EntityRef<Prescription> _Prescription;
-		
 		private EntityRef<UnitValue> _UnitValue;
 		
 		private EntityRef<UnitValue> _UnitValue1;
 		
 		private EntityRef<UnitValue> _UnitValue2;
+		
+		private EntityRef<Prescription> _Prescription;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -961,10 +1340,10 @@ namespace GenPres.Database
 		
 		public Dose()
 		{
-			this._Prescription = default(EntityRef<Prescription>);
 			this._UnitValue = default(EntityRef<UnitValue>);
 			this._UnitValue1 = default(EntityRef<UnitValue>);
 			this._UnitValue2 = default(EntityRef<UnitValue>);
+			this._Prescription = default(EntityRef<Prescription>);
 			OnCreated();
 		}
 		
@@ -1084,40 +1463,6 @@ namespace GenPres.Database
 			}
 		}
 		
-		[Association(Name="Prescription_Dose", Storage="_Prescription", ThisKey="PrescriptionId", OtherKey="Id", IsForeignKey=true)]
-		public Prescription Prescription
-		{
-			get
-			{
-				return this._Prescription.Entity;
-			}
-			set
-			{
-				Prescription previousValue = this._Prescription.Entity;
-				if (((previousValue != value) 
-							|| (this._Prescription.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Prescription.Entity = null;
-						previousValue.Doses.Remove(this);
-					}
-					this._Prescription.Entity = value;
-					if ((value != null))
-					{
-						value.Doses.Add(this);
-						this._PrescriptionId = value.Id;
-					}
-					else
-					{
-						this._PrescriptionId = default(int);
-					}
-					this.SendPropertyChanged("Prescription");
-				}
-			}
-		}
-		
 		[Association(Name="UnitValue_Dose", Storage="_UnitValue", ThisKey="Quantity", OtherKey="Id", IsForeignKey=true)]
 		public UnitValue UnitValue
 		{
@@ -1216,6 +1561,40 @@ namespace GenPres.Database
 						this._Rate = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("UnitValue2");
+				}
+			}
+		}
+		
+		[Association(Name="Prescription_Dose", Storage="_Prescription", ThisKey="PrescriptionId", OtherKey="Id", IsForeignKey=true)]
+		public Prescription Prescription
+		{
+			get
+			{
+				return this._Prescription.Entity;
+			}
+			set
+			{
+				Prescription previousValue = this._Prescription.Entity;
+				if (((previousValue != value) 
+							|| (this._Prescription.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Prescription.Entity = null;
+						previousValue.Doses.Remove(this);
+					}
+					this._Prescription.Entity = value;
+					if ((value != null))
+					{
+						value.Doses.Add(this);
+						this._PrescriptionId = value.Id;
+					}
+					else
+					{
+						this._PrescriptionId = default(int);
+					}
+					this.SendPropertyChanged("Prescription");
 				}
 			}
 		}
@@ -1498,13 +1877,13 @@ namespace GenPres.Database
 		private void attach_Components(Component entity)
 		{
 			this.SendPropertyChanging();
-			entity.DrugRef = this;
+			entity.Drug = this;
 		}
 		
 		private void detach_Components(Component entity)
 		{
 			this.SendPropertyChanging();
-			entity.DrugRef = null;
+			entity.Drug = null;
 		}
 		
 		private void attach_Prescriptions(Prescription entity)
@@ -2049,6 +2428,12 @@ namespace GenPres.Database
 		
 		private System.Nullable<int> _PatientId;
 		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private System.Nullable<System.DateTime> _Date;
+		
 		private System.Nullable<bool> _Continuous;
 		
 		private System.Nullable<bool> _Infusion;
@@ -2085,13 +2470,9 @@ namespace GenPres.Database
 		
 		private EntitySet<Dose> _Doses;
 		
-		private EntityRef<Medicine> _Medicine;
-		
-		private EntityRef<Patient> _Patient;
-		
-		private EntityRef<Drug> _Drug;
-		
 		private EntityRef<UnitValue> _UnitValue;
+		
+		private EntityRef<Medicine> _Medicine;
 		
 		private EntityRef<UnitValue> _UnitValue1;
 		
@@ -2105,6 +2486,10 @@ namespace GenPres.Database
 		
 		private EntityRef<UnitValue> _UnitValue6;
 		
+		private EntityRef<Patient> _Patient;
+		
+		private EntityRef<Drug> _Drug;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -2113,6 +2498,12 @@ namespace GenPres.Database
     partial void OnIdChanged();
     partial void OnPatientIdChanging(System.Nullable<int> value);
     partial void OnPatientIdChanged();
+    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateChanged();
+    partial void OnDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateChanged();
     partial void OnContinuousChanging(System.Nullable<bool> value);
     partial void OnContinuousChanged();
     partial void OnInfusionChanging(System.Nullable<bool> value);
@@ -2152,16 +2543,16 @@ namespace GenPres.Database
 		public Prescription()
 		{
 			this._Doses = new EntitySet<Dose>(new Action<Dose>(this.attach_Doses), new Action<Dose>(this.detach_Doses));
-			this._Medicine = default(EntityRef<Medicine>);
-			this._Patient = default(EntityRef<Patient>);
-			this._Drug = default(EntityRef<Drug>);
 			this._UnitValue = default(EntityRef<UnitValue>);
+			this._Medicine = default(EntityRef<Medicine>);
 			this._UnitValue1 = default(EntityRef<UnitValue>);
 			this._UnitValue2 = default(EntityRef<UnitValue>);
 			this._UnitValue3 = default(EntityRef<UnitValue>);
 			this._UnitValue4 = default(EntityRef<UnitValue>);
 			this._UnitValue5 = default(EntityRef<UnitValue>);
 			this._UnitValue6 = default(EntityRef<UnitValue>);
+			this._Patient = default(EntityRef<Patient>);
+			this._Drug = default(EntityRef<Drug>);
 			OnCreated();
 		}
 		
@@ -2185,7 +2576,7 @@ namespace GenPres.Database
 			}
 		}
 		
-		[Column(Storage="_PatientId", DbType="Int NOT NULL")]
+		[Column(Storage="_PatientId", DbType="Int")]
 		public System.Nullable<int> PatientId
 		{
 			get
@@ -2205,6 +2596,66 @@ namespace GenPres.Database
 					this._PatientId = value;
 					this.SendPropertyChanged("PatientId");
 					this.OnPatientIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_StartDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Date", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Date
+		{
+			get
+			{
+				return this._Date;
+			}
+			set
+			{
+				if ((this._Date != value))
+				{
+					this.OnDateChanging(value);
+					this.SendPropertyChanging();
+					this._Date = value;
+					this.SendPropertyChanged("Date");
+					this.OnDateChanged();
 				}
 			}
 		}
@@ -2598,108 +3049,6 @@ namespace GenPres.Database
 			}
 		}
 		
-		[Association(Name="Medicine_Prescription", Storage="_Medicine", ThisKey="MedicineId", OtherKey="Id", IsForeignKey=true)]
-		public Medicine Medicine
-		{
-			get
-			{
-				return this._Medicine.Entity;
-			}
-			set
-			{
-				Medicine previousValue = this._Medicine.Entity;
-				if (((previousValue != value) 
-							|| (this._Medicine.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Medicine.Entity = null;
-						previousValue.Prescriptions.Remove(this);
-					}
-					this._Medicine.Entity = value;
-					if ((value != null))
-					{
-						value.Prescriptions.Add(this);
-						this._MedicineId = value.Id;
-					}
-					else
-					{
-						this._MedicineId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Medicine");
-				}
-			}
-		}
-		
-		[Association(Name="Patient_Prescription", Storage="_Patient", ThisKey="PatientId", OtherKey="Id", IsForeignKey=true)]
-		public Patient Patient
-		{
-			get
-			{
-				return this._Patient.Entity;
-			}
-			set
-			{
-				Patient previousValue = this._Patient.Entity;
-				if (((previousValue != value) 
-							|| (this._Patient.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Patient.Entity = null;
-						previousValue.Prescriptions.Remove(this);
-					}
-					this._Patient.Entity = value;
-					if ((value != null))
-					{
-						value.Prescriptions.Add(this);
-						this._PatientId = value.Id;
-					}
-					else
-					{
-						this._PatientId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Patient");
-				}
-			}
-		}
-		
-		[Association(Name="Drug_Prescription", Storage="_Drug", ThisKey="DrugId", OtherKey="Id", IsForeignKey=true)]
-		public Drug Drug
-		{
-			get
-			{
-				return this._Drug.Entity;
-			}
-			set
-			{
-				Drug previousValue = this._Drug.Entity;
-				if (((previousValue != value) 
-							|| (this._Drug.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Drug.Entity = null;
-						previousValue.Prescriptions.Remove(this);
-					}
-					this._Drug.Entity = value;
-					if ((value != null))
-					{
-						value.Prescriptions.Add(this);
-						this._DrugId = value.Id;
-					}
-					else
-					{
-						this._DrugId = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Drug");
-				}
-			}
-		}
-		
 		[Association(Name="UnitValue_Prescription", Storage="_UnitValue", ThisKey="Frequency", OtherKey="Id", IsForeignKey=true)]
 		public UnitValue UnitValue
 		{
@@ -2730,6 +3079,40 @@ namespace GenPres.Database
 						this._Frequency = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("UnitValue");
+				}
+			}
+		}
+		
+		[Association(Name="Medicine_Prescription", Storage="_Medicine", ThisKey="MedicineId", OtherKey="Id", IsForeignKey=true)]
+		public Medicine Medicine
+		{
+			get
+			{
+				return this._Medicine.Entity;
+			}
+			set
+			{
+				Medicine previousValue = this._Medicine.Entity;
+				if (((previousValue != value) 
+							|| (this._Medicine.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Medicine.Entity = null;
+						previousValue.Prescriptions.Remove(this);
+					}
+					this._Medicine.Entity = value;
+					if ((value != null))
+					{
+						value.Prescriptions.Add(this);
+						this._MedicineId = value.Id;
+					}
+					else
+					{
+						this._MedicineId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Medicine");
 				}
 			}
 		}
@@ -2938,6 +3321,74 @@ namespace GenPres.Database
 			}
 		}
 		
+		[Association(Name="Patient_Prescription", Storage="_Patient", ThisKey="PatientId", OtherKey="Id", IsForeignKey=true)]
+		public Patient Patient
+		{
+			get
+			{
+				return this._Patient.Entity;
+			}
+			set
+			{
+				Patient previousValue = this._Patient.Entity;
+				if (((previousValue != value) 
+							|| (this._Patient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Patient.Entity = null;
+						previousValue.Prescriptions.Remove(this);
+					}
+					this._Patient.Entity = value;
+					if ((value != null))
+					{
+						value.Prescriptions.Add(this);
+						this._PatientId = value.Id;
+					}
+					else
+					{
+						this._PatientId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Patient");
+				}
+			}
+		}
+		
+		[Association(Name="Drug_Prescription", Storage="_Drug", ThisKey="DrugId", OtherKey="Id", IsForeignKey=true)]
+		public Drug Drug
+		{
+			get
+			{
+				return this._Drug.Entity;
+			}
+			set
+			{
+				Drug previousValue = this._Drug.Entity;
+				if (((previousValue != value) 
+							|| (this._Drug.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Drug.Entity = null;
+						previousValue.Prescriptions.Remove(this);
+					}
+					this._Drug.Entity = value;
+					if ((value != null))
+					{
+						value.Prescriptions.Add(this);
+						this._DrugId = value.Id;
+					}
+					else
+					{
+						this._DrugId = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Drug");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2971,67 +3422,35 @@ namespace GenPres.Database
 		}
 	}
 	
-	[Table(Name="dbo.UnitValue")]
-	public partial class UnitValue : INotifyPropertyChanging, INotifyPropertyChanged
+	[Table(Name="dbo.Substance")]
+	public partial class Substance : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
-		private System.Nullable<double> _BaseValue;
+		private int _ComponentId;
 		
-		private string _Unit;
+		private string _SubstanceName;
 		
-		private System.Nullable<double> _Value;
+		private System.Nullable<int> _ComponentConcentration;
 		
-		private string _UIState;
+		private System.Nullable<int> _DrugConcentration;
 		
-		private string _Time;
+		private System.Nullable<int> _Quantity;
 		
-		private string _Total;
+		private System.Nullable<int> _CustomIncrement;
 		
-		private string _Adjust;
+		private EntityRef<UnitValue> _UnitValue;
 		
-		private EntitySet<Component> _Components;
+		private EntityRef<UnitValue> _UnitValue1;
 		
-		private EntitySet<Component> _Components1;
+		private EntityRef<Component> _Component;
 		
-		private EntitySet<Substance> _Substances;
+		private EntityRef<UnitValue> _UnitValue2;
 		
-		private EntitySet<Substance> _Substances1;
-		
-		private EntitySet<Substance> _Substances2;
-		
-		private EntitySet<Substance> _Substances3;
-		
-		private EntitySet<Dose> _Doses;
-		
-		private EntitySet<Dose> _Doses1;
-		
-		private EntitySet<Dose> _Doses2;
-		
-		private EntitySet<Drug> _Drugs;
-		
-		private EntitySet<Medicine> _Medicines;
-		
-		private EntitySet<Medicine> _Medicines1;
-		
-		private EntitySet<Medicine> _Medicines2;
-		
-		private EntitySet<Prescription> _Prescriptions;
-		
-		private EntitySet<Prescription> _Prescriptions1;
-		
-		private EntitySet<Prescription> _Prescriptions2;
-		
-		private EntitySet<Prescription> _Prescriptions3;
-		
-		private EntitySet<Prescription> _Prescriptions4;
-		
-		private EntitySet<Prescription> _Prescriptions5;
-		
-		private EntitySet<Prescription> _Prescriptions6;
+		private EntityRef<UnitValue> _UnitValue3;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3039,44 +3458,27 @@ namespace GenPres.Database
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnBaseValueChanging(System.Nullable<double> value);
-    partial void OnBaseValueChanged();
-    partial void OnUnitChanging(string value);
-    partial void OnUnitChanged();
-    partial void OnValueChanging(System.Nullable<double> value);
-    partial void OnValueChanged();
-    partial void OnUIStateChanging(string value);
-    partial void OnUIStateChanged();
-    partial void OnTimeChanging(string value);
-    partial void OnTimeChanged();
-    partial void OnTotalChanging(string value);
-    partial void OnTotalChanged();
-    partial void OnAdjustChanging(string value);
-    partial void OnAdjustChanged();
+    partial void OnComponentIdChanging(int value);
+    partial void OnComponentIdChanged();
+    partial void OnSubstanceNameChanging(string value);
+    partial void OnSubstanceNameChanged();
+    partial void OnComponentConcentrationChanging(System.Nullable<int> value);
+    partial void OnComponentConcentrationChanged();
+    partial void OnDrugConcentrationChanging(System.Nullable<int> value);
+    partial void OnDrugConcentrationChanged();
+    partial void OnQuantityChanging(System.Nullable<int> value);
+    partial void OnQuantityChanged();
+    partial void OnCustomIncrementChanging(System.Nullable<int> value);
+    partial void OnCustomIncrementChanged();
     #endregion
 		
-		public UnitValue()
+		public Substance()
 		{
-			this._Components = new EntitySet<Component>(new Action<Component>(this.attach_Components), new Action<Component>(this.detach_Components));
-			this._Components1 = new EntitySet<Component>(new Action<Component>(this.attach_Components1), new Action<Component>(this.detach_Components1));
-			this._Substances = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances), new Action<Substance>(this.detach_Substances));
-			this._Substances1 = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances1), new Action<Substance>(this.detach_Substances1));
-			this._Substances2 = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances2), new Action<Substance>(this.detach_Substances2));
-			this._Substances3 = new EntitySet<Substance>(new Action<Substance>(this.attach_Substances3), new Action<Substance>(this.detach_Substances3));
-			this._Doses = new EntitySet<Dose>(new Action<Dose>(this.attach_Doses), new Action<Dose>(this.detach_Doses));
-			this._Doses1 = new EntitySet<Dose>(new Action<Dose>(this.attach_Doses1), new Action<Dose>(this.detach_Doses1));
-			this._Doses2 = new EntitySet<Dose>(new Action<Dose>(this.attach_Doses2), new Action<Dose>(this.detach_Doses2));
-			this._Drugs = new EntitySet<Drug>(new Action<Drug>(this.attach_Drugs), new Action<Drug>(this.detach_Drugs));
-			this._Medicines = new EntitySet<Medicine>(new Action<Medicine>(this.attach_Medicines), new Action<Medicine>(this.detach_Medicines));
-			this._Medicines1 = new EntitySet<Medicine>(new Action<Medicine>(this.attach_Medicines1), new Action<Medicine>(this.detach_Medicines1));
-			this._Medicines2 = new EntitySet<Medicine>(new Action<Medicine>(this.attach_Medicines2), new Action<Medicine>(this.detach_Medicines2));
-			this._Prescriptions = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions), new Action<Prescription>(this.detach_Prescriptions));
-			this._Prescriptions1 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions1), new Action<Prescription>(this.detach_Prescriptions1));
-			this._Prescriptions2 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions2), new Action<Prescription>(this.detach_Prescriptions2));
-			this._Prescriptions3 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions3), new Action<Prescription>(this.detach_Prescriptions3));
-			this._Prescriptions4 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions4), new Action<Prescription>(this.detach_Prescriptions4));
-			this._Prescriptions5 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions5), new Action<Prescription>(this.detach_Prescriptions5));
-			this._Prescriptions6 = new EntitySet<Prescription>(new Action<Prescription>(this.attach_Prescriptions6), new Action<Prescription>(this.detach_Prescriptions6));
+			this._UnitValue = default(EntityRef<UnitValue>);
+			this._UnitValue1 = default(EntityRef<UnitValue>);
+			this._Component = default(EntityRef<Component>);
+			this._UnitValue2 = default(EntityRef<UnitValue>);
+			this._UnitValue3 = default(EntityRef<UnitValue>);
 			OnCreated();
 		}
 		
@@ -3100,403 +3502,313 @@ namespace GenPres.Database
 			}
 		}
 		
-		[Column(Storage="_BaseValue", DbType="Float")]
-		public System.Nullable<double> BaseValue
+		[Column(Storage="_ComponentId", DbType="Int NOT NULL")]
+		public int ComponentId
 		{
 			get
 			{
-				return this._BaseValue;
+				return this._ComponentId;
 			}
 			set
 			{
-				if ((this._BaseValue != value))
+				if ((this._ComponentId != value))
 				{
-					this.OnBaseValueChanging(value);
+					if (this._Component.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnComponentIdChanging(value);
 					this.SendPropertyChanging();
-					this._BaseValue = value;
-					this.SendPropertyChanged("BaseValue");
-					this.OnBaseValueChanged();
+					this._ComponentId = value;
+					this.SendPropertyChanged("ComponentId");
+					this.OnComponentIdChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Unit", DbType="NVarChar(MAX)")]
-		public string Unit
+		[Column(Storage="_SubstanceName", DbType="NVarChar(MAX)")]
+		public string SubstanceName
 		{
 			get
 			{
-				return this._Unit;
+				return this._SubstanceName;
 			}
 			set
 			{
-				if ((this._Unit != value))
+				if ((this._SubstanceName != value))
 				{
-					this.OnUnitChanging(value);
+					this.OnSubstanceNameChanging(value);
 					this.SendPropertyChanging();
-					this._Unit = value;
-					this.SendPropertyChanged("Unit");
-					this.OnUnitChanged();
+					this._SubstanceName = value;
+					this.SendPropertyChanged("SubstanceName");
+					this.OnSubstanceNameChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Value", DbType="Float")]
-		public System.Nullable<double> Value
+		[Column(Storage="_ComponentConcentration", DbType="Int")]
+		public System.Nullable<int> ComponentConcentration
 		{
 			get
 			{
-				return this._Value;
+				return this._ComponentConcentration;
 			}
 			set
 			{
-				if ((this._Value != value))
+				if ((this._ComponentConcentration != value))
 				{
-					this.OnValueChanging(value);
+					if (this._UnitValue.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnComponentConcentrationChanging(value);
 					this.SendPropertyChanging();
-					this._Value = value;
-					this.SendPropertyChanged("Value");
-					this.OnValueChanged();
+					this._ComponentConcentration = value;
+					this.SendPropertyChanged("ComponentConcentration");
+					this.OnComponentConcentrationChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_UIState", DbType="NVarChar(MAX)")]
-		public string UIState
+		[Column(Storage="_DrugConcentration", DbType="Int")]
+		public System.Nullable<int> DrugConcentration
 		{
 			get
 			{
-				return this._UIState;
+				return this._DrugConcentration;
 			}
 			set
 			{
-				if ((this._UIState != value))
+				if ((this._DrugConcentration != value))
 				{
-					this.OnUIStateChanging(value);
+					if (this._UnitValue1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnDrugConcentrationChanging(value);
 					this.SendPropertyChanging();
-					this._UIState = value;
-					this.SendPropertyChanged("UIState");
-					this.OnUIStateChanged();
+					this._DrugConcentration = value;
+					this.SendPropertyChanged("DrugConcentration");
+					this.OnDrugConcentrationChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Time", DbType="NVarChar(MAX)")]
-		public string Time
+		[Column(Storage="_Quantity", DbType="Int")]
+		public System.Nullable<int> Quantity
 		{
 			get
 			{
-				return this._Time;
+				return this._Quantity;
 			}
 			set
 			{
-				if ((this._Time != value))
+				if ((this._Quantity != value))
 				{
-					this.OnTimeChanging(value);
+					if (this._UnitValue2.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnQuantityChanging(value);
 					this.SendPropertyChanging();
-					this._Time = value;
-					this.SendPropertyChanged("Time");
-					this.OnTimeChanged();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Total", DbType="NVarChar(MAX)")]
-		public string Total
+		[Column(Storage="_CustomIncrement", DbType="Int")]
+		public System.Nullable<int> CustomIncrement
 		{
 			get
 			{
-				return this._Total;
+				return this._CustomIncrement;
 			}
 			set
 			{
-				if ((this._Total != value))
+				if ((this._CustomIncrement != value))
 				{
-					this.OnTotalChanging(value);
+					if (this._UnitValue3.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCustomIncrementChanging(value);
 					this.SendPropertyChanging();
-					this._Total = value;
-					this.SendPropertyChanged("Total");
-					this.OnTotalChanged();
+					this._CustomIncrement = value;
+					this.SendPropertyChanged("CustomIncrement");
+					this.OnCustomIncrementChanged();
 				}
 			}
 		}
 		
-		[Column(Storage="_Adjust", DbType="NVarChar(MAX)")]
-		public string Adjust
+		[Association(Name="UnitValue_Substance", Storage="_UnitValue", ThisKey="ComponentConcentration", OtherKey="Id", IsForeignKey=true)]
+		public UnitValue UnitValue
 		{
 			get
 			{
-				return this._Adjust;
+				return this._UnitValue.Entity;
 			}
 			set
 			{
-				if ((this._Adjust != value))
+				UnitValue previousValue = this._UnitValue.Entity;
+				if (((previousValue != value) 
+							|| (this._UnitValue.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnAdjustChanging(value);
 					this.SendPropertyChanging();
-					this._Adjust = value;
-					this.SendPropertyChanged("Adjust");
-					this.OnAdjustChanged();
+					if ((previousValue != null))
+					{
+						this._UnitValue.Entity = null;
+						previousValue.Substances.Remove(this);
+					}
+					this._UnitValue.Entity = value;
+					if ((value != null))
+					{
+						value.Substances.Add(this);
+						this._ComponentConcentration = value.Id;
+					}
+					else
+					{
+						this._ComponentConcentration = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("UnitValue");
 				}
 			}
 		}
 		
-		[Association(Name="UnitValue_Component", Storage="_Components", ThisKey="Id", OtherKey="Quantity")]
-		public EntitySet<Component> Components
+		[Association(Name="UnitValue_Substance1", Storage="_UnitValue1", ThisKey="DrugConcentration", OtherKey="Id", IsForeignKey=true)]
+		public UnitValue UnitValue1
 		{
 			get
 			{
-				return this._Components;
+				return this._UnitValue1.Entity;
 			}
 			set
 			{
-				this._Components.Assign(value);
+				UnitValue previousValue = this._UnitValue1.Entity;
+				if (((previousValue != value) 
+							|| (this._UnitValue1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UnitValue1.Entity = null;
+						previousValue.Substances1.Remove(this);
+					}
+					this._UnitValue1.Entity = value;
+					if ((value != null))
+					{
+						value.Substances1.Add(this);
+						this._DrugConcentration = value.Id;
+					}
+					else
+					{
+						this._DrugConcentration = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("UnitValue1");
+				}
 			}
 		}
 		
-		[Association(Name="UnitValue_Component1", Storage="_Components1", ThisKey="Id", OtherKey="DrugConcentration")]
-		public EntitySet<Component> Components1
+		[Association(Name="Component_Substance", Storage="_Component", ThisKey="ComponentId", OtherKey="Id", IsForeignKey=true)]
+		public Component Component
 		{
 			get
 			{
-				return this._Components1;
+				return this._Component.Entity;
 			}
 			set
 			{
-				this._Components1.Assign(value);
+				Component previousValue = this._Component.Entity;
+				if (((previousValue != value) 
+							|| (this._Component.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Component.Entity = null;
+						previousValue.Substances.Remove(this);
+					}
+					this._Component.Entity = value;
+					if ((value != null))
+					{
+						value.Substances.Add(this);
+						this._ComponentId = value.Id;
+					}
+					else
+					{
+						this._ComponentId = default(int);
+					}
+					this.SendPropertyChanged("Component");
+				}
 			}
 		}
 		
-		[Association(Name="UnitValue_Substance", Storage="_Substances", ThisKey="Id", OtherKey="ComponentConcentration")]
-		public EntitySet<Substance> Substances
+		[Association(Name="UnitValue_Substance2", Storage="_UnitValue2", ThisKey="Quantity", OtherKey="Id", IsForeignKey=true)]
+		public UnitValue UnitValue2
 		{
 			get
 			{
-				return this._Substances;
+				return this._UnitValue2.Entity;
 			}
 			set
 			{
-				this._Substances.Assign(value);
+				UnitValue previousValue = this._UnitValue2.Entity;
+				if (((previousValue != value) 
+							|| (this._UnitValue2.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UnitValue2.Entity = null;
+						previousValue.Substances2.Remove(this);
+					}
+					this._UnitValue2.Entity = value;
+					if ((value != null))
+					{
+						value.Substances2.Add(this);
+						this._Quantity = value.Id;
+					}
+					else
+					{
+						this._Quantity = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("UnitValue2");
+				}
 			}
 		}
 		
-		[Association(Name="UnitValue_Substance1", Storage="_Substances1", ThisKey="Id", OtherKey="DrugConcentration")]
-		public EntitySet<Substance> Substances1
+		[Association(Name="UnitValue_Substance3", Storage="_UnitValue3", ThisKey="CustomIncrement", OtherKey="Id", IsForeignKey=true)]
+		public UnitValue UnitValue3
 		{
 			get
 			{
-				return this._Substances1;
+				return this._UnitValue3.Entity;
 			}
 			set
 			{
-				this._Substances1.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Substance2", Storage="_Substances2", ThisKey="Id", OtherKey="Quantity")]
-		public EntitySet<Substance> Substances2
-		{
-			get
-			{
-				return this._Substances2;
-			}
-			set
-			{
-				this._Substances2.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Substance3", Storage="_Substances3", ThisKey="Id", OtherKey="CustomIncrement")]
-		public EntitySet<Substance> Substances3
-		{
-			get
-			{
-				return this._Substances3;
-			}
-			set
-			{
-				this._Substances3.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Dose", Storage="_Doses", ThisKey="Id", OtherKey="Quantity")]
-		public EntitySet<Dose> Doses
-		{
-			get
-			{
-				return this._Doses;
-			}
-			set
-			{
-				this._Doses.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Dose1", Storage="_Doses1", ThisKey="Id", OtherKey="Total")]
-		public EntitySet<Dose> Doses1
-		{
-			get
-			{
-				return this._Doses1;
-			}
-			set
-			{
-				this._Doses1.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Dose2", Storage="_Doses2", ThisKey="Id", OtherKey="Rate")]
-		public EntitySet<Dose> Doses2
-		{
-			get
-			{
-				return this._Doses2;
-			}
-			set
-			{
-				this._Doses2.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Drug", Storage="_Drugs", ThisKey="Id", OtherKey="Quantity")]
-		public EntitySet<Drug> Drugs
-		{
-			get
-			{
-				return this._Drugs;
-			}
-			set
-			{
-				this._Drugs.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Medicine", Storage="_Medicines", ThisKey="Id", OtherKey="ComponentIncrement")]
-		public EntitySet<Medicine> Medicines
-		{
-			get
-			{
-				return this._Medicines;
-			}
-			set
-			{
-				this._Medicines.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Medicine1", Storage="_Medicines1", ThisKey="Id", OtherKey="DoseIncrement")]
-		public EntitySet<Medicine> Medicines1
-		{
-			get
-			{
-				return this._Medicines1;
-			}
-			set
-			{
-				this._Medicines1.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Medicine2", Storage="_Medicines2", ThisKey="Id", OtherKey="Quantity")]
-		public EntitySet<Medicine> Medicines2
-		{
-			get
-			{
-				return this._Medicines2;
-			}
-			set
-			{
-				this._Medicines2.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Prescription", Storage="_Prescriptions", ThisKey="Id", OtherKey="Frequency")]
-		public EntitySet<Prescription> Prescriptions
-		{
-			get
-			{
-				return this._Prescriptions;
-			}
-			set
-			{
-				this._Prescriptions.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Prescription1", Storage="_Prescriptions1", ThisKey="Id", OtherKey="Quantity")]
-		public EntitySet<Prescription> Prescriptions1
-		{
-			get
-			{
-				return this._Prescriptions1;
-			}
-			set
-			{
-				this._Prescriptions1.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Prescription2", Storage="_Prescriptions2", ThisKey="Id", OtherKey="Total")]
-		public EntitySet<Prescription> Prescriptions2
-		{
-			get
-			{
-				return this._Prescriptions2;
-			}
-			set
-			{
-				this._Prescriptions2.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Prescription3", Storage="_Prescriptions3", ThisKey="Id", OtherKey="Rate")]
-		public EntitySet<Prescription> Prescriptions3
-		{
-			get
-			{
-				return this._Prescriptions3;
-			}
-			set
-			{
-				this._Prescriptions3.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Prescription4", Storage="_Prescriptions4", ThisKey="Id", OtherKey="Time")]
-		public EntitySet<Prescription> Prescriptions4
-		{
-			get
-			{
-				return this._Prescriptions4;
-			}
-			set
-			{
-				this._Prescriptions4.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Prescription5", Storage="_Prescriptions5", ThisKey="Id", OtherKey="AdjustLength")]
-		public EntitySet<Prescription> Prescriptions5
-		{
-			get
-			{
-				return this._Prescriptions5;
-			}
-			set
-			{
-				this._Prescriptions5.Assign(value);
-			}
-		}
-		
-		[Association(Name="UnitValue_Prescription6", Storage="_Prescriptions6", ThisKey="Id", OtherKey="AdjustWeight")]
-		public EntitySet<Prescription> Prescriptions6
-		{
-			get
-			{
-				return this._Prescriptions6;
-			}
-			set
-			{
-				this._Prescriptions6.Assign(value);
+				UnitValue previousValue = this._UnitValue3.Entity;
+				if (((previousValue != value) 
+							|| (this._UnitValue3.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UnitValue3.Entity = null;
+						previousValue.Substances3.Remove(this);
+					}
+					this._UnitValue3.Entity = value;
+					if ((value != null))
+					{
+						value.Substances3.Add(this);
+						this._CustomIncrement = value.Id;
+					}
+					else
+					{
+						this._CustomIncrement = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("UnitValue3");
+				}
 			}
 		}
 		
@@ -3518,246 +3830,6 @@ namespace GenPres.Database
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_Components(Component entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = this;
-		}
-		
-		private void detach_Components(Component entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = null;
-		}
-		
-		private void attach_Components1(Component entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = this;
-		}
-		
-		private void detach_Components1(Component entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = null;
-		}
-		
-		private void attach_Substances(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = this;
-		}
-		
-		private void detach_Substances(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = null;
-		}
-		
-		private void attach_Substances1(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = this;
-		}
-		
-		private void detach_Substances1(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = null;
-		}
-		
-		private void attach_Substances2(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = this;
-		}
-		
-		private void detach_Substances2(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = null;
-		}
-		
-		private void attach_Substances3(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue3 = this;
-		}
-		
-		private void detach_Substances3(Substance entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue3 = null;
-		}
-		
-		private void attach_Doses(Dose entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = this;
-		}
-		
-		private void detach_Doses(Dose entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = null;
-		}
-		
-		private void attach_Doses1(Dose entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = this;
-		}
-		
-		private void detach_Doses1(Dose entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = null;
-		}
-		
-		private void attach_Doses2(Dose entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = this;
-		}
-		
-		private void detach_Doses2(Dose entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = null;
-		}
-		
-		private void attach_Drugs(Drug entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = this;
-		}
-		
-		private void detach_Drugs(Drug entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = null;
-		}
-		
-		private void attach_Medicines(Medicine entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = this;
-		}
-		
-		private void detach_Medicines(Medicine entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = null;
-		}
-		
-		private void attach_Medicines1(Medicine entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = this;
-		}
-		
-		private void detach_Medicines1(Medicine entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = null;
-		}
-		
-		private void attach_Medicines2(Medicine entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = this;
-		}
-		
-		private void detach_Medicines2(Medicine entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = null;
-		}
-		
-		private void attach_Prescriptions(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = this;
-		}
-		
-		private void detach_Prescriptions(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue = null;
-		}
-		
-		private void attach_Prescriptions1(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = this;
-		}
-		
-		private void detach_Prescriptions1(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue1 = null;
-		}
-		
-		private void attach_Prescriptions2(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = this;
-		}
-		
-		private void detach_Prescriptions2(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue2 = null;
-		}
-		
-		private void attach_Prescriptions3(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue3 = this;
-		}
-		
-		private void detach_Prescriptions3(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue3 = null;
-		}
-		
-		private void attach_Prescriptions4(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue4 = this;
-		}
-		
-		private void detach_Prescriptions4(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue4 = null;
-		}
-		
-		private void attach_Prescriptions5(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue5 = this;
-		}
-		
-		private void detach_Prescriptions5(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue5 = null;
-		}
-		
-		private void attach_Prescriptions6(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue6 = this;
-		}
-		
-		private void detach_Prescriptions6(Prescription entity)
-		{
-			this.SendPropertyChanging();
-			entity.UnitValue6 = null;
 		}
 	}
 }

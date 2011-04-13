@@ -56,7 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADOHelper.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Prescription.cs">
       <DependentUpon>Prescription.dbml</DependentUpon>

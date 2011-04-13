@@ -1,19 +1,71 @@
 <%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<!DOCTYPE>
 <meta http-equiv="X-UA-Compatible" content="IE=100" >
 <html>
 <head id="Head1" runat="server">
     
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     
-    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/Library/Ext4/resources/css/ext-all.css") %>" /> 
+    <!-- ############## JAVASCRIPT ############## -->
+    <!-- ExtJS base -->
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/adapter/ext/ext-base.js") %>"></script>
+    <!-- ExtJS base -->
+
+    <!-- ExtJS library -->
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/ext-all.js") %>"></script>
+    <!-- ExtJS library -->
+
+    <!-- ExtJS extensions -->
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/extensions/ext.ux.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Controls/ValueField.js") %>"></script>
+    <!-- ExtJS extensions -->
     
-    <script type="text/javascript" src="<%= Url.Content("~/Client/Library/Ext4/bootstrap.js")  %>"></script> 
-    <script type="text/javascript" src="<%= Url.Content("~/Client/Project/Start.js")  %>"></script> 
+    <!-- GenPres -->
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/HelperFunctions.js") %>"></script> 
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/init.js") %>"></script> 
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/GenPresView.js") %>"></script> 
     
-    <script type="text/javascript" src="<%= Url.Content("~/Client/Project/Views/ViewManager.js")  %>"></script>
-    <script type="text/javascript" src="<%= Url.Content("~/Client/Project/Views/Viewport.js")  %>"></script>
-    <script type="text/javascript" src="<%= Url.Content("~/Client/Project/Views/PatientSelectorTree.js")  %>"></script>
+    <!-- Views & Panels -->
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/GenPresView.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PatientTree.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PatientInfo.js") %>"></script>
+    
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/TotalView.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/OverView.js") %>"></script>
+    
+    
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationGrid.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/TPNForm.js") %>"></script>
+    
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm/MainForm.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm/Medicine.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm/Prescription.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm/Dosage.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm/Administration.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm/Scenarios.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Views/PrescribeMedicationForm/NewMedicineWindow.js") %>"></script>
+    
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/DataStores/PrescriptionStores.js") %>"></script>
+    <!-- Views & Panels -->
+
+    <!-- Models -->    
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Logic/StateManager.js") %>"></script>
+    <!-- Models -->
+    
+    <!-- Data -->
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/includes/GenPres/Data/DataCommunication.js") %>"></script>
+    <!-- Data -->
+    
+    <!-- GenPres -->
+    <!-- ############## JAVASCRIPT ############## -->
+
+    <!-- ############## STYLES(THEME) ############## -->
+    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/resources/css/ext-all.css") %>" />
+    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/resources/css/xtheme-gray.css") %>" />
+    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/ux.css") %>" />
+    <!-- ############## STYLES(THEME) ############## -->
+    
     
     <script type="text/javascript" src="<%= Url.Content("~/Direct/Api") %>"></script>
     <script>        Ext.Direct.addProvider(Ext.app.REMOTING_API);</script>

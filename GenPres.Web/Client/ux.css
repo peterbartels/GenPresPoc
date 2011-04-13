@@ -1,0 +1,494 @@
+﻿.x-tree-node-leaf .x-tree-node-icon {
+	background-image: url(images/TreeUserIcon.gif);
+}
+.x-tree-node-expanded .x-tree-node-icon {
+	background-image: url(images/TreeUnitIcon.png);
+}
+.x-tree-node-collapsed .x-tree-node-icon {
+	background-image: url(images/TreeUnitIcon.png);
+}
+.x-btn-over {
+	border:none;
+}
+
+#Verbalization {
+	font-size:13px;
+	color:#CC3300;
+	padding-left:4px
+}
+#remarks {
+	font-size:14px;
+	color:#CC3300;
+	font-family: "trebuchet ms";
+}
+
+.remarksEmtpy {
+    color: gray !important;
+	font-style: italic;
+}
+
+#infoBar,#infoBar div {
+	font-size:10px;
+	font-family: "trebuchet ms";
+	padding-left:12px;
+	
+	width:862px;
+	padding-top:4px;
+	font-weight:bold;
+}
+#infoBar div {
+	padding-top:0px;
+}
+
+#mainPanel .x-toolbar-ct {
+	border:1px solid white;
+}
+.patientIcon {
+	background-image: url(images/patient.png);
+	background-repeat: no-repeat;
+	float:left;
+	width:50px;
+	height:48px;
+}
+
+
+.x-panel-btns {
+	/*background-color:white;*/
+}
+
+.x-item-disabled {
+	opacity:0.4;	
+}
+
+
+.UnitValueExpand-inner {
+	background-color:white;
+}
+
+.x-box-inner 
+{
+	min-height:22px;
+}
+.x-form-composite .x-form-num-field
+{
+	border: solid 1px lime;
+}
+
+.x-form-composite .field-calculated {
+	border: solid 1px orange;
+}
+
+.x-form-composite .field-user {
+	border: solid 1px lime;
+}
+.x-form-composite .field-notset {
+	border: solid 1px lime;
+}
+
+.x-form-text, textarea.x-form-field {
+	background:none;
+}
+
+.x-form-check-wrap {
+	text-align:center;
+}
+
+.patientInfoHeader {
+	width:80px;
+	float:left;
+}
+.patientInfoCaption {
+	width:50px;
+	margin:1px;
+	float:left;
+	font-weight:bold;
+}
+
+
+.x-form-field-wrap .x-form-trigger {
+   opacity: .6;
+   filter:alpha(opacity=60);
+}
+
+.patientNameInfo {
+	width:90px;
+	float:left;
+}
+.patientOtherInfo {
+	
+}
+
+.x-panel-header {
+	background:#fff !important;
+} 
+
+.x-panel-noborder .x-panel-header-noborder {
+	/*border-bottom: 1px dotted #ccc;*/
+	border-bottom: none;
+	
+	margin-bottom:6px;	
+	background: none;
+	z-index:1 !important;
+	color:#000;
+}
+
+
+#logo .x-panel-body {
+	background:url(images/bg_top.png);
+}
+#north .x-panel-body {
+	background:url(images/bg_top.png);
+}
+.contentbox {
+	position:relative;
+	height:100px;
+	width:100%;
+	
+}
+.contentbox_inner {
+	padding:15px;
+	background-image:url(images/content_bg_top.jpg);
+	background-repeat:repeat-x;
+	height:100px;
+	font-weight:bold;
+	color:#333333; /* official color should be: #515151 */
+	
+}
+.infusionBox {
+	position:relative;
+	width:700px;
+	border:1px solid #ccc;
+}
+.contentbox_left_top {
+  position:absolute;
+	top:0px;
+	left:0px;
+	height:100px;
+	width:15px;
+	background-repeat:no-repeat;
+	background-image:url(images/content_left_top.jpg);
+}
+
+.contentbox_right_top {
+  position:absolute;
+	top:0px;
+	right:0px;
+	height:100px;
+	width:15px;
+	background-repeat:no-repeat;	
+	background-image:url(images/content_right_top.jpg);
+}
+
+
+.x-viewport, .x-viewport body 
+{
+	
+}
+
+.x-panel-header 
+{
+	padding:0px;
+	color:black;
+	background-color:#aec7d9;
+	padding:2px 0px 2px 0px;
+}
+.ext-ie7 .overlay 
+{
+	margin-left:-2px;
+	margin-top:-1px;
+}
+/*
+.ext-ie7 .x-form-text 
+{
+	margin: -2px 0px 0px 2px !important;
+	
+}*/
+body, p, div, td, span
+{
+	font-size:10px;
+	font-family: verdana,arial,tahoma,helvetica,sans-serif;
+}
+
+#header .x-panel-header 
+{
+	
+}
+.ul.x-tab-strip-top 
+{
+	background:#ccc;
+}
+..x-tab-panel-header, .x-tab-panel-footer 
+{
+	border-color:#ccc;
+}
+.x-tab-panel-body 
+{
+	border-color:#ccc;
+}
+.x-form-item {
+	color:#15428B;
+	font-family:arial,verdana,sans-serif;
+	font-size:11px;
+	font-weight:bold;
+}
+
+.x-toolbar .x-toolbar-cell {
+	vertical-align:top;
+}
+
+.trigger-disabled img 
+{
+	display:none;
+}
+.trigger-disabled .x-form-spinner-splitter
+{
+	display:none;
+}
+.trigger-disabled input
+{
+	border:0px !important;	
+	background: none;
+}
+.trigger-disabled .stateChangeElement
+{
+	display:none;
+}
+
+
+
+/*!
+ * Ext JS Library 3.1.1
+ * Copyright(c) 2006-2010 Ext JS, LLC
+ * licensing@extjs.com
+ * http://www.extjs.com/license
+ */
+.x-form-spinner-proxy{
+	/*background-color:#ff00cc;*/
+}
+.x-form-field-wrap .x-form-spinner-trigger {
+    background:transparent url('spinner.gif') no-repeat 0 0;
+}
+
+.x-form-field-wrap .x-form-spinner-overup{
+    background-position:-17px 0;
+}
+.x-form-field-wrap .x-form-spinner-clickup{
+    background-position:-34px 0;
+}
+.x-form-field-wrap .x-form-spinner-overdown{
+    background-position:-51px 0;
+}
+.x-form-field-wrap .x-form-spinner-clickdown{
+    background-position:-68px 0;
+}
+
+
+.x-trigger-wrap-focus .x-form-spinner-trigger{
+    background-position:-85px 0;
+}
+.x-trigger-wrap-focus .x-form-spinner-overup{
+    background-position:-102px 0;
+}
+.x-trigger-wrap-focus .x-form-spinner-clickup{
+    background-position:-119px 0;
+}
+.x-trigger-wrap-focus .x-form-spinner-overdown{
+    background-position:-136px 0;
+}
+.x-trigger-wrap-focus .x-form-spinner-clickdown{
+    background-position:-153px 0;
+}
+.x-trigger-wrap-focus .x-form-trigger{
+    border-bottom: 1px solid #7eadd9;
+}
+
+.x-form-field-wrap .x-form-spinner-splitter {
+	line-height:1px;
+	font-size:1px;
+    bdackground:transparent url('spinner-split.gif') no-repeat 0 0;
+	position:absolute;
+	cursor: n-resize;
+	background:none;
+	display:none;
+}
+.x-trigger-wrap-focus .x-form-spinner-splitter{
+    background-position:-14px 0;
+}
+
+.msg .x-box-mc {
+    font-size:14px;
+}
+#msg-div {
+    position:absolute;
+    left:35%;
+    top:10px;
+    width:250px;
+    z-index:20000;
+}
+.example-info{
+	width:150px;
+	border:1px solid #c3daf9;
+	border-top:1px solid #DCEAFB;
+	border-left:1px solid #DCEAFB;
+	background:#ecf5fe url( info-bg.gif ) repeat-x;
+	font-size:10px;
+	padding:8px;
+}
+
+.ext-gecko .x-form-text 
+{
+	padding-top:0px;
+	padding-bottom:2px;
+}
+
+.fieldDisabled img{
+	display:none !important;
+	background:none !important;
+	background-color:gray;
+	border:none !important;
+}
+.fieldDisabled input{
+	border:1px solid #86a0c1 !important;
+	background-color:#f5f0f0 !important;
+}
+.fieldDisabled .x-form-text, .fieldDisabled textarea.x-form-field {
+	background-color:#ffffff;
+	color:black !important;
+}
+
+.ext-el-mask {
+	background:none;
+}
+
+#adminPanel, #dosagePanel, #medicinePanel, #optionsPanel, #patientPanel {
+	position:relative;
+	border:1px solid #d7d4d4;
+	padding-top:10px;
+	padding-left:5px;
+}
+#adminPanel, #dosagePanel, #medicinePanel{
+	padding-top:0px;
+}
+
+#adminPanel,#dosagePanel,#optionsPanel {
+	margin-top:2px;
+}
+
+.x-panel-header-text, .infusionBox-header-text{
+	position:absolute;
+	top:0px;
+	font-size:9px;
+	right:0px;
+	padding:1px;
+	z-index:200;
+	background-color:darkgray;
+	color:white;
+}
+.infusionBox .x-panel-header-text {
+	font-size:14px;
+	width:100px;
+	right:20px;
+}
+
+.infusionBox .x-panel-header {
+	
+}
+infusionBody div {
+	background:none !important;
+}
+.infusionBox .infusionBody {
+	margin-top:-23px;
+}
+
+
+#prescribeMedicationFormSaveButton {
+	margin-top:17px;
+}
+
+#prescribeMedicationFormSaveButton button {
+	height:65px;
+	width:105px;
+}
+
+
+.x-bubble-ml {
+    padding-left:4px;
+	background:transparent url(images/bubble-lr.gif) repeat-y 0 0;
+	zoom:1;
+}
+
+.x-bubble-mr {
+    padding-right:4px;
+	background:transparent url(images/bubble-lr.gif) repeat-y right 0;
+	zoom:1;
+}
+.x-bubble-mc {
+	background:#4e79b2;
+	overflow:hidden;
+}
+
+.x-bubble-tl {
+    
+    background: #fff url(images/bubble-cs.gif) no-repeat 0 0;
+    padding-left:11px;
+    zoom:1;
+}
+.x-bubble-tr {
+    background: transparent url(images/bubble-cs.gif) no-repeat right top;
+    padding-right:11px;
+    zoom:1;
+}
+.x-bubble-tc {
+    height: 9px;
+    overflow: hidden;
+    padding-top: 4px;
+    background: #fff url(images/bubble-tb.gif) repeat-x 0 0;
+}
+
+.x-bubble-bl {
+	background: #fff url(images/bubble-cs.gif) no-repeat 0 bottom;
+	padding-left:11px;
+    zoom:1;
+}
+.x-bubble-br {
+	background: transparent url(images/bubble-cs.gif) no-repeat right bottom;
+	padding-right:11px;
+    zoom:1;
+}
+.x-bubble-bc {
+	height:11px;
+	font-size:1px;
+	line-height:1px;
+	overflow:hidden;
+	background: #fff url(images/bubble-tb.gif) repeat-x 0 bottom;
+}
+.x-bubble-bwrap {	
+	background: #fff url(images/bubble-tb.gif) repeat-x 0 0;
+	overflow:hidden;
+	zoom:1;
+
+}
+.x-bubble-body {
+	background: #fff;
+	overflow:hidden;
+}
+
+
+
+.x-blue-body {
+	background: #dae3ee;
+	overflow:hidden;
+}
+
+.x-panel-noborder .x-panel-tbar-noborder .x-toolbar {
+	background:none repeat scroll 0 0 #dae3ee;
+}
+
+.x-table-layout {
+	background-color:#ebebeb;
+}
+
+
+.x-border-layout-ct {
+background-color:#dae3ee;
+}
