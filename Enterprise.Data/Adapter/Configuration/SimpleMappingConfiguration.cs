@@ -12,15 +12,15 @@ namespace Enterprise.Data.AdapterConfiguration
         : IMappingConfiguration, ISimpleMappingExpression<TSource, TDestination>
     {
         internal List<IMappingType> _mappingTypes { get; set; }
-        private SimpleAdapter _adapter;
+        private SimpleAdapter<TSource, TDestination> _adapter;
 
-        public SimpleMappingConfiguration(SimpleAdapter adapter)
+        public SimpleMappingConfiguration(SimpleAdapter<TSource, TDestination> adapter)
         {
             _mappingTypes = new List<IMappingType>();
             _adapter = adapter;
         }
 
-        internal static SimpleMappingConfiguration<TSource, TDestination> GetMappingConfiguration(SimpleAdapter adapter)
+        internal static SimpleMappingConfiguration<TSource, TDestination> GetMappingConfiguration(SimpleAdapter<TSource, TDestination> adapter)
         {
             SimpleMappingConfiguration<TSource, TDestination> mappingConfiguration = new SimpleMappingConfiguration<TSource, TDestination>(adapter);
             return mappingConfiguration;

@@ -7,7 +7,7 @@ using Enterprise.Data.AdapterTypes;
 
 namespace Enterprise.Data
 {
-    public class CslaLinqAdapter : SimpleAdapter
+    public class CslaLinqAdapter<TSrc, TDest> : SimpleAdapter<TSrc, TDest>
     {
         public CslaLinqAdapter() : base() { }
 
@@ -18,10 +18,10 @@ namespace Enterprise.Data
             ).SingleOrDefault<List<IMappingType>>();
         }
 
-        public ICslaLinqMappingExpression<TSource, TDestination> ConfigureMapping<TSource, TDestination>()
+        public ICslaLinqMappingExpression<TSrc, TDest> ConfigureMapping()
         {
             //Get the mapping configuration
-            CslaLinqMappingConfiguration<TSource, TDestination> mappingConfiguration = CslaLinqMappingConfiguration<TSource, TDestination>.GetMappingConfiguration(this);
+            CslaLinqMappingConfiguration<TSrc, TDest> mappingConfiguration = CslaLinqMappingConfiguration<TSrc, TDest>.GetMappingConfiguration(this);
 
             //Add the configuration to the mappingconfiguration list
             _mappingConfiguration.Add(mappingConfiguration);

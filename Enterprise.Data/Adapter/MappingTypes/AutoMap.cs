@@ -11,7 +11,7 @@ namespace Enterprise.Data.AdapterTypes
 {
     internal class AutoMap<TSource, TDestination> : IMappingType
     {
-        internal AutoMap(SimpleAdapter adapter, Type srcType, Type destType, Type destinationType)
+        internal AutoMap(SimpleAdapter<TSource, TDestination> adapter, Type srcType, Type destType, Type destinationType)
         {
             IMappingConfiguration configuration = adapter.GetMappingConfiguration(srcType);
             /*if (destinationType == srcType)

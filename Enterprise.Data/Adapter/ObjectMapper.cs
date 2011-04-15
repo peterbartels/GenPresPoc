@@ -8,9 +8,9 @@ namespace Enterprise.Data
 {
     public class ObjectMapper
     {
-        internal SimpleAdapter _adapter;
-        
-        internal ObjectMapper(SimpleAdapter adapter)
+        internal IAdapter _adapter;
+
+        internal ObjectMapper(IAdapter adapter)
         {
             _adapter = adapter;
         }

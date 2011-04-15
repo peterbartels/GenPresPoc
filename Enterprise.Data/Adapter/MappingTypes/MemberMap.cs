@@ -13,9 +13,9 @@ namespace Enterprise.Data.AdapterTypes
     {
         private IMemberGetter source { get; set; }
         private MemberAccessor destination { get; set; }
-        private SimpleAdapter _adapter;
+        private SimpleAdapter<TSource, TDestination> _adapter;
 
-        internal MemberMap(SimpleAdapter adapter, IMemberGetter src, MemberAccessor dest)
+        internal MemberMap(SimpleAdapter<TSource, TDestination> adapter, IMemberGetter src, MemberAccessor dest)
         {
             _adapter = adapter;
             source = src;

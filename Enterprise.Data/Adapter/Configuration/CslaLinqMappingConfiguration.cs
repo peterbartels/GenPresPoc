@@ -12,13 +12,13 @@ namespace Enterprise.Data.AdapterConfiguration
         : SimpleMappingConfiguration<TSrc, TDest>, ICslaLinqMappingExpression<TSrc, TDest>
     {
 
-        public CslaLinqMappingConfiguration(CslaLinqAdapter adapter)
+        public CslaLinqMappingConfiguration(CslaLinqAdapter<TSrc, TDest> adapter)
             : base(adapter)
         {
             
         }
 
-        internal static CslaLinqMappingConfiguration<TSrc, TDest> GetMappingConfiguration(CslaLinqAdapter adapter)
+        internal static CslaLinqMappingConfiguration<TSrc, TDest> GetMappingConfiguration(CslaLinqAdapter<TSrc, TDest> adapter)
         {
             CslaLinqMappingConfiguration<TSrc, TDest> mappingConfiguration = new CslaLinqMappingConfiguration<TSrc, TDest>(adapter);
             return mappingConfiguration;

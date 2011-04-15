@@ -7,7 +7,7 @@ using Enterprise.Data.AdapterTypes;
 
 namespace Enterprise.Data
 {
-    public class SimpleAdapter : IAdapter
+    public class SimpleAdapter<TSrc, TDest> : IAdapter
     {
         protected List<IMappingConfiguration> _mappingConfiguration = new List<IMappingConfiguration>();
         protected ObjectMapper _objectMapper;
@@ -17,17 +17,17 @@ namespace Enterprise.Data
             _objectMapper = new ObjectMapper(this);
         }
 
-        internal List<IMappingType> LoadMappingTypes(Type source)
+        public List<IMappingType> LoadMappingTypes(Type source)
         {
             return (
                 from i in _mappingConfiguration where i.GetSourceType() == source select i.GetMappingTypes()
             ).SingleOrDefault<List<IMappingType>>();
         }
 
-        public ISimpleMappingExpression<TSource, TDestination> ConfigureMapping<TSource, TDestination>()
+        public ISimpleMappingExpression<TSrc, TDest> ConfigureMapping()
         {
             //Get the mapping configuration
-            SimpleMappingConfiguration<TSource, TDestination> mappingConfiguration = SimpleMappingConfiguration<TSource, TDestination>.GetMappingConfiguration(this);
+            SimpleMappingConfiguration<TSrc, TDest> mappingConfiguration = SimpleMappingConfiguration<TSrc, TDest>.GetMappingConfiguration(this);
             
             //Add the configuration to the mappingconfiguration list
             _mappingConfiguration.Add(mappingConfiguration);
@@ -35,7 +35,7 @@ namespace Enterprise.Data
             return mappingConfiguration;
         }
 
-        internal IMappingConfiguration GetMappingConfiguration(Type sourceType)
+        public IMappingConfiguration GetMappingConfiguration(Type sourceType)
         {
             return 
                 (from i in _mappingConfiguration where i.GetSourceType() == sourceType select i).LastOrDefault<IMappingConfiguration>();
