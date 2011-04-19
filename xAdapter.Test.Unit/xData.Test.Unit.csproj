@@ -7,8 +7,8 @@
     <ProjectGuid>{E79C7789-83B5-4091-840E-C46D7489D3BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>xAdapter.Test.Unit</RootNamespace>
-    <AssemblyName>xAdapter.Test.Unit</AssemblyName>
+    <RootNamespace>xData.Test.Unit</RootNamespace>
+    <AssemblyName>xData.Test.Unit</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -40,15 +40,28 @@
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="TypeMock, Version=6.0.8.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
+    <Reference Include="Typemock.ArrangeActAssert, Version=6.0.8.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBTest.cs">
+      <DependentUpon>DBTest.dbml</DependentUpon>
+    </Compile>
     <Compile Include="DBTest.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBTest.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="CslaLinqAdapterTest.cs" />
+    <Compile Include="RepositoryTest.cs" />
+    <Compile Include="TestClasses\TestClassCslaChild.cs" />
+    <Compile Include="TestClasses\TestClassCslaRoot.cs" />
+    <Compile Include="TestClasses\TestClassCslaRootMapper.cs" />
+    <Compile Include="TestClasses\TestRepository.cs" />
+    <Compile Include="TestDatabase.cs" />
+    <Compile Include="TestDataManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
@@ -61,6 +74,10 @@
     <ProjectReference Include="..\Enterprise.Data\Enterprise.Data.csproj">
       <Project>{19BF7BC9-59BB-4E58-832E-55150F404603}</Project>
       <Name>Enterprise.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Enterprise.Services\Enterprise.Service.csproj">
+      <Project>{F62CB3A0-867A-4077-BAB9-442AAD9F4A1C}</Project>
+      <Name>Enterprise.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
@@ -81,6 +98,7 @@
     <None Include="DBTest.dbml.layout">
       <DependentUpon>DBTest.dbml</DependentUpon>
     </None>
+    <Shadow Include="Test References\GenPres.Business.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

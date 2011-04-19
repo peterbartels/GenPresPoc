@@ -25,7 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Unit", "GenPr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Enterprise.Data", "Enterprise.Data\Enterprise.Data.csproj", "{19BF7BC9-59BB-4E58-832E-55150F404603}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xAdapter.Test.Unit", "xAdapter.Test.Unit\xAdapter.Test.Unit.csproj", "{E79C7789-83B5-4091-840E-C46D7489D3BB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xData.Test.Unit", "xAdapter.Test.Unit\xData.Test.Unit.csproj", "{E79C7789-83B5-4091-840E-C46D7489D3BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Database", "GenPres.Database\GenPres.Database.csproj", "{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -97,6 +99,12 @@ Global
 		{E79C7789-83B5-4091-840E-C46D7489D3BB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E79C7789-83B5-4091-840E-C46D7489D3BB}.Testing|Any CPU.ActiveCfg = Release|Any CPU
 		{E79C7789-83B5-4091-840E-C46D7489D3BB}.Testing|Any CPU.Build.0 = Release|Any CPU
+		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Testing|Any CPU.ActiveCfg = Release|Any CPU
+		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Testing|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

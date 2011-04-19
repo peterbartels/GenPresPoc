@@ -14,7 +14,7 @@
         <elementListCompartment Id="ced18e0f-6ed9-4444-93e0-813264692500" absoluteBounds="0.64, 1.21, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.625 : 1.47199625651042); (3.75 : 1.47199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.625 : 1.47199625651042); (3.75 : 1.47199625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DBTestDataContext/SubTestTable/SubTestTable_TestTable" />
       <nodes>
         <classShapeMoniker Id="5dfafab0-26e8-4ac8-b9bf-6cea0a6bb796" />

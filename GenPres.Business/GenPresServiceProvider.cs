@@ -13,7 +13,7 @@ namespace GenPres.Business
 
         public static GenPresServiceProvider Create()
         {
-            return CreateInstance(_instance, _lock);
+            return _instance ?? (_instance =  CreateInstance(_instance, _lock));
         }
     }
 }

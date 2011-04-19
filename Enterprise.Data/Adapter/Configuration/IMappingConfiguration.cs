@@ -17,9 +17,17 @@ namespace Enterprise.Data.AdapterConfiguration
     }
     public interface ISimpleMappingExpression<TSrc, TDest> : IMappingExpression<TSrc, TDest>
     {
-        ISimpleMappingExpression<TSrc, TDest> Map(Expression<Func<TSrc, object>> srcMember, Expression<Func<TDest, object>> destMember);
-        ISimpleMappingExpression<TSrc, TDest> MapUsingTypeConverter<Interface, sourceType, destType>(Expression<Func<TSrc, sourceType>> srcMember, Expression<Func<TDest, destType>> destMember);
-        ISimpleMappingExpression<TSrc, TDest> AutomapUsing<T>();
+        ISimpleMappingExpression<TSrc, TDest> Map<TType>(Expression<Func<TSrc, TType>> srcMember, Expression<Func<TDest, TType>> destMember);
+
+        
+
+        ISimpleMappingExpression<TSrc, TDest> UseTypeConverter<TInterface, TSourceType, TDestType>(
+            Expression<Func<TSrc, TSourceType>> srcMember, Expression<Func<TDest, TDestType>> destMember)
+            where TInterface : ITypeConverter<TInterface>;
+
+        ISimpleMappingExpression<TSrc, TDest> AutomapUsing<T>(); 
+        ISimpleMappingExpression<TSrc, TDest> UseCustomTypeMap<TType, TCustomMapper>() where TCustomMapper : ICustomTypeMap;
+        void MapChild<T>(Expression<Func<object, object>> source, Expression<Func<object, object>> destination);
     }
     public interface ICslaLinqMappingExpression<TSrc, TDest> : ISimpleMappingExpression<TSrc, TDest>
     {

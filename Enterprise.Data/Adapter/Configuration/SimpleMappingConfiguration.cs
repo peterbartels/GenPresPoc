@@ -26,20 +26,32 @@ namespace Enterprise.Data.AdapterConfiguration
             return mappingConfiguration;
         }
 
-        public ISimpleMappingExpression<TSource, TDestination> Map(Expression<Func<TSource, object>> sourceMember, Expression<Func<TDestination, object>> destinationMember)
+        public ISimpleMappingExpression<TSource, TDestination> Map<TType>(Expression<Func<TSource, TType>> sourceMember, Expression<Func<TDestination, TType>> destinationMember)
         {
             AddMappingType(new MemberMap<TSource, TDestination>(_adapter, new MemberGetter(sourceMember), new MemberAccessor(destinationMember)));
             return this;
         }
-        public ISimpleMappingExpression<TSource, TDestination> MapUsingTypeConverter<Interface, sourceType, destType>(Expression<Func<TSource, sourceType>> sourceMember, Expression<Func<TDestination, destType>> destinationMember)
+        public ISimpleMappingExpression<TSource, TDestination> UseTypeConverter<TTypeConverter, TSourceType, TDestType>(Expression<Func<TSource, TSourceType>> sourceMember, Expression<Func<TDestination, TDestType>> destinationMember)
+             where TTypeConverter:ITypeConverter<TTypeConverter>
         {
-            AddMappingType(new MapUsingTypeConverter<TSource, TDestination, sourceType, destType>(typeof(Interface), sourceMember, destinationMember));
+            AddMappingType(new MapUsingTypeConverter<TSource, TDestination, TSourceType, TDestType>(typeof(TTypeConverter), sourceMember, destinationMember));
             return this;
         }
         public ISimpleMappingExpression<TSource, TDestination> AutomapUsing<T>()
         {
             AddMappingType(new AutoMap<TSource, TDestination>(_adapter, typeof(TSource), typeof(TDestination), typeof(T)));
             return this;
+        }
+
+        public ISimpleMappingExpression<TSource, TDestination> UseCustomTypeMap<TType, TCusomMapper>()
+            where TCusomMapper : ICustomTypeMap
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MapChild<T>(Expression<Func<object, object>> source, Expression<Func<object, object>> destination)
+        {
+            throw new NotImplementedException();
         }
 
         public void AddMappingType(IMappingType type)

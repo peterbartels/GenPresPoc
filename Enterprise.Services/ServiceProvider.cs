@@ -12,9 +12,9 @@ namespace Enterprise.Service
 
         #region IServiceProvider Members
 
-        public void RegisterInstance<T>(T instance)
+        protected void RegisterInstance<T>(T instance)
         {
-            _container.RegisterInstance<T>(instance);
+            _container.RegisterInstance(instance);
         }
 
         protected static T CreateInstance<T>(T instance, object lockThis) where T : class, IServiceProvider
@@ -23,7 +23,9 @@ namespace Enterprise.Service
             {
                 lock (lockThis)
                 {
+                    // ReSharper disable ConditionIsAlwaysTrueOrFalse
                     if (instance == null)
+                    // ReSharper restore ConditionIsAlwaysTrueOrFalse
                     {
                         instance = (T)Activator.CreateInstance(typeof(T), true);
                     }
@@ -34,17 +36,7 @@ namespace Enterprise.Service
 
         public T Resolve<T>()
         {
-            var result = default(T);
-            try
-            {
-                result = _container.Resolve<T>();
-
-            }
-            catch 
-            {
-                
-            }
-            return result;
+            return _container.Resolve<T>();
         }
 
         #endregion
@@ -57,5 +49,10 @@ namespace Enterprise.Service
         }
 
         #endregion
+
+        public void RegisterInstanceOfType<T>(T instance)
+        {
+            RegisterInstance(instance);
+        }
     }
 }

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business;
 using TypeMock;
 using TypeMock.ArrangeActAssert;
+using Enterprise.Service;
 
 namespace GenPres.Test.Unit.ServiceProvider
 {
@@ -36,11 +36,13 @@ namespace GenPres.Test.Unit.ServiceProvider
         [TestMethod]
         public void _does_Resolve_Instance()
         {
-            GenPresServiceProvider genPresService = GenPresServiceProvider.Create();
+            IServiceProvider genPresService = GenPresServiceProvider.Create();
             var fakeInstance = Isolate.Fake.Instance<ITestChild>();
-            genPresService.RegisterInstance<ITestParent>(fakeInstance);
-            ITestParent test = genPresService.Resolve<ITestParent>();
-            Assert.IsTrue(test is ITestChild);
+            genPresService.RegisterInstanceOfType<ITestParent>(fakeInstance);
+
+            IServiceProvider genPresService2 = GenPresServiceProvider.Create();
+            ITestParent test = genPresService2.Resolve<ITestParent>();
+            Assert.IsTrue(test != null);
         }
     }
 

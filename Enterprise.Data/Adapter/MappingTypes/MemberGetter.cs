@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace Enterprise.Data.MappingTypes
 {
-    internal class MemberGetter : IMemberGetter
+    public class MemberGetter : IMemberGetter
     {
         protected Expression _expression;
         protected MemberGetter() { }

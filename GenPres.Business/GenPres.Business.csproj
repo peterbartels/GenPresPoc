@@ -39,6 +39,9 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -49,7 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataManager.cs" />
     <Compile Include="Data\DtoFactory.cs" />
+    <Compile Include="Data\GenPresDataManager.cs" />
     <Compile Include="Data\INewPrescriptionAssembler.cs" />
     <Compile Include="Data\IDto.cs" />
     <Compile Include="Data\NewPrescriptionAssembler.cs" />
@@ -75,9 +80,17 @@
     <Compile Include="Service\PrescriptionService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Enterprise.Data\Enterprise.Data.csproj">
+      <Project>{19BF7BC9-59BB-4E58-832E-55150F404603}</Project>
+      <Name>Enterprise.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Enterprise.Services\Enterprise.Service.csproj">
       <Project>{F62CB3A0-867A-4077-BAB9-442AAD9F4A1C}</Project>
       <Name>Enterprise.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
+      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
+      <Name>GenPres.Database</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

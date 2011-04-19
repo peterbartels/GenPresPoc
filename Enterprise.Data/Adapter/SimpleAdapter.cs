@@ -42,7 +42,12 @@ namespace Enterprise.Data
         } 
 
         //Perform the actual mapping
-        public void Map(object source, object destination)
+        public void Map(TSrc source, TDest destination)
+        {
+            _objectMapper.Map((object)source, (object)destination);
+        }
+
+        internal void Map(object source, object destination)
         {
             _objectMapper.Map(source, destination);
         }

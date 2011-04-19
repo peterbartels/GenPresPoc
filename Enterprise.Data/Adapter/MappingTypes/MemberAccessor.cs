@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace Enterprise.Data.MappingTypes
 {
-    internal class MemberAccessor : MemberGetter
+    public class MemberAccessor : MemberGetter
     {
         public MemberAccessor(Expression expression)
         {

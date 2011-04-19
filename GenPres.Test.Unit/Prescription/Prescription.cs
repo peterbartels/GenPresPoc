@@ -70,5 +70,11 @@ namespace GenPres.Test.Unit
             NewPrescriptionAssembler prescriptionAssembler = new NewPrescriptionAssembler();
             prescriptionAssembler.MapToDto(newPrescription, new NewPrescriptionDto());
         }
+
+        [TestMethod]
+        public void Prescription_can_GetPrescriptionById()
+        {
+            
+        }
     }
 }
