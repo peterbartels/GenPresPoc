@@ -1,6 +1,6 @@
-﻿using System;
+﻿using GenPres.Business.Service;
+using GenPres.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Service;
 
 namespace GenPres.Test.Acceptance
 {
@@ -11,7 +11,9 @@ namespace GenPres.Test.Acceptance
     public class GetUserTest
     {
         public GetUserTest()
-        { }
+        {
+            Settings.SettingsManager.Instance.SetSettingsPath(@"C:\Users\vaio\Documents\GenPres_Refactored\GenPres\GenPres.Web\");
+        }
 
         #region TestContext
         private TestContext testContextInstance;
@@ -58,7 +60,11 @@ namespace GenPres.Test.Acceptance
         [TestMethod]
         public void CanLoginUser()
         {
-            throw new NotImplementedException();
+            var loginController = new UserController();
+
+            var result = loginController.Login("Test", "test");
+
+            Assert.IsTrue(ActionResultParser.GetSuccessValueFromActionResult(result), "System user NOT successfully logged in");
         }
     }
 }

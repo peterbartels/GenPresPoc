@@ -51,6 +51,10 @@
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
+      <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
+      <Name>GenPres.Settings</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenPres.Web\GenPres.Web.csproj">
       <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
       <Name>GenPres.Web</Name>

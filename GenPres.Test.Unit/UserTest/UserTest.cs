@@ -92,12 +92,12 @@ namespace GenPres.Test.Unit.UserTest
         }
 
         [TestMethod]
-        public void UserRepositoryGetUserbyUsername_returns_IUser()
+        public void UserRepositoryGetUserbyUsername_returns_availableUser()
         {
             _initializeUserTest();
             var userRepository = DalServiceProvider.Instance.Resolve<IUserRepository>();
             var user = userRepository.GetUserByUsername("Test");
-            Assert.IsTrue(user.UserName == "Test");
+            Assert.IsTrue(user.IsAvailable);
         }
 
         [TestMethod]

@@ -70,8 +70,10 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ActionResultParser.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -101,6 +103,14 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">
+      <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
+      <Name>GenPres.Assembler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
+      <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
+      <Name>GenPres.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
@@ -221,6 +231,7 @@
     <Content Include="Client\Library\Ext4\resources\css\ext-sandbox.css" />
     <Content Include="Client\Library\Ext4\resources\css\ext-standard-scoped.css" />
     <Content Include="Client\Library\Ext4\resources\css\ext-standard.css" />
+    <Content Include="Client\Library\Ext4\resources\css\genpres.css" />
     <Content Include="Client\Library\Ext4\resources\expressinstall.swf" />
     <Content Include="Client\Library\Ext4\resources\images\check_radio_sprite.png" />
     <Content Include="Client\Library\Ext4\resources\images\default\form\exclamation.gif" />
@@ -468,15 +479,17 @@
     <Content Include="Client\Library\Ext4\resources\themes\images\default\window-header\window-header-sides.png" />
     <Content Include="Client\Library\Ext4\resources\themes\images\default\window\window-corners.png" />
     <Content Include="Client\Library\Ext4\resources\themes\images\default\window\window-sides.png" />
-    <Content Include="Client\Project\.idea\encodings.xml" />
-    <Content Include="Client\Project\.idea\misc.xml" />
-    <Content Include="Client\Project\.idea\modules.xml" />
-    <Content Include="Client\Project\.idea\vcs.xml" />
-    <Content Include="Client\Project\.idea\workspace.xml" />
-    <Content Include="Client\Project\Start.js" />
-    <Content Include="Client\Project\Views\PatientSelectorTree.js" />
-    <Content Include="Client\Project\Views\ViewManager.js" />
-    <Content Include="Client\Project\Views\Viewport.js" />
+    <Content Include="Client\Application\.idea\encodings.xml" />
+    <Content Include="Client\Application\.idea\misc.xml" />
+    <Content Include="Client\Application\.idea\modules.xml" />
+    <Content Include="Client\Application\.idea\vcs.xml" />
+    <Content Include="Client\Application\.idea\workspace.xml" />
+    <Content Include="Client\Application\Images\MedicalBanner.jpg" />
+    <Content Include="Client\Application\Start.js" />
+    <Content Include="Client\Application\GenPresStyles.css" />
+    <Content Include="Client\Application\Views\PatientSelectorTree.js" />
+    <Content Include="Client\Application\Views\ViewManager.js" />
+    <Content Include="Client\Application\Views\Viewport.js" />
     <Content Include="Settings.xml" />
     <None Include="Client\Library\Ext4\resources\.DS_Store" />
     <None Include="Client\Library\Ext4\resources\images\sprite.psd" />
@@ -549,8 +562,8 @@
     <None Include="Client\Library\Ext4\resources\themes\stylesheets\ext4\default\_widgets.scss" />
     <None Include="Client\Library\Ext4\resources\themes\templates\project\ext4.scss" />
     <None Include="Client\Library\Ext4\resources\themes\templates\project\manifest.rb" />
-    <None Include="Client\Project\.idea\.name" />
-    <None Include="Client\Project\.idea\Project.iml" />
+    <None Include="Client\Application\.idea\.name" />
+    <None Include="Client\Application\.idea\Project.iml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

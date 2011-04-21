@@ -20,27 +20,20 @@ namespace GenPres.Business.Domain
             get { return DalServiceProvider.Instance.Resolve<IUserRepository>(); }
         }
 
-        private static IUser GetUserByUserName(string username)
-        {
-            return Repository.GetUserByUsername(username);
-        }
-
         public static User NewUser()
         {
             return new User();
         }
 
-        public static IUser FetchUser(object data)
-        {
-            IUser user = new User();
-            Repository.MapToBusinessObject(data, user);
-            return user;
-        }
-
         public static bool AuthenticateUser(string username, string password)
         {
-            IUser user = GetUserByUserName(username);
-            return AuthenticationFunctions.MD5(password) == user.PassCrypt;
+            ISingleObject<IUser> singleUserObject = Repository.GetUserByUsername(username);
+            if(singleUserObject.IsAvailable)
+            {
+                return (AuthenticationFunctions.MD5(password) == ((SingleObject<IUser>) singleUserObject).ObjectResult.PassCrypt);
+            }
+            return false;
         }
     }
 }
+

@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using GenPres.Business.Data.DataAccess.Mapper;
 using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.Domain;
+using DB=GenPres.Database;
+using GenPres.Business;
 
 namespace GenPres.DataAccess.Repository
 {
@@ -22,18 +26,21 @@ namespace GenPres.DataAccess.Repository
             return user;
         }
 
-        public IUser GetUserByUsername(string user)
+        public ISingleObject<IUser> GetUserByUsername(string user)
         {
             using(var ctx = GenPresDataManager.GetManager().GetContext())
             {
-                var foundUser = (from i in ctx.User where i.Username == user select i).FirstOrDefault();
-                return User.FetchUser(foundUser);
-            }
-        }
+                List<IUser> businessUsers = new List<IUser>();
 
-        public void MapToBusinessObject(object dao, IUser bo)
-        {
-            _userMapper.MapDaoToBusinessObject(dao, bo);
+                var foundUsers = (from i in ctx.User where i.Username == user select i);
+
+                foreach (Database.User dbUser in foundUsers)
+                {
+                    businessUsers.Add(_userMapper.MapDaoToBusinessObject(dbUser, User.NewUser()));
+                }
+
+                return SingleObject<IUser>.GetSingleObject(businessUsers);
+            }
         }
     }
 }

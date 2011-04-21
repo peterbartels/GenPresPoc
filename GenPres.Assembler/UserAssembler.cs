@@ -4,7 +4,7 @@ using GenPres.Business.ServiceProvider;
 
 namespace GenPres.Assembler
 {
-    public class LoginAssembler
+    public class UserAssembler
     {
         public static void RegisterDependencies()
         {
