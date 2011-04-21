@@ -1,0 +1,22 @@
+$window-body-background-color:#fff;
+
+$panel-header-color:#373737;
+
+$window-border-radius: 5px 5px 0px 0px;
+
+$theme-name: 'GenPres';
+
+body {
+    background: #fff;
+}
+
+$base-color: #CECECE;
+
+$panel-body-background-color: #FFFFFF;
+
+$button-toolbar-base-color: #FFFFFF;
+
+@import 'compass';
+@import 'ext4/default/all';
+
+
