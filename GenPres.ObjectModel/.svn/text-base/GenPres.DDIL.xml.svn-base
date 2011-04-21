@@ -1,0 +1,636 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dil:root xmlns:dil="http://schemas.orm.net/DIL/DIL" xmlns:dcl="http://schemas.orm.net/DIL/DCIL" xmlns:ddt="http://schemas.orm.net/DIL/DILDT" xmlns:dep="http://schemas.orm.net/DIL/DILEP" xmlns:dms="http://schemas.orm.net/DIL/DILMS" xmlns:dml="http://schemas.orm.net/DIL/DMIL" xmlns:ddl="http://schemas.orm.net/DIL/DDIL">
+	<dms:startTransactionStatement isolationLevel="SERIALIZABLE" accessMode="READ WRITE" />
+	<ddl:schemaDefinition schemaName="GenPres" defaultCharacterSet="UTF8" />
+	<dms:setSchemaStatement>
+		<ddt:characterStringLiteral value="GENPRES" />
+	</dms:setSchemaStatement>
+	<ddl:tableDefinition name="Prescription" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="PatientId">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="StartDate">
+			<ddt:time type="TIMESTAMP" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="EndDate">
+			<ddt:time type="TIMESTAMP" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="&quot;Date&quot;">
+			<ddt:time type="TIMESTAMP" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Continuous">
+			<ddt:boolean type="BOOLEAN" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Infusion">
+			<ddt:boolean type="BOOLEAN" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Onrequest">
+			<ddt:boolean type="BOOLEAN" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Solution">
+			<ddt:boolean type="BOOLEAN" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="IsTemplate">
+			<ddt:boolean type="BOOLEAN" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="State">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="TPN">
+			<ddt:boolean type="BOOLEAN" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Remarks">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Frequency">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Quantity">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Total">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Rate">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="&quot;Time&quot;">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="AdjustLength">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="AdjustWeight">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="DrugId">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="MedicineId">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Prescription_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="UnitValue" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="BaseValue">
+			<ddt:approximateNumeric type="DOUBLE PRECISION" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Unit">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="&quot;Value&quot;">
+			<ddt:approximateNumeric type="DOUBLE PRECISION" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Status">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="&quot;Time&quot;">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Total">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Adjust">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="UnitValue_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Dose" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="PrescriptionId">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Quantity">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Total">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Rate">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="SubstanceId">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Dose_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Drug" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Name">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Shape">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Route">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="SolutionType">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Quantity">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Drug_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Patient" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="MedicationWeight">
+			<ddt:approximateNumeric type="DOUBLE PRECISION" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Height">
+			<ddt:approximateNumeric type="DOUBLE PRECISION" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="PID">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Patient_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Substance" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="ComponentId">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="SubstanceName">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="ComponentConcentration">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="DrugConcentration">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Quantity">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="CustomIncrement">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Substance_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Component" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="DrugId">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="ComponentName">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="IsSolution">
+			<ddt:boolean type="BOOLEAN" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="SolutionRelation">
+			<ddt:approximateNumeric type="DOUBLE PRECISION" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Quantity">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="DrugConcentration">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Component_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:tableDefinition name="Medicine" schema="GenPres">
+		<ddl:columnDefinition name="Id">
+			<ddt:exactNumeric type="INTEGER" />
+			<ddl:identityColumnSpecification type="ALWAYS">
+				<ddl:sequenceGeneratorStartWithOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorStartWithOption>
+				<ddl:sequenceGeneratorIncrementByOption>
+					<ddt:exactNumericLiteral value="1" />
+				</ddl:sequenceGeneratorIncrementByOption>
+			</ddl:identityColumnSpecification>
+			<ddl:columnConstraintDefinition>
+				<ddl:notNullKeyword />
+			</ddl:columnConstraintDefinition>
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="GenericName">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="ShapeName">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="RouteName">
+			<ddt:characterString type="CHARACTER VARYING" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="ComponentIncrement">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="DoseIncrement">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:columnDefinition name="Quantity">
+			<ddt:exactNumeric type="INTEGER" />
+		</ddl:columnDefinition>
+		<ddl:tableConstraintDefinition name="Medicine_PK">
+			<ddl:uniqueConstraintDefinition type="PRIMARY KEY">
+				<dep:simpleColumnReference name="Id" />
+			</ddl:uniqueConstraintDefinition>
+		</ddl:tableConstraintDefinition>
+	</ddl:tableDefinition>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK1">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Frequency" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK2">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Quantity" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK3">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Total" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK4">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Rate" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK5">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="&quot;Time&quot;" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK6">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="AdjustLength" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK7">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="AdjustWeight" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK8">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="PatientId" />
+				<ddl:referencesSpecification name="Patient" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK9">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="DrugId" />
+				<ddl:referencesSpecification name="Drug" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Prescription" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Prescription_FK10">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="MedicineId" />
+				<ddl:referencesSpecification name="Medicine" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Dose" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Dose_FK1">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Quantity" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Dose" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Dose_FK2">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Total" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Dose" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Dose_FK3">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Rate" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Dose" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Dose_FK4">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="SubstanceId" />
+				<ddl:referencesSpecification name="Substance" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Dose" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Dose_FK5">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="PrescriptionId" />
+				<ddl:referencesSpecification name="Prescription" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Drug" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Drug_FK">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Quantity" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Substance" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Substance_FK1">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="ComponentConcentration" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Substance" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Substance_FK2">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="DrugConcentration" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Substance" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Substance_FK3">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="ComponentId" />
+				<ddl:referencesSpecification name="Component" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Substance" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Substance_FK4">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Quantity" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Substance" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Substance_FK5">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="CustomIncrement" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Component" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Component_FK1">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Quantity" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Component" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Component_FK2">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="DrugConcentration" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Component" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Component_FK3">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="DrugId" />
+				<ddl:referencesSpecification name="Drug" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Medicine" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Medicine_FK1">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="ComponentIncrement" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Medicine" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Medicine_FK2">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="DoseIncrement" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<ddl:alterTableStatement name="Medicine" schema="GenPres">
+		<ddl:addTableConstraintDefinition name="Medicine_FK3">
+			<ddl:referentialConstraintDefinition>
+				<dep:simpleColumnReference name="Quantity" />
+				<ddl:referencesSpecification name="UnitValue" onDelete="RESTRICT" onUpdate="RESTRICT" schema="GenPres">
+					<dep:simpleColumnReference name="Id" />
+				</ddl:referencesSpecification>
+			</ddl:referentialConstraintDefinition>
+		</ddl:addTableConstraintDefinition>
+	</ddl:alterTableStatement>
+	<dms:commitStatement />
+</dil:root>

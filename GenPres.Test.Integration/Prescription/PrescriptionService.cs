@@ -5,7 +5,6 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Controllers;
 using GenPres.Business.Service;
-using Enterprise.Service;
 
 namespace GenPres.Test.Integration.Prescription
 {

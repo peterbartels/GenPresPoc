@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/222/trunk/GenPres.ObjectModel
+END
+GenPres.orm
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/222/trunk/GenPres.ObjectModel/GenPres.orm
+END
+GenPres.SQLServer.sql
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/222/trunk/GenPres.ObjectModel/GenPres.SQLServer.sql
+END
+GenPres._ORMCustomToolReport.cs
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/!svn/ver/188/trunk/GenPres.ObjectModel/GenPres._ORMCustomToolReport.cs
+END
+GenPres.ObjectModel.csproj
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/188/trunk/GenPres.ObjectModel/GenPres.ObjectModel.csproj
+END
+GenPres.DCIL.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/222/trunk/GenPres.ObjectModel/GenPres.DCIL.xml
+END
+GenPres.DDIL.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/222/trunk/GenPres.ObjectModel/GenPres.DDIL.xml
+END

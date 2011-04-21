@@ -151,4 +151,11 @@
       <Association Name="UnitValue_Substance3" Member="UnitValue3" ThisKey="CustomIncrement" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PassCrypt" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

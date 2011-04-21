@@ -21,7 +21,7 @@ namespace xData.Test.Unit.TestClasses
 
             var adapter = new SimpleAdapter<ITestClassCslaRoot, TestTable>();
             adapter.ConfigureMapping()
-                .MapChild<DaoToCslaObjectMapper>(src => src.ChildClass, dest => dest.SubTestTable1)
+                //.MapChild<DaoToCslaObjectMapper>(src => src.ChildClass, dest => dest.SubTestTable1)
             ;
             throw new NotImplementedException();
         }

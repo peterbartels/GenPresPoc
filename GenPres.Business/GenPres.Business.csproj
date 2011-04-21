@@ -35,6 +35,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Csla.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Enterprise.Services\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -52,49 +56,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\DataManager.cs" />
-    <Compile Include="Data\DtoFactory.cs" />
-    <Compile Include="Data\GenPresDataManager.cs" />
-    <Compile Include="Data\INewPrescriptionAssembler.cs" />
-    <Compile Include="Data\IDto.cs" />
-    <Compile Include="Data\NewPrescriptionAssembler.cs" />
-    <Compile Include="Data\NewPrescriptionDto.cs" />
-    <Compile Include="Data\UnitValueDto.cs" />
-    <Compile Include="Domain\Component.cs" />
-    <Compile Include="Domain\ComponentCollection.cs" />
-    <Compile Include="Domain\Dose.cs" />
-    <Compile Include="Domain\Factor.cs" />
-    <Compile Include="Domain\IDose.cs" />
-    <Compile Include="Domain\IIngredient.cs" />
-    <Compile Include="Domain\Ingredient.cs" />
-    <Compile Include="Domain\IPrescription.cs" />
-    <Compile Include="Domain\Medicine.cs" />
-    <Compile Include="Domain\Prescription.cs" />
-    <Compile Include="Domain\Substance.cs" />
-    <Compile Include="Domain\SubstanceCollection.cs" />
-    <Compile Include="Domain\Unit.cs" />
-    <Compile Include="Domain\UnitConverter.cs" />
-    <Compile Include="Domain\UnitValue.cs" />
+    <Compile Include="AuthenticationFunctions.cs" />
+    <Compile Include="Data\Client\IDto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\DataAccess\DataManager.cs" />
+    <Compile Include="Data\Client\DtoFactory.cs" />
+    <Compile Include="Data\DataAccess\GenPresDataManager.cs" />
+    <Compile Include="Data\DataAccess\Mapper\IMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\IUserMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\UserMapper.cs" />
+    <Compile Include="Data\DataAccess\Repository\IRepository.cs" />
+    <Compile Include="Data\DataAccess\Repository\IUserRepository.cs" />
+    <Compile Include="Domain\IUser.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="GenPresServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceProvider\DalServiceProvider.cs" />
+    <Compile Include="ServiceProvider\IServiceProvider.cs" />
+    <Compile Include="ServiceProvider\ServiceProvider.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
+    <Compile Include="Service\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Enterprise.Data\Enterprise.Data.csproj">
-      <Project>{19BF7BC9-59BB-4E58-832E-55150F404603}</Project>
-      <Name>Enterprise.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Enterprise.Services\Enterprise.Service.csproj">
-      <Project>{F62CB3A0-867A-4077-BAB9-442AAD9F4A1C}</Project>
-      <Name>Enterprise.Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
       <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
       <Name>GenPres.Database</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Logic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

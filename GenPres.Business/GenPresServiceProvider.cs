@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Enterprise.Service;
-
+﻿
 namespace GenPres.Business
 {
-    public class GenPresServiceProvider : ServiceProvider
+    public class GenPresServiceProvider : ServiceProvider.ServiceProvider
     {
         private static GenPresServiceProvider _instance;
         private static readonly object _lock = new object();

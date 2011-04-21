@@ -71,14 +71,6 @@
       <Project>{9DA591ED-C570-47AC-8E5D-35B039E07973}</Project>
       <Name>Csla</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Enterprise.Data\Enterprise.Data.csproj">
-      <Project>{19BF7BC9-59BB-4E58-832E-55150F404603}</Project>
-      <Name>Enterprise.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Enterprise.Services\Enterprise.Service.csproj">
-      <Project>{F62CB3A0-867A-4077-BAB9-442AAD9F4A1C}</Project>
-      <Name>Enterprise.Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>

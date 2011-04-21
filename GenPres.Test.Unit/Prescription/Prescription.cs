@@ -8,7 +8,6 @@ using GenPres.Business.Data;
 using GenPres.Business.Domain;
 using TypeMock;
 using TypeMock.ArrangeActAssert;
-using Csla;
 
 namespace GenPres.Test.Unit
 {
@@ -35,7 +34,7 @@ namespace GenPres.Test.Unit
             }
         }
         #endregion
-
+        /*
         [TestMethod]
         public void NewPrescription_returns_DTO()
         {
@@ -70,7 +69,7 @@ namespace GenPres.Test.Unit
             NewPrescriptionAssembler prescriptionAssembler = new NewPrescriptionAssembler();
             prescriptionAssembler.MapToDto(newPrescription, new NewPrescriptionDto());
         }
-
+        */
         [TestMethod]
         public void Prescription_can_GetPrescriptionById()
         {

@@ -1,3 +1,4 @@
+
 Enterprise.Data/bin
 Enterprise.Data/obj
 Enterprise.Services/bin
@@ -18,9 +19,15 @@ GenPres.Settings/bin
 GenPres.Settings/obj
 GenPres.Web/bin
 GenPres.Web/obj
-TestResults
 *.user
 *.suo
-_ReSharper.*
 *.sln.cache
 GenPres.Settings/SecurityKey.cs
+Thumbs.db
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+xAdapter.Test.Unit/obj

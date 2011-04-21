@@ -39,6 +39,7 @@
     <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetUserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CreatePrescriptionTest.cs" />
   </ItemGroup>
@@ -46,6 +47,10 @@
     <Content Include="AuthoringTests.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
+      <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
+      <Name>GenPres.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenPres.Web\GenPres.Web.csproj">
       <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
       <Name>GenPres.Web</Name>

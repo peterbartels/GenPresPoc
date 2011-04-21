@@ -1,11 +1,7 @@
-﻿using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GenPres.Business.ServiceProvider;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business;
-using TypeMock;
 using TypeMock.ArrangeActAssert;
-using Enterprise.Service;
 
 namespace GenPres.Test.Unit.ServiceProvider
 {

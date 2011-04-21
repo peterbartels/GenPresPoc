@@ -4,14 +4,12 @@ C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Microsoft.Practices.ServiceLocation.dll
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Microsoft.Practices.Unity.dll
-C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Enterprise.Services.dll
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\GenPres.Business.pdb
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Microsoft.Practices.ServiceLocation.pdb
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Microsoft.Practices.Unity.pdb
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Enterprise.Data.pdb
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Csla.pdb
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Csla.xml
-C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\Enterprise.Services.pdb
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\ar\Csla.resources.dll
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\ca-ES\Csla.resources.dll
 C:\Users\vaio\Documents\GenPres_Refactored\GenPres\xAdapter.Test.Unit\bin\Debug\da\Csla.resources.dll
