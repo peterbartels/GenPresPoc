@@ -1,17 +1,45 @@
-﻿using GenPres.Business.Data.DataAccess.Repository;
+﻿using System;
+using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.ServiceProvider;
-using GenPres.Business;
+using GenPres.Business.Aspect;
+
+
+
+public enum StatusEnum
+{
+    New = 0,
+    Dirty = 1
+}
+
+public interface IChangeTrackable
+{
+    StatusEnum State { get; set; }
+}
 
 namespace GenPres.Business.Domain
 {
-    public class User : IUser
+    
+    public class User : IUser, IChangeTrackable
     {
+        private StatusEnum _state = StatusEnum.New;
+
+        public StatusEnum State
+        {
+            get { return _state; }
+            set { _state = value; }
+        }
+
         private int _id;
         private string _userName;
         private string _password;
 
         public int Id { get; set; }
+
+        [LowerCase]
+        [ChangeState]
         public string UserName { get; set; }
+
+        [ChangeState]
         public string PassCrypt { get; set; }
 
 

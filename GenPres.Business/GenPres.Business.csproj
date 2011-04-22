@@ -39,6 +39,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Enterprise.Services\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
+    <Reference Include="PostSharp.Laos, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,6 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aspect\ChangeStateAttribute.cs" />
+    <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />
     <Compile Include="Data\Client\IDto.cs">
       <SubType>Code</SubType>
