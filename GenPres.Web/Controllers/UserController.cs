@@ -11,11 +11,10 @@ namespace GenPres.Controllers
 {
     public class UserController : Controller
     {
-
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            Settings.SettingsManager.Instance.SetSettingsPath(@"C:\Users\vaio\Documents\GenPres_Refactored\GenPres\GenPres.Web\");
+            Settings.SettingsManager.Instance.SetSettingsPath(@"C:\Development\GenPres-Development\GenPres\GenPres.Web\");
         }
 
         public ActionResult Login(string userName, string password)

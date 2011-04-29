@@ -106,6 +106,14 @@
       <exception cref="T:System.ArgumentOutOfRangeException">
         <paramref name="index" /> is lower than zero or greater or equal than <see cref="P:PostSharp.Aspects.Arguments.Count" />.</exception>
     </member>
+    <member name="M:PostSharp.Aspects.Arguments.GetEnumerator">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "M:PostSharp.Aspects.Arguments.GetEnumerator"]</p>
+      </summary>
+      <returns>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;returns&gt; documentation for "M:PostSharp.Aspects.Arguments.GetEnumerator"]</p>
+      </returns>
+    </member>
     <member name="P:PostSharp.Aspects.Arguments.Item(System.Int32)">
       <summary>
             Gets or sets the value of an argument.
@@ -3393,6 +3401,13 @@
             Gets the currently executing project.
             </summary>
     </member>
+    <member name="M:PostSharp.Extensibility.IPostSharpEnvironment.LoadAssemblyFromFile(System.String)">
+      <summary>
+            Loads an <see cref="T:System.Reflection.Assembly" /> given its file name.
+            </summary>
+      <param name="fileName">Full assembly path.</param>
+      <returns>The <see cref="T:System.Reflection.Assembly" />.</returns>
+    </member>
     <member name="T:PostSharp.Extensibility.IProject">
       <summary>
             Provides information about the currently executing project.
@@ -4373,6 +4388,14 @@
       <summary>
             Fatal error.
             </summary>
+    </member>
+    <member name="T:PostSharp.Extensibility.SuppressAnnotationValidationAttribute">
+      <summary>
+        <p style="color: #dc143c; font-size: 8.5pt; font-weight: bold;">[Missing &lt;summary&gt; documentation for "T:PostSharp.Extensibility.SuppressAnnotationValidationAttribute"]</p>
+      </summary>
+    </member>
+    <member name="M:PostSharp.Extensibility.SuppressAnnotationValidationAttribute.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:PostSharp.Extensibility.SuppressAnnotationValidationAttribute" /> class</summary>
     </member>
     <member name="T:PostSharp.Reflection.CustomReflectionBinder">
       <summary>
