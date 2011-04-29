@@ -121,6 +121,8 @@
     <Content Include="Client\GenPres\app\Application.js" />
     <Content Include="Client\GenPres\app\controller\main\PatientController.js" />
     <Content Include="Client\GenPres\app\controller\user\LoginController.js" />
+    <Content Include="Client\GenPres\app\util\Process.js" />
+    <Content Include="Client\GenPres\app\util\Spotlight.js" />
     <Content Include="Client\GenPres\app\view\main\PatientTree.js" />
     <Content Include="Client\GenPres\app\view\User\LoginWindow.js" />
     <Content Include="Client\GenPres\app\view\Viewport.js" />
@@ -497,6 +499,7 @@
     <Content Include="Client\Application\Views\PatientSelectorTree.js" />
     <Content Include="Client\Application\Views\ViewManager.js" />
     <Content Include="Client\Application\Views\Viewport.js" />
+    <Content Include="Client\GenPres\test\ApplicationTest.js" />
     <Content Include="Settings.xml" />
     <None Include="Client\Library\Ext4\resources\.DS_Store" />
     <None Include="Client\Library\Ext4\resources\images\sprite.psd" />
