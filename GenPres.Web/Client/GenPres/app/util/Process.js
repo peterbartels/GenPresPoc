@@ -1,5 +1,7 @@
 Ext.define('GenPres.util.Process', {
 
+    currentProcessNr : 0,
+
     constructor: function(config) {
         var me = this;
 
@@ -14,11 +16,14 @@ Ext.define('GenPres.util.Process', {
 
     doProcess:function(name){
         var me = this;
+
+        me.name = name;
+        
         var component;
 
         var process = me.Processes[name];
-
-        var action = process[0];
+        
+        var action = process[me.currentProcessNr];
 
         var queryResult = me.query(action.component);
 
@@ -27,25 +32,55 @@ Ext.define('GenPres.util.Process', {
         }
 
         if(component.el){
-           me.spot.show(component.el);
+           me.spot.show(component.container);
         }
+
+        component.on('click', function(){
+            if(me.currentProcessNr == (process.length - 1)) {
+                me.spot.hide();
+                me.tooltip.destroy();
+            }
+        });
 
         var config = {
             target: component.el,
             anchor: 'left',
-            title: 'My Tip Title',
-            html: 'Click the X to close me',
+            title: name,
+            html:action.text,
+            dockedItems: [{
+                xtype: 'toolbar',
+                baseCls:'none',
+                dock: 'bottom',
+                items: ['->', new Ext.Button({
+                    text: 'Volgende',
+                    hidden:(me.currentProcessNr == (process.length - 1) ),
+                    handler:me.processNext,
+                    scope:me
+                })]
+            }],
+            minWidth:100,
+            minHeight:100,
             autoHide : false,
             closable : true
         }
+        
+        me.tooltip = Ext.create('Ext.tip.ToolTip', config);
 
-        var tooltip = Ext.create('Ext.tip.ToolTip', config);
-        tooltip.show();
-        tooltip.on("afterrender", function(){
-            alert('f');
-            tooltip.el.dom.style.zIndex = 22222;
-        })
+        var setZIndex = Ext.Function.createDelayed(function(){
+            me.tooltip.el.dom.style.zIndex = 222001;
+        }, 50);
 
+        me.tooltip.show();
 
+        me.tooltip.zIndexManager.setBase().zseed = 222001;
+        
+        setZIndex();
+    },
+
+    processNext : function(){
+        var me = this;
+        me.tooltip.destroy();
+        me.currentProcessNr++;
+        me.doProcess(me.name);
     }
 });

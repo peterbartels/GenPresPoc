@@ -42,20 +42,19 @@
     </script>
     
     <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/Application.js")  %>"></script>
-    <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/controller/user/LoginController.js")  %>"></script>
-    <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/view/user/LoginWindow.js")  %>"></script>
     
     
 </head>
 
 <body style="margin: 0px 0px 0px 0px;">
+    <div style="z-index:2222222;" id="topzindexdiv"></div>
     <div class="page">
 
         </div>
 
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
-
+                
             <div id="footer">
             </div>
         </div>

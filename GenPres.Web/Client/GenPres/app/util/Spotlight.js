@@ -5,6 +5,7 @@
 Ext.define('GenPres.util.Spotlight', {
     extend: 'Object',
 
+    mixins:{observable:'Ext.util.Observable'},
     /**
      * @private
      * The baseCls for the spotlight elements
@@ -34,6 +35,11 @@ Ext.define('GenPres.util.Spotlight', {
      * True if the spotlight is active on the element
      */
     active: false,
+
+    constructor:function(config){
+        var me = this;
+        me.mixins.observable.constructor.call(me);
+    },
 
     /**
      * Create all the elements for the spotlight
@@ -187,6 +193,7 @@ Ext.define('GenPres.util.Spotlight', {
                     easing: me.easing,
                     to: to[side]
                 });
+
             },
             this);
         } else {

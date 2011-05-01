@@ -46,7 +46,10 @@
 
     Processes : {
         'Login' : [
-            {component:'form', timeout:1200, text:'Use this form to login.'}
+            {component:'form', text:'Dit formulier kan gebruikt worden om in te loggen.'},
+            {component:'form textfield[name=username]', text:'Vul uw gebruikersnaam in.'},
+            {component:'form textfield[name=password]', text:'Vul uw wachtwoord in.'},
+            {component:'toolbar button[action=login]', text:'Klik op de login button om de applicatie te starten.'}
         ]
     }
 });
