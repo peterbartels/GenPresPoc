@@ -32,7 +32,7 @@ Ext.define('GenPres.util.Process', {
         }
 
         if(component.el){
-           me.spot.show(component.container);
+           me.spot.show(component.el);
         }
 
         component.on('click', function(){
