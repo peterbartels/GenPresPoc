@@ -15,7 +15,7 @@ Ext.define('GenPres.controller.user.LoginController', {
     },
 
     onLaunch: function() {
-
+        
     },
 
     validateLogin: function(button) {
@@ -26,13 +26,13 @@ Ext.define('GenPres.controller.user.LoginController', {
         form = win.down('form');
         record = form.getRecord();
         vals = form.getValues();
-
+        
         User.Login(vals.username, vals.password, this.loginCallBackFunction, this);
     },
 
     loginCallBackFunction: function(result) {
         this.loggedIn = result.success;
-
+        
         if (result.success) {
             Ext.MessageBox.alert('GenPres 2011 Login', 'Login succesvol', this.closeLoginWindow, this);
         } else {
@@ -42,6 +42,6 @@ Ext.define('GenPres.controller.user.LoginController', {
 
     closeLoginWindow: function() {
         this.loginWindow.close();
+        Ext.create('GenPres.view.main.MainView');
     }
-
 });

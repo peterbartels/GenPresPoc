@@ -32,10 +32,12 @@ body .jasmine_reporter div
     
   <script type="text/javascript"> Ext.Direct.addProvider(Ext.app.REMOTING_API);</script>
   
+
   <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/util/Process.js")  %>"></script>
   <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/util/Spotlight.js")  %>"></script>
   
   <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/controller/user/LoginController.js")  %>"></script>
+  <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/view/main/MainView.js")  %>"></script>
   <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/view/user/LoginWindow.js")  %>"></script>
   
   <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/Application.js") %>"></script>  

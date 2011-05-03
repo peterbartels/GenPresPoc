@@ -23,7 +23,7 @@
 
     afterRender : function(){
        this.callParent(arguments);
-       this.doProcess('Login');
+       //this.doProcess('Login');
     },
 
     dockedItems: [{ 
