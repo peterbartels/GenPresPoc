@@ -12,7 +12,7 @@ namespace GenPres.Test.Acceptance
     {
         public GetUserTest()
         {
-            Settings.SettingsManager.Instance.SetSettingsPath(@"C:\Users\vaio\Documents\GenPres_Refactored\GenPres\GenPres.Web\");
+            Settings.SettingsManager.Instance.Initialize();
         }
 
         #region TestContext

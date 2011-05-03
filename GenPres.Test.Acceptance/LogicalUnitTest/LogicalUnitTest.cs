@@ -1,34 +1,25 @@
-﻿using GenPres.Business.Data.DataAccess.Repository;
-using GenPres.Business.ServiceProvider;
+﻿using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Service;
-using GenPres.DataAccess.Repository;
-using TypeMock;
-using TypeMock.ArrangeActAssert;
 
-namespace GenPres.Test.Integration.UserTest
+namespace GenPres.Test.Acceptance.LogicalUnitTest
 {
-    /// <summary>
-    /// Summary description for UserTest
-    /// </summary>
     [TestClass]
-    public class UserTest
+    public class LogicalUnitTest
     {
-        public UserTest()
+        public LogicalUnitTest()
         {
-            Settings.SettingsManager.Instance.Initialize();
         }
 
-        private IUserRepository _initializeUserTest()
-        {
-            var repository = Isolate.Fake.Instance<UserRepository>(Members.CallOriginal);
-            DalServiceProvider.Instance.RegisterInstanceOfType<IUserRepository>(repository);
-            return repository;
-        }
-
-        #region TestContext
         private TestContext testContextInstance;
 
+        #region TestContext
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
         public TestContext TestContext
         {
             get
@@ -65,12 +56,9 @@ namespace GenPres.Test.Integration.UserTest
         #endregion
 
         [TestMethod]
-        public void User_can_Authenticate()
+        public void LogicalUnitRepository_can_get_logicalUnits_from_database()
         {
-            _initializeUserTest();
-            string username = "Test";
-            string password = "test";
-            Assert.IsTrue(UserService.AuthenticateUser(username, password));
-        }       
+
+        }
     }
 }

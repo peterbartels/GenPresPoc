@@ -1,34 +1,31 @@
-﻿using GenPres.Business.Data.DataAccess.Repository;
+﻿using System.Linq;
+using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.ServiceProvider;
+using GenPres.DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Service;
+using GenPres.Business;
 using GenPres.DataAccess.Repository;
-using TypeMock;
 using TypeMock.ArrangeActAssert;
+using GenPres.Business.Domain;
 
-namespace GenPres.Test.Integration.UserTest
+namespace GenPres.Test.Integration
 {
-    /// <summary>
-    /// Summary description for UserTest
-    /// </summary>
     [TestClass]
-    public class UserTest
+    public class LogicalUnitTest
     {
-        public UserTest()
+        public LogicalUnitTest()
         {
             Settings.SettingsManager.Instance.Initialize();
         }
 
-        private IUserRepository _initializeUserTest()
-        {
-            var repository = Isolate.Fake.Instance<UserRepository>(Members.CallOriginal);
-            DalServiceProvider.Instance.RegisterInstanceOfType<IUserRepository>(repository);
-            return repository;
-        }
-
-        #region TestContext
         private TestContext testContextInstance;
 
+        #region TestContext
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
         public TestContext TestContext
         {
             get
@@ -64,13 +61,21 @@ namespace GenPres.Test.Integration.UserTest
         //
         #endregion
 
-        [TestMethod]
-        public void User_can_Authenticate()
+        private ILogicalUnitRepository _initializeLogicalUnitTest()
         {
-            _initializeUserTest();
-            string username = "Test";
-            string password = "test";
-            Assert.IsTrue(UserService.AuthenticateUser(username, password));
-        }       
+            var repository = Isolate.Fake.Instance<LogicUnitRepository>(Members.CallOriginal);
+            DalServiceProvider.Instance.RegisterInstanceOfType<ILogicalUnitRepository>(repository);
+            return repository;
+        }
+
+        [Isolated]
+        [TestMethod]
+        public void LogicalUnitGetLogicalUnits_calls_RepositoryGetLogicalUnits()
+        {
+            _initializeLogicalUnitTest();
+            var logicalUnitRepository = DalServiceProvider.Instance.Resolve<ILogicalUnitRepository>();
+            LogicalUnit.GetLogicalUnits();
+            Isolate.Verify.WasCalledWithAnyArguments(() => logicalUnitRepository.GetLogicalUnits());
+        }
     }
 }

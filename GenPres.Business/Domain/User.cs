@@ -3,8 +3,6 @@ using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.ServiceProvider;
 using GenPres.Business.Aspect;
 
-
-
 public enum StatusEnum
 {
     New = 0,

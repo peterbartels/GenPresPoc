@@ -64,21 +64,29 @@
     <Compile Include="Data\Client\IDto.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\Client\LogicalUnitDto.cs" />
+    <Compile Include="Data\Client\LogicalUnitDtoAssembler.cs" />
     <Compile Include="Data\DataAccess\DataManager.cs" />
     <Compile Include="Data\Client\DtoFactory.cs" />
     <Compile Include="Data\DataAccess\GenPresDataManager.cs" />
+    <Compile Include="Data\DataAccess\Mapper\ILogicalUnitMapper.cs" />
     <Compile Include="Data\DataAccess\Mapper\IMapper.cs" />
     <Compile Include="Data\DataAccess\Mapper\IUserMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\LogicalUnitMapper.cs" />
     <Compile Include="Data\DataAccess\Mapper\UserMapper.cs" />
+    <Compile Include="Data\DataAccess\Repository\ILogicalUnitRepository.cs" />
     <Compile Include="Data\DataAccess\Repository\IRepository.cs" />
     <Compile Include="Data\DataAccess\Repository\IUserRepository.cs" />
+    <Compile Include="Domain\ILogicalUnit.cs" />
     <Compile Include="Domain\IUser.cs" />
+    <Compile Include="Domain\LogicalUnit.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="GenPresServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProvider\DalServiceProvider.cs" />
     <Compile Include="ServiceProvider\IServiceProvider.cs" />
     <Compile Include="ServiceProvider\ServiceProvider.cs" />
+    <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
     <Compile Include="Service\UserService.cs" />
   </ItemGroup>

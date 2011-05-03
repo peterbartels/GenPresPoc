@@ -14,7 +14,7 @@ namespace GenPres.Controllers
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            Settings.SettingsManager.Instance.SetSettingsPath(@"C:\Development\GenPres-Development\GenPres\GenPres.Web\");
+            Settings.SettingsManager.Instance.Initialize();
         }
 
         public ActionResult Login(string userName, string password)

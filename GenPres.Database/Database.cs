@@ -13,11 +13,6 @@ namespace GenPres.Database
             GENPRES
         }
 
-        public static void SetSettingsPath(string path)
-        {
-            Settings.SettingsManager.Instance.SetSettingsPath(path);
-        }
-
         public static string GetConnectionString(DatabaseName database)
         {
             string connection = string.Empty;

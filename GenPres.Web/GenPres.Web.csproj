@@ -123,6 +123,8 @@
     <Content Include="Client\GenPres\app\controller\user\LoginController.js" />
     <Content Include="Client\GenPres\app\util\Process.js" />
     <Content Include="Client\GenPres\app\util\Spotlight.js" />
+    <Content Include="Client\GenPres\app\view\component\SaveCancelToolBar.js" />
+    <Content Include="Client\GenPres\app\view\main\MainView.js" />
     <Content Include="Client\GenPres\app\view\main\PatientTree.js" />
     <Content Include="Client\GenPres\app\view\User\LoginWindow.js" />
     <Content Include="Client\GenPres\app\view\Viewport.js" />

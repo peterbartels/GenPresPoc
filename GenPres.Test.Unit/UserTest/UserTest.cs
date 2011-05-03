@@ -19,7 +19,7 @@ namespace GenPres.Test.Unit.UserTest
     {
         public UserTest()
         {
-            Settings.SettingsManager.Instance.SetSettingsPath(@"C:\Users\vaio\Documents\GenPres_Refactored\GenPres\GenPres.Web\");
+            Settings.SettingsManager.Instance.Initialize();
         }
 
         #region TestContext

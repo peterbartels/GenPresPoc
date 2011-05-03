@@ -10,7 +10,7 @@ namespace Settings
     {
         static SettingsManager instance = null;
         static readonly object padlock = new object();
-        private string _path;
+        private string _path = @"C:\Development\GenPres-Development\GenPres\GenPres.Web\";
         private XmlDocument _settingsDoc = new XmlDocument();
         
         private string _key = SecurityKey.Key;
@@ -37,9 +37,19 @@ namespace Settings
         }
         #endregion
 
-        public void SetSettingsPath(string path)
+        public void Initialize(string path)
         {
             _path = path;
+            string file = _path + "\\Settings.xml";
+            if (!System.IO.File.Exists(file))
+            {
+                throw new Exception("Could not find settings file in path: " + file);
+            }
+            _settingsDoc.Load(file);
+        }
+
+        public void Initialize()
+        {
             string file = _path + "Settings.xml";
             if (!System.IO.File.Exists(file))
             {
