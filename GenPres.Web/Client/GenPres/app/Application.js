@@ -1,4 +1,5 @@
-﻿
+﻿Ext.require('Ext.form.*');
+
 var GenPresApplication;
 Ext.application ({
     name: 'GenPres',
@@ -7,12 +8,14 @@ Ext.application ({
     appFolder: './Client/GenPres/app',
 
     controllers: [
-        'GenPres.controller.user.LoginController'
+        'user.LoginController',
+        'patient.PatientController'
     ],
     
     launch: function() {
         var loginWindow;
 
+        
         this.items = [];
 
         this.viewport = Ext.create('Ext.container.Viewport', {

@@ -57,6 +57,7 @@
     <Compile Include="PDMSDataRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\LogicUnitRepository.cs" />
+    <Compile Include="Repository\PatientRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

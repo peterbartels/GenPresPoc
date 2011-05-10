@@ -7,7 +7,8 @@ namespace GenPres.Business.Data.Client
 {
     public class LogicalUnitDto
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int id { get; set; }
+        public string text { get; set; }
+        public bool leaf { get; set; }
     }
 }

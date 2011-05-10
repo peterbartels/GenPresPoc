@@ -63,7 +63,7 @@ namespace GenPres.Test.Integration
 
         private ILogicalUnitRepository _initializeLogicalUnitTest()
         {
-            var repository = Isolate.Fake.Instance<LogicUnitRepository>(Members.CallOriginal);
+            var repository = Isolate.Fake.Instance<LogicalUnitRepository>(Members.CallOriginal);
             DalServiceProvider.Instance.RegisterInstanceOfType<ILogicalUnitRepository>(repository);
             return repository;
         }

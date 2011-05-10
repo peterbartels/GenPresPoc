@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GenPres.Business.Data.DataAccess.Mapper
 {
-    class IUserMapper
+    public interface IUserMapper
     {
     }
 }

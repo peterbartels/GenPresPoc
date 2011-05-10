@@ -1,6 +1,4 @@
 ﻿
-
-
 describe("Application", function() {
 
     it('GenPresApplication should exist', function () {
@@ -32,8 +30,13 @@ describe("Application", function() {
 
 
 describe("LoginWindow", function() {
-
+    var loginWindow;
+    
     var GetLoginWindow = function(){
+        if(typeof(loginWindow) == "undefined"){
+            loginWindow = Ext.create('GenPres.view.main.MainView');
+        }
+        //return loginWindow;
         return GenPresApplication.items[0];
     }; 
 

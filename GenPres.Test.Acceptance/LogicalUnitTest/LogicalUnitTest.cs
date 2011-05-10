@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using GenPres.Business.Service;
 
 namespace GenPres.Test.Acceptance.LogicalUnitTest
 {
@@ -56,9 +57,10 @@ namespace GenPres.Test.Acceptance.LogicalUnitTest
         #endregion
 
         [TestMethod]
-        public void LogicalUnitRepository_can_get_logicalUnits_from_database()
+        public void _can_get_logicalUnits_from_database()
         {
-
+            var logicalUnits = PatientService.GetLogicalUnits();
+            Assert.IsTrue(logicalUnits.Length > 0);
         }
     }
 }

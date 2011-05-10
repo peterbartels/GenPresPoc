@@ -10,7 +10,7 @@ using GenPres.Business;
 
 namespace GenPres.DataAccess.Repository
 {
-    public class LogicUnitRepository : ILogicalUnitRepository
+    public class LogicalUnitRepository : ILogicalUnitRepository
     {
         private LogicalUnitMapper _logicalUnitMapper = new LogicalUnitMapper();
 

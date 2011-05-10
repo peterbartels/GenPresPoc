@@ -8,8 +8,11 @@ namespace GenPres.Assembler
     {
         public static void RegisterDependencies()
         {
-            var repository = (IUserRepository)new UserRepository();
-            DalServiceProvider.Instance.RegisterInstanceOfType(repository);
+            var logicalUnitRepository = (ILogicalUnitRepository)new LogicalUnitRepository();
+            DalServiceProvider.Instance.RegisterInstanceOfType(logicalUnitRepository);
+
+            var patientRepository = (IPatientRepository)new PatientRepository();
+            DalServiceProvider.Instance.RegisterInstanceOfType(patientRepository);
         }
     }
 }

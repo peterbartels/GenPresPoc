@@ -4,8 +4,8 @@
 
     bodyPadding: 5,
 
-    width: 555,
-    height: 350,
+    width: 560,
+    height: 400,
 
      mixins: {
         process: 'GenPres.util.Process'
@@ -34,14 +34,26 @@
 
     items: [
         { html: '<img src="Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box' },
-        { xtype: 'panel', border: false, bodyPadding: 15, width: 541,
+        { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
             items: [
                 { xtype: 'form', items: [
-                    new Ext.form.Text({ fieldLabel: 'Gebruikersnaam', name: 'username', id:'username', margin: '10 0 10 10' }),
-                    new Ext.form.Text({ fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10' })
+                    new Ext.form.Text({ fieldLabel: 'Gebruikersnaam', name: 'username', id:'username', margin: '10 0 10 10', value:'test' }),
+                    new Ext.form.Text({ fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10', value:'Test' })
                 ]}
             ]
-        }
+        },
+        Ext.create('Ext.view.View', {
+            margin:'20 0 0 16',
+            itemSelector: 'div.thumb-wrap',
+            emptyText: 'No images available',
+            store: Ext.create('GenPres.store.patient.LogicalUnitStore'),
+            tpl: new Ext.XTemplate(
+                    '<tpl for=".">',
+                        '<div class="thumb-wrap">',
+                            '{text}',
+                        '</div>',
+                    '</tpl>')
+        })
     ],
 
     Processes : {
