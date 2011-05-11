@@ -27,8 +27,6 @@ describe("Application", function() {
     })
 });
 
-
-
 describe("LoginWindow", function() {
     var loginWindow;
     
@@ -60,6 +58,7 @@ describe("LoginWindow", function() {
 
 describe("MainScreen", function() {
     var mainView;
+    var tree;
 
     var GetViewport = function(){
         return GenPresApplication.viewport;
@@ -97,7 +96,14 @@ describe("MainScreen", function() {
         expect(GetCenterRegion()).toNotBe(null);
     });
 
-    it('After rendering MainView, west borderlayout should have a patientview', function () {
-        
+    it('After rendering MainView, west borderlayout should have a patienttree', function () {
+        var query = GetWestRegion().query('treeview');
+        expect(query.length).toBe(1);
+        tree = query[0];
+        expect(tree.$className).toBe("Ext.tree.View");
+    });
+
+    it('PatientTree should be loaded with items', function () {
+        expect(tree.store.count() > 0).toBeTruthy();
     });
 });

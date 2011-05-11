@@ -1,12 +1,18 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using GenPres.Business.Data.Client;
 using GenPres.Business.Data.DataAccess.Mapper;
+using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.Domain;
+using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
+using GenPres.DataAccess.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TypeMock.ArrangeActAssert;
 
 namespace GenPres.Test.Unit.PatientTest
 {
@@ -38,7 +44,6 @@ namespace GenPres.Test.Unit.PatientTest
         }
         #endregion
 
-
         #region Additional test attributes
         //
         // You can use the following additional attributes as you write your tests:
@@ -60,6 +65,14 @@ namespace GenPres.Test.Unit.PatientTest
         // public void MyTestCleanup() { }
         //
         #endregion
+
+
+        private IPatientRepository _initializePatientRepositoryTest()
+        {
+            var repository = Isolate.Fake.Instance<PatientRepository>(Members.CallOriginal);
+            DalServiceProvider.Instance.RegisterInstanceOfType<IPatientRepository>(repository);
+            return repository;
+        }
 
         [TestMethod]
         public void PDMSDataRetriever_can_fetch_Patients()
@@ -108,6 +121,46 @@ namespace GenPres.Test.Unit.PatientTest
             Assert.AreEqual(patientDao["LastName"], patient.LastName);
             Assert.AreEqual(patientDao["FirstName"], patient.FirstName);
             Assert.AreEqual(patientDao["HospitalNumber"], patient.PID);
+        }
+
+        [TestMethod]
+        public void PatientTreeAssembler_can_Assemble_PatientTreeDto()
+        {
+            var assembler = new PatientTreeAssembler();
+            var patient1 = Patient.NewPatient();
+            patient1.FirstName = "Peter";
+            patient1.LastName = "Bartels";
+            patient1.PID = "1234567";
+            patient1.Id = 1;
+            patient1.LogicalUnitId = 2;
+
+            var patient2 = Patient.NewPatient();
+            patient2.FirstName = "Test";
+            patient2.LastName = "Test";
+            patient2.PID = "7654321";
+            patient2.Id = 2;
+            patient2.LogicalUnitId = 3;
+
+            var collection = new List<IPatient>();
+            collection.Add(patient1);
+            collection.Add(patient2);
+
+            ReadOnlyCollection<PatientTreeDto> dtos = PatientTreeAssembler.AssemblePatientTreeDto(collection.AsReadOnly());
+            Assert.IsTrue(dtos.Count == 2);
+
+            Assert.AreEqual(patient1.FirstName, dtos[0].FirstName);
+            Assert.AreEqual(patient1.LastName, dtos[0].LastName);
+            Assert.AreEqual(patient1.PID, dtos[0].PID);
+
+            Assert.AreEqual(patient2.FirstName, dtos[1].FirstName);
+            Assert.AreEqual(patient2.LastName, dtos[1].LastName);
+            Assert.AreEqual(patient2.PID, dtos[1].PID);
+
+            Assert.AreEqual(patient1.FullName, "Peter Bartels");
+            Assert.AreEqual(patient2.FullName, "Test Test");
+            
+
+
         }
     }
 }

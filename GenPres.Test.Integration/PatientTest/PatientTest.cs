@@ -2,7 +2,12 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.Service;
+using GenPres.Business.ServiceProvider;
+using GenPres.DataAccess.Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using TypeMock.ArrangeActAssert;
 
 namespace GenPres.Test.Integration.PatientTest
 {
@@ -34,7 +39,6 @@ namespace GenPres.Test.Integration.PatientTest
         }
         #endregion
 
-
         #region Additional test attributes
         //
         // You can use the following additional attributes as you write your tests:
@@ -57,10 +61,22 @@ namespace GenPres.Test.Integration.PatientTest
         //
         #endregion
 
-        [TestMethod]
-        public void GetPatient()
-        {
 
+        private IPatientRepository _initializePatientRepositoryTest()
+        {
+            var repository = Isolate.Fake.Instance<PatientRepository>(Members.CallOriginal);
+            DalServiceProvider.Instance.RegisterInstanceOfType<IPatientRepository>(repository);
+            return repository;
+        }
+
+        [Isolated]
+        [TestMethod]
+        public void PatientService_GetPatientsByLogicalUnitId_calls_Repository()
+        {
+            _initializePatientRepositoryTest();
+            var patientRepository = DalServiceProvider.Instance.Resolve<IPatientRepository>();
+            PatientService.GetPatientsByLogicalUnit(1);
+            Isolate.Verify.WasCalledWithExactArguments(() => patientRepository.GetPatientsByLogicalUnitId(1));
         }
     }
 }

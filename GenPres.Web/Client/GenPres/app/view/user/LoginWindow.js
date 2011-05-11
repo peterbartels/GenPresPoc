@@ -49,7 +49,7 @@
             store: Ext.create('GenPres.store.patient.LogicalUnitStore'),
             tpl: new Ext.XTemplate(
                     '<tpl for=".">',
-                        '<div class="thumb-wrap">',
+                        '<div class="thumb-wrap" style="float:left;margin-right:20px;color:blue;">',
                             '{text}',
                         '</div>',
                     '</tpl>')

@@ -14,8 +14,8 @@ namespace GenPres.Business.Data.Client
                 var dto = new PatientTreeDto();
                 dto.id = patients[i].Id;
                 dto.PID = patients[i].PID;
-                dto.Firstname = patients[i].FirstName;
-                dto.Lastname = patients[i].LastName;
+                dto.FirstName = patients[i].FirstName;
+                dto.LastName = patients[i].LastName;
                 dto.text = patients[i].FullName;
                 dto.leaf = true;
                 patientTreeDtos.Add(dto);

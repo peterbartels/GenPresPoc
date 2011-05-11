@@ -121,12 +121,19 @@
   <ItemGroup>
     <Content Include="Client\GenPres\app\Application.js" />
     <Content Include="Client\GenPres\app\controller\main\PatientController.js" />
+    <Content Include="Client\GenPres\app\controller\patient\PatientController.js" />
     <Content Include="Client\GenPres\app\controller\user\LoginController.js" />
+    <Content Include="Client\GenPres\app\model\patient\LogicalUnitModel.js" />
+    <Content Include="Client\GenPres\app\model\patient\PatientModel.js" />
+    <Content Include="Client\GenPres\app\store\patient\LogicalUnitStore.js" />
+    <Content Include="Client\GenPres\app\store\patient\PatientStore.js" />
     <Content Include="Client\GenPres\app\util\Process.js" />
     <Content Include="Client\GenPres\app\util\Spotlight.js" />
-    <Content Include="Client\GenPres\app\view\component\SaveCancelToolBar.js" />
     <Content Include="Client\GenPres\app\view\main\MainView.js" />
+    <Content Include="Client\GenPres\app\view\main\MainViewCenter.js" />
+    <Content Include="Client\GenPres\app\view\main\MainViewLeft.js" />
     <Content Include="Client\GenPres\app\view\main\PatientTree.js" />
+    <Content Include="Client\GenPres\app\view\main\TopToolbar.js" />
     <Content Include="Client\GenPres\app\view\User\LoginWindow.js" />
     <Content Include="Client\GenPres\app\view\Viewport.js" />
     <Content Include="Client\Library\Ext4\bootstrap.js" />
@@ -4888,6 +4895,7 @@
     <Content Include="Client\Library\platform\test\unit\spec\XTemplate.js" />
     <Content Include="Client\Library\platform\tofix\PolymorphicAssociation.js" />
     <Content Include="Client\Library\platform\tofix\PolymorphicAssociation_spec.js" />
+    <Content Include="Copy of Test.aspx" />
     <Content Include="Settings.xml" />
     <None Include="Client\Library\Ext4\resources\.DS_Store" />
     <None Include="Client\Library\Ext4\resources\images\sprite.psd" />
@@ -5242,7 +5250,8 @@
     <Content Include="Test.txt" />
     <Content Include="Views\Home\Settings.aspx" />
     <Content Include="Views\Shared\Settings.Master" />
-    <Content Include="Views\Test\Index.aspx" />
+    <Content Include="Test.aspx" />
+    <Content Include="Views\Test\Test.aspx" />
     <None Include="Web References\GenForm.Products\DrugData.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
