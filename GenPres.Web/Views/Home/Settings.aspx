@@ -6,17 +6,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-     <!-- ExtJS base -->
-    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/adapter/ext/ext-base.js") %>"></script>
-    <!-- ExtJS base -->
-
     <!-- ExtJS library -->
-    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/ext-all.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/Library/Ext4/bootstrap.js") %>"></script>
     <!-- ExtJS library -->
     
     <!-- ############## STYLES(THEME) ############## -->
-    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/resources/css/ext-all.css") %>" />
-    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/resources/css/xtheme-gray.css") %>" />
+    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/Library/Ext4/resources/css/ext-all.css") %>" />
     <!-- ############## STYLES(THEME) ############## -->
     
     <script type="text/javascript" src="<%= Url.Content("~/Direct/Api") %>"></script>
@@ -42,8 +37,7 @@
             width: 400
         })
 
-        var form = new Ext.FormPanel({
-            layout: 'form',
+        var form = new Ext.panel.Panel({
             width: 750,
             labelWidth: 300,
             buttons: [{
@@ -55,7 +49,7 @@
                     Ext.Msg.alert('Opgeslagen', "Instellingen zijn opgeslagen!")
                     win.close();
                 }
-}],
+            }],
                 items: [
                 computerName,
                 GenPresDB,
