@@ -5,12 +5,7 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
     itemSelector: 'div.LogicalUnitDataViewItem',
     emptyText: 'No images available',
     singleSelect: true,
-    listeners : {
-        itemclick : function(view, record, item, index, event){
-            var id = record.id;
-            console.log(id);
-        }
-    },
+    
     store: Ext.create('GenPres.store.patient.LogicalUnitStore'),
     tpl: new Ext.XTemplate(
             '<tpl for="."><div class="LogicalUnitDataView">',

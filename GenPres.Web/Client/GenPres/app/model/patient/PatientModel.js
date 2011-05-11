@@ -16,6 +16,7 @@ Ext.define('GenPres.model.patient.LogicalUnitModel', {
     proxy : {
         type:'direct',
         directFn : Patient.GetPatientsByLogicalUnit,
+        paramOrder:'node',
         extraParams : {
             logicalUnitId : 1
         }

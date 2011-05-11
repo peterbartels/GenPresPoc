@@ -18,6 +18,20 @@
     },
 
     initComponent: function() {
+        this.items = [
+            { html: '<img src="Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box' },
+            { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
+                items: [
+                    { xtype: 'form', items: [
+                        new Ext.form.Text({ fieldLabel: 'Gebruikersnaam', name: 'username', id:'username', margin: '10 0 10 10', value:'test' }),
+                        new Ext.form.Text({ fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10', value:'Test' })
+                    ]}
+                ]
+            },
+            Ext.create('GenPres.view.user.LogicalUnitSelector')
+        ];
+
+
         this.callParent(arguments);
     },
 
@@ -32,18 +46,6 @@
         items: ['->', { text: 'Login', action: 'login'}]
     }],
 
-    items: [
-        { html: '<img src="Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box' },
-        { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
-            items: [
-                { xtype: 'form', items: [
-                    new Ext.form.Text({ fieldLabel: 'Gebruikersnaam', name: 'username', id:'username', margin: '10 0 10 10', value:'test' }),
-                    new Ext.form.Text({ fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10', value:'Test' })
-                ]}
-            ]
-        },
-        Ext.create('GenPres.view.user.LogicalUnitSelector')
-    ],
 
     Processes : {
         'Login' : [

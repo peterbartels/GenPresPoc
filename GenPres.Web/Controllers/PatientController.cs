@@ -7,10 +7,11 @@ namespace GenPres.Controllers
 {
     public class PatientController : Controller
     {
+        
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            Settings.SettingsManager.Instance.Initialize();
+            Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
             PatientAssembler.RegisterDependencies();
         }
 
@@ -19,9 +20,9 @@ namespace GenPres.Controllers
             return this.Direct(PatientService.GetLogicalUnits());
         }
 
-        public ActionResult GetPatientsByLogicalUnit(object node)
+        public ActionResult GetPatientsByLogicalUnit(string node, int logicalUnitId)
         {
-            return this.Direct(PatientService.GetPatientsByLogicalUnit(1));
+            return this.Direct(PatientService.GetPatientsByLogicalUnit(logicalUnitId));
         }
     }
 }

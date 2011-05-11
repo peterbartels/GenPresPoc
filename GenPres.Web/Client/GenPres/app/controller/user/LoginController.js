@@ -6,10 +6,17 @@ Ext.define('GenPres.controller.user.LoginController', {
     loggedIn: false,
     loginWindow: null,
 
+    logicalUnitId : 0,
+
     init: function() {
         this.control({
             'toolbar button[action=login]': {
                 click: this.validateLogin
+            },
+            'dataview' : {
+                itemclick : function(view, record, item, index, event){
+                    this.logicalUnitId = record.data.id
+                }
             }
         });
     },
@@ -34,7 +41,7 @@ Ext.define('GenPres.controller.user.LoginController', {
         this.loggedIn = result.success;
         
         if (result.success) {
-            Ext.MessageBox.alert('GenPres 2011 Login', 'Login succesvol', this.closeLoginWindow, this);
+            this.closeLoginWindow();
         } else {
             Ext.MessageBox.alert('GenPres 2011 Login', 'Login geweigerd');
         }
@@ -42,6 +49,6 @@ Ext.define('GenPres.controller.user.LoginController', {
 
     closeLoginWindow: function() {
         this.loginWindow.close();
-        Ext.create('GenPres.view.main.MainView');
+        Ext.create('GenPres.view.main.MainView', {logicalUnitId:this.logicalUnitId});
     }
 });

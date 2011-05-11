@@ -9,10 +9,14 @@ Ext.define('GenPres.store.patient.PatientStore', {
             id: 'src',
             expanded: true
     },
-    
+
     proxy : {
         type:'direct',
-        directFn : Patient.GetPatientsByLogicalUnit
+        paramOrder:['node', 'logicalUnitId'],
+        directFn : Patient.GetPatientsByLogicalUnit,
+        extraParams:{
+            logicalUnitId : 1
+        }
     },
 
     autoLoad:true,
