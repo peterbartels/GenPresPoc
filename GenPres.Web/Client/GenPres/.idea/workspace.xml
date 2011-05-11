@@ -23,10 +23,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="LoginController.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="LoginController.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controller/user/LoginController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="6" selection-start="304" selection-end="304" vertical-scroll-proportion="0.26923078">
+            <state line="14" column="6" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -35,16 +35,16 @@
       <file leaf-file-name="LoginWindow.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/user/LoginWindow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="0" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.0">
+            <state line="44" column="8" selection-start="1262" selection-end="1262" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogicalUnitSelector.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="LogicalUnitSelector.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="28" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
+            <state line="2" column="38" selection-start="121" selection-end="121" vertical-scroll-proportion="0.03846154">
               <folding />
             </state>
           </provider>
@@ -492,11 +492,6 @@
         <state line="5" column="80" selection-start="257" selection-end="257" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/MainViewLeft.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="51" selection-start="368" selection-end="368" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/main/PatientTree.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="26" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0" />
@@ -547,23 +542,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js">
+    <entry file="file://$PROJECT_DIR$/app/controller/user/LoginController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="28" selection-start="391" selection-end="391" vertical-scroll-proportion="0.0">
+        <state line="14" column="6" selection-start="304" selection-end="304" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/MainViewLeft.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="51" selection-start="368" selection-end="368" vertical-scroll-proportion="0.21153846">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/user/LoginWindow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="0" selection-start="1292" selection-end="1292" vertical-scroll-proportion="0.0">
+        <state line="44" column="8" selection-start="1262" selection-end="1262" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/user/LoginController.js">
+    <entry file="file://$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="6" selection-start="304" selection-end="304" vertical-scroll-proportion="0.26923078">
+        <state line="2" column="38" selection-start="121" selection-end="121" vertical-scroll-proportion="0.03846154">
           <folding />
         </state>
       </provider>

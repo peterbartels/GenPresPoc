@@ -42,9 +42,7 @@
                 ]}
             ]
         },
-        Ext.create('Ext.view.View', {
-
-        })
+        Ext.create('GenPres.view.user.LogicalUnitSelector')
     ],
 
     Processes : {
