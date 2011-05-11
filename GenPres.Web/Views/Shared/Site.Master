@@ -10,7 +10,6 @@
 
         .x-spotlight {
             background-color: #ccc;
-            
             z-index: 19889;
             position: absolute;
             top: 0;
@@ -21,6 +20,22 @@
             width: 0;
             height: 0;
             zoom: 1;
+        }
+        
+        .LogicalUnitDataViewItem 
+        {
+        	border: solid 1px #ccc;
+        	width:100px;
+        	text-align:center;
+        }
+        .LogicalUnitDataViewItem:hover
+        {
+        	cursor:pointer;
+        	
+        }
+        .LogicalUnitDataView div.x-item-selected
+        {
+        	border: solid 1px #ffffff;
         }
     </style>
     

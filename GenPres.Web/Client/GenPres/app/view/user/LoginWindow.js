@@ -43,16 +43,7 @@
             ]
         },
         Ext.create('Ext.view.View', {
-            margin:'20 0 0 16',
-            itemSelector: 'div.thumb-wrap',
-            emptyText: 'No images available',
-            store: Ext.create('GenPres.store.patient.LogicalUnitStore'),
-            tpl: new Ext.XTemplate(
-                    '<tpl for=".">',
-                        '<div class="thumb-wrap" style="float:left;margin-right:20px;color:blue;">',
-                            '{text}',
-                        '</div>',
-                    '</tpl>')
+
         })
     ],
 
