@@ -1,6 +1,7 @@
 ﻿Ext.require('Ext.form.*');
 
 var GenPresApplication;
+
 Ext.application ({
     name: 'GenPres',
 
@@ -14,7 +15,6 @@ Ext.application ({
     
     launch: function() {
         var loginWindow;
-
         
         this.items = [];
 

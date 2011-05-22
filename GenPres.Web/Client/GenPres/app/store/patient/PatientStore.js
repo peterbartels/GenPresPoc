@@ -15,7 +15,7 @@ Ext.define('GenPres.store.patient.PatientStore', {
         paramOrder:['node', 'logicalUnitId'],
         directFn : Patient.GetPatientsByLogicalUnit,
         extraParams:{
-            logicalUnitId : 1
+            logicalUnitId : GenPres.session.PatientSession.getLogicalUnitId()
         }
     },
 

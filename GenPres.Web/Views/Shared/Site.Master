@@ -3,45 +3,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=100" >
 <html>
 <head id="Head1" runat="server">
-    <style type="text/css">
-        body {
-            overflow: hidden;
-        }
-
-        .x-spotlight {
-            background-color: #ccc;
-            z-index: 19889;
-            position: absolute;
-            top: 0;
-            left: 0;
-            -moz-opacity: 0.5;
-            opacity: .50;
-            filter: alpha(opacity=50);
-            width: 0;
-            height: 0;
-            zoom: 1;
-        }
-        
-        .LogicalUnitDataViewItem 
-        {
-        	border: solid 1px #ccc;
-        	width:100px;
-        	text-align:center;
-        }
-        .LogicalUnitDataViewItem:hover
-        {
-        	cursor:pointer;
-        	
-        }
-        .LogicalUnitDataView div.x-item-selected
-        {
-        	border: solid 1px #ffffff;
-        }
-    </style>
     
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     
     <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/Library/extjs/resources/css/ext-all.css") %>" /> 
+    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/GenPres/style/css/GenPres.css") %>" /> 
     
     <script type="text/javascript">
         Ext = {}; 
@@ -73,7 +39,6 @@
     </script>
     
     <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/Application.js")  %>"></script>
-    
     
 </head>
 

@@ -1,0 +1,44 @@
+﻿
+
+body {
+	overflow: hidden;
+}
+
+.x-spotlight {
+    background-color: #ccc;
+    z-index: 19889;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -moz-opacity: 0.5;
+    opacity: .50;
+    filter: alpha(opacity=50);
+    width: 0;
+    height: 0;
+    zoom: 1;
+}
+
+.LogicalUnitDataViewItem 
+{
+	background-image:url(../images/check_icon_disabled.png);
+	float:left;
+	margin-right:20px;
+	height:30px;
+	padding-left:25px;
+	padding-top:8px;
+	background-repeat:no-repeat;
+	text-align:center;
+	color:#5b5b5b;
+}
+
+.LogicalUnitDataViewItem:hover
+{
+	cursor:pointer;
+	background-image:url(../images/check_icon_enabled.png);
+}
+
+.LogicalUnitDataView div.x-item-selected
+{
+	background-image:url(../images/check_icon_enabled.png);
+	color:#3b7844;
+}

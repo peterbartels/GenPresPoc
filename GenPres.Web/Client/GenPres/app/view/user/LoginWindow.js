@@ -3,11 +3,13 @@
     alias: 'widget.userlogin',
 
     bodyPadding: 5,
-
+    
     width: 560,
     height: 400,
 
-     mixins: {
+    requires : 'GenPres.session.PatientSession',
+    
+    mixins: {
         process: 'GenPres.util.Process'
     },
     
@@ -15,14 +17,16 @@
         var me = this;
         me.mixins.process.constructor.call(me);
         me.callParent(arguments);
+        
+        
     },
 
     initComponent: function() {
         this.items = [
-            { html: '<img src="Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box' },
+            { html: '<img src="Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box'},
             { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
                 items: [
-                    { xtype: 'form', items: [
+                    { xtype: 'form', border:false, items: [
                         new Ext.form.Text({ fieldLabel: 'Gebruikersnaam', name: 'username', id:'username', margin: '10 0 10 10', value:'test' }),
                         new Ext.form.Text({ fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10', value:'Test' })
                     ]}

@@ -6,8 +6,6 @@ Ext.define('GenPres.controller.user.LoginController', {
     loggedIn: false,
     loginWindow: null,
 
-    logicalUnitId : 0,
-
     init: function() {
         this.control({
             'toolbar button[action=login]': {
@@ -15,7 +13,10 @@ Ext.define('GenPres.controller.user.LoginController', {
             },
             'dataview' : {
                 itemclick : function(view, record, item, index, event){
-                    this.logicalUnitId = record.data.id
+                    GenPres.session.PatientSession.setLogicalUnit(
+                        record.data.id,
+                        record.data.text
+                    )
                 }
             }
         });
@@ -33,8 +34,34 @@ Ext.define('GenPres.controller.user.LoginController', {
         form = win.down('form');
         record = form.getRecord();
         vals = form.getValues();
+
+        if(this.validateLoginForm(vals)){
+            User.Login(vals.username, vals.password, this.loginCallBackFunction, this);
+        }
+    },
+
+    validateLoginForm : function(vals){
+        var error = '';
         
-        User.Login(vals.username, vals.password, this.loginCallBackFunction, this);
+        if(vals.username == ''){
+            error += 'Selecteer aub een gebruikersnaam<br />';
+        }
+
+        if(vals.password == ''){
+            error += 'Selecteer aub een wachtwoord<br />';
+        }
+
+        if(
+            GenPres.session.PatientSession.getLogicalUnitId() == ''
+            ||
+            GenPres.session.PatientSession.getLogicalUnitName() == ''
+        ){
+            error += 'Selecteer aub een afdeling\n';
+        }
+        if(error != ''){
+            Ext.MessageBox.alert('GenPres 2011 Login Error', error);
+        }
+        return error == '';
     },
 
     loginCallBackFunction: function(result) {
@@ -43,7 +70,7 @@ Ext.define('GenPres.controller.user.LoginController', {
         if (result.success) {
             this.closeLoginWindow();
         } else {
-            Ext.MessageBox.alert('GenPres 2011 Login', 'Login geweigerd');
+            Ext.MessageBox.alert('GenPres 2011 Login Error', 'Login geweigerd');
         }
     },
 
