@@ -1,23 +1,26 @@
-Ext.define('GenPres.model.patient.LogicalUnitModel', {
+
+Ext.define('GenPres.model.patient.PatientModel', {
     extend: 'Ext.data.Model',
 
     idProperty : 'id',
-
     fields: [
         { name: 'id', type: 'float' },
         { name: 'text', type: 'string' },
         { name: 'leaf', type: 'boolean' },
-            
-        { name: 'PID', type: 'boolean' },
-        { name: 'FirstName', type: 'boolean' },
-        { name: 'LastName', type: 'boolean' }
-    ],
 
+        { name: 'PID', type: 'string' },
+        { name: 'FirstName', type: 'string' },
+        { name: 'LastName', type: 'string' },
+
+        { name: 'Unit', type: 'string' },
+        { name: 'Bed', type: 'string' },
+        { name: 'RegisterDate', type: 'string' }
+    ],
     proxy : {
         type:'direct',
+        paramOrder:['node', 'logicalUnitId'],
         directFn : Patient.GetPatientsByLogicalUnit,
-        paramOrder:'node',
-        extraParams : {
+        extraParams:{
             logicalUnitId : 1
         }
     }

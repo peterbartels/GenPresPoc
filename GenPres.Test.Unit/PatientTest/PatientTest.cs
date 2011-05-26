@@ -101,7 +101,14 @@ namespace GenPres.Test.Unit.PatientTest
             dt.Columns.Add("FirstName");
             dt.Columns.Add("LastName");
             dt.Columns.Add("HospitalNumber");
-            dt.Columns.Add("LOGICALUNITID");
+            dt.Columns.Add("LOGICALUNITID", typeof(int));
+
+            dt.Columns.Add("Length", typeof(decimal));
+            dt.Columns.Add("Weight", typeof(decimal));
+            dt.Columns.Add("AddmissionDate", typeof(DateTime));
+            dt.Columns.Add("LogicalUnitName");
+            dt.Columns.Add("BedName");
+            dt.Columns.Add("GenderID");
 
             DataRow patientDao = dt.NewRow();
 
@@ -111,6 +118,13 @@ namespace GenPres.Test.Unit.PatientTest
             patientDao["HospitalNumber"] = "1234567";
             patientDao["LOGICALUNITID"] = 1;
 
+            patientDao["Length"] = 120;
+            patientDao["Weight"] = 30;
+            
+            patientDao["AddmissionDate"] = (DateTime?) DateTime.Parse("20-3-2010 13:48:00");
+            patientDao["LogicalUnitName"] = "Test";
+            patientDao["BedName"] = "E100";
+            
             PatientMapper patientMapper = new PatientMapper();
 
             var patient = Patient.NewPatient();
@@ -121,6 +135,13 @@ namespace GenPres.Test.Unit.PatientTest
             Assert.AreEqual(patientDao["LastName"], patient.LastName);
             Assert.AreEqual(patientDao["FirstName"], patient.FirstName);
             Assert.AreEqual(patientDao["HospitalNumber"], patient.PID);
+
+            Assert.AreEqual(patientDao["Length"], patient.Length);
+            Assert.AreEqual(patientDao["Weight"], patient.Weight);
+            Assert.AreEqual(patientDao["AddmissionDate"], patient.RegisterDate);
+            Assert.AreEqual(patientDao["LogicalUnitName"], patient.Unit);
+            Assert.AreEqual(patientDao["BedName"], patient.Bed);
+            
         }
 
         [TestMethod]
@@ -134,16 +155,16 @@ namespace GenPres.Test.Unit.PatientTest
             patient1.Id = 1;
             patient1.LogicalUnitId = 2;
 
-            var patient2 = Patient.NewPatient();
-            patient2.FirstName = "Test";
-            patient2.LastName = "Test";
-            patient2.PID = "7654321";
-            patient2.Id = 2;
-            patient2.LogicalUnitId = 3;
+            patient1.Length = 120;
+            patient1.Weight = 75;
+            patient1.RegisterDate = DateTime.Parse("20-3-2010 13:48:00");
+            patient1.Unit = "unit1";
+            patient1.Bed = "2";
+
 
             var collection = new List<IPatient>();
             collection.Add(patient1);
-            collection.Add(patient2);
+            collection.Add(patient1);
 
             ReadOnlyCollection<PatientTreeDto> dtos = PatientTreeAssembler.AssemblePatientTreeDto(collection.AsReadOnly());
             Assert.IsTrue(dtos.Count == 2);
@@ -152,15 +173,13 @@ namespace GenPres.Test.Unit.PatientTest
             Assert.AreEqual(patient1.LastName, dtos[0].LastName);
             Assert.AreEqual(patient1.PID, dtos[0].PID);
 
-            Assert.AreEqual(patient2.FirstName, dtos[1].FirstName);
-            Assert.AreEqual(patient2.LastName, dtos[1].LastName);
-            Assert.AreEqual(patient2.PID, dtos[1].PID);
-
-            Assert.AreEqual(patient1.FullName, "Peter Bartels");
-            Assert.AreEqual(patient2.FullName, "Test Test");
-            
-
+            Assert.AreEqual(patient1.Weight, dtos[0].Weight);
+            Assert.AreEqual(patient1.Length, dtos[0].Length);
+            Assert.AreEqual(dtos[0].RegisterDate, "20-03-2010");
+            Assert.AreEqual(patient1.Unit, dtos[0].Unit);
+            Assert.AreEqual(patient1.Bed, dtos[0].Bed);
 
         }
     }
 }
+

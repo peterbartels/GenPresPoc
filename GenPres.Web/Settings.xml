@@ -19,5 +19,11 @@
       <PatientDBConnectionString>wYPrPVWo9WSy2KNclfHlJk8Yyn8qOZZ43owOpBk1cqLlOdMi6PStJYRBiYKUveS8d6sMTELf2zs5Jb8G8itU0w==</PatientDBConnectionString>
       <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
     </machine>
+    <machine>
+      <key>tFFNhHYDpcS38WAxhFpOVQ==</key>
+      <GenPresDBConnectionString>A0WfIz9appfr0+wGT6nYlzvrSvEtGFWuY89g6dHef/t2zfVDxQNUrTqHs6tsRsGhUMHIH189akeIBlBDSVumgWaaqZ1nm0sLfkNXTTimNlc=</GenPresDBConnectionString>
+      <PatientDBConnectionString>/MIoRGPJdHhnv7Iao+xZhHkr/lUAElomdEju9JMNNBSulgySCwFyc13lnyA92rzAfGID7rC9LWivdXA49fPALt/JzxV/xzRm16PadJLLQPtpmvgDDEjfy2icoXjDCbN0</PatientDBConnectionString>
+      <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
+    </machine>
   </serversettings>
 </settings>

@@ -9,5 +9,12 @@ namespace GenPres.Business.Data.Client
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PID { get; set; }
+
+        public decimal Weight { get; set; }
+        public decimal Length { get; set; }
+        public string RegisterDate { get; set; }
+        public string Days { get; set; }
+        public string Bed { get; set; }
+        public string Unit { get; set; }
     }
 }

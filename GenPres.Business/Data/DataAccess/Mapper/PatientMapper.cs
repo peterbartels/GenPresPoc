@@ -1,4 +1,5 @@
-﻿using GenPres.Business.Domain;
+﻿using System;
+using GenPres.Business.Domain;
 using System.Data;
 
 namespace GenPres.Business.Data.DataAccess.Mapper
@@ -13,6 +14,29 @@ namespace GenPres.Business.Data.DataAccess.Mapper
             patientBo.FirstName = patientDao["FirstName"].ToString();
             patientBo.PID = patientDao["HospitalNumber"].ToString();
             patientBo.LogicalUnitId = int.Parse(patientDao["LOGICALUNITID"].ToString());
+
+            decimal length = 0;
+            decimal weight = 0;
+            decimal.TryParse(patientDao["Length"].ToString(), out length);
+            decimal.TryParse(patientDao["Weight"].ToString(), out weight);
+            patientBo.Weight = weight;
+            patientBo.Length = length;
+
+            DateTime? addmissionDate = (DateTime?)patientDao["AddmissionDate"];
+
+            if (addmissionDate != null)
+            {
+                TimeSpan span = DateTime.Now.Subtract(addmissionDate.Value);
+                patientBo.DaysRegistered = span.Days;
+                patientBo.RegisterDate = addmissionDate.Value;
+            }
+
+            patientBo.Unit = patientDao["LogicalUnitName"].ToString();
+            patientBo.Bed = patientDao["BedName"].ToString();
+
+            patientBo.Gender = patientDao["GenderID"].ToString();
+            
+
             return patientBo;
         }
     }

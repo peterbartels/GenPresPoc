@@ -1,5 +1,9 @@
 ﻿
 
+.PatientInfoView .x-btn-group-body {
+    background-color:red !important;
+}
+
 body {
 	overflow: hidden;
 }
@@ -41,4 +45,34 @@ body {
 {
 	background-image:url(../images/check_icon_enabled.png);
 	color:#3b7844;
+}
+
+.patientNameInfo {
+	width:200px;
+    margin-top:2px;
+	float:left;
+    font-size:10px;
+}
+
+.patientInfoHeader {
+	width:400px;
+	float:left;
+
+}
+.patientInfoValue{
+    font-size:10px;
+    width:400px;
+}
+.patientIcon {
+	background-image: url(../images/patient.png);
+	background-repeat: no-repeat;
+	float:left;
+	width:60px;
+    margin-left:5px;
+	height:58px;
+}
+
+.PatientInfoPid {
+    padding-top:46px;
+    font-weight:bold;
 }

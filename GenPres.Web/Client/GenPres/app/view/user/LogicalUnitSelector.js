@@ -10,13 +10,18 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
     emptyText: 'No images available',
 
     singleSelect: true,
-    
-    store: Ext.create('GenPres.store.patient.LogicalUnitStore'),
+
+    store : 'patient.LogicalUnitStore',
 
     tpl: new Ext.XTemplate(
             '<tpl for="."><div class="LogicalUnitDataView">',
                 '<div class="LogicalUnitDataViewItem">',
                     '{text}',
                 '</div>',
-            '</div></tpl>')
+            '</div></tpl>'),
+
+    initComponent : function(){
+        var me = this;
+        me.callParent();
+    }
 });

@@ -11,16 +11,22 @@ Ext.define('GenPres.view.main.MainViewLeft', {
         type: 'vbox',
         align: 'stretch'
     },
-    items:[
-        {
-            xtype:'box',
-            border:false,
-            html:'<img src="Client/GenPres/style/images/logo.png" style="margin-top:22px;" />',
-            height: 82
-        },
-        Ext.create('GenPres.view.main.PatientTree')
-    ],
+
     width: 200,
     split: true,
-    margins: '0 5 5 5'
+    margins: '0 5 5 5',
+
+    initComponent : function(){
+        var me = this;
+        me.items = [
+            {
+                xtype:'box',
+                border:false,
+                html:'<img src="Client/GenPres/style/images/logo.png" style="margin-top:22px;" />',
+                height: 82
+            },
+            Ext.create('GenPres.view.main.PatientTree')
+        ];
+        me.callParent();
+    }
 });

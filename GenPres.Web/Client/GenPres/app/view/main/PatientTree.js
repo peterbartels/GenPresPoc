@@ -10,8 +10,20 @@
     scroll:'both',
     autoScroll:true,
 
+    store: 'GenPres.app.patient.PatientTreeStore',
+
+    constructor : function(){
+        var me = this;
+        me.callParent();
+    },
+
     initComponent : function(){
-        this.store = Ext.create('GenPres.store.patient.PatientStore');
-        this.callParent();
+        var me = this;
+        var hackfunc = function(){
+            //me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
+            //me.store.load();
+        }
+        //Ext.Function.defer(hackfunc,2000,this);
+        me.callParent();
     }
 });

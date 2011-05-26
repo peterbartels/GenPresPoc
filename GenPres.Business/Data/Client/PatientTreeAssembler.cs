@@ -17,6 +17,13 @@ namespace GenPres.Business.Data.Client
                 dto.FirstName = patients[i].FirstName;
                 dto.LastName = patients[i].LastName;
                 dto.text = patients[i].FullName;
+
+                dto.Weight = patients[i].Weight;
+                dto.Length = patients[i].Length;
+                dto.RegisterDate = patients[i].RegisterDate.ToString("dd-MM-yyyy");
+                dto.Bed = patients[i].Bed;
+                dto.Unit = patients[i].Unit;
+
                 dto.leaf = true;
                 patientTreeDtos.Add(dto);
             }

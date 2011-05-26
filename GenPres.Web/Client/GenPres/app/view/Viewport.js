@@ -1,5 +1,5 @@
 ﻿Ext.define('GenForm.app.view.Viewport', {
-    extend: 'Ext.view.Viewport',
+    extend: 'Ext.container.Viewport',
 
     layout: 'fit',
     items: [

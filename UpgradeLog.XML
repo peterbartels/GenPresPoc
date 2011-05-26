@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="GenPres">
+</Property><Property Name="Solution File" Value="C:\Development\GenPres-Development\GenPres Vs 2010\GenPres.sln">
+</Property><Property Name="Date" Value="donderdag 26 mei 2011">
+</Property><Property Name="Time" Value="9:14">
+</Property></Properties><Event ErrorLevel="0" Project="GenPres.Business" Source="GenPres.Business\GenPres.Business.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.Business" Source="GenPres.Business\GenPres.Business.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.xTest.Acceptance" Source="GenPres.Test.Acceptance\GenPres.xTest.Acceptance.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.xTest.Acceptance" Source="GenPres.Test.Acceptance\GenPres.xTest.Acceptance.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.Web" Source="GenPres.Web\GenPres.Web.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.Web" Source="GenPres.Web\GenPres.Web.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.Settings" Source="GenPres.Settings\GenPres.Settings.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.Settings" Source="GenPres.Settings\GenPres.Settings.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.xTest.Integration" Source="GenPres.Test.Integration\GenPres.xTest.Integration.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.xTest.Integration" Source="GenPres.Test.Integration\GenPres.xTest.Integration.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.xTest.Unit" Source="GenPres.Test.Unit\GenPres.xTest.Unit.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.xTest.Unit" Source="GenPres.Test.Unit\GenPres.xTest.Unit.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.Database" Source="GenPres.Database\GenPres.Database.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.Database" Source="GenPres.Database\GenPres.Database.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.DataAccess" Source="GenPres.DataAccess\GenPres.DataAccess.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.DataAccess" Source="GenPres.DataAccess\GenPres.DataAccess.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.ObjectModel" Source="GenPres.ObjectModel\GenPres.ObjectModel.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.ObjectModel" Source="GenPres.ObjectModel\GenPres.ObjectModel.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.Assembler" Source="GenPres.Assembler\GenPres.Assembler.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="GenPres.Assembler" Source="GenPres.Assembler\GenPres.Assembler.csproj" Description="Converted">
+</Event><Event ErrorLevel="2" Project="GenPres.Web" Source="GenPres.Web\GenPres.Web.csproj" Description="">
+</Event><Event ErrorLevel="0" Project="" Source="GenPres.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="GenPres.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GenPres.Business" Source="GenPres.Business\GenPres.Business.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="3" Project="" Source="GenPres.vsmdi" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="GenPres.vsmdi" Description="The file was converted to the current format.">
+</Event><Event ErrorLevel="3" Project="" Source="LocalTestRun.testrunconfig" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="LocalTestRun.testrunconfig" Description="The file was converted to the current format.">
+</Event><Event ErrorLevel="0" Project="GenPres.xTest.Acceptance" Source="GenPres.Test.Acceptance\GenPres.xTest.Acceptance.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="GenPres.Settings" Source="GenPres.Settings\GenPres.Settings.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="GenPres.xTest.Integration" Source="GenPres.Test.Integration\GenPres.xTest.Integration.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="GenPres.xTest.Unit" Source="GenPres.Test.Unit\GenPres.xTest.Unit.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="GenPres.Database" Source="GenPres.Database\GenPres.Database.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="GenPres.DataAccess" Source="GenPres.DataAccess\GenPres.DataAccess.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="GenPres.ObjectModel" Source="GenPres.ObjectModel\GenPres.ObjectModel.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="GenPres.Assembler" Source="GenPres.Assembler\GenPres.Assembler.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

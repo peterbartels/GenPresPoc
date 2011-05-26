@@ -17,5 +17,9 @@ Ext.define('GenPres.session.PatientSession', {
     
     getLogicalUnitName : function(){
         return this.currentLogicalUnitName;
+    },
+
+    setPatient : function(record){
+        
     }
 })
