@@ -50,6 +50,7 @@
     <Reference Include="Typemock.ArrangeActAssert, Version=6.0.10.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenForm\WebServicesTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
     <Compile Include="PatientTest\PatientTest.cs" />
     <Compile Include="Prescription\Prescription.cs" />
@@ -76,6 +77,10 @@
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.xTest.General\GenPres.xTest.General.csproj">
+      <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
+      <Name>GenPres.xTest.General</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

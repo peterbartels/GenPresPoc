@@ -1,6 +1,8 @@
 ﻿using System.Collections.ObjectModel;
+using GenPres.Business.Data.Client.Patient;
 using GenPres.Business.Domain;
 using GenPres.Business.Data.Client;
+using GenPres.Business.Domain.Patient;
 
 namespace GenPres.Business.Service
 {

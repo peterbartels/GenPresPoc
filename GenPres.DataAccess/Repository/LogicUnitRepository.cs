@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using GenPres.Business.Data.DataAccess.Mapper;
 using GenPres.Business.Data.DataAccess;
+using GenPres.Business.Data.DataAccess.Mapper.Patient;
 using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.Domain;
 using GenPres.Business;
+using GenPres.Business.Domain.Patient;
 
 namespace GenPres.DataAccess.Repository
 {

@@ -1,5 +1,4 @@
 ﻿using DB = GenPres.Database;
-using Csla;
 
 namespace GenPres.Business.Data.DataAccess
 {

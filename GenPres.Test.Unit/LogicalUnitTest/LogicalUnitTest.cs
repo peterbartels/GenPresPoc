@@ -2,6 +2,9 @@
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using GenPres.Business.Data.DataAccess.Mapper.Patient;
+using GenPres.Business.Domain.Patient;
+using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.DataAccess;
 using System.Data.SqlClient;
@@ -12,12 +15,8 @@ using GenPres.Business.Domain;
 namespace GenPres.Test.Unit.LogicalUnitTest
 {
     [TestClass]
-    public class LogicalUnitTest
+    public class LogicalUnitTest : BaseGenPresTest
     {
-        public LogicalUnitTest()
-        {
-            Settings.SettingsManager.Instance.Initialize();
-        }
 
         private TestContext testContextInstance;
         
@@ -74,11 +73,11 @@ namespace GenPres.Test.Unit.LogicalUnitTest
             DataTable dt = new DataTable();
             dt.Columns.Add("LogicalUnitID");
             dt.Columns.Add("Name");
-            DataRow logicalUnitDao = dt.NewRow();
+            var logicalUnitDao = dt.NewRow();
             
             logicalUnitDao["LogicalUnitID"] = 1;
             logicalUnitDao["Name"] = "Test";
-            LogicalUnitMapper logicalUnitMapper = new LogicalUnitMapper();
+            var logicalUnitMapper = new LogicalUnitMapper();
             
             var logicalUnit = LogicalUnit.NewLogicalUnit();
 

@@ -1,19 +1,12 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Service;
 
 namespace GenPres.Test.Acceptance.LogicalUnitTest
 {
     [TestClass]
-    public class LogicalUnitTest
+    public class LogicalUnitTest : BaseGenPresTest
     {
-        public LogicalUnitTest()
-        {
-        }
-
         private TestContext testContextInstance;
 
         #region TestContext

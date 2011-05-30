@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.Domain.Patient;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

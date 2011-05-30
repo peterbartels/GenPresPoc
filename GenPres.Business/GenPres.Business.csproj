@@ -35,16 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Csla, Version=3.8.2.0, Culture=neutral, PublicKeyToken=93be5fdc093e4c30, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Csla">
       <HintPath>..\Dependencies\Csla.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Enterprise.Services\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="PostSharp.Laos, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap">
+      <HintPath>..\..\..\StructureMap\deploy\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -68,30 +66,32 @@
     <Compile Include="Data\Client\IDto.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\Client\LogicalUnitDto.cs" />
-    <Compile Include="Data\Client\LogicalUnitDtoAssembler.cs" />
-    <Compile Include="Data\Client\PatientTreeAssembler.cs" />
-    <Compile Include="Data\Client\PatientTreeDto.cs" />
+    <Compile Include="Data\Client\Patient\LogicalUnitDto.cs" />
+    <Compile Include="Data\Client\Patient\LogicalUnitDtoAssembler.cs" />
+    <Compile Include="Data\Client\Patient\PatientTreeAssembler.cs" />
+    <Compile Include="Data\Client\Patient\PatientTreeDto.cs" />
     <Compile Include="Data\DataAccess\DataManager.cs" />
     <Compile Include="Data\Client\DtoFactory.cs" />
     <Compile Include="Data\DataAccess\GenPresDataManager.cs" />
-    <Compile Include="Data\DataAccess\Mapper\ILogicalUnitMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\Patient\ILogicalUnitMapper.cs" />
     <Compile Include="Data\DataAccess\Mapper\IMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\IUserMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\LogicalUnitMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\PatientMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\UserMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\User\IUserMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\Patient\LogicalUnitMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\Patient\PatientMapper.cs" />
+    <Compile Include="Data\DataAccess\Mapper\User\UserMapper.cs" />
     <Compile Include="Data\DataAccess\Repository\ILogicalUnitRepository.cs" />
     <Compile Include="Data\DataAccess\Repository\IPatientRepository.cs" />
     <Compile Include="Data\DataAccess\Repository\IRepository.cs" />
     <Compile Include="Data\DataAccess\Repository\IUserRepository.cs" />
-    <Compile Include="Domain\ILogicalUnit.cs" />
-    <Compile Include="Domain\IPatient.cs" />
-    <Compile Include="Domain\IPatientCollection.cs" />
+    <Compile Include="Domain\Prescription\IPrescription.cs" />
+    <Compile Include="Domain\Patient\ILogicalUnit.cs" />
+    <Compile Include="Domain\Patient\IPatient.cs" />
+    <Compile Include="Domain\Patient\IPatientCollection.cs" />
     <Compile Include="Domain\IUser.cs" />
-    <Compile Include="Domain\LogicalUnit.cs" />
-    <Compile Include="Domain\Patient.cs" />
-    <Compile Include="Domain\PatientCollection.cs" />
+    <Compile Include="Domain\Patient\LogicalUnit.cs" />
+    <Compile Include="Domain\Patient\Patient.cs" />
+    <Compile Include="Domain\Patient\PatientCollection.cs" />
+    <Compile Include="Domain\Prescription\Prescription.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="GenPresServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -101,12 +101,18 @@
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
     <Compile Include="Service\UserService.cs" />
+    <Compile Include="WebService\GenFormService.cs" />
+    <Compile Include="WebService\IGenFormService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
       <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
       <Name>GenPres.Database</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\OrderEntry\" />
+    <Folder Include="Domain\User\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

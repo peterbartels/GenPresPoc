@@ -10,7 +10,7 @@ Ext.define('GenPres.store.patient.PatientTreeStore', {
             expanded: true
     },
 
-    autoLoad:false,
+    autoLoad:true,
 
     model:'GenPres.model.patient.PatientModel'
 });

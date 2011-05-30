@@ -8,7 +8,7 @@ Ext.define('GenPres.view.main.MainViewCenter', {
 
     initComponent : function(){
         var me = this;
-        me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
+
         me.items = [
             {html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>'}
             /*This is a codesmell: Ext.create('GenPres.control.ValueField', {
@@ -23,6 +23,9 @@ Ext.define('GenPres.view.main.MainViewCenter', {
                 maxValue: 125
             })*/
         ];
+
+        me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
+
         me.callParent();
     },
 

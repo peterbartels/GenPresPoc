@@ -17,7 +17,7 @@ Ext.define('GenPres.view.main.ToolbarButton', {
 Ext.define('GenPres.view.main.TopToolbar', {
     extend:'Ext.container.ButtonGroup',
     dock: 'top',
-    
+
     initComponent : function(){
         var me = this;
         me.items = [
@@ -62,5 +62,6 @@ Ext.define('GenPres.view.main.TopToolbar', {
                 ]
             }
         ]
+        me.callParent();
     }
 })

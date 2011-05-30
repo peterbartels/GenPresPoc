@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Service;
-using GenPres.Business.Data;
-using GenPres.Business.Domain;
-using TypeMock;
-using TypeMock.ArrangeActAssert;
+using GenPres.Business.Domain.Prescription;
 
 namespace GenPres.Test.Unit
 {
     [TestClass]
-    public class PrescriptionTest
+    public class PrescriptionTest : BaseGenPresTest
     {
         #region Constructor
         public PrescriptionTest()
@@ -36,9 +30,12 @@ namespace GenPres.Test.Unit
         #endregion
 
         [TestMethod]
-        public void Prescription_can_GetPrescriptionById()
+        public void Prescription_creates_CreationDate()
         {
-            
+            var p = Prescription.NewPrescription();
+            Assert.AreEqual(p.CreationDate.ToString("dd-MM-yyyy HH:mm"), DateTime.Now.ToString("dd-MM-yyyy HH:mm"));
         }
+
+
     }
 }

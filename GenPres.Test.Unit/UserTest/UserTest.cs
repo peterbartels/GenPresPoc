@@ -2,6 +2,7 @@
 using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
+using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Service;
 using GenPres.Business;
@@ -15,12 +16,8 @@ namespace GenPres.Test.Unit.UserTest
     /// Summary description for UserTest
     /// </summary>
     [TestClass]
-    public class UserTest
+    public class UserTest : BaseGenPresTest
     {
-        public UserTest()
-        {
-            Settings.SettingsManager.Instance.Initialize();
-        }
 
         #region TestContext
         private TestContext testContextInstance;

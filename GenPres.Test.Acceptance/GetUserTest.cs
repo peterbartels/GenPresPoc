@@ -1,5 +1,5 @@
-﻿using GenPres.Business.Service;
-using GenPres.Controllers;
+﻿using GenPres.Controllers;
+using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GenPres.Test.Acceptance
@@ -8,13 +8,9 @@ namespace GenPres.Test.Acceptance
     /// Summary description for GetUserTest
     /// </summary>
     [TestClass]
-    public class GetUserTest
+    public class GetUserTest : BaseGenPresTest
     {
-        public GetUserTest()
-        {
-            Settings.SettingsManager.Instance.Initialize();
-        }
-
+        
         #region TestContext
         private TestContext testContextInstance;
 
@@ -62,7 +58,7 @@ namespace GenPres.Test.Acceptance
         {
             var loginController = new UserController();
 
-            var result = loginController.Login("Test", "test");
+            var result = loginController.Login("Test", "Test");
 
             Assert.IsTrue(ActionResultParser.GetSuccessValueFromActionResult(result), "System user NOT successfully logged in");
         }

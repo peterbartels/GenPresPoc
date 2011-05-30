@@ -19,7 +19,7 @@ namespace GenPres.Controllers
 
         public ActionResult Login(string userName, string password)
         {
-            UserAssembler.RegisterDependencies();
+            GenPresApplication.Initialize();
             return this.Direct(new { success = UserService.AuthenticateUser(userName, password) });
         }
     }

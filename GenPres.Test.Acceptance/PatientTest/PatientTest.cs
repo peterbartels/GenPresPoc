@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using GenPres.Business.Data.Client;
+using GenPres.Business.Data.Client.Patient;
 using GenPres.Business.Data.DataAccess.Repository;
-using GenPres.Business.Domain;
 using GenPres.Business.Service;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess.Repository;

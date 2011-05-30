@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StructureMap">
+      <HintPath>..\..\..\StructureMap\deploy\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -49,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GenFormAssembler.cs" />
+    <Compile Include="GenPresApplication.cs" />
     <Compile Include="PatientAssembler.cs" />
     <Compile Include="UserAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

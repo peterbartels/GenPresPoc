@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Data;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using GenPres.Business.Data.Client;
-using GenPres.Business.Data.DataAccess.Mapper;
+using GenPres.Business.Data.Client.Patient;
+using GenPres.Business.Data.DataAccess.Mapper.Patient;
 using GenPres.Business.Data.DataAccess.Repository;
-using GenPres.Business.Domain;
+using GenPres.Business.Domain.Patient;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
 using GenPres.DataAccess.Repository;
+using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
 
 namespace GenPres.Test.Unit.PatientTest
 {
     [TestClass]
-    public class PatientTest
+    public class PatientTest : BaseGenPresTest
     {
         public PatientTest()
         {

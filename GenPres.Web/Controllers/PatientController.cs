@@ -12,7 +12,7 @@ namespace GenPres.Controllers
         {
             base.Initialize(requestContext);
             Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
-            PatientAssembler.RegisterDependencies();
+            GenPresApplication.Initialize();
         }
 
         public ActionResult GetLogicalUnits()

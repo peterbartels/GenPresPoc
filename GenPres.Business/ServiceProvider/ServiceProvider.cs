@@ -1,22 +1,18 @@
 ﻿using System;
-using Microsoft.Practices.Unity;
-using IServiceProvider = GenPres.Business.ServiceProvider.IServiceProvider;
+using StructureMap;
+using StructureMap.Configuration.DSL;
 
 namespace GenPres.Business.ServiceProvider
 {
     public abstract class ServiceProvider: IServiceProvider
     {
-        private readonly IUnityContainer _container;
-
+        
         protected ServiceProvider()
-        { _container = new UnityContainer(); }
+        { }
 
         #region IServiceProvider Members
 
-        protected void RegisterInstance<T>(T instance)
-        {
-            _container.RegisterInstance(instance);
-        }
+        
 
         protected static T CreateInstance<T>(T instance, object lockThis) where T : class, IServiceProvider
         {
@@ -37,7 +33,7 @@ namespace GenPres.Business.ServiceProvider
 
         public T Resolve<T>()
         {
-            return _container.Resolve<T>();
+            return (T)ObjectFactory.GetInstance(typeof(T));
         }
 
         #endregion
@@ -53,7 +49,16 @@ namespace GenPres.Business.ServiceProvider
 
         public void RegisterInstanceOfType<T>(T instance)
         {
-            RegisterInstance(instance);
+            var _registry = new Registry();
+            
+            _registry.For<T>().Use(instance);
+
+            ObjectFactory.Initialize(x =>
+            {
+                x.AddRegistry(_registry);
+            });
+
         }
     }
 }
+

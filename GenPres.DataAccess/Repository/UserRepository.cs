@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GenPres.Business.Data.DataAccess.Mapper;
+using GenPres.Business.Data.DataAccess.Mapper.User;
 using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.Domain;
 using DB=GenPres.Database;

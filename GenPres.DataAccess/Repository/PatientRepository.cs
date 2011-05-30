@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GenPres.Business.Data.DataAccess.Mapper;
+using GenPres.Business.Data.DataAccess.Mapper.Patient;
 using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.Domain;
+using GenPres.Business.Domain.Patient;
 using DB = GenPres.Database;
 using GenPres.Business.Domain;
 

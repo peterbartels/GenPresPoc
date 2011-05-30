@@ -26,7 +26,7 @@ Ext.application ({
         loginWindow.show();
 
         GenPresApplication = this;
-        this.items.push(loginWindow);
+        //this.items.push(loginWindow);
     }
 });
 

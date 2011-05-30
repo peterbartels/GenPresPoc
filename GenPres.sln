@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Business", "GenPres
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Acceptance", "GenPres.Test.Acceptance\GenPres.xTest.Acceptance.csproj", "{C9542E78-E7FD-4928-86BE-C8D6A5384B49}"
 EndProject
-Project("{00000000-0000-0000-0000-000000000000}") = "GenPres.Web", "GenPres.Web\GenPres.Web.csproj", "{6702A117-385F-4CC1-AC3A-AFD900A07C82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Web", "GenPres.Web\GenPres.Web.csproj", "{6702A117-385F-4CC1-AC3A-AFD900A07C82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Settings", "GenPres.Settings\GenPres.Settings.csproj", "{1F0DD355-EA3A-4293-BF30-81FE49DD6767}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.ObjectModel", "GenPres.ObjectModel\GenPres.ObjectModel.csproj", "{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Assembler", "GenPres.Assembler\GenPres.Assembler.csproj", "{0812617A-AA94-4A2F-926E-814C531B94E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.General", "GenPres.xTest.General\GenPres.xTest.General.csproj", "{7A32985F-5695-41E8-99DB-627E5E327B9D}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -97,6 +99,12 @@ Global
 		{0812617A-AA94-4A2F-926E-814C531B94E7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0812617A-AA94-4A2F-926E-814C531B94E7}.Testing|Any CPU.ActiveCfg = Release|Any CPU
 		{0812617A-AA94-4A2F-926E-814C531B94E7}.Testing|Any CPU.Build.0 = Release|Any CPU
+		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Testing|Any CPU.ActiveCfg = Release|Any CPU
+		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Testing|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

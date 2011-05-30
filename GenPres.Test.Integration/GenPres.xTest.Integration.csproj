@@ -71,6 +71,10 @@
       <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
       <Name>GenPres.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenPres.xTest.General\GenPres.xTest.General.csproj">
+      <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
+      <Name>GenPres.xTest.General</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
