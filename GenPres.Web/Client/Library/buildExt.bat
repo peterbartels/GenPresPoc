@@ -1,0 +1,1 @@
+c:\Development\Ext\jsbuilder\JSBuilder.bat --projectFile C:\Development\Ext\extjs\build\sdk.jsb3 --deployDir C:\Development\ExtBuild --verbose

@@ -646,7 +646,7 @@ Ext.define('GenPres.store.patient.PatientTreeStore', {
             expanded: true
     },
 
-    autoLoad:false,
+    autoLoad:true,
 
     model:'GenPres.model.patient.PatientModel'
 });
@@ -724,7 +724,7 @@ Ext.define('GenPres.view.main.ToolbarButton', {
 Ext.define('GenPres.view.main.TopToolbar', {
     extend:'Ext.container.ButtonGroup',
     dock: 'top',
-    
+
     initComponent : function(){
         var me = this;
         me.items = [
@@ -769,6 +769,7 @@ Ext.define('GenPres.view.main.TopToolbar', {
                 ]
             }
         ]
+        me.callParent();
     }
 })
 
@@ -784,20 +785,21 @@ Ext.define('GenPres.view.main.TopToolbar', {
     scroll:'both',
     autoScroll:true,
 
-    store: 'GenPres.app.patient.PatientTreeStore',
+    store: 'patient.PatientTreeStore',
 
     constructor : function(){
-        this.callParent();
+        var me = this;
+        me.callParent();
+        
+        me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
+        me.store.load();
+
     },
 
     initComponent : function(){
-
-        var hackfunc = function(){
-            this.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
-            this.store.load();
-        }
-        Ext.Function.defer(hackfunc,2000,this);
+        var me = this;
         me.callParent();
+
     }
 });
 Ext.define('GenPres.view.main.MainViewCenter', {
@@ -810,7 +812,7 @@ Ext.define('GenPres.view.main.MainViewCenter', {
 
     initComponent : function(){
         var me = this;
-        me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
+
         me.items = [
             {html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>'}
             /*This is a codesmell: Ext.create('GenPres.control.ValueField', {
@@ -825,6 +827,9 @@ Ext.define('GenPres.view.main.MainViewCenter', {
                 maxValue: 125
             })*/
         ];
+
+        me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
+
         me.callParent();
     },
 
@@ -978,18 +983,7 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
         ]
     }
 });
-﻿Ext.define('GenForm.app.view.Viewport', {
-    extend: 'Ext.container.Viewport',
 
-    layout: 'fit',
-    items: [
-        {
-            xtype: 'panel',
-            title: 'GenForm Formualarium Applicatie',
-            html: 'Work in progress'
-        }
-    ]
-});
 ﻿Ext.define('GenPres.controller.patient.PatientController', {
     extend: 'Ext.app.Controller',
 

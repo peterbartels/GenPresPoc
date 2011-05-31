@@ -63,6 +63,8 @@
     <Compile Include="Aspect\ChangeStateAttribute.cs" />
     <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />
+    <Compile Include="Data\Client\GenForm\ValueDto.cs" />
+    <Compile Include="Data\Client\GenForm\ValueListAssembler.cs" />
     <Compile Include="Data\Client\IDto.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,6 +93,7 @@
     <Compile Include="Domain\Patient\LogicalUnit.cs" />
     <Compile Include="Domain\Patient\Patient.cs" />
     <Compile Include="Domain\Patient\PatientCollection.cs" />
+    <Compile Include="Domain\Prescription\Medicine\Medicine.cs" />
     <Compile Include="Domain\Prescription\Prescription.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="GenPresServiceProvider.cs" />
@@ -98,6 +101,7 @@
     <Compile Include="ServiceProvider\DalServiceProvider.cs" />
     <Compile Include="ServiceProvider\IServiceProvider.cs" />
     <Compile Include="ServiceProvider\ServiceProvider.cs" />
+    <Compile Include="Service\MedicineService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
     <Compile Include="Service\UserService.cs" />

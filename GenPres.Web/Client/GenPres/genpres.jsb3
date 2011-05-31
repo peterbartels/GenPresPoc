@@ -1,0 +1,110 @@
+{
+    "projectName": "GenPres",
+    "licenseText": "GenPres (c) 2011",
+    "packages": [
+        {
+            "name": "GenPres",
+            "target": "genpkgs/genpres.js",
+            "id": "genpres",
+            "files": [
+
+                /* Util */
+                {
+                    "path": "./app/util/",
+                    "name": "Process.js"
+                },{
+                    "path": "./app/util/",
+                    "name": "Spotlight.js"
+                },
+
+                /*Control*/
+                {
+                    "path": "./app/control/",
+                    "name": "NumericBoundListKeyNav.js"
+                },{
+                    "path": "./app/control/",
+                    "name": "ValueField.js"
+                },
+
+                /* Session */
+                {
+                    "path": "./app/session/",
+                    "name": "PatientSession.js"
+                },
+
+                /* Store */
+                {
+                    "path": "./app/store/patient/",
+                    "name": "LogicalUnitStore.js"
+                },{
+                    "path": "./app/store/patient/",
+                    "name": "PatientInfoStore.js"
+                },{
+                    "path": "./app/store/patient/",
+                    "name": "PatientTreeStore.js"
+                },
+
+                /* Model */
+                {
+                    "path": "./app/model/patient/",
+                    "name": "LogicalUnitModel.js"
+                },{
+                    "path": "./app/model/patient/",
+                    "name": "PatientModel.js"
+                },
+
+                /* View */
+                {
+                    "path": "./app/view/prescription/",
+                    "name": "OverView.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "PatientInfo.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "TopToolbar.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "PatientTree.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "MainViewCenter.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "MainViewLeft.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "MainView.js"
+                },{
+                    "path": "./app/view/user/",
+                    "name": "LogicalUnitSelector.js"
+                },{
+                    "path": "./app/view/user/",
+                    "name": "LoginWindow.js"
+                },{
+                    "path": "./app/view/",
+                    "name": "Viewport.js"
+                },
+
+                /* Controller */
+                {
+                    "path": "./app/controller/patient/",
+                    "name": "PatientController.js"
+                },{
+                    "path": "./app/controller/user/",
+                    "name": "LoginController.js"
+                }
+            ]
+        }
+    ],
+    "builds": [
+        {
+            "name": "All",
+            "target": "genpres-all.js",
+            "compress": true,
+            "packages": [
+                "genpres"
+            ]
+        }
+    ]
+}

@@ -68,8 +68,8 @@ namespace GenPres.Test.Integration.UserTest
         public void User_can_Authenticate()
         {
             _initializeUserTest();
-            string username = "Test";
-            string password = "test";
+            string username = "test";
+            string password = "Test";
             Assert.IsTrue(UserService.AuthenticateUser(username, password));
         }       
     }

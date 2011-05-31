@@ -9,17 +9,17 @@ namespace GenPres.Business.WebService
     {
         public string[] GetGenerics()
         {
-            throw new NotImplementedException();
+            return new string[] {"paracetamol", "dopamine"};
         }
 
         public string[] GetRoutes()
         {
-            throw new NotImplementedException();
+            return new string[] { "or", "rect", "iv" };
         }
 
         public string[] GetShapes()
         {
-            throw new NotImplementedException();
+            return new string[] { "zetp", "infuus", "tabl" };
         }
     }
 }

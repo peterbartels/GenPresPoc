@@ -48,6 +48,7 @@
     <Reference Include="Typemock.ArrangeActAssert, Version=6.0.10.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MedicineTest\MedicineTest.cs" />
     <Compile Include="GetUserTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
     <Compile Include="PatientTest\PatientTest.cs" />
@@ -78,6 +79,7 @@
       <Name>GenPres.xTest.General</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
