@@ -59,6 +59,12 @@
                     "path": "./app/view/main/",
                     "name": "MainView.js"
                 },{
+                    "path": "./app/view/prescription/",
+                    "name": "PrescriptionForm.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "DrugComposition.js"
+                },{
                     "path": "./app/view/user/",
                     "name": "LogicalUnitSelector.js"
                 },{
@@ -73,6 +79,9 @@
                 },{
                     "path": "./app/controller/user/",
                     "name": "LoginController.js"
+                },{
+                    "path": "./app/controller/prescription/",
+                    "name": "PrescriptionController.js"
                 }
             ]
         }

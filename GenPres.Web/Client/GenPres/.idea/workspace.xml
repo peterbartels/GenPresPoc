@@ -23,46 +23,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PatientTree.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/main/PatientTree.js">
+      <file leaf-file-name="PatientController.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controller/patient/PatientController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="8" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0">
+            <state line="4" column="0" selection-start="193" selection-end="193" vertical-scroll-proportion="0.07674944">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PatientInfo.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/main/PatientInfo.js">
+      <file leaf-file-name="PrescriptionController.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0">
+            <state line="25" column="5" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TopToolbar.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/view/main/TopToolbar.js">
+      <file leaf-file-name="PrescriptionForm.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="26" selection-start="2122" selection-end="2122" vertical-scroll-proportion="1.1512415">
+            <state line="18" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenPres.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/style/css/GenPres.css">
+      <file leaf-file-name="MainViewCenter.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/main/MainViewCenter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="19" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
+            <state line="16" column="12" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PatientTreeStore.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/store/patient/PatientTreeStore.js">
+      <file leaf-file-name="genpres.jsb3" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/genpres.jsb3">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="6" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
+            <state line="69" column="17" selection-start="2571" selection-end="2571" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -82,22 +82,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js" />
-        <option value="$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js" />
-        <option value="$PROJECT_DIR$/genpres-all.js" />
         <option value="$PROJECT_DIR$/app/view/main/MainViewLeft.js" />
         <option value="$PROJECT_DIR$/app/view/main/MainView.js" />
         <option value="$PROJECT_DIR$/app/view/Viewport.js" />
-        <option value="$PROJECT_DIR$/app/view/main/MainViewCenter.js" />
-        <option value="$PROJECT_DIR$/app/controller/patient/PatientController.js" />
-        <option value="$PROJECT_DIR$/app/Application.js" />
         <option value="$PROJECT_DIR$/app/view/prescription/OverView.js" />
-        <option value="$PROJECT_DIR$/genpres.jsb3" />
         <option value="$PROJECT_DIR$/app/store/patient/PatientTreeStore.js" />
         <option value="$PROJECT_DIR$/app/view/main/PatientTree.js" />
         <option value="$PROJECT_DIR$/style/css/GenPres.css" />
         <option value="$PROJECT_DIR$/app/view/main/PatientInfo.js" />
         <option value="$PROJECT_DIR$/app/view/main/TopToolbar.js" />
+        <option value="$PROJECT_DIR$/app/controller/patient/PatientController.js" />
+        <option value="$PROJECT_DIR$/app/Application.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/DrugComposition.js" />
+        <option value="$PROJECT_DIR$/genpres.jsb3" />
+        <option value="$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js" />
+        <option value="$PROJECT_DIR$/app/view/main/MainViewCenter.js" />
       </list>
     </option>
   </component>
@@ -356,7 +356,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="patient" />
+              <option name="myItemId" value="prescription" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -375,6 +375,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="patient" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -557,60 +561,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="278" selection-end="278" vertical-scroll-proportion="0.24943566" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="12" selection-start="462" selection-end="462" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/patient/PatientModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="82" selection-end="82" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/user/LoginController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="12" selection-start="172" selection-end="173" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/patient/PatientController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="3" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/MainViewCenter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="22" selection-start="861" selection-end="861" vertical-scroll-proportion="0.6331828" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/genpres-all.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="776" column="29" selection-start="20137" selection-end="20148" vertical-scroll-proportion="0.019473081" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/MainView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="3" selection-start="0" selection-end="565" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/genpres.jsb3">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="18" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.30699775">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/prescription/OverView.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="24" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/store/patient/PatientTreeStore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="6" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
@@ -625,13 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/PatientTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="8" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/style/css/GenPres.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="53" column="19" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
@@ -641,14 +584,91 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/main/PatientInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0">
+        <state line="5" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0959368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/PatientTree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="8" selection-start="710" selection-end="710" vertical-scroll-proportion="0.47968397">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/main/TopToolbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="26" selection-start="2122" selection-end="2122" vertical-scroll-proportion="1.1512415">
+        <state line="43" column="63" selection-start="1419" selection-end="1450" vertical-scroll-proportion="0.6354402">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/user/LoginWindow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="34" selection-start="640" selection-end="640" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/MainView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="10" selection-start="402" selection-end="402" vertical-scroll-proportion="0.30699775">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0959368">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BuildGenPres.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genpres.jsb3">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="69" column="17" selection-start="2571" selection-end="2571" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/MainViewCenter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="12" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="412" selection-end="412" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="5" selection-start="718" selection-end="718" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/patient/PatientController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="193" selection-end="193" vertical-scroll-proportion="0.07674944">
           <folding />
         </state>
       </provider>

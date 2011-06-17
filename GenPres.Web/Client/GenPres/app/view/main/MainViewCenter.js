@@ -10,7 +10,10 @@ Ext.define('GenPres.view.main.MainViewCenter', {
         var me = this;
 
         me.items = [
-            {html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>'}
+            {
+                html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>',
+                border:false
+            }
             /*This is a codesmell: Ext.create('GenPres.control.ValueField', {
                 labelWidth: 70,
                 fieldLabel: 'Default',
@@ -25,8 +28,8 @@ Ext.define('GenPres.view.main.MainViewCenter', {
         ];
 
         me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
-
         me.callParent();
+        GenPresApplication.MainCenter = this;
     },
 
     height: 100,

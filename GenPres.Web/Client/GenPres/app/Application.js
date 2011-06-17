@@ -10,7 +10,8 @@ Ext.application ({
 
     controllers: [
         'user.LoginController',
-        'patient.PatientController'
+        'patient.PatientController',
+        'prescription.PrescriptionController'
     ],
     
     launch: function() {
@@ -26,7 +27,6 @@ Ext.application ({
         loginWindow.show();
 
         GenPresApplication = this;
-        //this.items.push(loginWindow);
     }
 });
 

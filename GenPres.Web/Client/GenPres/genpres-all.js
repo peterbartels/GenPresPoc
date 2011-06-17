@@ -629,8 +629,6 @@ Ext.define('GenPres.store.patient.PatientTreeStore', {
             expanded: true
     },
 
-    autoLoad:true,
-
     model:'GenPres.model.patient.PatientModel'
 });
 Ext.define('GenPres.model.patient.LogicalUnitModel', {
@@ -717,10 +715,9 @@ Ext.define('GenPres.view.main.PatientInfo', {
                     '<div class="patientInfoValue">',
                         '<div class="patientInfoHeader"><b>Afdeling/bed:</b> {Unit} - {Bed}</div><br />',
                         '<div class="patientInfoHeader"><b>Opname: {RegisterDate}</b></div><br />',
-                        '<div class="patientInfoHeader"><b>Ligdag: {Days}</b></div><br/>',
+                        '<div class="patientInfoHeader"><b>Ligdag: {Days}</b></div>',
                     '</div>',
-                '</div><br />',
-                
+                '</div>',
             '</tpl>'),
 
     store : 'patient.PatientInfoStore',
@@ -757,6 +754,7 @@ Ext.define('GenPres.view.main.TopToolbar', {
             {
                 xtype: 'buttongroup',
                 columns: 5,
+                height:86,
                 title: 'Algemeen',
                 items : [
                     Ext.create('GenPres.view.main.ToolbarButton', {icon:'Home_32.png', text:'Home'}),
@@ -769,7 +767,8 @@ Ext.define('GenPres.view.main.TopToolbar', {
             {xtype: 'tbseparator',height:20},
             {
                 xtype: 'buttongroup',
-                columns: 5,
+                columns: 3,
+                height:86,
                 title: 'Opties',
                 items : [
                     Ext.create('GenPres.view.main.ToolbarButton', {icon:'Template_32.png', text:'Sjablonen'}),
@@ -779,16 +778,17 @@ Ext.define('GenPres.view.main.TopToolbar', {
             },
             {
                 xtype: 'buttongroup',
-                columns: 5,
+                columns: 1,
                 title: 'Patient informatie',
                 id:'PatientInfoView',
                 width:350,
-                height:82,
+                height:86,
                 items : Ext.create('GenPres.view.main.PatientInfo')
             },
             {
                 xtype: 'buttongroup',
-                columns: 5,
+                columns: 1,
+                height:86,
                 title: 'Medewerker',
                 items : [
                     {html:' ', height:57, width:200}
@@ -820,8 +820,11 @@ Ext.define('GenPres.view.main.TopToolbar', {
             me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
             me.store.load();
         }
-        Ext.Function.defer(delayFunc, 3000);*/
 
+        Ext.Function.defer(delayFunc, 3000);*/
+        me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
+        me.store.load();
+        
 
     },
 
@@ -858,8 +861,8 @@ Ext.define('GenPres.view.main.MainViewCenter', {
         ];
 
         me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
-
         me.callParent();
+        GenPresApplication.MainCenter = this;
     },
 
     height: 100,
@@ -921,6 +924,44 @@ Ext.define('GenPres.view.main.MainView', {
         GenPresApplication.viewport.doLayout();
         
         return me;
+    }
+});
+Ext.define('GenPres.view.prescription.PrescriptionForm', {
+
+    extend: 'Ext.Panel',
+
+    region:'center',
+
+    constructor : function(){
+        var me = this;
+        me.callParent(arguments);
+    },
+
+    initComponent : function(){
+        var me = this;
+
+        /*me.items = [
+            Ext.create('GenPres.view.main.MainViewLeft'),
+            Ext.create('GenPres.view.main.MainViewCenter')
+        ];*/
+
+        me.items = [{html:'test'}];
+
+        me.callParent();
+
+        return me;
+    }
+});
+Ext.define('GenPres.view.prescription.DrugComposition', {
+
+    extend: 'Ext.Panel',
+    region: 'center',
+    xtype: 'panel',
+
+    border:false,
+
+    initComponent : function(){
+
     }
 });
 Ext.define('GenPres.view.user.LogicalUnitSelector', {
@@ -1036,7 +1077,7 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
 
     loadPatientData : function(tree, record){
         var infoStore = this.getPatientPatientInfoStoreStore();
-        infoStore.loadRecords([record], {addRecords: false})
+        infoStore.loadRecords([record], {addRecords: false});
     }
 });
 ﻿
@@ -1119,6 +1160,35 @@ Ext.define('GenPres.controller.user.LoginController', {
         this.loginWindow.close();
         Ext.create('GenPres.view.main.MainView', {logicalUnitId:this.logicalUnitId});
     }
+});
+Ext.define('GenPres.controller.prescription.PrescriptionController', {
+
+    extend: 'Ext.app.Controller',
+
+    stores:[],
+
+    models:[],
+
+    views:['main.PatientTree', 'prescription.PrescriptionForm'],
+
+    init: function() {
+        this.control({
+            'treepanel': {
+                itemclick: this.loadPrescriptionForm
+            }
+        });
+    },
+
+
+    loadPrescriptionForm : function(tree, record){
+        var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
+        GenPresApplication.MainCenter.items.removeAt(0)
+        GenPresApplication.MainCenter.doLayout();
+        GenPresApplication.MainCenter.items.add(form);
+        GenPresApplication.MainCenter.doLayout();
+
+    }
+
 });
 
 

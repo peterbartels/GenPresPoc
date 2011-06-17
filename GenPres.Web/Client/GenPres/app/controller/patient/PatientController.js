@@ -21,6 +21,6 @@
 
     loadPatientData : function(tree, record){
         var infoStore = this.getPatientPatientInfoStoreStore();
-        infoStore.loadRecords([record], {addRecords: false})
+        infoStore.loadRecords([record], {addRecords: false});
     }
 });
