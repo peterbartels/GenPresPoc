@@ -23,28 +23,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="genpres.jsb3" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/genpres.jsb3">
+      <file leaf-file-name="PatientTree.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/main/PatientTree.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="44" selection-start="2674" selection-end="2674" vertical-scroll-proportion="0.0">
+            <state line="25" column="8" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OverView.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/view/prescription/OverView.js">
+      <file leaf-file-name="PatientInfo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/main/PatientInfo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="4" selection-start="73" selection-end="73" vertical-scroll-proportion="0.057562076">
+            <state line="5" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainView.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/main/MainView.js">
+      <file leaf-file-name="TopToolbar.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/view/main/TopToolbar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="3" selection-start="0" selection-end="565" vertical-scroll-proportion="0.0">
+            <state line="60" column="26" selection-start="2122" selection-end="2122" vertical-scroll-proportion="1.1512415">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenPres.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/style/css/GenPres.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="19" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PatientTreeStore.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/store/patient/PatientTreeStore.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="6" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -64,8 +82,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/model/patient/PatientModel.js" />
-        <option value="$PROJECT_DIR$/app/model/patient/LogicalUnitModel.js" />
         <option value="$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js" />
         <option value="$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js" />
         <option value="$PROJECT_DIR$/genpres-all.js" />
@@ -73,13 +89,15 @@
         <option value="$PROJECT_DIR$/app/view/main/MainView.js" />
         <option value="$PROJECT_DIR$/app/view/Viewport.js" />
         <option value="$PROJECT_DIR$/app/view/main/MainViewCenter.js" />
-        <option value="$PROJECT_DIR$/app/view/main/TopToolbar.js" />
         <option value="$PROJECT_DIR$/app/controller/patient/PatientController.js" />
         <option value="$PROJECT_DIR$/app/Application.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/OverView.js" />
+        <option value="$PROJECT_DIR$/genpres.jsb3" />
         <option value="$PROJECT_DIR$/app/store/patient/PatientTreeStore.js" />
         <option value="$PROJECT_DIR$/app/view/main/PatientTree.js" />
-        <option value="$PROJECT_DIR$/genpres.jsb3" />
-        <option value="$PROJECT_DIR$/app/view/prescription/OverView.js" />
+        <option value="$PROJECT_DIR$/style/css/GenPres.css" />
+        <option value="$PROJECT_DIR$/app/view/main/PatientInfo.js" />
+        <option value="$PROJECT_DIR$/app/view/main/TopToolbar.js" />
       </list>
     </option>
   </component>
@@ -128,6 +146,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -137,6 +157,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="style" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="style" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -169,6 +221,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="user" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -213,6 +269,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="patient" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -320,8 +398,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,8 +405,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="preferences.fileTypes" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Ext4/ext-4.0-pr3/src" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="GenPres_Acceptatie" serverId="b953ea21-af7e-43da-b4a1-baddf4919b8f">
     <servers>
@@ -417,7 +493,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -425,7 +501,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33368927" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3384944" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -481,29 +557,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/model/patient/LogicalUnitModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="16" selection-start="179" selection-end="179" vertical-scroll-proportion="0.13461539" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="17" selection-start="244" selection-end="248" vertical-scroll-proportion="0.23076923" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/MainViewLeft.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="17" selection-start="104" selection-end="108" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="13" selection-start="278" selection-end="278" vertical-scroll-proportion="0.24943566" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/patient/PatientTreeStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="17" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Application.js">
@@ -518,9 +574,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/user/LoginController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="12" selection-start="172" selection-end="173" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="9" column="12" selection-start="172" selection-end="173" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/patient/PatientController.js">
@@ -528,51 +582,73 @@
         <state line="25" column="3" selection-start="692" selection-end="692" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/PatientTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="253" selection-end="253" vertical-scroll-proportion="0.24943566">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/main/MainViewCenter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="22" selection-start="861" selection-end="861" vertical-scroll-proportion="0.6331828">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/main/TopToolbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="24" selection-start="2224" selection-end="2224" vertical-scroll-proportion="0.8273138">
-          <folding />
-        </state>
+        <state line="33" column="22" selection-start="861" selection-end="861" vertical-scroll-proportion="0.6331828" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/genpres-all.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="776" column="29" selection-start="20137" selection-end="20148" vertical-scroll-proportion="0.019473081">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/genpres.jsb3">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="44" selection-start="2674" selection-end="2674" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="776" column="29" selection-start="20137" selection-end="20148" vertical-scroll-proportion="0.019473081" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/main/MainView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="3" selection-start="0" selection-end="565" vertical-scroll-proportion="0.0">
+        <state line="24" column="3" selection-start="0" selection-end="565" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genpres.jsb3">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="18" selection-start="1164" selection-end="1164" vertical-scroll-proportion="0.30699775">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/OverView.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="4" selection-start="73" selection-end="73" vertical-scroll-proportion="0.057562076">
+        <state line="18" column="24" selection-start="424" selection-end="424" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/patient/PatientTreeStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="6" selection-start="229" selection-end="229" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/patient/PatientInfoStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/PatientTree.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="8" selection-start="710" selection-end="710" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/style/css/GenPres.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="19" selection-start="891" selection-end="891" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/PatientInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="111" selection-end="111" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/TopToolbar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="26" selection-start="2122" selection-end="2122" vertical-scroll-proportion="1.1512415">
           <folding />
         </state>
       </provider>

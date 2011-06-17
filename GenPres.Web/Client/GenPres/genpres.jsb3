@@ -7,33 +7,22 @@
             "target": "genpkgs/genpres.js",
             "id": "genpres",
             "files": [
-
-                /* Util */
                 {
                     "path": "./app/util/",
                     "name": "Process.js"
                 },{
                     "path": "./app/util/",
                     "name": "Spotlight.js"
-                },
-
-                /*Control*/
-                {
+                },{
                     "path": "./app/control/",
                     "name": "NumericBoundListKeyNav.js"
                 },{
                     "path": "./app/control/",
                     "name": "ValueField.js"
-                },
-
-                /* Session */
-                {
+                },{
                     "path": "./app/session/",
                     "name": "PatientSession.js"
-                },
-
-                /* Store */
-                {
+                },{
                     "path": "./app/store/patient/",
                     "name": "LogicalUnitStore.js"
                 },{
@@ -42,19 +31,13 @@
                 },{
                     "path": "./app/store/patient/",
                     "name": "PatientTreeStore.js"
-                },
-
-                /* Model */
-                {
+                },{
                     "path": "./app/model/patient/",
                     "name": "LogicalUnitModel.js"
                 },{
                     "path": "./app/model/patient/",
                     "name": "PatientModel.js"
-                },
-
-                /* View */
-                {
+                },{
                     "path": "./app/view/prescription/",
                     "name": "OverView.js"
                 },{
@@ -84,10 +67,7 @@
                 },{
                     "path": "./app/view/",
                     "name": "Viewport.js"
-                },
-
-                /* Controller */
-                {
+                },{
                     "path": "./app/controller/patient/",
                     "name": "PatientController.js"
                 },{

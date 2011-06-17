@@ -568,23 +568,6 @@ Ext.define('GenPres.control.ValueField', {
     }
 });
 
-Ext.define('GenPres.model.patient.LogicalUnitModel', {
-    extend: 'Ext.data.Model',
-
-    idProperty : 'id',
-
-    fields: [
-        { name: 'id', type: 'float' },
-        { name: 'text', type: 'string' },
-        { name: 'leaf', type: 'boolean' }
-    ],
-
-    proxy : {
-        type:'direct',
-        directFn : Patient.GetLogicalUnits
-    }
-});
-
 Ext.define('GenPres.session.PatientSession', {
 
     currentLogicalUnitId:0,
@@ -650,6 +633,23 @@ Ext.define('GenPres.store.patient.PatientTreeStore', {
 
     model:'GenPres.model.patient.PatientModel'
 });
+Ext.define('GenPres.model.patient.LogicalUnitModel', {
+    extend: 'Ext.data.Model',
+
+    idProperty : 'id',
+
+    fields: [
+        { name: 'id', type: 'float' },
+        { name: 'text', type: 'string' },
+        { name: 'leaf', type: 'boolean' }
+    ],
+
+    proxy : {
+        type:'direct',
+        directFn : Patient.GetLogicalUnits
+    }
+});
+
 
 Ext.define('GenPres.model.patient.PatientModel', {
     extend: 'Ext.data.Model',
@@ -678,6 +678,32 @@ Ext.define('GenPres.model.patient.PatientModel', {
     }
 });
 
+Ext.define('GenPres.view.main.MainView', {
+
+    extend: 'Ext.Panel',
+    
+    layout:'border',
+    
+    constructor : function(){
+        var me = this;
+        me.callParent(arguments);
+    },
+
+    initComponent : function(){
+        var me = this;
+
+        me.items = [
+            Ext.create('GenPres.view.main.MainViewLeft'),
+            Ext.create('GenPres.view.main.MainViewCenter')
+        ];
+        me.callParent();
+
+        GenPresApplication.viewport.items.add(me);
+        GenPresApplication.viewport.doLayout();
+
+        return me;
+    }
+});
 Ext.define('GenPres.view.main.PatientInfo', {
 
     extend: 'Ext.view.View',
@@ -790,9 +816,12 @@ Ext.define('GenPres.view.main.TopToolbar', {
     constructor : function(){
         var me = this;
         me.callParent();
-        
-        me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
-        me.store.load();
+        /*var delayFunc = function(){
+            me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
+            me.store.load();
+        }
+        Ext.Function.defer(delayFunc, 3000);*/
+
 
     },
 

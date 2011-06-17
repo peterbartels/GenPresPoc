@@ -11,10 +11,9 @@ Ext.define('GenPres.view.main.PatientInfo', {
                     '<div class="patientInfoValue">',
                         '<div class="patientInfoHeader"><b>Afdeling/bed:</b> {Unit} - {Bed}</div><br />',
                         '<div class="patientInfoHeader"><b>Opname: {RegisterDate}</b></div><br />',
-                        '<div class="patientInfoHeader"><b>Ligdag: {Days}</b></div><br/>',
+                        '<div class="patientInfoHeader"><b>Ligdag: {Days}</b></div>',
                     '</div>',
-                '</div><br />',
-                
+                '</div>',
             '</tpl>'),
 
     store : 'patient.PatientInfoStore',

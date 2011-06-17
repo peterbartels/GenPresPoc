@@ -15,9 +15,15 @@
     constructor : function(){
         var me = this;
         me.callParent();
-        
+        /*var delayFunc = function(){
+            me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
+            me.store.load();
+        }
+
+        Ext.Function.defer(delayFunc, 3000);*/
         me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
         me.store.load();
+        
 
     },
 

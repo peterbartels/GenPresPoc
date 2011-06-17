@@ -7,11 +7,11 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <!-- ExtJS library -->
-    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/Library/Ext4/bootstrap.js") %>"></script>
+    <script language="JavaScript" type="text/javascript" src="<%= Url.Content("~/Client/Library/ext-all-debug.js") %>"></script>
     <!-- ExtJS library -->
     
     <!-- ############## STYLES(THEME) ############## -->
-    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/Library/Ext4/resources/css/ext-all.css") %>" />
+    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/Library/extjs/resources/css/ext-all.css") %>" />
     <!-- ############## STYLES(THEME) ############## -->
     
     <script type="text/javascript" src="<%= Url.Content("~/Direct/Api") %>"></script>
