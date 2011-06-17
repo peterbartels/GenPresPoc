@@ -8,10 +8,13 @@ namespace GenPres.Business.Data.Client.GenForm
 {
     public class ValueListAssembler
     {
-        public static ReadOnlyCollection<string> AssembleValueListDto(string[] values)
+        public static ReadOnlyCollection<ValueDto> AssembleValueListDto(string[] values)
         {
-            var resultValues = values.ToList();
-            return resultValues.AsReadOnly();
+            var valueDtos = values.Select(
+                t => new ValueDto {Value = t}
+            ).ToList();
+
+            return valueDtos.AsReadOnly();
         }
     }
 }

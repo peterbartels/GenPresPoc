@@ -2,16 +2,19 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     extend: 'Ext.app.Controller',
 
-    stores:[],
+    stores:['prescription.GenericStore', 'prescription.RouteStore', 'prescription.ShapeStore'],
 
     models:[],
 
-    views:['main.PatientTree', 'prescription.PrescriptionForm'],
+    views:['prescription.DrugComposition', 'main.PatientTree', 'prescription.PrescriptionForm', 'GenPres.view.main.TopToolbar'],
 
     init: function() {
         this.control({
             'treepanel': {
                 itemclick: this.loadPrescriptionForm
+            },
+            'button[action=home]': {
+                click : this.loadHome
             }
         });
     },
@@ -19,9 +22,12 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     loadPrescriptionForm : function(tree, record){
         var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
-        GenPresApplication.MainCenter.items.removeAt(0);
-        GenPresApplication.MainCenter.items.removeAll();
         GenPresApplication.MainCenter.items.add(form);
         GenPresApplication.MainCenter.doLayout();
+        GenPresApplication.MainCenter.layout.setActiveItem(1);
+    },
+
+    loadHome : function(){
+        GenPresApplication.MainCenter.layout.setActiveItem(0);
     }
 });

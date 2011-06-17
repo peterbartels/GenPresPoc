@@ -2,8 +2,10 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     extend: 'Ext.Panel',
 
-    region:'center',
+    id: 'card-prescriptionForm',
 
+    border:false,
+    
     constructor : function(){
         var me = this;
         me.callParent(arguments);
@@ -17,7 +19,9 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
             Ext.create('GenPres.view.main.MainViewCenter')
         ];*/
 
-        me.items = [{html:'test'}];
+        me.items = [
+            Ext.create('GenPres.view.prescription.DrugComposition')
+        ];
 
         me.callParent();
 

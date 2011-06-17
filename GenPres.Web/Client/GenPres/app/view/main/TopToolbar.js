@@ -27,7 +27,7 @@ Ext.define('GenPres.view.main.TopToolbar', {
                 height:86,
                 title: 'Algemeen',
                 items : [
-                    Ext.create('GenPres.view.main.ToolbarButton', {icon:'Home_32.png', text:'Home'}),
+                    Ext.create('GenPres.view.main.ToolbarButton', {icon:'Home_32.png', text:'Home', action:'home'}),
                     {xtype: 'tbseparator',height:20},
                     Ext.create('GenPres.view.main.ToolbarButton', {icon:'Prescription_32.png', text:'Voorschriften', width:80}),
                     {xtype: 'tbseparator',height:20},

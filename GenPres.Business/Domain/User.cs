@@ -1,7 +1,7 @@
 ﻿using System;
 using GenPres.Business.Data.DataAccess.Repository;
 using GenPres.Business.ServiceProvider;
-using GenPres.Business.Aspect;
+//using GenPres.Business.Aspect;
 
 public enum StatusEnum
 {
@@ -33,11 +33,11 @@ namespace GenPres.Business.Domain
 
         public int Id { get; set; }
 
-        [LowerCase]
-        [ChangeState]
+        //[LowerCase]
+        //[ChangeState]
         public string UserName { get; set; }
 
-        [ChangeState]
+        //[ChangeState]
         public string PassCrypt { get; set; }
 
 

@@ -17,8 +17,6 @@
         var me = this;
         me.mixins.process.constructor.call(me);
         me.callParent(arguments);
-        
-        
     },
 
     initComponent: function() {
