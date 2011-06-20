@@ -21,7 +21,7 @@
 
     initComponent: function() {
         this.items = [
-            { html: '<img src="Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box'},
+            { html: '<img src=" Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box'},
             { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
                 items: [
                     { xtype: 'form', border:false, items: [

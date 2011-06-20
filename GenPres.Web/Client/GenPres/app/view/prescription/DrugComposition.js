@@ -30,7 +30,9 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Toedieningsvorm'
         });
 
-        me.items = [genericCombo, routeCombo, shapeCombo];
+        var quantity = Ext.create('Ext.form.field.NumberField')
+
+        me.items = [genericCombo, routeCombo, shapeCombo, quantity];
 
         me.callParent();
     }

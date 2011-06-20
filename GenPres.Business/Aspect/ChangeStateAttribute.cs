@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using PostSharp.Aspects;
 
 namespace GenPres.Business.Aspect
@@ -24,4 +24,4 @@ namespace GenPres.Business.Aspect
         }
         
     }
-}*/
+}

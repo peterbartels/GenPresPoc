@@ -7,6 +7,8 @@
     folderSort: true,
     useArrows: true,
 
+    flex: 1,
+
     scroll:'both',
     autoScroll:true,
 
@@ -15,21 +17,15 @@
     constructor : function(){
         var me = this;
         me.callParent();
-        /*var delayFunc = function(){
-            me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
-            me.store.load();
-        }
 
-        Ext.Function.defer(delayFunc, 3000);*/
-        me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
-        me.store.load();
         
-
     },
 
     initComponent : function(){
         var me = this;
         me.callParent();
-
+        me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
+        console.log(me.store.model.proxy.extraParams.logicalUnitId);
+        me.expandAll();
     }
 });

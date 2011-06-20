@@ -7,7 +7,7 @@ Ext.define('GenPres.store.patient.PatientTreeStore', {
     root: {
             text: 'Patienten',
             id: 'src',
-            expanded: true
+            expanded: false
     },
 
     model:'GenPres.model.patient.PatientModel'

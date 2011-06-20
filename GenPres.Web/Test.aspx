@@ -67,7 +67,7 @@ body .jasmine_reporter div
     -->
     
   <script type="text/javascript" src="Client/GenPres/genpres-all.js"></script>  
-  <script type="text/javascript" src="Client/GenPres/app/Application.js"></script>
+  
 </head>
 
 <body>

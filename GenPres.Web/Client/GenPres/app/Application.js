@@ -24,7 +24,11 @@ Ext.application ({
         });
             
         loginWindow = Ext.create('GenPres.view.user.LoginWindow');
-        loginWindow.show();
+
+        if(typeof(window.dontLoadApplication) == "undefined"){
+            loginWindow.show();
+        }
+
 
         GenPresApplication = this;
     }

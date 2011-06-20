@@ -30,6 +30,7 @@ namespace GenPres.Test.Acceptance.MedicineTest
             Assert.IsTrue(generics.Count > 0, "No generics found");
             //Assert.IsTrue(generics.Contains("paracetamol"), "A specific generic is not found.");
         }
+
         [TestMethod]
         public void _can_GetRoutes()
         {
@@ -37,6 +38,7 @@ namespace GenPres.Test.Acceptance.MedicineTest
             Assert.IsTrue(generics.Count > 0, "No generics found");
             //Assert.IsTrue(generics.Contains("rect"), "A specific route is not found.");
         }
+
         [TestMethod]
         public void _can_GetShapes()
         {

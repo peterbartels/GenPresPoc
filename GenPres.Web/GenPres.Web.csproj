@@ -143,6 +143,8 @@
     <Content Include="Client\GenPres\app\view\User\LoginWindow.js" />
     <Content Include="Client\GenPres\genpres-all.js" />
     <Content Include="Client\GenPres\style\css\GenPres.css" />
+    <Content Include="Client\GenPres\style\css\HiddenTests.css" />
+    <Content Include="Client\GenPres\style\css\VisibleTests.css" />
     <Content Include="Client\GenPres\style\images\check_icon_disabled.png" />
     <Content Include="Client\GenPres\style\images\check_icon_enabled.png" />
     <Content Include="Client\GenPres\style\images\logo.png" />
@@ -153,7 +155,10 @@
     <Content Include="Client\GenPres\style\images\TopToolbar\Prescription_32.png" />
     <Content Include="Client\GenPres\style\images\TopToolbar\Template_32.png" />
     <Content Include="Client\GenPres\style\images\TopToolbar\TPN_32.png" />
-    <Content Include="Client\GenPres\test\ApplicationTest.js" />
+    <Content Include="Client\GenPres\test\Application.js" />
+    <Content Include="Client\GenPres\test\LoginWindow.js" />
+    <Content Include="Client\GenPres\test\MainScreen.js" />
+    <Content Include="Client\GenPres\test\TreeBugs\AutoLoadBug.js" />
     <Content Include="Client\Library\ext-all-debug.js" />
     <Content Include="Client\Library\ext-all.js" />
     <Content Include="Client\Library\extjs\resources\css\ext-all.css" />
@@ -929,9 +934,18 @@
     <Content Include="Client\Library\extjs\resources\themes\images\default\window-header\window-header-default-top-sides.gif" />
     <Content Include="Client\Library\extjs\resources\themes\images\default\window\window-default-corners.gif" />
     <Content Include="Client\Library\extjs\resources\themes\images\default\window\window-default-sides.gif" />
+    <Content Include="Client\Tests\lib\jasmine-1.0.2\jasmine-html.js" />
+    <Content Include="Client\Tests\lib\jasmine-1.0.2\jasmine.css" />
+    <Content Include="Client\Tests\lib\jasmine-1.0.2\jasmine.js" />
+    <Content Include="Client\Tests\lib\jasmine-1.0.2\json2.js" />
+    <Content Include="Client\Tests\RunJasmine.js" />
     <Content Include="debug.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Test\Application.aspx" />
+    <Content Include="Views\Test\LoginWindow.aspx" />
+    <Content Include="Views\Test\MainScreen.aspx" />
+    <Content Include="Views\Test\PatientTree.aspx" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
@@ -965,7 +979,7 @@
     <Content Include="Views\Home\Settings.aspx" />
     <Content Include="Views\Shared\Settings.Master" />
     <Content Include="Test.aspx" />
-    <Content Include="Views\Test\Test.aspx" />
+    <Content Include="Views\Shared\Test.Master" />
     <None Include="Web References\GenForm.Products\DrugData.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
