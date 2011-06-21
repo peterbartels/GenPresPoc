@@ -9,7 +9,7 @@ Ext.define('GenPres.controller.user.LoginController', {
     init: function() {
         this.control({
             'toolbar button[action=login]': {
-                click: this.validateLogin
+                click: this.loginClickEvent
             },
             'dataview' : {
                 itemclick : function(view, record, item, index, event){
@@ -26,15 +26,18 @@ Ext.define('GenPres.controller.user.LoginController', {
         
     },
 
-    validateLogin: function(button) {
+    loginClickEvent : function(button){
         var win, form, record, vals;
-
+        controller3 = this;
         win = button.up('window');
         this.loginWindow = win;
         form = win.down('form');
         record = form.getRecord();
         vals = form.getValues();
+        this.validateLogin(vals);
+    },
 
+    validateLogin: function(vals) {
         if(this.validateLoginForm(vals)){
             User.Login(vals.username, vals.password, this.loginCallBackFunction, this);
         }

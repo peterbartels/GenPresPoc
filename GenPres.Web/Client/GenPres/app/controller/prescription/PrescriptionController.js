@@ -6,7 +6,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     models:[],
 
-    views:['prescription.DrugComposition', 'main.PatientTree', 'prescription.PrescriptionForm', 'GenPres.view.main.TopToolbar'],
+    views:['prescription.DrugComposition', 'main.PatientTree', 'prescription.PrescriptionForm', 'main.TopToolbar'],
 
     init: function() {
         this.control({

@@ -25,7 +25,6 @@
         var me = this;
         me.callParent();
         me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
-        console.log(me.store.model.proxy.extraParams.logicalUnitId);
         me.expandAll();
     }
 });

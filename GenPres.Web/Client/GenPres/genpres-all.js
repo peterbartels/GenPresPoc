@@ -626,10 +626,46 @@ Ext.define('GenPres.store.patient.PatientTreeStore', {
     root: {
             text: 'Patienten',
             id: 'src',
-            expanded: true
+            expanded: false
     },
 
     model:'GenPres.model.patient.PatientModel'
+});
+Ext.define('GenPres.store.prescription.ValueStore', {
+
+    extend: 'Ext.data.Store',
+
+    alias: 'widget.valuestore',
+
+    autoLoad:false,
+
+    fields: [
+        { name: 'Value', type: 'string' }
+    ]
+});
+Ext.define('GenPres.store.prescription.GenericStore', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    alias: 'widget.genericstore',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetGenerics
+    }
+});
+Ext.define('GenPres.store.prescription.RouteStore', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    alias: 'widget.routestore',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetRoutes
+    }
+});
+Ext.define('GenPres.store.prescription.ShapeStore', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    alias: 'widget.shapestore',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetShapes
+    }
 });
 Ext.define('GenPres.model.patient.LogicalUnitModel', {
     extend: 'Ext.data.Model',
@@ -757,7 +793,7 @@ Ext.define('GenPres.view.main.TopToolbar', {
                 height:86,
                 title: 'Algemeen',
                 items : [
-                    Ext.create('GenPres.view.main.ToolbarButton', {icon:'Home_32.png', text:'Home'}),
+                    Ext.create('GenPres.view.main.ToolbarButton', {icon:'Home_32.png', text:'Home', action:'home'}),
                     {xtype: 'tbseparator',height:20},
                     Ext.create('GenPres.view.main.ToolbarButton', {icon:'Prescription_32.png', text:'Voorschriften', width:80}),
                     {xtype: 'tbseparator',height:20},
@@ -808,6 +844,8 @@ Ext.define('GenPres.view.main.TopToolbar', {
     folderSort: true,
     useArrows: true,
 
+    flex: 1,
+
     scroll:'both',
     autoScroll:true,
 
@@ -816,22 +854,15 @@ Ext.define('GenPres.view.main.TopToolbar', {
     constructor : function(){
         var me = this;
         me.callParent();
-        /*var delayFunc = function(){
-            me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
-            me.store.load();
-        }
 
-        Ext.Function.defer(delayFunc, 3000);*/
-        me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
-        me.store.load();
         
-
     },
 
     initComponent : function(){
         var me = this;
         me.callParent();
-
+        me.store.model.proxy.extraParams.logicalUnitId = GenPres.session.PatientSession.getLogicalUnitId();
+        me.expandAll();
     }
 });
 Ext.define('GenPres.view.main.MainViewCenter', {
@@ -840,24 +871,21 @@ Ext.define('GenPres.view.main.MainViewCenter', {
     region: 'center',
     xtype: 'panel',
 
+    activeItem: 0,
+    
     border:false,
+
+    layout: 'card',
 
     initComponent : function(){
         var me = this;
 
         me.items = [
-            {html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>'}
-            /*This is a codesmell: Ext.create('GenPres.control.ValueField', {
-                labelWidth: 70,
-                fieldLabel: 'Default',
-                name: 'basic',
-                value: 1,
-                step:0.1776,
-                decimalPrecision:10,
-                width:150,
-                minValue: 0,
-                maxValue: 125
-            })*/
+            {
+                id: 'card-0',
+                html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>',
+                border:false
+            }
         ];
 
         me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
@@ -930,8 +958,10 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     extend: 'Ext.Panel',
 
-    region:'center',
+    id: 'card-prescriptionForm',
 
+    border:false,
+    
     constructor : function(){
         var me = this;
         me.callParent(arguments);
@@ -939,13 +969,10 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     initComponent : function(){
         var me = this;
-
-        /*me.items = [
-            Ext.create('GenPres.view.main.MainViewLeft'),
-            Ext.create('GenPres.view.main.MainViewCenter')
-        ];*/
-
-        me.items = [{html:'test'}];
+        
+        me.items = [
+            Ext.create('GenPres.view.prescription.DrugComposition')
+        ];
 
         me.callParent();
 
@@ -959,9 +986,47 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
     xtype: 'panel',
 
     border:false,
-
+    
     initComponent : function(){
+        var me = this;
 
+        var genericCombo = Ext.create('Ext.form.field.ComboBox', {
+            store: 'prescription.GenericStore',
+            displayField: 'Value',
+            labelAlign:'top',
+            fieldLabel: 'Generiek'
+        });
+
+        var routeCombo = Ext.create('Ext.form.field.ComboBox', {
+            store: 'prescription.RouteStore',
+            displayField: 'Value',
+            labelAlign:'top',
+            fieldLabel: 'Toedieningsweg'
+        });
+
+        var shapeCombo = Ext.create('Ext.form.field.ComboBox', {
+            store: 'prescription.ShapeStore',
+            displayField: 'Value',
+            labelAlign:'top',
+            fieldLabel: 'Toedieningsvorm'
+        });
+
+        var quantity = Ext.create('Ext.form.field.Number', {
+            fieldLabel: 'Quantity',
+            labelAlign:'top'
+        });
+
+        var tablePanel = Ext.create('Ext.Panel', {
+            layout : {
+               type:'table',
+                columns:2
+            },
+            items : [genericCombo, routeCombo, shapeCombo, quantity]
+        });
+
+        me.items = tablePanel;
+
+        me.callParent();
     }
 });
 Ext.define('GenPres.view.user.LogicalUnitSelector', {
@@ -1010,13 +1075,11 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
         var me = this;
         me.mixins.process.constructor.call(me);
         me.callParent(arguments);
-        
-        
     },
 
     initComponent: function() {
         this.items = [
-            { html: '<img src="Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box'},
+            { html: '<img src=" Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box'},
             { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
                 items: [
                     { xtype: 'form', border:false, items: [
@@ -1091,7 +1154,7 @@ Ext.define('GenPres.controller.user.LoginController', {
     init: function() {
         this.control({
             'toolbar button[action=login]': {
-                click: this.validateLogin
+                click: this.loginClickEvent
             },
             'dataview' : {
                 itemclick : function(view, record, item, index, event){
@@ -1108,15 +1171,18 @@ Ext.define('GenPres.controller.user.LoginController', {
         
     },
 
-    validateLogin: function(button) {
+    loginClickEvent : function(button){
         var win, form, record, vals;
-
+        controller3 = this;
         win = button.up('window');
         this.loginWindow = win;
         form = win.down('form');
         record = form.getRecord();
         vals = form.getValues();
+        this.validateLogin(vals);
+    },
 
+    validateLogin: function(vals) {
         if(this.validateLoginForm(vals)){
             User.Login(vals.username, vals.password, this.loginCallBackFunction, this);
         }
@@ -1165,16 +1231,19 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     extend: 'Ext.app.Controller',
 
-    stores:[],
+    stores:['prescription.GenericStore', 'prescription.RouteStore', 'prescription.ShapeStore'],
 
     models:[],
 
-    views:['main.PatientTree', 'prescription.PrescriptionForm'],
+    views:['prescription.DrugComposition', 'main.PatientTree', 'prescription.PrescriptionForm', 'main.TopToolbar'],
 
     init: function() {
         this.control({
             'treepanel': {
                 itemclick: this.loadPrescriptionForm
+            },
+            'button[action=home]': {
+                click : this.loadHome
             }
         });
     },
@@ -1182,13 +1251,14 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     loadPrescriptionForm : function(tree, record){
         var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
-        GenPresApplication.MainCenter.items.removeAt(0)
-        GenPresApplication.MainCenter.doLayout();
         GenPresApplication.MainCenter.items.add(form);
         GenPresApplication.MainCenter.doLayout();
+        GenPresApplication.MainCenter.layout.setActiveItem(1);
+    },
 
+    loadHome : function(){
+        GenPresApplication.MainCenter.layout.setActiveItem(0);
     }
-
 });
 
 

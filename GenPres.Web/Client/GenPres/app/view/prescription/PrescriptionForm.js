@@ -13,12 +13,7 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     initComponent : function(){
         var me = this;
-
-        /*me.items = [
-            Ext.create('GenPres.view.main.MainViewLeft'),
-            Ext.create('GenPres.view.main.MainViewCenter')
-        ];*/
-
+        
         me.items = [
             Ext.create('GenPres.view.prescription.DrugComposition')
         ];

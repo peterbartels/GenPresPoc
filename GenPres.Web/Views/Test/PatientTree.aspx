@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     
-    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/GenPres/style/css/VisibleTests.css") %>" /> 
+    <link rel="stylesheet" type="text/css" href="<%= Url.Content("~/Client/GenPres/style/css/VisibleUITests.css") %>" /> 
 
     <script>
         window.dontLoadApplication = true;

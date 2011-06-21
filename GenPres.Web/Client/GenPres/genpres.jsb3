@@ -32,6 +32,18 @@
                     "path": "./app/store/patient/",
                     "name": "PatientTreeStore.js"
                 },{
+                    "path": "./app/store/prescription/",
+                    "name": "ValueStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "GenericStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "RouteStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "ShapeStore.js"
+                },{
                     "path": "./app/model/patient/",
                     "name": "LogicalUnitModel.js"
                 },{
@@ -90,7 +102,7 @@
         {
             "name": "All",
             "target": "genpres-all.js",
-            "compress": true,
+            "compress": false,
             "packages": [
                 "genpres"
             ]

@@ -63,6 +63,7 @@ Ext.application ({
     ],
 
     launch: function() {
+
         var patientTree = Ext.create('GenPres.view.main.PatientTree');
 
         var panel = new Ext.Panel({
@@ -78,8 +79,8 @@ Ext.application ({
                 {border:false, html:'test'},
                 patientTree
             ]
-        })
-        
+        });
+
         this.viewport = Ext.create('Ext.container.Viewport', {
             layout: 'fit',
             items:panel

@@ -25,4 +25,16 @@ describe("LoginWindow", function() {
     it('Login window should have a login button', function () {
         expect(GetLoginWindow().query('toolbar button[action=login]').length).toBe(1);
     });
+    it('Login window login button should call controller validateLogin', function () {
+
+        var controller = GenPresApplication.getController("GenPres.controller.user.LoginController");
+       
+        spyOn(controller, 'validateLogin');
+
+        var button = GetLoginWindow().query('toolbar button[action=login]')[0];
+
+        button.getActionEl().dom.click();
+       
+        expect(controller.validateLogin.wasCalled).toBeTruthy();
+    });
 });

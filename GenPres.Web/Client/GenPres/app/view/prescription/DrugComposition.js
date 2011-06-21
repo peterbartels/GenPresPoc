@@ -16,6 +16,11 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Generiek'
         });
 
+        var quantity = Ext.create('Ext.form.field.Number', {
+            fieldLabel: 'Quantity',
+            labelAlign:'top'
+        });
+        
         var routeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.RouteStore',
             displayField: 'Value',
@@ -30,9 +35,16 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Toedieningsvorm'
         });
 
-        var quantity = Ext.create('Ext.form.field.NumberField')
+        var tablePanel = Ext.create('Ext.Panel', {
+            border:false,
+            layout : {
+               type:'table',
+                columns:2
+            },
+            items : [genericCombo, routeCombo, shapeCombo, quantity]
+        });
 
-        me.items = [genericCombo, routeCombo, shapeCombo, quantity];
+        me.items = tablePanel;
 
         me.callParent();
     }

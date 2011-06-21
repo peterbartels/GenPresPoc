@@ -28,5 +28,10 @@ namespace GenPres.Controllers
             return View();
         }
 
+        public ActionResult LoginController()
+        {
+            return View();
+        }
+
     }
 }

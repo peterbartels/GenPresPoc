@@ -143,8 +143,8 @@
     <Content Include="Client\GenPres\app\view\User\LoginWindow.js" />
     <Content Include="Client\GenPres\genpres-all.js" />
     <Content Include="Client\GenPres\style\css\GenPres.css" />
-    <Content Include="Client\GenPres\style\css\HiddenTests.css" />
-    <Content Include="Client\GenPres\style\css\VisibleTests.css" />
+    <Content Include="Client\GenPres\style\css\HiddenUITests.css" />
+    <Content Include="Client\GenPres\style\css\VisibleUITests.css" />
     <Content Include="Client\GenPres\style\images\check_icon_disabled.png" />
     <Content Include="Client\GenPres\style\images\check_icon_enabled.png" />
     <Content Include="Client\GenPres\style\images\logo.png" />
@@ -156,6 +156,7 @@
     <Content Include="Client\GenPres\style\images\TopToolbar\Template_32.png" />
     <Content Include="Client\GenPres\style\images\TopToolbar\TPN_32.png" />
     <Content Include="Client\GenPres\test\Application.js" />
+    <Content Include="Client\GenPres\test\LoginController.js" />
     <Content Include="Client\GenPres\test\LoginWindow.js" />
     <Content Include="Client\GenPres\test\MainScreen.js" />
     <Content Include="Client\GenPres\test\TreeBugs\AutoLoadBug.js" />
@@ -943,6 +944,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Views\Test\Application.aspx" />
+    <Content Include="Views\Test\LoginController.aspx" />
     <Content Include="Views\Test\LoginWindow.aspx" />
     <Content Include="Views\Test\MainScreen.aspx" />
     <Content Include="Views\Test\PatientTree.aspx" />
