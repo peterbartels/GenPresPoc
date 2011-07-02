@@ -23,7 +23,7 @@ Ext.define('GenPres.view.main.MainViewCenterContainer', {
 
         me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
         me.callParent();
-        GenPresApplication.MainCenter = this;
+        GenPresApplication.MainCenterContainer = this;
     },
 
     height: 100,

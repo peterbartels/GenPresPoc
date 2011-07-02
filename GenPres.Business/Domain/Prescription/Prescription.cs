@@ -58,6 +58,7 @@ namespace GenPres.Business.Domain.Prescription
         {
             Prescription prescription = new Prescription();
             prescription.CreationDate = DateTime.Now;
+            prescription.StartDate = DateTime.Now;
             prescription.Drug = Domain.Prescription.Drug.NewDrug();
             return prescription;
         }

@@ -49,7 +49,7 @@ namespace GenPres.Test.Unit
         public void PrescriptionDto_canMapToPrescriptionBO()
         {
             var pDto = new PrescriptionDto();
-            pDto.StartDate = DateTime.Parse("2011-07-01 12:00:00");
+            pDto.StartDate = DateTime.Parse("2011-07-01 12:00:00").ToString();
             Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
             Assert.AreEqual(p.StartDate, DateTime.Parse("2011-07-01 12:00:00"));
         }

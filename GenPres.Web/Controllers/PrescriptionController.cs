@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Ext.Direct.Mvc;
 using GenPres.Assembler;
+using GenPres.Business.Data.Client.PrescriptionData;
 using GenPres.Business.Service;
 
 namespace GenPres.Controllers
@@ -30,6 +31,10 @@ namespace GenPres.Controllers
         public ActionResult GetPrescriptions()
         {
             return this.Direct(PrescriptionService.GetPrescriptions());
+        }
+        public ActionResult SavePrescription(PrescriptionDto prescriptionDto)
+        {
+            return this.Direct(PrescriptionService.SavePrescription(prescriptionDto));
         }
 
     }

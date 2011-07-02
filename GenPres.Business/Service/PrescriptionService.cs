@@ -18,10 +18,11 @@ namespace GenPres.Business.Service
             throw new NotImplementedException();
         }
 
-        public static void SavePrescription(PrescriptionDto prescriptionDto)
+        public static PrescriptionDto SavePrescription(PrescriptionDto prescriptionDto)
         {
             var prescription = PrescriptionAssembler.AssemblePrescriptionBo(prescriptionDto);
             prescription.Save();
+            return PrescriptionAssembler.AssemblePrescriptionDto(prescription);
         }
 
         public static ReadOnlyCollection<PrescriptionDto> GetPrescriptions()
@@ -31,6 +32,7 @@ namespace GenPres.Business.Service
             for (var i = 0; i < prescriptions.Length; i++)
             {
                 prescriptionDtos[i] = PrescriptionAssembler.AssemblePrescriptionDto(prescriptions[i]);
+                prescriptionDtos[i].id = i;
             }
             return prescriptionDtos.ToList().AsReadOnly();
         }

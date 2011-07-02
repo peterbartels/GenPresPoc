@@ -1,18 +1,21 @@
 
 Ext.define('GenPres.view.prescription.PrescriptionGrid', {
 
-    extend:'Ext.Panel',
+    extend:'Ext.grid.Panel',
 
     border:false,
+
+    alias: 'widget.prescriptiongrid',
+
+    store: 'prescription.Prescription',
+
+    columns: [
+        {header: 'StartDate',  dataIndex: 'StartDate'},
+        {header: 'Generiek',  dataIndex: 'drugGeneric'}
+    ],
     
     initComponent : function(){
         var me = this;
-        me.items = [
-            Ext.create('Ext.button.Button', {
-                text:'Nieuw',
-                action:'new'
-            })
-        ]
         me.callParent();
     }
 })

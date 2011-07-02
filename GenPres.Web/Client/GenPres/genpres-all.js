@@ -704,7 +704,8 @@ Ext.define('GenPres.model.prescription.Prescription', {
         { name: 'id', type: 'float' },
         { name: 'drugGeneric', type: 'string' },
         { name: 'drugRoute', type: 'string' },
-        { name: 'drugShape', type: 'string' }
+        { name: 'drugShape', type: 'string' },
+        { name: 'StartDate', type: 'string' }
     ],
     proxy : {
         type:'direct',
@@ -925,7 +926,7 @@ Ext.define('GenPres.view.main.MainViewCenter', {
             Ext.create('GenPres.view.main.MainViewCenterContainer'),
             Ext.create('GenPres.view.prescription.PrescriptionTabs')
         ];
-        
+        GenPresApplication.MainCenter = this;
         me.callParent();
     },
 
@@ -958,7 +959,7 @@ Ext.define('GenPres.view.main.MainViewCenterContainer', {
 
         me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
         me.callParent();
-        GenPresApplication.MainCenter = this;
+        GenPresApplication.MainCenterContainer = this;
     },
 
     height: 100,
@@ -1043,6 +1044,8 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     extend: 'Ext.Panel',
 
+    alias : 'widget.prescriptionform',
+
     id: 'card-prescriptionForm',
 
     border:false,
@@ -1061,6 +1064,7 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
             Ext.create('Ext.button.Button', {
                 width:100,
                 height:50,
+                action:'save',
                 text:'Opslaan',
                 margin:'10 10 10 10'
             })
@@ -1075,9 +1079,8 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 });
 Ext.define('GenPres.view.prescription.DrugComposition', {
 
-    extend: 'Ext.Panel',
+    extend: 'Ext.form.Panel',
     region: 'center',
-    xtype: 'panel',
 
     border:false,
     
@@ -1087,6 +1090,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var genericCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.GenericStore',
             displayField: 'Value',
+            name:'drugGeneric',
             action:'generic',
             labelAlign:'top',
             fieldLabel: 'Generiek'
@@ -1099,6 +1103,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         
         var routeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.RouteStore',
+            name:'drugRoute',
             displayField: 'Value',
             action:'route',
             labelAlign:'top',
@@ -1108,6 +1113,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var shapeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.ShapeStore',
             displayField: 'Value',
+            name:'drugShape',
             action:'shape',
             labelAlign:'top',
             fieldLabel: 'Toedieningsvorm'
@@ -1163,18 +1169,21 @@ Ext.define('GenPres.view.prescription.PrescriptionTabs', {
 
 Ext.define('GenPres.view.prescription.PrescriptionGrid', {
 
-    extend:'Ext.Panel',
+    extend:'Ext.grid.Panel',
 
     border:false,
+
+    alias: 'widget.prescriptiongrid',
+
+    store: 'prescription.Prescription',
+
+    columns: [
+        {header: 'StartDate',  dataIndex: 'StartDate'},
+        {header: 'Generiek',  dataIndex: 'drugGeneric'}
+    ],
     
     initComponent : function(){
         var me = this;
-        me.items = [
-            Ext.create('Ext.button.Button', {
-                text:'Nieuw',
-                action:'new'
-            })
-        ]
         me.callParent();
     }
 })
@@ -1322,12 +1331,11 @@ Ext.define('GenPres.controller.user.LoginController', {
     },
 
     loginClickEvent : function(button){
-        var win, form, record, vals;
+        var win, form, vals;
         controller3 = this;
         win = button.up('window');
         this.loginWindow = win;
         form = win.down('form');
-        record = form.getRecord();
         vals = form.getValues();
         this.validateLogin(vals);
     },
@@ -1398,26 +1406,43 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             },
             'button[action=new]': {
                 click : this.clearPrescription
+            },
+            'button[action=save]': {
+                click : this.savePrescription
             }
         });
     },
 
     loadPrescriptionForm : function(tree, record){
-        if(GenPresApplication.MainCenter.items.length == 1){
+        if(GenPresApplication.MainCenterContainer.items.length == 1){
             var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
-            GenPresApplication.MainCenter.items.add(form);
-            GenPresApplication.MainCenter.doLayout();
+            GenPresApplication.MainCenterContainer.items.add(form);
+            GenPresApplication.MainCenterContainer.doLayout();
         }
-        GenPresApplication.MainCenter.layout.setActiveItem(1);
+        GenPresApplication.MainCenterContainer.layout.setActiveItem(1);
     },
 
     loadHome : function(){
-        GenPresApplication.MainCenter.layout.setActiveItem(0);
+        GenPresApplication.MainCenterContainer.layout.setActiveItem(0);
     },
 
     clearPrescription : function(){
         var drugCompositionController = GenPresApplication.getController('prescription.DrugComposition');
         drugCompositionController.clear();
+    },
+    
+    savePrescription:function(){
+        var prescriptionform = GenPresApplication.MainCenter.query('prescriptionform')[0];
+        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
+        var vals = {};
+        var forms = [];
+        forms = prescriptionform.query('form');
+        for(var i=0; i<forms.length; i++){
+            vals = forms[i].getValues();
+        }
+        Prescription.SavePrescription(vals, function(newValues){
+            prescriptiongrid.store.load();
+        })
     }
 
 });

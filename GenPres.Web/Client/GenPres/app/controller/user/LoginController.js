@@ -27,12 +27,11 @@ Ext.define('GenPres.controller.user.LoginController', {
     },
 
     loginClickEvent : function(button){
-        var win, form, record, vals;
+        var win, form, vals;
         controller3 = this;
         win = button.up('window');
         this.loginWindow = win;
         form = win.down('form');
-        record = form.getRecord();
         vals = form.getValues();
         this.validateLogin(vals);
     },
