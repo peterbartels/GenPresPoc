@@ -22,5 +22,13 @@
     loadPatientData : function(tree, record){
         var infoStore = this.getPatientPatientInfoStoreStore();
         infoStore.loadRecords([record], {addRecords: false});
+
+        var gridPanel = this.getGridPanel();
+        //Load grid data
+    },
+
+    getGridPanel : function(){
+        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
     }
+
 });

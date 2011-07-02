@@ -2,6 +2,8 @@ Ext.define('GenPres.view.main.PatientInfo', {
 
     extend: 'Ext.view.View',
 
+    alias : 'widget.patientinfo',
+
     itemSelector : 'patientInfo',
 
     tpl: new Ext.XTemplate('<tpl for=".">',

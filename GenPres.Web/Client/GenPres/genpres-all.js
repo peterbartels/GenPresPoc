@@ -788,6 +788,8 @@ Ext.define('GenPres.view.main.PatientInfo', {
 
     extend: 'Ext.view.View',
 
+    alias : 'widget.patientinfo',
+
     itemSelector : 'patientInfo',
 
     tpl: new Ext.XTemplate('<tpl for=".">',
@@ -1300,6 +1302,7 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
     loadPatientData : function(tree, record){
         var infoStore = this.getPatientPatientInfoStoreStore();
         infoStore.loadRecords([record], {addRecords: false});
+        debugger;
     }
 });
 ﻿
