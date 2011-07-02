@@ -1,5 +1,4 @@
 ﻿using System;
-using GenPres.Business.Domain;
 using System.Data;
 using GenPres.Business.Domain.Patient;
 

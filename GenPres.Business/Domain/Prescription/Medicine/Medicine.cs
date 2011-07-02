@@ -8,17 +8,17 @@ namespace GenPres.Business.Domain.Prescription.Medicine
 
         private static readonly GenFormService GenFormService = new GenFormService();
 
-        public static string[] GetGenerics()
+        public static string[] GetGenerics(string route, string shape)
         {
-            return GenFormService.GetGenerics();
+            return GenFormService.GetGenerics(route, shape);
         }
-        public static string[] GetShapes()
+        public static string[] GeRoutes(string generic, string shape)
         {
-            return GenFormService.GetShapes();
+            return GenFormService.GetRoutes(generic, shape);
         }
-        public static string[] GeRoutes()
+        public static string[] GetShapes(string generic, string route)
         {
-            return GenFormService.GetRoutes();
+            return GenFormService.GetShapes(generic, route);
         }
 
         #endregion

@@ -1,6 +1,7 @@
 describe("MainScreen", function() {
     var mainView;
-    var tree;
+
+    GenPres.session.PatientSession.setLogicalUnit(1, "Pelikaan");
 
     var GetViewport = function(){
         return GenPresApplication.viewport;
@@ -25,6 +26,11 @@ describe("MainScreen", function() {
         });
     };
 
+    var GetTree = function(){
+        var query = GetWestRegion().query('treepanel');
+        return query[0];
+    };
+    
     it('After loading MainView, viewport should have a border layout', function () {
         expect(GetViewport().items.length > 0);
         expect(GetMainView().$className).toEqual('GenPres.view.main.MainView');
@@ -40,15 +46,7 @@ describe("MainScreen", function() {
     it('After rendering MainView, west borderlayout should have a patienttree', function () {
         var query = GetWestRegion().query('treeview');
         expect(query.length).toBe(1);
-        tree = query[0];
-        expect(tree.$className).toBe("Ext.tree.View");
+        expect(GetTree().$className).toBe("GenPres.view.main.PatientTree");
     });
 
-    it('PatientTree should be loaded with items', function () {
-        tree.store.on("load", function(){
-            alert('f');
-        })
-        
-        expect(tree.store.count() > 0).toBeTruthy();
-    });
 });

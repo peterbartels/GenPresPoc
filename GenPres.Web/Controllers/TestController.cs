@@ -8,11 +8,15 @@ namespace GenPres.Controllers
 {
     public class TestController : Controller
     {
+
+        public ActionResult BugTester()
+        {
+            return View();
+        }
         public ActionResult Application()
         {
             return View();
         }
-
         public ActionResult LoginWindow()
         {
             return View();
@@ -32,6 +36,13 @@ namespace GenPres.Controllers
         {
             return View();
         }
-
+        public ActionResult DrugComposition()
+        {
+            return View();
+        }
+        public ActionResult PrescriptionController()
+        {
+            return View();
+        }
     }
 }

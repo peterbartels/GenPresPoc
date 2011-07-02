@@ -7,5 +7,6 @@ namespace GenPres.Business.Domain.Prescription
         DateTime StartDate { get; set; }
         DateTime EndDate { get; set; }
         DateTime CreationDate { get; set; }
+        IDrug Drug { get; set; }
     }
 }

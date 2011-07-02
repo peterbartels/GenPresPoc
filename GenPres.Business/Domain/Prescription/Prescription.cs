@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.ServiceProvider;
 
 namespace GenPres.Business.Domain.Prescription
 {
@@ -14,6 +16,8 @@ namespace GenPres.Business.Domain.Prescription
         private DateTime _endDate;
 
         private DateTime _creationDate;
+
+        private IDrug _drug;
 
         #endregion
 
@@ -37,13 +41,35 @@ namespace GenPres.Business.Domain.Prescription
             set { _creationDate = value; }
         }
 
+        public IDrug Drug
+        {
+            get { return _drug; }
+            set { _drug = value; }
+        }
+
         #endregion
+
+        private static IPrescriptionRepository Repository
+        {
+            get { return DalServiceProvider.Instance.Resolve<IPrescriptionRepository>(); }
+        }
 
         public static Prescription NewPrescription()
         {
             Prescription prescription = new Prescription();
             prescription.CreationDate = DateTime.Now;
+            prescription.Drug = Domain.Prescription.Drug.NewDrug();
             return prescription;
+        }
+
+        public static IPrescription[] GetPrescriptions()
+        {
+            return Repository.GetPrescriptions();
+        }
+
+        public void Save()
+        {
+            Repository.SavePrescription(this);
         }
     }
 }

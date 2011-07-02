@@ -4,26 +4,19 @@ Ext.define('GenPres.view.main.MainViewCenter', {
     region: 'center',
     xtype: 'panel',
 
-    activeItem: 0,
-    
     border:false,
 
-    layout: 'card',
+    layout: 'border',
 
     initComponent : function(){
         var me = this;
 
         me.items = [
-            {
-                id: 'card-0',
-                html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>',
-                border:false
-            }
+            Ext.create('GenPres.view.main.MainViewCenterContainer'),
+            Ext.create('GenPres.view.prescription.PrescriptionTabs')
         ];
-
-        me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
+        
         me.callParent();
-        GenPresApplication.MainCenter = this;
     },
 
     height: 100,

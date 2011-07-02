@@ -1,4 +1,5 @@
 ﻿using System;
+using GenPres.Business.Data.Client.PrescriptionData;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Domain.Prescription;
@@ -6,16 +7,18 @@ using GenPres.Business.Domain.Prescription;
 namespace GenPres.Test.Unit
 {
     [TestClass]
-    public class PrescriptionTest : BaseGenPresTest
+    public class DrugTest : BaseGenPresTest
     {
         #region Constructor
-        public PrescriptionTest()
+
+        public DrugTest()
         { }
+
         #endregion
 
         #region TestContext
         private TestContext testContextInstance;
-        
+
         public TestContext TestContext
         {
             get
@@ -30,12 +33,21 @@ namespace GenPres.Test.Unit
         #endregion
 
         [TestMethod]
-        public void Prescription_creates_CreationDate()
+        public void PrescriptionDto_canMapToDrugBO()
         {
-            var p = Prescription.NewPrescription();
-            Assert.AreEqual(p.CreationDate.ToString("dd-MM-yyyy HH:mm"), DateTime.Now.ToString("dd-MM-yyyy HH:mm"));
+            var pDto = new PrescriptionDto();
+
+            pDto.drugGeneric = "paracetamol";
+            pDto.drugRoute = "rect";
+            pDto.drugShape = "zetp";
+            
+            Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
+            IDrug d = p.Drug;
+
+            Assert.AreEqual(d.Generic, "paracetamol");
+            Assert.AreEqual(d.Route, "rect");
+            Assert.AreEqual(d.Shape, "zetp");
+
         }
-
-
     }
 }

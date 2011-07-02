@@ -3,6 +3,11 @@ Ext.define('GenPres.store.prescription.ShapeStore', {
     alias: 'widget.shapestore',
     proxy : {
         type:'direct',
-        directFn : Prescription.GetShapes
+        directFn : Prescription.GetShapes,
+        extraParams:{
+            generic: "",
+            route : ""
+        },
+        paramOrder : ['generic', 'route']
     }
 });

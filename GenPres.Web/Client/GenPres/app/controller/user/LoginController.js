@@ -64,12 +64,13 @@ Ext.define('GenPres.controller.user.LoginController', {
         if(error != ''){
             Ext.MessageBox.alert('GenPres 2011 Login Error', error);
         }
+        
         return error == '';
     },
 
     loginCallBackFunction: function(result) {
         this.loggedIn = result.success;
-        
+
         if (result.success) {
             this.closeLoginWindow();
         } else {

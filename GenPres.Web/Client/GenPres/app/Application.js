@@ -11,7 +11,8 @@ Ext.application ({
     controllers: [
         'user.LoginController',
         'patient.PatientController',
-        'prescription.PrescriptionController'
+        'prescription.PrescriptionController',
+        'prescription.DrugComposition'
     ],
     
     launch: function() {

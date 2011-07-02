@@ -9,7 +9,9 @@
         window.dontLoadApplication = true;
     </script>
 
-    <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/test/TreeBugs/AutoLoadBug.js")  %>"></script>
+    <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/genpres-all.js")  %>"></script>
+    <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/app/Application.js")  %>"></script>
+    <script type="text/javascript" src="<%= Url.Content("~/Client/GenPres/test/PatientTree.js")  %>"></script>
     <script type="text/javascript" src="<%= Url.Content("~/Client/Tests/RunJasmine.js")  %>"></script>
     
 </asp:Content>

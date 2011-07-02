@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Database Name="GenPres" Class="PrescriptionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GenPres" Class="PrescriptionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=GenPres;User ID=sa" SettingsObjectName="GenPres.Database.Properties.Settings" SettingsPropertyName="GenPresConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Component" Member="Components">
     <Type Name="Component">
@@ -124,7 +123,6 @@
       <Column Name="MedicineId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Prescription_Dose" Member="Doses" ThisKey="Id" OtherKey="PrescriptionId" Type="Dose" />
       <Association Name="UnitValue_Prescription" Member="UnitValue" ThisKey="Frequency" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
-      <Association Name="Medicine_Prescription" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" />
       <Association Name="UnitValue_Prescription1" Member="UnitValue1" ThisKey="Quantity" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
       <Association Name="UnitValue_Prescription2" Member="UnitValue2" ThisKey="Total" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
       <Association Name="UnitValue_Prescription3" Member="UnitValue3" ThisKey="Rate" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
@@ -133,6 +131,7 @@
       <Association Name="UnitValue_Prescription6" Member="UnitValue6" ThisKey="AdjustWeight" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
       <Association Name="Patient_Prescription" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
       <Association Name="Drug_Prescription" Member="Drug" ThisKey="DrugId" OtherKey="Id" Type="Drug" IsForeignKey="true" />
+      <Association Name="Medicine_Prescription" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Substance" Member="Substances">

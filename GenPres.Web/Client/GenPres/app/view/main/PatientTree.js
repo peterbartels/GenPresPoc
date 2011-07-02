@@ -17,8 +17,6 @@
     constructor : function(){
         var me = this;
         me.callParent();
-
-        
     },
 
     initComponent : function(){

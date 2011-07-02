@@ -16,6 +16,7 @@ namespace GenPres.Assembler
                 x.AddRegistry(PatientAssembler.RegisterDependencies());
                 x.AddRegistry(UserAssembler.RegisterDependencies());
                 x.AddRegistry(GenFormAssembler.RegisterDependencies());
+                x.AddRegistry(PrescriptionAssembler.RegisterDependencies());
             });
         }
     }

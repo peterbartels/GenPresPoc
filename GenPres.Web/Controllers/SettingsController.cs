@@ -12,11 +12,6 @@ namespace GenPres.Controllers
         //
         // GET: /Settings/
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
 
         public ActionResult SetSetting(string computerName, string name, string value)
         {

@@ -55,6 +55,7 @@
     <Compile Include="GenFormAssembler.cs" />
     <Compile Include="GenPresApplication.cs" />
     <Compile Include="PatientAssembler.cs" />
+    <Compile Include="PrescriptionAssembler.cs" />
     <Compile Include="UserAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

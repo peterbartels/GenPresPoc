@@ -7,8 +7,8 @@ namespace GenPres.Business.WebService
 {
     public interface IGenFormService
     {
-        string[] GetGenerics();
-        string[] GetRoutes();
-        string[] GetShapes();
+        string[] GetGenerics(string route, string shape);
+        string[] GetRoutes(string generic, string shape);
+        string[] GetShapes(string generic, string route);
     }
 }

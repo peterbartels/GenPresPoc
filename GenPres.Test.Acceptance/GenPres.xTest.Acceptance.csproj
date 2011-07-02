@@ -52,6 +52,7 @@
     <Compile Include="GetUserTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
     <Compile Include="PatientTest\PatientTest.cs" />
+    <Compile Include="PrescriptionTest\PrescriptionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -14,18 +14,22 @@ namespace GenPres.Controllers
             GenPresApplication.Initialize();
         }
 
-        public ActionResult GetGenerics()
+        public ActionResult GetGenerics(string route, string shape)
         {
-            return this.Direct(MedicineService.GetGenerics());
+            return this.Direct(MedicineService.GetGenerics(route, shape));
         }
 
-        public ActionResult GetRoutes()
+        public ActionResult GetRoutes(string generic, string shape)
         {
-            return this.Direct(MedicineService.GetRoutes());
+            return this.Direct(MedicineService.GetRoutes(generic, shape));
         }
-        public ActionResult GetShapes()
+        public ActionResult GetShapes(string generic, string route)
         {
-            return this.Direct(MedicineService.GetShapes());
+            return this.Direct(MedicineService.GetShapes(generic, route));
+        }
+        public ActionResult GetPrescriptions()
+        {
+            return this.Direct(PrescriptionService.GetPrescriptions());
         }
 
     }

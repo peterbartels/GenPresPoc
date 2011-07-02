@@ -33,6 +33,9 @@
                     "name": "PatientTreeStore.js"
                 },{
                     "path": "./app/store/prescription/",
+                    "name": "Prescription.js"
+                },{
+                    "path": "./app/store/prescription/",
                     "name": "ValueStore.js"
                 },{
                     "path": "./app/store/prescription/",
@@ -43,6 +46,9 @@
                 },{
                     "path": "./app/store/prescription/",
                     "name": "ShapeStore.js"
+                },{
+                    "path": "./app/model/prescription/",
+                    "name": "Prescription.js"
                 },{
                     "path": "./app/model/patient/",
                     "name": "LogicalUnitModel.js"
@@ -66,16 +72,28 @@
                     "name": "MainViewCenter.js"
                 },{
                     "path": "./app/view/main/",
+                    "name": "MainViewCenterContainer.js"
+                },{
+                    "path": "./app/view/main/",
                     "name": "MainViewLeft.js"
                 },{
                     "path": "./app/view/main/",
                     "name": "MainView.js"
                 },{
                     "path": "./app/view/prescription/",
+                    "name": "PrescriptionToolbar.js"
+                },{
+                    "path": "./app/view/prescription/",
                     "name": "PrescriptionForm.js"
                 },{
                     "path": "./app/view/prescription/",
                     "name": "DrugComposition.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "PrescriptionTabs.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "PrescriptionGrid.js"
                 },{
                     "path": "./app/view/user/",
                     "name": "LogicalUnitSelector.js"
@@ -94,6 +112,9 @@
                 },{
                     "path": "./app/controller/prescription/",
                     "name": "PrescriptionController.js"
+                },{
+                    "path": "./app/controller/prescription/",
+                    "name": "DrugComposition.js"
                 }
             ]
         }

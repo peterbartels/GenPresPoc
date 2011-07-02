@@ -3,6 +3,11 @@ Ext.define('GenPres.store.prescription.RouteStore', {
     alias: 'widget.routestore',
     proxy : {
         type:'direct',
-        directFn : Prescription.GetRoutes
+        directFn : Prescription.GetRoutes,
+        extraParams:{
+            generic: "",
+            shape:""
+        },
+        paramOrder : ['generic', 'shape']
     }
 });
