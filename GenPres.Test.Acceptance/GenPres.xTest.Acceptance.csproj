@@ -42,7 +42,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Web.Mvc, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="TypeMock, Version=6.0.10.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
     <Reference Include="Typemock.ArrangeActAssert, Version=6.0.10.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
@@ -71,9 +71,9 @@
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenPres.Web\GenPres.Web.csproj">
-      <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
-      <Name>GenPres.Web</Name>
+    <ProjectReference Include="..\GenPres.Web3\GenPres.Web3.csproj">
+      <Project>{89A85423-589E-423D-8DAE-AA7203D9B9A0}</Project>
+      <Name>GenPres.Web3</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.xTest.General\GenPres.xTest.General.csproj">
       <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>

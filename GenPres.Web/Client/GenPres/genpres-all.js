@@ -1121,6 +1121,8 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Toedieningsvorm'
         });
 
+        qqq=shapeCombo;
+
         var tablePanel = Ext.create('Ext.Panel', {
             border:false,
             margin:'10 10 10 10',
@@ -1302,8 +1304,15 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
     loadPatientData : function(tree, record){
         var infoStore = this.getPatientPatientInfoStoreStore();
         infoStore.loadRecords([record], {addRecords: false});
-        debugger;
+
+        var gridPanel = this.getGridPanel();
+        //Load grid data
+    },
+
+    getGridPanel : function(){
+        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
     }
+
 });
 ﻿
 

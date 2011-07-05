@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{92AC7A73-FF98-4F58-A1C1-B86DCFB52606}"
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Assembler", "GenPres.Assembler\GenPres.Assembler.csproj", "{0812617A-AA94-4A2F-926E-814C531B94E7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.General", "GenPres.xTest.General\GenPres.xTest.General.csproj", "{7A32985F-5695-41E8-99DB-627E5E327B9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Web", "GenPres.Web\GenPres.Web.csproj", "{89A85423-589E-423D-8DAE-AA7203D9B9A0}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -105,6 +107,12 @@ Global
 		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Testing|Any CPU.ActiveCfg = Release|Any CPU
 		{7A32985F-5695-41E8-99DB-627E5E327B9D}.Testing|Any CPU.Build.0 = Release|Any CPU
+		{89A85423-589E-423D-8DAE-AA7203D9B9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89A85423-589E-423D-8DAE-AA7203D9B9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89A85423-589E-423D-8DAE-AA7203D9B9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89A85423-589E-423D-8DAE-AA7203D9B9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89A85423-589E-423D-8DAE-AA7203D9B9A0}.Testing|Any CPU.ActiveCfg = Release|Any CPU
+		{89A85423-589E-423D-8DAE-AA7203D9B9A0}.Testing|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

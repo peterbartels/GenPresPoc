@@ -1,0 +1,49 @@
+﻿@*
+General setup for all GenPres sites:
+- Home: The Acceptation/Production version
+- Debug: The Acceptation/Production version with Loader enabled for ExtJs
+- Tests: Runs individual tests
+- AppTest: Runs app specific use case scenario's
+*@
+
+<!DOCTYPE html>
+@* 
+    Add style element for the EditableComboBox class
+    TODO: generate special genpres.css
+*@
+<style>
+ .x-form-add-trigger {
+   background-image: url(./Client/Library/extjs/resources/themes/images/default/form/search-trigger.gif) !important;
+ }
+</style>
+
+<html>
+
+<head>
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Client/Library/extjs/resources/css/ext-all-gray.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Client/GenPres/style/css/GenPres.css")" />
+
+    @RenderSection("CSS", false)
+
+    <script type="text/javascript">
+        Ext = {};
+        Ext.app = {};
+    </script>    
+    
+    <script type="text/javascript" src="@Url.Content("~/Direct/Api")"></script>
+    
+    <script type="text/javascript">
+        Ext.app.REMOTING_API.enableBuffer = 100;
+    </script>    
+
+    <script type="text/javascript" src="@Url.Content("~/Client/GenPres/app/AppConfig.js")"></script>
+    
+    @RenderSection("Javascript", false)
+
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

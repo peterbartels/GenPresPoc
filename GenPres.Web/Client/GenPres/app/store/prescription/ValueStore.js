@@ -8,5 +8,15 @@ Ext.define('GenPres.store.prescription.ValueStore', {
 
     fields: [
         { name: 'Value', type: 'string' }
-    ]
+    ],
+
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetShapes,
+        extraParams:{
+            generic: "",
+            route : ""
+        },
+        paramOrder : ['generic', 'route']
+    }
 });
