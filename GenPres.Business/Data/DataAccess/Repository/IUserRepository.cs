@@ -4,6 +4,6 @@ namespace GenPres.Business.Data.DataAccess.Repository
 {
     public interface IUserRepository
     {
-        ISingleObject<IUser> GetUserByUsername(string user);
+        AvailableObject<IUser> GetUserByUsername(string user);
     }
 }

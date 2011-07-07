@@ -45,11 +45,7 @@
     <Reference Include="Typemock.ArrangeActAssert, Version=6.0.10.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
-    <Compile Include="PatientTest\PatientTest.cs" />
-    <Compile Include="Prescription\PrescriptionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserTest\UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthoringTests.txt" />
@@ -75,6 +71,12 @@
       <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
       <Name>GenPres.xTest.General</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LogicalUnitTest\" />
+    <Folder Include="PatientTest\" />
+    <Folder Include="Prescription\" />
+    <Folder Include="UserTest\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

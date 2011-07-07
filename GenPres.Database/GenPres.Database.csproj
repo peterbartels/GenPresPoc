@@ -73,6 +73,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\GenPres.DataAccess.Test\TestData.dbml.views">
+      <Link>TestData.dbml.views</Link>
+    </None>
     <None Include="Prescription.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Prescription.designer.cs</LastGenOutput>

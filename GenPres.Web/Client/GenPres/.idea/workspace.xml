@@ -100,6 +100,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Favorites" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -380,8 +382,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -389,8 +389,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="JavaScript.Libraries" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Library" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="GenPres_Acceptatie" serverId="b953ea21-af7e-43da-b4a1-baddf4919b8f">
     <servers>
@@ -508,7 +508,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36892685" sideWeight="0.67141294" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37373197" sideWeight="0.67141294" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -564,16 +564,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/MainScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.09367946" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/PatientTree.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="39" selection-start="1896" selection-end="1896" vertical-scroll-proportion="0.6930023" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/DrugComposition.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.09367946" />
@@ -581,91 +571,79 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/prescription/ValueStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="10" selection-start="353" selection-end="364" vertical-scroll-proportion="0.34537247">
-          <folding />
-        </state>
+        <state line="18" column="10" selection-start="353" selection-end="364" vertical-scroll-proportion="0.34537247" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/prescription/ShapeStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="5" selection-start="143" selection-end="347" vertical-scroll-proportion="0.21106094">
-          <folding />
-        </state>
+        <state line="11" column="5" selection-start="143" selection-end="347" vertical-scroll-proportion="0.21106094" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/prescription/RouteStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/prescription/GenericStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/patient/PatientTreeStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/patient/PatientInfoStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/model/patient/LogicalUnitModel.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="38" selection-start="270" selection-end="270" vertical-scroll-proportion="0.116838485">
-          <folding />
-        </state>
+        <state line="6" column="38" selection-start="270" selection-end="270" vertical-scroll-proportion="0.116838485" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/prescription/Prescription.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="173" selection-end="198" vertical-scroll-proportion="0.15349887">
-          <folding />
-        </state>
+        <state line="8" column="25" selection-start="173" selection-end="198" vertical-scroll-proportion="0.15349887" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/model/prescription/Prescription.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="12" selection-start="13" selection-end="52" vertical-scroll-proportion="0.01918736">
-          <folding />
-        </state>
+        <state line="1" column="12" selection-start="13" selection-end="52" vertical-scroll-proportion="0.01918736" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/patient/PatientController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="5" selection-start="890" selection-end="890" vertical-scroll-proportion="0.5948081">
-          <folding />
-        </state>
+        <state line="31" column="5" selection-start="890" selection-end="890" vertical-scroll-proportion="0.5948081" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.24943566">
-          <folding />
-        </state>
+        <state line="13" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.24943566" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="11" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.5778781">
+        <state line="40" column="11" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.5778781" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/InitApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/genpres-all.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="883" column="2" selection-start="22642" selection-end="22642" vertical-scroll-proportion="0.0022909509">
           <folding />
         </state>
       </provider>

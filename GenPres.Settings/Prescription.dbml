@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="GenPres" Class="PrescriptionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=localhost;Initial Catalog=GenPres;User ID=sa" SettingsObjectName="GenPres.Database.Properties.Settings" SettingsPropertyName="GenPresConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Component" Member="Components">
+    <Type Name="Component">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DrugId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ComponentName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsSolution" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SolutionRelation" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DrugConcentration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Component_Substance" Member="Substances" ThisKey="Id" OtherKey="ComponentId" Type="Substance" />
+      <Association Name="UnitValue_Component" Member="UnitValue" ThisKey="Quantity" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Component1" Member="UnitValue1" ThisKey="DrugConcentration" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="Drug_Component" Member="Drug" ThisKey="DrugId" OtherKey="Id" Type="Drug" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UnitValue" Member="UnitValues">
+    <Type Name="UnitValue">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BaseValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Unit" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Value" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="UIState" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Time" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Total" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Adjust" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="UnitValue_Component" Member="Components" ThisKey="Id" OtherKey="Quantity" Type="Component" />
+      <Association Name="UnitValue_Component1" Member="Components1" ThisKey="Id" OtherKey="DrugConcentration" Type="Component" />
+      <Association Name="UnitValue_Dose" Member="Doses" ThisKey="Id" OtherKey="Quantity" Type="Dose" />
+      <Association Name="UnitValue_Dose1" Member="Doses1" ThisKey="Id" OtherKey="Total" Type="Dose" />
+      <Association Name="UnitValue_Dose2" Member="Doses2" ThisKey="Id" OtherKey="Rate" Type="Dose" />
+      <Association Name="UnitValue_Drug" Member="Drugs" ThisKey="Id" OtherKey="Quantity" Type="Drug" />
+      <Association Name="UnitValue_Medicine" Member="Medicines" ThisKey="Id" OtherKey="ComponentIncrement" Type="Medicine" />
+      <Association Name="UnitValue_Medicine1" Member="Medicines1" ThisKey="Id" OtherKey="DoseIncrement" Type="Medicine" />
+      <Association Name="UnitValue_Medicine2" Member="Medicines2" ThisKey="Id" OtherKey="Quantity" Type="Medicine" />
+      <Association Name="UnitValue_Prescription" Member="Prescriptions" ThisKey="Id" OtherKey="Frequency" Type="Prescription" />
+      <Association Name="UnitValue_Prescription1" Member="Prescriptions1" ThisKey="Id" OtherKey="Quantity" Type="Prescription" />
+      <Association Name="UnitValue_Prescription2" Member="Prescriptions2" ThisKey="Id" OtherKey="Total" Type="Prescription" />
+      <Association Name="UnitValue_Prescription3" Member="Prescriptions3" ThisKey="Id" OtherKey="Rate" Type="Prescription" />
+      <Association Name="UnitValue_Prescription4" Member="Prescriptions4" ThisKey="Id" OtherKey="Time" Type="Prescription" />
+      <Association Name="UnitValue_Prescription5" Member="Prescriptions5" ThisKey="Id" OtherKey="AdjustLength" Type="Prescription" />
+      <Association Name="UnitValue_Prescription6" Member="Prescriptions6" ThisKey="Id" OtherKey="AdjustWeight" Type="Prescription" />
+      <Association Name="UnitValue_Substance" Member="Substances" ThisKey="Id" OtherKey="ComponentConcentration" Type="Substance" />
+      <Association Name="UnitValue_Substance1" Member="Substances1" ThisKey="Id" OtherKey="DrugConcentration" Type="Substance" />
+      <Association Name="UnitValue_Substance2" Member="Substances2" ThisKey="Id" OtherKey="Quantity" Type="Substance" />
+      <Association Name="UnitValue_Substance3" Member="Substances3" ThisKey="Id" OtherKey="CustomIncrement" Type="Substance" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dose" Member="Doses">
+    <Type Name="Dose">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PrescriptionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="UnitValue_Dose" Member="UnitValue" ThisKey="Quantity" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Dose1" Member="UnitValue1" ThisKey="Total" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Dose2" Member="UnitValue2" ThisKey="Rate" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="Prescription_Dose" Member="Prescription" ThisKey="PrescriptionId" OtherKey="Id" Type="Prescription" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Drug" Member="Drugs">
+    <Type Name="Drug">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Shape" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Route" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="SolutionType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Drug_Component" Member="Components" ThisKey="Id" OtherKey="DrugId" Type="Component" />
+      <Association Name="Drug_Prescription" Member="Prescriptions" ThisKey="Id" OtherKey="DrugId" Type="Prescription" />
+      <Association Name="UnitValue_Drug" Member="UnitValue" ThisKey="Quantity" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Medicine" Member="Medicines">
+    <Type Name="Medicine">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GenericName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ShapeName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="RouteName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ComponentIncrement" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DoseIncrement" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Medicine_Prescription" Member="Prescriptions" ThisKey="Id" OtherKey="MedicineId" Type="Prescription" />
+      <Association Name="UnitValue_Medicine" Member="UnitValue" ThisKey="ComponentIncrement" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Medicine1" Member="UnitValue1" ThisKey="DoseIncrement" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Medicine2" Member="UnitValue2" ThisKey="Quantity" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Patient" Member="Patients">
+    <Type Name="Patient">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MedicationWeight" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Height" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PID" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Patient_Prescription" Member="Prescriptions" ThisKey="Id" OtherKey="PatientId" Type="Prescription" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prescription" Member="Prescriptions">
+    <Type Name="Prescription">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Continuous" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Infusion" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Onrequest" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Solution" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsTemplate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TPN" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Frequency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Total" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Time" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdjustLength" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AdjustWeight" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DrugId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MedicineId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Prescription_Dose" Member="Doses" ThisKey="Id" OtherKey="PrescriptionId" Type="Dose" />
+      <Association Name="UnitValue_Prescription" Member="UnitValue" ThisKey="Frequency" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Prescription1" Member="UnitValue1" ThisKey="Quantity" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Prescription2" Member="UnitValue2" ThisKey="Total" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Prescription3" Member="UnitValue3" ThisKey="Rate" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Prescription4" Member="UnitValue4" ThisKey="Time" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Prescription5" Member="UnitValue5" ThisKey="AdjustLength" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Prescription6" Member="UnitValue6" ThisKey="AdjustWeight" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="Patient_Prescription" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
+      <Association Name="Drug_Prescription" Member="Drug" ThisKey="DrugId" OtherKey="Id" Type="Drug" IsForeignKey="true" />
+      <Association Name="Medicine_Prescription" Member="Medicine" ThisKey="MedicineId" OtherKey="Id" Type="Medicine" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Substance" Member="Substances">
+    <Type Name="Substance">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ComponentId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SubstanceName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ComponentConcentration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DrugConcentration" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomIncrement" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="UnitValue_Substance" Member="UnitValue" ThisKey="ComponentConcentration" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Substance1" Member="UnitValue1" ThisKey="DrugConcentration" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="Component_Substance" Member="Component" ThisKey="ComponentId" OtherKey="Id" Type="Component" IsForeignKey="true" />
+      <Association Name="UnitValue_Substance2" Member="UnitValue2" ThisKey="Quantity" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+      <Association Name="UnitValue_Substance3" Member="UnitValue3" ThisKey="CustomIncrement" OtherKey="Id" Type="UnitValue" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="User">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PassCrypt" Type="System.String" DbType="VarChar(32)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

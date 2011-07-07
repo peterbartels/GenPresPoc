@@ -37,5 +37,4 @@ using System.Runtime.InteropServices;
 
 [assembly: InternalsVisibleTo("GenPres.Test.Unit")]
 [assembly: InternalsVisibleTo("GenPres.xTest.Unit")]
-[assembly: InternalsVisibleTo("xData.Test.Unit")]
-[assembly: InternalsVisibleTo("xAdapter.Test.Unit")]
+[assembly: InternalsVisibleTo("GenPres.Business.Test")]

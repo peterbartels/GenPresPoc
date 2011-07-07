@@ -1,0 +1,61 @@
+Bad Checksum - idPage: 0, tyPage: 0, iPage: 0
+Source      : C:\Development\GenPres-Development\GenPres\GenPres.DataAccess.Test\TestDatabase.mdf
+Destination : C:\Users\DEVELO~1\AppData\Local\Temp\sql1CBA.tmp
+Repairing - verMajor: 1, verMinor: 0, verBuild: 0, verPoint: 0
+Time - 2011-07-07 11:34:52.350
+Database format in database header page is corrupt (or not a database file)
+Bad Checksum - idPage: 0, tyPage: 0, iPage: 37
+Bad Checksum - idPage: 1, tyPage: 0, iPage: 47
+Bad Checksum - idPage: 2, tyPage: 0, iPage: 99
+Bad Checksum - idPage: 10, tyPage: 0, iPage: 215
+Bad Checksum - idPage: 53, tyPage: 0, iPage: 285
+Bad Checksum - idPage: 96, tyPage: 0, iPage: 87
+Bad Checksum - idPage: 115, tyPage: 3, iPage: 225
+Bad Checksum - idPage: 512, tyPage: 0, iPage: 102
+Bad Checksum - idPage: 514, tyPage: 0, iPage: 124
+Bad Checksum - idPage: 518, tyPage: 0, iPage: 64
+Bad Checksum - idPage: 1024, tyPage: 0, iPage: 137
+Bad Checksum - idPage: 2778, tyPage: 0, iPage: 127
+Bad Checksum - idPage: 4096, tyPage: 0, iPage: 273
+Bad Checksum - idPage: 5951, tyPage: 0, iPage: 287
+Bad Checksum - idPage: 6198, tyPage: 0, iPage: 309
+Bad Checksum - idPage: 12288, tyPage: 0, iPage: 75
+Bad Checksum - idPage: 17152, tyPage: 0, iPage: 249
+Bad Checksum - idPage: 25856, tyPage: 0, iPage: 163
+Bad Checksum - idPage: 33280, tyPage: 0, iPage: 48
+Bad Checksum - idPage: 40960, tyPage: 4, iPage: 139
+Bad Checksum - idPage: 65536, tyPage: 0, iPage: 277
+Bad Checksum - idPage: 66048, tyPage: 0, iPage: 118
+Bad Checksum - idPage: 66050, tyPage: 0, iPage: 94
+Bad Checksum - idPage: 74017, tyPage: 2, iPage: 107
+Bad Checksum - idPage: 82432, tyPage: 0, iPage: 114
+Bad Checksum - idPage: 98816, tyPage: 0, iPage: 26
+Bad Checksum - idPage: 114690, tyPage: 0, iPage: 92
+Bad Checksum - idPage: 115200, tyPage: 0, iPage: 20
+Bad Checksum - idPage: 131584, tyPage: 0, iPage: 316
+Bad Checksum - idPage: 131586, tyPage: 0, iPage: 84
+Bad Checksum - idPage: 147968, tyPage: 0, iPage: 276
+Bad Checksum - idPage: 164352, tyPage: 0, iPage: 128
+Bad Checksum - idPage: 180736, tyPage: 0, iPage: 38
+Bad Checksum - idPage: 196608, tyPage: 0, iPage: 297
+Bad Checksum - idPage: 196609, tyPage: 2, iPage: 303
+Bad Checksum - idPage: 196616, tyPage: 1, iPage: 171
+Bad Checksum - idPage: 196729, tyPage: 7, iPage: 233
+Bad Checksum - idPage: 197120, tyPage: 0, iPage: 44
+Bad Checksum - idPage: 197122, tyPage: 0, iPage: 88
+Bad Checksum - idPage: 229378, tyPage: 0, iPage: 86
+Bad Checksum - idPage: 246272, tyPage: 0, iPage: 42
+Bad Checksum - idPage: 262178, tyPage: 6, iPage: 219
+Bad Checksum - idPage: 262256, tyPage: 7, iPage: 83
+Bad Checksum - idPage: 262656, tyPage: 0, iPage: 244
+Bad Checksum - idPage: 327787, tyPage: 6, iPage: 231
+Bad Checksum - idPage: 355681, tyPage: 6, iPage: 125
+Bad Checksum - idPage: 518119, tyPage: 14, iPage: 147
+Bad Checksum - idPage: 524288, tyPage: 3, iPage: 81
+Bad Checksum - idPage: 589840, tyPage: 1, iPage: 195
+Bad Checksum - idPage: 786434, tyPage: 0, iPage: 91
+Bad Checksum - idPage: 786458, tyPage: 3, iPage: 281
+Bad Checksum - idPage: 983156, tyPage: 6, iPage: 133
+Bad Checksum - idPage: 983552, tyPage: 15, iPage: 298
+Bad Checksum - idPage: 1016320, tyPage: 15, iPage: 296
+Bad Checksum - idPage: 1048575, tyPage: 15, iPage: 5
