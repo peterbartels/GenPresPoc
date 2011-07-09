@@ -1,7 +1,6 @@
 ﻿using System;
-using GenPres.Business.Data.DataAccess.Repository;
-using GenPres.DataAccess.Repository;
-using GenPres.Business.ServiceProvider;
+using GenPres.Business.Data.DataAccess.Repositories;
+using GenPres.DataAccess.Repositories;
 using StructureMap.Configuration.DSL;
 
 namespace GenPres.Assembler

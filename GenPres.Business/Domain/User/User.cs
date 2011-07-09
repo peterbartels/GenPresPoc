@@ -1,6 +1,6 @@
 ﻿using System;
 using GenPres.Business.Data;
-using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.ServiceProvider;
 using GenPres.Business.Aspect;
 
@@ -32,6 +32,11 @@ namespace GenPres.Business.Domain
         private string _userName;
         private string _password;
 
+        public void Save()
+        {
+            throw new NotImplementedException();
+        }
+
         public int Id { get; set; }
 
         [LowerCase]
@@ -41,6 +46,22 @@ namespace GenPres.Business.Domain
         [ChangeState]
         public string PassCrypt { get; set; }
 
+        public bool IsNew { get; set; }
+
+        public void OnCreate()
+        {
+            
+        }
+
+        public void OnNew()
+        {
+            
+        }
+
+        public void OnInitExisting()
+        {
+            
+        }
 
         private static IUserRepository Repository
         {
@@ -49,7 +70,7 @@ namespace GenPres.Business.Domain
 
         public static User NewUser()
         {
-            return new User();
+            return ObjectFactory<User>.New();
         }
 
         public static bool AuthenticateUser(string username, string password)

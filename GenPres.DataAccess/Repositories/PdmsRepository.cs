@@ -2,20 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using GenPres.Business.Data.DataAccess.Mapper;
-using GenPres.Business.Data.DataAccess.Mapper.Patient;
-using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
 using GenPres.Business.Domain.Patient;
+using GenPres.DataAccess.DataMapper.Mapper.Patient;
 using DB = GenPres.Database;
 using GenPres.Business.Domain;
 
 
-namespace GenPres.DataAccess.Repository
+namespace GenPres.DataAccess.Repositories
 {
-    public class PatientRepository : IPatientRepository
+    public class PdmsRepository : IPdsmRepository
     {
-        private PatientMapper _patientMapper = new PatientMapper();
+        private PdmsMapper _pdmsMapper = new PdmsMapper();
 
         public List<IPatient> GetPatientsByLogicalUnitId(int logicalUnitId)
         {
@@ -36,7 +35,7 @@ namespace GenPres.DataAccess.Repository
 
             for (int i = 0; i < sqlResult.Tables[0].Rows.Count; i++)
             {
-                patients[i] = _patientMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[i], Patient.NewPatient());
+                patients[i] = _pdmsMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[i], Patient.NewPatient());
             }
 
             return patients.ToList();

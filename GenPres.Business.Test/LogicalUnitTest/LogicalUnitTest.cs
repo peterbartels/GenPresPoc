@@ -1,5 +1,5 @@
-﻿using GenPres.Business.Data.DataAccess.Mapper.Patient;
-using GenPres.Business.Domain.Patient;
+﻿using GenPres.Business.Domain.Patient;
+using GenPres.DataAccess.DataMapper.Mapper.Patient;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.DataAccess;
@@ -31,7 +31,7 @@ namespace GenPres.Business.Test.LogicalUnitTest
             
             var logicalUnit = LogicalUnit.NewLogicalUnit();
 
-            logicalUnitMapper.MapDaoToBusinessObject(logicalUnitDao, logicalUnit);
+            logicalUnitMapper.MapFromBoToDao(logicalUnitDao, logicalUnit);
             Assert.AreEqual(int.Parse(logicalUnitDao["LogicalUnitID"].ToString()), logicalUnit.Id);
             Assert.AreEqual(logicalUnitDao["Name"], logicalUnit.Name);
         }

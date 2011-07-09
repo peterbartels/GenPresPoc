@@ -32,7 +32,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         });
 
         var shapeCombo = Ext.create('Ext.form.field.ComboBox', {
-            store: 'prescription.ShapeStore',
+            store: Ext.create('GenPres.store.prescription.ShapeStore'),
             displayField: 'Value',
             name:'drugShape',
             action:'shape',

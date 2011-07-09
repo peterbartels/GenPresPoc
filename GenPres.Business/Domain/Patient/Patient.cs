@@ -1,4 +1,6 @@
 ﻿using System;
+using GenPres.Business.Data.DataAccess.Repositories;
+using GenPres.Business.ServiceProvider;
 
 namespace GenPres.Business.Domain.Patient
 {
@@ -128,10 +130,41 @@ namespace GenPres.Business.Domain.Patient
 
         #endregion
 
+        public bool IsNew { get; set; }
+        public void OnCreate()
+        {
+            
+        }
+
+        public void OnNew()
+        {
+            
+        }
+
+        public void OnInitExisting()
+        {
+            
+        }
+
+        public void Save()
+        {
+            Repository.Save(this);
+        }
+
+
+        private static IPatientRepository Repository
+        {
+            get { return DalServiceProvider.Instance.Resolve<IPatientRepository>(); }
+        }
+
         public static Patient NewPatient()
         {
             return new Patient();
         }
-    }
 
+        public static IPatient GetPatientByPid(string Pid)
+        {
+            return Repository.GetByPid(Pid);
+        }
+    }
 }

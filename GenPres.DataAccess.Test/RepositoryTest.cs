@@ -47,11 +47,6 @@ namespace GenPres.DataAccess.Test
             testRepository.SaveAll();
             int newCount = testRepository.Count();
             Assert.AreEqual(oldCount + 1, newCount);
-
-            //var last = testRepository.Last(x => x.Id > 0);
-            //testRepository.MarkForDeletion(last);
-            //testRepository.SaveAll();
-            //Assert.AreEqual(oldCount, testRepository.Count());
         }
 
         [TestMethod]

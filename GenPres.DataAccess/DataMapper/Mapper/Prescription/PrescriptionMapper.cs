@@ -1,35 +1,35 @@
-﻿
-using GenPres.Business.Domain.Prescription;
-using DB=GenPres.Database;
+﻿using GenPres.Business.Domain.Prescription;
+using Drug = GenPres.Database.Drug;
 
-namespace GenPres.Business.Data.DataAccess.Mapper.Prescription
+namespace GenPres.DataAccess.DataMapper.Mapper.Prescription
 {
     public class PrescriptionMapper
     {
         public IPrescription MapBusinessObjectToDao(IPrescription prescriptionBo)
         {
-            var prescriptionDao = new DB.Prescription();
+            var prescriptionDao = new Database.Prescription();
             prescriptionDao.StartDate = prescriptionBo.StartDate;
             
-            var drugDao = new DB.Drug();
+            var drugDao = new Drug();
             drugDao.Name = prescriptionBo.Drug.Generic;
             drugDao.Route = prescriptionBo.Drug.Route;
             drugDao.Shape = prescriptionBo.Drug.Shape;
 
             prescriptionDao.Drug = drugDao;
 
+            /*
             using(var ctx = GenPresDataManager.GetManager())
             {
                 ctx.GetContext().Prescriptions.InsertOnSubmit(prescriptionDao);
                 ctx.GetContext().SubmitChanges();
-            }
+            }*/
 
             return prescriptionBo;
         }
 
-        public GenPres.Business.Domain.Prescription.Prescription MapDaoObjectToBusinessObject(DB.Prescription prescriptionDao)
+        public GenPres.Business.Domain.Prescription.Prescription MapDaoObjectToBusinessObject(Database.Prescription prescriptionDao)
         {
-            var prescriptionBo = Domain.Prescription.Prescription.NewPrescription();
+            var prescriptionBo = Business.Domain.Prescription.Prescription.NewPrescription();
 
             if (prescriptionDao.StartDate != null) prescriptionBo.StartDate = prescriptionDao.StartDate.Value;
 

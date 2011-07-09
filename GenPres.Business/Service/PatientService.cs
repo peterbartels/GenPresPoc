@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using GenPres.Business.Data.Client.Patient;
 using GenPres.Business.Domain;
 using GenPres.Business.Data.Client;
@@ -25,5 +26,7 @@ namespace GenPres.Business.Service
         {
             return PatientTreeAssembler.AssemblePatientTreeDto(PatientCollection.GetPatientsByLogicalUnit(logicalUnit));
         }
+
+
     }
 }

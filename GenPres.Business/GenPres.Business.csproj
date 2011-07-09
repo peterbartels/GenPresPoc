@@ -35,9 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Csla">
-      <HintPath>..\Dependencies\Csla.dll</HintPath>
-    </Reference>
     <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="PostSharp.Laos, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="StructureMap">
@@ -78,18 +75,15 @@
     <Compile Include="Data\DataAccess\DataManager.cs" />
     <Compile Include="Data\Client\DtoFactory.cs" />
     <Compile Include="Data\DataAccess\GenPresDataManager.cs" />
-    <Compile Include="Data\DataAccess\Mapper\Patient\ILogicalUnitMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\IMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\Prescription\PrescriptionMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\User\IUserMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\Patient\LogicalUnitMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\Patient\PatientMapper.cs" />
-    <Compile Include="Data\DataAccess\Mapper\User\UserMapper.cs" />
-    <Compile Include="Data\DataAccess\Repository\ILogicalUnitRepository.cs" />
-    <Compile Include="Data\DataAccess\Repository\IPatientRepository.cs" />
-    <Compile Include="Data\DataAccess\Repository\IPrescriptionRepository.cs" />
-    <Compile Include="Data\DataAccess\Repository\IRepository.cs" />
-    <Compile Include="Data\DataAccess\Repository\IUserRepository.cs" />
+    <Compile Include="Data\DataAccess\Mappers\IDataMapper.cs" />
+    <Compile Include="Data\DataAccess\Repositories\ILogicalUnitRepository.cs" />
+    <Compile Include="Data\DataAccess\Repositories\IPatientRepository.cs" />
+    <Compile Include="Data\DataAccess\Repositories\IPdsmRepository.cs" />
+    <Compile Include="Data\DataAccess\Repositories\IPrescriptionRepository.cs" />
+    <Compile Include="Data\DataAccess\Repositories\IRepository.cs" />
+    <Compile Include="Data\DataAccess\Repositories\IUserRepository.cs" />
+    <Compile Include="Domain\ISavable.cs" />
+    <Compile Include="Domain\ObjectFactory.cs" />
     <Compile Include="Domain\Prescription\Drug.cs" />
     <Compile Include="Domain\Prescription\IDrug.cs" />
     <Compile Include="Domain\Prescription\IPrescription.cs" />
@@ -121,9 +115,7 @@
       <Name>GenPres.Database</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\OrderEntry\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

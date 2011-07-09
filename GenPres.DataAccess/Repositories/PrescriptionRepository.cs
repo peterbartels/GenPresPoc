@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Linq;
-using GenPres.Business.Data.Client.PrescriptionData;
-using GenPres.Business.Data.DataAccess.Mapper.Prescription;
-using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain.Prescription;
+using GenPres.DataAccess.DataMapper.Mapper.Prescription;
 using DB = GenPres.Database;
 
-namespace GenPres.DataAccess.Repository
+namespace GenPres.DataAccess.Repositories
 {
     public class PrescriptionRepository : IPrescriptionRepository
     {

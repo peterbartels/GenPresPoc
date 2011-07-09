@@ -1,6 +1,6 @@
 ﻿using System;
 using GenPres.Business.Data.Client.PrescriptionData;
-using GenPres.Business.Data.DataAccess.Mapper.Prescription;
+using GenPres.DataAccess.DataMapper.Mapper.Prescription;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Domain.Prescription;

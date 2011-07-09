@@ -1,4 +1,4 @@
-﻿using GenPres.Business.Data.DataAccess.Repository;
+﻿using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.ServiceProvider;
 
 namespace GenPres.Business.Domain.Patient

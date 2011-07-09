@@ -22,7 +22,35 @@
     <favorites_list name="GenPres" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Database.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/store/database/Database.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="45" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/controller/user/Login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="30" column="30" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Database.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/model/database/Database.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="3" selection-start="149" selection-end="149" vertical-scroll-proportion="0.11512415">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -36,22 +64,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/controller/prescription/DrugComposition.js" />
-        <option value="$PROJECT_DIR$/app/view/prescription/PrescriptionTabs.js" />
-        <option value="$PROJECT_DIR$/genpres.jsb3" />
-        <option value="$PROJECT_DIR$/app/view/main/MainViewCenterContainer.js" />
-        <option value="$PROJECT_DIR$/app/view/main/MainViewCenter.js" />
-        <option value="$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js" />
-        <option value="$PROJECT_DIR$/app/controller/user/LoginController.js" />
-        <option value="$PROJECT_DIR$/app/view/prescription/PrescriptionGrid.js" />
-        <option value="$PROJECT_DIR$/app/view/main/PatientInfo.js" />
-        <option value="$PROJECT_DIR$/test/PatientTree.js" />
         <option value="$PROJECT_DIR$/app/model/prescription/Prescription.js" />
         <option value="$PROJECT_DIR$/app/controller/patient/PatientController.js" />
-        <option value="$PROJECT_DIR$/app/view/prescription/DrugComposition.js" />
         <option value="$PROJECT_DIR$/app/store/prescription/ValueStore.js" />
         <option value="$PROJECT_DIR$/app/store/prescription/Prescription.js" />
         <option value="$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js" />
+        <option value="$PROJECT_DIR$/app/model/patient/LogicalUnitModel.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/DrugComposition.js" />
+        <option value="$PROJECT_DIR$/app/view/user/LogicalUnitSelector.js" />
+        <option value="$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js" />
+        <option value="$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/view/User/LoginWindow.js" />
+        <option value="$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/Library/platform/src/data/proxy/Server.js" />
+        <option value="$PROJECT_DIR$/app/controller/user/LoginController.js" />
+        <option value="$PROJECT_DIR$/bugs/DirectStoreBug.js" />
+        <option value="$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/controller/user/Login.js" />
+        <option value="$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/store/database/Database.js" />
+        <option value="$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/Library/platform/src/data/DirectStore.js" />
       </list>
     </option>
   </component>
@@ -100,8 +128,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -125,6 +151,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Bugs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bugs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -382,6 +440,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -508,7 +568,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37373197" sideWeight="0.67141294" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38334224" sideWeight="0.67141294" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -564,86 +624,112 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/DrugComposition.js">
+    <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/view/User/LoginWindow.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.09367946" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/prescription/ValueStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="10" selection-start="353" selection-end="364" vertical-scroll-proportion="0.34537247" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/prescription/ShapeStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="5" selection-start="143" selection-end="347" vertical-scroll-proportion="0.21106094" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/prescription/RouteStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/prescription/GenericStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/patient/PatientTreeStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/patient/PatientInfoStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/patient/LogicalUnitModel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="38" selection-start="270" selection-end="270" vertical-scroll-proportion="0.116838485" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/prescription/Prescription.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="25" selection-start="173" selection-end="198" vertical-scroll-proportion="0.15349887" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/prescription/Prescription.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="12" selection-start="13" selection-end="52" vertical-scroll-proportion="0.01918736" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/patient/PatientController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="5" selection-start="890" selection-end="890" vertical-scroll-proportion="0.5948081" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="250" selection-end="250" vertical-scroll-proportion="0.24943566" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="11" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.5778781" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/InitApp.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0">
+        <state line="61" column="31" selection-start="1660" selection-end="1660" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/genpres-all.js">
+    <entry file="file://$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="883" column="2" selection-start="22642" selection-end="22642" vertical-scroll-proportion="0.0022909509">
+        <state line="17" column="4" selection-start="337" selection-end="337" vertical-scroll-proportion="0.3261851" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="2" selection-start="0" selection-end="681" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="12" selection-start="781" selection-end="803" vertical-scroll-proportion="0.32844242">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bugs/DirectStoreBug.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="21" selection-start="852" selection-end="852" vertical-scroll-proportion="0.5586907">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Bugs/AutoLoadBug.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="0" selection-end="1777" vertical-scroll-proportion="0.24943566">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Application.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/user/LoginWindow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="49" column="0" selection-start="1308" selection-end="1447" vertical-scroll-proportion="0.7674944">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/InitApp.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="292" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/prescription/ValueStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="4" selection-start="144" selection-end="202" vertical-scroll-proportion="0.15349887">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/prescription/GenericStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="351" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/user/LoginController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="92" selection-end="92" vertical-scroll-proportion="0.07674944">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/controller/user/Login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="30" selection-start="582" selection-end="582" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/store/database/Database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="45" selection-start="45" selection-end="45" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/Library/platform/src/data/DirectStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="45" column="33" selection-start="1667" selection-end="1667" vertical-scroll-proportion="0.8465011">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../GenformGit/Informedica.GenForm.Mvc3/Client/GenForm/app/model/database/Database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="3" selection-start="149" selection-end="149" vertical-scroll-proportion="0.11512415">
           <folding />
         </state>
       </provider>

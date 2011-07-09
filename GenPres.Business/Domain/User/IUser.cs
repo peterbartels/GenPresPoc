@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GenPres.Business.Domain
 {
-    public interface IUser
+    public interface IUser : ISavable
     {
         int Id { get; set; }
         string UserName { get; set; }

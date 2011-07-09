@@ -61,17 +61,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
-    <Compile Include="DataMapper\IDataMapper.cs" />
-    <Compile Include="GenPresDataContext.cs" />
+    <Compile Include="DataMapper\Mapper\Patient\LogicalUnitMapper.cs" />
+    <Compile Include="DataMapper\Mapper\Patient\PatientMapper.cs" />
+    <Compile Include="DataMapper\Mapper\Patient\PdmsMapper.cs" />
+    <Compile Include="DataMapper\Mapper\Prescription\PrescriptionMapper.cs" />
+    <Compile Include="DataMapper\Mapper\User\UserMapper.cs" />
+    <Compile Include="GenPresDataContextFactory.cs" />
     <Compile Include="GenPresDataManager.cs" />
     <Compile Include="PDMSDataRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IDataContextFactory.cs" />
-    <Compile Include="Repository\LogicUnitRepository.cs" />
-    <Compile Include="Repository\PatientRepository.cs" />
-    <Compile Include="Repository\PrescriptionRepository.cs" />
-    <Compile Include="Repository\Repository.cs" />
-    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repositories\LogicUnitRepository.cs" />
+    <Compile Include="Repositories\PatientRepository.cs" />
+    <Compile Include="Repositories\PdmsRepository.cs" />
+    <Compile Include="Repositories\PrescriptionRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="SingleObject.cs" />
   </ItemGroup>
   <ItemGroup>

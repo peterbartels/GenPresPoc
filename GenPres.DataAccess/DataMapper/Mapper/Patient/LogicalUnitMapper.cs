@@ -1,12 +1,11 @@
-﻿using GenPres.Business.Domain;
-using System.Data;
+﻿using System.Data;
 using GenPres.Business.Domain.Patient;
 
-namespace GenPres.Business.Data.DataAccess.Mapper.Patient
+namespace GenPres.DataAccess.DataMapper.Mapper.Patient
 {
     public class LogicalUnitMapper
     {
-        public ILogicalUnit MapDaoToBusinessObject(object daoObj, ILogicalUnit logicalUnitBo)
+        public ILogicalUnit MapFromBoToDao(object daoObj, ILogicalUnit logicalUnitBo)
         {
             var logicalUnitDao = (DataRow)daoObj;
             logicalUnitBo.Id = int.Parse(logicalUnitDao["LogicalUnitID"].ToString());

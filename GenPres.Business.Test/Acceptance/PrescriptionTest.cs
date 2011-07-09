@@ -27,6 +27,7 @@ namespace GenPres.Business.Test.Acceptance
         [TestMethod]
         public void _can_SavePrescription()
         {
+            //PrescriptionService.SavePrescription("");
 
         }
         [TestMethod]

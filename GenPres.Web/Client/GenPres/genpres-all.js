@@ -595,7 +595,7 @@ Ext.define('GenPres.session.PatientSession', {
 })
 Ext.define('GenPres.store.patient.LogicalUnitStore', {
 
-    extend: 'Ext.data.Store',
+    extend: 'Ext.data.DirectStore',
 
     alias: 'widget.logicalunitstore',
     
@@ -607,7 +607,9 @@ Ext.define('GenPres.store.patient.LogicalUnitStore', {
 
     autoLoad:true,
 
-    model:'GenPres.model.patient.LogicalUnitModel'
+    model:'GenPres.model.patient.LogicalUnitModel',
+
+    directFn : Patient.GetLogicalUnits
 });
 Ext.define('GenPres.store.patient.PatientInfoStore', {
 
@@ -651,7 +653,17 @@ Ext.define('GenPres.store.prescription.ValueStore', {
 
     fields: [
         { name: 'Value', type: 'string' }
-    ]
+    ],
+
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetShapes,
+        extraParams:{
+            generic: "",
+            route : ""
+        },
+        paramOrder : ['generic', 'route']
+    }
 });
 Ext.define('GenPres.store.prescription.GenericStore', {
     extend: 'GenPres.store.prescription.ValueStore',
@@ -722,12 +734,7 @@ Ext.define('GenPres.model.patient.LogicalUnitModel', {
         { name: 'id', type: 'float' },
         { name: 'text', type: 'string' },
         { name: 'leaf', type: 'boolean' }
-    ],
-
-    proxy : {
-        type:'direct',
-        directFn : Patient.GetLogicalUnits
-    }
+    ]
 });
 
 
@@ -1121,8 +1128,6 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Toedieningsvorm'
         });
 
-        qqq=shapeCombo;
-
         var tablePanel = Ext.create('Ext.Panel', {
             border:false,
             margin:'10 10 10 10',
@@ -1404,7 +1409,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     stores:['prescription.GenericStore', 'prescription.RouteStore', 'prescription.ShapeStore', 'prescription.Prescription'],
 
-    models:[],
+    models:['prescription.Prescription'],
 
     views:['prescription.PrescriptionToolbar', 'prescription.DrugComposition', 'main.PatientTree', 'prescription.PrescriptionForm', 'main.TopToolbar', 'prescription.PrescriptionGrid'],
 

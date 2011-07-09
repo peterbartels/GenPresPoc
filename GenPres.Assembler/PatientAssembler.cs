@@ -1,7 +1,9 @@
 ﻿using System;
-using GenPres.Business.Data.DataAccess.Repository;
-using GenPres.DataAccess.Repository;
+using GenPres.Business.Data.DataAccess.Mappers;
+using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.ServiceProvider;
+using GenPres.DataAccess.DataMapper.Mapper.Patient;
+using GenPres.DataAccess.Repositories;
 using StructureMap.Configuration.DSL;
 
 namespace GenPres.Assembler
@@ -17,6 +19,7 @@ namespace GenPres.Assembler
             _registry = new Registry();
 
             _registry.For<ILogicalUnitRepository>().Use<LogicalUnitRepository>();
+            _registry.For<IPdsmRepository>().Use<PdmsRepository>();
             _registry.For<IPatientRepository>().Use<PatientRepository>();
             
             _hasBeenCalled = true;

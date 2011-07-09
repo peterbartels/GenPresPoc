@@ -2,9 +2,9 @@
 using System.Data;
 using GenPres.Business.Domain.Patient;
 
-namespace GenPres.Business.Data.DataAccess.Mapper.Patient
+namespace GenPres.DataAccess.DataMapper.Mapper.Patient
 {
-    public class PatientMapper
+    public class PdmsMapper
     {
         public IPatient MapDaoToBusinessObject(object daoObj, IPatient patientBo)
         {

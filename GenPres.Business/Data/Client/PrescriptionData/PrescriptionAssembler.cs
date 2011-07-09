@@ -12,6 +12,7 @@ namespace GenPres.Business.Data.Client.PrescriptionData
             drug.Generic = prescriptionDto.drugGeneric;
             drug.Route = prescriptionDto.drugRoute;
             drug.Shape = prescriptionDto.drugShape;
+            prescription.PID = prescriptionDto.PID;
             return prescription;
         }
 
@@ -23,6 +24,7 @@ namespace GenPres.Business.Data.Client.PrescriptionData
             prescriptionDto.drugGeneric = drug.Generic;
             prescriptionDto.drugRoute = drug.Route;
             prescriptionDto.drugShape = drug.Shape;
+            prescriptionDto.PID = prescription.PID;
             return prescriptionDto;
         }
     }

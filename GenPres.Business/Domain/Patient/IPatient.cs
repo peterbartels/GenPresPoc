@@ -2,7 +2,7 @@
 
 namespace GenPres.Business.Domain.Patient
 {
-    public interface IPatient
+    public interface IPatient : ISavable
     {
         int Id { get; set; }
 

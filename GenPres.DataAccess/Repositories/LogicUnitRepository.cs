@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GenPres.Business.Data.DataAccess.Mapper;
 using GenPres.Business.Data.DataAccess;
-using GenPres.Business.Data.DataAccess.Mapper.Patient;
-using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
 using GenPres.Business;
 using GenPres.Business.Domain.Patient;
+using GenPres.DataAccess.DataMapper.Mapper.Patient;
 
-namespace GenPres.DataAccess.Repository
+namespace GenPres.DataAccess.Repositories
 {
     public class LogicalUnitRepository : ILogicalUnitRepository
     {
@@ -24,7 +23,7 @@ namespace GenPres.DataAccess.Repository
 
             for (int i = 0; i < sqlResult.Tables[0].Rows.Count; i++)
             {
-                logicalUnits[i] = _logicalUnitMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[i], LogicalUnit.NewLogicalUnit());
+                logicalUnits[i] = _logicalUnitMapper.MapFromBoToDao(sqlResult.Tables[0].Rows[i], LogicalUnit.NewLogicalUnit());
             }
             return logicalUnits;
         }

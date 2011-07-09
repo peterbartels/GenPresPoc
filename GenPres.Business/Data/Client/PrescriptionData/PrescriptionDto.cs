@@ -9,5 +9,6 @@ namespace GenPres.Business.Data.Client.PrescriptionData
         public string drugGeneric { get; set; }
         public string drugRoute { get; set; }
         public string drugShape { get; set; }
+        public string PID { get; set; }
     }
 }

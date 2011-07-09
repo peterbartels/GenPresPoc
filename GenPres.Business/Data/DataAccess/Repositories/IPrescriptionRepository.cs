@@ -1,6 +1,6 @@
 ﻿using GenPres.Business.Domain.Prescription;
 
-namespace GenPres.Business.Data.DataAccess.Repository
+namespace GenPres.Business.Data.DataAccess.Repositories
 {
     public interface IPrescriptionRepository
     {

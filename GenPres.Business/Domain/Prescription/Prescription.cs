@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GenPres.Business.Data.DataAccess.Repository;
+using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.ServiceProvider;
 
 namespace GenPres.Business.Domain.Prescription
@@ -18,6 +18,8 @@ namespace GenPres.Business.Domain.Prescription
         private DateTime _creationDate;
 
         private IDrug _drug;
+
+        private string _pid;
 
         #endregion
 
@@ -45,6 +47,12 @@ namespace GenPres.Business.Domain.Prescription
         {
             get { return _drug; }
             set { _drug = value; }
+        }
+
+        public string PID
+        {
+            get { return _pid; }
+            set { _pid = value; }
         }
 
         #endregion
