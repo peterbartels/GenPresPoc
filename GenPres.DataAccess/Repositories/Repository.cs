@@ -4,59 +4,84 @@ using System.Data.Linq;
 using System.Data.Linq.Mapping;
 using System.Linq;
 using System.Linq.Expressions;
-using GenPres.Business.Data.DataAccess;
 using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
-using GenPres.Business.Domain.Patient;
+using GenPres.DataAccess.Object;
+using System.Reflection;
 
 namespace GenPres.DataAccess.Repositories
 {
-    public abstract class Repository<TDao, TBo> : IRepository<TDao, TBo>
+    public abstract class Repository<TBo, TDao> : IRepository<TBo>
     where TDao : class where TBo : ISavable
     {
         protected IDataContextFactory _dataContextFactory;
+
+        public abstract IDataMapper<TBo, TDao> Mapper { get; }
 
         public Repository(IDataContextFactory dataContextFactory)
         {
             _dataContextFactory = dataContextFactory;
         }
 
-       
+        public IEnumerable<TDao> AddDaoListToIdentityMap(IEnumerable<TDao> _list)
+        {
+            foreach (TDao dao in _list)
+            {
+                AddSingleToIdentityMap(dao);
+            }
+            return _list;
+        }
+        
+        public TDao AddSingleToIdentityMap(TDao dao)
+        {
+            return dao;
+        }
+
         public IEnumerable<TDao> All()
         {
-            return GetTable;
+            return AddDaoListToIdentityMap(GetTable);
         }
 
         public IEnumerable<TDao> FindAll(Func<TDao, bool> exp)
         {
-            return GetTable.Where<TDao>(exp);
+            return AddDaoListToIdentityMap(GetTable.Where<TDao>(exp));
         }
 
         public ISingleObject<TDao> FindSingle(Func<TDao, bool> exp)
         {
-            var records = GetTable.Where(exp);
+            var records = AddDaoListToIdentityMap(GetTable.Where(exp));
             return SingleObject<TDao>.GetSingleObject(records);
         }
 
         public TDao Single(Func<TDao, bool> exp)
         {
-            return GetTable.Single(exp);
+            return AddSingleToIdentityMap(GetTable.Single(exp));
         }
 
         public TDao First(Func<TDao, bool> exp)
         {
-            return GetTable.First(exp);
+            return AddSingleToIdentityMap(GetTable.First(exp));
         }
 
         public TDao Last(Func<TDao, bool> exp)
         {
-            return GetTable.Last(exp);
+            return AddSingleToIdentityMap(GetTable.Last(exp));
         }
 
         public TDao GetById(int id)
         {
-            return Get<TDao>(_dataContextFactory.Context, 1);
+            /*for (int i = 0; i < GetIdentityMaps.Length; i++)
+            {
+                if (GetIdentityMaps[i].GetDaoType() == typeof(TDao))
+                {
+                    if(GetIdentityMaps[i].ContainsKey(id))
+                    {
+                        return GetIdentityMaps[i].Find(id);
+                    }
+                }
+            }*/
+            return AddSingleToIdentityMap(Get<TDao>(id));
         }
 
         public TBo Save(TBo businessObject)
@@ -74,9 +99,6 @@ namespace GenPres.DataAccess.Repositories
             return businessObject;
         }
 
-
-        public abstract IDataMapper<TBo, TDao> Mapper { get; }
-
         public int Count()
         {
             return GetTable.Count();
@@ -87,10 +109,6 @@ namespace GenPres.DataAccess.Repositories
             _dataContextFactory.Context.GetTable<TDao>().DeleteOnSubmit(entity);
         }
 
-        /// <summary>
-        /// Create a new instance of type T.
-        /// </summary>
-        /// <returns></returns>
         public virtual TDao CreateInstance()
         {
             TDao entity = Activator.CreateInstance<TDao>();
@@ -98,9 +116,9 @@ namespace GenPres.DataAccess.Repositories
             return entity;
         }
 
-        public void SaveAll()
+        public void Submit()
         {
-            _dataContextFactory.SaveAll();
+            _dataContextFactory.Submit();
         }
 
         #region Properties
@@ -110,35 +128,36 @@ namespace GenPres.DataAccess.Repositories
             get { return TableMetadata.RowType.IdentityMembers[0].Name; }
         }
 
-        protected System.Data.Linq.Table<TDao> GetTable
+        protected Table<TDao> GetTable
         {
             get { return _dataContextFactory.Context.GetTable<TDao>(); }
         }
 
-        private System.Data.Linq.Mapping.MetaTable TableMetadata
+        private MetaTable TableMetadata
         {
             get { return _dataContextFactory.Context.Mapping.GetTable(typeof(TDao)); }
         }
 
-        private System.Data.Linq.Mapping.MetaType ClassMetadata
+        private MetaType ClassMetadata
         {
             get { return _dataContextFactory.Context.Mapping.GetMetaType(typeof(TDao)); }
         }
 
         #endregion
 
-        public static TEntity Get<TEntity>(DataContext dataContext, int id)
+        public TEntity Get<TEntity>(int id)
         where TEntity : class
         {
-            return Get<TEntity, int>(dataContext, id);
+            return Get<TEntity, int>(id);
         }
-        public static TEntity Get<TEntity, TKey>(DataContext dataContext, TKey id)
+        public TEntity Get<TEntity, TKey>(TKey id)
             where TEntity : class
         {
             // get the row from the database using the meta-model
-            MetaType meta = dataContext.Mapping.GetTable(typeof(TEntity)).RowType;
-            if (meta.IdentityMembers.Count != 1) throw new InvalidOperationException(
-                "Composite identity not supported");
+            MetaType meta = _dataContextFactory.Context.Mapping.GetTable(typeof(TEntity)).RowType;
+            
+            if (meta.IdentityMembers.Count != 1) throw new InvalidOperationException("Composite identity not supported");
+
             string idName = meta.IdentityMembers[0].Member.Name;
 
             var param = Expression.Parameter(typeof(TEntity), "row");
@@ -147,7 +166,19 @@ namespace GenPres.DataAccess.Repositories
                     Expression.PropertyOrField(param, idName),
                     Expression.Constant(id, typeof(TKey))), param);
 
-            return dataContext.GetTable<TEntity>().Single(lambda);
+            return _dataContextFactory.Context.GetTable<TEntity>().Single(lambda);
+        }
+
+        public object GetIdValue<TEntity>(TEntity dao)
+            where TEntity : class
+        {
+            // get the row from the database using the meta-model
+            MetaType meta = _dataContextFactory.Context.Mapping.GetTable(typeof(TEntity)).RowType;
+            
+            if (meta.IdentityMembers.Count != 1) throw new InvalidOperationException("Composite identity not supported");
+
+            string idName = meta.IdentityMembers[0].Member.Name;
+            return dao.GetType().GetProperty(idName).GetValue(dao, null);
         }
 
     }

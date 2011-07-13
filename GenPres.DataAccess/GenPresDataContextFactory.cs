@@ -39,7 +39,7 @@ namespace GenPres.DataAccess
                 return _dataContext;
             }
         }
-        public void SaveAll()
+        public void Submit()
         {
             using (var ctx = GetTestDataContext())
             {

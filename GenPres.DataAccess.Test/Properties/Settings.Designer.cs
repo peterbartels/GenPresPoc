@@ -34,5 +34,27 @@ namespace GenPres.DataAccess.Test.Properties {
                 return ((string)(this["TestDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=GenPres;Integrated Security=True")]
+        public string GenPresConnectionString {
+            get {
+                return ((string)(this["GenPresConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SQLEXPRESS;AttachDbFilename=C:\\Development\\GenPres-Development\\GenP" +
+            "res\\GenPres.DataAccess.Test\\GenPres.mdf;Integrated Security=True;Connect Timeout" +
+            "=30;User Instance=True")]
+        public string GenPresConnectionString1 {
+            get {
+                return ((string)(this["GenPresConnectionString1"]));
+            }
+        }
     }
 }

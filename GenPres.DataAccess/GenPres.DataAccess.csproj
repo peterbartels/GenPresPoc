@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager.cs" />
+    <Compile Include="DataMapper\DataMapper.cs" />
     <Compile Include="DataMapper\Mapper\Patient\LogicalUnitMapper.cs" />
     <Compile Include="DataMapper\Mapper\Patient\PatientMapper.cs" />
     <Compile Include="DataMapper\Mapper\Patient\PdmsMapper.cs" />
@@ -68,16 +69,17 @@
     <Compile Include="DataMapper\Mapper\User\UserMapper.cs" />
     <Compile Include="GenPresDataContextFactory.cs" />
     <Compile Include="GenPresDataManager.cs" />
+    <Compile Include="Object\IdentityMap.cs" />
     <Compile Include="PDMSDataRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IDataContextFactory.cs" />
-    <Compile Include="Repositories\LogicUnitRepository.cs" />
+    <Compile Include="Repositories\LogicalUnitRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Repositories\PdmsRepository.cs" />
     <Compile Include="Repositories\PrescriptionRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="SingleObject.cs" />
+    <Compile Include="Object\SingleObject.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">

@@ -149,12 +149,13 @@ namespace GenPres.Business.Domain.Patient
         public void Save()
         {
             Repository.Save(this);
+            Repository.Submit();
         }
 
-
+        private static IPatientRepository _patientRepository = DalServiceProvider.Instance.Resolve<IPatientRepository>();
         private static IPatientRepository Repository
         {
-            get { return DalServiceProvider.Instance.Resolve<IPatientRepository>(); }
+            get { return _patientRepository; }
         }
 
         public static Patient NewPatient()

@@ -6,7 +6,7 @@ using GenPres.Business.Domain.Patient;
 
 namespace GenPres.Business.Data.DataAccess.Repositories
 {
-    public interface IPatientRepository : IRepository<Database.Patient, IPatient>
+    public interface IPatientRepository : IRepository<IPatient>
     {
         IPatient GetByPid(string pid);
     }

@@ -3,12 +3,14 @@ using GenPres.Business.Data;
 using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
+using GenPres.Business.Domain.Patient;
 using GenPres.DataAccess.DataMapper.Mapper.User;
+using GenPres.DataAccess.Object;
 using DB=GenPres.Database;
 
 namespace GenPres.DataAccess.Repositories
 {
-    public class UserRepository : Repository<DB.User, User>, IUserRepository
+    public class UserRepository : Repository<IUser, DB.User>, IUserRepository
     {
         private UserMapper _userMapper = new UserMapper();
 
@@ -17,15 +19,16 @@ namespace GenPres.DataAccess.Repositories
             
         }
 
-        public IUser GetById(int id)
+        public override IDataMapper<IUser, Database.User> Mapper
         {
-            throw new NotImplementedException();
+            get { return _userMapper; }
         }
 
-        public override IDataMapper<User, Database.User> Mapper
+
+        IdentityMap<IUser, Database.User>[] _identityMaps = new[]
         {
-            get { throw new NotImplementedException(); }
-        }
+            new IdentityMap<IUser, Database.User>()                                                           
+        };
 
         public IUser GetByName(string name)
         {

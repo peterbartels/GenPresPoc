@@ -14,6 +14,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             name:'drugGeneric',
             action:'generic',
             labelAlign:'top',
+            value:'paracetamol',
             fieldLabel: 'Generiek'
         });
 

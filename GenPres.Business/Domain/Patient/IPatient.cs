@@ -23,7 +23,5 @@ namespace GenPres.Business.Domain.Patient
         string Age { get; set; }
         DateTime RegisterDate { get; set; }
         int DaysRegistered { get; set; }
-
-
     }
 }

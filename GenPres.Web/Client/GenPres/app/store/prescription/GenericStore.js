@@ -10,4 +10,5 @@ Ext.define('GenPres.store.prescription.GenericStore', {
         },
         paramOrder : ['route', 'shape']
     }
+
 });

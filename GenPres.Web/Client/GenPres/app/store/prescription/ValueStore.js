@@ -4,7 +4,7 @@ Ext.define('GenPres.store.prescription.ValueStore', {
 
     alias: 'widget.valuestore',
 
-    autoLoad:false,
+    autoLoad:true,
 
     fields: [
         { name: 'Value', type: 'string' }
