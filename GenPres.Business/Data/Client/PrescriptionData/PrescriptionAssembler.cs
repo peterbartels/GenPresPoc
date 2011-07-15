@@ -1,4 +1,4 @@
-﻿using GenPres.Business.Domain.Prescription;
+﻿using GenPres.Business.Domain.PrescriptionDomain;
 
 namespace GenPres.Business.Data.Client.PrescriptionData
 {
@@ -7,11 +7,15 @@ namespace GenPres.Business.Data.Client.PrescriptionData
         public static Prescription AssemblePrescriptionBo(PrescriptionDto prescriptionDto)
         {
             var prescription = Prescription.NewPrescription();
-            //prescription.StartDate = prescriptionDto.StartDate;
+            prescription.Id = prescriptionDto.Id;
+
             var drug = prescription.Drug;
-            drug.Generic = prescriptionDto.drugGeneric;
-            drug.Route = prescriptionDto.drugRoute;
-            drug.Shape = prescriptionDto.drugShape;
+            if (drug != null)
+            {
+                drug.Generic = prescriptionDto.drugGeneric;
+                drug.Route = prescriptionDto.drugRoute;
+                drug.Shape = prescriptionDto.drugShape;
+            }
             prescription.PID = prescriptionDto.PID;
             return prescription;
         }
@@ -20,10 +24,16 @@ namespace GenPres.Business.Data.Client.PrescriptionData
         {
             var prescriptionDto = new PrescriptionDto();
             prescriptionDto.StartDate = prescription.StartDate.ToString();
+            prescriptionDto.Id = prescription.Id;
+
             var drug = prescription.Drug;
-            prescriptionDto.drugGeneric = drug.Generic;
-            prescriptionDto.drugRoute = drug.Route;
-            prescriptionDto.drugShape = drug.Shape;
+            if(drug!=null)
+            {
+                prescriptionDto.drugGeneric = drug.Generic;
+                prescriptionDto.drugRoute = drug.Route;
+                prescriptionDto.drugShape = drug.Shape;    
+            }
+
             prescriptionDto.PID = prescription.PID;
             return prescriptionDto;
         }

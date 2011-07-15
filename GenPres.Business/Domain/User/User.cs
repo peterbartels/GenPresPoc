@@ -70,7 +70,7 @@ namespace GenPres.Business.Domain
 
         public static User NewUser()
         {
-            return ObjectFactory<User>.New();
+            return ObjectFactory.New<User>();
         }
 
         public static bool AuthenticateUser(string username, string password)

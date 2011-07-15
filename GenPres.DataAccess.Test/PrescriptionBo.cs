@@ -18,28 +18,27 @@ namespace GenPres.DataAccess.Test
         
         public void OnCreate()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void OnNew()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void OnInitExisting()
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            
         }
 
         public int Id
         {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
+            get; set;
         }
     }
 }

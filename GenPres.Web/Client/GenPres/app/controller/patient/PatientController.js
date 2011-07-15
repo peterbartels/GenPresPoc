@@ -22,13 +22,14 @@
     loadPatientData : function(tree, record){
         var infoStore = this.getPatientPatientInfoStoreStore();
         infoStore.loadRecords([record], {addRecords: false});
-
+        GenPres.session.PatientSession.setPatient(record);
         var gridPanel = this.getGridPanel();
-        //Load grid data
+        gridPanel.store.proxy.extraParams.PID = GenPres.session.PatientSession.patient.PID;
+        gridPanel.store.load();
     },
 
     getGridPanel : function(){
-        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
+        return GenPresApplication.MainCenter.query('.prescriptiongrid')[0];
     }
 
 });

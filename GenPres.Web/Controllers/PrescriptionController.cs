@@ -19,7 +19,6 @@ namespace GenPres.Controllers
         {
             return this.Direct(MedicineService.GetGenerics(route, shape));
         }
-
         public ActionResult GetRoutes(string generic, string shape)
         {
             return this.Direct(MedicineService.GetRoutes(generic, shape));
@@ -28,14 +27,17 @@ namespace GenPres.Controllers
         {
             return this.Direct(MedicineService.GetShapes(generic, route));
         }
-        public ActionResult GetPrescriptions()
+        public ActionResult GetPrescriptions(string patientId)
         {
-            return this.Direct(PrescriptionService.GetPrescriptions());
+            return this.Direct(PrescriptionService.GetPrescriptions(patientId));
         }
-        public ActionResult SavePrescription(PrescriptionDto prescriptionDto)
+        public ActionResult GetPrescriptionById(int id)
         {
-            return this.Direct(PrescriptionService.SavePrescription(prescriptionDto));
+            return this.Direct(PrescriptionService.GetPrescriptionById(id));
         }
-
+        public ActionResult SavePrescription(string patientId, PrescriptionDto prescriptionDto)
+        {
+            return this.Direct(PrescriptionService.SavePrescription(prescriptionDto, patientId));
+        }
     }
 }

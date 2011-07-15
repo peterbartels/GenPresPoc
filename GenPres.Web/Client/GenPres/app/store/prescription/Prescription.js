@@ -4,7 +4,7 @@ Ext.define('GenPres.store.prescription.Prescription', {
 
     alias: 'widget.prescriptionstore',
 
-    autoLoad:true,
+    autoLoad:false,
 
     model:'GenPres.model.prescription.Prescription'
 });

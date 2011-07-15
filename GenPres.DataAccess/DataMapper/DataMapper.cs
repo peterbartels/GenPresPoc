@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,30 +11,17 @@ using System.Reflection;
 
 namespace GenPres.DataAccess.DataMapper
 {
-    public abstract class DataMapper<TBo, TDao> : IDataMapper<TBo, TDao> where TBo : ISavable
+    public abstract class DataMapper<TBo, TDao> : IDataMapper<TBo, TDao> where TBo : class, ISavable
     {
-        protected ISavable _bo;
-        protected object _dao;
+        protected IDataContextFactory _contextFactory;
 
-        protected DataMapper(TBo bo, TDao dao)
+        protected DataMapper(IDataContextFactory dataContextFactory)
         {
-            _bo = bo;
-            _dao = dao;
+            _contextFactory = dataContextFactory;
         }
 
-        public abstract void InitChildMappings();
-        public abstract void MapFromBoToDao();
-        public abstract void MapFromDaoToBo();
-
-        public TDao MapFromBoToDao(TBo bo, TDao dao)
-        {
-            throw new NotImplementedException();
-        }
-
-        public TBo MapFromDaoToBo(TDao dao, TBo bo)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract TDao MapFromBoToDao(TBo _bo, TDao _dao);
+        public abstract TBo MapFromDaoToBo(TDao _dao, TBo _bo);
     }
 
 
@@ -42,18 +30,21 @@ namespace GenPres.DataAccess.DataMapper
     {
         private TSrcBo _srcBo;
         private TSrcDao _srcDao;
+        private IDataContextFactory _contextFactory;
 
-        public ChildMapper(TSrcBo srcBo, TSrcDao srcDao)
+        public ChildMapper(TSrcBo srcBo, TSrcDao srcDao, IDataContextFactory contextFactory)
         {
             _srcBo = srcBo;
             _srcDao = srcDao;
+            _contextFactory = contextFactory;
         }
+
         private void _mapObject<TDestBo, TDestDao>(Expression boConnection, Expression daoConnection, Type mapperType, bool toBo)
             where TDestBo : ISavable
             where TDestDao : class
         {
-            object fromValue;
-            object toValue;
+            object fromObj;
+            object toObj;
             Type destType;
             Expression fromExpression;
             object srcParent;
@@ -63,36 +54,37 @@ namespace GenPres.DataAccess.DataMapper
             {
                 srcParent = _srcBo;
                 destType = typeof(TDestBo);
-                fromValue = GetValue(daoConnection, _srcDao);
-                toValue = GetValue(boConnection, _srcBo);
+                fromObj = GetValue(daoConnection, _srcDao);
+                toObj = GetValue(boConnection, _srcBo);
                 fromExpression = boConnection;
                 mappingName = "MapFromDaoToBo";
             }
             else
             {
                 srcParent = _srcDao;
-                fromValue = GetValue(boConnection, _srcBo);
-                toValue = GetValue(daoConnection, _srcDao);
+                fromObj = GetValue(boConnection, _srcBo);
+                toObj = GetValue(daoConnection, _srcDao);
                 destType = typeof(TDestDao);
                 fromExpression = daoConnection;
                 mappingName = "MapFromBoToDao";
             }
 
-            if (fromValue != null)
+            if (fromObj != null)
             {
-                object newObj;
-                if (toValue == null)
+                if (toObj == null)
                 {
-                    newObj = Activator.CreateInstance(destType);
-                }else
-                {
-                    newObj = toValue;
+                    toObj = ObjectFactory.InitExisting(destType);
                 }
-                SetValue(fromExpression, srcParent, newObj);
-                var mapper = Activator.CreateInstance(mapperType, new object[] { GetValue(boConnection, _srcBo), GetValue(daoConnection, _srcDao) });
-                mapperType.InvokeMember(mappingName, BindingFlags.InvokeMethod, null, mapper, null);
-                
+                SetValue(fromExpression, srcParent, toObj);
+                _invokeMapper(mapperType, mappingName, fromObj, toObj);
             }
+        }
+
+        private void _invokeMapper(Type mapperType, string mappingName, object fromValue, object toValue)
+        {
+            var mapper = Activator.CreateInstance(mapperType, new object[] { _contextFactory });
+            var args = new[] { fromValue, toValue };
+            mapperType.InvokeMember(mappingName, BindingFlags.InvokeMethod, null, mapper, args);
         }
 
         public void Map<TDestBo, TDestDao>(Expression<Func<TSrcBo, TDestBo>> boConnection, Expression<Func<TSrcDao, TDestDao>> daoConnection, Type mapperType, bool toBo)
@@ -100,18 +92,34 @@ namespace GenPres.DataAccess.DataMapper
         {
             _mapObject<TDestBo, TDestDao>(boConnection.Body, daoConnection.Body, mapperType, toBo);
         }
+
         public void MapCollection<TDestBo, TDestDao>(Expression<Func<TSrcBo, TDestBo>> boConnection, Expression<Func<TSrcDao, TDestDao>> daoConnection, Type mapperType, bool toBo)
             where TDestBo : IList
             where TDestDao : IList
         {
-            string mappingName = "MapFromDaoToBo";
+            IList fromList;
+            IList toList;
+            string mappingName;
+            Expression fromExpression;
+            if (toBo)
+            {
+                fromList = (IList)GetValue(daoConnection.Body, _srcDao);
+                toList = (IList)GetValue(boConnection.Body, _srcBo);
+                mappingName = "MapFromDaoToBo";
+                fromExpression = boConnection.Body;
+            }else
+            {
+                fromList = (IList)GetValue(boConnection.Body, _srcBo);
+                toList = (IList)GetValue(daoConnection.Body, _srcDao);
+                mappingName = "MapFromBoToDao";
+                fromExpression = daoConnection.Body;
+            }
+            
             if(toBo)
             {
-                IList fromList = (IList)GetValue(daoConnection.Body, _srcDao);
-                IList toList = (IList)GetValue(boConnection.Body, _srcBo);
                 if (fromList != null)
                 {
-                    Type toListType = ((PropertyInfo)((MemberExpression)boConnection.Body).Member).PropertyType;
+                    Type toListType = ((PropertyInfo)((MemberExpression)fromExpression).Member).PropertyType;
                     if (toList == null)
                         toList = (IList)Activator.CreateInstance(toListType);
                     else
@@ -120,39 +128,15 @@ namespace GenPres.DataAccess.DataMapper
                     for (int i = 0; i < fromList.Count; i++)
                     {
                         Type listItemsType = toList.GetType().GetGenericArguments()[0];
-                        object newObj = Activator.CreateInstance(listItemsType);
+                        object newObj = ObjectFactory.InitExisting(listItemsType);
                         toList.Add(newObj);
-
-                        object mapper = Activator.CreateInstance(mapperType, new[] { newObj, fromList[i] });
-                        mapperType.InvokeMember(mappingName, BindingFlags.InvokeMethod, null, mapper, null);
+                        _invokeMapper(mapperType, mappingName, fromList[i], newObj);
                     }
                     SetValue(boConnection.Body, _srcBo, toList);
                 }
-            }else
-            {
-                IList fromList = (IList)GetValue(boConnection.Body, _srcBo);
-                IList toList = (IList)GetValue(daoConnection.Body, _srcDao);
-                if (fromList != null)
-                {
-                    Type toListType = ((PropertyInfo)((MemberExpression)daoConnection.Body).Member).PropertyType;
-                    if (toList == null)
-                        toList = (IList)Activator.CreateInstance(toListType);
-                    else
-                        toList.Clear();
-
-                    for (int i = 0; i < fromList.Count; i++)
-                    {
-                        Type listItemsType = toList.GetType().GetGenericArguments()[0];
-                        object newObj = Activator.CreateInstance(listItemsType);
-                        toList.Add(newObj);
-
-                        object mapper = Activator.CreateInstance(mapperType, new[] { fromList[i], newObj });
-                        mapperType.InvokeMember(mappingName, BindingFlags.InvokeMethod, null, mapper, null);
-                    }
-                    SetValue(daoConnection.Body, _srcDao, toList);
-                }
             }
         }
+
         static public Type GetDeclaredType<TSelf>(TSelf self)
         {
             return typeof(TSelf);

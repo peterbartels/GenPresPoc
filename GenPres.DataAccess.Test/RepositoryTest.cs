@@ -39,21 +39,26 @@ namespace GenPres.DataAccess.Test
         [TestMethod]
         public void _mapper_can_MapChild()
         {
+            /* From dao to bo */
             var prDao = new Prescription();
             prDao.Drug = new Drug();
             prDao.Drug.Name = "paracetamol";
-
             var pr = new PrescriptionBo();
-            var prMapper = new PrescriptionMapper(pr, prDao);
-            prMapper.InitChildMappings();
-            prMapper.MapFromDaoToBo();
+            var prMapper = new PrescriptionMapper();
+            prMapper.MapFromDaoToBo(prDao, pr);
             Assert.IsNotNull(pr.Drug);
             Assert.IsTrue(pr.Drug.Generic == prDao.Drug.Name);
+
+            /* From Bo to Dao */
+            prDao = new Prescription();
+            prMapper.MapFromBoToDao(pr, prDao);
+            Assert.IsTrue(prDao.Drug.Name == pr.Drug.Generic);
         }
 
         [TestMethod]
         public void _mapper_can_MapCollection()
         {
+            /* From dao to bo */
             var prDao = new Prescription();
             prDao.Drug = new Drug();
             prDao.Drug.Name = "paracetamol";
@@ -61,14 +66,14 @@ namespace GenPres.DataAccess.Test
             c.ComponentName = "test";
             prDao.Drug.Components.Add(c);
             var pr = new PrescriptionBo();
-            var prMapper = new PrescriptionMapper(pr, prDao);
-            prMapper.InitChildMappings();
-            prMapper.MapFromDaoToBo();
+            var prMapper = new PrescriptionMapper();
+            prMapper.MapFromDaoToBo(prDao, pr);
+            
+            /* From Bo to Dao */
             Assert.IsTrue(pr.Drug.Components[0].Name == "test");
-
             prDao.Drug.Components.Clear();
             prDao.Drug.Name = "";
-            prMapper.MapFromBoToDao();
+            prMapper.MapFromBoToDao(pr, prDao);
         }
 
         [TestMethod]
@@ -100,7 +105,7 @@ namespace GenPres.DataAccess.Test
         public void _repository_can_GetSingle()
         {
             TestRepository testRepository = new TestRepository();
-            var single = testRepository.FindSingle(x=>x.Id == 14);
+            var single = testRepository.FindSingle(x=>x.Id == 5);
 
             Assert.IsTrue(single.IsAvailable);
             Assert.IsNotNull(single.Object);
@@ -126,7 +131,7 @@ namespace GenPres.DataAccess.Test
         public void _repository_can_GetByPrimaryId()
         {
             TestRepository testRepository = new TestRepository();
-            var byId = testRepository.GetById(14);
+            var byId = testRepository.GetById(5);
             Assert.IsNotNull(byId);
         }
     }

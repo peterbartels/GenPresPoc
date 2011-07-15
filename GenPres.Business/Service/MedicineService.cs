@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using GenPres.Business.Data.Client.GenForm;
-using GenPres.Business.Domain.Prescription.Medicine;
+using GenPres.Business.Domain.PrescriptionDomain.Medicine;
 
 namespace GenPres.Business.Service
 {

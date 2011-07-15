@@ -65,7 +65,8 @@
     <Compile Include="DataMapper\Mapper\Patient\LogicalUnitMapper.cs" />
     <Compile Include="DataMapper\Mapper\Patient\PatientMapper.cs" />
     <Compile Include="DataMapper\Mapper\Patient\PdmsMapper.cs" />
-    <Compile Include="DataMapper\Mapper\Prescription\PrescriptionMapper.cs" />
+    <Compile Include="DataMapper\Mapper\PrescriptionMapper\DrugMapper.cs" />
+    <Compile Include="DataMapper\Mapper\PrescriptionMapper\PrescriptionMapper.cs" />
     <Compile Include="DataMapper\Mapper\User\UserMapper.cs" />
     <Compile Include="GenPresDataContextFactory.cs" />
     <Compile Include="GenPresDataManager.cs" />

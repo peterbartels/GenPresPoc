@@ -148,15 +148,16 @@ namespace GenPres.Business.Domain.Patient
 
         public void Save()
         {
-            Repository.Save(this);
-            Repository.Submit();
+            //Repository.Save(this);
+            //Repository.Submit();
         }
-
+        
         private static IPatientRepository _patientRepository = DalServiceProvider.Instance.Resolve<IPatientRepository>();
+        /*
         private static IPatientRepository Repository
         {
             get { return _patientRepository; }
-        }
+        }*/
 
         public static Patient NewPatient()
         {
@@ -165,7 +166,8 @@ namespace GenPres.Business.Domain.Patient
 
         public static IPatient GetPatientByPid(string Pid)
         {
-            return Repository.GetByPid(Pid);
+            return new Patient();
+            ;// Repository.GetByPid(Pid);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace GenPres.Business.Data.Client.PrescriptionData
 {
     public class PrescriptionDto
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string StartDate { get; set; }
         public string drugGeneric { get; set; }
         public string drugRoute { get; set; }

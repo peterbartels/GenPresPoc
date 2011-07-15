@@ -33,7 +33,7 @@ namespace GenPres.Business.Test.Acceptance
         [TestMethod]
         public void _can_GetPrescriptions()
         {
-            var prescriptions = PrescriptionService.GetPrescriptions();
+            var prescriptions = PrescriptionService.GetPrescriptions("8697898");
 
         }
     }

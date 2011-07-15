@@ -121,6 +121,21 @@ namespace GenPres.DataAccess.Repositories
             _dataContextFactory.Submit();
         }
 
+        public TType NewBo<TType>()
+            where TType: class, ISavable
+        {
+            return ObjectFactory.New<TType>();
+        }
+
+        public TType NewExistingBo<TType>()
+            where TType : class, ISavable
+        {
+            return ObjectFactory.InitExisting<TType>();
+        }
+        public TDao NewDao()
+        {
+            return CreateInstance();
+        }
         #region Properties
 
         private string PrimaryKeyName
@@ -169,11 +184,11 @@ namespace GenPres.DataAccess.Repositories
             return _dataContextFactory.Context.GetTable<TEntity>().Single(lambda);
         }
 
-        public object GetIdValue<TEntity>(TEntity dao)
+        public static object GetIdValue<TEntity>(TEntity dao, DataContext context)
             where TEntity : class
         {
             // get the row from the database using the meta-model
-            MetaType meta = _dataContextFactory.Context.Mapping.GetTable(typeof(TEntity)).RowType;
+            MetaType meta = context.Mapping.GetTable(typeof(TEntity)).RowType;
             
             if (meta.IdentityMembers.Count != 1) throw new InvalidOperationException("Composite identity not supported");
 

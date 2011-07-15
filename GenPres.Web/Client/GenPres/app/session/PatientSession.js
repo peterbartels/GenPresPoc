@@ -6,6 +6,10 @@ Ext.define('GenPres.session.PatientSession', {
 
     singleton: true,
 
+    patient : {
+        PID:""
+    },
+
     setLogicalUnit : function(id, name){
         this.currentLogicalUnitId = id;
         this.currentLogicalUnitName = name;
@@ -20,6 +24,6 @@ Ext.define('GenPres.session.PatientSession', {
     },
 
     setPatient : function(record){
-        
+        this.patient.PID = record.data.PID;
     }
 })

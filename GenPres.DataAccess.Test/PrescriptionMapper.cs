@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using GenPres.Business.Data.DataAccess.Mappers;
@@ -10,34 +11,28 @@ namespace GenPres.DataAccess.Test
 {
     public class PrescriptionMapper : DataMapper<PrescriptionBo, Prescription>
     {
-        protected PrescriptionBo _bo;
-        protected Prescription _dao;
-
-        public PrescriptionMapper(PrescriptionBo rootBo, Prescription dao)
-            : base(rootBo, dao)
-        {
-            _bo = rootBo;
-            _dao = dao;
-        }
-
-        public override void  InitChildMappings()
+        public PrescriptionMapper()
+            : base(new TestDataContextFactory())
         {
             
         }
-        public void MapChilds(bool toBo)
+
+        public void MapChilds(bool toBo, PrescriptionBo _bo, Prescription _dao)
         {
-            var childMapper = new ChildMapper<PrescriptionBo, Prescription>(_bo, _dao);
+            var childMapper = new ChildMapper<PrescriptionBo, Prescription>(_bo, _dao, _contextFactory);
             childMapper.Map(x => x.Drug, y => y.Drug, typeof(DrugMapper), toBo);
         }
 
-        public override void MapFromBoToDao()
+        public override Prescription MapFromBoToDao(PrescriptionBo rootBo, Prescription dao)
         {
-            MapChilds(false);
+            MapChilds(false, rootBo, dao);
+            return dao;
         }
 
-        public override void MapFromDaoToBo()
+        public override PrescriptionBo MapFromDaoToBo(Prescription dao, PrescriptionBo rootBo)
         {
-            MapChilds(true);
+            MapChilds(true, rootBo, dao);
+            return rootBo;
         }
     }
     
@@ -46,30 +41,26 @@ namespace GenPres.DataAccess.Test
         public string Generic { get; set; }
         public List<ComponentBo> Components { get; set; }
 
-        public bool IsNew
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+        public bool IsNew {get; set; }
 
         public void OnCreate()
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnNew()
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnInitExisting()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+
         }
 
         public int Id { get; set; }
@@ -80,95 +71,76 @@ namespace GenPres.DataAccess.Test
 
         public string Name;
 
-        public bool IsNew
-        {
-            get { throw new NotImplementedException(); }
-            set { throw new NotImplementedException(); }
-        }
+        public bool IsNew { get; set; }
 
         public void OnCreate()
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnNew()
         {
-            throw new NotImplementedException();
+
         }
 
         public void OnInitExisting()
         {
-            throw new NotImplementedException();
+
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+
         }
 
         public int Id { get; set; }
     }
     public class ComponentMapper : DataMapper<ComponentBo, Component>
     {
-        protected ComponentBo _bo;
-        protected Component _dao;
-
-        public ComponentMapper(ComponentBo rootBo, Component dao)
-            : base(rootBo, dao)
+        public ComponentMapper()
+            : base(new TestDataContextFactory())
         {
-            _bo = rootBo;
-            _dao = dao;
+            
         }
 
-        public override void InitChildMappings()
+        public override Component MapFromBoToDao(ComponentBo _bo, Component _dao)
         {
-            throw new NotImplementedException();
+            _dao.ComponentName = _bo.Name;
+            return _dao;
         }
 
-        public override void MapFromBoToDao()
-        {
-            _dao.ComponentName =_bo.Name;
-        }
-
-        public override void MapFromDaoToBo()
+        public override ComponentBo MapFromDaoToBo(Component _dao, ComponentBo _bo)
         {
             _bo.Name = _dao.ComponentName;
+            return _bo;
         }
     }
     public class DrugMapper : DataMapper<DrugBo, Drug>
     {
-        protected DrugBo _bo;
-        protected Drug _dao;
-
-        public DrugMapper(DrugBo rootBo, Drug dao)
-            : base(rootBo, dao)
+        public DrugMapper()
+            : base(new TestDataContextFactory())
         {
-            _bo = rootBo;
-            _dao = dao;
-        }
-
-        public override void InitChildMappings()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void MapFromBoToDao()
-        {
-            _dao.Name = _bo.Generic;
-            MapChilds(false);
-        }
-
-
-        public override void MapFromDaoToBo()
-        {
-            _bo.Generic = _dao.Name;
-            MapChilds(true);
             
         }
-        private void MapChilds(bool toBo)
+
+        private void MapChilds(bool toBo, DrugBo _bo, Drug _dao)
         {
-            var childMapper = new ChildMapper<DrugBo, Drug>(_bo, _dao);
+            var childMapper = new ChildMapper<DrugBo, Drug>(_bo, _dao, _contextFactory);
             childMapper.MapCollection(x => x.Components, y => y.Components, typeof(ComponentMapper), toBo);
+        }
+
+        public override Drug MapFromBoToDao(DrugBo _bo, Drug _dao)
+        {
+            _dao.Name = _bo.Generic;
+            MapChilds(false, _bo, _dao);
+            return _dao;
+        }
+
+        public override DrugBo MapFromDaoToBo(Drug _dao, DrugBo _bo)
+        {
+            _bo.Generic = _dao.Name;
+            MapChilds(true, _bo, _dao);
+            return _bo;
         }
     }
 }

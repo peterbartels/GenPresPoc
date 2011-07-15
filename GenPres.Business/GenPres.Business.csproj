@@ -84,9 +84,9 @@
     <Compile Include="Data\DataAccess\Repositories\IUserRepository.cs" />
     <Compile Include="Domain\ISavable.cs" />
     <Compile Include="Domain\ObjectFactory.cs" />
-    <Compile Include="Domain\Prescription\Drug.cs" />
-    <Compile Include="Domain\Prescription\IDrug.cs" />
-    <Compile Include="Domain\Prescription\IPrescription.cs" />
+    <Compile Include="Domain\PrescriptionDomain\Drug.cs" />
+    <Compile Include="Domain\PrescriptionDomain\IDrug.cs" />
+    <Compile Include="Domain\PrescriptionDomain\IPrescription.cs" />
     <Compile Include="Domain\Patient\ILogicalUnit.cs" />
     <Compile Include="Domain\Patient\IPatient.cs" />
     <Compile Include="Domain\Patient\IPatientCollection.cs" />
@@ -94,8 +94,8 @@
     <Compile Include="Domain\Patient\LogicalUnit.cs" />
     <Compile Include="Domain\Patient\Patient.cs" />
     <Compile Include="Domain\Patient\PatientCollection.cs" />
-    <Compile Include="Domain\Prescription\Medicine\Medicine.cs" />
-    <Compile Include="Domain\Prescription\Prescription.cs" />
+    <Compile Include="Domain\PrescriptionDomain\Medicine\Medicine.cs" />
+    <Compile Include="Domain\PrescriptionDomain\Prescription.cs" />
     <Compile Include="Domain\User\User.cs" />
     <Compile Include="GenPresServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

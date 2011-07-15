@@ -10,6 +10,9 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     init: function() {
         this.control({
+            'gridpanel' : {
+                itemdblclick: this.loadPrescription
+            },
             'treepanel': {
                 itemclick: this.loadPrescriptionForm
             },
@@ -23,6 +26,25 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
                 click : this.savePrescription
             }
         });
+    },
+
+    loadPrescription : function(view, record, htmlItem, index, event, options){
+        Prescription.GetPrescriptionById(record.data.Id, function(result){
+            this.setValues(record);
+        }, this);
+    },
+
+    setValues: function(record){
+        var forms = this.getForms();
+        for(var i=0; i<forms.length; i++){
+            Ext.Object.each(record.data, function(key, value){
+                var components = forms[i].query('#'+ key);
+                if(components.length > 0){
+                    var component = components[i];
+                    component.setValue(value);
+                }
+            }, this);
+        }
     },
 
     loadPrescriptionForm : function(tree, record){
@@ -42,17 +64,22 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         var drugCompositionController = GenPresApplication.getController('prescription.DrugComposition');
         drugCompositionController.clear();
     },
+
+    getForms : function(){
+        var prescriptionform = GenPresApplication.MainCenter.query('prescriptionform')[0];
+        return prescriptionform.query('form');
+    },
     
     savePrescription:function(){
-        var prescriptionform = GenPresApplication.MainCenter.query('prescriptionform')[0];
-        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
         var vals = {};
-        var forms = [];
-        forms = prescriptionform.query('form');
-        for(var i=0; i<forms.length; i++){
+        var forms = this.getForms();
+
+        for(var i=0; i<forms.length; i++)
             vals = forms[i].getValues();
-        }
-        Prescription.SavePrescription(vals, function(newValues){
+
+        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
+        var PID = GenPres.session.PatientSession.patient.PID;
+        Prescription.SavePrescription(PID, vals, function(newValues){
             prescriptiongrid.store.load();
         })
     }

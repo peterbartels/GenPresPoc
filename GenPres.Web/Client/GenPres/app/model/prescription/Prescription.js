@@ -7,7 +7,7 @@ Ext.define('GenPres.model.prescription.Prescription', {
     autoLoad : true,
 
     fields: [
-        { name: 'id', type: 'float' },
+        { name: 'Id', type: 'float' },
         { name: 'drugGeneric', type: 'string' },
         { name: 'drugRoute', type: 'string' },
         { name: 'drugShape', type: 'string' },
@@ -15,6 +15,10 @@ Ext.define('GenPres.model.prescription.Prescription', {
     ],
     proxy : {
         type:'direct',
-        directFn : Prescription.GetPrescriptions
+        directFn : Prescription.GetPrescriptions,
+        extraParams:{
+            PID : ""
+        },
+        paramOrder:["PID"]
     }
 });

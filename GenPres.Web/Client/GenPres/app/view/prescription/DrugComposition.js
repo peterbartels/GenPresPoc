@@ -11,7 +11,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var genericCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.GenericStore',
             displayField: 'Value',
-            name:'drugGeneric',
+            id:'drugGeneric',
             action:'generic',
             labelAlign:'top',
             value:'paracetamol',
@@ -25,7 +25,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         
         var routeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.RouteStore',
-            name:'drugRoute',
+            id:'drugRoute',
             displayField: 'Value',
             action:'route',
             labelAlign:'top',
@@ -35,7 +35,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var shapeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: Ext.create('GenPres.store.prescription.ShapeStore'),
             displayField: 'Value',
-            name:'drugShape',
+            id:'drugShape',
             action:'shape',
             labelAlign:'top',
             fieldLabel: 'Toedieningsvorm'

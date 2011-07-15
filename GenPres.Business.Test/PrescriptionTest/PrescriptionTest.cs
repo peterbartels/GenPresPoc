@@ -1,9 +1,10 @@
 ﻿using System;
 using GenPres.Business.Data.Client.PrescriptionData;
-using GenPres.DataAccess.DataMapper.Mapper.Prescription;
+using GenPres.DataAccess;
+using GenPres.DataAccess.DataMapper.Mapper.PrescriptionMapper;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Domain.Prescription;
+using GenPres.Business.Domain.PrescriptionDomain;
 
 namespace GenPres.Business.Test.PrescriptionTest
 {
@@ -44,8 +45,8 @@ namespace GenPres.Business.Test.PrescriptionTest
             p.Drug.Route = "rect";
             p.Drug.Shape = "zetp";
 
-            PrescriptionMapper pMapper = new PrescriptionMapper();
-            pMapper.MapBusinessObjectToDao(p);
+            //PrescriptionMapper pMapper = new PrescriptionMapper(new GenPresDataContextFactory());
+            //pMapper.MapFromBoToDao(p, new Database.Prescription());
         }
 
 

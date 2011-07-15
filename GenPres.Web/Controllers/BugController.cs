@@ -16,5 +16,14 @@ namespace GenPres.Web3.Controllers
             return View();
         }
 
+        public ActionResult TreePanelTopBorder()
+        {
+            return View();
+        }
+        
+        public ActionResult DirectStoreByProxy()
+        {
+            return View();
+        }
     }
 }

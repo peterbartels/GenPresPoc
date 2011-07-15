@@ -1,38 +1,41 @@
 ﻿using System;
 using System.Data.Linq;
 using GenPres.Business.Data.DataAccess;
-using GenPres.Business.Data.DataAccess.Mappers;
-using GenPres.Business.Domain;
 using GenPres.Business.Domain.Patient;
 using GenPres.DataAccess.Repositories;
 
 namespace GenPres.DataAccess.DataMapper.Mapper.Patient
 {
-    public class PatientMapper : IDataMapper<IPatient, Database.Patient>
+    public class PatientMapper : DataMapper<IPatient, Database.Patient>
     {
-        private DataContext _context;
-
-        public PatientMapper(DataContext context)
+        public PatientMapper()
+            : base(new GenPresDataContextFactory())
         {
-            _context = context;
         }
-        public Database.Patient MapFromBoToDao(IPatient patient, Database.Patient patientDao)
+
+        public PatientMapper(IDataContextFactory context)
+            : base(context)
         {
-            patientDao.PID = patient.PID;
+            
+        }
+
+        public override Database.Patient MapFromBoToDao(IPatient patientBo, Database.Patient patientDao)
+        {
+            patientDao.Id = (int)Repository<IPatient, Database.Patient>.GetIdValue(patientDao, _contextFactory.Context);
+            patientDao.PID = patientBo.PID;
             return patientDao;
         }
 
-        public IPatient MapFromDaoToBo(Database.Patient patientDao, IPatient patient)
+        public override IPatient MapFromDaoToBo(Database.Patient patientDao, IPatient patientBo)
         {
-            patient.PID = patientDao.PID;
-            //patient.Id = (int) Repository<IPatient, Database.Patient>.GetIdValue(patientDao);
-
-            return patient;
+            patientBo.PID = patientDao.PID;
+            return patientBo;
+            
         }
 
         public DataContext Context
         {
-            get { return _context; }
+            get { return _contextFactory.Context; }
         }
     }
 }
