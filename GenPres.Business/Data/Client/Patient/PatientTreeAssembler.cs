@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using GenPres.Business.Domain;
-using GenPres.Business.Domain.Patient;
+using GenPres.Business.Domain.PatientDomain;
 
 namespace GenPres.Business.Data.Client.Patient
 {

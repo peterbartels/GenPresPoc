@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain.PrescriptionDomain;
+using GenPres.Business.Domain.UnitDomain;
 using GenPres.Business.ServiceProvider;
 
 namespace GenPres.Business.Domain.PrescriptionDomain
@@ -21,6 +22,14 @@ namespace GenPres.Business.Domain.PrescriptionDomain
         private Drug _drug;
 
         private string _pid;
+
+        private UnitValue _frequency;
+
+        private UnitValue _quantity;
+
+        private UnitValue _total;
+
+        private UnitValue _rate;
 
         #endregion
 
@@ -56,7 +65,33 @@ namespace GenPres.Business.Domain.PrescriptionDomain
             set { _pid = value; }
         }
 
+        public UnitValue Frequency
+        {
+            get { return _frequency; }
+            set { _frequency = value; }
+        }
+
+        public UnitValue Quantity
+        {
+            get { return _quantity; }
+            set { _quantity = value; }
+        }
+
+        public UnitValue Total
+        {
+            get { return _total; }
+            set { _total = value; }
+        }
+
+        public UnitValue Rate
+        {
+            get { return _rate; }
+            set { _rate = value; }
+        }
+
         #endregion
+
+        #region Operations
 
         private static IPrescriptionRepository Repository
         {
@@ -79,29 +114,22 @@ namespace GenPres.Business.Domain.PrescriptionDomain
             return Repository.GetPrescriptionById(id);
         }
 
+        #endregion
 
         public bool IsNew { get; set; }
+        public int Id { get; set; }
 
-        public void OnCreate()
-        {
-            
-        }
-
+        public void OnCreate() {}
+        public void OnInitExisting() { }
+        
         public void OnNew()
         {
             CreationDate = DateTime.Now;
             StartDate = DateTime.Now;
             Drug = Drug.NewDrug();
-        }
-
-        public void OnInitExisting()
-        {
-            
-        }
-
-        public void Save()
-        {
-            
+            Frequency = new UnitValue();
+            Quantity = new UnitValue();
+            Total = new UnitValue();
         }
 
         public void Save(string patientId)
@@ -109,6 +137,6 @@ namespace GenPres.Business.Domain.PrescriptionDomain
             Repository.SavePrescription(this, patientId);
         }
 
-        public int Id {get;set;}
+        
     }
 }

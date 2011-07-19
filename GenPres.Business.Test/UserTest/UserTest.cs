@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using GenPres.Business.Data.DataAccess.Repositories;
+using GenPres.Business.Domain.UserDomain;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
 using GenPres.DataAccess.Repositories;

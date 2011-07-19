@@ -18,7 +18,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Generiek'
         });
 
-        var quantity = Ext.create('Ext.form.field.Number', {
+        var quantity = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Quantity',
             labelAlign:'top'
         });
@@ -46,7 +46,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             margin:'10 10 10 10',
             layout : {
                type:'table',
-                columns:2
+               columns:2
             },
             items : [genericCombo, quantity, routeCombo, shapeCombo]
         });

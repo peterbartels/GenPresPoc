@@ -11,7 +11,6 @@ namespace GenPres.Business.Domain
         void OnCreate();
         void OnNew();
         void OnInitExisting();
-        void Save();
         int Id { get; set; }
     }
 }

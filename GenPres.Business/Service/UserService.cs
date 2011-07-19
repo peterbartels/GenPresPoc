@@ -1,4 +1,5 @@
 ﻿using GenPres.Business.Domain;
+using GenPres.Business.Domain.UserDomain;
 
 namespace GenPres.Business.Service
 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using GenPres.Business.Domain.UnitDomain;
 
 namespace GenPres.Business.Domain.PrescriptionDomain
 {
@@ -9,5 +10,10 @@ namespace GenPres.Business.Domain.PrescriptionDomain
         DateTime CreationDate { get; set; }
         Drug Drug { get; set; }
         string PID { get; set; }
+        UnitValue Frequency { get; set; }
+        UnitValue Quantity { get; set; }
+        UnitValue Total { get; set; }
+        UnitValue Rate { get; set; }
     }
 }
+

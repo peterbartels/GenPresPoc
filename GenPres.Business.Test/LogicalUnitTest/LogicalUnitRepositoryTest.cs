@@ -1,5 +1,5 @@
 ﻿using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain.Patient;
+using GenPres.Business.Domain.PatientDomain;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess.Repositories;
 using GenPres.xTest.General;

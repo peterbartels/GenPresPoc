@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using GenPres.Business.Domain.Patient;
+using GenPres.Business.Domain.PatientDomain;
 
 namespace GenPres.DataAccess.DataMapper.Mapper.Patient
 {

@@ -1,6 +1,7 @@
 ﻿using System;
 using GenPres.Business.Data;
 using GenPres.Business.Data.DataAccess.Repositories;
+using GenPres.Business.Domain.UserDomain;
 using GenPres.Business.ServiceProvider;
 using GenPres.Business.Aspect;
 
@@ -15,7 +16,7 @@ public interface IChangeTrackable
     StatusEnum State { get; set; }
 }
 
-namespace GenPres.Business.Domain
+namespace GenPres.Business.Domain.UserDomain
 {
     
     public class User : IUser, IChangeTrackable

@@ -2,7 +2,7 @@
 using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
-using GenPres.Business.Domain.Patient;
+using GenPres.Business.Domain.PatientDomain;
 using GenPres.DataAccess.DataMapper.Mapper.Patient;
 using GenPres.DataAccess.Object;
 

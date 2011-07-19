@@ -82,21 +82,41 @@
     <Compile Include="Data\DataAccess\Repositories\IPrescriptionRepository.cs" />
     <Compile Include="Data\DataAccess\Repositories\IRepository.cs" />
     <Compile Include="Data\DataAccess\Repositories\IUserRepository.cs" />
+    <Compile Include="Domain\Calculation\Calculation\PropertyCombinationCalculate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Calculation\Combination\ICalculationCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Calculation\Combination\MultiplierCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Domain\Calculation\Math\MathExt.cs" />
+    <Compile Include="Domain\Calculation\PrescriptionCalculator.cs" />
+    <Compile Include="Domain\Calculation\PropertyHelper.cs" />
+    <Compile Include="Domain\ICalcalutorBusiness.cs" />
+    <Compile Include="Domain\ICalculationStateTrackable.cs" />
     <Compile Include="Domain\ISavable.cs" />
     <Compile Include="Domain\ObjectFactory.cs" />
     <Compile Include="Domain\PrescriptionDomain\Drug.cs" />
     <Compile Include="Domain\PrescriptionDomain\IDrug.cs" />
     <Compile Include="Domain\PrescriptionDomain\IPrescription.cs" />
-    <Compile Include="Domain\Patient\ILogicalUnit.cs" />
-    <Compile Include="Domain\Patient\IPatient.cs" />
-    <Compile Include="Domain\Patient\IPatientCollection.cs" />
-    <Compile Include="Domain\User\IUser.cs" />
-    <Compile Include="Domain\Patient\LogicalUnit.cs" />
-    <Compile Include="Domain\Patient\Patient.cs" />
-    <Compile Include="Domain\Patient\PatientCollection.cs" />
+    <Compile Include="Domain\PatientDomain\ILogicalUnit.cs" />
+    <Compile Include="Domain\PatientDomain\IPatient.cs" />
+    <Compile Include="Domain\PatientDomain\IPatientCollection.cs" />
+    <Compile Include="Domain\StateManager.cs" />
+    <Compile Include="Domain\UnitDomain\IUnitValue.cs" />
+    <Compile Include="Domain\UnitDomain\Unit.cs" />
+    <Compile Include="Domain\UnitDomain\UnitValue.cs" />
+    <Compile Include="Domain\UnitDomain\Factor.cs" />
+    <Compile Include="Domain\UnitDomain\UnitConverter.cs" />
+    <Compile Include="Domain\UserDomain\IUser.cs" />
+    <Compile Include="Domain\PatientDomain\LogicalUnit.cs" />
+    <Compile Include="Domain\PatientDomain\Patient.cs" />
+    <Compile Include="Domain\PatientDomain\PatientCollection.cs" />
     <Compile Include="Domain\PrescriptionDomain\Medicine\Medicine.cs" />
     <Compile Include="Domain\PrescriptionDomain\Prescription.cs" />
-    <Compile Include="Domain\User\User.cs" />
+    <Compile Include="Domain\UserDomain\User.cs" />
     <Compile Include="GenPresServiceProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceProvider\DalServiceProvider.cs" />

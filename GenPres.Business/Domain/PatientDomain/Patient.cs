@@ -2,7 +2,7 @@
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.ServiceProvider;
 
-namespace GenPres.Business.Domain.Patient
+namespace GenPres.Business.Domain.PatientDomain
 {
     public class Patient : IPatient
     {
@@ -164,7 +164,7 @@ namespace GenPres.Business.Domain.Patient
             return new Patient();
         }
 
-        public static IPatient GetPatientByPid(string Pid)
+        public static Patient GetPatientByPid(string Pid)
         {
             return new Patient();
             ;// Repository.GetByPid(Pid);

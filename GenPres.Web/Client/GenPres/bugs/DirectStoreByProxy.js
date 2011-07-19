@@ -1,8 +1,6 @@
 ﻿
 Ext.onReady(function(){
 
-    console.log(Prescription.GetGenerics);
-
     Ext.define('GenPres.store.prescription.GenericStore', {
         extend: 'Ext.data.Store',
         alias: 'widget.genericstore',
@@ -27,6 +25,7 @@ Ext.onReady(function(){
             xtype:'combo',
             value:'paracetamol',
             displayField: 'Value',
+            queryMode:'local',
             fieldLabel:'Test',
             store:Ext.create('GenPres.store.prescription.GenericStore')
         }]

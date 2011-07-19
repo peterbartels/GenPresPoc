@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.ServiceProvider;
 
-namespace GenPres.Business.Domain.Patient
+namespace GenPres.Business.Domain.PatientDomain
 {
     public class PatientCollection : IPatientCollection
     {

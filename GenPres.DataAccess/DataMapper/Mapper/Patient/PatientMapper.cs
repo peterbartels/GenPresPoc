@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Linq;
 using GenPres.Business.Data.DataAccess;
-using GenPres.Business.Domain.Patient;
+using GenPres.Business.Domain.PatientDomain;
 using GenPres.DataAccess.Repositories;
 
 namespace GenPres.DataAccess.DataMapper.Mapper.Patient

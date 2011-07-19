@@ -1,4 +1,4 @@
-﻿using GenPres.Business.Domain.Patient;
+﻿using GenPres.Business.Domain.PatientDomain;
 using GenPres.DataAccess.DataMapper.Mapper.Patient;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

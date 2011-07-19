@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GenPres.Business.Domain.Patient
+namespace GenPres.Business.Domain.PatientDomain
 {
     public interface IPatient : ISavable
     {

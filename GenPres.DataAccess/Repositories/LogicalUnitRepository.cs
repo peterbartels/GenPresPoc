@@ -1,5 +1,5 @@
 ﻿using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain.Patient;
+using GenPres.Business.Domain.PatientDomain;
 using GenPres.DataAccess.DataMapper.Mapper.Patient;
 
 namespace GenPres.DataAccess.Repositories

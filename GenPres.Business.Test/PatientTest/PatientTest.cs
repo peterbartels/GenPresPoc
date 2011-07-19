@@ -4,7 +4,7 @@ using System.Data;
 using System.Collections.Generic;
 using GenPres.Business.Data.Client.Patient;
 using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain.Patient;
+using GenPres.Business.Domain.PatientDomain;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
 using GenPres.DataAccess.DataMapper.Mapper.Patient;
