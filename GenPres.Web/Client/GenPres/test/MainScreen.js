@@ -4,7 +4,7 @@ describe("MainScreen", function() {
     GenPres.session.PatientSession.setLogicalUnit(1, "Pelikaan");
 
     var GetViewport = function(){
-        return GenPresApplication.viewport;
+        return GenPres.application.viewport;
     };
 
     var GetMainView = function(){

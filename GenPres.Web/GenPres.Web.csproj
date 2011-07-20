@@ -101,12 +101,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ActionResultParser.cs" />
+    <Compile Include="Controllers\AppTestController.cs" />
     <Compile Include="Controllers\BugController.cs" />
+    <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -923,6 +926,7 @@
     <Content Include="Client\Tests\lib\jasmine-1.0.2\jasmine.js" />
     <Content Include="Client\Tests\lib\jasmine-1.0.2\json2.js" />
     <Content Include="Client\Tests\RunJasmine.js" />
+    <Content Include="Copy of Settings.xml" />
     <Content Include="Global.asax" />
     <Content Include="Settings.xml" />
     <Content Include="Web.config" />
@@ -2167,6 +2171,9 @@
     <Content Include="Views\Shared\_LayoutBugs.cshtml" />
     <Content Include="Views\Bug\TreePanelTopBorder.cshtml" />
     <Content Include="Views\Bug\DirectStoreByProxy.cshtml" />
+    <Content Include="Views\Tests.cshtml" />
+    <Content Include="Views\Tests\Index.cshtml" />
+    <Content Include="Views\AppTest\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

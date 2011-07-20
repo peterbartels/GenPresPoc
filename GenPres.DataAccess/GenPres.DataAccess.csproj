@@ -60,6 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Databases\DatabaseConnection.cs" />
+    <Compile Include="Databases\DatabaseSetting.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="DataMapper\DataMapper.cs" />
     <Compile Include="DataMapper\Mapper\Patient\LogicalUnitMapper.cs" />

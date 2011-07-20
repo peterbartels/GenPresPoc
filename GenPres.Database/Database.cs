@@ -20,7 +20,7 @@ namespace GenPres.Database
             switch (database)
             {
                 case DatabaseName.GENPRES:
-                    connection = Settings.SettingsManager.Instance.ReadSecureSetting("GenPresDBConnectionString");
+                    connection = Settings.SettingsManager.Instance.ReadSecureSetting(Settings.SettingsManager.DatabaseName, Settings.SettingsManager.GenPresConnectionString);
                     break;    
                 default:
                     throw new Exception("Database not found");

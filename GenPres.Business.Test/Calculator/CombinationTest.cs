@@ -23,22 +23,20 @@ namespace GenPres.Business.Test.Calculator
             
             prescription.Total.Unit = "zetp";
             prescription.Total.Time = "dag";
-            prescription.Total.Value = 3;
+            prescription.Total.Value = 7;
             return prescription;
         }
         
         [TestMethod]
         public void CanSetCombinationValues()
         {
-            var prescription = _getTestPrescription();
-            PrescriptionCalculator._setIncrements(prescription);
+            Prescription prescription = _getTestPrescription();
+            PrescriptionCalculator.Calculate(prescription);
+            
+            Assert.AreEqual(7, prescription.Frequency.Value, "wrong frequency value");
+            Assert.AreEqual(7, prescription.Total.Value, "wrong total value");
+            Assert.AreEqual(7, prescription.Quantity.Value, "woring quantity value");
 
-            var prescriptionCalculate = new MultiplierCombination(
-                prescription,
-                () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity
-            );
-
-            prescriptionCalculate.Calculate();
         }
 
 

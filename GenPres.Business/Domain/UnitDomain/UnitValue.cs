@@ -1,5 +1,6 @@
 ﻿using System;
 using GenPres.Business.Domain.PrescriptionDomain;
+using GenPres.Operations.Calculation;
 
 namespace GenPres.Business.Domain.UnitDomain
 {
@@ -240,14 +241,14 @@ namespace GenPres.Business.Domain.UnitDomain
             if (_unit == "" && _time == "") return 0;
 
             decimal value = _baseValue;
-            if (_unit != "" && _unit != null) value = UnitConverter.GetUnitValue(_unit, value);
+            if (_unit != "" && _unit != null) value = MathExt.FixPrecision(UnitConverter.GetUnitValue(_unit, value));
             if (_time != "" && _time != null)
             {
-                value = value * UnitConverter.GetBaseValue(_time, 1);
+                value = MathExt.FixPrecision(value * UnitConverter.GetBaseValue(_time, 1));
             }
             if (_total != "" && _total != null)
             {
-                value = value * UnitConverter.GetBaseValue(_total, 1);
+                value = MathExt.FixPrecision(value*UnitConverter.GetBaseValue(_total, 1));
             }
 
             _value = value;

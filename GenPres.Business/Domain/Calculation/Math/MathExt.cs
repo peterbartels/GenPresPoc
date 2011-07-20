@@ -20,17 +20,33 @@ namespace GenPres.Operations.Calculation
          */
         public static decimal RoundToInt(decimal a)
         {
-            decimal result = Math.Round(a, 0, MidpointRounding.AwayFromZero);
+            decimal result = Math.Round(a, 0, MidpointRounding.ToEven);
             if (result < 1) result = 1;
             return result;
         }
+
+        public static decimal FlootToInt(decimal a)
+        {
+            decimal result = Math.Floor(a);
+            if (result < 1) result = 1;
+            return result;
+        }
+
+
+        public static decimal CeilToInt(decimal a)
+        {
+            decimal result = Math.Ceiling(a);
+            if (result < 1) result = 1;
+            return result;
+        }
+
 
         /*
          * Fixes rounding problems for decimals
          */
         public static decimal FixPrecision(decimal number)
         {
-            return Math.Round(number, 12);
+            return Math.Round(number, 10);
         }
 
         /*

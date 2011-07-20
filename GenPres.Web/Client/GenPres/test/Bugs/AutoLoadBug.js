@@ -19,7 +19,7 @@ Ext.define('GenPres.store.patient.PatientTreeStore', {
     ]
 });
 
-﻿Ext.define('GenPres.controller.patient.PatientController', {
+﻿Ext.define('GenPres.controller.patient.Patient', {
     extend: 'Ext.app.Controller',
 
     stores:['patient.PatientTreeStore']
@@ -50,7 +50,7 @@ Ext.define('GenPres.view.main.PatientTree', {
     }
 });
 
-var GenPresApplication;
+var GenPres.application;
 
 Ext.application ({
     name: 'GenPres',
@@ -59,7 +59,7 @@ Ext.application ({
     appFolder: './Client/GenPres/app',
 
     controllers: [
-        'patient.PatientController'
+        'patient.Patient'
     ],
 
     launch: function() {

@@ -1,6 +1,47 @@
 /*
 GenPres (c) 2011
 */
+Ext.define('GenPres.lib.util.QueryHelper', {
+
+    getFormTextField: function (container, fieldname) {
+        var me = this;
+        return me.getFormField(container, fieldname, 'textfield');
+    },
+
+    getFormNumberField: function (container, fieldname) {
+        var me = this;
+        return me.getFormField(container, fieldname, 'numberfield');
+    },
+
+    getFormComboBox: function (container, fieldname) {
+        var me = this;
+        return me.getFormField(container, fieldname, 'combobox');
+    },
+
+    getFormField: function (container, fieldname, type) {
+        return Ext.ComponentQuery.query(container + ' ' + type + '[name=' + fieldname + ']')[0];
+    },
+
+    setFormField: function (formfield, value) {
+        qqq = formfield;
+        formfield.inputEl.dom.value = value;
+        formfield.value = value;
+        return true;
+    },
+
+    getButton: function (container, buttontext) {
+        return Ext.ComponentQuery.query(container + ' button[text=' + buttontext + ']')[0];
+    },
+
+    clickButton: function (button) {
+        button.btnEl.dom.click();
+    },
+
+    getWindow: function (windowname) {
+        return Ext.ComponentQuery.query(windowname)[0];
+    }
+
+});
 Ext.define('GenPres.util.Process', {
 
     currentProcessNr : 0,
@@ -576,6 +617,10 @@ Ext.define('GenPres.session.PatientSession', {
 
     singleton: true,
 
+    patient : {
+        PID:""
+    },
+
     setLogicalUnit : function(id, name){
         this.currentLogicalUnitId = id;
         this.currentLogicalUnitName = name;
@@ -590,119 +635,15 @@ Ext.define('GenPres.session.PatientSession', {
     },
 
     setPatient : function(record){
-        
+        this.patient.PID = record.data.PID;
     }
 })
-Ext.define('GenPres.store.patient.LogicalUnitStore', {
-
-    extend: 'Ext.data.DirectStore',
-
-    alias: 'widget.logicalunitstore',
-    
-    root: {
-            text: 'Patienten',
-            id: 'src',
-            expanded: true
-    },
-
-    autoLoad:true,
-
-    model:'GenPres.model.patient.LogicalUnitModel',
-
-    directFn : Patient.GetLogicalUnits
-});
-Ext.define('GenPres.store.patient.PatientInfoStore', {
-
-    extend: 'Ext.data.Store',
-
-    alias: 'widget.patientstore',
-
-    model:'GenPres.model.patient.PatientModel'
-});
-Ext.define('GenPres.store.patient.PatientTreeStore', {
-
-    extend: 'Ext.data.TreeStore',
-
-    alias: 'widget.patienttreestore',
-
-    root: {
-            text: 'Patienten',
-            id: 'src',
-            expanded: false
-    },
-
-    model:'GenPres.model.patient.PatientModel'
-});
-Ext.define('GenPres.store.prescription.Prescription', {
-
-    extend: 'Ext.data.Store',
-
-    alias: 'widget.prescriptionstore',
-
-    autoLoad:true,
-
-    model:'GenPres.model.prescription.Prescription'
-});
-Ext.define('GenPres.store.prescription.ValueStore', {
-
-    extend: 'Ext.data.Store',
-
-    alias: 'widget.valuestore',
-
-    autoLoad:false,
+Ext.define('GenPres.model.database.Database', {
+    extend: 'Ext.data.Model',
 
     fields: [
-        { name: 'Value', type: 'string' }
-    ],
-
-    proxy : {
-        type:'direct',
-        directFn : Prescription.GetShapes,
-        extraParams:{
-            generic: "",
-            route : ""
-        },
-        paramOrder : ['generic', 'route']
-    }
-});
-Ext.define('GenPres.store.prescription.GenericStore', {
-    extend: 'GenPres.store.prescription.ValueStore',
-    alias: 'widget.genericstore',
-    proxy : {
-        type:'direct',
-        directFn : Prescription.GetGenerics,
-        extraParams:{
-            route: "",
-            shape:""
-        },
-        paramOrder : ['route', 'shape']
-    }
-});
-Ext.define('GenPres.store.prescription.RouteStore', {
-    extend: 'GenPres.store.prescription.ValueStore',
-    alias: 'widget.routestore',
-    proxy : {
-        type:'direct',
-        directFn : Prescription.GetRoutes,
-        extraParams:{
-            generic: "",
-            shape:""
-        },
-        paramOrder : ['generic', 'shape']
-    }
-});
-Ext.define('GenPres.store.prescription.ShapeStore', {
-    extend: 'GenPres.store.prescription.ValueStore',
-    alias: 'widget.shapestore',
-    proxy : {
-        type:'direct',
-        directFn : Prescription.GetShapes,
-        extraParams:{
-            generic: "",
-            route : ""
-        },
-        paramOrder : ['generic', 'route']
-    }
+        {name: 'DatabaseName', type: 'string'}
+    ]
 });
 
 Ext.define('GenPres.model.prescription.Prescription', {
@@ -713,7 +654,7 @@ Ext.define('GenPres.model.prescription.Prescription', {
     autoLoad : true,
 
     fields: [
-        { name: 'id', type: 'float' },
+        { name: 'Id', type: 'float' },
         { name: 'drugGeneric', type: 'string' },
         { name: 'drugRoute', type: 'string' },
         { name: 'drugShape', type: 'string' },
@@ -721,7 +662,11 @@ Ext.define('GenPres.model.prescription.Prescription', {
     ],
     proxy : {
         type:'direct',
-        directFn : Prescription.GetPrescriptions
+        directFn : Prescription.GetPrescriptions,
+        extraParams:{
+            PID : ""
+        },
+        paramOrder:["PID"]
     }
 });
 
@@ -765,6 +710,180 @@ Ext.define('GenPres.model.patient.PatientModel', {
     }
 });
 
+Ext.define('GenPres.store.database.Database', {
+    extend: 'Ext.data.Store',
+    alias: 'widget.databasestore',
+    storeId: 'databasestore',
+    // This requires is necessary when Ext.Loader is enabled
+    requires: ['GenPres.model.database.Database'],
+
+    model: 'GenPres.model.database.Database',
+    autoLoad: true,
+
+    proxy: {
+        type: 'direct',
+        directFn: Database.GetDatabases
+    }
+});
+Ext.define('GenPres.store.patient.LogicalUnitStore', {
+
+    extend: 'Ext.data.Store',
+
+    alias: 'widget.logicalunitstore',
+
+    root: {
+            text: 'Patienten',
+            id: 'src',
+            expanded: true
+    },
+
+    autoLoad:true,
+    proxy : {
+        type:'direct',
+        directFn : Patient.GetLogicalUnits
+    },
+    
+    model:'GenPres.model.patient.LogicalUnitModel'
+});
+Ext.define('GenPres.store.patient.PatientInfoStore', {
+
+    extend: 'Ext.data.Store',
+
+    alias: 'widget.patientstore',
+
+    model:'GenPres.model.patient.PatientModel'
+});
+Ext.define('GenPres.store.patient.PatientTreeStore', {
+
+    extend: 'Ext.data.TreeStore',
+
+    alias: 'widget.patienttreestore',
+
+    root: {
+            text: 'Patienten',
+            id: 'src',
+            expanded: false
+    },
+
+    model:'GenPres.model.patient.PatientModel'
+});
+Ext.define('GenPres.store.prescription.Prescription', {
+
+    extend: 'Ext.data.Store',
+
+    alias: 'widget.prescriptionstore',
+
+    autoLoad:false,
+
+    model:'GenPres.model.prescription.Prescription'
+});
+Ext.define('GenPres.store.prescription.ValueStore', {
+
+    extend: 'Ext.data.Store',
+
+    alias: 'widget.valuestore',
+
+    autoLoad:true,
+
+    fields: [
+        { name: 'Value', type: 'string' }
+    ],
+
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetShapes,
+        extraParams:{
+            generic: "",
+            route : ""
+        },
+        paramOrder : ['generic', 'route']
+    }
+});
+Ext.define('GenPres.store.prescription.GenericStore', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    alias: 'widget.genericstore',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetGenerics,
+        extraParams:{
+            route: "",
+            shape:""
+        },
+        paramOrder : ['route', 'shape']
+    }
+
+});
+Ext.define('GenPres.store.prescription.RouteStore', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    alias: 'widget.routestore',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetRoutes,
+        extraParams:{
+            generic: "",
+            shape:""
+        },
+        paramOrder : ['generic', 'shape']
+    }
+});
+Ext.define('GenPres.lib.view.component.SaveCancelToolbar', {
+    extend: 'Ext.toolbar.Toolbar',
+    alias: 'widget.savecanceltoolbar',
+
+    items: [
+            { text: 'Opslaan', action: 'save'},
+            { text: 'Cancel', action: 'cancel'}
+    ]
+    
+});
+/**
+ * Created by JetBrains WebStorm.
+ * User: halcwb
+ * Date: 6/19/11
+ * Time: 10:06 AM
+ * To change this template use File | Settings | File Templates.
+ */
+Ext.define('GenPres.lib.view.window.SaveCancelWindow', {
+    extend: 'Ext.window.Window',
+
+    requires: [
+        'GenPres.lib.view.component.SaveCancelToolbar'
+    ],
+
+    constructor: function (config) {
+        var me = this;
+    
+        me = me.initConfig(config);
+        me.callParent(arguments);
+        return me;
+    },
+
+    initComponent: function () {
+        var me = this;
+
+        me.dockedItems = me.createSaveCancelToolbar();
+
+        me.callParent(arguments);
+    },
+
+    createSaveCancelToolbar: function () {
+        return Ext.create('GenPres.lib.view.component.SaveCancelToolbar', { dock: 'bottom'});
+    }
+
+});
+Ext.define('GenPres.store.prescription.ShapeStore', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    alias: 'widget.shapestore',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetShapes,
+        extraParams:{
+            generic: "",
+            route : ""
+        },
+        paramOrder : ['generic', 'route']
+    }
+});
 Ext.define('GenPres.view.main.MainView', {
 
     extend: 'Ext.Panel',
@@ -785,8 +904,8 @@ Ext.define('GenPres.view.main.MainView', {
         ];
         me.callParent();
 
-        GenPresApplication.viewport.items.add(me);
-        GenPresApplication.viewport.doLayout();
+        GenPres.application.viewport.items.add(me);
+        GenPres.application.viewport.doLayout();
 
         return me;
     }
@@ -935,7 +1054,7 @@ Ext.define('GenPres.view.main.MainViewCenter', {
             Ext.create('GenPres.view.main.MainViewCenterContainer'),
             Ext.create('GenPres.view.prescription.PrescriptionTabs')
         ];
-        GenPresApplication.MainCenter = this;
+        GenPres.application.MainCenter = this;
         me.callParent();
     },
 
@@ -968,7 +1087,7 @@ Ext.define('GenPres.view.main.MainViewCenterContainer', {
 
         me.dockedItems = Ext.create('GenPres.view.main.TopToolbar');
         me.callParent();
-        GenPresApplication.MainCenterContainer = this;
+        GenPres.application.MainCenterContainer = this;
     },
 
     height: 100,
@@ -1002,7 +1121,9 @@ Ext.define('GenPres.view.main.MainViewLeft', {
                 html:'<img src="Client/GenPres/style/images/logo.png" style="margin-top:22px;" />',
                 height: 82
             },
-            Ext.create('GenPres.view.main.PatientTree')
+            Ext.create('GenPres.view.main.PatientTree', {
+                name:'mainPatientTree'
+            })
         ];
         me.callParent();
     }
@@ -1026,8 +1147,8 @@ Ext.define('GenPres.view.main.MainView', {
         ];
         me.callParent();
 
-        GenPresApplication.viewport.items.add(me);
-        GenPresApplication.viewport.doLayout();
+        GenPres.application.viewport.items.add(me);
+        GenPres.application.viewport.doLayout();
         
         return me;
     }
@@ -1099,20 +1220,21 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var genericCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.GenericStore',
             displayField: 'Value',
-            name:'drugGeneric',
+            id:'drugGeneric',
             action:'generic',
             labelAlign:'top',
+            value:'paracetamol',
             fieldLabel: 'Generiek'
         });
 
-        var quantity = Ext.create('Ext.form.field.Number', {
+        var quantity = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Quantity',
             labelAlign:'top'
         });
         
         var routeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.RouteStore',
-            name:'drugRoute',
+            id:'drugRoute',
             displayField: 'Value',
             action:'route',
             labelAlign:'top',
@@ -1120,9 +1242,9 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         });
 
         var shapeCombo = Ext.create('Ext.form.field.ComboBox', {
-            store: 'prescription.ShapeStore',
+            store: Ext.create('GenPres.store.prescription.ShapeStore'),
             displayField: 'Value',
-            name:'drugShape',
+            id:'drugShape',
             action:'shape',
             labelAlign:'top',
             fieldLabel: 'Toedieningsvorm'
@@ -1133,7 +1255,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             margin:'10 10 10 10',
             layout : {
                type:'table',
-                columns:2
+               columns:2
             },
             items : [genericCombo, quantity, routeCombo, shapeCombo]
         });
@@ -1224,68 +1346,205 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
         me.callParent();
     }
 });
-﻿Ext.define('GenPres.view.user.LoginWindow', {
+Ext.define('GenPres.view.user.LoginWindow', {
     extend: 'Ext.Window',
     alias: 'widget.userlogin',
 
     bodyPadding: 5,
-    
-    width: 560,
-    height: 400,
+    closable: false,
 
     requires : 'GenPres.session.PatientSession',
     
-    mixins: {
-        process: 'GenPres.util.Process'
-    },
-    
-    constructor : function(config){
+    title: 'GenPres Login',
+    defaultDatabase: 'Default Database',
+
+    initComponent: function() {
         var me = this;
-        me.mixins.process.constructor.call(me);
+        //noinspection JSUnusedGlobalSymbols
+        me.dockedItems = me.createDockedItems();
+
+        me.items = this.createItems();
+
         me.callParent(arguments);
     },
 
-    initComponent: function() {
-        this.items = [
-            { html: '<img src=" Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box'},
-            { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
-                items: [
-                    { xtype: 'form', border:false, items: [
-                        new Ext.form.Text({ fieldLabel: 'Gebruikersnaam', name: 'username', id:'username', margin: '10 0 10 10', value:'test' }),
-                        new Ext.form.Text({ fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10', value:'Test' })
-                    ]}
-                ]
-            },
-            Ext.create('GenPres.view.user.LogicalUnitSelector')
+    getLoginButton: function () {
+        return Ext.ComponentQuery.query('toolbar button[action=login]');
+    },
+
+    createDockedItems: function () {
+        return [
+            {
+                xtype: 'toolbar',
+                dock: 'bottom',
+                items: ['->', { text: 'Login', action: 'login'}]
+            }
         ];
-
-
-        this.callParent(arguments);
     },
 
-    afterRender : function(){
-       this.callParent(arguments);
-       //this.doProcess('Login');
+    createItems: function () {
+        var me = this;
+
+        return [
+            me.getHtmlImage(),
+            me.getLoginForm2()
+        ];
     },
 
-    dockedItems: [{ 
-        xtype: 'toolbar',
-        dock: 'bottom',
-        items: ['->', { text: 'Login', action: 'login'}]
-    }],
+    getImagePath: function () {
+        return GenPres.application.appFolder + "/style/images/medicalbanner.jpg";
+    },
+
+    getHtmlImage: function () {
+        var me = this, imagePath = me.getImagePath();
+        return { html: '<img src=' + imagePath + ' />', height: 180, xtype: 'box' }
+    },
 
 
-    Processes : {
-        'Login' : [
-            {component:'form', text:'Dit formulier kan gebruikt worden om in te loggen.'},
-            {component:'form textfield[name=username]', text:'Vul uw gebruikersnaam in.'},
-            {component:'form textfield[name=password]', text:'Vul uw wachtwoord in.'},
-            {component:'toolbar button[action=login]', text:'Klik op de login button om de applicatie te starten.'}
-        ]
+    getLoginForm2: function () {
+        var me = this;
+        //noinspection JSUnusedGlobalSymbols
+        return {
+            xtype:'form',
+            border: false,
+            bodyPadding: 15,
+            width: 541,
+            defaults: {
+                allowBlank: false
+            },
+            items:[
+                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam', name:'username', margin: '10 0 10 10', value: '' },
+                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: '' },
+                Ext.create('GenPres.view.user.LogicalUnitSelector',{name:'loginLogicalUnitSelector'}),
+                me.advancedLoginFieldSet()
+
+            ]
+        };
+    },
+
+    advancedLoginFieldSet: function () {
+        var me = this;
+        return {
+            xtype: 'fieldset',
+            layout: 'hbox',
+            collapsible: true,
+            collapsed: true,
+            margin:'65 0 0 0',
+            items: [
+                me.createDatabaseCombo(),
+                me.createRegisterDatabaseButton()
+            ]
+        };
+    },
+
+    createDatabaseCombo: function () {
+        var me = this;
+        return {xtype: 'combo', name: 'database', fieldLabel: 'Database', displayField: 'DatabaseName', store: me.getDatabaseStore()};
+    },
+
+    getDatabaseStore: function () {
+        return Ext.create('GenPres.store.database.Database');
+    },
+
+    createRegisterDatabaseButton: function () {
+        return {xtype: 'button', text: 'Registreer Database', action: 'registerdatabase'};
     }
+
+});
+Ext.define('GenPres.view.database.RegisterDatabaseWindow', {
+    extend: 'GenPres.lib.view.window.SaveCancelWindow',
+    title: 'Registreer Database',
+
+    layout: 'fit',
+
+    width: 800,
+    heigth: 300,
+
+    initComponent: function () {
+        var me = this;
+
+        me.items = me.getFormItem();
+        me.callParent();
+    },
+
+    getFormItem: function () {
+        var me = this,
+            defaults = {
+                width: 700,
+                labelWidth: 120,
+                labelAlign: 'left'
+            };
+        return { xtype: 'form', bodyPadding: 10, fieldDefaults: defaults, items: me.getFormItems()}
+    },
+
+    getFormItems: function () {
+        return [
+            { xtype: 'textfield', name: 'databasename', fieldLabel: 'Database Naam'},
+            { xtype: 'textfield', name: 'machinename', fieldLabel: 'Machine Naam'},
+            { xtype: 'textfield', name: 'genpresconnectionstring', fieldLabel: 'GenPres Connection String'},
+            { xtype: 'textfield', name: 'patientdbconnectionstring', fieldLabel: 'PDMS Connection String'},
+            { xtype: 'textfield', name: 'genformwebservice', fieldLabel: 'GenForm Webservice'}
+        ]
+    },
+
+    getDatabaseName: function () {
+        var me = this;
+        return me.getDatabaseNameField().value;
+    },
+
+    getDatabaseNameField: function () {
+        var me = this;
+        return me.getDatabaseRegistrationForm().items.items[0];
+    },
+
+    getMachineName: function () {
+        var me = this;
+        return me.getMachineNameField().value;
+    },
+
+    getMachineNameField: function () {
+        var me = this;
+        return me.getDatabaseRegistrationForm().items.items[1];
+    },
+
+    getGenPresConnectionString: function () {
+        var me = this;
+        return me.getGenPresConnectionStringField().value;
+    },
+
+    getGenPresConnectionStringField: function () {
+        var me = this;
+        return me.getDatabaseRegistrationForm().items.items[2];
+    },
+
+    getPDMSConnectionString: function () {
+        var me = this;
+        return me.getPDMSConnectionStringField().value;
+    },
+
+    getPDMSConnectionStringField: function () {
+        var me = this;
+        return me.getDatabaseRegistrationForm().items.items[3];
+    },
+
+    getGenFormWebservice: function () {
+        var me = this;
+        return me.getGenFormWebserviceField().value;
+    },
+
+    getGenFormWebserviceField: function () {
+        var me = this;
+        return me.getDatabaseRegistrationForm().items.items[4];
+    },
+
+    getDatabaseRegistrationForm: function () {
+        var me = this;
+        return me.items.items[0];
+    }
+
 });
 
-﻿Ext.define('GenPres.controller.patient.PatientController', {
+﻿Ext.define('GenPres.controller.patient.Patient', {
     extend: 'Ext.app.Controller',
 
     stores:['patient.LogicalUnitStore', 'patient.PatientInfoStore', 'patient.PatientTreeStore'],
@@ -1297,6 +1556,7 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
     init: function() {
         this.control({
             'treepanel': {
+                beforeitemclick: this.checkRootNode,
                 itemclick: this.loadPatientData
             }
         });
@@ -1305,17 +1565,31 @@ Ext.define('GenPres.view.user.LogicalUnitSelector', {
     onLaunch: function() {
         
     },
-
-    loadPatientData : function(tree, record){
+    checkRootNode : function(tree, record, htmlitem, index, event, options){
+        if(index==0){
+            var infoStore = this.getPatientPatientInfoStoreStore();
+            var treePanel = this.getTreePanel();
+            if(typeof(infoStore.getAt(0)) != "undefined"){
+                treePanel.selModel.select(infoStore.getAt(0));
+            }
+            return false;
+        }
+    },
+    loadPatientData : function(tree, record, htmlitem, index, event, options){
         var infoStore = this.getPatientPatientInfoStoreStore();
         infoStore.loadRecords([record], {addRecords: false});
-
+        GenPres.session.PatientSession.setPatient(record);
         var gridPanel = this.getGridPanel();
-        //Load grid data
+        gridPanel.store.proxy.extraParams.PID = GenPres.session.PatientSession.patient.PID;
+        gridPanel.store.load();
     },
 
     getGridPanel : function(){
-        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
+        return GenPres.application.MainCenter.query('.prescriptiongrid')[0];
+    },
+    
+    getTreePanel : function(){
+        return GenPres.application.viewport.query('.patienttree')[0];
     }
 
 });
@@ -1415,6 +1689,9 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     init: function() {
         this.control({
+            'gridpanel' : {
+                itemdblclick: this.loadPrescription
+            },
             'treepanel': {
                 itemclick: this.loadPrescriptionForm
             },
@@ -1430,34 +1707,58 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         });
     },
 
-    loadPrescriptionForm : function(tree, record){
-        if(GenPresApplication.MainCenterContainer.items.length == 1){
-            var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
-            GenPresApplication.MainCenterContainer.items.add(form);
-            GenPresApplication.MainCenterContainer.doLayout();
+    loadPrescription : function(view, record, htmlItem, index, event, options){
+        Prescription.GetPrescriptionById(record.data.Id, function(result){
+            this.setValues(record);
+        }, this);
+    },
+
+    setValues: function(record){
+        var forms = this.getForms();
+        for(var i=0; i<forms.length; i++){
+            Ext.Object.each(record.data, function(key, value){
+                var components = forms[i].query('#'+ key);
+                if(components.length > 0){
+                    var component = components[i];
+                    component.setValue(value);
+                }
+            }, this);
         }
-        GenPresApplication.MainCenterContainer.layout.setActiveItem(1);
+    },
+
+    loadPrescriptionForm : function(tree, record){
+        if(GenPres.application.MainCenterContainer.items.length == 1){
+            var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
+            GenPres.application.MainCenterContainer.items.add(form);
+            GenPres.application.MainCenterContainer.doLayout();
+        }
+        GenPres.application.MainCenterContainer.layout.setActiveItem(1);
     },
 
     loadHome : function(){
-        GenPresApplication.MainCenterContainer.layout.setActiveItem(0);
+        GenPres.application.MainCenterContainer.layout.setActiveItem(0);
     },
 
     clearPrescription : function(){
-        var drugCompositionController = GenPresApplication.getController('prescription.DrugComposition');
+        var drugCompositionController = GenPres.application.getController('prescription.DrugComposition');
         drugCompositionController.clear();
+    },
+
+    getForms : function(){
+        var prescriptionform = GenPres.application.MainCenter.query('prescriptionform')[0];
+        return prescriptionform.query('form');
     },
     
     savePrescription:function(){
-        var prescriptionform = GenPresApplication.MainCenter.query('prescriptionform')[0];
-        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
         var vals = {};
-        var forms = [];
-        forms = prescriptionform.query('form');
-        for(var i=0; i<forms.length; i++){
+        var forms = this.getForms();
+
+        for(var i=0; i<forms.length; i++)
             vals = forms[i].getValues();
-        }
-        Prescription.SavePrescription(vals, function(newValues){
+
+        var prescriptiongrid = GenPres.application.MainCenter.query('prescriptiongrid')[0];
+        var PID = GenPres.session.PatientSession.patient.PID;
+        Prescription.SavePrescription(PID, vals, function(newValues){
             prescriptiongrid.store.load();
         })
     }

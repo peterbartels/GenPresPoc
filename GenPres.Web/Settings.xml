@@ -2,34 +2,22 @@
 <settings>
   <serversettings>
     <machine>
-      <key>c8w9SeCvNM9lxrzcEJYrTg==</key>
-      <GenPresDBConnectionString>wYPrPVWo9WSy2KNclfHlJn28L2Z7EkNlBTFO7EgmrK42A4rUuTlAJVgCVuKn0N/lEMI9CqHlO43PSYYaXvc2LcpnaW0I5iwAp8ZxdnSdhk0=</GenPresDBConnectionString>
-      <PatientDBConnectionString>wYPrPVWo9WSy2KNclfHlJn28L2Z7EkNlBTFO7EgmrK4gx5d6j2P1/0SQQSLlniT/a7tgxpgPU9RkxFRM8samOLL3FJTQUWTBVY8rgOohfW8=</PatientDBConnectionString>
-      <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
+      <key>XBoOLMopK6+KVqdpUdhc7Q==</key>
+      <database>
+        <name>GenPres</name>
+        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Itjou/0Cvsp6V1ki/TdE5+J52T5fiURAbvus5laV/XRVB5IM5tGl608LHD0whcW+G8=</GenPresConnectionString>
+        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IsW0LUsvHUz1Ct61wYRjLylE58oI6nlcyZbDgNCrQ8si5DGX3VmmzJ+EBHESV+WcXA=</PdmsConnectionString>
+        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
+      </database>
     </machine>
     <machine>
       <key>XBoOLMopK6+KVqdpUdhc7Q==</key>
-      <GenFormWebService>0KPHWOG7WAWs7a2ftMlev48PoRHYnLIhjxUWpoZwwXDB6HvwpZsDRHVV2goexUV9</GenFormWebService>
-      <PatientDBConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IsW0LUsvHUz1Ct61wYRjLylE58oI6nlcyZbDgNCrQ8si5DGX3VmmzJ+EBHESV+WcXA=</PatientDBConnectionString>
-      <GenPresDBConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Itjou/0Cvsp6V1ki/TdE5+J52T5fiURAbvus5laV/XRVB5IM5tGl608LHD0whcW+G8=</GenPresDBConnectionString>
-    </machine>
-    <machine>
-      <key>e6AuLaXv4J4mbkzWTHb80w==</key>
-      <GenPresDBConnectionString>wYPrPVWo9WSy2KNclfHlJhyzUg7dFIBImKwbxieFAoLxWJYghmsooj8e1P7zIKR6Sf6IYruSCawe5p81T2/nYA==</GenPresDBConnectionString>
-      <PatientDBConnectionString>wYPrPVWo9WSy2KNclfHlJk8Yyn8qOZZ43owOpBk1cqLlOdMi6PStJYRBiYKUveS8d6sMTELf2zs5Jb8G8itU0w==</PatientDBConnectionString>
-      <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
-    </machine>
-    <machine>
-      <key>tFFNhHYDpcS38WAxhFpOVQ==</key>
-      <GenPresDBConnectionString>A0WfIz9appfr0+wGT6nYlzvrSvEtGFWuY89g6dHef/t2zfVDxQNUrTqHs6tsRsGhUMHIH189akeIBlBDSVumgWaaqZ1nm0sLfkNXTTimNlc=</GenPresDBConnectionString>
-      <PatientDBConnectionString>/MIoRGPJdHhnv7Iao+xZhHkr/lUAElomdEju9JMNNBSulgySCwFyc13lnyA92rzAfGID7rC9LWivdXA49fPALt/JzxV/xzRm16PadJLLQPtpmvgDDEjfy2icoXjDCbN0</PatientDBConnectionString>
-      <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
-    </machine>
-    <machine>
-      <key>zs/2/oW07MxK9ZAB1bueVw==</key>
-      <GenFormWebService>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebService>
-      <GenPresDBConnectionString>etIGmGC+4+H11+uxkA4OjRQfIXUE5ZZcA8mvX1F/NRP57ID0q/Q87AgoAXXaml084ZGveG/b8N9Uu71+L8afTSqqt/kPvFyqNVQiJJydo+URLr3Cptz9c1SqJAY9bPbFo5g/9ZVkW8AjqbJcfH8O1E3HfSX2RVUml+5q9Nkt6TjQJuLVU9YgsRIH586BIooo</GenPresDBConnectionString>
-      <PatientDBConnectionString>etIGmGC+4+H11+uxkA4OjRQfIXUE5ZZcA8mvX1F/NRP57ID0q/Q87AgoAXXaml084ZGveG/b8N9Uu71+L8afTSqqt/kPvFyqNVQiJJydo+URLr3Cptz9c1SqJAY9bPbFo5g/9ZVkW8AjqbJcfH8O1E3HfSX2RVUml+5q9Nkt6TjQJuLVU9YgsRIH586BIooo</PatientDBConnectionString>
+      <database>
+        <name>TestDatabase</name>
+        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Itjou/0Cvsp6V1ki/TdE5+J52T5fiURAbvus5laV/XRVB5IM5tGl608LHD0whcW+G8=</GenPresConnectionString>
+        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IsW0LUsvHUz1Ct61wYRjLylE58oI6nlcyZbDgNCrQ8si5DGX3VmmzJ+EBHESV+WcXA=</PdmsConnectionString>
+        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
+      </database>
     </machine>
   </serversettings>
 </settings>

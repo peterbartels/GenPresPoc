@@ -69,6 +69,25 @@ namespace GenPres.Business.Domain.Calculation.Combination
             return 0;
         }
 
+        public decimal SetUnitValue(int index)
+        {
+            Expression<Func<UnitValue>> prop = _properties[index];
+            string className = PropertyHelper.ClassName(prop);
+            string memberName = PropertyHelper.MemberName(prop);
+
+            if (className == "Prescription" && memberName == "Frequency")
+                _unitValues[index].Value = MathExt.FixPrecision(values[index]);
+
+            if (className == "Prescription" && memberName == "Quantity")
+                _unitValues[index].Value = values[index];
+
+            if (className == "Prescription" && memberName == "Total")
+                _unitValues[index].BaseValue =
+                    MathExt.FixPrecision(values[index]*UnitConverter.GetUnitValue(_root.Frequency.Time, 1));
+
+            return 0;
+        }
+
         public void Calculate()
         {
             var pc = new PropertyCombinationCalculate();
@@ -78,6 +97,14 @@ namespace GenPres.Business.Domain.Calculation.Combination
         public bool CanBeCalculated()
         {
             return true;
+        }
+
+        public void Finish()
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                SetUnitValue(i);
+            }
         }
     }
 }

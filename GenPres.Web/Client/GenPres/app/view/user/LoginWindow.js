@@ -1,60 +1,105 @@
-﻿Ext.define('GenPres.view.user.LoginWindow', {
+Ext.define('GenPres.view.user.LoginWindow', {
     extend: 'Ext.Window',
     alias: 'widget.userlogin',
 
     bodyPadding: 5,
-    
-    width: 560,
-    height: 400,
+    closable: false,
 
     requires : 'GenPres.session.PatientSession',
     
-    mixins: {
-        process: 'GenPres.util.Process'
-    },
-    
-    constructor : function(config){
+    title: 'GenPres Login',
+    defaultDatabase: 'Default Database',
+
+    initComponent: function() {
         var me = this;
-        me.mixins.process.constructor.call(me);
+        //noinspection JSUnusedGlobalSymbols
+        me.dockedItems = me.createDockedItems();
+
+        me.items = this.createItems();
+
         me.callParent(arguments);
     },
 
-    initComponent: function() {
-        this.items = [
-            { html: '<img src=" Client/Application/Images/MedicalBanner.jpg" />', height: 180, xtype: 'box'},
-            { xtype: 'panel', border: false, bodyPadding: 12, width: 542,
-                items: [
-                    { xtype: 'form', border:false, items: [
-                        new Ext.form.Text({ fieldLabel: 'Gebruikersnaam', name: 'username', id:'username', margin: '10 0 10 10', value:'test' }),
-                        new Ext.form.Text({ fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10', value:'Test' })
-                    ]}
-                ]
-            },
-            Ext.create('GenPres.view.user.LogicalUnitSelector')
+    getLoginButton: function () {
+        return Ext.ComponentQuery.query('toolbar button[action=login]');
+    },
+
+    createDockedItems: function () {
+        return [
+            {
+                xtype: 'toolbar',
+                dock: 'bottom',
+                items: ['->', { text: 'Login', action: 'login'}]
+            }
         ];
-
-
-        this.callParent(arguments);
     },
 
-    afterRender : function(){
-       this.callParent(arguments);
-       //this.doProcess('Login');
+    createItems: function () {
+        var me = this;
+
+        return [
+            me.getHtmlImage(),
+            me.getLoginForm2()
+        ];
     },
 
-    dockedItems: [{ 
-        xtype: 'toolbar',
-        dock: 'bottom',
-        items: ['->', { text: 'Login', action: 'login'}]
-    }],
+    getImagePath: function () {
+        return GenPres.application.appFolder + "/style/images/medicalbanner.jpg";
+    },
+
+    getHtmlImage: function () {
+        var me = this, imagePath = me.getImagePath();
+        return { html: '<img src=' + imagePath + ' />', height: 180, xtype: 'box' }
+    },
 
 
-    Processes : {
-        'Login' : [
-            {component:'form', text:'Dit formulier kan gebruikt worden om in te loggen.'},
-            {component:'form textfield[name=username]', text:'Vul uw gebruikersnaam in.'},
-            {component:'form textfield[name=password]', text:'Vul uw wachtwoord in.'},
-            {component:'toolbar button[action=login]', text:'Klik op de login button om de applicatie te starten.'}
-        ]
+    getLoginForm2: function () {
+        var me = this;
+        //noinspection JSUnusedGlobalSymbols
+        return {
+            xtype:'form',
+            border: false,
+            bodyPadding: 15,
+            width: 541,
+            defaults: {
+                allowBlank: false
+            },
+            items:[
+                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam', name:'username', margin: '10 0 10 10', value: '' },
+                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: '' },
+                Ext.create('GenPres.view.user.LogicalUnitSelector',{name:'loginLogicalUnitSelector'}),
+                me.advancedLoginFieldSet()
+
+            ]
+        };
+    },
+
+    advancedLoginFieldSet: function () {
+        var me = this;
+        return {
+            xtype: 'fieldset',
+            layout: 'hbox',
+            collapsible: true,
+            collapsed: true,
+            margin:'65 0 0 0',
+            items: [
+                me.createDatabaseCombo(),
+                me.createRegisterDatabaseButton()
+            ]
+        };
+    },
+
+    createDatabaseCombo: function () {
+        var me = this;
+        return {xtype: 'combo', name: 'database', fieldLabel: 'Database', displayField: 'DatabaseName', store: me.getDatabaseStore()};
+    },
+
+    getDatabaseStore: function () {
+        return Ext.create('GenPres.store.database.Database');
+    },
+
+    createRegisterDatabaseButton: function () {
+        return {xtype: 'button', text: 'Registreer Database', action: 'registerdatabase'};
     }
+
 });

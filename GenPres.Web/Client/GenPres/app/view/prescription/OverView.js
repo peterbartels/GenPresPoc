@@ -18,8 +18,8 @@ Ext.define('GenPres.view.main.MainView', {
         ];
         me.callParent();
 
-        GenPresApplication.viewport.items.add(me);
-        GenPresApplication.viewport.doLayout();
+        GenPres.application.viewport.items.add(me);
+        GenPres.application.viewport.doLayout();
 
         return me;
     }

@@ -94,6 +94,8 @@
     <Compile Include="Domain\Calculation\Math\MathExt.cs" />
     <Compile Include="Domain\Calculation\PrescriptionCalculator.cs" />
     <Compile Include="Domain\Calculation\PropertyHelper.cs" />
+    <Compile Include="Domain\DatabaseDomain\IDatabaseConnection.cs" />
+    <Compile Include="Domain\DatabaseDomain\IDatabaseSetting.cs" />
     <Compile Include="Domain\ICalcalutorBusiness.cs" />
     <Compile Include="Domain\ICalculationStateTrackable.cs" />
     <Compile Include="Domain\ISavable.cs" />
@@ -122,6 +124,8 @@
     <Compile Include="ServiceProvider\DalServiceProvider.cs" />
     <Compile Include="ServiceProvider\IServiceProvider.cs" />
     <Compile Include="ServiceProvider\ServiceProvider.cs" />
+    <Compile Include="Service\DatabaseService.cs" />
+    <Compile Include="Service\IDatabaseServices.cs" />
     <Compile Include="Service\MedicineService.cs" />
     <Compile Include="Service\PatientService.cs" />
     <Compile Include="Service\PrescriptionService.cs" />
@@ -133,6 +137,10 @@
     <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
       <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
       <Name>GenPres.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
+      <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
+      <Name>GenPres.Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

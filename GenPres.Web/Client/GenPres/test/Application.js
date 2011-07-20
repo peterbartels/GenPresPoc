@@ -1,12 +1,12 @@
 ﻿describe("Application", function() {
 
-    it('GenPresApplication should exist', function () {
-        expect(GenPresApplication).toBeDefined();
+    it('GenPres.applicationshould exist', function () {
+        expect(GenPres.application).toBeDefined();
     })
 
     it('Application should have GenPres config', function () {
         expect(Ext.Loader.config.paths.GenPres).toBeDefined();
-        expect(GenPresApplication.name).toEqual('GenPres');
+        expect(GenPres.application.name).toEqual('GenPres');
     })
 
     it('Application should have GenPres path', function () {
@@ -14,7 +14,7 @@
     })
 
     it('Application should have a viewport', function () {
-        expect(GenPresApplication.viewport).toBeDefined();
+        expect(GenPres.application.viewport).toBeDefined();
     })
 });
 

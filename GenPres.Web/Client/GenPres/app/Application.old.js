@@ -1,6 +1,6 @@
 ﻿Ext.require('Ext.form.*');
 
-var GenPresApplication;
+var GenPres.application;
 
 Ext.application ({
     name: 'GenPres',
@@ -10,7 +10,7 @@ Ext.application ({
 
     controllers: [
         'user.LoginController',
-        'patient.PatientController',
+        'patient.Patient',
         'prescription.PrescriptionController',
         'prescription.DrugComposition'
     ],
@@ -31,7 +31,7 @@ Ext.application ({
         }
 
 
-        GenPresApplication = this;
+        GenPres.application= this;
     }
 });
 

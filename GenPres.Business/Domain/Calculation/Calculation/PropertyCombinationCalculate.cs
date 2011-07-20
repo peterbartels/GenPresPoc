@@ -35,8 +35,8 @@ namespace GenPres.Operations.Calculation
             decimal[] values = new decimal[3];
 
             //Get the property to be corrected
-            int propertyToRectify = 1;
-            int correctIndex = 1;
+            int propertyToRectify = 0;
+            int correctIndex = 0;
 
             /*
              * Loop through all possible substanceIncrements to calculate the index (=not calculated property in combination)
@@ -47,12 +47,21 @@ namespace GenPres.Operations.Calculation
             {
                 //Get IncrementSteps
                 values = GetCombinationValues(combination, values, increment);
-                
-                values[index] = MathExt.RoundToInt(_calculate(index, values));   
+
+                decimal[] valsCopy = values.ToArray();
+                values[index] = MathExt.RoundToInt(_calculate(index, values));
+                decimal ceil = MathExt.CeilToInt(_calculate(index, valsCopy));
 
                 values[correctIndex] = 0;
                 _calculate(correctIndex, values);
 
+                if ((values[index] % 1) != 0)
+                {
+                    values[index] = ceil;
+                    values[correctIndex] = 0;
+                    _calculate(correctIndex, values);
+                }   
+                
                 AddToValues(combination, values, increment);
             }
 

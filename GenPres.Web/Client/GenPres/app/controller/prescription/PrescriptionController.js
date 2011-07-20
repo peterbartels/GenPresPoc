@@ -48,25 +48,25 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     loadPrescriptionForm : function(tree, record){
-        if(GenPresApplication.MainCenterContainer.items.length == 1){
+        if(GenPres.application.MainCenterContainer.items.length == 1){
             var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
-            GenPresApplication.MainCenterContainer.items.add(form);
-            GenPresApplication.MainCenterContainer.doLayout();
+            GenPres.application.MainCenterContainer.items.add(form);
+            GenPres.application.MainCenterContainer.doLayout();
         }
-        GenPresApplication.MainCenterContainer.layout.setActiveItem(1);
+        GenPres.application.MainCenterContainer.layout.setActiveItem(1);
     },
 
     loadHome : function(){
-        GenPresApplication.MainCenterContainer.layout.setActiveItem(0);
+        GenPres.application.MainCenterContainer.layout.setActiveItem(0);
     },
 
     clearPrescription : function(){
-        var drugCompositionController = GenPresApplication.getController('prescription.DrugComposition');
+        var drugCompositionController = GenPres.application.getController('prescription.DrugComposition');
         drugCompositionController.clear();
     },
 
     getForms : function(){
-        var prescriptionform = GenPresApplication.MainCenter.query('prescriptionform')[0];
+        var prescriptionform = GenPres.application.MainCenter.query('prescriptionform')[0];
         return prescriptionform.query('form');
     },
     
@@ -77,7 +77,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         for(var i=0; i<forms.length; i++)
             vals = forms[i].getValues();
 
-        var prescriptiongrid = GenPresApplication.MainCenter.query('prescriptiongrid')[0];
+        var prescriptiongrid = GenPres.application.MainCenter.query('prescriptiongrid')[0];
         var PID = GenPres.session.PatientSession.patient.PID;
         Prescription.SavePrescription(PID, vals, function(newValues){
             prescriptiongrid.store.load();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Xml;
 using CodeProject.Chidi.Cryptography;
 namespace Settings
@@ -9,7 +10,12 @@ namespace Settings
         static readonly object padlock = new object();
         private string _path = @"C:\Development\GenPres-Development\GenPres\GenPres.Web\";
         private XmlDocument _settingsDoc = new XmlDocument();
-        
+
+        public const string GenPresConnectionString = "GenPresConnectionString";
+        public const string PdmsConnectionString = "PdmsConnectionString";
+        public const string GenFormWebservice = "GenFormWebservice";
+        public const string DatabaseName = "GenPres";
+
         private string _key = SecurityKey.Key;
 
         private SymCryptography _crypt = new SymCryptography(SymCryptography.ServiceProviderEnum.Rijndael);
@@ -75,10 +81,10 @@ namespace Settings
             return _crypt.Encrypt(value);
 
         }
-        public string ReadSecureSetting(string name)
+        public string ReadSecureSetting(string database, string name)
         {
             string machineCrypt = GetSecureMachineName("");
-            string machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']/" + name;
+            string machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']/database[name='" + database + "']/" + name;
             XmlNode machineNode = _settingsDoc.SelectSingleNode(machineStr);
             if (machineNode == null)
             {
@@ -88,27 +94,33 @@ namespace Settings
             return _crypt.Decrypt(machineNode.InnerText);
         }
 
-        public void CreateSecureSetting(string computerName, string name, string value)
+        public void CreateSecureSetting(string computerName, string database, string name, string value)
         {
             if (value == "") return;
             string xmlPathServer = "/settings/serversettings[1]";
             XmlNode serverNode = _settingsDoc.SelectSingleNode(xmlPathServer);
             string machineCrypt = GetSecureMachineName(computerName);
-            
-            string machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']";
-            XmlNode machineNode = _settingsDoc.SelectSingleNode(machineStr);
-            if (machineNode == null)
+
+            string machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']/database[name='" + database + "']";
+            XmlNode databaseNode = _settingsDoc.SelectSingleNode(machineStr);
+            if (databaseNode == null)
             {
                 XmlNode newMachineNode = _settingsDoc.CreateElement("machine");
                 serverNode.AppendChild(newMachineNode);
                 XmlNode keyNode = _settingsDoc.CreateElement("key");
                 keyNode.InnerText = machineCrypt;
                 newMachineNode.AppendChild(keyNode);
-                machineNode = newMachineNode;
+
+                XmlNode newDatabaseNode = _settingsDoc.CreateElement("database");
+                newMachineNode.AppendChild(newDatabaseNode);
+                XmlNode dbNameNode = _settingsDoc.CreateElement("name");
+                dbNameNode.InnerText = database;
+                newDatabaseNode.AppendChild(dbNameNode);
+                databaseNode = newDatabaseNode;
             }
             else
             {
-                string appstr = "/settings/serversettings/machine[key='" + machineCrypt + "']/" + name;
+                string appstr = "/settings/serversettings/machine[key='" + machineCrypt + "']/database[name='" + database + "']/" + name;
                 XmlNode appnode = _settingsDoc.SelectSingleNode(appstr);
                 if (appnode != null)
                 {
@@ -117,8 +129,22 @@ namespace Settings
             }
             XmlNode newSettingsNode = _settingsDoc.CreateElement(name);
             newSettingsNode.InnerText = GetSecureSetting(value);
-            machineNode.AppendChild(newSettingsNode);
+            databaseNode.AppendChild(newSettingsNode);
             _settingsDoc.Save(_path + "Settings.xml");
+        }
+
+
+        public IEnumerable<String> GetNames()
+        {
+            var list = new List<String>();
+            foreach (System.Xml.XmlElement node in _settingsDoc.GetElementsByTagName("machine"))
+            {
+                foreach (System.Xml.XmlElement child in node.ChildNodes)
+                {
+                    if (child.Name != "key") list.Add(child.Name);
+                }
+            }
+            return list;
         }
     }
 }

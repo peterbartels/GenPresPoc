@@ -41,7 +41,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 });
 
 
-var GenPresApplication;
+var GenPres.application;
 
 Ext.application ({
     name: 'GenPres',

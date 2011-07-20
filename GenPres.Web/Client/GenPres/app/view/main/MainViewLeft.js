@@ -25,7 +25,9 @@ Ext.define('GenPres.view.main.MainViewLeft', {
                 html:'<img src="Client/GenPres/style/images/logo.png" style="margin-top:22px;" />',
                 height: 82
             },
-            Ext.create('GenPres.view.main.PatientTree')
+            Ext.create('GenPres.view.main.PatientTree', {
+                name:'mainPatientTree'
+            })
         ];
         me.callParent();
     }

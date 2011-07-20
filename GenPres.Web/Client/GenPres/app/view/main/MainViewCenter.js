@@ -15,7 +15,7 @@ Ext.define('GenPres.view.main.MainViewCenter', {
             Ext.create('GenPres.view.main.MainViewCenterContainer'),
             Ext.create('GenPres.view.prescription.PrescriptionTabs')
         ];
-        GenPresApplication.MainCenter = this;
+        GenPres.application.MainCenter = this;
         me.callParent();
     },
 

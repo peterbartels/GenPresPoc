@@ -1,34 +1,33 @@
-﻿var GenPresApplication;
-
 Ext.app.config = {
     name: 'GenPres',
 
-    autoCreateViewport: false,
+    'autoCreateViewport': false,
 
     controllers: [
-        'user.LoginController',
-        'patient.PatientController',
+        'user.Login',
+        'patient.Patient',
         'prescription.PrescriptionController',
         'prescription.DrugComposition'
     ],
 
-    launch: function () {
-        var loginWindow;
-
-        this.items = [];
+    launch: function() {
+        var me = this;
+        GenPres.application = me;
 
         this.viewport = Ext.create('Ext.container.Viewport', {
             layout: 'fit'
         });
+        me.showLoginWindow();
+    },
 
-        loginWindow = Ext.create('GenPres.view.user.LoginWindow');
+    showLoginWindow: function () {
+        var me = this, window;
+        window = me.getLoginWindow().show();
+        me.getController('user.Login').setDefaultDatabase(window);
+    },
 
-        if (typeof (window.dontLoadApplication) == "undefined") {
-            loginWindow.show();
-        }
-
-
-        GenPresApplication = this;
+    getLoginWindow: function () {
+        var me = this;
+        return me.getController('user.Login').getLoginWindow();
     }
 };
-

@@ -16,7 +16,7 @@ namespace GenPres.Controllers
         public ActionResult SetSetting(string computerName, string name, string value)
         {
             Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
-            Settings.SettingsManager.Instance.CreateSecureSetting(computerName, name, value);
+            Settings.SettingsManager.Instance.CreateSecureSetting(computerName, Settings.SettingsManager.DatabaseName, name, value);
             
             return this.Direct("");
         }

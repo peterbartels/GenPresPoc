@@ -11,10 +11,14 @@ namespace GenPres.DataAccess
     {
         public static DataSet ExecuteSQL(string sqlQuery)
         {
-            string ConnectionString = Settings.SettingsManager.Instance.ReadSecureSetting("PatientDBConnectionString");
-            SqlConnection conn = new SqlConnection(ConnectionString);
-            SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, conn);
-            DataSet ds = new DataSet();
+            var connectionString = Settings.SettingsManager.Instance.ReadSecureSetting(
+                Settings.SettingsManager.DatabaseName, 
+                Settings.SettingsManager.PdmsConnectionString
+            );
+
+            var conn = new SqlConnection(connectionString);
+            var adapter = new SqlDataAdapter(sqlQuery, conn);
+            var ds = new DataSet();
             adapter.Fill(ds);
             return ds;
         }

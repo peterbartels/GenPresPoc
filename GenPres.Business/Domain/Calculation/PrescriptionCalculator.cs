@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using GenPres.Business.Domain.Calculation.Combination;
@@ -13,15 +14,25 @@ namespace GenPres.Business.Domain.Calculation
         public static decimal[] SubstanceIncrements = new decimal[1]{0.2m};
         public static decimal[] ComponentIncrements = new decimal[1] { 1 };
 
-        public static void Calculate(Prescription prescription)
+        private List<ICalculationCombination> _combinations = new List<ICalculationCombination>();
+
+        public void Start(Prescription prescription)
         {
             _setIncrements(prescription);
 
-            var prescriptionTotal = new MultiplierCombination(
-                prescription, 
+            _combinations.Add(new MultiplierCombination(
+                prescription,
                 () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity
-            );
-            prescriptionTotal.Calculate();
+            ));
+
+            _combinations[0].Calculate();
+            _combinations[0].Finish();
+        }
+
+        public static void Calculate(Prescription prescription)
+        {
+            var pc = new PrescriptionCalculator();
+            pc.Start(prescription);
         }
 
         public static void _setIncrements(Prescription prescription)

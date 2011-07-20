@@ -27,7 +27,7 @@ describe("LoginWindow", function() {
     });
     it('Login window login button should call controller validateLogin', function () {
 
-        var controller = GenPresApplication.getController("GenPres.controller.user.LoginController");
+        var controller = GenPres.application.getController("GenPres.controller.user.LoginController");
        
         spyOn(controller, 'validateLogin');
 

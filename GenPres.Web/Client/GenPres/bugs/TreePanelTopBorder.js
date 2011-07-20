@@ -22,7 +22,7 @@
     })
 });
 
-var GenPresApplication;
+var GenPres.application;
 
 Ext.onReady(function(){
     var patientTree = Ext.create('GenPres.view.main.PatientTree');
