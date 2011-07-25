@@ -20,7 +20,6 @@ Ext.define('GenPres.lib.util.QueryHelper', {
     },
 
     setFormField: function (formfield, value) {
-        qqq = formfield;
         formfield.inputEl.dom.value = value;
         formfield.value = value;
         return true;

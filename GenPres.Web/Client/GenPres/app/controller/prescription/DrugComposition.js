@@ -12,7 +12,7 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
     shape:"",
     route:"",
 
-    panel : null,
+    panel:null,
 
     init: function() {
         this.control({
@@ -62,11 +62,10 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             this.getComboBox('generic').store.load();
             this.getComboBox('route').store.load();
         }
-        qqq = this.getComboBox('route');
     },
 
     getComboBox : function(name){
-        return this.panel.down('combobox[action='+name+']');
+        return Ext.ComponentQuery.query('combobox[action='+name+']')[0];
     },
 
     setExtraParams:function(comboName, paramName, paramValue){
@@ -76,7 +75,11 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
     },
 
     clear : function(){
-        if(this.panel == null) return;
+
+        this.getComboBox('generic').setValue("");
+        this.getComboBox('route').setValue("");
+        this.getComboBox('shape').setValue("");
+        
         this.setExtraParams('generic', 'route', '');
         this.setExtraParams('generic', 'shape', '');
         this.setExtraParams('route', 'generic', '');
@@ -87,5 +90,6 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         this.getComboBox('generic').store.load();
         this.getComboBox('route').store.load();
         this.getComboBox('shape').store.load();
+
     }
 });

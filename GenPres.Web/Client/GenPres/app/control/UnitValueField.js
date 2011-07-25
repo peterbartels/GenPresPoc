@@ -10,7 +10,7 @@ Ext.define('GenPres.control.UnitValueField', {
     items: [{
         xtype: 'fieldcontainer',
         labelAlign:'top',
-        fieldLabel: 'Last Three Jobs',
+        fieldLabel: 'Hoeveelheid',
         labelWidth: 100,
         layout: 'hbox',
         items: [Ext.create('GenPres.control.ValueField')]

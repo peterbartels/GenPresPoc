@@ -23,7 +23,6 @@ Ext.define('GenPres.lib.util.QueryHelper', {
     },
 
     setFormField: function (formfield, value) {
-        qqq = formfield;
         formfield.inputEl.dom.value = value;
         formfield.value = value;
         return true;
@@ -1220,10 +1219,11 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var genericCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.GenericStore',
             displayField: 'Value',
+            name:'drugGeneric',
             id:'drugGeneric',
             action:'generic',
             labelAlign:'top',
-            value:'paracetamol',
+            queryMode:'local',
             fieldLabel: 'Generiek'
         });
 
@@ -1235,9 +1235,11 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var routeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.RouteStore',
             id:'drugRoute',
+            name:'drugRoute',
             displayField: 'Value',
             action:'route',
             labelAlign:'top',
+            queryMode:'local',
             fieldLabel: 'Toedieningsweg'
         });
 
@@ -1245,8 +1247,10 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             store: Ext.create('GenPres.store.prescription.ShapeStore'),
             displayField: 'Value',
             id:'drugShape',
+            name:'drugShape',
             action:'shape',
             labelAlign:'top',
+            queryMode:'local',
             fieldLabel: 'Toedieningsvorm'
         });
 
@@ -1710,6 +1714,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     loadPrescription : function(view, record, htmlItem, index, event, options){
         Prescription.GetPrescriptionById(record.data.Id, function(result){
             this.setValues(record);
+            var drugController = GenPres.application.getController('prescription.DrugComposition');
+            drugController.changeSelection(drugController.getComboBox("generic"));
+            drugController.changeSelection(drugController.getComboBox("route"));
+            drugController.changeSelection(drugController.getComboBox("shape"));
         }, this);
     },
 
@@ -1727,12 +1735,14 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     loadPrescriptionForm : function(tree, record){
+        var me = this;
         if(GenPres.application.MainCenterContainer.items.length == 1){
             var form = Ext.create('GenPres.view.prescription.PrescriptionForm');
             GenPres.application.MainCenterContainer.items.add(form);
             GenPres.application.MainCenterContainer.doLayout();
         }
         GenPres.application.MainCenterContainer.layout.setActiveItem(1);
+        me.clearPrescription();
     },
 
     loadHome : function(){
@@ -1748,21 +1758,24 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         var prescriptionform = GenPres.application.MainCenter.query('prescriptionform')[0];
         return prescriptionform.query('form');
     },
-    
     savePrescription:function(){
+        var prescriptiongrid = GenPres.application.MainCenter.query('prescriptiongrid')[0];
+        var PID = GenPres.session.PatientSession.patient.PID;
+        Prescription.SavePrescription(PID, this.getValues(), function(newValues){
+            prescriptiongrid.store.load();
+        })
+    },
+    getValues:function(){
         var vals = {};
         var forms = this.getForms();
 
-        for(var i=0; i<forms.length; i++)
-            vals = forms[i].getValues();
-
-        var prescriptiongrid = GenPres.application.MainCenter.query('prescriptiongrid')[0];
-        var PID = GenPres.session.PatientSession.patient.PID;
-        Prescription.SavePrescription(PID, vals, function(newValues){
-            prescriptiongrid.store.load();
-        })
+        for(var i=0; i<forms.length; i++){
+            Ext.Object.each(forms[i].getValues(), function(key, value, myself) {
+                vals[key] = value;
+            });
+        }
+        return vals;
     }
-
 });
 Ext.define('GenPres.controller.prescription.DrugComposition', {
 
@@ -1778,7 +1791,7 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
     shape:"",
     route:"",
 
-    panel : null,
+    panel:null,
 
     init: function() {
         this.control({
@@ -1828,11 +1841,10 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             this.getComboBox('generic').store.load();
             this.getComboBox('route').store.load();
         }
-        qqq = this.getComboBox('route');
     },
 
     getComboBox : function(name){
-        return this.panel.down('combobox[action='+name+']');
+        return Ext.ComponentQuery.query('combobox[action='+name+']')[0];
     },
 
     setExtraParams:function(comboName, paramName, paramValue){
@@ -1842,7 +1854,11 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
     },
 
     clear : function(){
-        if(this.panel == null) return;
+
+        this.getComboBox('generic').setValue("");
+        this.getComboBox('route').setValue("");
+        this.getComboBox('shape').setValue("");
+        
         this.setExtraParams('generic', 'route', '');
         this.setExtraParams('generic', 'shape', '');
         this.setExtraParams('route', 'generic', '');
@@ -1853,6 +1869,7 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         this.getComboBox('generic').store.load();
         this.getComboBox('route').store.load();
         this.getComboBox('shape').store.load();
+
     }
 });
 

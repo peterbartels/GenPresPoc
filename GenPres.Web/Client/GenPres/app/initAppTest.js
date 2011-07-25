@@ -12,8 +12,24 @@ Ext.require([
     'Ext.form.field.HtmlEditor'
 ]);
 
+globalvars = {};
+
+var createBindFunction = function(func, scope, args, gobalvarname, waitcount){
+    //var bindFunc = Ext.Function.bind(func, scope, args);
+    var fn = Ext.Function.bind(func, scope, args);
+    var deferFunc = function(){
+        if (waitcount > 0) {
+            setTimeout(fn, waitcount);
+        }else{
+            fn();
+        }
+        return globalvars[gobalvarname];
+    }
+    return deferFunc;
+}
+
 Ext.onReady(function () {
-    var loginTest, advancedLoginTest, selectPatientTest;
+    var loginTest, advancedLoginTest, selectPatientTest, drugCompositionTest, prescriptionTest;
 
     Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
 
@@ -37,6 +53,12 @@ Ext.onReady(function () {
 
         selectPatientTest = Ext.create('GenPres.test.usecase.SelectPatientTest');
         describe(selectPatientTest.describe, selectPatientTest.tests);
+
+        drugCompositionTest = Ext.create('GenPres.test.usecase.DrugCompositionTest');
+        describe(drugCompositionTest.describe, drugCompositionTest.tests);
+
+        prescriptionTest = Ext.create('GenPres.test.usecase.PrescriptionTest');
+        describe(prescriptionTest.describe, prescriptionTest.tests);
 
 
         jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

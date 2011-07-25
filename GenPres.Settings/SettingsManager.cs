@@ -6,10 +6,8 @@ namespace Settings
 {
     public class SettingsManager
     {
-        static SettingsManager instance = null;
-        static readonly object padlock = new object();
-        private string _path = @"C:\Development\GenPres-Development\GenPres\GenPres.Web\";
-        private XmlDocument _settingsDoc = new XmlDocument();
+        private static string _path = @"C:\Development\GenPres-Development\GenPres\GenPres.Web\";
+        private XmlDocument _settingsDoc = null;
 
         public const string GenPresConnectionString = "GenPresConnectionString";
         public const string PdmsConnectionString = "PdmsConnectionString";
@@ -28,14 +26,8 @@ namespace Settings
         {
             get
             {
-                lock (padlock)
-                {
-                    if (instance == null)
-                    {
-                        instance = new SettingsManager();
-                    }
-                    return instance;
-                }
+                var _instance = new SettingsManager();
+                return _instance;
             }
         }
         #endregion
@@ -48,7 +40,11 @@ namespace Settings
             {
                 throw new Exception("Could not find settings file in path: " + file);
             }
-            _settingsDoc.Load(file);
+            if(_settingsDoc == null)
+            {
+                _settingsDoc = new XmlDocument();
+                _settingsDoc.Load(file);
+            }
         }
 
         public void Initialize()
@@ -58,7 +54,19 @@ namespace Settings
             {
                 throw new Exception("Could not find settings file in path: " + file);
             }
-            _settingsDoc.Load(file);
+            try
+            {
+                _settingsDoc = new XmlDocument();
+                _settingsDoc.Load(file);
+    
+            }catch(System.IO.IOException exception)
+            {
+                if(!(exception is System.IO.FileNotFoundException))
+                {
+                    Initialize();
+                }
+            }
+            
         }
 
         public string GetSettingsPath()
@@ -85,6 +93,7 @@ namespace Settings
         {
             string machineCrypt = GetSecureMachineName("");
             string machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']/database[name='" + database + "']/" + name;
+            if(_settingsDoc == null) Initialize();
             XmlNode machineNode = _settingsDoc.SelectSingleNode(machineStr);
             if (machineNode == null)
             {
@@ -97,6 +106,8 @@ namespace Settings
         public void CreateSecureSetting(string computerName, string database, string name, string value)
         {
             if (value == "") return;
+            if (_settingsDoc == null) Initialize();
+
             string xmlPathServer = "/settings/serversettings[1]";
             XmlNode serverNode = _settingsDoc.SelectSingleNode(xmlPathServer);
             string machineCrypt = GetSecureMachineName(computerName);
@@ -137,6 +148,7 @@ namespace Settings
         public IEnumerable<String> GetNames()
         {
             var list = new List<String>();
+            if (_settingsDoc == null) Initialize();
             foreach (System.Xml.XmlElement node in _settingsDoc.GetElementsByTagName("machine"))
             {
                 foreach (System.Xml.XmlElement child in node.ChildNodes)
