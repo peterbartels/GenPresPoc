@@ -13,11 +13,11 @@ namespace GenPres.DataAccess.DataMapper
 {
     public abstract class DataMapper<TBo, TDao> : IDataMapper<TBo, TDao> where TBo : class, ISavable
     {
-        protected IDataContextFactory _contextFactory;
+        protected IDataContextManager ContextManager;
 
-        protected DataMapper(IDataContextFactory dataContextFactory)
+        protected DataMapper(IDataContextManager dataContextManager)
         {
-            _contextFactory = dataContextFactory;
+            ContextManager = dataContextManager;
         }
 
         public abstract TDao MapFromBoToDao(TBo _bo, TDao _dao);
@@ -30,13 +30,13 @@ namespace GenPres.DataAccess.DataMapper
     {
         private TSrcBo _srcBo;
         private TSrcDao _srcDao;
-        private IDataContextFactory _contextFactory;
+        private IDataContextManager ContextManager;
 
-        public ChildMapper(TSrcBo srcBo, TSrcDao srcDao, IDataContextFactory contextFactory)
+        public ChildMapper(TSrcBo srcBo, TSrcDao srcDao, IDataContextManager contextManager)
         {
             _srcBo = srcBo;
             _srcDao = srcDao;
-            _contextFactory = contextFactory;
+            ContextManager = contextManager;
         }
 
         private void _mapObject<TDestBo, TDestDao>(Expression boConnection, Expression daoConnection, Type mapperType, bool toBo)
@@ -82,7 +82,7 @@ namespace GenPres.DataAccess.DataMapper
 
         private void _invokeMapper(Type mapperType, string mappingName, object fromValue, object toValue)
         {
-            var mapper = Activator.CreateInstance(mapperType, new object[] { _contextFactory });
+            var mapper = Activator.CreateInstance(mapperType, new object[] { ContextManager });
             var args = new[] { fromValue, toValue };
             mapperType.InvokeMember(mappingName, BindingFlags.InvokeMethod, null, mapper, args);
         }

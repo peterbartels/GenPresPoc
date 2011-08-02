@@ -1,15 +1,13 @@
 ﻿using System;
 using GenPres.Business.Data.Client.PrescriptionData;
-using GenPres.DataAccess;
-using GenPres.DataAccess.DataMapper.Mapper.PrescriptionMapper;
-using GenPres.xTest.General;
+using GenTest=GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Domain.PrescriptionDomain;
 
 namespace GenPres.Business.Test.PrescriptionTest
 {
     [TestClass]
-    public class PrescriptionTest : BaseGenPresTest
+    public class PrescriptionTest : GenTest.BaseGenPresTest
     {
         [TestMethod]
         public void Prescription_creates_CreationDate()
@@ -30,14 +28,14 @@ namespace GenPres.Business.Test.PrescriptionTest
         {
             var pDto = new PrescriptionDto();
             pDto.StartDate = DateTime.Parse("2011-07-01 12:00:00").ToString();
-            Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
+            IPrescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
             Assert.AreEqual(p.StartDate, DateTime.Parse("2011-07-01 12:00:00"));
         }
 
         [TestMethod]
         public void PrescriptionMapper_canMapPrescriptionBoToPrescriptionDAO()
         {
-            Prescription p = Prescription.NewPrescription();
+            IPrescription p = Prescription.NewPrescription();
 
             p.StartDate = DateTime.Now;
 
@@ -53,10 +51,10 @@ namespace GenPres.Business.Test.PrescriptionTest
         [TestMethod]
         public void PrescriptionBo_canMapToPrescriptionDto()
         {
-            Prescription p = Prescription.NewPrescription();
+            IPrescription p = Prescription.NewPrescription();
             p.StartDate = DateTime.Parse("2011-07-01 12:00:00");
             PrescriptionDto pDto = PrescriptionAssembler.AssemblePrescriptionDto(p);
-            Assert.AreEqual(pDto.StartDate, DateTime.Parse("2011-07-01 12:00:00"));
+            Assert.AreEqual(pDto.StartDate, "1-7-2011 12:00:00");
         }
     }
 }

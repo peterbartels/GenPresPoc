@@ -9,11 +9,11 @@ namespace GenPres.DataAccess.DataMapper.Mapper.Patient
     public class PatientMapper : DataMapper<IPatient, Database.Patient>
     {
         public PatientMapper()
-            : base(new GenPresDataContextFactory())
+            : base(new GenPresDataContextManager())
         {
         }
 
-        public PatientMapper(IDataContextFactory context)
+        public PatientMapper(IDataContextManager context)
             : base(context)
         {
             
@@ -21,13 +21,13 @@ namespace GenPres.DataAccess.DataMapper.Mapper.Patient
 
         public override Database.Patient MapFromBoToDao(IPatient patientBo, Database.Patient patientDao)
         {
-            patientDao.Id = (int)Repository<IPatient, Database.Patient>.GetIdValue(patientDao, _contextFactory.Context);
             patientDao.PID = patientBo.PID;
             return patientDao;
         }
 
         public override IPatient MapFromDaoToBo(Database.Patient patientDao, IPatient patientBo)
         {
+            patientBo.Id = patientDao.Id;
             patientBo.PID = patientDao.PID;
             return patientBo;
             
@@ -35,7 +35,7 @@ namespace GenPres.DataAccess.DataMapper.Mapper.Patient
 
         public DataContext Context
         {
-            get { return _contextFactory.Context; }
+            get { return ContextManager.Context; }
         }
     }
 }

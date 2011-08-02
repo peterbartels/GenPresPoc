@@ -13,13 +13,15 @@ namespace GenPres.Business.Domain.PrescriptionDomain
     {
         #region Private Fields
 
+        private int _id;
+
         private DateTime _startDate;
 
         private DateTime _endDate;
 
         private DateTime _creationDate;
 
-        private Drug _drug;
+        private IDrug _drug;
 
         private string _pid;
 
@@ -53,7 +55,7 @@ namespace GenPres.Business.Domain.PrescriptionDomain
             set { _creationDate = value; }
         }
 
-        public Drug Drug
+        public IDrug Drug
         {
             get { return _drug; }
             set { _drug = value; }
@@ -98,9 +100,9 @@ namespace GenPres.Business.Domain.PrescriptionDomain
             get { return DalServiceProvider.Instance.Resolve<IPrescriptionRepository>(); }
         }
 
-        public static Prescription NewPrescription()
+        public static IPrescription NewPrescription()
         {
-            return ObjectFactory.New<Prescription>();
+            return ObjectFactory.New<IPrescription>();
         }
 
         public static IPrescription[] GetPrescriptions(string patientId)
@@ -114,10 +116,15 @@ namespace GenPres.Business.Domain.PrescriptionDomain
             return Repository.GetPrescriptionById(id);
         }
 
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
         #endregion
 
-        public bool IsNew { get; set; }
-        public int Id { get; set; }
+        public bool IsNew { get { return (Id == 0); } }
 
         public void OnCreate() {}
         public void OnInitExisting() { }
@@ -126,7 +133,9 @@ namespace GenPres.Business.Domain.PrescriptionDomain
         {
             CreationDate = DateTime.Now;
             StartDate = DateTime.Now;
-            Drug = Drug.NewDrug();
+            
+            Drug = PrescriptionDomain.Drug.NewDrug();
+
             Frequency = new UnitValue();
             Quantity = new UnitValue();
             Total = new UnitValue();

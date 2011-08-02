@@ -8,12 +8,13 @@ namespace GenPres.Business.Domain.PrescriptionDomain
         DateTime StartDate { get; set; }
         DateTime EndDate { get; set; }
         DateTime CreationDate { get; set; }
-        Drug Drug { get; set; }
+        IDrug Drug { get; set; }
         string PID { get; set; }
         UnitValue Frequency { get; set; }
         UnitValue Quantity { get; set; }
         UnitValue Total { get; set; }
         UnitValue Rate { get; set; }
+        void Save(string patientId);
     }
 }
 

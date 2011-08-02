@@ -34,6 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -56,6 +60,7 @@
     <Compile Include="Acceptance\MedicineTest.cs" />
     <Compile Include="Acceptance\PatientTest.cs" />
     <Compile Include="Acceptance\PrescriptionTest.cs" />
+    <Compile Include="Calculator\CalculatorCreator.cs" />
     <Compile Include="Calculator\CombinationTest.cs" />
     <Compile Include="GenFormTest\WebServicesTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitRepositoryTest.cs" />
@@ -70,6 +75,10 @@
     <Compile Include="UserTest\UserTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">
+      <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
+      <Name>GenPres.Assembler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>

@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
 using System.Linq;
+using GenPres.Database;
+using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using StructureMap;
 
 namespace GenPres.DataAccess.Test
 {
@@ -14,6 +15,7 @@ namespace GenPres.DataAccess.Test
     {
         public RepositoryTest()
         {
+            ObjectFactory.Configure(x => x.For<IDataContextManager>().Use<TestDataContextManager>());
         }
 
         #region TestContext

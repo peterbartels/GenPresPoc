@@ -5,11 +5,11 @@ namespace GenPres.DataAccess.DataMapper.Mapper.PrescriptionMapper
     public class DrugMapper : DataMapper<Drug, Database.Drug>
     {
         public DrugMapper()
-            : base(new GenPresDataContextFactory())
+            : base(new GenPresDataContextManager())
         {
         }
 
-        public DrugMapper(IDataContextFactory context)
+        public DrugMapper(IDataContextManager context)
             : base(context)
         {
         }

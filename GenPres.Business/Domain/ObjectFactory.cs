@@ -1,5 +1,5 @@
-﻿
-using System;
+﻿using System;
+using SM = StructureMap;
 
 namespace GenPres.Business.Domain
 {
@@ -7,38 +7,38 @@ namespace GenPres.Business.Domain
     {
         
         public static T New<T>()
-            where T:class,ISavable
+            where T:ISavable
         {
-            T obj = Activator.CreateInstance<T>();
+            var obj = (T)SM.ObjectFactory.GetInstance(typeof(T));
             obj.OnCreate();
             obj.OnNew();
-            obj.IsNew = true;
             return obj;
         }
         
         public static object InitExisting(Type t)
         {
-            object obj = Activator.CreateInstance(t);
-            if(obj is ISavable)
+            object obj;
+            if(t.GetInterface(typeof(ISavable).FullName) != null)
             {
+                obj = SM.ObjectFactory.GetInstance(t);
                 ((ISavable)obj).OnCreate();
-                ((ISavable)obj).OnInitExisting();
-                ((ISavable)obj).IsNew = false;    
+                ((ISavable)obj).OnInitExisting();       
+            }else
+            {
+                obj = Activator.CreateInstance(t);    
             }
-            
             return obj;
         }
         public static T InitExisting<T>()
-            where T : class,ISavable
+            where T : ISavable
         {
-            T obj = Activator.CreateInstance<T>();
+            var obj = (T)SM.ObjectFactory.GetInstance(typeof(T));
             obj.OnCreate();
             obj.OnInitExisting();
-            obj.IsNew = false;
             return obj;
         }
         public static T Create<T>(bool isNew)
-            where T : class,ISavable
+            where T : ISavable
         {
             if(isNew)
             {

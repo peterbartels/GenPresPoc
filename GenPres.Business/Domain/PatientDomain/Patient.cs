@@ -130,7 +130,8 @@ namespace GenPres.Business.Domain.PatientDomain
 
         #endregion
 
-        public bool IsNew { get; set; }
+        public bool IsNew { get { return (Id == 0); } }
+
         public void OnCreate()
         {
             
@@ -148,26 +149,24 @@ namespace GenPres.Business.Domain.PatientDomain
 
         public void Save()
         {
-            //Repository.Save(this);
-            //Repository.Submit();
+            Repository.Save(this);
+            Repository.Submit();
         }
         
         private static IPatientRepository _patientRepository = DalServiceProvider.Instance.Resolve<IPatientRepository>();
-        /*
         private static IPatientRepository Repository
         {
             get { return _patientRepository; }
-        }*/
+        }
 
         public static Patient NewPatient()
         {
             return new Patient();
         }
 
-        public static Patient GetPatientByPid(string Pid)
+        public static IPatient GetPatientByPid(string Pid)
         {
-            return new Patient();
-            ;// Repository.GetByPid(Pid);
+            return Repository.GetByPid(Pid);
         }
     }
 }

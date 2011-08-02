@@ -34,6 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -57,15 +61,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RepositoryTest.cs" />
-    <Compile Include="TestData.cs">
-      <DependentUpon>TestData.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="TestData.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TestData.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="TestDataContext.cs" />
     <Compile Include="PrescriptionMapper.cs" />
     <Compile Include="TestRepository.cs" />
   </ItemGroup>
@@ -78,32 +73,24 @@
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
+      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
+      <Name>GenPres.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.xTest.General\GenPres.xTest.General.csproj">
+      <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
+      <Name>GenPres.xTest.General</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\GenPres.Database\Prescription.dbml.views">
-      <Link>Prescription.dbml.views</Link>
-    </None>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="TestData.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>TestData.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="TestData.dbml.views">
-      <DependentUpon>TestData.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="TestData.dbml.layout">
-      <DependentUpon>TestData.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -70,12 +70,12 @@
     <Compile Include="DataMapper\Mapper\PrescriptionMapper\DrugMapper.cs" />
     <Compile Include="DataMapper\Mapper\PrescriptionMapper\PrescriptionMapper.cs" />
     <Compile Include="DataMapper\Mapper\User\UserMapper.cs" />
-    <Compile Include="GenPresDataContextFactory.cs" />
+    <Compile Include="GenPresDataContextManager.cs" />
     <Compile Include="GenPresDataManager.cs" />
     <Compile Include="Object\IdentityMap.cs" />
     <Compile Include="PDMSDataRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IDataContextFactory.cs" />
+    <Compile Include="IDataContextManager.cs" />
     <Compile Include="Repositories\LogicalUnitRepository.cs" />
     <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Repositories\PdmsRepository.cs" />

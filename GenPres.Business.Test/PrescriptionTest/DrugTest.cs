@@ -17,7 +17,7 @@ namespace GenPres.Business.Test.PrescriptionTest
             pDto.drugRoute = "rect";
             pDto.drugShape = "zetp";
             
-            Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
+            IPrescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
             IDrug d = p.Drug;
 
             Assert.AreEqual(d.Generic, "paracetamol");

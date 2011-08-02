@@ -1,13 +1,21 @@
-﻿using GenPres.Business.Domain.PrescriptionDomain;
+﻿using System;
+using GenPres.Business.Domain.PrescriptionDomain;
 
 namespace GenPres.Business.Data.Client.PrescriptionData
 {
     public class PrescriptionAssembler
     {
-        public static Prescription AssemblePrescriptionBo(PrescriptionDto prescriptionDto)
+        public static IPrescription AssemblePrescriptionBo(PrescriptionDto prescriptionDto)
         {
             var prescription = Prescription.NewPrescription();
             prescription.Id = prescriptionDto.Id;
+
+            DateTime dt;
+            if(DateTime.TryParse(prescriptionDto.StartDate, out dt))
+            {
+                prescription.StartDate = dt;
+            }
+             
 
             var drug = prescription.Drug;
             if (drug != null)

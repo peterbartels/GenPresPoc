@@ -48,19 +48,10 @@ namespace GenPres.Operations.Calculation
                 //Get IncrementSteps
                 values = GetCombinationValues(combination, values, increment);
 
-                decimal[] valsCopy = values.ToArray();
                 values[index] = MathExt.RoundToInt(_calculate(index, values));
-                decimal ceil = MathExt.CeilToInt(_calculate(index, valsCopy));
-
+                
                 values[correctIndex] = 0;
                 _calculate(correctIndex, values);
-
-                if ((values[index] % 1) != 0)
-                {
-                    values[index] = ceil;
-                    values[correctIndex] = 0;
-                    _calculate(correctIndex, values);
-                }   
                 
                 AddToValues(combination, values, increment);
             }

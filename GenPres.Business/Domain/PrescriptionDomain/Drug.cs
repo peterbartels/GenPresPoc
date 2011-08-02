@@ -34,13 +34,13 @@
         
         #endregion
 
-        public static Drug NewDrug()
+        public static IDrug NewDrug()
         {
-            return ObjectFactory.New<Drug>();
+            return ObjectFactory.New<IDrug>();
         }
 
 
-        public bool IsNew { get; set; }
+        public bool IsNew { get { return (Id == 0); } }
 
         public void OnCreate()
         {

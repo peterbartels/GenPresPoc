@@ -8,12 +8,12 @@ using System.Data.Linq;
 
 namespace GenPres.DataAccess
 {
-    public class GenPresDataContextFactory : IDataContextFactory
+    public class GenPresDataContextManager : IDataContextManager
     {
         private DataContext _dataContext;
         private bool _disposed;
 
-        public GenPresDataContextFactory()
+        public GenPresDataContextManager()
         {
             CreateTestDataContext();
         }

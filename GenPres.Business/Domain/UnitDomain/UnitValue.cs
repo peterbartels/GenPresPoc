@@ -25,7 +25,8 @@ namespace GenPres.Business.Domain.UnitDomain
         private Factor _factor;
         #endregion
 
-        public bool IsNew { get; set; }
+        public bool IsNew { get { return (Id == 0); } }
+
         public void OnCreate() { }
         public void OnInitExisting() { }
         public void OnNew(){}
@@ -62,9 +63,9 @@ namespace GenPres.Business.Domain.UnitDomain
             {
                 if (_baseValue != 0)
                 {
-                    return getUnitValue();
+                    return MathExt.FixPrecision(getUnitValue());
                 }
-                return _value;
+                return MathExt.FixPrecision(_value);
             }
             set
             {
@@ -241,14 +242,14 @@ namespace GenPres.Business.Domain.UnitDomain
             if (_unit == "" && _time == "") return 0;
 
             decimal value = _baseValue;
-            if (_unit != "" && _unit != null) value = MathExt.FixPrecision(UnitConverter.GetUnitValue(_unit, value));
+            if (_unit != "" && _unit != null) value = UnitConverter.GetUnitValue(_unit, value);
             if (_time != "" && _time != null)
             {
-                value = MathExt.FixPrecision(value * UnitConverter.GetBaseValue(_time, 1));
+                value = value * UnitConverter.GetBaseValue(_time, 1);
             }
             if (_total != "" && _total != null)
             {
-                value = MathExt.FixPrecision(value*UnitConverter.GetBaseValue(_total, 1));
+                value = value*UnitConverter.GetBaseValue(_total, 1);
             }
 
             _value = value;

@@ -19,7 +19,7 @@ public interface IChangeTrackable
 namespace GenPres.Business.Domain.UserDomain
 {
     
-    public class User : IUser, IChangeTrackable
+    public class User : IUser
     {
         private StatusEnum _state = StatusEnum.New;
 
@@ -47,7 +47,7 @@ namespace GenPres.Business.Domain.UserDomain
         [ChangeState]
         public string PassCrypt { get; set; }
 
-        public bool IsNew { get; set; }
+        public bool IsNew { get { return (Id == 0); } }
 
         public void OnCreate()
         {
@@ -69,9 +69,9 @@ namespace GenPres.Business.Domain.UserDomain
             get { return DalServiceProvider.Instance.Resolve<IUserRepository>(); }
         }
 
-        public static User NewUser()
+        public static IUser NewUser()
         {
-            return ObjectFactory.New<User>();
+            return ObjectFactory.New<IUser>();
         }
 
         public static bool AuthenticateUser(string username, string password)

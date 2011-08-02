@@ -9,14 +9,14 @@ using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
 using GenPres.DataAccess.DataMapper.Mapper.Patient;
 using GenPres.DataAccess.Repositories;
-using GenPres.xTest.General;
+using GenTest=GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
 
 namespace GenPres.Business.Test.PatientTest
 {
     [TestClass]
-    public class PatientTest : BaseGenPresTest
+    public class PatientTest : GenTest.BaseGenPresTest
     {
         private IPdsmRepository _initializePatientRepositoryTest()
         {

@@ -15,13 +15,15 @@ namespace GenPres.DataAccess.Repositories
     public abstract class Repository<TBo, TDao> : IRepository<TBo>
     where TDao : class where TBo : ISavable
     {
-        protected IDataContextFactory _dataContextFactory;
+        protected IDataContextManager DataContextManager;
+
+        protected Dictionary<TDao, TBo> _identifiersAfterSubmit = new Dictionary<TDao, TBo>();
 
         public abstract IDataMapper<TBo, TDao> Mapper { get; }
 
-        public Repository(IDataContextFactory dataContextFactory)
+        public Repository(IDataContextManager dataContextManager)
         {
-            _dataContextFactory = dataContextFactory;
+            DataContextManager = dataContextManager;
         }
 
         public IEnumerable<TDao> AddDaoListToIdentityMap(IEnumerable<TDao> _list)
@@ -90,6 +92,7 @@ namespace GenPres.DataAccess.Repositories
             if (businessObject.IsNew)
             {
                 dao = CreateInstance();
+                _identifiersAfterSubmit.Add(dao, businessObject);
             }
             else
             {
@@ -106,7 +109,7 @@ namespace GenPres.DataAccess.Repositories
         
         public virtual void MarkForDeletion(TDao entity)
         {
-            _dataContextFactory.Context.GetTable<TDao>().DeleteOnSubmit(entity);
+            DataContextManager.Context.GetTable<TDao>().DeleteOnSubmit(entity);
         }
 
         public virtual TDao CreateInstance()
@@ -118,17 +121,21 @@ namespace GenPres.DataAccess.Repositories
 
         public void Submit()
         {
-            _dataContextFactory.Submit();
+            DataContextManager.Submit();
+            foreach (var identifier in _identifiersAfterSubmit)
+            {
+                identifier.Value.Id = (int)GetIdValue(identifier.Key, DataContextManager.Context);
+            }
         }
 
         public TType NewBo<TType>()
-            where TType: class, ISavable
+            where TType: ISavable
         {
             return ObjectFactory.New<TType>();
         }
 
         public TType NewExistingBo<TType>()
-            where TType : class, ISavable
+            where TType : ISavable
         {
             return ObjectFactory.InitExisting<TType>();
         }
@@ -145,17 +152,17 @@ namespace GenPres.DataAccess.Repositories
 
         protected Table<TDao> GetTable
         {
-            get { return _dataContextFactory.Context.GetTable<TDao>(); }
+            get { return DataContextManager.Context.GetTable<TDao>(); }
         }
 
         private MetaTable TableMetadata
         {
-            get { return _dataContextFactory.Context.Mapping.GetTable(typeof(TDao)); }
+            get { return DataContextManager.Context.Mapping.GetTable(typeof(TDao)); }
         }
 
         private MetaType ClassMetadata
         {
-            get { return _dataContextFactory.Context.Mapping.GetMetaType(typeof(TDao)); }
+            get { return DataContextManager.Context.Mapping.GetMetaType(typeof(TDao)); }
         }
 
         #endregion
@@ -169,7 +176,7 @@ namespace GenPres.DataAccess.Repositories
             where TEntity : class
         {
             // get the row from the database using the meta-model
-            MetaType meta = _dataContextFactory.Context.Mapping.GetTable(typeof(TEntity)).RowType;
+            MetaType meta = DataContextManager.Context.Mapping.GetTable(typeof(TEntity)).RowType;
             
             if (meta.IdentityMembers.Count != 1) throw new InvalidOperationException("Composite identity not supported");
 
@@ -181,7 +188,7 @@ namespace GenPres.DataAccess.Repositories
                     Expression.PropertyOrField(param, idName),
                     Expression.Constant(id, typeof(TKey))), param);
 
-            return _dataContextFactory.Context.GetTable<TEntity>().Single(lambda);
+            return DataContextManager.Context.GetTable<TEntity>().Single(lambda);
         }
 
         public static object GetIdValue<TEntity>(TEntity dao, DataContext context)

@@ -1,4 +1,6 @@
-﻿using GenPres.Controllers;
+﻿using GenPres.Assembler;
+using GenPres.Business.Service;
+using GenPres.Controllers;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,11 +15,8 @@ namespace GenPres.Business.Test.Acceptance
         [TestMethod]
         public void CanLoginUser()
         {
-            var loginController = new UserController();
-
-            var result = loginController.Login("Test", "Test");
-
-            Assert.IsTrue(ActionResultParser.GetSuccessValueFromActionResult(result), "System user NOT successfully logged in");
+            var result = UserService.AuthenticateUser("Test", "Test");
+            Assert.IsTrue(result);
         }
     }
 }

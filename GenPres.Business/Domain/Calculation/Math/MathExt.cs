@@ -46,7 +46,7 @@ namespace GenPres.Operations.Calculation
          */
         public static decimal FixPrecision(decimal number)
         {
-            return Math.Round(number, 10);
+            return Math.Round(number, 6);
         }
 
         /*

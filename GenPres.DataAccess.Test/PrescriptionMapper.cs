@@ -1,25 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Linq;
-using System.Linq;
-using System.Text;
-using GenPres.Business.Data.DataAccess.Mappers;
+﻿using System.Collections.Generic;
 using GenPres.Business.Domain;
+using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess.DataMapper;
+using GenPres.Database;
 
 namespace GenPres.DataAccess.Test
 {
     public class PrescriptionMapper : DataMapper<PrescriptionBo, Prescription>
     {
         public PrescriptionMapper()
-            : base(new TestDataContextFactory())
+            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
         {
             
         }
 
+        public PrescriptionMapper(IDataContextManager manager)
+            : base(manager)
+        {
+
+        }
+
         public void MapChilds(bool toBo, PrescriptionBo _bo, Prescription _dao)
         {
-            var childMapper = new ChildMapper<PrescriptionBo, Prescription>(_bo, _dao, _contextFactory);
+            var childMapper = new ChildMapper<PrescriptionBo, Prescription>(_bo, _dao, ContextManager);
             childMapper.Map(x => x.Drug, y => y.Drug, typeof(DrugMapper), toBo);
         }
 
@@ -41,7 +44,7 @@ namespace GenPres.DataAccess.Test
         public string Generic { get; set; }
         public List<ComponentBo> Components { get; set; }
 
-        public bool IsNew {get; set; }
+        public bool IsNew { get { return (Id == 0); } }
 
         public void OnCreate()
         {
@@ -71,7 +74,7 @@ namespace GenPres.DataAccess.Test
 
         public string Name;
 
-        public bool IsNew { get; set; }
+        public bool IsNew { get { return (Id == 0); } }
 
         public void OnCreate()
         {
@@ -98,9 +101,15 @@ namespace GenPres.DataAccess.Test
     public class ComponentMapper : DataMapper<ComponentBo, Component>
     {
         public ComponentMapper()
-            : base(new TestDataContextFactory())
+            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
         {
             
+        }
+
+        public ComponentMapper(IDataContextManager manager)
+            : base(manager)
+        {
+
         }
 
         public override Component MapFromBoToDao(ComponentBo _bo, Component _dao)
@@ -118,14 +127,19 @@ namespace GenPres.DataAccess.Test
     public class DrugMapper : DataMapper<DrugBo, Drug>
     {
         public DrugMapper()
-            : base(new TestDataContextFactory())
+            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
         {
-            
+
+        }
+
+        public DrugMapper(IDataContextManager manager) : base (manager)
+        {
+
         }
 
         private void MapChilds(bool toBo, DrugBo _bo, Drug _dao)
         {
-            var childMapper = new ChildMapper<DrugBo, Drug>(_bo, _dao, _contextFactory);
+            var childMapper = new ChildMapper<DrugBo, Drug>(_bo, _dao, ContextManager);
             childMapper.MapCollection(x => x.Components, y => y.Components, typeof(ComponentMapper), toBo);
         }
 

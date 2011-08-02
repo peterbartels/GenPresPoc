@@ -3,6 +3,7 @@ using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
 using GenPres.Business.Domain.PatientDomain;
+using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess.DataMapper.Mapper.Patient;
 using GenPres.DataAccess.Object;
 
@@ -13,15 +14,15 @@ namespace GenPres.DataAccess.Repositories
         private readonly PatientMapper _patientMapper;
         
         public PatientRepository()
-            : base(new GenPresDataContextFactory())
+            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
         {
-            _patientMapper = new PatientMapper(_dataContextFactory);
+            _patientMapper = new PatientMapper(DataContextManager);
         }
 
-        internal PatientRepository(IDataContextFactory context)
+        internal PatientRepository(IDataContextManager context)
             : base(context)
         {
-            _patientMapper = new PatientMapper(_dataContextFactory);
+            _patientMapper = new PatientMapper(DataContextManager);
         }
 
         public Database.Patient FindOrCreatePatient(string patientId)

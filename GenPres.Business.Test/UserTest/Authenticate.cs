@@ -14,18 +14,9 @@ namespace GenPres.Business.Test.UserTest
     [TestClass]
     public class Authenticate : BaseGenPresTest
     {
-        
-        private IUserRepository _initializeUserTest()
-        {
-            var repository = Isolate.Fake.Instance<UserRepository>(Members.CallOriginal);
-            DalServiceProvider.Instance.RegisterInstanceOfType<IUserRepository>(repository);
-            return repository;
-        }
-
         [TestMethod]
         public void User_can_Authenticate()
         {
-            _initializeUserTest();
             string username = "test";
             string password = "Test";
             Assert.IsTrue(UserService.AuthenticateUser(username, password));

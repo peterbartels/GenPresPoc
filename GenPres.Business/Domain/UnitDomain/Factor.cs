@@ -88,7 +88,7 @@ namespace GenPres.Business.Domain.UnitDomain
 
             if (increment == 0 && IncrementSizes.Length > 0) increment = IncrementSizes.FirstOrDefault<decimal>();
             if (increment != 0)
-                return MathExt.FixPrecision(incrementStep * increment.Value);
+                return incrementStep * increment.Value;
 
             return incrementStep * 0.00000000000000001m;
         }
@@ -103,7 +103,7 @@ namespace GenPres.Business.Domain.UnitDomain
             decimal? incrementSize = GetIncrementSize(substanceIncrement);
             if (incrementSize != 0)
             {
-                return MathExt.FixPrecision(value / incrementSize.Value);
+                return value/incrementSize.Value;
             }
 
             return value / (0.00000000000000001m);

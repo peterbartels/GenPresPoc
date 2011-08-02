@@ -25,5 +25,10 @@ namespace GenPres.Web3.Controllers
         {
             return View();
         }
+
+        public ActionResult FieldsetInTableView()
+        {
+            return View();
+        }
     }
 }

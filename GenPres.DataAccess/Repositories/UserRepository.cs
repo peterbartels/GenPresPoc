@@ -4,6 +4,7 @@ using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
 using GenPres.Business.Domain.UserDomain;
+using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess.DataMapper.Mapper.User;
 using GenPres.DataAccess.Object;
 using DB=GenPres.Database;
@@ -14,7 +15,8 @@ namespace GenPres.DataAccess.Repositories
     {
         private UserMapper _userMapper = new UserMapper();
 
-        public UserRepository() : base(new GenPresDataContextFactory())
+        public UserRepository()
+            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
         {
             
         }

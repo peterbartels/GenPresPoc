@@ -13,9 +13,9 @@ namespace GenPres.Business.Domain.Calculation.Combination
         private UnitValue[] _unitValues = new UnitValue[3];
 
         private Expression<Func<UnitValue>>[] _properties;
-        private Prescription _root;
+        private IPrescription _root;
 
-        public MultiplierCombination(Prescription root, params Expression<Func<UnitValue>>[] properties)
+        public MultiplierCombination(IPrescription root, params Expression<Func<UnitValue>>[] properties)
         {
             _root = root;
             _properties = properties;
@@ -31,7 +31,7 @@ namespace GenPres.Business.Domain.Calculation.Combination
         {
             Factor propertyFactor = _unitValues[index].Factor;
             decimal increment = propertyFactor.GetIncrementStep(GetValue(index), substanceIncrement);
-            return increment;
+            return Math.Round(increment, 8, MidpointRounding.AwayFromZero);
         }
 
         internal decimal GetIncrementValue(int index, decimal incrementStep, decimal substanceIncrement)
@@ -57,13 +57,13 @@ namespace GenPres.Business.Domain.Calculation.Combination
             string className = PropertyHelper.ClassName(prop);
             string memberName = PropertyHelper.MemberName(prop);
 
-            if (className == "Prescription" && memberName == "Frequency")
-                return _unitValues[index].Value;
+            if (className == "IPrescription" && memberName == "Frequency")
+                return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
 
-            if (className == "Prescription" && memberName == "Quantity")
-                return _unitValues[index].Value;
+            if (className == "IPrescription" && memberName == "Quantity")
+                return _unitValues[index].BaseValue;
 
-            if (className == "Prescription" && memberName == "Total")
+            if (className == "IPrescription" && memberName == "Total")
                 return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
 
             return 0;
@@ -75,15 +75,14 @@ namespace GenPres.Business.Domain.Calculation.Combination
             string className = PropertyHelper.ClassName(prop);
             string memberName = PropertyHelper.MemberName(prop);
 
-            if (className == "Prescription" && memberName == "Frequency")
-                _unitValues[index].Value = MathExt.FixPrecision(values[index]);
+            if (className == "IPrescription" && memberName == "Frequency")
+                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_root.Frequency.Time, 1); ;
 
-            if (className == "Prescription" && memberName == "Quantity")
-                _unitValues[index].Value = values[index];
+            if (className == "IPrescription" && memberName == "Quantity")
+                _unitValues[index].BaseValue = values[index];
 
-            if (className == "Prescription" && memberName == "Total")
-                _unitValues[index].BaseValue =
-                    MathExt.FixPrecision(values[index]*UnitConverter.GetUnitValue(_root.Frequency.Time, 1));
+            if (className == "IPrescription" && memberName == "Total")
+                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
 
             return 0;
         }

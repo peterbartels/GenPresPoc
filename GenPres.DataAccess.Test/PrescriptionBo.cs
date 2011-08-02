@@ -14,7 +14,7 @@ namespace GenPres.DataAccess.Test
         }
         public DrugBo Drug { get; set; }
 
-        public bool IsNew { get; set; }
+        public bool IsNew { get { return (Id == 0); } }
         
         public void OnCreate()
         {

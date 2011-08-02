@@ -6,16 +6,19 @@ using GenPres.Business.Domain;
 using GenPres.Business.Domain.Calculation;
 using GenPres.Business.Domain.Calculation.Combination;
 using GenPres.Business.Domain.PrescriptionDomain;
+using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GenPres.Business.Test.Calculator
 {
     [TestClass]
-    public class CombinationTest
+    public class CombinationTest : BaseGenPresTest
     {
-        private Prescription _getTestPrescription()
+        private string _testPath = @"c:\temp\test.txt";
+
+        private IPrescription _getTestPrescription()
         {
-            var prescription = ObjectFactory.New<Prescription>();
+            var prescription = ObjectFactory.New<IPrescription>();
             prescription.Frequency.Value = 2;
             prescription.Frequency.Time = "dag";
 
@@ -30,15 +33,27 @@ namespace GenPres.Business.Test.Calculator
         [TestMethod]
         public void CanSetCombinationValues()
         {
-            Prescription prescription = _getTestPrescription();
+            IPrescription prescription = _getTestPrescription();
             PrescriptionCalculator.Calculate(prescription);
             
-            Assert.AreEqual(7, prescription.Frequency.Value, "wrong frequency value");
-            Assert.AreEqual(7, prescription.Total.Value, "wrong total value");
-            Assert.AreEqual(7, prescription.Quantity.Value, "woring quantity value");
-
+            Assert.AreEqual(2, prescription.Frequency.Value, "wrong frequency value");
+            Assert.AreEqual(8, prescription.Total.Value, "wrong total value");
+            Assert.AreEqual(4, prescription.Quantity.Value, "woring quantity value");
         }
 
-
+        [TestMethod]
+        public void RunAutomatedCalcSingle()
+        {
+            for (int i = 0; i < 5000; i++)
+            {
+                IPrescription prescription = _getTestPrescription();
+                CalculatorCreator.SetRandomValue(prescription.Frequency, 1);
+                CalculatorCreator.SetRandomValue(prescription.Total, 1);
+                PrescriptionCalculator.Calculate(prescription);
+                var calculatedResult = Math.Round(prescription.Total.BaseValue, 8, MidpointRounding.AwayFromZero);
+                var expectedResult = Math.Round((prescription.Frequency.BaseValue * prescription.Quantity.BaseValue), 8, MidpointRounding.AwayFromZero);
+                Assert.IsTrue(calculatedResult == expectedResult);
+            }
+        }
     }
 }

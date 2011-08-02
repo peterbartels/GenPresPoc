@@ -2,33 +2,33 @@
 
 namespace GenPres.DataAccess.DataMapper.Mapper.PrescriptionMapper
 {
-    public class PrescriptionMapper : DataMapper<Prescription, Database.Prescription>
+    public class PrescriptionMapper : DataMapper<IPrescription, Database.Prescription>
     {
         public PrescriptionMapper()
-            : base(new GenPresDataContextFactory())
+            : base(new GenPresDataContextManager())
         {
             
         }
 
-        internal PrescriptionMapper(IDataContextFactory context)
+        internal PrescriptionMapper(IDataContextManager context)
             : base(context)
         {
         }
 
-        private void MapChilds(bool toBo, Prescription _bo, Database.Prescription _dao)
+        private void MapChilds(bool toBo, IPrescription _bo, Database.Prescription _dao)
         {
-            var childMapper = new ChildMapper<Prescription, Database.Prescription>(_bo, _dao, _contextFactory);
+            var childMapper = new ChildMapper<IPrescription, Database.Prescription>(_bo, _dao, ContextManager);
             childMapper.Map(x => x.Drug, y => y.Drug, typeof(DrugMapper), toBo);
         }
 
-        public override Database.Prescription MapFromBoToDao(Prescription _bo, Database.Prescription _dao)
+        public override Database.Prescription MapFromBoToDao(IPrescription _bo, Database.Prescription _dao)
         {
             _dao.StartDate = _bo.StartDate;
             MapChilds(false, _bo, _dao);
             return _dao;
         }
 
-        public override Prescription MapFromDaoToBo(Database.Prescription _dao, Prescription _bo)
+        public override IPrescription MapFromDaoToBo(Database.Prescription _dao, IPrescription _bo)
         {
             if (_dao.StartDate != null) _bo.StartDate = _dao.StartDate.Value;
             _bo.Id = _dao.Id;

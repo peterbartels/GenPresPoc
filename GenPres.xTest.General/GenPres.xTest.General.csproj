@@ -38,6 +38,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -47,16 +49,40 @@
   <ItemGroup>
     <Compile Include="BaseGenPresTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="TestDataContextManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">
       <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
       <Name>GenPres.Assembler</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenPres.DataAccess\GenPres.DataAccess.csproj">
+      <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
+      <Name>GenPres.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
+      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
+      <Name>GenPres.Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

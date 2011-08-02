@@ -7,7 +7,7 @@ namespace GenPres.Business.Domain
 {
     public interface ISavable
     {
-        bool IsNew { get; set; }
+        bool IsNew { get; }
         void OnCreate();
         void OnNew();
         void OnInitExisting();

@@ -4,21 +4,26 @@ using GenPres.Business.Domain.UserDomain;
 using GenPres.Business.ServiceProvider;
 using GenPres.DataAccess;
 using GenPres.DataAccess.Repositories;
-using GenPres.xTest.General;
+using GenTest=GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Service;
 using TypeMock.ArrangeActAssert;
-using GenPres.Business.Domain;
+using SM = StructureMap;
+using StructureMap.Configuration.DSL;
 
 namespace GenPres.Business.Test.UserTest
 {
     [TestClass]
-    public class UserTest : BaseGenPresTest
+    public class UserTest : GenTest.BaseGenPresTest
     {
         private IUserRepository _initializeUserTest()
         {
+            var registry = new Registry();
+            
             var repository = Isolate.Fake.Instance<UserRepository>(Members.CallOriginal);
-            DalServiceProvider.Instance.RegisterInstanceOfType<IUserRepository>(repository);
+            registry.For<IUserRepository>().Use(repository);
+
+            SM.ObjectFactory.Configure(x => x.AddRegistry(registry));
             return repository;
         }
 
@@ -45,7 +50,6 @@ namespace GenPres.Business.Test.UserTest
         [TestMethod]
         public void UserRepositoryGetUserbyUsername_returns_availableUser()
         {
-            _initializeUserTest();
             var userRepository = DalServiceProvider.Instance.Resolve<IUserRepository>();
             var user = userRepository.GetUserByUsername("Test");
             Assert.IsTrue(user.IsAvailable);
@@ -62,7 +66,7 @@ namespace GenPres.Business.Test.UserTest
         [TestMethod]
         public void _User_UserName_is_LowerCase()
         {
-            User user = User.NewUser();
+            IUser user = User.NewUser();
             user.UserName = "TeSt";
             Assert.IsTrue(user.UserName == "test", "Username should be lowercase after setValue.");
         }
@@ -70,7 +74,7 @@ namespace GenPres.Business.Test.UserTest
         [TestMethod]
         public void _User_IsDirty_after_propertyChange()
         {
-            User user = User.NewUser();
+            IUser user = User.NewUser();
             Assert.IsTrue(user.State == StatusEnum.New, "User (state) should be new after creation.");
             user.UserName = "TeSt";
             Assert.IsTrue(user.State == StatusEnum.Dirty, "User (state) should be dirty after change.");
