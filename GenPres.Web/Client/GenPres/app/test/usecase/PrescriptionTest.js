@@ -29,7 +29,6 @@ Ext.define('GenPres.test.usecase.PrescriptionTest', {
 
         me.checkPrescriptionIsClear = function(){
             var prController = GenPres.application.getController('prescription.PrescriptionController');
-            debugger;
             var values = prController.getValues();
             
             if(values.generic =="" && values.route == "" && values.shape == ""){
@@ -53,6 +52,7 @@ Ext.define('GenPres.test.usecase.PrescriptionTest', {
             waitsFor(createBindFunction(me.checkPrescriptionIsClear, me, [], "checkPrescriptionIsClear", 200), "prescription to be cleared", 3000);
         });
 
+        /*
         it('The grid nodes count is the same as the store count', function () {
             var grid = me.getGrid();
             var count = me.getGridCount();
@@ -67,7 +67,7 @@ Ext.define('GenPres.test.usecase.PrescriptionTest', {
             globalvars["checkPrescriptionIsSet"]=false;
             waitsFor(createBindFunction(me.checkPrescriptionIsSet, me, [], "checkPrescriptionIsSet", 200), "prescription to be opened", 3000);
         });
-
+        */
 
         it('After a patient selection a prescription is cleared', function () {
             

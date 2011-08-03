@@ -7,8 +7,7 @@ using System.Linq.Expressions;
 using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Domain;
-using GenPres.DataAccess.Object;
-using System.Reflection;
+using GenPres.DataAccess.Managers;
 
 namespace GenPres.DataAccess.Repositories
 {

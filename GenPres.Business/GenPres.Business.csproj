@@ -10,12 +10,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GenPres.Business</RootNamespace>
     <AssemblyName>GenPres.Business</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -61,27 +62,15 @@
     <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />
     <Compile Include="Data\AvailableObject.cs" />
-    <Compile Include="Data\Client\GenForm\ValueDto.cs" />
-    <Compile Include="Data\Client\GenForm\ValueListAssembler.cs" />
-    <Compile Include="Data\Client\IDto.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Data\Client\Patient\LogicalUnitDto.cs" />
-    <Compile Include="Data\Client\Patient\LogicalUnitDtoAssembler.cs" />
-    <Compile Include="Data\Client\Patient\PatientTreeAssembler.cs" />
-    <Compile Include="Data\Client\Patient\PatientTreeDto.cs" />
-    <Compile Include="Data\Client\PrescriptionData\PrescriptionAssembler.cs" />
-    <Compile Include="Data\Client\PrescriptionData\PrescriptionDto.cs" />
     <Compile Include="Data\DataAccess\DataManager.cs" />
-    <Compile Include="Data\Client\DtoFactory.cs" />
     <Compile Include="Data\DataAccess\GenPresDataManager.cs" />
-    <Compile Include="Data\DataAccess\Mappers\IDataMapper.cs" />
-    <Compile Include="Data\DataAccess\Repositories\ILogicalUnitRepository.cs" />
-    <Compile Include="Data\DataAccess\Repositories\IPatientRepository.cs" />
-    <Compile Include="Data\DataAccess\Repositories\IPdsmRepository.cs" />
-    <Compile Include="Data\DataAccess\Repositories\IPrescriptionRepository.cs" />
-    <Compile Include="Data\DataAccess\Repositories\IRepository.cs" />
-    <Compile Include="Data\DataAccess\Repositories\IUserRepository.cs" />
+    <Compile Include="Data\Mappers\IDataMapper.cs" />
+    <Compile Include="Data\Repositories\ILogicalUnitRepository.cs" />
+    <Compile Include="Data\Repositories\IPatientRepository.cs" />
+    <Compile Include="Data\Repositories\IPdsmRepository.cs" />
+    <Compile Include="Data\Repositories\IPrescriptionRepository.cs" />
+    <Compile Include="Data\Repositories\IRepository.cs" />
+    <Compile Include="Data\Repositories\IUserRepository.cs" />
     <Compile Include="Domain\Calculation\Calculation\PropertyCombinationCalculate.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -94,42 +83,32 @@
     <Compile Include="Domain\Calculation\Math\MathExt.cs" />
     <Compile Include="Domain\Calculation\PrescriptionCalculator.cs" />
     <Compile Include="Domain\Calculation\PropertyHelper.cs" />
-    <Compile Include="Domain\DatabaseDomain\IDatabaseConnection.cs" />
-    <Compile Include="Domain\DatabaseDomain\IDatabaseSetting.cs" />
+    <Compile Include="Domain\Databases\IDatabaseConnection.cs" />
+    <Compile Include="Domain\Databases\IDatabaseSetting.cs" />
     <Compile Include="Domain\ICalcalutorBusiness.cs" />
     <Compile Include="Domain\ICalculationStateTrackable.cs" />
     <Compile Include="Domain\ISavable.cs" />
     <Compile Include="Domain\ObjectFactory.cs" />
-    <Compile Include="Domain\PrescriptionDomain\Drug.cs" />
-    <Compile Include="Domain\PrescriptionDomain\IDrug.cs" />
-    <Compile Include="Domain\PrescriptionDomain\IPrescription.cs" />
-    <Compile Include="Domain\PatientDomain\ILogicalUnit.cs" />
-    <Compile Include="Domain\PatientDomain\IPatient.cs" />
-    <Compile Include="Domain\PatientDomain\IPatientCollection.cs" />
+    <Compile Include="Domain\Prescriptions\Drug.cs" />
+    <Compile Include="Domain\Prescriptions\IDrug.cs" />
+    <Compile Include="Domain\Prescriptions\IPrescription.cs" />
+    <Compile Include="Domain\Patients\ILogicalUnit.cs" />
+    <Compile Include="Domain\Patients\IPatient.cs" />
+    <Compile Include="Domain\Patients\IPatientCollection.cs" />
     <Compile Include="Domain\StateManager.cs" />
-    <Compile Include="Domain\UnitDomain\IUnitValue.cs" />
-    <Compile Include="Domain\UnitDomain\Unit.cs" />
-    <Compile Include="Domain\UnitDomain\UnitValue.cs" />
-    <Compile Include="Domain\UnitDomain\Factor.cs" />
-    <Compile Include="Domain\UnitDomain\UnitConverter.cs" />
-    <Compile Include="Domain\UserDomain\IUser.cs" />
-    <Compile Include="Domain\PatientDomain\LogicalUnit.cs" />
-    <Compile Include="Domain\PatientDomain\Patient.cs" />
-    <Compile Include="Domain\PatientDomain\PatientCollection.cs" />
-    <Compile Include="Domain\PrescriptionDomain\Medicine\Medicine.cs" />
-    <Compile Include="Domain\PrescriptionDomain\Prescription.cs" />
-    <Compile Include="Domain\UserDomain\User.cs" />
-    <Compile Include="GenPresServiceProvider.cs" />
+    <Compile Include="Domain\Units\IUnitValue.cs" />
+    <Compile Include="Domain\Units\Unit.cs" />
+    <Compile Include="Domain\Units\UnitValue.cs" />
+    <Compile Include="Domain\Units\Factor.cs" />
+    <Compile Include="Domain\Units\UnitConverter.cs" />
+    <Compile Include="Domain\Users\IUser.cs" />
+    <Compile Include="Domain\Patients\LogicalUnit.cs" />
+    <Compile Include="Domain\Patients\Patient.cs" />
+    <Compile Include="Domain\Patients\PatientCollection.cs" />
+    <Compile Include="Domain\Prescriptions\Medicine\Medicine.cs" />
+    <Compile Include="Domain\Prescriptions\Prescription.cs" />
+    <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceProvider\DalServiceProvider.cs" />
-    <Compile Include="ServiceProvider\IServiceProvider.cs" />
-    <Compile Include="ServiceProvider\ServiceProvider.cs" />
-    <Compile Include="Service\DatabaseService.cs" />
-    <Compile Include="Service\IDatabaseServices.cs" />
-    <Compile Include="Service\MedicineService.cs" />
-    <Compile Include="Service\PatientService.cs" />
-    <Compile Include="Service\PrescriptionService.cs" />
-    <Compile Include="Service\UserService.cs" />
     <Compile Include="WebService\GenFormService.cs" />
     <Compile Include="WebService\IGenFormService.cs" />
   </ItemGroup>

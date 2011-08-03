@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace GenPres.Business.Data
+﻿namespace GenPres.Business.Data
 {
     public class AvailableObject<T>
     {

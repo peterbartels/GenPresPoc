@@ -1,8 +1,8 @@
-﻿using GenPres.Business.Domain.PatientDomain;
-using GenPres.DataAccess.DataMapper.Mapper.Patient;
+﻿using GenPres.Business.Domain.Patients;
+using GenPres.DataAccess.DAO.Mapper.Patient;
+using GenPres.DataAccess.Managers;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.DataAccess;
 using System.Data;
 
 namespace GenPres.Business.Test.LogicalUnitTest

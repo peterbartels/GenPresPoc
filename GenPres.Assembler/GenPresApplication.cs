@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GenPres.DataAccess;
+﻿using GenPres.DataAccess.Managers;
 using StructureMap;
-using StructureMap.Configuration.DSL;
 
 namespace GenPres.Assembler
 {

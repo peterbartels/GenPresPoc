@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain;
-using GenPres.Business.Domain.PatientDomain;
-using GenPres.DataAccess.DataMapper.Mapper.Patient;
-using DB = GenPres.Database;
-using GenPres.Business.Domain;
-
+using GenPres.Business.Domain.Patients;
+using GenPres.DataAccess.DAO.Mapper.Patient;
+using GenPres.DataAccess.Managers;
+using Patient = GenPres.Business.Domain.Patients.Patient;
 
 namespace GenPres.DataAccess.Repositories
 {

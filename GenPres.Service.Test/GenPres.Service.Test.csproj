@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5FB5C1F3-251B-46F3-B01D-EB7668A43928}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GenPres.Service.Test</RootNamespace>
+    <AssemblyName>GenPres.Service.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap">
+      <HintPath>..\Dependencies\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GetUserTest.cs" />
+    <Compile Include="LogicalUnitTest.cs" />
+    <Compile Include="MedicineTest.cs" />
+    <Compile Include="PatientTest.cs" />
+    <Compile Include="PrescriptionTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">
+      <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
+      <Name>GenPres.Assembler</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
+      <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
+      <Name>GenPres.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.DataAccess\GenPres.DataAccess.csproj">
+      <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
+      <Name>GenPres.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Service\GenPres.Service.csproj">
+      <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
+      <Name>GenPres.Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Web\GenPres.Web.csproj">
+      <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
+      <Name>GenPres.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.xTest.General\GenPres.xTest.General.csproj">
+      <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
+      <Name>GenPres.xTest.General</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

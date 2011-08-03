@@ -1,8 +1,9 @@
 ﻿using System.Web.Mvc;
 using Ext.Direct.Mvc;
 using GenPres.Assembler;
-using GenPres.Business.Data.Client.PrescriptionData;
 using GenPres.Business.Service;
+using GenPres.DataAccess.DTO.Prescriptions;
+using GenPres.Service;
 
 namespace GenPres.Controllers
 {

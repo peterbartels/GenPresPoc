@@ -1,22 +1,19 @@
-﻿using System;
-using GenPres.Business.Data;
+﻿using GenPres.Business.Data;
 using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain;
-using GenPres.Business.Domain.UserDomain;
-using GenPres.Business.ServiceProvider;
-using GenPres.DataAccess.DataMapper.Mapper.User;
-using GenPres.DataAccess.Object;
-using DB=GenPres.Database;
+using GenPres.Business.Domain.Users;
+using GenPres.DataAccess.DAO.Mapper.User;
+using GenPres.DataAccess.Managers;
+using User = GenPres.Database.User;
 
 namespace GenPres.DataAccess.Repositories
 {
-    public class UserRepository : Repository<IUser, DB.User>, IUserRepository
+    public class UserRepository : Repository<IUser, User>, IUserRepository
     {
         private UserMapper _userMapper = new UserMapper();
 
         public UserRepository()
-            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
+            : base(StructureMap.ObjectFactory.GetInstance<IDataContextManager>())
         {
             
         }
@@ -34,7 +31,7 @@ namespace GenPres.DataAccess.Repositories
 
         public IUser GetByName(string name)
         {
-            var user = User.NewUser();
+            var user = Business.Domain.Users.User.NewUser();
             user.UserName = name;
             return user;
         }
@@ -45,11 +42,11 @@ namespace GenPres.DataAccess.Repositories
             
             if(foundUser.IsAvailable)
             {
-                var bo =_userMapper.MapFromDaoToBo(foundUser.Object, User.NewUser());
+                var bo =_userMapper.MapFromDaoToBo(foundUser.Object, Business.Domain.Users.User.NewUser());
                 return AvailableObject<IUser>.Create(true, bo);
             }
 
-            return AvailableObject<IUser>.Create(false, User.NewUser());
+            return AvailableObject<IUser>.Create(false, Business.Domain.Users.User.NewUser());
         }
     }
 }

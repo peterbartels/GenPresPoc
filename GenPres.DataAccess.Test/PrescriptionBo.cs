@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GenPres.Business.Domain;
+﻿using GenPres.Business.Domain;
 
 namespace GenPres.DataAccess.Test
 {

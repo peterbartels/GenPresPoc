@@ -2,6 +2,7 @@
 using Ext.Direct.Mvc;
 using GenPres.Assembler;
 using GenPres.Business.Service;
+using GenPres.Service;
 
 namespace GenPres.Controllers
 {

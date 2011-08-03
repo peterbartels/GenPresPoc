@@ -1,7 +1,5 @@
 ﻿using System;
-using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.WebService;
-using GenPres.Business.ServiceProvider;
 using StructureMap.Configuration.DSL;
 
 namespace GenPres.Assembler

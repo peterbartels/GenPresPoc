@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.Linq;
-using GenPres.DataAccess;
+using GenPres.DataAccess.Managers;
 using GenPres.Database;
 
 namespace GenPres.xTest.General

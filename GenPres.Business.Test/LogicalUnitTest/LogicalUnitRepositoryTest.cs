@@ -1,6 +1,5 @@
 ﻿using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain.PatientDomain;
-using GenPres.Business.ServiceProvider;
+using GenPres.Business.Domain.Patients;
 using GenPres.DataAccess.Repositories;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,7 +13,7 @@ namespace GenPres.Business.Test.LogicalUnitTest
         private ILogicalUnitRepository _initializeLogicalUnitTest()
         {
             var repository = Isolate.Fake.Instance<LogicalUnitRepository>(Members.CallOriginal);
-            DalServiceProvider.Instance.RegisterInstanceOfType<ILogicalUnitRepository>(repository);
+            StructureMap.ObjectFactory.Configure(x => x.For<ILogicalUnitRepository>().Use(repository));
             return repository;
         }
 
@@ -23,7 +22,7 @@ namespace GenPres.Business.Test.LogicalUnitTest
         public void LogicalUnitGetLogicalUnits_calls_RepositoryGetLogicalUnits()
         {
             _initializeLogicalUnitTest();
-            var logicalUnitRepository = DalServiceProvider.Instance.Resolve<ILogicalUnitRepository>();
+            var logicalUnitRepository = StructureMap.ObjectFactory.GetInstance<ILogicalUnitRepository>();
             LogicalUnit.GetLogicalUnits();
             Isolate.Verify.WasCalledWithAnyArguments(() => logicalUnitRepository.GetLogicalUnits());
         }

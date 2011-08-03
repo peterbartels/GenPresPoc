@@ -1,7 +1,7 @@
 ﻿using System;
-using GenPres.Business.Domain.DatabaseDomain;
+using GenPres.Business.Domain.Databases;
 using GenPres.Business.Service;
-using GenPres.DataAccess.Databases;
+using GenPres.DataAccess.Connections;
 using StructureMap.Configuration.DSL;
 
 namespace GenPres.Assembler

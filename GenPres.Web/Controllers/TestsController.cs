@@ -12,6 +12,10 @@ namespace Informedica.GenForm.Mvc3.Controllers
             ViewBag.Title = "GenPres Tests";
             return View();
         }
-
+        public ActionResult ValueField()
+        {
+            ViewBag.Title = "GenPres Tests";
+            return View();
+        }
     }
 }

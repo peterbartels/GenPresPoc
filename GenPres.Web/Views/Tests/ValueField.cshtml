@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "ValueField";
+    Layout = "~/Views/Shared/_LayoutBugs.cshtml";
+}
+
+@*
+Main Acceptation/Production View
+*@
+
+@section Javascript
+{   
+        
+       <script type="text/javascript" src="@Url.Content("~/Client/Library/ext-all-debug.js")"></script>
+       <script>
+           Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
+       </script>
+       <script type="text/javascript" src="@Url.Content("~/Client/GenPres/app/control/NumericBoundListKeyNav.js")"></script>
+       <script type="text/javascript" src="@Url.Content("~/Client/GenPres/app/control/ValueField.js")"></script>
+       <script type="text/javascript" src="@Url.Content("~/Client/GenPres/bugs/UnitValueField.js")"></script>
+}

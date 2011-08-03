@@ -2,12 +2,10 @@
 using System.Linq;
 using GenPres.Business.Data.DataAccess.Mappers;
 using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.ServiceProvider;
-using GenPres.DataAccess.DataMapper.Mapper.PrescriptionMapper;
+using GenPres.DataAccess.DAO.Mapper.PrescriptionMapper;
+using GenPres.DataAccess.Managers;
 using GenPres.Database;
-using DB = GenPres.Database;
-using Patient = GenPres.Database.Patient;
-using GenPres.Business.Domain.PrescriptionDomain;
+using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.DataAccess.Repositories
 {
@@ -16,7 +14,7 @@ namespace GenPres.DataAccess.Repositories
         private readonly PrescriptionMapper _prescriptionMapper;
 
         public PrescriptionRepository()
-            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
+            : base(StructureMap.ObjectFactory.GetInstance<IDataContextManager>())
         {
             _prescriptionMapper = new PrescriptionMapper(DataContextManager);
         }
@@ -31,7 +29,7 @@ namespace GenPres.DataAccess.Repositories
         {
             IQueryable<Database.Prescription> prescriptionDaos;
 
-            using (var ctx = DalServiceProvider.Instance.Resolve<IDataContextManager>().Context)
+            using (var ctx = StructureMap.ObjectFactory.GetInstance<IDataContextManager>().Context)
             {
                 var pContext = (PrescriptionDataContext) ctx;
 

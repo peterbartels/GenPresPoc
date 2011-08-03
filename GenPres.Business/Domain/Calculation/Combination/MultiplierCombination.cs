@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
-using GenPres.Business.Domain.PrescriptionDomain;
-using GenPres.Business.Domain.UnitDomain;
+using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
 using GenPres.Operations.Calculation;
 
 namespace GenPres.Business.Domain.Calculation.Combination

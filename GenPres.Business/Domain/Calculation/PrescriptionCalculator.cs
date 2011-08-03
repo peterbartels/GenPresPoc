@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using GenPres.Business.Domain.Calculation.Combination;
-using GenPres.Business.Domain.PrescriptionDomain;
-using GenPres.Business.Domain.UnitDomain;
+using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
 
 namespace GenPres.Business.Domain.Calculation
 {

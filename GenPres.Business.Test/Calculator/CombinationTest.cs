@@ -5,7 +5,7 @@ using System.Linq;
 using GenPres.Business.Domain;
 using GenPres.Business.Domain.Calculation;
 using GenPres.Business.Domain.Calculation.Combination;
-using GenPres.Business.Domain.PrescriptionDomain;
+using GenPres.Business.Domain.Prescriptions;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

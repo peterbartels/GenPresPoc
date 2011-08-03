@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GenPres.Business.Domain.UnitDomain;
+using GenPres.Business.Domain.Units;
 
 namespace GenPres.Business.Test.Calculator
 {

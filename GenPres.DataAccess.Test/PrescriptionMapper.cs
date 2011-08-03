@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using GenPres.Business.Domain;
-using GenPres.Business.ServiceProvider;
-using GenPres.DataAccess.DataMapper;
+using GenPres.DataAccess.DAO;
+using GenPres.DataAccess.Managers;
 using GenPres.Database;
 
 namespace GenPres.DataAccess.Test
@@ -9,7 +9,7 @@ namespace GenPres.DataAccess.Test
     public class PrescriptionMapper : DataMapper<PrescriptionBo, Prescription>
     {
         public PrescriptionMapper()
-            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
+            : base(StructureMap.ObjectFactory.GetInstance<IDataContextManager>())
         {
             
         }
@@ -101,7 +101,7 @@ namespace GenPres.DataAccess.Test
     public class ComponentMapper : DataMapper<ComponentBo, Component>
     {
         public ComponentMapper()
-            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
+            : base(StructureMap.ObjectFactory.GetInstance<IDataContextManager>())
         {
             
         }
@@ -127,7 +127,7 @@ namespace GenPres.DataAccess.Test
     public class DrugMapper : DataMapper<DrugBo, Drug>
     {
         public DrugMapper()
-            : base(DalServiceProvider.Instance.Resolve<IDataContextManager>())
+            : base(StructureMap.ObjectFactory.GetInstance<IDataContextManager>())
         {
 
         }

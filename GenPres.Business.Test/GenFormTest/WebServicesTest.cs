@@ -1,5 +1,5 @@
-﻿using GenPres.Business.Data.Client.GenForm;
-using GenPres.Business.WebService;
+﻿using GenPres.Business.WebService;
+using GenPres.DataAccess.DTO.GenForm;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

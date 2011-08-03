@@ -10,12 +10,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GenPres.Assembler</RootNamespace>
     <AssemblyName>GenPres.Assembler</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,6 +70,10 @@
     <ProjectReference Include="..\GenPres.DataAccess\GenPres.DataAccess.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Service\GenPres.Service.csproj">
+      <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
+      <Name>GenPres.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

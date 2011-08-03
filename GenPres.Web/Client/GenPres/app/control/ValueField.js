@@ -58,10 +58,10 @@ Ext.define('GenPres.control.ValueField', {
     	var me = this;
 
 		//me.expand();
-        
+
         me.mixins.picker.expand.call(me);
         me.listKeyNav.highlightAt(2);
-        
+
         me.callParent();
     },
     createPicker: function() {

@@ -1,8 +1,7 @@
 ﻿using System.Linq;
 using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain.UserDomain;
-using GenPres.Business.ServiceProvider;
-using GenPres.DataAccess;
+using GenPres.Business.Domain.Users;
+using GenPres.DataAccess.Managers;
 using GenPres.DataAccess.Repositories;
 using GenTest=GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -32,7 +31,7 @@ namespace GenPres.Business.Test.UserTest
         public void UserServiceLogin_calls_RepositoryGetUserByUsername()
         {
             _initializeUserTest();
-            var userRepository = DalServiceProvider.Instance.Resolve<IUserRepository>();
+            var userRepository = StructureMap.ObjectFactory.GetInstance<IUserRepository>();
             UserService.AuthenticateUser("test", "test");
             Isolate.Verify.WasCalledWithAnyArguments(() => userRepository.GetUserByUsername(""));
         }
@@ -50,7 +49,7 @@ namespace GenPres.Business.Test.UserTest
         [TestMethod]
         public void UserRepositoryGetUserbyUsername_returns_availableUser()
         {
-            var userRepository = DalServiceProvider.Instance.Resolve<IUserRepository>();
+            var userRepository = StructureMap.ObjectFactory.GetInstance<IUserRepository>();
             var user = userRepository.GetUserByUsername("Test");
             Assert.IsTrue(user.IsAvailable);
         }

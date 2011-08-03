@@ -2,12 +2,11 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Collections.Generic;
-using GenPres.Business.Data.Client.Patient;
 using GenPres.Business.Data.DataAccess.Repositories;
-using GenPres.Business.Domain.PatientDomain;
-using GenPres.Business.ServiceProvider;
-using GenPres.DataAccess;
-using GenPres.DataAccess.DataMapper.Mapper.Patient;
+using GenPres.Business.Domain.Patients;
+using GenPres.DataAccess.DAO.Mapper.Patient;
+using GenPres.DataAccess.DTO.Patients;
+using GenPres.DataAccess.Managers;
 using GenPres.DataAccess.Repositories;
 using GenTest=GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -21,7 +20,7 @@ namespace GenPres.Business.Test.PatientTest
         private IPdsmRepository _initializePatientRepositoryTest()
         {
             var repository = Isolate.Fake.Instance<PdmsRepository>(Members.CallOriginal);
-            DalServiceProvider.Instance.RegisterInstanceOfType<IPdsmRepository>(repository);
+            StructureMap.ObjectFactory.Configure(x => x.For<IPdsmRepository>().Use(repository));
             return repository;
         }
 

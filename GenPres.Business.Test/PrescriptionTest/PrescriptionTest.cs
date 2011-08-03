@@ -1,8 +1,8 @@
 ﻿using System;
-using GenPres.Business.Data.Client.PrescriptionData;
+using GenPres.DataAccess.DTO.Prescriptions;
 using GenTest=GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Domain.PrescriptionDomain;
+using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Business.Test.PrescriptionTest
 {

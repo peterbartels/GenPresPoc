@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using GenPres.Business.Domain.PatientDomain;
-using GenPres.Business.Domain.PrescriptionDomain;
-using GenPres.Business.Domain.UnitDomain;
-using GenPres.Business.Domain.UserDomain;
+using GenPres.Business.Domain.Patients;
+using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
+using GenPres.Business.Domain.Users;
 using StructureMap.Configuration.DSL;
 
 namespace GenPres.Assembler

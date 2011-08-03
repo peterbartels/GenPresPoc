@@ -10,12 +10,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Settings</RootNamespace>
     <AssemblyName>Settings</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,6 +40,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -51,30 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypt.cs" />
-    <Compile Include="Prescription.cs">
-      <DependentUpon>Prescription.dbml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecurityKey.cs" />
     <Compile Include="SettingsManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Prescription.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Prescription.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Prescription.dbml.views">
-      <DependentUpon>Prescription.dbml</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Prescription.dbml.layout">
-      <DependentUpon>Prescription.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Ext.Direct.Mvc;
 using GenPres.Assembler;
-using GenPres.Business.Domain.DatabaseDomain;
+using GenPres.Business.Domain.Databases;
 using GenPres.Business.Service;
 using StructureMap;
 

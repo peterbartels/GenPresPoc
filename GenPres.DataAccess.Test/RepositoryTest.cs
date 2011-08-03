@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using GenPres.DataAccess.Managers;
 using GenPres.Database;
 using GenPres.xTest.General;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
