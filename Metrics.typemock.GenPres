@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<MetricsData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <LastLoadedTestDate>2011-08-07T19:37:02.7659842+02:00</LastLoadedTestDate>
+  <Data>
+    <DataPerDate Date="2011-08-07T00:00:00+02:00" ProductionMinutes="1.970899999999999" ManualTestingMinutes="0.21143333333333333" CreatingUnitTestsMinutes="0" RunningUnitTestsMinutes="0" FailedTestsCount="0" />
+  </Data>
+  <Solution>C:\Development\GenPres\GenPres.sln</Solution>
+  <UnsolvedTests>
+    <FailedTest Date="2011-08-04T00:00:00" FailId="a073d019-e37a-4c28-86e5-10320c7bf715" FixedId="none" TestId="cb9f0a58-c45a-2a2e-8e36-4977ab68cbd5" RunId="a073d019-e37a-4c28-86e5-10320c7bf715" />
+  </UnsolvedTests>
+</MetricsData>

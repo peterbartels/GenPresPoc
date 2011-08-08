@@ -1,10 +1,10 @@
 ﻿@*
-Runs individual tests and hides the application
+Unit Tests
 *@
 
 @section CSS
 {
-        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Client/GenPres/app/style/css/HiddenGuiTests.css")" />
+        <link rel="stylesheet" type="text/css" href="@Url.Content("~/Client/GenPres/app/style/css/VisibleGuiTest.css")" />
         <link rel="stylesheet" type="text/css" href="@Url.Content("~/Client/Library/jasmine/lib/jasmine-1.0.2/jasmine.css")" />
 }
 
@@ -14,8 +14,14 @@ Runs individual tests and hides the application
         <script type="text/javascript" src="@Url.Content("~/Client/Library/jasmine/lib/jasmine-1.0.2/jasmine.js")"></script>
         <script type="text/javascript" src="@Url.Content("~/Client/Library/jasmine/lib/jasmine-1.0.2/jasmine-html.js")"></script>
 
-        <script type="text/javascript" src="@Url.Content("~/Client/Library/extjs/bootstrap.js")"></script>    
+        <script type="text/javascript" src="@Url.Content("~/Client/Library/ext-all-debug.js")"></script>
+        <script type="text/javascript" src="@Url.Content("~/Direct/Api")"></script>
+       
+        <script>
+            Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
+        </script>
 
+        
         <script type="text/javascript" src="@Url.Content("~/Client/GenPres/app/initTests.js")"></script>
 
 }

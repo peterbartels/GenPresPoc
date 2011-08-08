@@ -1,9 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GenPres.Business
+﻿namespace GenPres.Business
 {
     internal static class AuthenticationFunctions
     {

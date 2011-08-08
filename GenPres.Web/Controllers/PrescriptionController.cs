@@ -2,7 +2,7 @@
 using Ext.Direct.Mvc;
 using GenPres.Assembler;
 using GenPres.Business.Service;
-using GenPres.DataAccess.DTO.Prescriptions;
+using GenPres.Data.DTO.Prescriptions;
 using GenPres.Service;
 
 namespace GenPres.Controllers
@@ -27,6 +27,14 @@ namespace GenPres.Controllers
         public ActionResult GetShapes(string generic, string route)
         {
             return this.Direct(MedicineService.GetShapes(generic, route));
+        }
+        public ActionResult GetSubstanceUnits(string generic, string shape, string route)
+        {
+            return this.Direct(PrescriptionService.GetSubstanceUnits(generic, shape, route));
+        }
+        public ActionResult GetComponengtUnits(string generic, string shape, string route)
+        {
+            return this.Direct(PrescriptionService.GetComponentUnits(generic, shape, route));
         }
         public ActionResult GetPrescriptions(string patientId)
         {

@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -56,9 +56,9 @@
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenPres.DataAccess\GenPres.DataAccess.csproj">
+    <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
-      <Name>GenPres.DataAccess</Name>
+      <Name>GenPres.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>

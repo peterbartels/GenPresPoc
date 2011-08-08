@@ -35,6 +35,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-[assembly: InternalsVisibleTo("GenPres.Test.Unit")]
-[assembly: InternalsVisibleTo("GenPres.xTest.Unit")]
-[assembly: InternalsVisibleTo("GenPres.Business.Test")]
+[assembly: InternalsVisibleTo("GenPres.xTest.Business")]
+[assembly: InternalsVisibleTo("GenPres.xTest.Calculation")]

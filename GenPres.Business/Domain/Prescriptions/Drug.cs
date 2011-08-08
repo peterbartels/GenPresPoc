@@ -1,4 +1,8 @@
-﻿namespace GenPres.Business.Domain.Prescriptions
+﻿using System;
+using System.Collections.Generic;
+using GenPres.Business.WebService;
+
+namespace GenPres.Business.Domain.Prescriptions
 {
     public class Drug : IDrug
     {
@@ -10,62 +14,67 @@
 
         private string _shape;
         
-        #endregion
+        #endregion 
 
         #region Public Properties
 
         public string Generic
         {
             get { return _generic; }
-            set { _generic = value; }
+            set { _generic = value;
+                CheckIncrements();
+            }
         }
 
         public string Route
         {
             get { return _route; }
-            set { _route = value; }
+            set { _route = value;
+                CheckIncrements();
+            }
         }
 
         public string Shape
         {
             get { return _shape; }
-            set { _shape = value; }
+            set { _shape = value;
+                CheckIncrements();
+            }
         }
-        
+
+        public List<IComponent> Components { get; set; }
+
         #endregion
+
+        public Drug()
+        {
+            Components = new List<IComponent> {ObjectCreator.New<IComponent>()};
+        }
+
+        public void CheckIncrements()
+        {
+            if (Generic != "" && Route != "" && Shape != "")
+            {
+                var genFormService = new GenFormService();
+                var substanceIncrements = genFormService.GetSubstanceIncrements(Generic, Route, Shape);
+                Components[0].Substances[0].SubstanceIncrements = substanceIncrements;
+                var componentIncrements = genFormService.GetComponentIncrements(Generic, Route, Shape);
+                if(componentIncrements.Length == 1)
+                {
+                    Components[0].ComponentIncrement = componentIncrements[0];
+                }
+            }
+        }
 
         public static IDrug NewDrug()
         {
-            return ObjectFactory.New<IDrug>();
+            return ObjectCreator.New<IDrug>();
         }
+
 
         #region ISavable Implementation
+
         public bool IsNew { get { return (Id == 0); } }
-
-        public void OnCreate()
-        {
-
-        }
-
-        public void OnNew()
-        {
-            
-        }
-
-        public void OnInitExisting()
-        {
-
-        }
-
-        public void Save()
-        {
-
-        }
-
-        public void Save(string patientId)
-        {
-            
-        }
 
         public int Id { get; set; }
         #endregion

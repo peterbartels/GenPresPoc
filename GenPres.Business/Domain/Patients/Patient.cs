@@ -1,5 +1,5 @@
 ﻿using System;
-using GenPres.Business.Data.DataAccess.Repositories;
+using GenPres.Business.Data.IRepositories;
 
 namespace GenPres.Business.Domain.Patients
 {
@@ -61,7 +61,7 @@ namespace GenPres.Business.Domain.Patients
             get { return FirstName + " " + LastName; }
         }
 
-        public string PID
+        public string Pid
         {
             get { return _pid; }
             set { _pid = value; }
@@ -131,31 +131,18 @@ namespace GenPres.Business.Domain.Patients
 
         public bool IsNew { get { return (Id == 0); } }
 
-        public void OnCreate()
-        {
-            
-        }
-
-        public void OnNew()
-        {
-            
-        }
-
-        public void OnInitExisting()
-        {
-            
-        }
-
         public void Save()
         {
             Repository.Save(this);
             Repository.Submit();
         }
 
-        private static IPatientRepository _patientRepository = StructureMap.ObjectFactory.GetInstance<IPatientRepository>();
+        private static readonly IPatientRepository PatientRepository = 
+            StructureMap.ObjectFactory.GetInstance<IPatientRepository>();
+
         private static IPatientRepository Repository
         {
-            get { return _patientRepository; }
+            get { return PatientRepository; }
         }
 
         public static Patient NewPatient()

@@ -1,6 +1,6 @@
 ﻿using System;
+using GenPres.Business.Calculation.Math;
 using GenPres.Business.Domain.Prescriptions;
-using GenPres.Operations.Calculation;
 
 namespace GenPres.Business.Domain.Units
 {
@@ -26,10 +26,6 @@ namespace GenPres.Business.Domain.Units
         #endregion
 
         public bool IsNew { get { return (Id == 0); } }
-
-        public void OnCreate() { }
-        public void OnInitExisting() { }
-        public void OnNew(){}
 
         #region Public Properties
         public Factor Factor

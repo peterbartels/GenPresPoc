@@ -1,12 +1,9 @@
-﻿using GenPres.Business.Data.DataAccess.Repositories;
+﻿using GenPres.Business.Data.IRepositories;
 
 namespace GenPres.Business.Domain.Patients
 {
     public class LogicalUnit : ILogicalUnit
     {
-        private int _id;
-        private string _name;
-
         public int Id { get; set; }
         public string Name { get; set; }
 

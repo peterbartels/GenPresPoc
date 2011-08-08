@@ -9,7 +9,7 @@ namespace GenPres.Business.Domain.Patients
         string LastName { get; set; }
         string FirstName { get; set; }
         string FullName { get; }
-        string PID { get; set; }
+        string Pid { get; set; }
         
         int LogicalUnitId { get; set; }
 

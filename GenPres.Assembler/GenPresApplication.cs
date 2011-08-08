@@ -1,4 +1,4 @@
-﻿using GenPres.DataAccess.Managers;
+﻿using GenPres.Data.Managers;
 using StructureMap;
 
 namespace GenPres.Assembler

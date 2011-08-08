@@ -358,22 +358,16 @@ Ext.define('GenPres.control.NumericBoundListKeyNav', {
         up: function() {
 
             var me = this,
-            boundList = me.boundList,
-            allItems = boundList.all,
-            oldItem = boundList.highlightedItem,
-            oldItemIdx = oldItem ? boundList.indexOf(oldItem) : -1,
-            newItemIdx = oldItemIdx > 0 ? oldItemIdx - 1 : allItems.getCount() - 1; //wraps around
+                boundList = me.boundList,
+                allItems = boundList.all,
+                oldItem = boundList.highlightedItem,
+                oldItemIdx = oldItem ? boundList.indexOf(oldItem) : -1,
+                newItemIdx = oldItemIdx > 0 ? oldItemIdx - 1 : allItems.getCount() - 1; //wraps around
 
-             if(oldItemIdx == 0){
-             if(me.boundList.store.getAt(0).data.number != 0){
-
-             }
+             if(oldItemIdx == 2){
+                this.fireEvent("upreached");
              }else{
-                 //if(oldItemIdx == 2){
-                    this.fireEvent("upreached");
-                 //}else{
-                   // me.highlightAt(newItemIdx);
-                 //}
+                me.highlightAt(newItemIdx);
              }
         },
 
@@ -387,11 +381,11 @@ Ext.define('GenPres.control.NumericBoundListKeyNav', {
             if(oldItemIdx == allItems.getCount() - 1){
                 //this.fireEvent("downreached");
             }else{
-                //if(oldItemIdx == 2){
+                if(oldItemIdx == 2){
                     this.fireEvent("downreached");
-                //}else{
-                    //me.highlightAt(newItemIdx);
-                //}
+                }else{
+                    me.highlightAt(newItemIdx);
+                }
             }
         },
 
@@ -430,6 +424,10 @@ Ext.define('GenPres.control.ValueField', {
 
     keyNavEnabled : false,
 
+    enableKeyEvents:true,
+
+    isFormField:false,
+    
     initComponent: function() {
     	var me = this;
         
@@ -438,6 +436,7 @@ Ext.define('GenPres.control.ValueField', {
     	});
 
     	me.callParent();
+        me.isFormField = false;
         me.mixins.picker.initComponent.call(me);
     },
 
@@ -449,11 +448,8 @@ Ext.define('GenPres.control.ValueField', {
     	me.callParent();
     },
     spinUp : function(){
-    	//this.inputEl.focus();
     	var me = this;
     	me.callParent();
-    	//this.inputEl.focus();
-    	//this.onFocus();
     },
     spinDown : function(){
     	this.inputEl.focus();
@@ -461,26 +457,63 @@ Ext.define('GenPres.control.ValueField', {
     	me.callParent();
     	this.inputEl.focus();
     },
+    getCurrentStep:function(){
+        var me = this;
+        var value = this.getValue();
+        return value / me.step;
+    },
     updateNumberStore :  function(){
         var me = this;
-    	var store = me.store;
 
+        var store = me.store;
         var data = [];
         
-    	for(var i = 0; i<5; i++){
+        var step = me.getCurrentStep();
+        var start = 0;
+
+        if(step == 0) start = 0;
+
+    	for(var i = start; i<start+5; i++){
     		data.push({number:me.fixPrecision(i*me.step)})
     	}
+
         store.loadData(data, false);
     },
     onFocus: function() {
     	var me = this;
-
-		//me.expand();
-        
         me.mixins.picker.expand.call(me);
-        me.listKeyNav.highlightAt(2);
-        
         me.callParent();
+        var focusEl = function(){
+            me.inputEl.dom.focus();
+            me.inputEl.dom.select();
+            me.findRecord();
+        }
+        Ext.Function.defer(focusEl, 200);
+    },
+    onKeyUp : function(event){
+        var me = this;
+        if(!event.isNavKeyPress()){
+            me.updateNumberStore();
+            me.findRecord();
+        }
+    },
+    findRecord : function(){
+        var me = this;
+        var value = this.getValue();
+        foundRecord = {};
+        var minVal = null;
+        var i = 0;
+        var recordFound = false;
+        me.store.each(function(record){
+        	if(record.data.number == value){
+                me.listKeyNav.highlightAt(i);
+                recordFound = true;
+            }
+            i++;
+		}, this);
+        if(recordFound == false){
+            me.updateNumberStore();
+        }
     },
     createPicker: function() {
 
@@ -543,6 +576,36 @@ Ext.define('GenPres.control.ValueField', {
         store.loadData(data, false);
 
         me.listKeyNav.highlightAt(2);
+
+        me.inputEl.dom.value = data[2].data.number;
+    },
+
+
+    updateStoreUp : function(){
+        var me = this;
+
+    	var store = me.store;
+
+        var firstValue = store.getAt(0).data.number;
+
+        if(firstValue == me.step) {
+            me.listKeyNav.highlightAt(0);
+            return;
+        }
+
+    	store.clearData();
+
+    	var start = (firstValue-me.step) / me.step;
+        var data = [];
+
+    	for(var i = start; i < start + 5; i++){
+    		data.push({number:me.fixPrecision(i*me.step)})
+    	}
+        store.loadData(data, false);
+
+        me.listKeyNav.highlightAt(2);
+
+        me.inputEl.dom.value = data[2].data.number;
     },
 
     onExpand: function() {
@@ -562,11 +625,14 @@ Ext.define('GenPres.control.ValueField', {
                 forceKeyDown: true
             });
             keyNav.on("downreached", me.updateStoreDown, me);
+            keyNav.on("upreached", me.updateStoreUp, me);
         }
-        Ext.defer(keyNav.enable, 5, keyNav); //wait a bit so it doesn't react to the down arrow opening the picker
-
+        Ext.defer(keyNav.enable, 15, keyNav); //wait a bit so it doesn't react to the down arrow opening the picker
+/*
         var minVal = null;
+
         foundRecord = {};
+
         me.store.each(function(record){
         	var diff = record.data.number - this.getValue();
         	if(minVal == null) {
@@ -578,16 +644,13 @@ Ext.define('GenPres.control.ValueField', {
 				minVal = Math.abs(diff);
 				foundRecord = record;
 			}
-		}, this);
-
-        //picker.highlightItem(picker.getNode(foundRecord));
-        me.listKeyNav.highlightAt(2);
-        me.inputEl.focus();
+		}, this);*/
     },
 
 
     onListSelectionChange: function(list, selectedRecords) {
         var me = this;
+        
         if (!me.inSetValue && me.isExpanded) {
             if (!me.multiSelect) {
                 //Ext.defer(me.collapse, 1, me);
@@ -1171,14 +1234,16 @@ Ext.define('GenPres.view.prescription.PrescriptionToolbar', {
 
 Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
-    extend: 'Ext.Panel',
+    extend: 'Ext.form.Panel',
 
     alias : 'widget.prescriptionform',
 
     id: 'card-prescriptionForm',
 
     border:false,
-    
+
+    width:800,
+
     constructor : function(){
         var me = this;
         me.callParent(arguments);
@@ -1186,10 +1251,15 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     initComponent : function(){
         var me = this;
-        
-        me.items = [
 
+        me.layout = {
+            type:'table',
+            columns:2
+        }
+
+        me.items = [
             Ext.create('GenPres.view.prescription.DrugComposition'),
+            Ext.create('GenPres.view.prescription.Patient'),
             Ext.create('Ext.button.Button', {
                 width:100,
                 height:50,
@@ -1211,46 +1281,47 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
     extend: 'Ext.form.Panel',
     region: 'center',
 
+    alias:'widget.drugcomposition',
+
     border:false,
-    
+
+    title:'Medicament',
+
+    width:400,
+
     initComponent : function(){
         var me = this;
 
         var genericCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.GenericStore',
-            displayField: 'Value',
             name:'drugGeneric',
             id:'drugGeneric',
             action:'generic',
-            labelAlign:'top',
-            queryMode:'local',
             fieldLabel: 'Generiek'
         });
 
-        var quantity = Ext.create('GenPres.control.UnitValueField', {
-            fieldLabel: 'Quantity',
-            labelAlign:'top'
+        var substanceQuantity = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Hoeveelheid',
+            labelAlign:'top',
+            id:'substanceQuantity',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'substanceQuantity'
         });
         
         var routeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: 'prescription.RouteStore',
             id:'drugRoute',
             name:'drugRoute',
-            displayField: 'Value',
             action:'route',
-            labelAlign:'top',
-            queryMode:'local',
             fieldLabel: 'Toedieningsweg'
         });
 
         var shapeCombo = Ext.create('Ext.form.field.ComboBox', {
             store: Ext.create('GenPres.store.prescription.ShapeStore'),
-            displayField: 'Value',
             id:'drugShape',
             name:'drugShape',
             action:'shape',
-            labelAlign:'top',
-            queryMode:'local',
+            width:140,
             fieldLabel: 'Toedieningsvorm'
         });
 
@@ -1261,7 +1332,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
                type:'table',
                columns:2
             },
-            items : [genericCombo, quantity, routeCombo, shapeCombo]
+            items : [genericCombo, substanceQuantity, routeCombo, shapeCombo]
         });
 
         me.items = tablePanel;
@@ -1691,6 +1762,8 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     views:['prescription.PrescriptionToolbar', 'prescription.DrugComposition', 'main.PatientTree', 'prescription.PrescriptionForm', 'main.TopToolbar', 'prescription.PrescriptionGrid'],
 
+    substanceUnitStore:null,
+
     init: function() {
         this.control({
             'gridpanel' : {
@@ -1709,6 +1782,13 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
                 click : this.savePrescription
             }
         });
+    },
+
+    getSubstanceUnitStore : function(){
+        if(this.substanceUnitStore == null){
+            this.substanceUnitStore = Ext.create('');
+        }
+        return this.substanceUnitStore;
     },
 
     loadPrescription : function(view, record, htmlItem, index, event, options){
@@ -1754,9 +1834,8 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         drugCompositionController.clear();
     },
 
-    getForms : function(){
-        var prescriptionform = GenPres.application.MainCenter.query('prescriptionform')[0];
-        return prescriptionform.query('form');
+    getForm : function(){
+        return GenPres.application.MainCenter.query('prescriptionform')[0];
     },
     savePrescription:function(){
         var prescriptiongrid = GenPres.application.MainCenter.query('prescriptiongrid')[0];
@@ -1767,13 +1846,12 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
     getValues:function(){
         var vals = {};
-        var forms = this.getForms();
+        var form = this.getForm();
 
-        for(var i=0; i<forms.length; i++){
-            Ext.Object.each(forms[i].getValues(), function(key, value, myself) {
-                vals[key] = value;
-            });
-        }
+        Ext.Object.each(form.getValues(), function(key, value, myself) {
+            vals[key] = value;
+        });
+        
         return vals;
     }
 });

@@ -11,7 +11,9 @@ Ext.onReady(function () {
         items : [
             Ext.create('GenPres.control.ValueField',{
                 fieldLabel:'test',
-                margin:'50 50 50 50'
+                margin:'50 50 50 50',
+                step:0.1,
+                value:0
             })
         ]
     });

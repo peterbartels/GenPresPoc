@@ -1,13 +1,15 @@
 Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
-    extend: 'Ext.Panel',
+    extend: 'Ext.form.Panel',
 
     alias : 'widget.prescriptionform',
 
     id: 'card-prescriptionForm',
 
     border:false,
-    
+
+    width:800,
+
     constructor : function(){
         var me = this;
         me.callParent(arguments);
@@ -15,10 +17,15 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     initComponent : function(){
         var me = this;
-        
-        me.items = [
 
+        me.layout = {
+            type:'table',
+            columns:2
+        }
+
+        me.items = [
             Ext.create('GenPres.view.prescription.DrugComposition'),
+            Ext.create('GenPres.view.prescription.Patient'),
             Ext.create('Ext.button.Button', {
                 width:100,
                 height:50,

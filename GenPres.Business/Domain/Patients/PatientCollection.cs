@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using GenPres.Business.Data.DataAccess.Repositories;
+using GenPres.Business.Data.IRepositories;
 
 namespace GenPres.Business.Domain.Patients
 {

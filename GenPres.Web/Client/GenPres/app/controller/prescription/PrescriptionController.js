@@ -8,6 +8,8 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     views:['prescription.PrescriptionToolbar', 'prescription.DrugComposition', 'main.PatientTree', 'prescription.PrescriptionForm', 'main.TopToolbar', 'prescription.PrescriptionGrid'],
 
+    substanceUnitStore:null,
+
     init: function() {
         this.control({
             'gridpanel' : {
@@ -28,6 +30,13 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         });
     },
 
+    getSubstanceUnitStore : function(){
+        if(this.substanceUnitStore == null){
+            this.substanceUnitStore = Ext.create('');
+        }
+        return this.substanceUnitStore;
+    },
+
     loadPrescription : function(view, record, htmlItem, index, event, options){
         Prescription.GetPrescriptionById(record.data.Id, function(result){
             this.setValues(record);
@@ -39,16 +48,15 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     setValues: function(record){
-        var forms = this.getForms();
-        for(var i=0; i<forms.length; i++){
-            Ext.Object.each(record.data, function(key, value){
-                var components = forms[i].query('#'+ key);
-                if(components.length > 0){
-                    var component = components[i];
-                    component.setValue(value);
-                }
-            }, this);
-        }
+        var form = this.getForm();
+        Ext.Object.each(record.data, function(key, value){
+            var components = forms[i].query('#'+ key);
+            if(components.length > 0){
+                var component = components[i];
+                component.setValue(value);
+            }
+        }, this);
+
     },
 
     loadPrescriptionForm : function(tree, record){
@@ -71,9 +79,8 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         drugCompositionController.clear();
     },
 
-    getForms : function(){
-        var prescriptionform = GenPres.application.MainCenter.query('prescriptionform')[0];
-        return prescriptionform.query('form');
+    getForm : function(){
+        return GenPres.application.MainCenter.query('prescriptionform')[0];
     },
     savePrescription:function(){
         var prescriptiongrid = GenPres.application.MainCenter.query('prescriptiongrid')[0];
@@ -84,13 +91,12 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
     getValues:function(){
         var vals = {};
-        var forms = this.getForms();
+        var form = this.getForm();
 
-        for(var i=0; i<forms.length; i++){
-            Ext.Object.each(forms[i].getValues(), function(key, value, myself) {
-                vals[key] = value;
-            });
-        }
+        Ext.Object.each(form.getValues(), function(key, value, myself) {
+            vals[key] = value;
+        });
+        
         return vals;
     }
 });

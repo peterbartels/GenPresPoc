@@ -13,22 +13,16 @@ Ext.define('GenPres.control.NumericBoundListKeyNav', {
         up: function() {
 
             var me = this,
-            boundList = me.boundList,
-            allItems = boundList.all,
-            oldItem = boundList.highlightedItem,
-            oldItemIdx = oldItem ? boundList.indexOf(oldItem) : -1,
-            newItemIdx = oldItemIdx > 0 ? oldItemIdx - 1 : allItems.getCount() - 1; //wraps around
+                boundList = me.boundList,
+                allItems = boundList.all,
+                oldItem = boundList.highlightedItem,
+                oldItemIdx = oldItem ? boundList.indexOf(oldItem) : -1,
+                newItemIdx = oldItemIdx > 0 ? oldItemIdx - 1 : allItems.getCount() - 1; //wraps around
 
-             if(oldItemIdx == 0){
-             if(me.boundList.store.getAt(0).data.number != 0){
-
-             }
+             if(oldItemIdx == 2){
+                this.fireEvent("upreached");
              }else{
-                 //if(oldItemIdx == 2){
-                    this.fireEvent("upreached");
-                 //}else{
-                   // me.highlightAt(newItemIdx);
-                 //}
+                me.highlightAt(newItemIdx);
              }
         },
 
@@ -42,11 +36,11 @@ Ext.define('GenPres.control.NumericBoundListKeyNav', {
             if(oldItemIdx == allItems.getCount() - 1){
                 //this.fireEvent("downreached");
             }else{
-                //if(oldItemIdx == 2){
+                if(oldItemIdx == 2){
                     this.fireEvent("downreached");
-                //}else{
-                    //me.highlightAt(newItemIdx);
-                //}
+                }else{
+                    me.highlightAt(newItemIdx);
+                }
             }
         },
 

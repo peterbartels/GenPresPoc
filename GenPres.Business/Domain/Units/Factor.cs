@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using GenPres.Operations.Calculation;
 
 namespace GenPres.Business.Domain.Units
 {

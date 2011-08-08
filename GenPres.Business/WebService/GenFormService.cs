@@ -35,5 +35,33 @@ namespace GenPres.Business.WebService
             if (route == "iv") return new string[] { "infuus" };
             return new string[] { "zetp", "infuus"};
         }
+
+        public decimal[] GetComponentIncrements(string generic, string route, string shape)
+        {
+            return new[]{1m};
+        }
+
+        public decimal[] GetSubstanceIncrements(string generic, string route, string shape)
+        {
+            return new[] { 0.05m, 0.075m, 0,1m, 0.225m, 0.5m };
+        }
+
+        public string[] GetSubstanceUnits(string generic, string shape, string route)
+        {
+            return new[] {"g","mg","microg"};
+        }
+        
+        public string[] GetComponentUnits(string generic, string shape, string route)
+        {
+            if(generic == "paracetamol")
+            {
+                return new[] { "zetp" };    
+            }
+            if (generic == "dopamine")
+            {
+                return new[] { "l","ml" };
+            }
+            return new string[] {};   
+        }
     }
 }

@@ -21,9 +21,11 @@ namespace GenPres.Assembler
             _registry = new Registry();
 
             _registry.For<IPrescription>().Use<Prescription>();
+            _registry.For<IDrug>().Use<Drug>();
+            _registry.For<IComponent>().Use<Component>();
+            _registry.For<ISubstance>().Use<Substance>();
             _registry.For<IUser>().Use<User>();
             _registry.For<IPatient>().Use<Patient>();
-            _registry.For<IDrug>().Use<Drug>();
             _registry.For<IUnitValue>().Use<UnitValue>();
             _registry.For<ILogicalUnit>().Use<LogicalUnit>();
 

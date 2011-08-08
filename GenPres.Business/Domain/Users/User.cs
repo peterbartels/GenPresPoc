@@ -1,7 +1,7 @@
 ﻿using System;
 using GenPres.Business.Data;
-using GenPres.Business.Data.DataAccess.Repositories;
 using GenPres.Business.Aspect;
+using GenPres.Business.Data.IRepositories;
 
 public enum StatusEnum
 {
@@ -27,10 +27,6 @@ namespace GenPres.Business.Domain.Users
             set { _state = value; }
         }
 
-        private int _id;
-        private string _userName;
-        private string _password;
-
         public void Save()
         {
             throw new NotImplementedException();
@@ -42,25 +38,11 @@ namespace GenPres.Business.Domain.Users
         [ChangeState]
         public string UserName { get; set; }
 
+
         [ChangeState]
         public string PassCrypt { get; set; }
 
         public bool IsNew { get { return (Id == 0); } }
-
-        public void OnCreate()
-        {
-            
-        }
-
-        public void OnNew()
-        {
-            
-        }
-
-        public void OnInitExisting()
-        {
-            
-        }
 
         private static IUserRepository Repository
         {
@@ -69,7 +51,7 @@ namespace GenPres.Business.Domain.Users
 
         public static IUser NewUser()
         {
-            return ObjectFactory.New<IUser>();
+            return ObjectCreator.New<IUser>();
         }
 
         public static bool AuthenticateUser(string username, string password)

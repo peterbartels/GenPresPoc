@@ -12,6 +12,10 @@ Ext.define('GenPres.control.ValueField', {
 
     keyNavEnabled : false,
 
+    enableKeyEvents:true,
+
+    isFormField:false,
+    
     initComponent: function() {
     	var me = this;
         
@@ -20,6 +24,7 @@ Ext.define('GenPres.control.ValueField', {
     	});
 
     	me.callParent();
+        me.isFormField = false;
         me.mixins.picker.initComponent.call(me);
     },
 
@@ -31,11 +36,8 @@ Ext.define('GenPres.control.ValueField', {
     	me.callParent();
     },
     spinUp : function(){
-    	//this.inputEl.focus();
     	var me = this;
     	me.callParent();
-    	//this.inputEl.focus();
-    	//this.onFocus();
     },
     spinDown : function(){
     	this.inputEl.focus();
@@ -43,26 +45,63 @@ Ext.define('GenPres.control.ValueField', {
     	me.callParent();
     	this.inputEl.focus();
     },
+    getCurrentStep:function(){
+        var me = this;
+        var value = this.getValue();
+        return value / me.step;
+    },
     updateNumberStore :  function(){
         var me = this;
-    	var store = me.store;
 
+        var store = me.store;
         var data = [];
         
-    	for(var i = 0; i<5; i++){
+        var step = me.getCurrentStep();
+        var start = 0;
+
+        if(step == 0) start = 0;
+
+    	for(var i = start; i<start+5; i++){
     		data.push({number:me.fixPrecision(i*me.step)})
     	}
+
         store.loadData(data, false);
     },
     onFocus: function() {
     	var me = this;
-
-		//me.expand();
-
         me.mixins.picker.expand.call(me);
-        me.listKeyNav.highlightAt(2);
-
         me.callParent();
+        var focusEl = function(){
+            me.inputEl.dom.focus();
+            me.inputEl.dom.select();
+            me.findRecord();
+        }
+        Ext.Function.defer(focusEl, 200);
+    },
+    onKeyUp : function(event){
+        var me = this;
+        if(!event.isNavKeyPress()){
+            me.updateNumberStore();
+            me.findRecord();
+        }
+    },
+    findRecord : function(){
+        var me = this;
+        var value = this.getValue();
+        foundRecord = {};
+        var minVal = null;
+        var i = 0;
+        var recordFound = false;
+        me.store.each(function(record){
+        	if(record.data.number == value){
+                me.listKeyNav.highlightAt(i);
+                recordFound = true;
+            }
+            i++;
+		}, this);
+        if(recordFound == false){
+            me.updateNumberStore();
+        }
     },
     createPicker: function() {
 
@@ -125,6 +164,36 @@ Ext.define('GenPres.control.ValueField', {
         store.loadData(data, false);
 
         me.listKeyNav.highlightAt(2);
+
+        me.inputEl.dom.value = data[2].data.number;
+    },
+
+
+    updateStoreUp : function(){
+        var me = this;
+
+    	var store = me.store;
+
+        var firstValue = store.getAt(0).data.number;
+
+        if(firstValue == me.step) {
+            me.listKeyNav.highlightAt(0);
+            return;
+        }
+
+    	store.clearData();
+
+    	var start = (firstValue-me.step) / me.step;
+        var data = [];
+
+    	for(var i = start; i < start + 5; i++){
+    		data.push({number:me.fixPrecision(i*me.step)})
+    	}
+        store.loadData(data, false);
+
+        me.listKeyNav.highlightAt(2);
+
+        me.inputEl.dom.value = data[2].data.number;
     },
 
     onExpand: function() {
@@ -144,11 +213,14 @@ Ext.define('GenPres.control.ValueField', {
                 forceKeyDown: true
             });
             keyNav.on("downreached", me.updateStoreDown, me);
+            keyNav.on("upreached", me.updateStoreUp, me);
         }
-        Ext.defer(keyNav.enable, 5, keyNav); //wait a bit so it doesn't react to the down arrow opening the picker
-
+        Ext.defer(keyNav.enable, 15, keyNav); //wait a bit so it doesn't react to the down arrow opening the picker
+/*
         var minVal = null;
+
         foundRecord = {};
+
         me.store.each(function(record){
         	var diff = record.data.number - this.getValue();
         	if(minVal == null) {
@@ -160,16 +232,13 @@ Ext.define('GenPres.control.ValueField', {
 				minVal = Math.abs(diff);
 				foundRecord = record;
 			}
-		}, this);
-
-        //picker.highlightItem(picker.getNode(foundRecord));
-        me.listKeyNav.highlightAt(2);
-        me.inputEl.focus();
+		}, this);*/
     },
 
 
     onListSelectionChange: function(list, selectedRecords) {
         var me = this;
+        
         if (!me.inSetValue && me.isExpanded) {
             if (!me.multiSelect) {
                 //Ext.defer(me.collapse, 1, me);

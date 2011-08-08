@@ -14,21 +14,23 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Settings", "GenPres
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Database", "GenPres.Database\GenPres.Database.csproj", "{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.DataAccess", "GenPres.DataAccess\GenPres.DataAccess.csproj", "{4627C997-7861-4410-8CF7-1966D36E5921}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Data", "GenPres.Data\GenPres.Data.csproj", "{4627C997-7861-4410-8CF7-1966D36E5921}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.ObjectModel", "GenPres.ObjectModel\GenPres.ObjectModel.csproj", "{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Assembler", "GenPres.Assembler\GenPres.Assembler.csproj", "{0812617A-AA94-4A2F-926E-814C531B94E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.General", "GenPres.xTest.General\GenPres.xTest.General.csproj", "{7A32985F-5695-41E8-99DB-627E5E327B9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Base", "GenPres.xTest.Base\GenPres.xTest.Base.csproj", "{7A32985F-5695-41E8-99DB-627E5E327B9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Business.Test", "GenPres.Business.Test\GenPres.Business.Test.csproj", "{0EA0DA3C-A1A2-44EC-BC7E-5BF4206E19D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Business", "GenPres.xTest.Business\GenPres.xTest.Business.csproj", "{0EA0DA3C-A1A2-44EC-BC7E-5BF4206E19D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.DataAccess.Test", "GenPres.DataAccess.Test\GenPres.DataAccess.Test.csproj", "{82615AFA-2981-4D76-AAD7-40B7833843DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Data", "GenPres.xTest.Data\GenPres.xTest.Data.csproj", "{82615AFA-2981-4D76-AAD7-40B7833843DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Service", "GenPres.Service\GenPres.Service.csproj", "{344DA972-B381-4A0D-91D4-F6DB3F67D86A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Service.Test", "GenPres.Service.Test\GenPres.Service.Test.csproj", "{5FB5C1F3-251B-46F3-B01D-EB7668A43928}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Service", "GenPres.xTest.Service\GenPres.xTest.Service.csproj", "{5FB5C1F3-251B-46F3-B01D-EB7668A43928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Calculation", "GenPres.xTest.Calculation\GenPres.xTest.Calculation.csproj", "{0376BBE3-4F5F-473C-A4F0-F651F31387C9}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -112,6 +114,12 @@ Global
 		{5FB5C1F3-251B-46F3-B01D-EB7668A43928}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5FB5C1F3-251B-46F3-B01D-EB7668A43928}.Testing|Any CPU.ActiveCfg = Release|Any CPU
 		{5FB5C1F3-251B-46F3-B01D-EB7668A43928}.Testing|Any CPU.Build.0 = Release|Any CPU
+		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Testing|Any CPU.ActiveCfg = Release|Any CPU
+		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Testing|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
