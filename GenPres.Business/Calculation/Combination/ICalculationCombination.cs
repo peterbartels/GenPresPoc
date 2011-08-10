@@ -6,5 +6,6 @@ namespace GenPres.Business.Calculation.Combination
         void Calculate();
         void Finish();
         void ConvertCombinationsValuesToArray();
+        void CorrectPropertyIncrements();
     }
 }

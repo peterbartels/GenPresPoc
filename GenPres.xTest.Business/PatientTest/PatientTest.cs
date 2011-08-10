@@ -86,7 +86,7 @@ namespace GenPres.xTest.Business.PatientTest
             Assert.AreEqual(patientDao["FirstName"], patient.FirstName);
             Assert.AreEqual(patientDao["HospitalNumber"], patient.Pid);
 
-            Assert.AreEqual(patientDao["Length"], patient.Length);
+            Assert.AreEqual(patientDao["Length"], patient.Height);
             Assert.AreEqual(patientDao["Weight"], patient.Weight);
             Assert.AreEqual(patientDao["AddmissionDate"], patient.RegisterDate);
             Assert.AreEqual(patientDao["LogicalUnitName"], patient.Unit);
@@ -105,12 +105,11 @@ namespace GenPres.xTest.Business.PatientTest
             patient1.Id = 1;
             patient1.LogicalUnitId = 2;
 
-            patient1.Length = 120;
+            patient1.Height = 120;
             patient1.Weight = 75;
             patient1.RegisterDate = DateTime.Parse("20-3-2010 13:48:00");
             patient1.Unit = "unit1";
             patient1.Bed = "2";
-
 
             var collection = new List<IPatient>();
             collection.Add(patient1);
@@ -124,7 +123,7 @@ namespace GenPres.xTest.Business.PatientTest
             Assert.AreEqual(patient1.Pid, dtos[0].PID);
 
             Assert.AreEqual(patient1.Weight, dtos[0].Weight);
-            Assert.AreEqual(patient1.Length, dtos[0].Length);
+            Assert.AreEqual(patient1.Height, dtos[0].Length);
             Assert.AreEqual(dtos[0].RegisterDate, "20-03-2010");
             Assert.AreEqual(patient1.Unit, dtos[0].Unit);
             Assert.AreEqual(patient1.Bed, dtos[0].Bed);

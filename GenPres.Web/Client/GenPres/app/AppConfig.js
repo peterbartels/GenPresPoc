@@ -3,6 +3,8 @@ Ext.app.config = {
 
     'autoCreateViewport': false,
 
+    requires : ['GenPres.test.util.Query'],
+
     controllers: [
         'user.Login',
         'patient.Patient',

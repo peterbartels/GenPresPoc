@@ -19,7 +19,7 @@ namespace GenPres.Data.DTO.Patients
                 dto.text = patients[i].FullName;
 
                 dto.Weight = patients[i].Weight;
-                dto.Length = patients[i].Length;
+                dto.Length = patients[i].Height;
                 dto.RegisterDate = patients[i].RegisterDate.ToString("dd-MM-yyyy");
                 dto.Bed = patients[i].Bed;
                 dto.Unit = patients[i].Unit;

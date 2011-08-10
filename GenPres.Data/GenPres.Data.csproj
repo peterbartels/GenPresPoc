@@ -40,6 +40,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\Csla.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\Dependencies\NHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Dependencies\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\StructureMap.dll</HintPath>
@@ -83,6 +89,7 @@
     <Compile Include="DAO\Mapper\User\UserMapper.cs" />
     <Compile Include="Managers\GenPresDataContextManager.cs" />
     <Compile Include="Managers\GenPresDataManager.cs" />
+    <Compile Include="Mappings\PrescriptionMap.cs" />
     <Compile Include="Repositories\IdentityMap.cs" />
     <Compile Include="Managers\PDMSDataRetriever.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -94,6 +101,7 @@
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Managers\SingleObject.cs" />
+    <Compile Include="SessionFactoryCreator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">

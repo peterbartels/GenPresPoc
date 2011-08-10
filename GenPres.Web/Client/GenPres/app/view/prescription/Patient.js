@@ -1,6 +1,7 @@
 Ext.define('GenPres.view.prescription.Patient', {
 
     extend: 'Ext.form.Panel',
+    
     region: 'center',
 
     alias:'widget.prescriptionpatient',
@@ -15,29 +16,45 @@ Ext.define('GenPres.view.prescription.Patient', {
 
     title:'Patient',
 
-    
-
     initComponent : function(){
         var me = this;
 
         var patientWeight = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Gewicht',
             labelAlign:'left',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            isHidden:false,
+            unitStore: Ext.create('Ext.data.ArrayStore', {
+                autoDestroy: true,
+                fields: ['Value'],
+                data : [['gram'],['kg']]
+            }),
+            unitValue:'kg',
             name:'patientWeight'
         });
 
         var patientLength = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Lengte',
             labelAlign:'left',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            isHidden:false,
+            unitStore: Ext.create('Ext.data.ArrayStore', {
+                autoDestroy: true,
+                fields: ['Value'],
+                data : [['cm']]
+            }),
+            unitValue:'cm',
             name:'patientLength'
         });
 
         var patientBSA = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'BSA',
             labelAlign:'left',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            isHidden:false,
+            unitStore: Ext.create('Ext.data.ArrayStore', {
+                autoDestroy: true,
+                fields: ['Value'],
+                data : [['m2']]
+            }),
+            unitValue:'m2',
             name:'patientBSA'
         });
 

@@ -3,7 +3,7 @@ Ext.define('GenPres.test.view.DrugCompositionTest', {
     describe: 'GenPres.view.Prescription.DrugComposition',
 
     tests: function () {
-        var me = this, instance;
+        var me = this, instance, win;
 
         me.getPrescriptionView = function (config) {
             if (!instance) {
@@ -13,7 +13,7 @@ Ext.define('GenPres.test.view.DrugCompositionTest', {
         };
 
         me.createFormWindow = function(){
-            var win = Ext.create('Ext.Window', {
+            win = Ext.create('Ext.Window', {
                 items:me.getPrescriptionView(),
                 height:500,
                 width:1000
@@ -60,6 +60,12 @@ Ext.define('GenPres.test.view.DrugCompositionTest', {
 
         it('Substance quantity field has a unit combobox', function () {
             expect(me.getUnitValueField("substanceQuantity").getUnitCombo()).toBeDefined();
+        });
+
+        it('View can be destroyed', function () {
+            me.getPrescriptionView().destroy();
+            expect(me.getPrescriptionView().isDestroyed).toBeTruthy();
+            win.close();
         });
     }
 });

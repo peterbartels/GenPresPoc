@@ -20,6 +20,8 @@ namespace GenPres.Data.DAO.Mapper.Patient
         public override Database.Patient MapFromBoToDao(IPatient patientBo, Database.Patient patientDao)
         {
             patientDao.PID = patientBo.Pid;
+            patientDao.MedicationWeight = (double)patientBo.Weight;
+            patientDao.Height = (double) patientBo.Height;
             return patientDao;
         }
 
@@ -27,8 +29,9 @@ namespace GenPres.Data.DAO.Mapper.Patient
         {
             patientBo.Id = patientDao.Id;
             patientBo.Pid = patientDao.PID;
-            return patientBo;
-            
+            if (patientDao.MedicationWeight != null) patientBo.Weight = (decimal)patientDao.MedicationWeight.Value;
+            if (patientDao.Height != null) patientBo.Height = (decimal)patientDao.Height.Value;
+            return patientBo;   
         }
 
         public DataContext Context

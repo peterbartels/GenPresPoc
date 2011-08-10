@@ -20,7 +20,7 @@ namespace GenPres.Data.DAO.Mapper.Patient
             decimal.TryParse(patientDao["Length"].ToString(), out length);
             decimal.TryParse(patientDao["Weight"].ToString(), out weight);
             patientBo.Weight = weight;
-            patientBo.Length = length;
+            patientBo.Height = length;
 
             DateTime? addmissionDate = (DateTime?)patientDao["AddmissionDate"];
 

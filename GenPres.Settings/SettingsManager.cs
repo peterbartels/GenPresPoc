@@ -6,7 +6,7 @@ namespace Settings
 {
     public class SettingsManager
     {
-        private static string _path = @"C:\Development\GenPres-Development\GenPres\GenPres.Web\";
+        private static string _path = @"C:\Development\GenPres\GenPres.Web\";
         private XmlDocument _settingsDoc = null;
 
         public const string GenPresConnectionString = "GenPresConnectionString";

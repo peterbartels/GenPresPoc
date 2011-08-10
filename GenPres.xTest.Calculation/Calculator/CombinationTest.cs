@@ -1,42 +1,19 @@
-﻿using System;
-using System.IO;
-using GenPres.Business.Calculation;
+﻿using GenPres.Business.Calculation;
 using GenPres.Business.Calculation.Combination;
-using GenPres.Business.Domain;
-using GenPres.Business.Domain.Prescriptions;
 using GenPres.xTest.Base;
-using GenPres.xTest.Calculation.Calculator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Business.Calculator
+namespace GenPres.xTest.Calculation.Calculator
 {
     [TestClass]
     public class CombinationTest : BaseGenPresTest
     {
         public static string _testPath = @"c:\temp\test.txt";
 
-        private static IPrescription GetTestPrescription()
-        {
-            var prescription = ObjectCreator.New<IPrescription>();
-            prescription.Drug.Generic = "paracetamol";
-            prescription.Drug.Route = "rect";
-            prescription.Drug.Shape = "zetp";
-
-            prescription.Frequency.Value = 2;
-            prescription.Frequency.Time = "dag";
-
-            prescription.Quantity.Unit = "zetp";
-            
-            prescription.Total.Unit = "zetp";
-            prescription.Total.Time = "dag";
-            prescription.Total.Value = 7;
-            return prescription;
-        }
-
         [TestMethod]
         public void CalculatorSetsIncrements()
         {
-            IPrescription prescription = GetTestPrescription();
+            var prescription = PrescriptionTestFunctions.GetTestPrescription();
             var pc = new PrescriptionCalculator(prescription);
             Assert.IsTrue(prescription.Frequency.Factor.IncrementSizes.Length > 0);
             Assert.IsTrue(prescription.Quantity.Factor.IncrementSizes.Length > 0);
@@ -46,7 +23,7 @@ namespace GenPres.xTest.Business.Calculator
         [TestMethod]
         public void CalculatorCanCalculateSimpleCalculation()
         {
-            IPrescription prescription = GetTestPrescription();
+            var prescription = PrescriptionTestFunctions.GetTestPrescription();
             prescription.Total.Value = 8;
             var pc = new PrescriptionCalculator(prescription);
 
@@ -68,7 +45,7 @@ namespace GenPres.xTest.Business.Calculator
         [TestMethod]
         public void CalculatorCanRectifySimpleCalculation()
         {
-            IPrescription prescription = GetTestPrescription();
+            var prescription = PrescriptionTestFunctions.GetTestPrescription();
             var pc = new PrescriptionCalculator(prescription);
             
             var combi = new MultiplierCombination(
@@ -89,7 +66,7 @@ namespace GenPres.xTest.Business.Calculator
         [TestMethod]
         public void CalculatorCanCalculateUsingIncrements()
         {
-            var prescription = GetTestPrescription();
+            var prescription = PrescriptionTestFunctions.GetTestPrescription();
 
             var pc = new PrescriptionCalculator(prescription);
             

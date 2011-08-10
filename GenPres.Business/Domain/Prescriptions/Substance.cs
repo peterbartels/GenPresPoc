@@ -14,5 +14,12 @@ namespace GenPres.Business.Domain.Prescriptions
         public UnitValue DrugConcentration { get; set; }
         public UnitValue ComponentConcentration { get; set; }
         public decimal[] SubstanceIncrements { get; set; }
+
+        public Substance()
+        {
+            Quantity = new UnitValue();
+            DrugConcentration = new UnitValue();
+            ComponentConcentration = new UnitValue();
+        }
     }
 }

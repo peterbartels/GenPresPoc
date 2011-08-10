@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
@@ -11,7 +12,7 @@ namespace GenPres.Data.Repositories
     {
         private PdmsMapper _pdmsMapper = new PdmsMapper();
 
-        public List<IPatient> GetPatientsByLogicalUnitId(int logicalUnitId)
+        public static string GetSql()
         {
             string sqlQuery = "";
             sqlQuery += "SELECT pat.*, b.BedName, lu.Name as LogicalUnitName, ";
@@ -22,6 +23,11 @@ namespace GenPres.Data.Repositories
             sqlQuery += "LEFT JOIN LogicalUnits lu ON lu.LogicalUnitID = pat.LOGICALUNITID ";
             sqlQuery += "LEFT JOIN Beds b ON b.BedID = pat.BedID ";
             sqlQuery += "WHERE ";
+            return sqlQuery;
+        }
+        public List<IPatient> GetPatientsByLogicalUnitId(int logicalUnitId)
+        {
+            var sqlQuery = GetSql();
             sqlQuery += "pat.DischargeDate IS NULL AND pat.LOGICALUNITID='" + logicalUnitId + "' ORDER BY pat.LastName;";
 
             var sqlResult = PDMSDataRetriever.ExecuteSQL(sqlQuery);
@@ -34,6 +40,22 @@ namespace GenPres.Data.Repositories
             }
 
             return patients.ToList();
+        }
+
+        public IPatient GetPatientByPid(string pid)
+        {
+            var sqlQuery = GetSql();
+            sqlQuery += "pat.DischargeDate IS NULL AND pat.HospitalNumber='" + pid + "' ORDER BY pat.LastName;";
+
+            var sqlResult = PDMSDataRetriever.ExecuteSQL(sqlQuery);
+
+            if(sqlResult.Tables[0].Rows.Count != 1)
+            {
+                throw new Exception("Trying to find a non-existing Pid:" + pid);
+            }
+
+            var patient = _pdmsMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[0], Patient.NewPatient());
+            return patient;
         }
 
         public IPatient GetPatientsByPatientId(string patientId)

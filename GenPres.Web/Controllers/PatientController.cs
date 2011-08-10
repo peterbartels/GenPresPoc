@@ -25,5 +25,10 @@ namespace GenPres.Controllers
         {
             return this.Direct(PatientService.GetPatientsByLogicalUnit(logicalUnitId));
         }
+
+        public ActionResult SelectPatient(string patientId)
+        {
+            return this.Direct(PatientService.SelectPatient(patientId));
+        }
     }
 }

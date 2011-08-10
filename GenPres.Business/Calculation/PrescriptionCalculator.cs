@@ -36,8 +36,14 @@ namespace GenPres.Business.Calculation
             _combinations.Add(combi);
         }
 
+        private void CorrectPropertyIncrements(int index)
+        {
+            
+        }
+
         public void ExecuteCalculation()
         {
+            
             _combinations[0].Calculate();
         }
 
@@ -48,9 +54,6 @@ namespace GenPres.Business.Calculation
                 _combinations[i].ConvertCombinationsValuesToArray();    
             }
         }
-
-
-
 
         public void FinishCalculation()
         {

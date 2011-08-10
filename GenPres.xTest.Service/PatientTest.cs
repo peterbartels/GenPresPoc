@@ -40,5 +40,13 @@ namespace GenPres.xTest.Service
             patient.Save();
             Assert.IsTrue(patient.Id > 0);
         }
+
+        [TestMethod]
+        public void CanSelectPatient()
+        {
+            var Pid = "0000000";
+            bool created = PatientService.SelectPatient(Pid);
+            Assert.IsTrue(created);
+        }
     }
 }

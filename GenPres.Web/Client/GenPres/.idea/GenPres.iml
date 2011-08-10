@@ -5,6 +5,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Ext4" level="application" />
+    <orderEntry type="library" name="Extjs" level="application" />
   </component>
 </module>
 

@@ -1488,8 +1488,8 @@ Ext.define('GenPres.view.user.LoginWindow', {
                 allowBlank: false
             },
             items:[
-                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam', name:'username', margin: '10 0 10 10', value: '' },
-                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: '' },
+                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam2', name:'username', margin: '10 0 10 10', value: 'test' },
+                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: 'Test' },
                 Ext.create('GenPres.view.user.LogicalUnitSelector',{name:'loginLogicalUnitSelector'}),
                 me.advancedLoginFieldSet()
 
@@ -1784,6 +1784,11 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         });
     },
 
+
+    updatePrescription: function(){
+        
+    },
+
     getSubstanceUnitStore : function(){
         if(this.substanceUnitStore == null){
             this.substanceUnitStore = Ext.create('');
@@ -1802,16 +1807,15 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     setValues: function(record){
-        var forms = this.getForms();
-        for(var i=0; i<forms.length; i++){
-            Ext.Object.each(record.data, function(key, value){
-                var components = forms[i].query('#'+ key);
-                if(components.length > 0){
-                    var component = components[i];
-                    component.setValue(value);
-                }
-            }, this);
-        }
+        var form = this.getForm();
+        Ext.Object.each(record.data, function(key, value){
+            var components = forms[i].query('#'+ key);
+            if(components.length > 0){
+                var component = components[i];
+                component.setValue(value);
+            }
+        }, this);
+
     },
 
     loadPrescriptionForm : function(tree, record){
@@ -1886,7 +1890,8 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
     },
 
     addStoreListeners : function(combo){
-        combo.store.on("load", this.checkValues, this, {comboBox:combo})
+        combo.store.on("load", this.checkValues, this, {comboBox:combo});
+        combo.store.on("load", this.updatePrescription, this, {comboBox:combo})
     },
 
     changeSelection : function(combo){
@@ -1894,8 +1899,8 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         if(this.panel == null) {
             this.panel = combo.up('panel');
             this.addStoreListeners(this.getComboBox('generic'));
-            this.addStoreListeners(this.getComboBox('shape'));
             this.addStoreListeners(this.getComboBox('route'));
+            this.addStoreListeners(this.getComboBox('shape'));
         }
 
         if(combo.action == "generic"){

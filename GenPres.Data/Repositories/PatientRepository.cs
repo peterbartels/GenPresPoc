@@ -41,6 +41,13 @@ namespace GenPres.Data.Repositories
             return patient;
         }
 
+        public bool PatientExists(string patientId)
+        {
+            var foundPatient = FindSingle(x => x.PID == patientId);
+            if (!foundPatient.IsAvailable) return false;
+            return true;
+        }
+
         public IPatient GetByPid(string pid)
         {
             var patientDao = FindSingle(x => x.PID == pid);

@@ -3,7 +3,7 @@ Ext.define('GenPres.test.view.PrescriptionFormTest', {
     describe: 'GenPres.view.Prescription.PrescriptionForm',
 
     tests: function () {
-        var me = this, instance;
+        var me = this, instance, win;
 
         me.getPrescriptionView = function (config) {
             if (!instance) {
@@ -13,7 +13,7 @@ Ext.define('GenPres.test.view.PrescriptionFormTest', {
         };
 
         me.createFormWindow = function(){
-            var win = Ext.create('Ext.Window', {
+            win = Ext.create('Ext.Window', {
                 items:me.getPrescriptionView(),
                 height:520,
                 width:900
@@ -34,6 +34,12 @@ Ext.define('GenPres.test.view.PrescriptionFormTest', {
             var form = Ext.ComponentQuery.query('window prescriptionform')[0];
             var drugCompositionView = form.query("drugcomposition")[0];
             expect(drugCompositionView).toBeDefined();
+        });
+
+        it('View can be destroyed', function () {
+            me.getPrescriptionView().destroy();
+            expect(me.getPrescriptionView().isDestroyed).toBeTruthy();
+            win.close();
         });
     }
 });

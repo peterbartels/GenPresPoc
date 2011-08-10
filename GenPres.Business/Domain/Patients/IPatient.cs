@@ -13,7 +13,7 @@ namespace GenPres.Business.Domain.Patients
         
         int LogicalUnitId { get; set; }
 
-        decimal Length { get; set; }
+        decimal Height { get; set; }
         decimal Weight { get; set; }
 
         string Gender { get; set; }

@@ -29,7 +29,8 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
     },
 
     addStoreListeners : function(combo){
-        combo.store.on("load", this.checkValues, this, {comboBox:combo})
+        combo.store.on("load", this.checkValues, this, {comboBox:combo});
+        combo.store.on("load", this.updatePrescription, this, {comboBox:combo})
     },
 
     changeSelection : function(combo){
@@ -37,8 +38,8 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         if(this.panel == null) {
             this.panel = combo.up('panel');
             this.addStoreListeners(this.getComboBox('generic'));
-            this.addStoreListeners(this.getComboBox('shape'));
             this.addStoreListeners(this.getComboBox('route'));
+            this.addStoreListeners(this.getComboBox('shape'));
         }
 
         if(combo.action == "generic"){

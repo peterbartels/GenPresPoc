@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using GenPres.Business.Domain.Patients;
 using GenPres.Data.DTO.Patients;
 
@@ -22,6 +23,11 @@ namespace GenPres.Service
         public static ReadOnlyCollection<PatientTreeDto> GetPatientsByLogicalUnit(int logicalUnit)
         {
             return PatientTreeAssembler.AssemblePatientTreeDto(PatientCollection.GetPatientsByLogicalUnit(logicalUnit));
+        }
+
+        public static bool SelectPatient(string patientId)
+        {
+            return Patient.InsertFromPdms(patientId);
         }
 
 

@@ -61,6 +61,10 @@
       <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
       <Name>GenPres.Assembler</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
+      <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
+      <Name>GenPres.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.Data</Name>

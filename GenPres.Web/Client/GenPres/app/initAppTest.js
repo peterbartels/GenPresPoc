@@ -44,7 +44,7 @@ Ext.onReady(function () {
         });
         
         me.showLoginWindow();
-
+        
         advancedLoginTest = Ext.create('GenPres.test.usecase.AdvancedLoginTest');
         describe(advancedLoginTest.describe, advancedLoginTest.tests);
 
@@ -59,6 +59,7 @@ Ext.onReady(function () {
 
         prescriptionTest = Ext.create('GenPres.test.usecase.PrescriptionTest');
         describe(prescriptionTest.describe, prescriptionTest.tests);
+
 
 
         jasmine.getEnv().addReporter(new jasmine.TrivialReporter());

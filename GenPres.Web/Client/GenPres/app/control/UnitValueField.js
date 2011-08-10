@@ -1,4 +1,14 @@
 
+GenPres.control = {
+    states : {
+        user : 1,
+        calculated: 2
+    }
+}
+GenPres.control.stateColors = {}
+GenPres.control.stateColors[GenPres.control.states.user] = "lime";
+GenPres.control.stateColors[GenPres.control.states.calculated] = "orange";
+
 Ext.define('GenPres.control.UnitValueField', {
 
     extend:'Ext.Panel',
@@ -13,20 +23,65 @@ Ext.define('GenPres.control.UnitValueField', {
 
     isFormField : true,
 
+    isHidden: true,
+
+    state: GenPres.control.states.user,
+
+    value : "",
+
+    unitValue : "",
+
+    setHidden : function (hidden){
+        if(hidden) {
+            this.getEl().dom.style.visibility = "hidden";
+        }else{
+            this.getEl().dom.style.visibility = "";
+        }
+    },
+
+    setState : function(state){
+        this.state = state;
+        this.setInputColor(GenPres.control.stateColors[state]);
+    },
+
+    setInputColor : function(color){
+        this.getInputEl().style.border = "solid 1px " + color;
+    },
+
+    getInputEl : function(){
+        return this.valueField.inputEl.dom;
+    },
+
     getSubmitData : function(includeEmptyText){
         var me = this;
         var result = {};
-        
-        result[me.name] ={
-            value:me.valueField.getValue(),
-            unit:me.unitCombo.getValue()
-        }
-        
+        result[me.name] =me.getValue();
         return result;
     },
 
     getValue : function(){
-        return 665;
+        var me = this;
+        return {
+            value : me.valueField.getValue(),
+            unitValue : me.unitCombo.getValue()
+        };
+    },
+
+    setValue : function(obj){
+        var me = this;
+        me.value = obj.value;
+        me.unitValue = obj.unitValue;;
+        me.state = obj.state;
+        me.isHidden = obj.isHidden;
+        me.processValues();
+    },
+
+    processValues : function(){
+        var me = this;
+        me.valueField.setValue(me.value);
+        me.unitCombo.setValue(me.unitValue);
+        me.setHidden(me.isHidden);
+        me.setState(me.state);
     },
 
     isValid : function(){
@@ -72,6 +127,15 @@ Ext.define('GenPres.control.UnitValueField', {
         }];
         
         me.callParent();
+        
+        me.on("afterrender", function(){
+            me.setValue({
+               value : me.value,
+               unitValue: me.unitValue,
+               isHidden:me.isHidden,
+               state:me.state
+            });
+        })
     },
     
     getUnitCombo : function(){

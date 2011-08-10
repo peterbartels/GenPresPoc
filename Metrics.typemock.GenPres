@@ -1,11 +1,22 @@
 <?xml version="1.0"?>
 <MetricsData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <LastLoadedTestDate>2011-08-07T19:37:02.7659842+02:00</LastLoadedTestDate>
+  <LastLoadedTestDate>2011-08-10T17:07:24.310887+02:00</LastLoadedTestDate>
   <Data>
     <DataPerDate Date="2011-08-07T00:00:00+02:00" ProductionMinutes="1.970899999999999" ManualTestingMinutes="0.21143333333333333" CreatingUnitTestsMinutes="0" RunningUnitTestsMinutes="0" FailedTestsCount="0" />
+    <DataPerDate Date="2011-08-08T00:00:00+02:00" ProductionMinutes="55.559466666665742" ManualTestingMinutes="9.5316166666666255" CreatingUnitTestsMinutes="36.194699999999507" RunningUnitTestsMinutes="0" FailedTestsCount="1" />
+    <DataPerDate Date="2011-08-09T00:00:00+02:00" ProductionMinutes="0.96579999999999977" ManualTestingMinutes="0" CreatingUnitTestsMinutes="0" RunningUnitTestsMinutes="0" FailedTestsCount="0" />
+    <DataPerDate Date="2011-08-10T00:00:00+02:00" ProductionMinutes="46.7661999999991" ManualTestingMinutes="0" CreatingUnitTestsMinutes="60.201283333332391" RunningUnitTestsMinutes="0" FailedTestsCount="5" />
   </Data>
   <Solution>C:\Development\GenPres\GenPres.sln</Solution>
   <UnsolvedTests>
+    <FailedTest Date="2011-08-10T00:00:00" FailId="6b356568-27c8-479c-b869-c2eaaa860a43" FixedId="none" TestId="6766e67e-155b-e857-1299-43b256e2abe8" RunId="6b356568-27c8-479c-b869-c2eaaa860a43" />
+    <FailedTest Date="2011-08-10T00:00:00" FailId="6b356568-27c8-479c-b869-c2eaaa860a43" FixedId="none" TestId="ec61b23a-6954-2194-e659-4adcdec9ec88" RunId="6b356568-27c8-479c-b869-c2eaaa860a43" />
+    <FailedTest Date="2011-08-10T00:00:00" FailId="6b356568-27c8-479c-b869-c2eaaa860a43" FixedId="none" TestId="5718ac38-a76f-76f6-2dd5-cd24e24f194a" RunId="6b356568-27c8-479c-b869-c2eaaa860a43" />
+    <FailedTest Date="2011-08-10T00:00:00" FailId="6b356568-27c8-479c-b869-c2eaaa860a43" FixedId="none" TestId="b34fd829-b1ec-0037-695b-324fe1e8c469" RunId="6b356568-27c8-479c-b869-c2eaaa860a43" />
+    <FailedTest Date="2011-08-10T00:00:00" FailId="6b356568-27c8-479c-b869-c2eaaa860a43" FixedId="none" TestId="c7e51cb5-e2a2-1ced-bebb-aa29786f62ff" RunId="6b356568-27c8-479c-b869-c2eaaa860a43" />
     <FailedTest Date="2011-08-04T00:00:00" FailId="a073d019-e37a-4c28-86e5-10320c7bf715" FixedId="none" TestId="cb9f0a58-c45a-2a2e-8e36-4977ab68cbd5" RunId="a073d019-e37a-4c28-86e5-10320c7bf715" />
+    <FailedTest Date="2011-08-10T00:00:00" FailId="5b84f643-fd61-4882-b0a7-a6b6a318d50b" FixedId="none" TestId="8ace17a2-d4a3-da3b-fb03-4531c0282dfd" RunId="5b84f643-fd61-4882-b0a7-a6b6a318d50b" />
+    <FailedTest Date="2011-08-10T00:00:00" FailId="6c9ea539-da64-408b-b17a-a1487471584d" FixedId="none" TestId="141e50ae-269d-32b6-e492-015890ba1d73" RunId="6c9ea539-da64-408b-b17a-a1487471584d" />
+    <FailedTest Date="2011-08-10T00:00:00" FailId="6c9ea539-da64-408b-b17a-a1487471584d" FixedId="none" TestId="e5f7bd64-3719-d69e-d685-f50f81cb8a89" RunId="6c9ea539-da64-408b-b17a-a1487471584d" />
   </UnsolvedTests>
 </MetricsData>

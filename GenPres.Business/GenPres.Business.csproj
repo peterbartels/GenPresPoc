@@ -61,6 +61,9 @@
     <Compile Include="Aspect\ChangeStateAttribute.cs" />
     <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />
+    <Compile Include="Calculation\Combination\AbstractCombination.cs" />
+    <Compile Include="Calculation\Combination\ContinuousCombination.cs" />
+    <Compile Include="Calculation\Increment\PropertyIncrement.cs" />
     <Compile Include="Data\AvailableObject.cs" />
     <Compile Include="Data\IDataMapper.cs" />
     <Compile Include="Data\IRepositories\ILogicalUnitRepository.cs" />

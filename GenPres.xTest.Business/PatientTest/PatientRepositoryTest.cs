@@ -1,4 +1,5 @@
 ﻿using GenPres.Business.Data.IRepositories;
+using GenPres.Business.Domain.Patients;
 using GenPres.Data.Repositories;
 using GenPres.Service;
 using GenPres.xTest.Base;
@@ -25,6 +26,22 @@ namespace GenPres.xTest.Business.PatientTest
             var patientRepository = StructureMap.ObjectFactory.GetInstance<IPdsmRepository>();
             PatientService.GetPatientsByLogicalUnit(1);
             Isolate.Verify.WasCalledWithExactArguments(() => patientRepository.GetPatientsByLogicalUnitId(1));
+        }
+
+        [TestMethod]
+        public void PatientRepositoryPatientExistsCanFindAPatient()
+        {
+            var patientRep = new PatientRepository();
+            var exists = patientRep.PatientExists("1234567");
+            Assert.IsTrue(exists == true);
+        }
+
+        [TestMethod]
+        public void PatientRepositoryPatientExistsCanNotFindAPatient()
+        {
+            var patientRep = new PatientRepository();
+            var exists = patientRep.PatientExists("qqqqqqq");
+            Assert.IsTrue(exists == false);
         }
     }
 }

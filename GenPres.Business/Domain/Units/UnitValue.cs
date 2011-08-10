@@ -59,14 +59,14 @@ namespace GenPres.Business.Domain.Units
             {
                 if (_baseValue != 0)
                 {
-                    return MathExt.FixPrecision(getUnitValue());
+                    return MathExt.FixPrecision(GetUnitValue());
                 }
                 return MathExt.FixPrecision(_value);
             }
             set
             {
                 _value = value;
-                calculateBaseValue();
+                CalculateBaseValue();
             }
         }
 
@@ -79,7 +79,7 @@ namespace GenPres.Business.Domain.Units
             set
             {
                 _baseValue = value;
-                getUnitValue();
+                GetUnitValue();
             }
         }
 
@@ -92,7 +92,7 @@ namespace GenPres.Business.Domain.Units
             set
             {
                 _unit = value;
-                calculateBaseValue();
+                CalculateBaseValue();
             }
         }
 
@@ -105,7 +105,7 @@ namespace GenPres.Business.Domain.Units
             set
             {
                 _adjust = value;
-                calculateBaseValue();
+                CalculateBaseValue();
             }
         }
 
@@ -118,7 +118,7 @@ namespace GenPres.Business.Domain.Units
             set
             {
                 _total = value;
-                calculateBaseValue();
+                CalculateBaseValue();
             }
         }
 
@@ -131,7 +131,7 @@ namespace GenPres.Business.Domain.Units
             set
             {
                 _time = value;
-                calculateBaseValue();
+                CalculateBaseValue();
             }
         }
 
@@ -208,9 +208,11 @@ namespace GenPres.Business.Domain.Units
         }
         #endregion
 
+        public bool CanBeSet { get; set; }
+
         #region Calculations
         //Calculate the base value (to base)
-        private void calculateBaseValue()
+        private void CalculateBaseValue()
         {
             if (_value == 0)
             {
@@ -220,12 +222,12 @@ namespace GenPres.Business.Domain.Units
             if (_unit == "" && _time == "") return;
 
             decimal value = _value;
-            if (_unit != "" && _unit != null) value = UnitConverter.GetBaseValue(_unit, _value);
-            if (_time != "" && _time != null)
+            if (!string.IsNullOrEmpty(_unit)) value = UnitConverter.GetBaseValue(_unit, _value);
+            if (!string.IsNullOrEmpty(_time))
             {
                 value = value / UnitConverter.GetBaseValue(_time, 1);
             }
-            if (_total != "" && _total != null)
+            if (!string.IsNullOrEmpty(_total))
             {
                 value = value / UnitConverter.GetBaseValue(_total, 1);
             }
@@ -233,17 +235,17 @@ namespace GenPres.Business.Domain.Units
         }
 
         //Calculate the unit value (from base)
-        private decimal getUnitValue()
+        private decimal GetUnitValue()
         {
             if (_unit == "" && _time == "") return 0;
 
             decimal value = _baseValue;
-            if (_unit != "" && _unit != null) value = UnitConverter.GetUnitValue(_unit, value);
-            if (_time != "" && _time != null)
+            if (!string.IsNullOrEmpty(_unit)) value = UnitConverter.GetUnitValue(_unit, value);
+            if (!string.IsNullOrEmpty(_time))
             {
                 value = value * UnitConverter.GetBaseValue(_time, 1);
             }
-            if (_total != "" && _total != null)
+            if (!string.IsNullOrEmpty(_total))
             {
                 value = value*UnitConverter.GetBaseValue(_total, 1);
             }
@@ -254,7 +256,7 @@ namespace GenPres.Business.Domain.Units
 
         internal void UpdateIncrements(Prescription p)
         {
-            decimal[] incrementsValues = new decimal[_increments.Length];
+            var incrementsValues = new decimal[_increments.Length];
             for (int i = 0; i < _increments.Length; i++)
             {
                 decimal result = _increments[i];
@@ -267,7 +269,7 @@ namespace GenPres.Business.Domain.Units
 
                 result = UnitConverter.GetUnitValue(Unit, result);
 
-                if (_time != "" && _time != null)
+                if (!string.IsNullOrEmpty(_time))
                 {
                     //TODO: fix properly!!
                     if (_time == "uur" || _time == "min")

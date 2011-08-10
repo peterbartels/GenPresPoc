@@ -27,7 +27,7 @@ namespace GenPres.xTest.Base
 
         public void CreateTestDataContext()
         {
-            _dataContext = new PrescriptionDataContext(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Development\GenPres-Development\GenPres\GenPres.xTest.Data\GenPres.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True");
+            _dataContext = new PrescriptionDataContext(@"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Development\GenPres\GenPres.xTest.Data\GenPres.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True");
             _dataContext.Connection.Disposed += OnDispose;
         }
 

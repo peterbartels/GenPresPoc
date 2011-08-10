@@ -65,8 +65,8 @@ Ext.define('GenPres.view.user.LoginWindow', {
                 allowBlank: false
             },
             items:[
-                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam', name:'username', margin: '10 0 10 10', value: '' },
-                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: '' },
+                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam2', name:'username', margin: '10 0 10 10', value: 'test' },
+                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: 'Test' },
                 Ext.create('GenPres.view.user.LogicalUnitSelector',{name:'loginLogicalUnitSelector'}),
                 me.advancedLoginFieldSet()
 

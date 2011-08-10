@@ -15,7 +15,7 @@ namespace GenPres.Business.Domain.Patients
 
         public static ReadOnlyCollection<IPatient> GetPatientsByLogicalUnit(int logicalUnitId)
         {
-            var pc = PatientCollection.NewPatientCollection();
+            var pc = NewPatientCollection();
             pc._patients = Repository.GetPatientsByLogicalUnitId(logicalUnitId);
             return pc._patients.AsReadOnly();
         }

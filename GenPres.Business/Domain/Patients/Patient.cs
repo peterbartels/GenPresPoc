@@ -17,7 +17,7 @@ namespace GenPres.Business.Domain.Patients
 
         private int _logicalUnitId;
 
-        private decimal _length;
+        private decimal _height;
 
         private decimal _weight;
 
@@ -73,10 +73,10 @@ namespace GenPres.Business.Domain.Patients
             set { _logicalUnitId = value; }
         }
 
-        public decimal Length
+        public decimal Height
         {
-            get { return _length; }
-            set { _length = value; }
+            get { return _height; }
+            set { _height = value; }
         }
 
         public decimal Weight
@@ -145,6 +145,14 @@ namespace GenPres.Business.Domain.Patients
             get { return PatientRepository; }
         }
 
+        private static readonly IPdsmRepository PdmsPatientRepository =
+            StructureMap.ObjectFactory.GetInstance<IPdsmRepository>();
+
+        private static IPdsmRepository PdmsRepository
+        {
+            get { return PdmsPatientRepository; }
+        }
+
         public static Patient NewPatient()
         {
             return new Patient();
@@ -153,6 +161,18 @@ namespace GenPres.Business.Domain.Patients
         public static IPatient GetPatientByPid(string Pid)
         {
             return Repository.GetByPid(Pid);
+        }
+
+        public static bool InsertFromPdms(string pid)
+        {
+            if (!Repository.PatientExists(pid))
+            {
+                var patient = PdmsRepository.GetPatientByPid(pid);
+                Repository.Save(patient);
+                Repository.Submit();
+                return true;
+            }
+            return false;
         }
     }
 }

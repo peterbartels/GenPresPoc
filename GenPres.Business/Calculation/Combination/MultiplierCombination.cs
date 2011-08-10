@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq.Expressions;
 using GenPres.Business.Calculation.Calculation;
+using GenPres.Business.Calculation.Increment;
 using GenPres.Business.Calculation.Math;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Business.Domain.Units;
@@ -11,8 +12,8 @@ namespace GenPres.Business.Calculation.Combination
 
     public class MultiplierCombination : ICalculationCombination
     {
-        private decimal[] values = new decimal[3];
-        private UnitValue[] _unitValues = new UnitValue[3];
+        private readonly decimal[] values = new decimal[3];
+        private readonly UnitValue[] _unitValues = new UnitValue[3];
 
         private Expression<Func<UnitValue>>[] _properties;
         private IPrescription _root;
@@ -46,7 +47,7 @@ namespace GenPres.Business.Calculation.Combination
 
         public void SetValue(int index, decimal value)
         {
-            values[index] = value;
+            values[index] = System.Math.Round(value, 8, MidpointRounding.AwayFromZero);
         }
 
         public decimal GetConvertedValue(int index)
@@ -93,6 +94,7 @@ namespace GenPres.Business.Calculation.Combination
         public void Calculate()
         {
             var pc = new PropertyCombinationCalculate();
+            CorrectPropertyIncrements();
             pc.Calculate(this, 2);
         }
 
@@ -120,7 +122,15 @@ namespace GenPres.Business.Calculation.Combination
             for (int i = 0; i < _properties.Length; i++)
             {
                 _unitValues[i] = PropertyHelper.GetUnitValue(_root, _properties[i]);
-                values[i] = GetConvertedValue(i);
+                values[i] = System.Math.Round(GetConvertedValue(i), 8, MidpointRounding.AwayFromZero);
+            }
+        }
+
+        public void CorrectPropertyIncrements()
+        {
+            for (int i = 0; i < _properties.Length; i++)
+            {
+                PropertyIncrement.CorrectPropertyIncrement(_unitValues[i], ref values[i]);
             }
         }
     }

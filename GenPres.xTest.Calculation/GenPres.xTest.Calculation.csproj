@@ -48,6 +48,8 @@
     <Compile Include="Calculator\CalculatorCreator.cs" />
     <Compile Include="Calculator\CombinationRandomizer.cs" />
     <Compile Include="Calculator\CombinationTest.cs" />
+    <Compile Include="Calculator\PrescriptionTestFunctions.cs" />
+    <Compile Include="Calculator\PropertyIncrementTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

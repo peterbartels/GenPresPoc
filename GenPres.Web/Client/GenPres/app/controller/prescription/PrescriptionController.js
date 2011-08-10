@@ -30,6 +30,11 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         });
     },
 
+
+    updatePrescription: function(){
+        
+    },
+
     getSubstanceUnitStore : function(){
         if(this.substanceUnitStore == null){
             this.substanceUnitStore = Ext.create('');

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GenPres.Business.Domain.Units;
 using GenPres.Business.WebService;
 
 namespace GenPres.Business.Domain.Prescriptions
@@ -18,11 +19,14 @@ namespace GenPres.Business.Domain.Prescriptions
 
         #region Public Properties
 
+        public UnitValue Quantity { get; set; }
+
         public string Generic
         {
             get { return _generic; }
             set { _generic = value;
                 CheckIncrements();
+
             }
         }
 
@@ -68,7 +72,9 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public static IDrug NewDrug()
         {
-            return ObjectCreator.New<IDrug>();
+            IDrug drug = ObjectCreator.New<IDrug>();
+            drug.Quantity = new UnitValue();
+            return drug;
         }
 
 

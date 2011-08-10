@@ -12,26 +12,6 @@ namespace GenPres.xTest.Data
 
         public bool IsNew { get { return (Id == 0); } }
         
-        public void OnCreate()
-        {
-            
-        }
-
-        public void OnNew()
-        {
-            
-        }
-
-        public void OnInitExisting()
-        {
-            
-        }
-
-        public void Save()
-        {
-            
-        }
-
         public int Id
         {
             get; set;

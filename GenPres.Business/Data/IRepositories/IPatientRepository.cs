@@ -5,5 +5,6 @@ namespace GenPres.Business.Data.IRepositories
     public interface IPatientRepository : IRepository<IPatient>
     {
         IPatient GetByPid(string pid);
+        bool PatientExists(string patientId);
     }
 }
