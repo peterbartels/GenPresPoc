@@ -29,9 +29,15 @@ namespace GenPres.xTest.Business.PatientTest
         }
 
         [TestMethod]
+        public void RunTests()
+        {
+            
+        }
+
+        [TestMethod]
         public void PatientRepositoryPatientExistsCanFindAPatient()
         {
-            var patientRep = new PatientRepository();
+            var patientRep = new PatientSqlRepository();
             var exists = patientRep.PatientExists("1234567");
             Assert.IsTrue(exists == true);
         }
@@ -39,7 +45,7 @@ namespace GenPres.xTest.Business.PatientTest
         [TestMethod]
         public void PatientRepositoryPatientExistsCanNotFindAPatient()
         {
-            var patientRep = new PatientRepository();
+            var patientRep = new PatientSqlRepository();
             var exists = patientRep.PatientExists("qqqqqqq");
             Assert.IsTrue(exists == false);
         }

@@ -9,17 +9,17 @@ namespace GenPres.Business.Domain.Prescriptions
     {
         #region Public Properties
 
-        public bool IsNew { get { return (Id == 0); } }
+        public virtual bool IsNew { get { return (Id == 0); } }
 
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public DateTime CreationDate { get; set; }
-        public IDrug Drug { get; set; }
-        public string PID { get; set; }
-        public UnitValue Frequency { get; set; }
-        public UnitValue Quantity { get; set; }
-        public UnitValue Total { get; set; }
-        public UnitValue Rate { get; set; }
+        public virtual DateTime StartDate { get; set; }
+        public virtual DateTime EndDate { get; set; }
+        public virtual DateTime CreationDate { get; set; }
+        public virtual IDrug Drug { get; set; }
+        public virtual string PID { get; set; }
+        public virtual UnitValue Frequency { get; set; }
+        public virtual UnitValue Quantity { get; set; }
+        public virtual UnitValue Total { get; set; }
+        public virtual UnitValue Rate { get; set; }
 
         #endregion
 
@@ -49,7 +49,7 @@ namespace GenPres.Business.Domain.Prescriptions
             return Repository.GetPrescriptionById(id);
         }
 
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
         #endregion
 
@@ -65,7 +65,7 @@ namespace GenPres.Business.Domain.Prescriptions
             Total = new UnitValue();
         }
 
-        public void Save(string patientId)
+        public virtual void Save(string patientId)
         {
             Repository.SavePrescription(this, patientId);
         }

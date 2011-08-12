@@ -67,10 +67,11 @@
     <Compile Include="Data\AvailableObject.cs" />
     <Compile Include="Data\IDataMapper.cs" />
     <Compile Include="Data\IRepositories\ILogicalUnitRepository.cs" />
-    <Compile Include="Data\IRepositories\IPatientRepository.cs" />
+    <Compile Include="Data\IRepositories\IPatientSqlRepository.cs" />
     <Compile Include="Data\IRepositories\IPdsmRepository.cs" />
     <Compile Include="Data\IRepositories\IPrescriptionRepository.cs" />
     <Compile Include="Data\IRepositories\IRepository.cs" />
+    <Compile Include="Data\IRepositories\ISQLRepository.cs" />
     <Compile Include="Data\IRepositories\IUserRepository.cs" />
     <Compile Include="Calculation\Calculation\PropertyCombinationCalculate.cs">
       <SubType>Code</SubType>
@@ -86,6 +87,7 @@
     <Compile Include="Calculation\PropertyHelper.cs" />
     <Compile Include="Domain\Databases\IDatabaseConnection.cs" />
     <Compile Include="Domain\Databases\IDatabaseSetting.cs" />
+    <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\ICalcalutorBusiness.cs" />
     <Compile Include="Domain\ICalculationStateTrackable.cs" />
     <Compile Include="Domain\ISavable.cs" />

@@ -15,7 +15,7 @@ namespace GenPres.Assembler
             if (_hasBeenCalled) return _registry;
             _registry = new Registry();
 
-            _registry.For<IUserRepository>().Use<UserRepository>();
+            _registry.For<IUserRepository>().Use<UserSqlRepository>();
 
             _hasBeenCalled = true;
             return _registry;

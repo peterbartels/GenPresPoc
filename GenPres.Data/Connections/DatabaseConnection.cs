@@ -74,6 +74,12 @@ namespace GenPres.Data.Connections
             return SettingsManager.Instance.GetNames();
         }
 
+        public static string GetLocalConnectionString(DatabaseName databaseName)
+        {
+           // return @"Data Source=.\SQLEXPRESS;AttachDbFilename=C:\Development\GenPres\GenPres.xTest.Data\GenPres.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
+            return @"Data Source=localhost;Initial Catalog=GenPresTest;Uid=sa;Pwd=838839713;";
+        }
         #endregion
+
     }
 }

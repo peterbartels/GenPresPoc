@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Threading;
 using GenPres.Data;
 using GenPres.Data.Managers;
 using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Context;
 using StructureMap;
 
 namespace GenPres.Assembler
@@ -10,8 +13,9 @@ namespace GenPres.Assembler
     {
         private static ISessionFactory _factory;
         private static readonly Object LockThis = new object();
-        private static GenPresApplication _instance;
 
+        private static GenPresApplication _instance;
+        
         public static GenPresApplication Instance
         {
             get
@@ -21,7 +25,10 @@ namespace GenPres.Assembler
                     {
                         if (_instance == null)
                         {
-                            _instance = new GenPresApplication();
+                            var instance = new GenPresApplication();
+                            Thread.MemoryBarrier();
+                            _instance = instance;
+                            Thread.MemoryBarrier();
                         }
                     }
                 return _instance;
@@ -42,15 +49,37 @@ namespace GenPres.Assembler
 
             ObjectFactory.Configure(x => x.For<IDataContextManager>().Use<GenPresDataContextManager>());
         }
-        
-        public ISessionFactory SessionFactory
+
+        public ISessionFactory InitSessionFactory<TMappingType>()
         {
-            get { return _factory ?? (_factory = CreateSessionFactory()); }
+            if(_factory == null)
+            {
+                _factory = SessionFactoryCreator.CreateSessionFactory<TMappingType>();
+                CurrentSessionContext.Bind(_factory.OpenSession());
+            }
+            return _factory;
+        }
+
+        public void CloseSessionFactory()
+        {
+            var session = CurrentSessionContext.Unbind(_factory);
+            session.Close();
+        }
+
+        public static ISessionFactory SessionFactory
+        {
+            get { return Instance.SessionFactoryFromInstance; }
+        }
+
+        [Obsolete]
+        public ISessionFactory SessionFactoryFromInstance
+        {
+            get { return _factory; }
         }
 
         private static ISessionFactory CreateSessionFactory()
         {
-            return SessionFactoryCreator.CreateSessionFactory();
+            return SessionFactoryCreator.CreateSessionFactory<Data.Mappings.PrescriptionMap>();
         }
     }
 }

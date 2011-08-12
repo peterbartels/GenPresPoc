@@ -1,6 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using GenPres.Assembler;
+using GenPres.Assembler.Contexts;
+using GenPres.Business.Domain.Prescriptions;
+using GenPres.Data;
 using GenPres.Data.Managers;
+using GenPres.Data.Repositories;
 using GenPres.Database;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -12,7 +18,7 @@ namespace GenPres.xTest.Data
     /// Summary description for UnitTest1
     /// </summary>
     [TestClass]
-    public class RepositoryTest
+    public class RepositoryTest : BaseGenPresTest
     {
         public RepositoryTest()
         {
@@ -39,103 +45,73 @@ namespace GenPres.xTest.Data
         }
         #endregion
 
-        [TestMethod]
-        public void MapperCanMapChild()
-        {
-            /* From dao to bo */
-            var prDao = new Prescription();
-            prDao.Drug = new Drug();
-            prDao.Drug.Name = "paracetamol";
-            var pr = new PrescriptionBo();
-            var prMapper = new PrescriptionMapper();
-            prMapper.MapFromDaoToBo(prDao, pr);
-            Assert.IsNotNull(pr.Drug);
-            Assert.IsTrue(pr.Drug.Generic == prDao.Drug.Name);
+        private static NHibernateRepository<PrescriptionBo, Guid> _repository;
 
-            /* From Bo to Dao */
-            prDao = new Prescription();
-            prMapper.MapFromBoToDao(pr, prDao);
-            Assert.IsTrue(prDao.Drug.Name == pr.Drug.Generic);
+        private IDisposable GetContext()
+        {
+            return ObjectFactory.GetInstance<SessionContext>();
         }
 
-        [TestMethod]
-        public void MapperCanMapCollection()
+        [ClassInitialize]
+        public static void MyClassInitialize(TestContext testContext)
         {
-            /* From dao to bo */
-            var prDao = new Prescription();
-            prDao.Drug = new Drug();
-            prDao.Drug.Name = "paracetamol";
-            var c = new Component();
-            c.ComponentName = "test";
-            prDao.Drug.Components.Add(c);
-            var pr = new PrescriptionBo();
-            var prMapper = new PrescriptionMapper();
-            prMapper.MapFromDaoToBo(prDao, pr);
             
-            /* From Bo to Dao */
-            Assert.IsTrue(pr.Drug.Components[0].Name == "test");
-            prDao.Drug.Components.Clear();
-            prDao.Drug.Name = "";
-            prMapper.MapFromBoToDao(pr, prDao);
         }
 
         [TestMethod]
-        public void RepositoryCanInsertAndDelete()
+        public void RunTests()
         {
-
-            var testRepository = new TestRepository();
-            int oldCount = testRepository.Count();
-            var newObj = testRepository.CreateInstance();
-            newObj.StartDate = DateTime.Now;
-            testRepository.Submit();
-            int newCount = testRepository.Count();
-            Assert.AreEqual(oldCount + 1, newCount);
-            var last = testRepository.Last(x => x.Id > 0);
-            testRepository.MarkForDeletion(last);
-            testRepository.Submit();
-            Assert.AreEqual(oldCount, testRepository.Count());
+            _repository = new NHibernateRepository<PrescriptionBo, Guid>(GenPresApplication.Instance.SessionFactoryFromInstance);
+            CanInsertAPrescription();
+            RepositoryCanGetAll();
+            GenPresApplication.Instance.CloseSessionFactory();
         }
 
-        [TestMethod]
-        public void RepositoryCanGetAll()
+        private string _latestInsertedPrescriptionGuid = "";
+
+        private void CanInsertAPrescription()
         {
-            var testRepository = new TestRepository();
-            var all = testRepository.All();
-            Assert.IsTrue(all.Count() > 0);
+            var count = _repository.Count;
+            InsertPrescription(_repository);
+            _latestInsertedPrescriptionGuid = InsertPrescription(_repository);
+            var newCount = _repository.Count;
+            Assert.IsTrue((newCount == count + 2), "Inserted 2 prescriptions but newCount is not oldCount + 2: " + new StackFrame().GetMethod().Name);
+            Assert.IsTrue((_latestInsertedPrescriptionGuid != Guid.Empty.ToString()), "Prescription Id is not updated: " + new StackFrame().GetMethod().Name);
+        }
+
+        private  void RepositoryCanGetAll()
+        {
+            var all = _repository.Select(x => true);
+            int count = all.Count();
+            Assert.IsTrue(all.Count() == 2, "Should be 2 prescriptions in testbase but "+ count + " are found" );
         }
 
         [TestMethod]
         public void _repository_can_GetSingle()
         {
-            var testRepository = new TestRepository();
-            var single = testRepository.FindSingle(x=>x.Id == 5);
-
-            Assert.IsTrue(single.IsAvailable);
-            Assert.IsNotNull(single.Object);
+            var obj = _repository.Single(x => x.Id.ToString() == _latestInsertedPrescriptionGuid);            
+            Assert.IsNotNull(obj.Id.ToString() == _latestInsertedPrescriptionGuid);
         }
 
         [TestMethod]
         public void RepositoryCanGetFirst()
         {
-            var testRepository = new TestRepository();
-            var first = testRepository.First(x => x.Id > 0);
-            Assert.IsNotNull(first);
+            var obj = _repository.First();            
+            Assert.IsNotNull(obj.Id.ToString() != Guid.Empty.ToString());
         }
 
         [TestMethod]
         public void RepositoryCanGetLast()
         {
-            var testRepository = new TestRepository();
-            var last = testRepository.Last(x => x.Id > 0);
-            Assert.IsNotNull(last);
+            var obj = _repository.Last();            
+            Assert.IsNotNull(obj.Id.ToString() != Guid.Empty.ToString());
         }
 
         [TestMethod]
-        public void RepositoryCanGetByPrimaryId()
+        public void RepositoryCanGetById()
         {
-            var testRepository = new TestRepository();
-            var byId = testRepository.GetById(5);
-            Assert.IsNotNull(byId);
+            var obj = _repository.Single(x=>x.Id.ToString() == _latestInsertedPrescriptionGuid);            
+            Assert.IsNotNull(obj.Id.ToString() == _latestInsertedPrescriptionGuid);
         }
     }
 }

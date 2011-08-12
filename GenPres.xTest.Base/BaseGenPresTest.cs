@@ -1,6 +1,10 @@
-﻿using GenPres.Assembler;
+﻿using System;
+using GenPres.Assembler;
 using GenPres.Business.Domain;
 using GenPres.Business.Domain.Prescriptions;
+using GenPres.Data;
+using GenPres.Data.Repositories;
+using GenPres.xTest.Data;
 
 namespace GenPres.xTest.Base
 {
@@ -10,7 +14,16 @@ namespace GenPres.xTest.Base
         public BaseGenPresTest()
         {
             GenPresApplication.Initialize();
+            GenPresApplication.Instance.InitSessionFactory<Mappers.PrescriptionMap>();
             Settings.SettingsManager.Instance.Initialize();
+        }
+
+        public string InsertPrescription(NHibernateRepository<PrescriptionBo, Guid> _repository  )
+        {
+            var prescriptionBo = new PrescriptionBo();
+            prescriptionBo.StartDate = DateTime.Now;
+            _repository.Add(prescriptionBo);
+            return prescriptionBo.Id.ToString();
         }
 
         public IPrescription CreatePrescriptionWithAllPropertiesSet()

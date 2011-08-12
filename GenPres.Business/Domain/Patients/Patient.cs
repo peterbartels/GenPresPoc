@@ -133,16 +133,16 @@ namespace GenPres.Business.Domain.Patients
 
         public void Save()
         {
-            Repository.Save(this);
-            Repository.Submit();
+            SqlRepository.Save(this);
+            SqlRepository.Submit();
         }
 
-        private static readonly IPatientRepository PatientRepository = 
-            StructureMap.ObjectFactory.GetInstance<IPatientRepository>();
+        private static readonly IPatientSqlRepository PatientSqlRepository = 
+            StructureMap.ObjectFactory.GetInstance<IPatientSqlRepository>();
 
-        private static IPatientRepository Repository
+        private static IPatientSqlRepository SqlRepository
         {
-            get { return PatientRepository; }
+            get { return PatientSqlRepository; }
         }
 
         private static readonly IPdsmRepository PdmsPatientRepository =
@@ -160,16 +160,16 @@ namespace GenPres.Business.Domain.Patients
 
         public static IPatient GetPatientByPid(string Pid)
         {
-            return Repository.GetByPid(Pid);
+            return SqlRepository.GetByPid(Pid);
         }
 
         public static bool InsertFromPdms(string pid)
         {
-            if (!Repository.PatientExists(pid))
+            if (!SqlRepository.PatientExists(pid))
             {
                 var patient = PdmsRepository.GetPatientByPid(pid);
-                Repository.Save(patient);
-                Repository.Submit();
+                SqlRepository.Save(patient);
+                SqlRepository.Submit();
                 return true;
             }
             return false;

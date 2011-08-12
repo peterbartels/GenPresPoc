@@ -20,7 +20,7 @@ namespace GenPres.xTest.Business.UserTest
         {
             var registry = new Registry();
             
-            var repository = Isolate.Fake.Instance<UserRepository>(Members.CallOriginal);
+            var repository = Isolate.Fake.Instance<UserSqlRepository>(Members.CallOriginal);
             registry.For<IUserRepository>().Use(repository);
 
             ObjectFactory.Configure(x => x.AddRegistry(registry));
