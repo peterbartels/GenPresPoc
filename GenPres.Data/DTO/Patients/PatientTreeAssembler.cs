@@ -6,13 +6,13 @@ namespace GenPres.Data.DTO.Patients
 {
     public class PatientTreeAssembler
     {
-        public static ReadOnlyCollection<PatientTreeDto> AssemblePatientTreeDto(ReadOnlyCollection<IPatient> patients)
+        public static ReadOnlyCollection<PatientTreeDto> AssemblePatientTreeDto(ReadOnlyCollection<Patient> patients)
         {
             var patientTreeDtos = new List<PatientTreeDto>();
             for (int i = 0; i < patients.Count; i++)
             {
                 var dto = new PatientTreeDto();
-                dto.id = patients[i].Id;
+                dto.id = patients[i].Id.ToString();
                 dto.PID = patients[i].Pid;
                 dto.FirstName = patients[i].FirstName;
                 dto.LastName = patients[i].LastName;

@@ -2,9 +2,9 @@
 
 namespace GenPres.Business.Domain.Patients
 {
-    public interface IPatient : ISavable
+    public interface IPatient 
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
 
         string LastName { get; set; }
         string FirstName { get; set; }

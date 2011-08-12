@@ -19,23 +19,25 @@ namespace GenPres.Service
         public static PrescriptionDto SavePrescription(PrescriptionDto prescriptionDto, string patientId)
         {
             var prescription = PrescriptionAssembler.AssemblePrescriptionBo(prescriptionDto);
-            prescription.Save(patientId);
+            //TEMPWEG prescription.Save(patientId);
             return PrescriptionAssembler.AssemblePrescriptionDto(prescription);
         }
 
         public static ReadOnlyCollection<PrescriptionDto> GetPrescriptions(string patientId)
         {
-            var prescriptions = Prescription.GetPrescriptions(patientId);
-            var prescriptionDtos = new PrescriptionDto[prescriptions.Length];
             
-            for (var i = 0; i < prescriptions.Length; i++)
-                prescriptionDtos[i] = PrescriptionAssembler.AssemblePrescriptionDto(prescriptions[i]);
+            //TEMPWEG var prescriptions = Prescription.GetPrescriptions(patientId);
+            //TEMPWEG var prescriptionDtos = new PrescriptionDto[prescriptions.Length];
+            var prescriptionDtos = new PrescriptionDto[0];
+            //TEMPWEG for (var i = 0; i < prescriptions.Length; i++)
+            //TEMPWEG prescriptionDtos[i] = PrescriptionAssembler.AssemblePrescriptionDto(prescriptions[i]);
             
             return prescriptionDtos.ToList().AsReadOnly();
         }
         public static PrescriptionDto GetPrescriptionById(int id)
         {
-            return PrescriptionAssembler.AssemblePrescriptionDto(Prescription.GetPrescriptionById(id));
+            //TEMPWEG return PrescriptionAssembler.AssemblePrescriptionDto(Prescription.GetPrescriptionById(id));
+            return PrescriptionAssembler.AssemblePrescriptionDto(Prescription.NewPrescription());
         }
 
         public static ReadOnlyCollection<ValueDto> GetSubstanceUnits(string generic, string shape, string route)

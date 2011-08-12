@@ -14,6 +14,7 @@ namespace GenPres.Assembler
         private static ISessionFactory _factory;
         private static readonly Object LockThis = new object();
 
+        [ThreadStatic]
         private static GenPresApplication _instance;
         
         public static GenPresApplication Instance
@@ -48,38 +49,6 @@ namespace GenPres.Assembler
             });
 
             ObjectFactory.Configure(x => x.For<IDataContextManager>().Use<GenPresDataContextManager>());
-        }
-
-        public ISessionFactory InitSessionFactory<TMappingType>()
-        {
-            if(_factory == null)
-            {
-                _factory = SessionFactoryCreator.CreateSessionFactory<TMappingType>();
-                CurrentSessionContext.Bind(_factory.OpenSession());
-            }
-            return _factory;
-        }
-
-        public void CloseSessionFactory()
-        {
-            var session = CurrentSessionContext.Unbind(_factory);
-            session.Close();
-        }
-
-        public static ISessionFactory SessionFactory
-        {
-            get { return Instance.SessionFactoryFromInstance; }
-        }
-
-        [Obsolete]
-        public ISessionFactory SessionFactoryFromInstance
-        {
-            get { return _factory; }
-        }
-
-        private static ISessionFactory CreateSessionFactory()
-        {
-            return SessionFactoryCreator.CreateSessionFactory<Data.Mappings.PrescriptionMap>();
         }
     }
 }

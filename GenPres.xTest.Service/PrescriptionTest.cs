@@ -31,7 +31,7 @@ namespace GenPres.xTest.Service
         {
             ObjectFactory.Configure(x => x.For<IDataContextManager>().Use<TestDataContextManager>());
         }
-
+        /*
         [TestMethod]
         public void CanSavePrescription()
         {   
@@ -58,6 +58,6 @@ namespace GenPres.xTest.Service
             var lastPrescription = prescriptions[0];
             var prescription = PrescriptionService.GetPrescriptionById(lastPrescription.Id);
             Assert.IsTrue(prescription.PID != "" && prescription.Id > 0);
-        }
+        }*/
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GenPres.Business.Data.IRepositories;
@@ -16,6 +17,11 @@ namespace GenPres.Data.Repositories
         public IEnumerator<T> GetEnumerator()
         {
             return Transact(() => Session.Query<T>().GetEnumerator());
+        }
+
+        public T FindSingle(Func<T, bool> s)
+        {
+            return this.SingleOrDefault(s);
         }
 
         IEnumerator IEnumerable.GetEnumerator()

@@ -8,7 +8,7 @@ namespace GenPres.xTest.Business.PrescriptionTest
 {
     [TestClass]
     public class PrescriptionTest : BaseGenPresTest
-    {
+    {   /*
         [TestMethod]
         public void PrescriptionCreatesCreationDate()
         {
@@ -89,6 +89,6 @@ namespace GenPres.xTest.Business.PrescriptionTest
             p.Drug.Route = "rect";
             p.Drug.Shape = "zetp";
             Assert.IsTrue(p.Drug.Components[0].ComponentIncrement != 0);
-        }
+        }*/
     }
 }

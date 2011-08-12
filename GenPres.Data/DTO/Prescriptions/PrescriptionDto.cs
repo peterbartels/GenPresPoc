@@ -2,7 +2,7 @@
 {
     public class PrescriptionDto
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public string StartDate { get; set; }
         public string drugGeneric { get; set; }
         public string drugRoute { get; set; }

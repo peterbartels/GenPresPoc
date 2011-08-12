@@ -3,7 +3,7 @@ namespace GenPres.Data.DTO.Patients
 {
     public class PatientTreeDto
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string text { get; set; }
         public bool leaf { get; set; }
         public string FirstName { get; set; }

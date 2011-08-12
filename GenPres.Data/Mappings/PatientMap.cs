@@ -1,16 +1,17 @@
 ﻿using System;
 using FluentNHibernate.Mapping;
+using GenPres.Business.Domain.Patients;
 using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Data.Mappings
 {
-    public class PrescriptionMap : ClassMap<Prescription>
+    public class PatientMap : ClassMap<Patient>
     {
-        public PrescriptionMap()
+        public PatientMap()
         {
             Id(s => s.Id).GeneratedBy.GuidComb();
-            Map(s => s.StartDate);
-            References(x => x.Patient);
+            Map(s => s.Pid);
+            HasMany(x=>x.Prescriptions);
         }
     }
 }

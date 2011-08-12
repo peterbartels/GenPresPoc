@@ -7,7 +7,6 @@ using GenPres.Business.Domain.Prescriptions;
 using GenPres.Data;
 using GenPres.Data.Managers;
 using GenPres.Data.Repositories;
-using GenPres.Database;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StructureMap;
@@ -45,7 +44,7 @@ namespace GenPres.xTest.Data
         }
         #endregion
 
-        private static NHibernateRepository<PrescriptionBo, Guid> _repository;
+        private static NHibernateRepository<Prescription, Guid> _repository;
 
         private IDisposable GetContext()
         {
@@ -61,10 +60,10 @@ namespace GenPres.xTest.Data
         [TestMethod]
         public void RunTests()
         {
-            _repository = new NHibernateRepository<PrescriptionBo, Guid>(GenPresApplication.Instance.SessionFactoryFromInstance);
+            _repository = new NHibernateRepository<Prescription, Guid>(SessionFactoryManager.Instance.SessionFactoryFromInstance);
             CanInsertAPrescription();
-            RepositoryCanGetAll();
-            GenPresApplication.Instance.CloseSessionFactory();
+            //RepositoryCanGetAll();
+            SessionFactoryManager.Instance.CloseSessionFactory();
         }
 
         private string _latestInsertedPrescriptionGuid = "";

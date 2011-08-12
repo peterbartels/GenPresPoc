@@ -102,7 +102,7 @@ namespace GenPres.xTest.Business.PatientTest
             patient1.FirstName = "Peter";
             patient1.LastName = "Bartels";
             patient1.Pid = "1234567";
-            patient1.Id = 1;
+            patient1.Id = Guid.Empty;
             patient1.LogicalUnitId = 2;
 
             patient1.Height = 120;
@@ -111,7 +111,7 @@ namespace GenPres.xTest.Business.PatientTest
             patient1.Unit = "unit1";
             patient1.Bed = "2";
 
-            var collection = new List<IPatient>();
+            var collection = new List<Patient>();
             collection.Add(patient1);
             collection.Add(patient1);
 

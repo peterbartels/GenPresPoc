@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using GenPres.Business.Domain.Patients;
 using GenPres.Data.DTO.Patients;
 using GenPres.Service;
@@ -29,7 +30,7 @@ namespace GenPres.xTest.Service
         {
             var patient = Patient.GetPatientByPid("8697898");
             patient.Save();
-            Assert.IsTrue(patient.Id > 0);
+            Assert.IsTrue(patient.Id != Guid.Empty);
         }
         
         [TestMethod]
@@ -38,7 +39,7 @@ namespace GenPres.xTest.Service
             var uid = System.Guid.NewGuid();
             var patient = Patient.GetPatientByPid(uid.ToString());
             patient.Save();
-            Assert.IsTrue(patient.Id > 0);
+            Assert.IsTrue(patient.Id != Guid.Empty);
         }
 
         [TestMethod]

@@ -4,16 +4,16 @@ using GenPres.Business.Data.IRepositories;
 
 namespace GenPres.Business.Domain.Patients
 {
-    public class PatientCollection : IPatientCollection
+    public class PatientCollection
     {
         private static IPdsmRepository Repository
         {
             get { return StructureMap.ObjectFactory.GetInstance<IPdsmRepository>(); }
         }
 
-        private List<IPatient> _patients = new List<IPatient>();
+        private List<Patient> _patients = new List<Patient>();
 
-        public static ReadOnlyCollection<IPatient> GetPatientsByLogicalUnit(int logicalUnitId)
+        public static ReadOnlyCollection<Patient> GetPatientsByLogicalUnit(int logicalUnitId)
         {
             var pc = NewPatientCollection();
             pc._patients = Repository.GetPatientsByLogicalUnitId(logicalUnitId);

@@ -6,10 +6,9 @@ namespace GenPres.Data.DAO.Mapper.Patient
 {
     public class PdmsMapper
     {
-        public IPatient MapDaoToBusinessObject(object daoObj, IPatient patientBo)
+        public GenPres.Business.Domain.Patients.Patient MapDaoToBusinessObject(object daoObj, GenPres.Business.Domain.Patients.Patient patientBo)
         {
             var patientDao = (DataRow)daoObj;
-            patientBo.Id = int.Parse(patientDao["PatientID"].ToString());
             patientBo.LastName = patientDao["LastName"].ToString();
             patientBo.FirstName = patientDao["FirstName"].ToString();
             patientBo.Pid = patientDao["HospitalNumber"].ToString();

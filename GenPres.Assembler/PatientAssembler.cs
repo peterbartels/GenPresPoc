@@ -17,7 +17,7 @@ namespace GenPres.Assembler
 
             _registry.For<ILogicalUnitRepository>().Use<LogicalUnitRepository>();
             _registry.For<IPdsmRepository>().Use<PdmsRepository>();
-            _registry.For<IPatientSqlRepository>().Use<PatientSqlRepository>();
+            _registry.For<IPatientRepository>().Use<PatientRepository>();
             
             _hasBeenCalled = true;
             return _registry;

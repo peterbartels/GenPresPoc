@@ -1,148 +1,68 @@
 ﻿using System;
+using System.Collections.Generic;
 using GenPres.Business.Data.IRepositories;
+using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Business.Domain.Patients
 {
-    public class Patient : IPatient
+    public class Patient
     {
-        #region Private Fields
-
-        private int _id;
-
-        private string _lastName;
-
-        private string _firstName;
-
-        private string _pid;
-
-        private int _logicalUnitId;
-
-        private decimal _height;
-
-        private decimal _weight;
-
-        private string _gender;
-
-        private string _unit;
-
-        private string _bed;
-
-        private string _birthdate;
-
-        private string _age;
-
-        private DateTime _registerDate;
-
-        private int _daysRegistered;
-
-        #endregion 
-
+       
         #region Public Properties
 
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
+        public virtual Guid Id { get; set; }
 
-        public string LastName
-        {
-            get { return _lastName; }
-            set { _lastName = value; }
-        }
+        public virtual string LastName { get; set; }
 
-        public string FirstName
-        {
-            get { return _firstName; }
-            set { _firstName = value; }
-        }
+        public virtual string FirstName { get; set; }
 
-        public string FullName { 
+        public virtual string FullName
+        { 
             get { return FirstName + " " + LastName; }
         }
 
-        public string Pid
-        {
-            get { return _pid; }
-            set { _pid = value; }
-        }
+        public virtual string Pid { get; set; }
 
-        public int LogicalUnitId
-        {
-            get { return _logicalUnitId; }
-            set { _logicalUnitId = value; }
-        }
+        public virtual int LogicalUnitId { get; set; }
 
-        public decimal Height
-        {
-            get { return _height; }
-            set { _height = value; }
-        }
+        public virtual decimal Height { get; set; }
 
-        public decimal Weight
-        {
-            get { return _weight; }
-            set { _weight = value; }
-        }
+        public virtual decimal Weight { get; set; }
 
-        public string Gender
-        {
-            get { return _gender; }
-            set { _gender = value; }
-        }
+        public virtual string Gender { get; set; }
 
-        public string Unit
-        {
-            get { return _unit; }
-            set { _unit = value; }
-        }
+        public virtual string Unit { get; set; }
 
-        public string Bed
-        {
-            get { return _bed; }
-            set { _bed = value; }
-        }
+        public virtual string Bed { get; set; }
 
-        public string Birthdate
-        {
-            get { return _birthdate; }
-            set { _birthdate = value; }
-        }
+        public virtual string Birthdate { get; set; }
 
-        public string Age
-        {
-            get { return _age; }
-            set { _age = value; }
-        }
+        public virtual string Age { get; set; }
 
-        public DateTime RegisterDate
-        {
-            get { return _registerDate; }
-            set { _registerDate = value; }
-        }
+        public virtual DateTime RegisterDate { get; set; }
 
-        public int DaysRegistered
-        {
-            get { return _daysRegistered; }
-            set { _daysRegistered = value; }
-        }
+        public virtual int DaysRegistered { get; set; }
+
+        public virtual List<Prescription> Prescriptions { get; set; }
 
         #endregion
 
-        public bool IsNew { get { return (Id == 0); } }
+        public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
-        public void Save()
+        public virtual void Save()
         {
-            SqlRepository.Save(this);
-            SqlRepository.Submit();
+            Repository.Save(this);
         }
 
-        private static readonly IPatientSqlRepository PatientSqlRepository = 
-            StructureMap.ObjectFactory.GetInstance<IPatientSqlRepository>();
+        private static IPatientRepository _patientRepository;
 
-        private static IPatientSqlRepository SqlRepository
+        private static IPatientRepository Repository
         {
-            get { return PatientSqlRepository; }
+            get
+            {
+                if (_patientRepository == null) _patientRepository = StructureMap.ObjectFactory.GetInstance<IPatientRepository>();
+                return _patientRepository;
+            }
         }
 
         private static readonly IPdsmRepository PdmsPatientRepository =
@@ -158,18 +78,18 @@ namespace GenPres.Business.Domain.Patients
             return new Patient();
         }
 
-        public static IPatient GetPatientByPid(string Pid)
+        public static Patient GetPatientByPid(string Pid)
         {
-            return SqlRepository.GetByPid(Pid);
+            return Repository.GetByPid(Pid);
         }
 
         public static bool InsertFromPdms(string pid)
         {
-            if (!SqlRepository.PatientExists(pid))
+            if (!Repository.PatientExists(pid))
             {
                 var patient = PdmsRepository.GetPatientByPid(pid);
-                SqlRepository.Save(patient);
-                SqlRepository.Submit();
+                //Repository.Save(patient);
+                //Repository.Submit();
                 return true;
             }
             return false;

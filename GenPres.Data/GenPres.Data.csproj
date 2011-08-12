@@ -95,6 +95,7 @@
     <Compile Include="DAO\Mapper\User\UserMapper.cs" />
     <Compile Include="Managers\GenPresDataContextManager.cs" />
     <Compile Include="Managers\GenPresDataManager.cs" />
+    <Compile Include="Mappings\PatientMap.cs" />
     <Compile Include="Mappings\PrescriptionMap.cs" />
     <Compile Include="Repositories\IdentityMap.cs" />
     <Compile Include="Managers\PDMSDataRetriever.cs" />
@@ -103,13 +104,14 @@
     <Compile Include="Repositories\LogicalUnitRepository.cs" />
     <Compile Include="Repositories\NHibernateBase.cs" />
     <Compile Include="Repositories\NHibernateRepository.cs" />
-    <Compile Include="Repositories\PatientSqlRepository.cs" />
+    <Compile Include="Repositories\PatientRepository.cs" />
     <Compile Include="Repositories\PdmsRepository.cs" />
     <Compile Include="Repositories\PrescriptionSqlRepository.cs" />
     <Compile Include="Repositories\SqlRepository.cs" />
     <Compile Include="Repositories\UserSqlRepository.cs" />
     <Compile Include="Managers\SingleObject.cs" />
     <Compile Include="SessionFactoryCreator.cs" />
+    <Compile Include="SessionFactoryManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">

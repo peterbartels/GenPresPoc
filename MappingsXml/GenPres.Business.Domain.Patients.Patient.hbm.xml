@@ -1,0 +1,17 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="GenPres.Business.Domain.Patients.Patient, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Patient`">
+    <id name="Id" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Id" />
+      <generator class="guid.comb" />
+    </id>
+    <bag name="Prescriptions">
+      <key>
+        <column name="Patient_id" />
+      </key>
+      <one-to-many class="GenPres.Business.Domain.Prescriptions.Prescription, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </bag>
+    <property name="Pid" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Pid" />
+    </property>
+  </class>
+</hibernate-mapping>

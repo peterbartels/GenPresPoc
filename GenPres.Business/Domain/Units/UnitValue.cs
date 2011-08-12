@@ -278,7 +278,7 @@ namespace GenPres.Business.Domain.Units
                     }
                     else
                     {
-                        result = result * (UnitConverter.GetBaseValue(_time, 1) / UnitConverter.GetBaseValue(p.Frequency.Time, 1));
+                        //TEMPWEG result = result * (UnitConverter.GetBaseValue(_time, 1) / UnitConverter.GetBaseValue(p.Frequency.Time, 1));
                     }
                 }
                 incrementsValues[i] = result;

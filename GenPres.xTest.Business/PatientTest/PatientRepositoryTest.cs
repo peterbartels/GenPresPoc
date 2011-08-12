@@ -1,10 +1,13 @@
-﻿using GenPres.Business.Data.IRepositories;
+﻿using System;
+using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
+using GenPres.Data;
 using GenPres.Data.Repositories;
 using GenPres.Service;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
+
 
 namespace GenPres.xTest.Business.PatientTest
 {
@@ -31,21 +34,38 @@ namespace GenPres.xTest.Business.PatientTest
         [TestMethod]
         public void RunTests()
         {
+            try
+            {
+                PatientRepositoryPatientExistsCanInsertAPatient();
+                PatientRepositoryPatientExistsCanFindAPatient();
+                PatientRepositoryPatientExistsCanNotFindAPatient();
+            }
+            finally
+            {
+                SessionFactoryManager.Instance.CloseSessionFactory();    
+            }
+        }
+
+        private void PatientRepositoryPatientExistsCanInsertAPatient()
+        {
+            var patientRep = new PatientRepository();
+            var pat = Patient.NewPatient();
+            pat.Pid = "1234567";
+            pat.Save();
+            Assert.IsTrue(pat.Id != Guid.Empty);
+        }
+
+        private void PatientRepositoryPatientExistsCanFindAPatient()
+        {
+            var patientRep = new PatientRepository();
+            var exists = patientRep.PatientExists("1234567");
+            Assert.IsTrue(exists);
             
         }
 
-        [TestMethod]
-        public void PatientRepositoryPatientExistsCanFindAPatient()
+        private void PatientRepositoryPatientExistsCanNotFindAPatient()
         {
-            var patientRep = new PatientSqlRepository();
-            var exists = patientRep.PatientExists("1234567");
-            Assert.IsTrue(exists == true);
-        }
-
-        [TestMethod]
-        public void PatientRepositoryPatientExistsCanNotFindAPatient()
-        {
-            var patientRep = new PatientSqlRepository();
+            var patientRep = new PatientRepository();
             var exists = patientRep.PatientExists("qqqqqqq");
             Assert.IsTrue(exists == false);
         }

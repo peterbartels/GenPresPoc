@@ -25,14 +25,14 @@ namespace GenPres.Data.Repositories
             sqlQuery += "WHERE ";
             return sqlQuery;
         }
-        public List<IPatient> GetPatientsByLogicalUnitId(int logicalUnitId)
+        public List<Patient> GetPatientsByLogicalUnitId(int logicalUnitId)
         {
             var sqlQuery = GetSql();
             sqlQuery += "pat.DischargeDate IS NULL AND pat.LOGICALUNITID='" + logicalUnitId + "' ORDER BY pat.LastName;";
 
             var sqlResult = PDMSDataRetriever.ExecuteSQL(sqlQuery);
 
-            IPatient[] patients = new IPatient[sqlResult.Tables[0].Rows.Count];
+            Patient[] patients = new Patient[sqlResult.Tables[0].Rows.Count];
 
             for (int i = 0; i < sqlResult.Tables[0].Rows.Count; i++)
             {
@@ -42,7 +42,7 @@ namespace GenPres.Data.Repositories
             return patients.ToList();
         }
 
-        public IPatient GetPatientByPid(string pid)
+        public Patient GetPatientByPid(string pid)
         {
             var sqlQuery = GetSql();
             sqlQuery += "pat.DischargeDate IS NULL AND pat.HospitalNumber='" + pid + "' ORDER BY pat.LastName;";
@@ -58,7 +58,7 @@ namespace GenPres.Data.Repositories
             return patient;
         }
 
-        public IPatient GetPatientsByPatientId(string patientId)
+        public Patient GetPatientsByPatientId(string patientId)
         {
             string sqlQuery = "";
             sqlQuery += "SELECT pat.*, b.BedName, lu.Name as LogicalUnitName, ";

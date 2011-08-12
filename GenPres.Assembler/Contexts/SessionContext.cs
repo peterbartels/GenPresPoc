@@ -1,4 +1,5 @@
 ﻿using System;
+using GenPres.Data;
 using NHibernate;
 using NHibernate.Context;
 
@@ -8,18 +9,18 @@ namespace GenPres.Assembler.Contexts
     {
         public SessionContext()
         {
-            CurrentSessionContext.Bind(GenPresApplication.Instance.SessionFactoryFromInstance.OpenSession());
+            CurrentSessionContext.Bind(SessionFactoryManager.Instance.SessionFactoryFromInstance.OpenSession());
         }
 
         public void Dispose()
         {
-            var session = CurrentSessionContext.Unbind(GenPresApplication.Instance.SessionFactoryFromInstance);
+            var session = CurrentSessionContext.Unbind(SessionFactoryManager.Instance.SessionFactoryFromInstance);
             session.Close();
         }
 
         public ISession CurrentSession()
         {
-            return GenPresApplication.Instance.SessionFactoryFromInstance.GetCurrentSession();
+            return SessionFactoryManager.Instance.SessionFactoryFromInstance.GetCurrentSession();
         }
 
         public static SessionContext UseContext()

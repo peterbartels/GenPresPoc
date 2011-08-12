@@ -14,13 +14,13 @@ namespace GenPres.xTest.Base
         public BaseGenPresTest()
         {
             GenPresApplication.Initialize();
-            GenPresApplication.Instance.InitSessionFactory<Mappers.PrescriptionMap>();
+            SessionFactoryManager.Instance.InitSessionFactory<GenPres.Data.Mappings.PrescriptionMap>();
             Settings.SettingsManager.Instance.Initialize();
         }
 
-        public string InsertPrescription(NHibernateRepository<PrescriptionBo, Guid> _repository  )
+        public string InsertPrescription(NHibernateRepository<Prescription, Guid> _repository  )
         {
-            var prescriptionBo = new PrescriptionBo();
+            var prescriptionBo = new Prescription();
             prescriptionBo.StartDate = DateTime.Now;
             _repository.Add(prescriptionBo);
             return prescriptionBo.Id.ToString();
