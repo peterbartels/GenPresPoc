@@ -12,11 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Web", "GenPres.Web\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Settings", "GenPres.Settings\GenPres.Settings.csproj", "{1F0DD355-EA3A-4293-BF30-81FE49DD6767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Database", "GenPres.Database\GenPres.Database.csproj", "{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Data", "GenPres.Data\GenPres.Data.csproj", "{4627C997-7861-4410-8CF7-1966D36E5921}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.ObjectModel", "GenPres.ObjectModel\GenPres.ObjectModel.csproj", "{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.Assembler", "GenPres.Assembler\GenPres.Assembler.csproj", "{0812617A-AA94-4A2F-926E-814C531B94E7}"
 EndProject
@@ -60,24 +56,12 @@ Global
 		{1F0DD355-EA3A-4293-BF30-81FE49DD6767}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F0DD355-EA3A-4293-BF30-81FE49DD6767}.Testing|Any CPU.ActiveCfg = Release|Any CPU
 		{1F0DD355-EA3A-4293-BF30-81FE49DD6767}.Testing|Any CPU.Build.0 = Release|Any CPU
-		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Testing|Any CPU.ActiveCfg = Release|Any CPU
-		{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}.Testing|Any CPU.Build.0 = Release|Any CPU
 		{4627C997-7861-4410-8CF7-1966D36E5921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4627C997-7861-4410-8CF7-1966D36E5921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4627C997-7861-4410-8CF7-1966D36E5921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4627C997-7861-4410-8CF7-1966D36E5921}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4627C997-7861-4410-8CF7-1966D36E5921}.Testing|Any CPU.ActiveCfg = Release|Any CPU
 		{4627C997-7861-4410-8CF7-1966D36E5921}.Testing|Any CPU.Build.0 = Release|Any CPU
-		{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}.Testing|Any CPU.ActiveCfg = Release|Any CPU
-		{BF5C320E-FE4E-473A-BB94-E13A8B20BB85}.Testing|Any CPU.Build.0 = Release|Any CPU
 		{0812617A-AA94-4A2F-926E-814C531B94E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0812617A-AA94-4A2F-926E-814C531B94E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0812617A-AA94-4A2F-926E-814C531B94E7}.Release|Any CPU.ActiveCfg = Release|Any CPU

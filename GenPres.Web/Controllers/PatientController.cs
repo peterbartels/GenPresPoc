@@ -2,6 +2,8 @@
 using Ext.Direct.Mvc;
 using GenPres.Assembler;
 using GenPres.Business.Service;
+using GenPres.Data;
+using GenPres.Data.Connections;
 using GenPres.Service;
 
 namespace GenPres.Controllers
@@ -14,6 +16,7 @@ namespace GenPres.Controllers
             base.Initialize(requestContext);
             Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
             GenPresApplication.Initialize();
+            SessionFactoryManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres);
         }
 
         public ActionResult GetLogicalUnits()

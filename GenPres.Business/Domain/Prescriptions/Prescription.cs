@@ -13,9 +13,23 @@ namespace GenPres.Business.Domain.Prescriptions
             //Drug = new DrugBo();
         }
 
+        private DateTime? _creationDate;
+
         public virtual Patient Patient { get; set; }
 
         public virtual DateTime StartDate { get; set; }
+
+        public virtual DateTime CreationDate
+        {
+            get {
+                if (_creationDate == null)
+                    _creationDate = DateTime.Now;
+                return _creationDate.Value;
+            }
+            set { _creationDate = value; }
+        }
+
+        public virtual Drug Drug { get; set; }
 
         public virtual bool IsNew { get { return (Id.ToString() != ""); } }
 
@@ -24,9 +38,13 @@ namespace GenPres.Business.Domain.Prescriptions
             get; set;
         }
 
+        public virtual string PID {get; set; }
+
         public static Prescription NewPrescription()
         {
-            return new Prescription();
+            var prescription = new Prescription();
+            prescription.Drug = Drug.NewDrug();
+            return prescription;
         }
     }
 }

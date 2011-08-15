@@ -120,10 +120,6 @@
     <Compile Include="WebService\IGenFormService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
-      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
-      <Name>GenPres.Database</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>

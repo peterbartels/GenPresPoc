@@ -49,9 +49,9 @@ namespace GenPres.Business.Domain.Users
             get { return StructureMap.ObjectFactory.GetInstance<IUserRepository>(); }
         }
 
-        public static IUser NewUser()
+        public static User NewUser()
         {
-            return ObjectCreator.New<IUser>();
+            return new User();
         }
 
         public static bool AuthenticateUser(string username, string password)

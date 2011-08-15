@@ -45,8 +45,8 @@ namespace GenPres.xTest.Service
         [TestMethod]
         public void CanSelectPatient()
         {
-            var Pid = "0000000";
-            bool created = PatientService.SelectPatient(Pid);
+            var pid = "0004702";
+            bool created = PatientService.SelectPatient(pid);
             Assert.IsTrue(created);
         }
     }

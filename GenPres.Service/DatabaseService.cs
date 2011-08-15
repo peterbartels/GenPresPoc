@@ -17,8 +17,6 @@ namespace GenPres.Business.Service
 
         public bool RegisterDatabaseSetting(IDatabaseSetting databaseSetting)
         {
-            if(!TestDatabaseConnection(databaseSetting)) return  false;
-
             GetDatabaseConnection().RegisterSetting(databaseSetting);
             return true;
         }

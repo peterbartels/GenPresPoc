@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using GenPres.Data.Connections;
 using GenPres.Data.Managers;
 using NHibernate;
 using NHibernate.Context;
@@ -34,11 +35,11 @@ namespace GenPres.Data
             }
         }
 
-        public ISessionFactory InitSessionFactory<TMappingType>()
+        public ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName)
         {
             if (_factory == null)
             {
-                _factory = SessionFactoryCreator.CreateSessionFactory<TMappingType>();
+                _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);
                 CurrentSessionContext.Bind(_factory.OpenSession());
             }
             return _factory;
@@ -61,9 +62,9 @@ namespace GenPres.Data
             get { return _factory; }
         }
 
-        private static ISessionFactory CreateSessionFactory()
+        private static ISessionFactory CreateSessionFactory(DatabaseConnection.DatabaseName databaseName)
         {
-            return SessionFactoryCreator.CreateSessionFactory<Data.Mappings.PrescriptionMap>();
+            return SessionFactoryCreator.CreateSessionFactory(databaseName);
         }
     }
 }

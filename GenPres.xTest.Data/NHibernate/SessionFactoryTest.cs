@@ -2,6 +2,7 @@
 using GenPres.Assembler;
 using GenPres.Assembler.Contexts;
 using GenPres.Data;
+using GenPres.Data.Connections;
 using GenPres.Data.Repositories;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -69,14 +70,14 @@ namespace GenPres.xTest.Data.NHibernate
         [TestMethod]
         public void BeAbleToCreateASessionFactory()
         {
-            var factory = SessionFactoryCreator.CreateSessionFactory<Base.Mappers.PrescriptionMap>();
+            var factory = SessionFactoryCreator.CreateSessionFactory(DatabaseConnection.DatabaseName.GenPres);
             Assert.IsNotNull(factory);
         }
 
         [TestMethod]
         public void BeRetreivedByGenFormApplication()
         {
-            var factory = SessionFactoryCreator.CreateSessionFactory <Base.Mappers.PrescriptionMap>();
+            var factory = SessionFactoryCreator.CreateSessionFactory(DatabaseConnection.DatabaseName.GenPres);
             Assert.IsInstanceOfType(factory, typeof(ISessionFactory));
         }
     }

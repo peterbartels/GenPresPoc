@@ -5,7 +5,7 @@ using GenPres.Business.WebService;
 
 namespace GenPres.Business.Domain.Prescriptions
 {
-    public class Drug : IDrug
+    public class Drug
     {
         #region Private Fields
         
@@ -19,9 +19,9 @@ namespace GenPres.Business.Domain.Prescriptions
 
         #region Public Properties
 
-        public UnitValue Quantity { get; set; }
+        public virtual UnitValue Quantity { get; set; }
 
-        public string Generic
+        public virtual string Generic
         {
             get { return _generic; }
             set { _generic = value;
@@ -30,7 +30,7 @@ namespace GenPres.Business.Domain.Prescriptions
             }
         }
 
-        public string Route
+        public virtual string Route
         {
             get { return _route; }
             set { _route = value;
@@ -38,7 +38,7 @@ namespace GenPres.Business.Domain.Prescriptions
             }
         }
 
-        public string Shape
+        public virtual string Shape
         {
             get { return _shape; }
             set { _shape = value;
@@ -46,13 +46,13 @@ namespace GenPres.Business.Domain.Prescriptions
             }
         }
 
-        public List<IComponent> Components { get; set; }
+        public virtual List<IComponent> Components { get; set; }
 
         #endregion
 
-        public Drug()
+        protected Drug()
         {
-            Components = new List<IComponent> {ObjectCreator.New<IComponent>()};
+            
         }
 
         public void CheckIncrements()
@@ -70,10 +70,13 @@ namespace GenPres.Business.Domain.Prescriptions
             }
         }
 
-        public static IDrug NewDrug()
+        public static Drug NewDrug()
         {
-            IDrug drug = ObjectCreator.New<IDrug>();
-            drug.Quantity = new UnitValue();
+            var drug = new Drug
+            {
+                Quantity = new UnitValue(), 
+                Components = new List<IComponent> {new Component()}
+            };
             return drug;
         }
 

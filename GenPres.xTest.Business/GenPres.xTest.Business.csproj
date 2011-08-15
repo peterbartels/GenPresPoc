@@ -44,6 +44,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\Program Files\System.Data.SQLite\bin\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.XML" />
     <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
@@ -80,10 +83,6 @@
     <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
-      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
-      <Name>GenPres.Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Service\GenPres.Service.csproj">
       <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>

@@ -89,10 +89,6 @@
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
-      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
-      <Name>GenPres.Database</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GenPres.xTest.Base\GenPres.xTest.Base.csproj">
       <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
       <Name>GenPres.xTest.Base</Name>

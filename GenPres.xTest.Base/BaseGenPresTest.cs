@@ -3,19 +3,27 @@ using GenPres.Assembler;
 using GenPres.Business.Domain;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Data;
+using GenPres.Data.Connections;
 using GenPres.Data.Repositories;
 using GenPres.xTest.Data;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GenPres.xTest.Base
 {
+    [TestClass]
     public class BaseGenPresTest
     {
-        
         public BaseGenPresTest()
         {
             GenPresApplication.Initialize();
-            SessionFactoryManager.Instance.InitSessionFactory<GenPres.Data.Mappings.PrescriptionMap>();
+            SessionFactoryManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest);
             Settings.SettingsManager.Instance.Initialize();
+        }
+
+        [TestCleanup()]
+        public void MyTestCleanup()
+        {
+            SessionFactoryManager.Instance.CloseSessionFactory();
         }
 
         public string InsertPrescription(NHibernateRepository<Prescription, Guid> _repository  )

@@ -29,7 +29,5 @@ namespace GenPres.Service
         {
             return Patient.InsertFromPdms(patientId);
         }
-
-
     }
 }

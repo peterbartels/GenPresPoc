@@ -3,9 +3,9 @@ using GenPres.Data.Managers;
 
 namespace GenPres.Data.DAO.Mapper.PrescriptionMapper
 {
-    public class DrugMapper : DataMapper<Drug, Database.Drug>
+    public class DrugMapper 
     {
-        public DrugMapper()
+        /*public DrugMapper()
             : base(StructureMap.ObjectFactory.GetInstance<IDataContextManager>())
         {
         }
@@ -29,6 +29,6 @@ namespace GenPres.Data.DAO.Mapper.PrescriptionMapper
             _bo.Route = _dao.Route;
             _bo.Shape = _dao.Shape;
             return _bo;
-        }
+        }*/
     }
 }

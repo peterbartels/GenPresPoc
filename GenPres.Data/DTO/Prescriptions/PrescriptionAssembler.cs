@@ -15,8 +15,7 @@ namespace GenPres.Data.DTO.Prescriptions
                 prescription.StartDate = dt;
             }
              
-
-            /*TEMPWEG var drug = prescription.Drug;
+            var drug = prescription.Drug;
             if (drug != null)
             {
                 drug.Generic = prescriptionDto.drugGeneric;
@@ -24,7 +23,7 @@ namespace GenPres.Data.DTO.Prescriptions
                 drug.Shape = prescriptionDto.drugShape;
             }
             prescription.PID = prescriptionDto.PID;
-             * */
+            
             return prescription;
         }
 
@@ -34,15 +33,15 @@ namespace GenPres.Data.DTO.Prescriptions
             prescriptionDto.StartDate = prescription.StartDate.ToString();
             prescriptionDto.Id = prescription.Id.ToString();
 
-            /*TEMPWEG var drug = prescription.Drug;
+            var drug = prescription.Drug;
             if(drug!=null)
             {
                 prescriptionDto.drugGeneric = drug.Generic;
                 prescriptionDto.drugRoute = drug.Route;
                 prescriptionDto.drugShape = drug.Shape;    
-            }*/
+            }
 
-            //TEMPWEG prescriptionDto.PID = prescription.PID;
+            prescriptionDto.PID = prescription.PID;
             return prescriptionDto;
         }
     }

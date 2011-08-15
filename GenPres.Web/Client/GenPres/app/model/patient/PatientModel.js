@@ -2,9 +2,8 @@
 Ext.define('GenPres.model.patient.PatientModel', {
     extend: 'Ext.data.Model',
 
-    idProperty : 'id',
+    idProperty : 'PID',
     fields: [
-        { name: 'id', type: 'float' },
         { name: 'text', type: 'string' },
         { name: 'leaf', type: 'boolean' },
 

@@ -9,14 +9,15 @@ namespace GenPres.Data
 {
     public static class SessionFactoryCreator
     {
-        public static ISessionFactory CreateSessionFactory<TMappingsType>()
+        public static ISessionFactory CreateSessionFactory(DatabaseConnection.DatabaseName databaseName)
         {
             var sessionFactory = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString()))
-                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<TMappingsType>()
+                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)))
+                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<GenPres.Data.Mappings.PrescriptionMap>()
                 .ExportTo(@"C:\development\GenPres\MappingsXml"))
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
                 .ExposeConfiguration(BuildSchema)
+                .Diagnostics(x => x.OutputToFile("c:\\temp\\test.txt"))
                 .BuildSessionFactory();
             
             return sessionFactory;
@@ -31,9 +32,9 @@ namespace GenPres.Data
             new SchemaExport(config).Create(false, true);
         }
 
-        private static string GetConnectionString()
+        private static string GetConnectionString(DatabaseConnection.DatabaseName databaseName)
         {
-            return DatabaseConnection.GetLocalConnectionString(DatabaseConnection.DatabaseName.Genpres);
+            return DatabaseConnection.GetLocalConnectionString(databaseName);
         }
     }
 }

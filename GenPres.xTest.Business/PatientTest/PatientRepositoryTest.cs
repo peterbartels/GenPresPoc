@@ -34,16 +34,9 @@ namespace GenPres.xTest.Business.PatientTest
         [TestMethod]
         public void RunTests()
         {
-            try
-            {
-                PatientRepositoryPatientExistsCanInsertAPatient();
-                PatientRepositoryPatientExistsCanFindAPatient();
-                PatientRepositoryPatientExistsCanNotFindAPatient();
-            }
-            finally
-            {
-                SessionFactoryManager.Instance.CloseSessionFactory();    
-            }
+            PatientRepositoryPatientExistsCanInsertAPatient();
+            PatientRepositoryPatientExistsCanFindAPatient();
+            PatientRepositoryPatientExistsCanNotFindAPatient();
         }
 
         private void PatientRepositoryPatientExistsCanInsertAPatient()

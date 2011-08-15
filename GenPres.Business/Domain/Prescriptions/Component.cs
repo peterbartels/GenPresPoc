@@ -17,7 +17,7 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public Component()
         {
-            Substances = new List<ISubstance> {ObjectCreator.New<ISubstance>()};
+            Substances = new List<ISubstance> {new Substance()};
         }
     }
 }

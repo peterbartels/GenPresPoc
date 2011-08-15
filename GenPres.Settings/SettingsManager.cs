@@ -97,7 +97,7 @@ namespace Settings
             XmlNode machineNode = _settingsDoc.SelectSingleNode(machineStr);
             if (machineNode == null)
             {
-                throw new Exception("The setting " + name + " could not be found for this machine: " + machineCrypt);
+                throw new Exception("The setting " + name + " could not be found for this machine: " + machineCrypt + " and databasename:" + database);
             }
             _crypt.Key = _key;
             return _crypt.Decrypt(machineNode.InnerText);
@@ -111,19 +111,22 @@ namespace Settings
             string xmlPathServer = "/settings/serversettings[1]";
             XmlNode serverNode = _settingsDoc.SelectSingleNode(xmlPathServer);
             string machineCrypt = GetSecureMachineName(computerName);
-
-            string machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']/database[name='" + database + "']";
+            string machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']";
+            XmlNode machineNode = _settingsDoc.SelectSingleNode(machineStr);
+            if (machineNode == null)
+            {
+                machineNode = _settingsDoc.CreateElement("machine");
+                serverNode.AppendChild(machineNode);
+                XmlNode keyNode = _settingsDoc.CreateElement("key");
+                keyNode.InnerText = machineCrypt;
+                machineNode.AppendChild(keyNode);
+            }
+            machineStr = "/settings/serversettings/machine[key='" + machineCrypt + "']/database[name='" + database + "']";
             XmlNode databaseNode = _settingsDoc.SelectSingleNode(machineStr);
             if (databaseNode == null)
             {
-                XmlNode newMachineNode = _settingsDoc.CreateElement("machine");
-                serverNode.AppendChild(newMachineNode);
-                XmlNode keyNode = _settingsDoc.CreateElement("key");
-                keyNode.InnerText = machineCrypt;
-                newMachineNode.AppendChild(keyNode);
-
                 XmlNode newDatabaseNode = _settingsDoc.CreateElement("database");
-                newMachineNode.AppendChild(newDatabaseNode);
+                machineNode.AppendChild(newDatabaseNode);
                 XmlNode dbNameNode = _settingsDoc.CreateElement("name");
                 dbNameNode.InnerText = database;
                 newDatabaseNode.AppendChild(dbNameNode);

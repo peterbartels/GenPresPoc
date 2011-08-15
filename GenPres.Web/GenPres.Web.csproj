@@ -46,6 +46,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Dependencies\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL" />
     <Reference Include="StructureMap">
       <HintPath>..\Dependencies\StructureMap.dll</HintPath>
     </Reference>
@@ -1322,10 +1323,6 @@
     <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenPres.Database\GenPres.Database.csproj">
-      <Project>{D41F0A3F-13A3-4F1E-B82B-9CB84094407C}</Project>
-      <Name>GenPres.Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Service\GenPres.Service.csproj">
       <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>

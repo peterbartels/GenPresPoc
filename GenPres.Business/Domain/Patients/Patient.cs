@@ -85,13 +85,16 @@ namespace GenPres.Business.Domain.Patients
 
         public static bool InsertFromPdms(string pid)
         {
+            var patient = PdmsRepository.GetPatientByPid(pid);
             if (!Repository.PatientExists(pid))
             {
-                var patient = PdmsRepository.GetPatientByPid(pid);
-                //Repository.Save(patient);
-                //Repository.Submit();
+                patient.Save();
                 return true;
             }
+            var dbPatient = GetPatientByPid(pid);
+            dbPatient.Height = patient.Height;
+            dbPatient.Weight = patient.Weight;
+            patient.Save();
             return false;
         }
     }
