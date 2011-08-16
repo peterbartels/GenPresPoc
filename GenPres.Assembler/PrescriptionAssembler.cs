@@ -15,7 +15,7 @@ namespace GenPres.Assembler
             if (_hasBeenCalled) return _registry;
             _registry = new Registry();
 
-            _registry.For<IPrescriptionRepository>().Use<PrescriptionSqlRepository>();
+            _registry.For<IPrescriptionRepository>().Use<PrescriptionRepository>();
 
             _hasBeenCalled = true;
             return _registry;

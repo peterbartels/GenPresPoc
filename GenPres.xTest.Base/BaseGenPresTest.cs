@@ -16,14 +16,14 @@ namespace GenPres.xTest.Base
         public BaseGenPresTest()
         {
             GenPresApplication.Initialize();
-            SessionFactoryManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest);
+            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest);
             Settings.SettingsManager.Instance.Initialize();
         }
 
         [TestCleanup()]
         public void MyTestCleanup()
         {
-            SessionFactoryManager.Instance.CloseSessionFactory();
+            SessionManager.Instance.CloseSession();
         }
 
         public string InsertPrescription(NHibernateRepository<Prescription, Guid> _repository  )
@@ -34,9 +34,9 @@ namespace GenPres.xTest.Base
             return prescriptionBo.Id.ToString();
         }
 
-        public IPrescription CreatePrescriptionWithAllPropertiesSet()
+        public Prescription CreatePrescriptionWithAllPropertiesSet()
         {
-            var prescription = ObjectCreator.New<IPrescription>();
+            var prescription = Prescription.NewPrescription();
             prescription.Drug.Generic = "paracetamol";
             prescription.Drug.Route = "rect";
             prescription.Drug.Shape = "zetp";

@@ -5,7 +5,7 @@ namespace GenPres.Data.DAO.Mapper.Patient
 {
     public class LogicalUnitMapper
     {
-        public ILogicalUnit MapFromBoToDao(object daoObj, ILogicalUnit logicalUnitBo)
+        public LogicalUnit MapFromBoToDao(object daoObj, LogicalUnit logicalUnitBo)
         {
             var logicalUnitDao = (DataRow)daoObj;
             logicalUnitBo.Id = int.Parse(logicalUnitDao["LogicalUnitID"].ToString());

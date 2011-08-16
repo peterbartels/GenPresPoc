@@ -13,10 +13,10 @@ namespace GenPres.Data
         {
             var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)))
-                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<GenPres.Data.Mappings.PrescriptionMap>()
+                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.PrescriptionMap>()
                 .ExportTo(@"C:\development\GenPres\MappingsXml"))
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
-                .ExposeConfiguration(BuildSchema)
+                //.ExposeConfiguration(BuildSchema)
                 .Diagnostics(x => x.OutputToFile("c:\\temp\\test.txt"))
                 .BuildSessionFactory();
             
@@ -27,9 +27,11 @@ namespace GenPres.Data
         {
             // first drop the database to recreate a new one
             new SchemaExport(config).Drop(false, true);
+            
             // this NHibernate tool takes a configuration (with mapping info in)
             // and exports a database schema from it
             new SchemaExport(config).Create(false, true);
+            
         }
 
         private static string GetConnectionString(DatabaseConnection.DatabaseName databaseName)

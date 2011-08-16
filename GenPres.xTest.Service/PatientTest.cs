@@ -28,8 +28,8 @@ namespace GenPres.xTest.Service
         [TestMethod]
         public void CanSaveAPatient()
         {
-            var patient = Patient.GetPatientByPid("8697898");
-            patient.Save();
+            var patient = PatientService.GetPatientByPid("8697898");
+            PatientService.SavePatient("8697898");
             Assert.IsTrue(patient.Id != Guid.Empty);
         }
         
@@ -37,8 +37,8 @@ namespace GenPres.xTest.Service
         public void CanCreateAPatient()
         {
             var uid = System.Guid.NewGuid();
-            var patient = Patient.GetPatientByPid(uid.ToString());
-            patient.Save();
+            var patient = PatientService.GetPatientByPid(uid.ToString());
+            PatientService.SavePatient("8697898");
             Assert.IsTrue(patient.Id != Guid.Empty);
         }
 
@@ -46,7 +46,7 @@ namespace GenPres.xTest.Service
         public void CanSelectPatient()
         {
             var pid = "0004702";
-            bool created = PatientService.SelectPatient(pid);
+            bool created = PatientService.SavePatient(pid);
             Assert.IsTrue(created);
         }
     }

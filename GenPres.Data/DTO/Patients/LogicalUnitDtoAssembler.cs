@@ -4,7 +4,7 @@ namespace GenPres.Data.DTO.Patients
 {
     public class LogicalUnitDtoAssembler
     {
-        public static LogicalUnitDto AssembleDto(ILogicalUnit logicalUnit)
+        public static LogicalUnitDto AssembleDto(LogicalUnit logicalUnit)
         {
             LogicalUnitDto logicalUnitDto = new LogicalUnitDto();
             logicalUnitDto.id = logicalUnit.Id;

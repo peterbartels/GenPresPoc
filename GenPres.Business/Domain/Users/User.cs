@@ -17,32 +17,32 @@ public interface IChangeTrackable
 namespace GenPres.Business.Domain.Users
 {
     
-    public class User : IUser
+    public class User
     {
         private StatusEnum _state = StatusEnum.New;
 
-        public StatusEnum State
+        public virtual StatusEnum State
         {
             get { return _state; }
             set { _state = value; }
         }
 
-        public void Save()
+        public virtual void Save()
         {
-            throw new NotImplementedException();
+            Repository.Save(this);
         }
 
-        public int Id { get; set; }
+        public virtual Guid Id { get; set; }
 
         [LowerCase]
         [ChangeState]
-        public string UserName { get; set; }
+        public virtual string UserName { get; set; }
 
 
         [ChangeState]
-        public string PassCrypt { get; set; }
+        public virtual string PassCrypt { get; set; }
 
-        public bool IsNew { get { return (Id == 0); } }
+        public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
         private static IUserRepository Repository
         {
@@ -56,12 +56,7 @@ namespace GenPres.Business.Domain.Users
 
         public static bool AuthenticateUser(string username, string password)
         {
-            AvailableObject<IUser> userObjectAvailable = Repository.GetUserByUsername(username);
-            if (userObjectAvailable.IsAvailable)
-            {
-                return (AuthenticationFunctions.MD5(password) == userObjectAvailable.Object.PassCrypt);
-            }
-            return false;
+            return Repository.GetUserByUsername(username, password);
         }
     }
 }

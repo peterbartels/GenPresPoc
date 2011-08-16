@@ -58,12 +58,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Allowance\PrescriptionPropertySetAllowance.cs" />
     <Compile Include="Aspect\ChangeStateAttribute.cs" />
     <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />
-    <Compile Include="Calculation\Combination\AbstractCombination.cs" />
-    <Compile Include="Calculation\Combination\ContinuousCombination.cs" />
-    <Compile Include="Calculation\Increment\PropertyIncrement.cs" />
+    <Compile Include="Calculation\Calculation\PropertyCombinationCalculate.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\Combination\AbstractCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\Combination\ContinuousCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\Combination\ICalculationCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\Combination\MultiplierCombination.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\Increment\PropertyIncrement.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\Math\MathExt.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\PrescriptionCalculator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Calculation\PropertyHelper.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Data\AvailableObject.cs" />
     <Compile Include="Data\IDataMapper.cs" />
     <Compile Include="Data\IRepositories\ILogicalUnitRepository.cs" />
@@ -73,18 +98,6 @@
     <Compile Include="Data\IRepositories\IRepository.cs" />
     <Compile Include="Data\IRepositories\ISQLRepository.cs" />
     <Compile Include="Data\IRepositories\IUserRepository.cs" />
-    <Compile Include="Calculation\Calculation\PropertyCombinationCalculate.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Calculation\Combination\ICalculationCombination.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Calculation\Combination\MultiplierCombination.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Calculation\Math\MathExt.cs" />
-    <Compile Include="Calculation\PrescriptionCalculator.cs" />
-    <Compile Include="Calculation\PropertyHelper.cs" />
     <Compile Include="Domain\Databases\IDatabaseConnection.cs" />
     <Compile Include="Domain\Databases\IDatabaseSetting.cs" />
     <Compile Include="Domain\Entity.cs" />
@@ -94,21 +107,12 @@
     <Compile Include="Domain\ObjectCreator.cs" />
     <Compile Include="Domain\Prescriptions\Component.cs" />
     <Compile Include="Domain\Prescriptions\Drug.cs" />
-    <Compile Include="Domain\Prescriptions\IComponent.cs" />
-    <Compile Include="Domain\Prescriptions\IDrug.cs" />
-    <Compile Include="Domain\Prescriptions\IPrescription.cs" />
-    <Compile Include="Domain\Patients\ILogicalUnit.cs" />
-    <Compile Include="Domain\Patients\IPatient.cs" />
-    <Compile Include="Domain\Patients\IPatientCollection.cs" />
-    <Compile Include="Domain\Prescriptions\ISubstance.cs" />
     <Compile Include="Domain\Prescriptions\Substance.cs" />
     <Compile Include="Domain\StateManager.cs" />
-    <Compile Include="Domain\Units\IUnitValue.cs" />
     <Compile Include="Domain\Units\Unit.cs" />
     <Compile Include="Domain\Units\UnitValue.cs" />
     <Compile Include="Domain\Units\Factor.cs" />
     <Compile Include="Domain\Units\UnitConverter.cs" />
-    <Compile Include="Domain\Users\IUser.cs" />
     <Compile Include="Domain\Patients\LogicalUnit.cs" />
     <Compile Include="Domain\Patients\Patient.cs" />
     <Compile Include="Domain\Patients\PatientCollection.cs" />

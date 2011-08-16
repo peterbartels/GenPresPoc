@@ -45,10 +45,8 @@ namespace GenPres.Assembler
                 x.AddRegistry(GenFormAssembler.RegisterDependencies());
                 x.AddRegistry(PrescriptionAssembler.RegisterDependencies());
                 x.AddRegistry(DatabaseRegistrationAssembler.RegisterDependencies());
-                x.AddRegistry(BusinessAssembler.RegisterDependencies());
             });
 
-            ObjectFactory.Configure(x => x.For<IDataContextManager>().Use<GenPresDataContextManager>());
         }
     }
 }

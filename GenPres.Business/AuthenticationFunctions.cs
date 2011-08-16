@@ -1,6 +1,6 @@
 ﻿namespace GenPres.Business
 {
-    internal static class AuthenticationFunctions
+    public static class AuthenticationFunctions
     {
         public static string MD5(string password)
         {

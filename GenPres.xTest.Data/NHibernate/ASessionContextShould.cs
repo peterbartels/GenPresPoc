@@ -15,7 +15,7 @@ namespace GenPres.xTest.Data.NHibernate
         {
             using (SessionContext.UseContext())
             {
-                Assert.IsNotNull(SessionFactoryManager.Instance.SessionFactoryFromInstance.GetCurrentSession());
+                Assert.IsNotNull(SessionManager.Instance.SessionFactoryFromInstance.GetCurrentSession());
             }
         }
 
@@ -24,12 +24,12 @@ namespace GenPres.xTest.Data.NHibernate
         {
             using (SessionContext.UseContext())
             {
-                Assert.IsNotNull(SessionFactoryManager.Instance.SessionFactoryFromInstance.GetCurrentSession());
+                Assert.IsNotNull(SessionManager.Instance.SessionFactoryFromInstance.GetCurrentSession());
             }
 
             try
             {
-                SessionFactoryManager.Instance.SessionFactoryFromInstance.GetCurrentSession();
+                SessionManager.Instance.SessionFactoryFromInstance.GetCurrentSession();
                 Assert.Fail("No session should be open after disposal of SessionBuilder");
             }
             catch (Exception)

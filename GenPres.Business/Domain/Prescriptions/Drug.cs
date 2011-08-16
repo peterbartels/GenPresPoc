@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GenPres.Business.Allowance;
 using GenPres.Business.Domain.Units;
 using GenPres.Business.WebService;
 
@@ -26,7 +27,7 @@ namespace GenPres.Business.Domain.Prescriptions
             get { return _generic; }
             set { _generic = value;
                 CheckIncrements();
-
+                CheckAllowance();
             }
         }
 
@@ -35,6 +36,7 @@ namespace GenPres.Business.Domain.Prescriptions
             get { return _route; }
             set { _route = value;
                 CheckIncrements();
+                CheckAllowance();
             }
         }
 
@@ -43,10 +45,15 @@ namespace GenPres.Business.Domain.Prescriptions
             get { return _shape; }
             set { _shape = value;
                 CheckIncrements();
+                CheckAllowance();
             }
         }
 
-        public virtual List<IComponent> Components { get; set; }
+        public virtual IList<Component> Components { get; set; }
+
+
+        public virtual Prescription Prescription{ get; set; }
+
 
         #endregion
 
@@ -55,7 +62,7 @@ namespace GenPres.Business.Domain.Prescriptions
             
         }
 
-        public void CheckIncrements()
+        public virtual void CheckIncrements()
         {
             if (Generic != "" && Route != "" && Shape != "")
             {
@@ -70,22 +77,27 @@ namespace GenPres.Business.Domain.Prescriptions
             }
         }
 
-        public static Drug NewDrug()
+        public static Drug NewDrug(Prescription p)
         {
             var drug = new Drug
             {
-                Quantity = new UnitValue(), 
-                Components = new List<IComponent> {new Component()}
+                Quantity = UnitValue.NewUnitValue(), 
+                Components = new List<Component> {new Component()},
+                Prescription = p
             };
             return drug;
         }
 
 
-        #region ISavable Implementation
+        public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
-        public bool IsNew { get { return (Id == 0); } }
+        public virtual Guid Id { get; set; }
 
-        public int Id { get; set; }
-        #endregion
+        public static PrescriptionPropertySetAllowance PrescriptionAllowance = new PrescriptionPropertySetAllowance();
+
+        private void CheckAllowance()
+        {
+            PrescriptionAllowance.DetemineCanBeSet(Prescription);
+        }
     }
 }

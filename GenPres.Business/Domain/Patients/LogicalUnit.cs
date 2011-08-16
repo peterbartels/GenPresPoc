@@ -2,7 +2,7 @@
 
 namespace GenPres.Business.Domain.Patients
 {
-    public class LogicalUnit : ILogicalUnit
+    public class LogicalUnit 
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -17,7 +17,7 @@ namespace GenPres.Business.Domain.Patients
             return new LogicalUnit();
         }
 
-        public static ILogicalUnit[] GetLogicalUnits()
+        public static LogicalUnit[] GetLogicalUnits()
         {
             return Repository.GetLogicalUnits();
         }

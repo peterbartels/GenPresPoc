@@ -16,9 +16,9 @@ namespace GenPres.Business.Calculation.Combination
         private readonly UnitValue[] _unitValues = new UnitValue[3];
 
         private Expression<Func<UnitValue>>[] _properties;
-        private IPrescription _root;
+        private Prescription _root;
 
-        public MultiplierCombination(IPrescription root, params Expression<Func<UnitValue>>[] properties)
+        public MultiplierCombination(Prescription root, params Expression<Func<UnitValue>>[] properties)
         {
             _root = root;
             _properties = properties;
@@ -56,13 +56,13 @@ namespace GenPres.Business.Calculation.Combination
             var className = PropertyHelper.ClassName(prop);
             var memberName = PropertyHelper.MemberName(prop);
 
-            if (className == "IPrescription" && memberName == "Frequency")
+            if (className == "Prescription" && memberName == "Frequency")
                 return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
 
-            if (className == "IPrescription" && memberName == "Quantity")
+            if (className == "Prescription" && memberName == "Quantity")
                 return _unitValues[index].BaseValue;
 
-            if (className == "IPrescription" && memberName == "Total")
+            if (className == "Prescription" && memberName == "Total")
                 return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
 
             return 0;
@@ -74,13 +74,13 @@ namespace GenPres.Business.Calculation.Combination
             string className = PropertyHelper.ClassName(prop);
             string memberName = PropertyHelper.MemberName(prop);
 
-            if (className == "IPrescription" && memberName == "Frequency")
+            if (className == "Prescription" && memberName == "Frequency")
                 _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_root.Frequency.Time, 1); ;
 
-            if (className == "IPrescription" && memberName == "Quantity")
+            if (className == "Prescription" && memberName == "Quantity")
                 _unitValues[index].BaseValue = values[index];
 
-            if (className == "IPrescription" && memberName == "Total")
+            if (className == "Prescription" && memberName == "Total")
                 _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
 
             return 0;

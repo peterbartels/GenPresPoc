@@ -11,9 +11,9 @@ namespace GenPres.xTest.Calculation.Calculator
 {
     public static class PrescriptionTestFunctions
     {
-        public static IPrescription GetTestPrescription()
+        public static Prescription GetTestPrescription()
         {
-            var prescription = ObjectCreator.New<IPrescription>();
+            var prescription = Prescription.NewPrescription();
             prescription.Drug.Generic = "paracetamol";
             prescription.Drug.Route = "rect";
             prescription.Drug.Shape = "zetp";
@@ -34,7 +34,7 @@ namespace GenPres.xTest.Calculation.Calculator
             prescription.Drug.Components[0].Substances[0].Quantity.Unit = "mg";
             return prescription;
         }
-        public static PrescriptionCalculator SetCombinations(IPrescription prescription)
+        public static PrescriptionCalculator SetCombinations(Prescription prescription)
         {
             var pc = new PrescriptionCalculator(prescription);
             var combi = new MultiplierCombination(

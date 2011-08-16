@@ -21,7 +21,7 @@ namespace GenPres.xTest.Data
     {
         public RepositoryTest()
         {
-            ObjectFactory.Configure(x => x.For<IDataContextManager>().Use<TestDataContextManager>());
+            
         }
 
         #region TestContext
@@ -60,10 +60,10 @@ namespace GenPres.xTest.Data
         [TestMethod]
         public void RunTests()
         {
-            _repository = new NHibernateRepository<Prescription, Guid>(SessionFactoryManager.Instance.SessionFactoryFromInstance);
+            _repository = new NHibernateRepository<Prescription, Guid>(SessionManager.Instance.SessionFactoryFromInstance);
             CanInsertAPrescription();
             //RepositoryCanGetAll();
-            SessionFactoryManager.Instance.CloseSessionFactory();
+            SessionManager.Instance.CloseSession();
         }
 
         private string _latestInsertedPrescriptionGuid = "";

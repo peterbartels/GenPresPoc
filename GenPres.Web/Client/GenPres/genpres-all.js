@@ -1653,9 +1653,14 @@ Ext.define('GenPres.view.database.RegisterDatabaseWindow', {
         var infoStore = this.getPatientPatientInfoStoreStore();
         infoStore.loadRecords([record], {addRecords: false});
         GenPres.session.PatientSession.setPatient(record);
+
         var gridPanel = this.getGridPanel();
         gridPanel.store.proxy.extraParams.PID = GenPres.session.PatientSession.patient.PID;
         gridPanel.store.load();
+
+        Patient.SelectPatient(GenPres.session.PatientSession.patient.PID, function(){
+
+        });
     },
 
     getGridPanel : function(){

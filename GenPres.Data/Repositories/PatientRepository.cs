@@ -11,15 +11,9 @@ namespace GenPres.Data.Repositories
     public class PatientRepository : NHibernateRepository<Patient, Guid>, IPatientRepository
     {
         public PatientRepository()
-            : base(SessionFactoryManager.SessionFactory)
+            : base(SessionManager.SessionFactory)
         {
             
-        }
-
-        public Patient FindOrCreatePatient(string patientId)
-        {
-            
-            return Patient.NewPatient();
         }
 
         public bool PatientExists(string patientId)
@@ -30,10 +24,8 @@ namespace GenPres.Data.Repositories
 
         public Patient GetByPid(string pid)
         {
-            return Patient.NewPatient();
-            //return newPatient;
+            return FindSingle(x => x.Pid == pid);
         }
-
 
         public void Save(Patient pat)
         {
@@ -41,11 +33,6 @@ namespace GenPres.Data.Repositories
         }
 
         public int Count()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IPatient Save(IPatient businessObject)
         {
             throw new NotImplementedException();
         }

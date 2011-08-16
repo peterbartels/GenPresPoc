@@ -73,7 +73,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RepositoryTest.cs" />
-    <Compile Include="PrescriptionMapper.cs" />
     <Compile Include="NHibernate\SessionFactoryTest.cs" />
   </ItemGroup>
   <ItemGroup>

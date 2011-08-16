@@ -57,8 +57,8 @@ jasmine.TrivialReporter.prototype.reportRunnerStarting = function(runner) {
   for (var i = 0; i < suites.length; i++) {
     var suite = suites[i];
     var suiteDiv = this.createDom('div', { className: 'suite' },
-        this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, "run"),
-        this.createDom('a', { className: 'description', href: '?spec=' + encodeURIComponent(suite.getFullName()) }, suite.description));
+        this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURComponent(suite.getFullName()) }, "run"),
+        this.createDom('a', { className: 'description', href: '?spec=' + encodeURComponent(suite.getFullName()) }, suite.description));
     this.suiteDivs[suite.id] = suiteDiv;
     var parentDiv = this.outerDiv;
     if (suite.parentSuite) {
@@ -129,10 +129,10 @@ jasmine.TrivialReporter.prototype.reportSpecResults = function(spec) {
     status = 'skipped';
   }
   var specDiv = this.createDom('div', { className: 'spec '  + status },
-      this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURIComponent(spec.getFullName()) }, "run"),
+      this.createDom('a', { className: 'run_spec', href: '?spec=' + encodeURComponent(spec.getFullName()) }, "run"),
       this.createDom('a', {
         className: 'description',
-        href: '?spec=' + encodeURIComponent(spec.getFullName()),
+        href: '?spec=' + encodeURComponent(spec.getFullName()),
         title: spec.getFullName()
       }, spec.description));
 
@@ -180,7 +180,7 @@ jasmine.TrivialReporter.prototype.specFilter = function(spec) {
   var params = this.getLocation().search.substring(1).split('&');
   for (var i = 0; i < params.length; i++) {
     var p = params[i].split('=');
-    paramMap[decodeURIComponent(p[0])] = decodeURIComponent(p[1]);
+    paramMap[decodeURComponent(p[0])] = decodeURComponent(p[1]);
   }
 
   if (!paramMap.spec) {

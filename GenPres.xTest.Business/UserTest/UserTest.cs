@@ -20,8 +20,8 @@ namespace GenPres.xTest.Business.UserTest
         {
             var registry = new Registry();
             
-            var repository = Isolate.Fake.Instance<UserSqlRepository>(Members.CallOriginal);
-            registry.For<IUserRepository>().Use(repository);
+            var repository = Isolate.Fake.Instance<UserRepository>(Members.CallOriginal);
+            registry.For<UserRepository>().Use(repository);
 
             ObjectFactory.Configure(x => x.AddRegistry(registry));
             return;
@@ -32,27 +32,18 @@ namespace GenPres.xTest.Business.UserTest
         public void UserServiceLoginCallsRepositoryGetUserByUsername()
         {
             InitializeUserTest();
-            var userRepository = StructureMap.ObjectFactory.GetInstance<IUserRepository>();
+            var userRepository = StructureMap.ObjectFactory.GetInstance<UserRepository>();
             UserService.AuthenticateUser("test", "test");
-            Isolate.Verify.WasCalledWithAnyArguments(() => userRepository.GetUserByUsername(""));
+            Isolate.Verify.WasCalledWithAnyArguments(() => userRepository.GetUserByUsername("", ""));
         }
 
-        [TestMethod]
-        public void DataContextGetsAUserFromDatabase()
-        {
-            using (var ctx = GenPresDataManager.GetManager().GetContext())
-            {
-                var foundUser = (from i in ctx.User where i.Username == "Test" select i).FirstOrDefault();
-                Assert.IsNotNull(foundUser);
-            }
-        }
 
         [TestMethod]
         public void UserRepositoryGetUserbyUsernameReturnsAvailableUser()
         {
-            var userRepository = StructureMap.ObjectFactory.GetInstance<IUserRepository>();
-            var user = userRepository.GetUserByUsername("Test");
-            Assert.IsTrue(user.IsAvailable);
+            var userRepository = StructureMap.ObjectFactory.GetInstance<UserRepository>();
+            var user = userRepository.GetUserByUsername("Test", "test");
+            Assert.IsTrue(user);
         }
 
         [TestMethod]
@@ -66,7 +57,7 @@ namespace GenPres.xTest.Business.UserTest
         [TestMethod]
         public void UserUserNameIsLowerCase()
         {
-            IUser user = User.NewUser();
+            User user = User.NewUser();
             user.UserName = "TeSt";
             Assert.IsTrue(user.UserName == "test", "Username should be lowercase after setValue.");
         }
@@ -74,7 +65,7 @@ namespace GenPres.xTest.Business.UserTest
         [TestMethod]
         public void _User_IsDirty_after_propertyChange()
         {
-            IUser user = User.NewUser();
+            User user = User.NewUser();
             Assert.IsTrue(user.State == StatusEnum.New, "User (state) should be new after creation.");
             user.UserName = "TeSt";
             Assert.IsTrue(user.State == StatusEnum.Dirty, "User (state) should be dirty after change.");

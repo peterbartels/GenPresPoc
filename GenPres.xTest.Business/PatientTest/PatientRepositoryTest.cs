@@ -44,16 +44,24 @@ namespace GenPres.xTest.Business.PatientTest
             var patientRep = new PatientRepository();
             var pat = Patient.NewPatient();
             pat.Pid = "1234567";
-            pat.Save();
+            patientRep.SaveOrUpdate(pat);
             Assert.IsTrue(pat.Id != Guid.Empty);
+            Assert.IsTrue(pat.Pid != "");
+        }
+
+        private void PatientRepositoryCanGetAPatient()
+        {
+            var patientRep = new PatientRepository();
+            var pat = PatientService.GetPatientByPid("1234567");
+            Assert.IsTrue(pat.Id != Guid.Empty);
+            Assert.IsTrue(pat.Pid == "1234567");
         }
 
         private void PatientRepositoryPatientExistsCanFindAPatient()
         {
             var patientRep = new PatientRepository();
             var exists = patientRep.PatientExists("1234567");
-            Assert.IsTrue(exists);
-            
+            Assert.IsTrue(exists);    
         }
 
         private void PatientRepositoryPatientExistsCanNotFindAPatient()

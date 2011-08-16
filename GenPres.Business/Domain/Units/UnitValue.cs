@@ -4,7 +4,7 @@ using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Business.Domain.Units
 {
-    public class UnitValue : IUnitValue, ICalculationStateTrackable
+    public class UnitValue : ICalculationStateTrackable
     {
         #region Private Properties
         private int _id = 0;
@@ -210,6 +210,11 @@ namespace GenPres.Business.Domain.Units
 
         public bool CanBeSet { get; set; }
 
+        protected UnitValue()
+        {
+            
+        }
+
         #region Calculations
         //Calculate the base value (to base)
         private void CalculateBaseValue()
@@ -288,5 +293,10 @@ namespace GenPres.Business.Domain.Units
         #endregion
 
         public CalculationState CalculationState { get; set; }
+
+        public static UnitValue NewUnitValue()
+        {
+            return new UnitValue();
+        }
     }
 }

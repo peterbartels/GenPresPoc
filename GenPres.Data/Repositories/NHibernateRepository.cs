@@ -34,6 +34,11 @@ namespace GenPres.Data.Repositories
             Transact(() => Session.Save(item));
         }
 
+        public virtual void SaveOrUpdate(T item)
+        {
+            Transact(() => Session.SaveOrUpdate(item));
+        }
+
         public virtual bool Contains(T item)
         {
             //if (item.IdIsDefault(item.Id)) return false;

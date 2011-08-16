@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using GenPres.Business.Domain.Users;
 using GenPres.Data.Connections;
 using GenPres.Data.Managers;
 using NHibernate;
@@ -8,15 +9,15 @@ using StructureMap;
 
 namespace GenPres.Data
 {
-    public class SessionFactoryManager
+    public class SessionManager
     {
         private static ISessionFactory _factory;
+
         private static readonly Object LockThis = new object();
 
-        [ThreadStatic]
-        private static SessionFactoryManager _instance;
+        private static SessionManager _instance;
 
-        public static SessionFactoryManager Instance
+        public static SessionManager Instance
         {
             get
             {
@@ -25,7 +26,7 @@ namespace GenPres.Data
                     {
                         if (_instance == null)
                         {
-                            var instance = new SessionFactoryManager();
+                            var instance = new SessionManager();
                             Thread.MemoryBarrier();
                             _instance = instance;
                             Thread.MemoryBarrier();
@@ -40,12 +41,18 @@ namespace GenPres.Data
             if (_factory == null)
             {
                 _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);
-                CurrentSessionContext.Bind(_factory.OpenSession());
             }
+
+            CurrentSessionContext.Bind(_factory.OpenSession());
+            
+            var u = User.NewUser();
+            u.UserName = "test";
+            u.PassCrypt = "0cbc6611f5540bd0809a388dc95a615b";
+            //u.Save();
             return _factory;
         }
 
-        public void CloseSessionFactory()
+        public void CloseSession()
         {
             var session = CurrentSessionContext.Unbind(_factory);
             session.Close();

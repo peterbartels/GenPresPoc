@@ -4,6 +4,7 @@ namespace GenPres.Business.Data.IRepositories
 {
     public interface IUserRepository
     {
-        AvailableObject<IUser> GetUserByUsername(string user);
+        bool GetUserByUsername(string user, string password);
+        void Save(User user);
     }
 }

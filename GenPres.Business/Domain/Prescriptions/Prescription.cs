@@ -1,8 +1,6 @@
 ﻿using System;
-using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
 using GenPres.Business.Domain.Units;
-using GenPres.Business.WebService;
 
 namespace GenPres.Business.Domain.Prescriptions
 {
@@ -14,6 +12,9 @@ namespace GenPres.Business.Domain.Prescriptions
         }
 
         private DateTime? _creationDate;
+        public virtual UnitValue Frequency { get; set; }
+        public virtual UnitValue Quantity { get; set; }
+        public virtual UnitValue Total { get; set; }
 
         public virtual Patient Patient { get; set; }
 
@@ -43,7 +44,10 @@ namespace GenPres.Business.Domain.Prescriptions
         public static Prescription NewPrescription()
         {
             var prescription = new Prescription();
-            prescription.Drug = Drug.NewDrug();
+            prescription.Drug = Drug.NewDrug(prescription);
+            prescription.Frequency = UnitValue.NewUnitValue();
+            prescription.Quantity = UnitValue.NewUnitValue();
+            prescription.Total = UnitValue.NewUnitValue();
             return prescription;
         }
     }

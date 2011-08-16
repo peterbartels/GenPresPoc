@@ -4,6 +4,6 @@ namespace GenPres.Business.Data.IRepositories
 {
     public interface ILogicalUnitRepository
     {
-        ILogicalUnit[] GetLogicalUnits();
+        LogicalUnit[] GetLogicalUnits();
     }
 }

@@ -14,9 +14,9 @@ namespace GenPres.Business.Calculation
         public static decimal[] ComponentIncrements = new decimal[1] { 1 };
 
         private readonly List<ICalculationCombination> _combinations = new List<ICalculationCombination>();
-        private readonly IPrescription _prescription;
+        private readonly Prescription _prescription;
 
-        public PrescriptionCalculator(IPrescription prescription)
+        public PrescriptionCalculator(Prescription prescription)
         {
             _prescription = prescription;
             SetIncrements(_prescription);
@@ -60,13 +60,13 @@ namespace GenPres.Business.Calculation
             _combinations[0].Finish();
         }
 
-        public static void Calculate(IPrescription prescription)
+        public static void Calculate(Prescription prescription)
         {
             var pc = new PrescriptionCalculator(prescription);
             pc.Start();
         }
 
-        private static void SetIncrements(IPrescription prescription)
+        private static void SetIncrements(Prescription prescription)
         {
             var componentInc = new decimal[] { 1 };
             var freqInc = new decimal[] { 1 };
@@ -76,7 +76,7 @@ namespace GenPres.Business.Calculation
             SetIncrementValues(prescription, () => prescription.Total, componentInc, true);
         }
 
-        private static void SetIncrementValues(IPrescription p, Expression<Func<UnitValue>> property, decimal[] values, bool incrementStepping)
+        private static void SetIncrementValues(Prescription p, Expression<Func<UnitValue>> property, decimal[] values, bool incrementStepping)
         {
             UnitValue unitValue = PropertyHelper.GetUnitValue(p, property);
             unitValue.Factor.IncrementSizes = values;

@@ -29,7 +29,7 @@ namespace GenPres.xTest.Service
 
         public PrescriptionTest()
         {
-            ObjectFactory.Configure(x => x.For<IDataContextManager>().Use<TestDataContextManager>());
+            
         }
         /*
         [TestMethod]

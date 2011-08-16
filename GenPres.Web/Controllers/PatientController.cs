@@ -14,9 +14,9 @@ namespace GenPres.Controllers
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
             GenPresApplication.Initialize();
-            SessionFactoryManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres);
+            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres);
+            Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
         }
 
         public ActionResult GetLogicalUnits()
@@ -31,7 +31,7 @@ namespace GenPres.Controllers
 
         public ActionResult SelectPatient(string patientId)
         {
-            return this.Direct(PatientService.SelectPatient(patientId));
+            return this.Direct(PatientService.SavePatient(patientId));
         }
     }
 }
