@@ -4,13 +4,15 @@ using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Data.Mappings
 {
-    public class PrescriptionMap : ClassMap<Prescription>
+    public sealed class PrescriptionMap : ClassMap<Prescription>
     {
         public PrescriptionMap()
         {
             Id(s => s.Id).GeneratedBy.GuidComb();
             Map(s => s.StartDate);
             References(x => x.Patient);
+            Component(x => x.Drug);
+
         }
     }
 }

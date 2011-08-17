@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Xml;
 using CodeProject.Chidi.Cryptography;
 namespace Settings
@@ -42,8 +43,25 @@ namespace Settings
             }
             if(_settingsDoc == null)
             {
-                _settingsDoc = new XmlDocument();
-                _settingsDoc.Load(file);
+                LoadDoc(file);
+            }
+        }
+
+        private void LoadDoc(string file)
+        {
+            int i = 0;
+            while(i<10)
+            {
+                try
+                {
+                    _settingsDoc = new XmlDocument();
+                    _settingsDoc.LoadXml(ReadFile(file));
+                    break;
+                }catch
+                {
+                    System.Threading.Thread.Sleep(100);    
+                }
+                i++;
             }
         }
 
@@ -56,9 +74,7 @@ namespace Settings
             }
             try
             {
-                _settingsDoc = new XmlDocument();
-                _settingsDoc.Load(file);
-    
+                LoadDoc(file);
             }catch(System.IO.IOException exception)
             {
                 if(!(exception is System.IO.FileNotFoundException))
@@ -67,6 +83,15 @@ namespace Settings
                 }
             }
             
+        }
+
+        public string ReadFile(string path)
+        {
+            var fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            var sr = new StreamReader(fs);
+            string contents = sr.ReadToEnd();
+            sr.Close();
+            return contents;
         }
 
         public string GetSettingsPath()

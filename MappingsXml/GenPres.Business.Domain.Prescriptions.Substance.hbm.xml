@@ -1,0 +1,19 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="GenPres.Business.Domain.Prescriptions.Substance, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Substance`">
+    <id name="Id" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+      <column name="Id" />
+      <generator class="guid.comb" />
+    </id>
+    <component name="Quantity" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Quantity_BaseValue" />
+      </property>
+      <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Quantity_Value" />
+      </property>
+      <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Quantity_Unit" />
+      </property>
+    </component>
+  </class>
+</hibernate-mapping>

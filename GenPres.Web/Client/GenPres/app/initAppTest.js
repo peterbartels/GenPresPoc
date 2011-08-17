@@ -42,7 +42,9 @@ Ext.onReady(function () {
         this.viewport = Ext.create('Ext.container.Viewport', {
             layout: 'fit'
         });
-        
+
+        me.setDefaults();
+
         me.showLoginWindow();
         
         advancedLoginTest = Ext.create('GenPres.test.usecase.AdvancedLoginTest');
@@ -57,8 +59,11 @@ Ext.onReady(function () {
         drugCompositionTest = Ext.create('GenPres.test.usecase.DrugCompositionTest');
         describe(drugCompositionTest.describe, drugCompositionTest.tests);
 
-        prescriptionTest = Ext.create('GenPres.test.usecase.PrescriptionTest');
-        describe(prescriptionTest.describe, prescriptionTest.tests);
+        var PrescriptionPatientTest = Ext.create('GenPres.test.usecase.PrescriptionPatientTest');
+        describe(PrescriptionPatientTest.describe, PrescriptionPatientTest.tests);
+
+        //prescriptionTest = Ext.create('GenPres.test.usecase.PrescriptionTest');
+        //describe(prescriptionTest.describe, prescriptionTest.tests);
 
 
 

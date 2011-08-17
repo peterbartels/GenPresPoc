@@ -81,16 +81,28 @@
     <Compile Include="DTO\IDto.cs" />
     <Compile Include="DTO\Patients\LogicalUnitDto.cs" />
     <Compile Include="DTO\Patients\LogicalUnitDtoAssembler.cs" />
+    <Compile Include="DTO\Patients\PatientAssembler.cs" />
+    <Compile Include="DTO\Patients\PatientDto.cs" />
     <Compile Include="DTO\Patients\PatientTreeAssembler.cs" />
     <Compile Include="DTO\Patients\PatientTreeDto.cs" />
     <Compile Include="DTO\Prescriptions\PrescriptionAssembler.cs" />
     <Compile Include="DTO\Prescriptions\PrescriptionDto.cs" />
     <Compile Include="DAO\Mapper\Patient\LogicalUnitMapper.cs" />
     <Compile Include="DAO\Mapper\Patient\PdmsMapper.cs" />
+    <Compile Include="DTO\UnitValueDto.cs" />
+    <Compile Include="Mappings\ComponentMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Mappings\DrugMap.cs" />
     <Compile Include="Mappings\PatientMap.cs" />
     <Compile Include="Mappings\PrescriptionMap.cs" />
     <Compile Include="Managers\PDMSDataRetriever.cs" />
+    <Compile Include="Mappings\SusbtanceMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\UnitValueMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\LogicalUnitRepository.cs" />

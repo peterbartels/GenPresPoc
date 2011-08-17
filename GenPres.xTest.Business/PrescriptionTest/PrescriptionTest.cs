@@ -42,7 +42,7 @@ namespace GenPres.xTest.Business.PrescriptionTest
         public void PrescriptionDtoCanMapToPrescriptionBo()
         {
             var pDto = new PrescriptionDto();
-            pDto.StartDate = DateTime.Parse("2011-07-01 12:00:00").ToString();
+            pDto.startDate = DateTime.Parse("2011-07-01 12:00:00").ToString();
             Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
             Assert.AreEqual(p.StartDate, DateTime.Parse("2011-07-01 12:00:00"));
         }
@@ -54,7 +54,7 @@ namespace GenPres.xTest.Business.PrescriptionTest
             Prescription p = Prescription.NewPrescription();
             p.StartDate = DateTime.Parse("2011-07-01 12:00:00");
             PrescriptionDto pDto = PrescriptionAssembler.AssemblePrescriptionDto(p);
-            Assert.AreEqual(pDto.StartDate, "1-7-2011 12:00:00");
+            Assert.AreEqual(pDto.startDate, "1-7-2011 12:00:00");
         }
 
         [TestMethod]

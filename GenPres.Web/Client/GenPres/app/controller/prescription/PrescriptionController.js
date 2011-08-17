@@ -26,13 +26,29 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             },
             'button[action=save]': {
                 click : this.savePrescription
+            },
+            'valuefield' : {
+                blur : this.updatePrescription
+            },
+            'combobox[isFormField=false]' :{
+                change : this.updatePrescription
             }
         });
     },
 
 
     updatePrescription: function(){
-        
+        var me = this;
+        if(this.getDrugCompositionController().drugIsChosen()){
+            var PID = GenPres.session.PatientSession.patient.PID;
+            Prescription.UpdatePrescription(PID, this.getValues(), function(newValues){
+                me.setValues(newValues);
+            });
+        }
+    },
+
+    getDrugCompositionController : function(){
+        return GenPres.application.getController('prescription.DrugComposition');
     },
 
     getSubstanceUnitStore : function(){
@@ -44,7 +60,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     loadPrescription : function(view, record, htmlItem, index, event, options){
         Prescription.GetPrescriptionById(record.data.Id, function(result){
-            this.setValues(record);
+            this.setValues(record.data);
             var drugController = GenPres.application.getController('prescription.DrugComposition');
             drugController.changeSelection(drugController.getComboBox("generic"));
             drugController.changeSelection(drugController.getComboBox("route"));
@@ -52,12 +68,13 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         }, this);
     },
 
-    setValues: function(record){
+    setValues: function(data){
         var form = this.getForm();
-        Ext.Object.each(record.data, function(key, value){
-            var components = forms[i].query('#'+ key);
+
+        Ext.Object.each(data, function(key, value){
+            var components = form.query('#'+ key);
             if(components.length > 0){
-                var component = components[i];
+                var component = components[0];
                 component.setValue(value);
             }
         }, this);
@@ -80,8 +97,11 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     clearPrescription : function(){
-        var drugCompositionController = GenPres.application.getController('prescription.DrugComposition');
-        drugCompositionController.clear();
+        //this.getDrugCompositionController().clear();
+        var me = this;
+        Prescription.ClearPrescription(function(newValues){
+            me.setValues(newValues);
+        });
     },
 
     getForm : function(){
@@ -101,7 +121,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });
-        
+        console.log(vals);
         return vals;
     }
 });

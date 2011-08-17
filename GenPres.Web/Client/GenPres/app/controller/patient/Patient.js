@@ -30,17 +30,34 @@
         }
     },
     loadPatientData : function(tree, record, htmlitem, index, event, options){
-        var infoStore = this.getPatientPatientInfoStoreStore();
+
+        var me =this,
+            infoStore = this.getPatientPatientInfoStoreStore();
+
         infoStore.loadRecords([record], {addRecords: false});
         GenPres.session.PatientSession.setPatient(record);
 
         var gridPanel = this.getGridPanel();
         gridPanel.store.proxy.extraParams.PID = GenPres.session.PatientSession.patient.PID;
         gridPanel.store.load();
-
-        Patient.SelectPatient(GenPres.session.PatientSession.patient.PID, function(){
-
+        Patient.SelectPatient(GenPres.session.PatientSession.patient.PID, function(patientDto){
+            me.setPatientWeight(patientDto.Weight);
+            me.setPatientHeight(patientDto.Height);
         });
+    },
+
+    setPatientWeight : function(weight){
+        var prescriptionPatientComp = this.getPrescriptionPatientComponent();
+        prescriptionPatientComp.down('unitvaluefield[name=patientWeight]').setValue(weight);
+    },
+
+    setPatientHeight : function(height, unit){
+        var prescriptionPatientComp = this.getPrescriptionPatientComponent();
+        prescriptionPatientComp.down('unitvaluefield[name=patientHeight]').setValue(height);
+    },
+
+    getPrescriptionPatientComponent : function(){
+        return GenPres.application.MainCenter.query('prescriptionpatient')[0];
     },
 
     getGridPanel : function(){

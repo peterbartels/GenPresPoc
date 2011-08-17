@@ -89,9 +89,14 @@ Ext.define('GenPres.test.usecase.LoginTest', {
         });
 
         it('User can select a departement', function () {
-            departmentDataView = me.getPatientInfoView('loginLogicalUnitSelector');
-            departmentDataView.el.dom.childNodes[0].childNodes[0].click();
-            expect(departmentDataView.selModel.getSelection().length).toBe(1);
+            var departmentDataView = me.getPatientInfoView('loginLogicalUnitSelector');
+            waitsFor(function () {
+                if(departmentDataView.store.getCount()>0){
+                    departmentDataView.el.dom.childNodes[0].childNodes[0].click();
+                    return departmentDataView.selModel.getSelection().length == 1;
+                }
+                return false;
+            }, 'logicalUnitSelector to be rendered', 2000);
         });
 
         it('If Username or password is invalid, user still cannot login', function () {

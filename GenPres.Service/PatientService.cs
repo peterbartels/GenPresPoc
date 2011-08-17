@@ -33,19 +33,19 @@ namespace GenPres.Service
             return Repository.GetByPid(Pid);
         }
 
-        public static bool InsertFromPdms(string pid)
+        public static PatientDto InsertFromPdms(string pid)
         {
             var patient = PdmsRepository.GetPatientByPid(pid);
             if (!Repository.PatientExists(pid))
             {
                 Repository.Save(patient);
-                return true;
+                return PatientAssembler.AssemblePatientDto(patient);
             }
             var dbPatient = GetPatientByPid(pid);
             dbPatient.Height = patient.Height;
             dbPatient.Weight = patient.Weight;
-            Repository.Save(patient);
-            return false;
+            Repository.Save(dbPatient);
+            return PatientAssembler.AssemblePatientDto(dbPatient);
         }
 
         public static LogicalUnitDto[] GetLogicalUnits()
@@ -66,7 +66,7 @@ namespace GenPres.Service
             return PatientTreeAssembler.AssemblePatientTreeDto(PatientCollection.GetPatientsByLogicalUnit(logicalUnit));
         }
 
-        public static bool SavePatient(string patientId)
+        public static PatientDto SavePatient(string patientId)
         {
             return InsertFromPdms(patientId);
         }

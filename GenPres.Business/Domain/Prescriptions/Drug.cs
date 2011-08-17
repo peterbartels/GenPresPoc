@@ -81,8 +81,8 @@ namespace GenPres.Business.Domain.Prescriptions
         {
             var drug = new Drug
             {
-                Quantity = UnitValue.NewUnitValue(), 
-                Components = new List<Component> {new Component()},
+                Quantity = UnitValue.NewUnitValue(false), 
+                Components = new List<Component> {Component.NewComponent()},
                 Prescription = p
             };
             return drug;

@@ -1696,7 +1696,7 @@ var ExtObject = Ext.Object = {
                 value = Ext.Date.toString(value);
             }
 
-            params.push(encodeURComponent(paramObject.name) + '=' + encodeURComponent(String(value)));
+            params.push(encodeURIComponent(paramObject.name) + '=' + encodeURIComponent(String(value)));
         }
 
         return params.join('&');
@@ -1715,8 +1715,8 @@ var ExtObject = Ext.Object = {
 
             if (part.length > 0) {
                 components = part.split('=');
-                name = decodeURComponent(components[0]);
-                value = (components[1] !== undefined) ? decodeURComponent(components[1]) : '';
+                name = decodeURIComponent(components[0]);
+                value = (components[1] !== undefined) ? decodeURIComponent(components[1]) : '';
 
                 if (!recursive) {
                     if (object.hasOwnProperty(name)) {
@@ -11938,7 +11938,7 @@ Ext.EventObject = new Ext.EventObjectImpl();
         serializeForm: function(form) {
             var fElements = form.elements || (document.forms[form] || Ext.getDom(form)).elements,
                 hasSubmit = false,
-                encoder = encodeURComponent,
+                encoder = encodeURIComponent,
                 name,
                 data = '',
                 type,

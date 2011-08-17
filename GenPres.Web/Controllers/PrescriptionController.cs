@@ -48,5 +48,13 @@ namespace GenPres.Controllers
         {
             return this.Direct(PrescriptionService.SavePrescription(prescriptionDto, patientId));
         }
+        public ActionResult UpdatePrescription(string patientId, PrescriptionDto prescriptionDto)
+        {
+            return this.Direct(PrescriptionService.UpdatePrescription(prescriptionDto, patientId));
+        }
+        public ActionResult ClearPrescription()
+        {
+            return this.Direct(PrescriptionService.ClearPrescription());
+        }
     }
 }

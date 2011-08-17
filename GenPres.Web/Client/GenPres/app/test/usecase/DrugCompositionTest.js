@@ -34,7 +34,7 @@ Ext.define('GenPres.test.usecase.DrugCompositionTest', {
 
 
         me.comboIsSet = function(component, globalvarname){
-            if(component.store.getCount() > 0){
+            if(component.store.getCount() > 0 && !component.store.loading){
                 component.select(component.store.getAt(0).data.Value);
                 globalvars[globalvarname] = (component.getValue() != "");
             }
@@ -49,7 +49,7 @@ Ext.define('GenPres.test.usecase.DrugCompositionTest', {
             globalvars["checkGenericSet"]=false;
             waitsFor(createBindFunction(me.comboIsSet, me, [component, "checkGenericSet"], "checkGenericSet", 200), 'waiting for generic to be selected', 3000);
         });
-        
+
         it('A route can be set', function () {
             var component = me.getComboBox('route');
             globalvars["checkRouteSet"]=false;
@@ -61,7 +61,7 @@ Ext.define('GenPres.test.usecase.DrugCompositionTest', {
             globalvars["checkShapeSet"]=false;
             waitsFor(createBindFunction(me.comboIsSet, me, [component, "checkShapeSet"], "checkShapeSet", 500), 'waiting for shape to be selected', 3000);
         });
-
+        
         //prescriptionTest = Ext.create('GenPres.test.usecase.PrescriptionTest');
         //describe(prescriptionTest.describe, prescriptionTest.tests);
         //jasmine.getEnv().execute();

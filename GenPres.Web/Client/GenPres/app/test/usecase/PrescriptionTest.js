@@ -35,7 +35,7 @@ Ext.define('GenPres.test.usecase.PrescriptionTest', {
                 globalvars["checkPrescriptionIsClear"]=true;
             }
         }
-
+        /*
         it('A prescription can be saved', function () {
             var currentCount = me.getGridCount();
             var savebutton =  Ext.ComponentQuery.query("button[action=save]")[0];
@@ -51,7 +51,7 @@ Ext.define('GenPres.test.usecase.PrescriptionTest', {
             globalvars["checkPrescriptionIsClear"]=false;
             waitsFor(createBindFunction(me.checkPrescriptionIsClear, me, [], "checkPrescriptionIsClear", 200), "prescription to be cleared", 3000);
         });
-
+*/
         /*
         it('The grid nodes count is the same as the store count', function () {
             var grid = me.getGrid();

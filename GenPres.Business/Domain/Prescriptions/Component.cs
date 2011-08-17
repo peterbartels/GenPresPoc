@@ -8,19 +8,25 @@ namespace GenPres.Business.Domain.Prescriptions
 {
     public class Component 
     {
+        public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
-        public bool IsNew { get { return (Id == Guid.Empty); } }
+        public virtual Guid Id { get; set; }
 
-        public Guid Id { get; set; }
+        public virtual UnitValue Quantity { get; set; }
+        public virtual UnitValue DrugConcentration { get; set; }
+        public virtual decimal ComponentIncrement { get; set; }
+        public virtual IList<Substance> Substances { get; set; }
 
-        public UnitValue Quantity { get; set; }
-        public UnitValue DrugConcentration { get; set; }
-        public decimal ComponentIncrement { get; set; }
-        public List<Substance> Substances { get; set; }
-
-        public Component()
+        protected Component()
         {
-            Substances = new List<Substance> {new Substance()};
+            
+        }
+
+        public static Component NewComponent()
+        {
+            var c = new Component();
+            c.Substances = new List<Substance> { Substance.NewSubstance() };
+            return c;
         }
     }
 }

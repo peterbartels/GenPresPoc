@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Linq;
+using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
 using GenPres.Business.Domain.Prescriptions.Medicine;
 using GenPres.Business.WebService;
 using GenPres.Data.DTO.GenForm;
 using GenPres.Data.DTO.Prescriptions;
+using StructureMap;
 
 namespace GenPres.Service
 {
@@ -16,10 +18,33 @@ namespace GenPres.Service
             throw new NotImplementedException();
         }
 
-        public static PrescriptionDto SavePrescription(PrescriptionDto prescriptionDto, string patientId)
+        private static IPrescriptionRepository _prescriptionRepository;
+
+        private static IPrescriptionRepository Repository
+        {
+            get
+            {
+                if (_prescriptionRepository == null) _prescriptionRepository = ObjectFactory.GetInstance<IPrescriptionRepository>();
+                return _prescriptionRepository;
+            }
+        }
+
+        public static PrescriptionDto UpdatePrescription(PrescriptionDto prescriptionDto, string patientId)
         {
             var prescription = PrescriptionAssembler.AssemblePrescriptionBo(prescriptionDto);
             //TEMPWEG prescription.Save(patientId);
+            return PrescriptionAssembler.AssemblePrescriptionDto(prescription);
+        }
+
+        public static PrescriptionDto ClearPrescription()
+        {
+            return PrescriptionAssembler.AssemblePrescriptionDto(Prescription.NewPrescription());
+        }
+
+        public static PrescriptionDto SavePrescription(PrescriptionDto prescriptionDto, string patientId)
+        {
+            var prescription = PrescriptionAssembler.AssemblePrescriptionBo(prescriptionDto);
+            Repository.SavePrescription(prescription, patientId);
             return PrescriptionAssembler.AssemblePrescriptionDto(prescription);
         }
 

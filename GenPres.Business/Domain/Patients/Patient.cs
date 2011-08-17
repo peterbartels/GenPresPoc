@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
 
 namespace GenPres.Business.Domain.Patients
 {
@@ -24,9 +26,9 @@ namespace GenPres.Business.Domain.Patients
 
         public virtual int LogicalUnitId { get; set; }
 
-        public virtual decimal Height { get; set; }
+        public virtual UnitValue Height { get; set; }
 
-        public virtual decimal Weight { get; set; }
+        public virtual UnitValue Weight { get; set; }
 
         public virtual string Gender { get; set; }
 
@@ -48,9 +50,23 @@ namespace GenPres.Business.Domain.Patients
 
         public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
+        protected Patient()
+        {
+            
+        }
+
         public static Patient NewPatient()
         {
-            return new Patient();
+            var patient = new Patient();
+            patient.Height = UnitValue.NewUnitValue(true);
+            patient.Height.Unit = "cm";
+
+            patient.Weight = UnitValue.NewUnitValue(true);
+            patient.Weight.Unit = "kg";
+
+            patient.Prescriptions = new EntitySet<Prescription>();
+
+            return patient;
         }
 
     }

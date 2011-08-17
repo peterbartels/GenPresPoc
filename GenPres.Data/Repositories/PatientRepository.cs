@@ -29,7 +29,7 @@ namespace GenPres.Data.Repositories
 
         public void Save(Patient pat)
         {
-            base.Add(pat);
+            base.SaveOrUpdate(pat);
         }
 
         public int Count()

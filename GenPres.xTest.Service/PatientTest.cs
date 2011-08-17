@@ -45,9 +45,9 @@ namespace GenPres.xTest.Service
         [TestMethod]
         public void CanSelectPatient()
         {
-            var pid = "0004702";
-            bool created = PatientService.SavePatient(pid);
-            Assert.IsTrue(created);
+            var pid = "0004588";
+            PatientDto patientDto = PatientService.SavePatient(pid);
+            Assert.IsTrue(patientDto.Weight.value == 12 && patientDto.Height.value == 120 && patientDto.Weight.unit == "kg" && patientDto.Height.unit == "cm");
         }
     }
 }

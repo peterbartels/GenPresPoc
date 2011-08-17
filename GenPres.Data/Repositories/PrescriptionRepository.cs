@@ -1,5 +1,6 @@
 ﻿using System;
 using GenPres.Business.Data.IRepositories;
+using GenPres.Business.Domain.Patients;
 using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Data.Repositories
@@ -46,23 +47,16 @@ namespace GenPres.Data.Repositories
 
         public void SavePrescription(Prescription prescription, string patientId)
         {
-            /*Database.Prescription prDao;
-            if(prescription.Id == 0)
+            var pr = new PatientRepository();
+            var pat = pr.GetByPid(patientId);
+            if(pat == null)
             {
-                var pr = new PatientRepository();
-                Patient patient = pr.FindOrCreatePatient(patientId);
-                prDao = NewDao();
-                //patient.Prescriptions.Add(prDao);
-                
-            }else
-            {
-                prDao = GetById(prescription.Id);
-;           }
+                pat = Patient.NewPatient();
+                pat.Pid = patientId;
+            }
             
-            _prescriptionMapper.MapFromBoToDao(prescription, prDao);
-            _identifiersAfterSubmit.Add(prDao, prescription);
-            Submit();
-             */
+            pat.Prescriptions.Add(prescription);
+            pr.SaveOrUpdate(pat);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace GenPres.Business.Domain.Units
     public class UnitValue : ICalculationStateTrackable
     {
         #region Private Properties
-        private int _id = 0;
+        private Guid _id = Guid.Empty;
         private decimal _value = 0;
         private decimal _baseValue = 0;
         private string _unit = "";
@@ -21,14 +21,13 @@ namespace GenPres.Business.Domain.Units
         private bool _propertyChanged = false;
         private int _currentIncrement = 0;
 
-
         private Factor _factor;
         #endregion
 
-        public bool IsNew { get { return (Id == 0); } }
+        public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
         #region Public Properties
-        public Factor Factor
+        public virtual Factor Factor
         {
             get
             {
@@ -41,7 +40,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public int Id
+        public virtual Guid Id
         {
             get
             {
@@ -53,7 +52,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public decimal Value
+        public virtual decimal Value
         {
             get
             {
@@ -70,7 +69,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public decimal BaseValue
+        public virtual decimal BaseValue
         {
             get
             {
@@ -83,7 +82,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public string Unit
+        public virtual string Unit
         {
             get
             {
@@ -96,7 +95,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public string Adjust
+        public virtual string Adjust
         {
             get
             {
@@ -109,7 +108,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public string Total
+        public virtual string Total
         {
             get
             {
@@ -122,7 +121,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public string Time
+        public virtual string Time
         {
             get
             {
@@ -135,7 +134,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public string UIState
+        public virtual string UIState
         {
             get
             {
@@ -147,7 +146,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public int CurrentIncrement
+        public virtual int CurrentIncrement
         {
             get
             {
@@ -159,7 +158,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public decimal[] Increments
+        public virtual decimal[] Increments
         {
             get
             {
@@ -171,7 +170,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public string IncrementDirection
+        public virtual string IncrementDirection
         {
             get
             {
@@ -183,7 +182,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public bool PropertyHasChanged
+        public virtual bool PropertyHasChanged
         {
             get
             {
@@ -195,7 +194,7 @@ namespace GenPres.Business.Domain.Units
             }
         }
 
-        public bool AllowIncrementStep
+        public virtual bool AllowIncrementStep
         {
             get
             {
@@ -208,7 +207,7 @@ namespace GenPres.Business.Domain.Units
         }
         #endregion
 
-        public bool CanBeSet { get; set; }
+        public virtual bool CanBeSet { get; set; }
 
         protected UnitValue()
         {
@@ -259,7 +258,7 @@ namespace GenPres.Business.Domain.Units
             return _value;
         }
 
-        internal void UpdateIncrements(Prescription p)
+        internal protected virtual void UpdateIncrements(Prescription p)
         {
             var incrementsValues = new decimal[_increments.Length];
             for (int i = 0; i < _increments.Length; i++)
@@ -292,11 +291,13 @@ namespace GenPres.Business.Domain.Units
         }
         #endregion
 
-        public CalculationState CalculationState { get; set; }
+        public virtual CalculationState CalculationState { get; set; }
 
-        public static UnitValue NewUnitValue()
+        public static UnitValue NewUnitValue(bool canBeSet)
         {
-            return new UnitValue();
+            var uv = new UnitValue();
+            uv.CanBeSet = canBeSet;
+            return uv;
         }
     }
 }

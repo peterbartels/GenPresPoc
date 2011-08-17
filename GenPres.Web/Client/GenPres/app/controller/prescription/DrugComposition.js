@@ -30,7 +30,8 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
 
     addStoreListeners : function(combo){
         combo.store.on("load", this.checkValues, this, {comboBox:combo});
-        combo.store.on("load", this.updatePrescription, this, {comboBox:combo})
+        combo.store.on("load", this.updatePrescription, this, {comboBox:combo});
+        combo.store.on("change", this.updatePrescription, this, {comboBox:combo});
     },
 
     changeSelection : function(combo){
@@ -63,6 +64,13 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             this.getComboBox('generic').store.load();
             this.getComboBox('route').store.load();
         }
+    },
+
+    drugIsChosen : function(){
+        if(this.getComboBox('generic').getValue() != "" && this.getComboBox('route').getValue() && this.getComboBox('shape').getValue()){
+            return true;
+        }
+        return false;
     },
 
     getComboBox : function(name){

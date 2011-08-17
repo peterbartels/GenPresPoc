@@ -105,8 +105,8 @@ namespace GenPres.xTest.Business.PatientTest
             patient1.Id = Guid.Empty;
             patient1.LogicalUnitId = 2;
 
-            patient1.Height = 120;
-            patient1.Weight = 75;
+            patient1.Height.Value = 120;
+            patient1.Weight.Value = 75;
             patient1.RegisterDate = DateTime.Parse("20-3-2010 13:48:00");
             patient1.Unit = "unit1";
             patient1.Bed = "2";
@@ -121,9 +121,7 @@ namespace GenPres.xTest.Business.PatientTest
             Assert.AreEqual(patient1.FirstName, dtos[0].FirstName);
             Assert.AreEqual(patient1.LastName, dtos[0].LastName);
             Assert.AreEqual(patient1.Pid, dtos[0].PID);
-
-            Assert.AreEqual(patient1.Weight, dtos[0].Weight);
-            Assert.AreEqual(patient1.Height, dtos[0].Length);
+            
             Assert.AreEqual(dtos[0].RegisterDate, "20-03-2010");
             Assert.AreEqual(patient1.Unit, dtos[0].Unit);
             Assert.AreEqual(patient1.Bed, dtos[0].Bed);

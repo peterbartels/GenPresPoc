@@ -1,6 +1,6 @@
 Ext.define('GenPres.test.view.PrescriptionVisibilityTest', {
 
-    describe: 'GenPres.view.Prescription.DrugComposition',
+    describe: 'GenPres.view.Prescription.PrescriptionVisibility',
 
     tests: function () {
         var me = this, instance, win, queryUtil = GenPres.test.util.Query;;

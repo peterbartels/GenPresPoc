@@ -49,10 +49,10 @@ Ext.define('GenPres.test.control.UnitValueFieldTest', {
         it('can set a and get value', function () {
             me.getViewForControl().setValue({
                 value:200,
-                unitValue:'mg'
+                unit:'mg'
             });
             var value = me.getViewForControl().getValue();
-            expect(value.value == 200 && value.unitValue == "mg").toBeTruthy();
+            expect(value.value == 200 && value.unit == "mg").toBeTruthy();
         });
         it('has a setState function', function () {
             expect(typeof(me.getViewForControl().setState) == "function").toBeTruthy();

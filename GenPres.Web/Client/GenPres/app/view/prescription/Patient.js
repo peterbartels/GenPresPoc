@@ -28,11 +28,11 @@ Ext.define('GenPres.view.prescription.Patient', {
                 fields: ['Value'],
                 data : [['gram'],['kg']]
             }),
-            unitValue:'kg',
+            unit:'kg',
             name:'patientWeight'
         });
 
-        var patientLength = Ext.create('GenPres.control.UnitValueField', {
+        var patientHeight = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Lengte',
             labelAlign:'left',
             isHidden:false,
@@ -41,8 +41,8 @@ Ext.define('GenPres.view.prescription.Patient', {
                 fields: ['Value'],
                 data : [['cm']]
             }),
-            unitValue:'cm',
-            name:'patientLength'
+            unit:'cm',
+            name:'patientHeight'
         });
 
         var patientBSA = Ext.create('GenPres.control.UnitValueField', {
@@ -54,11 +54,11 @@ Ext.define('GenPres.view.prescription.Patient', {
                 fields: ['Value'],
                 data : [['m2']]
             }),
-            unitValue:'m2',
+            unit:'m2',
             name:'patientBSA'
         });
 
-        me.items = [patientWeight, patientLength, patientBSA];
+        me.items = [patientWeight, patientHeight, patientBSA];
 
         me.callParent();
     }

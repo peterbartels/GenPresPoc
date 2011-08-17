@@ -10,5 +10,33 @@
     <many-to-one class="GenPres.Business.Domain.Patients.Patient, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Patient">
       <column name="Patient_id" />
     </many-to-one>
+    <component name="Drug" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Prescriptions.Drug, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <bag cascade="all" name="Components">
+        <key>
+          <column name="Drug_id" />
+        </key>
+        <one-to-many class="GenPres.Business.Domain.Prescriptions.Component, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+      </bag>
+      <property name="Generic" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Generic" />
+      </property>
+      <property name="Route" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Route" />
+      </property>
+      <property name="Shape" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Shape" />
+      </property>
+      <component name="Quantity" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <column name="Quantity_BaseValue" />
+        </property>
+        <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <column name="Quantity_Value" />
+        </property>
+        <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <column name="Quantity_Unit" />
+        </property>
+      </component>
+    </component>
   </class>
 </hibernate-mapping>

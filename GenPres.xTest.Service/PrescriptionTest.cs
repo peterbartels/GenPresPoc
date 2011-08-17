@@ -1,4 +1,6 @@
-﻿using GenPres.Data.DTO.Prescriptions;
+﻿using System;
+using GenPres.Data.DTO;
+using GenPres.Data.DTO.Prescriptions;
 using GenPres.Data.Managers;
 using GenPres.Service;
 using GenPres.xTest.Base;
@@ -31,7 +33,7 @@ namespace GenPres.xTest.Service
         {
             
         }
-        /*
+        
         [TestMethod]
         public void CanSavePrescription()
         {   
@@ -39,11 +41,13 @@ namespace GenPres.xTest.Service
             pDto.drugGeneric = "paracetamol";
             pDto.drugRoute = "rect";
             pDto.drugShape = "zetp";
-            pDto.StartDate = "2011-07-01 12:00:00";
+            pDto.startDate = "2011-07-01 12:00:00";
+            pDto.substanceQuantity = new UnitValueDto();
+            pDto.substanceQuantity.unit = "mg";
             pDto = PrescriptionService.SavePrescription(pDto, "8697898");
-            Assert.IsTrue(pDto.Id > 0);
+            Assert.IsTrue(pDto.Id != Guid.Empty.ToString());
         }
-
+        /*
         [TestMethod]
         public void CanGetPrescriptions()
         {

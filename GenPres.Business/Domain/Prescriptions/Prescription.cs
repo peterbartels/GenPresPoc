@@ -45,9 +45,9 @@ namespace GenPres.Business.Domain.Prescriptions
         {
             var prescription = new Prescription();
             prescription.Drug = Drug.NewDrug(prescription);
-            prescription.Frequency = UnitValue.NewUnitValue();
-            prescription.Quantity = UnitValue.NewUnitValue();
-            prescription.Total = UnitValue.NewUnitValue();
+            prescription.Frequency = UnitValue.NewUnitValue(false);
+            prescription.Quantity = UnitValue.NewUnitValue(false);
+            prescription.Total = UnitValue.NewUnitValue(false);
             return prescription;
         }
     }

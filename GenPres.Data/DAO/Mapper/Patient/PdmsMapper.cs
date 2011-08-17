@@ -18,8 +18,8 @@ namespace GenPres.Data.DAO.Mapper.Patient
             decimal weight = 0;
             decimal.TryParse(patientDao["Length"].ToString(), out length);
             decimal.TryParse(patientDao["Weight"].ToString(), out weight);
-            patientBo.Weight = weight;
-            patientBo.Height = length;
+            patientBo.Weight.BaseValue = weight;
+            patientBo.Height.BaseValue = length;
 
             DateTime? addmissionDate = (DateTime?)patientDao["AddmissionDate"];
 

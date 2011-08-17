@@ -3,7 +3,7 @@ Ext.define('GenPres.test.view.DrugCompositionTest', {
     describe: 'GenPres.view.Prescription.DrugComposition',
 
     tests: function () {
-        var me = this, instance, win;
+        var me = this, instance, win, queryUtil = GenPres.test.util.Query;
 
         me.getPrescriptionView = function (config) {
             if (!instance) {
@@ -60,6 +60,31 @@ Ext.define('GenPres.test.view.DrugCompositionTest', {
 
         it('Substance quantity field has a unit combobox', function () {
             expect(me.getUnitValueField("substanceQuantity").getUnitCombo()).toBeDefined();
+        });
+
+        it('When nothing is chosen drugIsChosen returns false ', function () {
+            var drugCompController = GenPres.application.getController('prescription.DrugComposition')
+            expect(!drugCompController.drugIsChosen()).toBeTruthy();
+        });
+
+        it('when generic, route and shape is chosen drugIsChosen returns true', function () {
+            waitsFor(function () {
+
+                var genericCombo = queryUtil.GetControl('drugGeneric');
+                var routeCombo = queryUtil.GetControl('drugRoute');
+                var shapeCombo = queryUtil.GetControl('drugShape');
+
+                if(queryUtil.controlStoreIsLoaded(shapeCombo)){
+                    var substanceQuantity = queryUtil.GetControl('substanceQuantity', me.getPrescriptionView());
+                    queryUtil.SelectFirstComboboxValue('drugGeneric');
+                    queryUtil.SelectFirstComboboxValue('drugRoute');
+                    queryUtil.SelectFirstComboboxValue('drugShape');
+
+                    var drugCompController = GenPres.application.getController('prescription.DrugComposition')
+                    return (drugCompController.drugIsChosen());
+                }
+                return false;
+            }, 'comboboxes to be rendered', 2000);
         });
 
         it('View can be destroyed', function () {

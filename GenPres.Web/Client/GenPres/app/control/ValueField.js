@@ -4,6 +4,8 @@ Ext.define('GenPres.control.ValueField', {
 
     extend:'Ext.form.field.Number',
 
+    alias : 'widget.valuefield',
+
     mixins: {
         picker: 'Ext.form.field.Picker'
     },
@@ -76,7 +78,7 @@ Ext.define('GenPres.control.ValueField', {
             me.inputEl.dom.select();
             me.findRecord();
         }
-        Ext.Function.defer(focusEl, 200);
+        Ext.Function.defer(focusEl, 50);
     },
     onKeyUp : function(event){
         var me = this;

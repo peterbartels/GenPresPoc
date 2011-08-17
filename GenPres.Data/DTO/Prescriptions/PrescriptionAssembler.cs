@@ -10,19 +10,20 @@ namespace GenPres.Data.DTO.Prescriptions
             var prescription = Prescription.NewPrescription();
 
             DateTime dt;
-            if(DateTime.TryParse(prescriptionDto.StartDate, out dt))
+            if(DateTime.TryParse(prescriptionDto.startDate, out dt))
             {
                 prescription.StartDate = dt;
             }
              
-            var drug = prescription.Drug;
-            if (drug != null)
-            {
-                drug.Generic = prescriptionDto.drugGeneric;
-                drug.Route = prescriptionDto.drugRoute;
-                drug.Shape = prescriptionDto.drugShape;
-            }
+            prescription.Drug.Generic = prescriptionDto.drugGeneric;
+            prescription.Drug.Route = prescriptionDto.drugRoute;
+            prescription.Drug.Shape = prescriptionDto.drugShape;
+            
             prescription.PID = prescriptionDto.PID;
+            
+            prescriptionDto.substanceQuantity = new UnitValueDto();
+            prescription.Drug.Components[0].Substances[0].Quantity =
+                UnitValueDto.AssembleUnitValue(prescription.Drug.Components[0].Substances[0].Quantity, prescriptionDto.substanceQuantity);
             
             return prescription;
         }
@@ -30,16 +31,15 @@ namespace GenPres.Data.DTO.Prescriptions
         public static PrescriptionDto AssemblePrescriptionDto(Prescription prescription)
         {
             var prescriptionDto = new PrescriptionDto();
-            prescriptionDto.StartDate = prescription.StartDate.ToString();
+            prescriptionDto.startDate = prescription.StartDate.ToString();
             prescriptionDto.Id = prescription.Id.ToString();
 
-            var drug = prescription.Drug;
-            if(drug!=null)
-            {
-                prescriptionDto.drugGeneric = drug.Generic;
-                prescriptionDto.drugRoute = drug.Route;
-                prescriptionDto.drugShape = drug.Shape;    
-            }
+            prescriptionDto.drugGeneric = prescription.Drug.Generic;
+            prescriptionDto.drugRoute = prescription.Drug.Route;
+            prescriptionDto.drugShape = prescription.Drug.Shape;
+
+            prescriptionDto.substanceQuantity =
+                UnitValueDto.AssembleUnitValueDto(prescription.Drug.Components[0].Substances[0].Quantity);
 
             prescriptionDto.PID = prescription.PID;
             return prescriptionDto;

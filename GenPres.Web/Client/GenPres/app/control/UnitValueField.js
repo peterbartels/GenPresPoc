@@ -23,13 +23,13 @@ Ext.define('GenPres.control.UnitValueField', {
 
     isFormField : true,
 
-    isHidden: true,
+    canBeSet: false,
 
     state: GenPres.control.states.user,
 
-    value : "",
+    value : 0,
 
-    unitValue : "",
+    unit : "",
 
     setHidden : function (hidden){
         if(hidden) {
@@ -63,24 +63,25 @@ Ext.define('GenPres.control.UnitValueField', {
         var me = this;
         return {
             value : me.valueField.getValue(),
-            unitValue : me.unitCombo.getValue()
+            unit : me.unitCombo.getValue()
         };
     },
 
     setValue : function(obj){
         var me = this;
         me.value = obj.value;
-        me.unitValue = obj.unitValue;;
+        me.unit = obj.unit;
         me.state = obj.state;
-        me.isHidden = obj.isHidden;
+        me.canBeSet = obj.canBeSet;
         me.processValues();
     },
 
     processValues : function(){
         var me = this;
         me.valueField.setValue(me.value);
-        me.unitCombo.setValue(me.unitValue);
-        me.setHidden(me.isHidden);
+        console.log(me.unit);
+        me.unitCombo.setValue(me.unit);
+        me.setHidden(!me.canBeSet);
         me.setState(me.state);
     },
 
@@ -131,8 +132,8 @@ Ext.define('GenPres.control.UnitValueField', {
         me.on("afterrender", function(){
             me.setValue({
                value : me.value,
-               unitValue: me.unitValue,
-               isHidden:me.isHidden,
+               unit: me.unit,
+               canBeSet:me.canBeSet,
                state:me.state
             });
         })

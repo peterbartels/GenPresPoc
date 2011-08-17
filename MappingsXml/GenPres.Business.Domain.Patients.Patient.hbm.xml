@@ -4,14 +4,36 @@
       <column name="Id" />
       <generator class="guid.comb" />
     </id>
-    <bag name="Prescriptions">
+    <bag cascade="all" name="Prescriptions">
       <key>
         <column name="Patient_id" />
       </key>
       <one-to-many class="GenPres.Business.Domain.Prescriptions.Prescription, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     </bag>
     <property name="Pid" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <column name="Pid" />
+      <column name="Pid" not-null="true" />
     </property>
+    <component name="Height" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Height_BaseValue" />
+      </property>
+      <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Height_Value" />
+      </property>
+      <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Height_Unit" />
+      </property>
+    </component>
+    <component name="Weight" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Weight_BaseValue" />
+      </property>
+      <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Weight_Value" />
+      </property>
+      <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="Weight_Unit" />
+      </property>
+    </component>
   </class>
 </hibernate-mapping>

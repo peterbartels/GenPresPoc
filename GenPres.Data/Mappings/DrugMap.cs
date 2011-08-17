@@ -7,11 +7,15 @@ using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Data.Mappings
 {
-    public class DrugMap : ClassMap<Drug>
+    public sealed class DrugMap : ComponentMap<Drug>
     {
         public DrugMap()
         {
-            Id(s => s.Id).GeneratedBy.GuidComb();
+            Map(x => x.Generic);
+            Map(x => x.Route);
+            Map(x => x.Shape);
+            Component(x => x.Quantity).ColumnPrefix("Quantity_");
+            HasMany(x => x.Components).Cascade.All();
         }
     }
 }

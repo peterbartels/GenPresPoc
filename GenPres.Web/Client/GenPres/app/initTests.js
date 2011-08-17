@@ -24,7 +24,7 @@ Ext.onReady(function () {
 
 
 
-    Ext.app.config.appFolder = 'Client/GenPres/app';
+    Ext.app.config.appFolder = '../Client/GenPres/app';
     //noinspection JSUnusedGlobalSymbols
     Ext.app.config.launch = function() {
         var me = this, test,

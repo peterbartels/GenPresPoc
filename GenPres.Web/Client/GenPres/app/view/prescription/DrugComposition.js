@@ -24,6 +24,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
 
         var substanceQuantity = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Hoeveelheid',
+            unit:'mg',
             labelAlign:'top',
             id:'substanceQuantity',
             unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
