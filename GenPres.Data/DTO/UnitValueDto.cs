@@ -11,6 +11,7 @@ namespace GenPres.Data.DTO
         public static UnitValueDto AssembleUnitValueDto(UnitValue unitValue)
         {
             var unitValueDto = new UnitValueDto();
+            if (unitValue == null) unitValue = UnitValue.NewUnitValue(false);
             unitValueDto.value = unitValue.Value;
             unitValueDto.unit = unitValue.Unit;
             unitValueDto.canBeSet = unitValue.CanBeSet;
@@ -19,6 +20,8 @@ namespace GenPres.Data.DTO
 
         public static UnitValue AssembleUnitValue(UnitValue unitValue, UnitValueDto unitValueDto)
         {
+            if(unitValue == null) unitValue = UnitValue.NewUnitValue(false);
+            if (unitValueDto == null) unitValueDto = new UnitValueDto();
             unitValue.Value = unitValueDto.value;
             unitValue.Unit = unitValueDto.unit;
             return unitValue;

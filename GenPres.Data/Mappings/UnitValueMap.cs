@@ -10,6 +10,9 @@ namespace GenPres.Data.Mappings
             Map(x => x.BaseValue);
             Map(x => x.Value);
             Map(x => x.Unit);
+            Map(x => x.Time);
+            Map(x => x.Adjust);
+            Map(x => x.Total);
         }
     }
 }

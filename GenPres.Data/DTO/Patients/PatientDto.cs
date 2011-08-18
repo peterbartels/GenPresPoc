@@ -7,5 +7,6 @@ namespace GenPres.Data.DTO.Patients
         public string PID { get; set; }
         public UnitValueDto Weight { get; set; }
         public UnitValueDto Height { get; set; }
+        public bool canBeSet { get; set; }
     }
 }

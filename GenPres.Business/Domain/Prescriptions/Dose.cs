@@ -1,33 +1,36 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using GenPres.Business.Domain.Units;
 
 namespace GenPres.Business.Domain.Prescriptions
 {
-    public class Substance 
+    public class Dose
     {
         public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
         public virtual Guid Id { get; set; }
 
         public virtual UnitValue Quantity { get; set; }
-        public virtual UnitValue DrugConcentration { get; set; }
-        public virtual UnitValue ComponentConcentration { get; set; }
+        public virtual UnitValue Total { get; set; }
+        public virtual UnitValue Rate { get; set; }
         public virtual decimal[] SubstanceIncrements { get; set; }
 
-        public virtual string Name { get; set; }
-
-        protected Substance()
+        protected Dose()
         {
-           
+
         }
 
-        public static Substance NewSubstance()
+        public static Dose NewDose()
         {
-            var s = new Substance();
+            var s = new Dose();
             s.Quantity = UnitValue.NewUnitValue(false);
             s.Quantity.Unit = "mg";
-            s.DrugConcentration = UnitValue.NewUnitValue(false);
-            s.ComponentConcentration = UnitValue.NewUnitValue(false);
+            s.Total = UnitValue.NewUnitValue(false);
+            s.Total.Unit = "mg";
+            s.Rate = UnitValue.NewUnitValue(false);
+            s.Rate.Unit = "mg";
             return s;
         }
     }

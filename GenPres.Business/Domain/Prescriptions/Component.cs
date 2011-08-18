@@ -17,6 +17,8 @@ namespace GenPres.Business.Domain.Prescriptions
         public virtual decimal ComponentIncrement { get; set; }
         public virtual IList<Substance> Substances { get; set; }
 
+        public virtual string Name { get; set; }
+
         protected Component()
         {
             
@@ -26,6 +28,8 @@ namespace GenPres.Business.Domain.Prescriptions
         {
             var c = new Component();
             c.Substances = new List<Substance> { Substance.NewSubstance() };
+            c.Quantity = UnitValue.NewUnitValue(false);
+            c.DrugConcentration = UnitValue.NewUnitValue(false);
             return c;
         }
     }

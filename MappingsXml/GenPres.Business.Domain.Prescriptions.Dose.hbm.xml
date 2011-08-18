@@ -1,70 +1,67 @@
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
-  <class xmlns="urn:nhibernate-mapping-2.2" name="GenPres.Business.Domain.Prescriptions.Substance, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Substance`">
+  <class xmlns="urn:nhibernate-mapping-2.2" name="GenPres.Business.Domain.Prescriptions.Dose, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" table="`Dose`">
     <id name="Id" type="System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
       <column name="Id" />
       <generator class="guid.comb" />
     </id>
-    <property name="Name" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-      <column name="Name" />
-    </property>
-    <component name="ComponentConcentration" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="ComponentConcentrationBaseValue" />
-      </property>
-      <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="ComponentConcentrationValue" />
-      </property>
-      <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="ComponentConcentrationUnit" />
-      </property>
-      <property name="Time" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="ComponentConcentrationTime" />
-      </property>
-      <property name="Adjust" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="ComponentConcentrationAdjust" />
-      </property>
-      <property name="Total" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="ComponentConcentrationTotal" />
-      </property>
-    </component>
-    <component name="DrugConcentration" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="DrugConcentration_BaseValue" />
-      </property>
-      <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="DrugConcentration_Value" />
-      </property>
-      <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="DrugConcentration_Unit" />
-      </property>
-      <property name="Time" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="DrugConcentration_Time" />
-      </property>
-      <property name="Adjust" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="DrugConcentration_Adjust" />
-      </property>
-      <property name="Total" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="DrugConcentration_Total" />
-      </property>
-    </component>
     <component name="Quantity" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="Quantity_BaseValue" />
+        <column name="QuantityBaseValue" />
       </property>
       <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="Quantity_Value" />
+        <column name="QuantityValue" />
       </property>
       <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="Quantity_Unit" />
+        <column name="QuantityUnit" />
       </property>
       <property name="Time" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="Quantity_Time" />
+        <column name="QuantityTime" />
       </property>
       <property name="Adjust" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="Quantity_Adjust" />
+        <column name="QuantityAdjust" />
       </property>
       <property name="Total" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-        <column name="Quantity_Total" />
+        <column name="QuantityTotal" />
+      </property>
+    </component>
+    <component name="Total" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="TotalBaseValue" />
+      </property>
+      <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="TotalValue" />
+      </property>
+      <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="TotalUnit" />
+      </property>
+      <property name="Time" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="TotalTime" />
+      </property>
+      <property name="Adjust" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="TotalAdjust" />
+      </property>
+      <property name="Total" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="TotalTotal" />
+      </property>
+    </component>
+    <component name="Rate" insert="true" update="true" optimistic-lock="true" class="GenPres.Business.Domain.Units.UnitValue, GenPres.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <property name="BaseValue" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="RateBaseValue" />
+      </property>
+      <property name="Value" type="System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="RateValue" />
+      </property>
+      <property name="Unit" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="RateUnit" />
+      </property>
+      <property name="Time" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="RateTime" />
+      </property>
+      <property name="Adjust" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="RateAdjust" />
+      </property>
+      <property name="Total" type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <column name="RateTotal" />
       </property>
     </component>
   </class>

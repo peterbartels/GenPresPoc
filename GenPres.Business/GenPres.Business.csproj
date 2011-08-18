@@ -106,6 +106,7 @@
     <Compile Include="Domain\ISavable.cs" />
     <Compile Include="Domain\ObjectCreator.cs" />
     <Compile Include="Domain\Prescriptions\Component.cs" />
+    <Compile Include="Domain\Prescriptions\Dose.cs" />
     <Compile Include="Domain\Prescriptions\Drug.cs" />
     <Compile Include="Domain\Prescriptions\Substance.cs" />
     <Compile Include="Domain\StateManager.cs" />

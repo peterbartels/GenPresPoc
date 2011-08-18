@@ -12,14 +12,9 @@ namespace GenPres.Data.DTO.Patients
             dto.Id = patient.Id.ToString();
             dto.PID = patient.Pid;
             
-            dto.Weight = new UnitValueDto();
-            dto.Height = new UnitValueDto();
+            dto.Weight = UnitValueDto.AssembleUnitValueDto(patient.Weight);
+            dto.Height = UnitValueDto.AssembleUnitValueDto(patient.Height);
 
-            dto.Weight.value = patient.Weight.Value;
-            dto.Height.value = patient.Height.Value;
-
-            dto.Weight.unit = patient.Weight.Unit;
-            dto.Height.unit = patient.Height.Unit;
    
             return dto;
         }

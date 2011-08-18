@@ -13,7 +13,7 @@ namespace GenPres.xTest.Business.PrescriptionTest
         public void PrescriptionCreatesCreationDate()
         {
             var p = Prescription.NewPrescription();
-            Assert.AreEqual(DateTime.Now.ToString("dd-MM-yyyy HH:mm"), p.CreationDate.ToString("dd-MM-yyyy HH:mm"));
+            if (p.CreationDate != null) Assert.AreEqual(DateTime.Now.ToString("dd-MM-yyyy HH:mm"), p.CreationDate.Value.ToString("dd-MM-yyyy HH:mm"));
         }
 
 
