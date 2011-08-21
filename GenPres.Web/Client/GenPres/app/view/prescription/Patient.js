@@ -8,7 +8,7 @@ Ext.define('GenPres.view.prescription.Patient', {
 
     border:false,
 
-    width:300,
+    width:270,
 
     height:141,
 

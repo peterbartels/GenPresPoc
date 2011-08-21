@@ -8,7 +8,7 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     border:false,
 
-    width:800,
+    width:870,
 
     constructor : function(){
         var me = this;
@@ -26,12 +26,23 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
         me.items = [
             Ext.create('GenPres.view.prescription.DrugComposition'),
             Ext.create('GenPres.view.prescription.Patient'),
+            Ext.create('GenPres.view.prescription.FrequencyDuration'),
+            Ext.create('GenPres.view.prescription.Options'),
+            Ext.create('GenPres.view.prescription.Dose'),
+            Ext.create('GenPres.view.prescription.Administration'),
+            Ext.create('Ext.form.field.TextArea', {
+                width:550,
+                height:50,
+                action:'save',
+                fieldLabel:'Opmerkingen',
+                margin:'10 10 10 10'
+            }),
             Ext.create('Ext.button.Button', {
                 width:100,
                 height:50,
                 action:'save',
                 text:'Opslaan',
-                margin:'10 10 10 10'
+                margin:'10 10 10 0'
             })
         ];
 

@@ -23,7 +23,7 @@ Ext.define('GenPres.control.UnitValueField', {
 
     isFormField : true,
 
-    canBeSet: false,
+    canBeSet: true,
 
     state: GenPres.control.states.user,
 
