@@ -2,24 +2,15 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Ext.Direct.Mvc;
-using GenPres.Assembler;
 using GenPres.Business.Domain.Databases;
 using GenPres.Business.Service;
+using GenPres.Web.Controllers;
 using StructureMap;
 
 namespace GenPres.Controllers
 {
-    public class DatabaseController : Controller
+    public class DatabaseController : BaseController
     {
-        //
-        // GET: /Database/
-        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
-        {
-            base.Initialize(requestContext);
-            Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
-            GenPresApplication.Initialize();
-        }
-
         public ActionResult GetDatabases()
         {
             IEnumerable<String> names = GetDatabaseServices().GetDatabases();

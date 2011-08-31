@@ -21,6 +21,9 @@
                     "name": "NumericBoundListKeyNav.js"
                 },{
                     "path": "./app/control/",
+                    "name": "UnitValueField.js"
+                },{
+                    "path": "./app/control/",
                     "name": "ValueField.js"
                 },{
                     "path": "./app/session/",
@@ -61,6 +64,9 @@
                 },{
                     "path": "./app/store/prescription/",
                     "name": "RouteStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "SubstanceUnit.js"
                 },{
                     "path": "./app/lib/view/component/",
                     "name": "SaveCancelToolbar.js"
@@ -106,6 +112,24 @@
                 },{
                     "path": "./app/view/prescription/",
                     "name": "PrescriptionTabs.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Options.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Dose.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Administration.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "FrequencyDuration.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Patient.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "FrequencyDuration.js"
                 },{
                     "path": "./app/view/prescription/",
                     "name": "PrescriptionGrid.js"

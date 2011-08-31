@@ -3,7 +3,6 @@ using System.Linq;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
-using GenPres.Business.Domain.Prescriptions.Medicine;
 using GenPres.Business.WebService;
 using GenPres.Data.DTO.GenForm;
 using GenPres.Data.DTO.Prescriptions;
@@ -50,13 +49,13 @@ namespace GenPres.Service
 
         public static ReadOnlyCollection<PrescriptionDto> GetPrescriptions(string patientId)
         {
+            var prescriptions = Repository.GetPrescriptionsByPatientId(patientId);
+
+            var prescriptionDtos = new PrescriptionDto[prescriptions.Length];
             
-            //TEMPWEG var prescriptions = Prescription.GetPrescriptions(patientId);
-            //TEMPWEG var prescriptionDtos = new PrescriptionDto[prescriptions.Length];
-            var prescriptionDtos = new PrescriptionDto[0];
-            //TEMPWEG for (var i = 0; i < prescriptions.Length; i++)
-            //TEMPWEG prescriptionDtos[i] = PrescriptionAssembler.AssemblePrescriptionDto(prescriptions[i]);
-            
+            for (var i = 0; i < prescriptions.Length; i++)
+                prescriptionDtos[i] = PrescriptionAssembler.AssemblePrescriptionDto(prescriptions[i]);
+
             return prescriptionDtos.ToList().AsReadOnly();
         }
         public static PrescriptionDto GetPrescriptionById(int id)

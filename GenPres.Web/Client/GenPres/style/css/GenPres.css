@@ -1,4 +1,11 @@
-﻿
+﻿.x-panel-header .x-component {
+  text-align:right !important;
+}
+.x-panel-header {
+    padding:0px;
+    height:0px; 
+}
+
 
 .PatientInfoView .x-btn-group-body {
     background-color:red !important;

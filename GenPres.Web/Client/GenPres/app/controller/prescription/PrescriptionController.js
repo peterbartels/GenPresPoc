@@ -108,8 +108,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         return GenPres.application.MainCenter.query('prescriptionform')[0];
     },
     savePrescription:function(){
+
         var prescriptiongrid = GenPres.application.MainCenter.query('prescriptiongrid')[0];
         var PID = GenPres.session.PatientSession.patient.PID;
+
         Prescription.SavePrescription(PID, this.getValues(), function(newValues){
             prescriptiongrid.store.load();
         })
@@ -121,7 +123,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });
-        console.log(vals);
         return vals;
     }
 });

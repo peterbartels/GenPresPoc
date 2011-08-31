@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using GenPres.Data.DTO.Prescriptions;
+using GenPres.Data.Repositories;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GenPres.Business.Domain.Prescriptions;
@@ -46,7 +48,6 @@ namespace GenPres.xTest.Business.PrescriptionTest
             Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
             Assert.AreEqual(p.StartDate, DateTime.Parse("2011-07-01 12:00:00"));
         }
-        
 
         [TestMethod]
         public void PrescriptionBoCanMapToPrescriptionDto()

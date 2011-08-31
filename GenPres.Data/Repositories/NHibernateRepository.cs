@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain;
 using NHibernate;
 using NHibernate.Linq;
 
@@ -19,14 +18,19 @@ namespace GenPres.Data.Repositories
             return Transact(() => Session.Query<T>().GetEnumerator());
         }
 
-        public T FindSingle(Func<T, bool> s)
-        {
-            return this.SingleOrDefault(s);
-        }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return Transact(() => GetEnumerator());
+        }
+        public T FindSingle(Func<T, bool> s)
+        {
+            
+            return this.SingleOrDefault(s);
+        }
+
+        public IEnumerable<T> Find(Func<T, bool> s)
+        {
+            return Transact(() => Session.Query<T>().Where(s));
         }
 
         public virtual void Add(T item)

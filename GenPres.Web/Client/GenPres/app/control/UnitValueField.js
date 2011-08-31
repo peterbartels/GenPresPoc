@@ -79,7 +79,6 @@ Ext.define('GenPres.control.UnitValueField', {
     processValues : function(){
         var me = this;
         me.valueField.setValue(me.value);
-        console.log(me.unit);
         me.unitCombo.setValue(me.unit);
         me.setHidden(!me.canBeSet);
         me.setState(me.state);

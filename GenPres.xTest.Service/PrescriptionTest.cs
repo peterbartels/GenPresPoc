@@ -1,11 +1,9 @@
 ﻿using System;
 using GenPres.Data.DTO;
 using GenPres.Data.DTO.Prescriptions;
-using GenPres.Data.Managers;
 using GenPres.Service;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StructureMap;
 
 namespace GenPres.xTest.Service
 {
@@ -47,14 +45,14 @@ namespace GenPres.xTest.Service
             pDto = PrescriptionService.SavePrescription(pDto, "8697898");
             Assert.IsTrue(pDto.Id != Guid.Empty.ToString());
         }
-        /*
+        
         [TestMethod]
         public void CanGetPrescriptions()
         {
             var prescriptions = PrescriptionService.GetPrescriptions("8697898");
             Assert.IsTrue(prescriptions.Count > 0);
         }
-
+        /*
         [TestMethod]
         public void CanGetPrescriptionById()
         {

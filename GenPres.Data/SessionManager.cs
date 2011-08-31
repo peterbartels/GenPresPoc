@@ -36,15 +36,17 @@ namespace GenPres.Data
             }
         }
 
-        public ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName)
+        public ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
         {
             if (_factory == null)
             {
                 _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);
             }
+            var session = _factory.OpenSession();
+            CurrentSessionContext.Bind(session);
 
-            CurrentSessionContext.Bind(_factory.OpenSession());
-            
+            SessionFactoryCreator.BuildSchema(session);
+
             var u = User.NewUser();
             u.UserName = "test";
             u.PassCrypt = "0cbc6611f5540bd0809a388dc95a615b";
@@ -69,7 +71,7 @@ namespace GenPres.Data
             get { return _factory; }
         }
 
-        private static ISessionFactory CreateSessionFactory(DatabaseConnection.DatabaseName databaseName)
+        private static ISessionFactory CreateSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
         {
             return SessionFactoryCreator.CreateSessionFactory(databaseName);
         }

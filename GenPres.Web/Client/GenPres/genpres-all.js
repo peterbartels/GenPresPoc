@@ -410,6 +410,151 @@ Ext.define('GenPres.control.NumericBoundListKeyNav', {
         }
     }
 });
+
+GenPres.control = {
+    states : {
+        user : 1,
+        calculated: 2
+    }
+}
+GenPres.control.stateColors = {}
+GenPres.control.stateColors[GenPres.control.states.user] = "lime";
+GenPres.control.stateColors[GenPres.control.states.calculated] = "orange";
+
+Ext.define('GenPres.control.UnitValueField', {
+
+    extend:'Ext.Panel',
+
+    alias:'widget.unitvaluefield',
+    
+    width: 500,
+
+    border: false,
+
+    margin:'0 0 0 0',
+
+    isFormField : true,
+
+    canBeSet: true,
+
+    state: GenPres.control.states.user,
+
+    value : 0,
+
+    unit : "",
+
+    setHidden : function (hidden){
+        if(hidden) {
+            this.getEl().dom.style.visibility = "hidden";
+        }else{
+            this.getEl().dom.style.visibility = "";
+        }
+    },
+
+    setState : function(state){
+        this.state = state;
+        this.setInputColor(GenPres.control.stateColors[state]);
+    },
+
+    setInputColor : function(color){
+        this.getInputEl().style.border = "solid 1px " + color;
+    },
+
+    getInputEl : function(){
+        return this.valueField.inputEl.dom;
+    },
+
+    getSubmitData : function(includeEmptyText){
+        var me = this;
+        var result = {};
+        result[me.name] =me.getValue();
+        return result;
+    },
+
+    getValue : function(){
+        var me = this;
+        return {
+            value : me.valueField.getValue(),
+            unit : me.unitCombo.getValue()
+        };
+    },
+
+    setValue : function(obj){
+        var me = this;
+        me.value = obj.value;
+        me.unit = obj.unit;
+        me.state = obj.state;
+        me.canBeSet = obj.canBeSet;
+        me.processValues();
+    },
+
+    processValues : function(){
+        var me = this;
+        me.valueField.setValue(me.value);
+        me.unitCombo.setValue(me.unit);
+        me.setHidden(!me.canBeSet);
+        me.setState(me.state);
+    },
+
+    isValid : function(){
+        return true;
+    },
+
+    isDirty : function(){
+        return true;
+    },
+    
+    initComponent : function(){
+        var me = this;
+
+        me.valueField = Ext.create('GenPres.control.ValueField', {
+            step:0.1,
+            isFormField:false,
+            width:80
+        });
+        
+        var items = [me.valueField];
+
+        if(me.unitStore){
+
+            me.unitCombo = new Ext.create('Ext.form.ComboBox',{
+                xtype:'combobox',
+                isFormField:false,
+                store:me.unitStore,
+                width:60
+            })
+
+            items.push(me.unitCombo);
+        }
+
+        me.items = [{
+            xtype: 'fieldcontainer',
+            labelAlign:me.labelAlign,
+            fieldLabel: me.fieldLabel,
+            margin:'0 0 0 0',
+            width: 500,
+            labelWidth: 100,
+            layout: 'hbox',
+            items: items
+        }];
+        
+        me.callParent();
+        
+        me.on("afterrender", function(){
+            me.setValue({
+               value : me.value,
+               unit: me.unit,
+               canBeSet:me.canBeSet,
+               state:me.state
+            });
+        })
+    },
+    
+    getUnitCombo : function(){
+        var me = this;
+        return me.unitCombo;
+    }
+});
 Ext.require('Ext.form.*');
 
 Ext.define('GenPres.control.ValueField', {
@@ -889,6 +1034,22 @@ Ext.define('GenPres.store.prescription.RouteStore', {
         paramOrder : ['generic', 'shape']
     }
 });
+Ext.define('GenPres.store.prescription.SubstanceUnit', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    id: 'substanceunit',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetSubstanceUnits,
+        autoLoad:true,
+        extraParams:{
+            generic:"",
+            route: "",
+            shape:""
+        },
+        paramOrder : ['generic', 'route', 'shape']
+    }
+
+});
 Ext.define('GenPres.lib.view.component.SaveCancelToolbar', {
     extend: 'Ext.toolbar.Toolbar',
     alias: 'widget.savecanceltoolbar',
@@ -1243,7 +1404,7 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     border:false,
 
-    width:800,
+    width:870,
 
     constructor : function(){
         var me = this;
@@ -1261,12 +1422,23 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
         me.items = [
             Ext.create('GenPres.view.prescription.DrugComposition'),
             Ext.create('GenPres.view.prescription.Patient'),
+            Ext.create('GenPres.view.prescription.FrequencyDuration'),
+            Ext.create('GenPres.view.prescription.Options'),
+            Ext.create('GenPres.view.prescription.Dose'),
+            Ext.create('GenPres.view.prescription.Administration'),
+            Ext.create('Ext.form.field.TextArea', {
+                width:550,
+                height:50,
+                action:'save',
+                fieldLabel:'Opmerkingen',
+                margin:'10 10 10 10'
+            }),
             Ext.create('Ext.button.Button', {
                 width:100,
                 height:50,
                 action:'save',
                 text:'Opslaan',
-                margin:'10 10 10 10'
+                margin:'10 10 10 0'
             })
         ];
 
@@ -1288,7 +1460,9 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
 
     title:'Medicament',
 
-    width:400,
+    width:600,
+
+    height:141,
 
     initComponent : function(){
         var me = this;
@@ -1304,6 +1478,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         var substanceQuantity = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Hoeveelheid',
             unit:'mg',
+            width:140,
             labelAlign:'top',
             id:'substanceQuantity',
             unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
@@ -1327,14 +1502,46 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Toedieningsvorm'
         });
 
+        var drugQuantity = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: '',
+            unit:'mg',
+            width:140,
+            padding:'26 0 0 0',
+            id:'drugQuantity',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'drugQuantity'
+        });
+
+        var substanceDrugConcentration = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Concentratie',
+            unit:'mg',
+            width:240,
+            colspan:2,
+            margin:'0 0 0 20',
+            id:'substanceDrugConcentration',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'substanceDrugConcentration'
+        });
+
+        var solutionCombo = Ext.create('Ext.form.field.ComboBox', {
+            store: 'prescription.GenericStore',
+            name:'drugSolution',
+            margin:'0 0 0 20',
+            width:120,
+            id:'drugSolution',
+            action:'solution',
+            fieldLabel: 'Solution'
+        });
+
+
         var tablePanel = Ext.create('Ext.Panel', {
             border:false,
             margin:'10 10 10 10',
             layout : {
                type:'table',
-               columns:2
+                columns:4
             },
-            items : [genericCombo, substanceQuantity, routeCombo, shapeCombo]
+            items : [genericCombo, substanceQuantity, solutionCombo, drugQuantity, routeCombo, shapeCombo, substanceDrugConcentration]
         });
 
         me.items = tablePanel;
@@ -1374,6 +1581,349 @@ Ext.define('GenPres.view.prescription.PrescriptionTabs', {
     split: true,
     margins: '0 5 5 5'
 })
+Ext.define('GenPres.view.prescription.Options', {
+
+    extend: 'Ext.form.Panel',
+    
+    layout:{
+        type:'table',
+        columns:4
+    },
+    alias:'widget.prescriptionformoptions',
+
+    collapsible:true,
+    
+    border:false,
+
+    title:'Opties',
+
+    width:270,
+
+    height:73,
+
+    initComponent : function(){
+        var me = this;
+
+        var continuous = Ext.create('Ext.form.field.Checkbox',{
+            fieldLabel : 'Continu',
+            labelAlign:'top',
+            labelSeparator:'',
+            style: { textAlign: 'center'},
+            width:60,
+            name:'prescriptionContinuous'
+        });
+
+        var infusion = Ext.create('Ext.form.field.Checkbox',{
+            fieldLabel : 'Inlooptijd',
+            labelAlign:'top',
+            style: { textAlign: 'center'},
+            width:70,
+            labelSeparator:'',
+            name:'prescriptionInfusion'
+        });
+
+        var onRequest = Ext.create('Ext.form.field.Checkbox',{
+            fieldLabel : 'Indien nodig',
+            labelAlign:'top',
+            style: { textAlign: 'center'},
+            width:74,
+            labelSeparator:'',
+            name:'prescriptionOnRequest'
+        });
+
+        solution = Ext.create('Ext.form.field.Checkbox',{
+            fieldLabel : 'Oplossing',
+            labelAlign:'top',
+            style: { textAlign: 'center'},
+            width:60,
+            labelSeparator:'',
+            name:'prescriptionSolution'
+        });
+
+
+
+        me.items = [continuous, infusion, onRequest, solution];
+        me.callParent();
+
+    }
+
+});
+
+Ext.define('GenPres.view.prescription.Dose', {
+
+    extend: 'Ext.form.Panel',
+    region: 'center',
+    layout:{
+        type:'table',
+        columns:3
+    },
+    alias:'widget.prescriptionformdose',
+
+    collapsible:true,
+    
+    border:false,
+
+    title:'Dosering',
+
+    width:700,
+
+    colspan:2,
+
+    initComponent : function(){
+        var me = this;
+
+        var quantity = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel:'Per keer',
+            unit:'mg',
+            width:200,
+            labelAlign:'top',
+            id:'doseQuantity',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'doseQuantity'
+        });
+
+        var total = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Totaal',
+            unit:'mg',
+            width:200,
+            labelAlign:'top',
+            id:'doseTotal',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'doseTotal'
+        });
+
+        var rate = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Snelheid',
+            unit:'mg',
+            labelAlign:'top',
+            id:'doseRate',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'doseRate'
+        });
+        me.items = [quantity, total, rate];
+        me.callParent();
+
+    }
+
+});
+
+Ext.define('GenPres.view.prescription.Administration', {
+
+    extend: 'Ext.form.Panel',
+    region: 'center',
+    layout:{
+        type:'table',
+        columns:3
+    },
+    alias:'widget.prescriptionformadministration',
+
+    collapsible:true,
+
+    border:false,
+
+    title:'Toediening',
+
+    width:700,
+
+    colspan:2,
+
+    initComponent : function(){
+        var me = this;
+
+        var quantity = Ext.create('GenPres.control.UnitValueField', {
+            unit:'mg',
+            width:200,
+            labelAlign:'top',
+            fieldLabel:'Per keer',
+            id:'adminQuantity',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'adminQuantity'
+        });
+
+        var total = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel:'Totaal',
+            unit:'mg',
+            width:200,
+            labelAlign:'top',
+            id:'adminTotal',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'adminTotal'
+        });
+
+        var rate = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Snelheid',
+            unit:'mg',
+            labelAlign:'top',
+            id:'adminRate',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'adminRate'
+        });
+        me.items = [quantity, total, rate];
+        me.callParent();
+
+    }
+
+});
+
+Ext.define('GenPres.view.prescription.FrequencyDuration', {
+
+    extend: 'Ext.form.Panel',
+    region: 'center',
+    layout:{
+        type:'table',
+        columns:2
+    },
+    alias:'widget.prescriptionformfrequencyduration',
+
+    collapsible:true,
+    
+    border:false,
+
+    title:'Frequentie en tijdsduur',
+
+    width:600,
+
+    initComponent : function(){
+        var me = this;
+
+        var frequency = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Frequentie',
+            unit:'mg',
+            width:200,
+            labelAlign:'top',
+            id:'prescriptionFrequency',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'prescriptionFrequency'
+        });
+
+        var duration = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Toedienduur',
+            unit:'mg',
+            labelAlign:'top',
+            id:'prescriptionDuration',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'prescriptionDuration'
+        });
+
+        me.items = [frequency, duration];
+        me.callParent();
+
+    }
+
+});
+
+Ext.define('GenPres.view.prescription.Patient', {
+
+    extend: 'Ext.form.Panel',
+    
+    region: 'center',
+
+    alias:'widget.prescriptionpatient',
+
+    border:false,
+
+    width:270,
+
+    height:141,
+
+    bodyPadding:'25 0 0 0',
+
+    title:'Patient',
+
+    initComponent : function(){
+        var me = this;
+
+        var patientWeight = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Gewicht',
+            labelAlign:'left',
+            isHidden:false,
+            unitStore: Ext.create('Ext.data.ArrayStore', {
+                autoDestroy: true,
+                fields: ['Value'],
+                data : [['gram'],['kg']]
+            }),
+            unit:'kg',
+            name:'patientWeight'
+        });
+
+        var patientHeight = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Lengte',
+            labelAlign:'left',
+            isHidden:false,
+            unitStore: Ext.create('Ext.data.ArrayStore', {
+                autoDestroy: true,
+                fields: ['Value'],
+                data : [['cm']]
+            }),
+            unit:'cm',
+            name:'patientHeight'
+        });
+
+        var patientBSA = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'BSA',
+            labelAlign:'left',
+            isHidden:false,
+            unitStore: Ext.create('Ext.data.ArrayStore', {
+                autoDestroy: true,
+                fields: ['Value'],
+                data : [['m2']]
+            }),
+            unit:'m2',
+            name:'patientBSA'
+        });
+
+        me.items = [patientWeight, patientHeight, patientBSA];
+
+        me.callParent();
+    }
+});
+Ext.define('GenPres.view.prescription.FrequencyDuration', {
+
+    extend: 'Ext.form.Panel',
+    region: 'center',
+    layout:{
+        type:'table',
+        columns:2
+    },
+    alias:'widget.prescriptionformfrequencyduration',
+
+    collapsible:true,
+    
+    border:false,
+
+    title:'Frequentie en tijdsduur',
+
+    width:600,
+
+    initComponent : function(){
+        var me = this;
+
+        var frequency = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Frequentie',
+            unit:'mg',
+            width:200,
+            labelAlign:'top',
+            id:'prescriptionFrequency',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'prescriptionFrequency'
+        });
+
+        var duration = Ext.create('GenPres.control.UnitValueField', {
+            fieldLabel: 'Toedienduur',
+            unit:'mg',
+            labelAlign:'top',
+            id:'prescriptionDuration',
+            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            name:'prescriptionDuration'
+        });
+
+        me.items = [frequency, duration];
+        me.callParent();
+
+    }
+
+});
+
 
 Ext.define('GenPres.view.prescription.PrescriptionGrid', {
 
@@ -1899,7 +2449,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });
-        console.log(vals);
         return vals;
     }
 });

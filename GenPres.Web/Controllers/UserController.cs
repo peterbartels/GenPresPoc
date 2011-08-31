@@ -1,26 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Ext.Direct.Mvc;
 using GenPres.Assembler;
 using GenPres.Business.Service;
-using GenPres.Data;
-using GenPres.Data.Connections;
+using GenPres.Web.Controllers;
 
 namespace GenPres.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
-        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
-        {
-            base.Initialize(requestContext);
-            GenPresApplication.Initialize();
-            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres);
-            Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
-        }
-
         public ActionResult Login(string userName, string password)
         {
             GenPresApplication.Initialize();

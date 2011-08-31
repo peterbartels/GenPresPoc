@@ -9,29 +9,41 @@ namespace GenPres.Data
 {
     public static class SessionFactoryCreator
     {
+        private static Configuration _configuration;
+        private static ISessionFactory _sessionFactory;
+      
+
         public static ISessionFactory CreateSessionFactory(DatabaseConnection.DatabaseName databaseName)
         {
-            var sessionFactory = Fluently.Configure()
-                .Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)))
-                .Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.PrescriptionMap>()
+            var fluentConfiguration = Fluently.Configure();
+            
+            if(databaseName == DatabaseConnection.DatabaseName.GenPresTest)
+            {
+                //fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory());
+                fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
+            }else
+            {
+                fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
+            }
+
+            //fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory());
+            
+            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.PrescriptionMap>()
                 .ExportTo(@"C:\development\GenPres\MappingsXml"))
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
-                //.ExposeConfiguration(BuildSchema)
-                .Diagnostics(x => x.OutputToFile("c:\\temp\\test.txt"))
-                .BuildSessionFactory();
+                .ExposeConfiguration(cfg => _configuration = cfg)
+                .Diagnostics(x => x.OutputToFile("c:\\temp\\test.-txt"));
             
-            return sessionFactory;
+            _sessionFactory =  fluentConfiguration.BuildSessionFactory();
+            return _sessionFactory;
         }
 
-        private static void BuildSchema(Configuration config)
+        internal static void BuildSchema(ISession session)
         {
-            // first drop the database to recreate a new one
-            new SchemaExport(config).Drop(false, true);
-            
-            // this NHibernate tool takes a configuration (with mapping info in)
-            // and exports a database schema from it
-            new SchemaExport(config).Create(false, true);
-            
+            var export = new SchemaExport(_configuration);
+            export.Drop(false, true);
+            export.Create(false, true);
+            //export.Execute(true, true, false, session.Connection, null);
         }
 
         private static string GetConnectionString(DatabaseConnection.DatabaseName databaseName)

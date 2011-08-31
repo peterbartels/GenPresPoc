@@ -4,7 +4,7 @@ namespace GenPres.Business.Data.IRepositories
 {
     public interface IPrescriptionRepository
     {
-        Prescription[] GetPrescriptions(string patientId);
+        Prescription[] GetPrescriptionsByPatientId(string patientId);
         Prescription GetPrescriptionById(int id);
         void SavePrescription(Prescription prescription, string patientId);
     }

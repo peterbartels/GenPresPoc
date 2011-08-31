@@ -5,20 +5,12 @@ using GenPres.Business.Service;
 using GenPres.Data;
 using GenPres.Data.Connections;
 using GenPres.Service;
+using GenPres.Web.Controllers;
 
 namespace GenPres.Controllers
 {
-    public class PatientController : Controller
+    public class PatientController : BaseController
     {
-        
-        protected override void Initialize(System.Web.Routing.RequestContext requestContext)
-        {
-            base.Initialize(requestContext);
-            GenPresApplication.Initialize();
-            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres);
-            Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
-        }
-
         public ActionResult GetLogicalUnits()
         {
             return this.Direct(PatientService.GetLogicalUnits());

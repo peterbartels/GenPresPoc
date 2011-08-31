@@ -1,11 +1,9 @@
 ﻿using System;
 using GenPres.Assembler;
-using GenPres.Business.Domain;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Data;
 using GenPres.Data.Connections;
 using GenPres.Data.Repositories;
-using GenPres.xTest.Data;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GenPres.xTest.Base
@@ -16,7 +14,7 @@ namespace GenPres.xTest.Base
         public BaseGenPresTest()
         {
             GenPresApplication.Initialize();
-            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest);
+            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             Settings.SettingsManager.Instance.Initialize();
         }
 
