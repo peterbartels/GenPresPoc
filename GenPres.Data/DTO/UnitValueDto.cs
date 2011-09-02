@@ -7,14 +7,25 @@ namespace GenPres.Data.DTO
         public decimal value { get; set; }
         public string unit { get; set; }
         public bool canBeSet { get; set; }
+        public string totalUnit { get; set; }
+        public string timeUnit { get; set; }
+        public string adjustUnit { get; set; }
+        public string state { get; set; }
 
         public static UnitValueDto AssembleUnitValueDto(UnitValue unitValue)
         {
             var unitValueDto = new UnitValueDto();
             if (unitValue == null) unitValue = UnitValue.NewUnitValue(false);
+
             unitValueDto.value = unitValue.Value;
             unitValueDto.unit = unitValue.Unit;
             unitValueDto.canBeSet = unitValue.CanBeSet;
+
+            unitValueDto.adjustUnit = unitValue.Adjust;
+            unitValueDto.timeUnit = unitValue.Time;
+            unitValueDto.totalUnit = unitValue.Total;
+            unitValueDto.state = unitValue.UIState;
+            
             return unitValueDto;
         }
 
@@ -24,6 +35,12 @@ namespace GenPres.Data.DTO
             if (unitValueDto == null) unitValueDto = new UnitValueDto();
             unitValue.Value = unitValueDto.value;
             unitValue.Unit = unitValueDto.unit;
+            
+            unitValue.Adjust = unitValueDto.adjustUnit;
+            unitValue.Time = unitValueDto.timeUnit;
+            unitValue.Total = unitValueDto.totalUnit;
+
+            unitValue.UIState = unitValueDto.state;
             return unitValue;
         }   
     }

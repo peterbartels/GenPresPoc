@@ -10,6 +10,8 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     substanceUnitStore:null,
 
+    prescriptionIsLoading: false,
+
     init: function() {
         this.control({
             'gridpanel' : {
@@ -32,18 +34,25 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             },
             'combobox[isFormField=false]' :{
                 change : this.updatePrescription
+            },
+            'checkboxfield' :{
+                change : this.updatePrescription
             }
         });
     },
-
 
     updatePrescription: function(){
         var me = this;
         if(this.getDrugCompositionController().drugIsChosen()){
             var PID = GenPres.session.PatientSession.patient.PID;
-            Prescription.UpdatePrescription(PID, this.getValues(), function(newValues){
-                me.setValues(newValues);
-            });
+            me.prescriptionIsLoading = true;
+
+            Ext.Function.defer(function(){
+                Prescription.UpdatePrescription(PID, me.getValues(), function(newValues){
+                    me.setValues(newValues);
+                    me.prescriptionIsLoading = false;
+                });
+            }, 200);
         }
     },
 
@@ -75,10 +84,11 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             var components = form.query('#'+ key);
             if(components.length > 0){
                 var component = components[0];
+                component.suspendEvents();
                 component.setValue(value);
+                component.resumeEvents();
             }
         }, this);
-
     },
 
     loadPrescriptionForm : function(tree, record){
@@ -97,7 +107,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     clearPrescription : function(){
-        //this.getDrugCompositionController().clear();
+        this.getDrugCompositionController().clear();
         var me = this;
         Prescription.ClearPrescription(function(newValues){
             me.setValues(newValues);

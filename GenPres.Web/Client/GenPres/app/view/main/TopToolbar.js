@@ -67,4 +67,4 @@ Ext.define('GenPres.view.main.TopToolbar', {
         ]
         me.callParent();
     }
-})
+});

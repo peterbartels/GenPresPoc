@@ -12,5 +12,4 @@ Ext.define('GenPres.store.prescription.SubstanceUnit', {
         },
         paramOrder : ['generic', 'route', 'shape']
     }
-
 });

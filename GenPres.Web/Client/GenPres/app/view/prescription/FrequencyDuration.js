@@ -7,8 +7,6 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
         columns:2
     },
     alias:'widget.prescriptionformfrequencyduration',
-
-    collapsible:true,
     
     border:false,
 
@@ -16,8 +14,18 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
 
     width:600,
 
+    height:53,
+
+    bodyCls: 'presriptionFormCategory',
+
+    bodyPadding:'0 0 0 5',
+
     initComponent : function(){
         var me = this;
+
+        var frequencyStore = Ext.create('GenPres.store.prescription.LocalUnit', {
+            data : [{"Value":"dag", selected: true}]
+        });
 
         var frequency = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Frequentie',
@@ -25,8 +33,12 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             width:200,
             labelAlign:'top',
             id:'prescriptionFrequency',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: frequencyStore,
             name:'prescriptionFrequency'
+        });
+
+        var durationStore = Ext.create('GenPres.store.prescription.LocalUnit', {
+            data : [{"Value":"min", selected: false},{"Value":"uur", selected: true}]
         });
 
         var duration = Ext.create('GenPres.control.UnitValueField', {
@@ -34,13 +46,11 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             unit:'mg',
             labelAlign:'top',
             id:'prescriptionDuration',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: durationStore,
             name:'prescriptionDuration'
         });
 
         me.items = [frequency, duration];
         me.callParent();
-
     }
-
 });

@@ -25,7 +25,7 @@ namespace GenPres.xTest.Data.PrescriptionTest
 
         private void CanGetPrescriptionById()
         {
-            throw new NotImplementedException();
+            
         }
 
         private void CanGetPrescriptionsByPatientId()
@@ -33,8 +33,6 @@ namespace GenPres.xTest.Data.PrescriptionTest
             var pr = new PrescriptionRepository();
             var prescriptions = pr.GetPrescriptionsByPatientId(PatientId);
             Assert.IsTrue(prescriptions.Length == 2);
-            Assert.IsTrue(prescriptions[0].Patient.Pid == PatientId);
-            Assert.IsTrue(prescriptions[1].Patient.Pid == PatientId);
             Assert.IsTrue(prescriptions[0].Id == _prescriptionsId[0]);
             Assert.IsTrue(prescriptions[1].Id == _prescriptionsId[1]);
         }
@@ -54,7 +52,7 @@ namespace GenPres.xTest.Data.PrescriptionTest
             Assert.IsTrue(pat.Id != Guid.Empty, "PatientId is not set.");
             Assert.IsTrue(prescription.Id != Guid.Empty, "Prescription id is not set");
             
-            _prescriptionsId[_prescriptionsId.Count] = prescription.Id;
+            _prescriptionsId.Add(prescription.Id);
 
             Assert.IsTrue(prescription.Doses[0].Id != Guid.Empty, "prescription dose id is not set.");
             Assert.IsTrue(prescription.Drug.Components[0].Id != Guid.Empty, "component id is not set.");

@@ -93,11 +93,10 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public virtual Guid Id { get; set; }
 
-        public static PrescriptionPropertySetAllowance PrescriptionAllowance = new PrescriptionPropertySetAllowance();
-
+        
         private void CheckAllowance()
         {
-            PrescriptionAllowance.DetemineCanBeSet(Prescription);
+            
         }
     }
 }

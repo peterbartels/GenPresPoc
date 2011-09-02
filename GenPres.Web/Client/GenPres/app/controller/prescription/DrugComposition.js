@@ -30,8 +30,14 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
 
     addStoreListeners : function(combo){
         combo.store.on("load", this.checkValues, this, {comboBox:combo});
-        combo.store.on("load", this.updatePrescription, this, {comboBox:combo});
-        combo.store.on("change", this.updatePrescription, this, {comboBox:combo});
+        combo.store.on("load", this.checkUpdatePrescription, this, {comboBox:combo});
+        combo.store.on("change", this.checkUpdatePrescription, this, {comboBox:combo});
+    },
+
+    checkUpdatePrescription : function(){
+        if(this.getDrugCompositionController().drugIsChosen()){
+            if(!this.prescriptionIsLoading) this.updatePrescription();
+        }
     },
 
     changeSelection : function(combo){
@@ -64,6 +70,18 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             this.getComboBox('generic').store.load();
             this.getComboBox('route').store.load();
         }
+
+        var extraParams = {
+            generic:this.generic,
+            route:this.route,
+            shape:this.shape
+        };
+
+        GenPres.store.PrescriptionStores.getSubstanceUnitStore().proxy.extraParams = extraParams;
+        GenPres.store.PrescriptionStores.getSubstanceUnitStore().load();
+
+        GenPres.store.PrescriptionStores.getComponentUnitStore().proxy.extraParams = extraParams;
+        GenPres.store.PrescriptionStores.getComponentUnitStore().load();
     },
 
     drugIsChosen : function(){

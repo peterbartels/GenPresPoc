@@ -17,9 +17,10 @@ namespace GenPres.Data.Repositories
             return prescriptions.ToArray();
         }
 
-        public Prescription GetPrescriptionById(int id)
+        public Prescription GetPrescriptionById(Guid id)
         {
-            throw new NotImplementedException();
+            var prescription = Session.Query<Prescription>().Single(x => x.Id == id);
+            return prescription;
         }
 
         public void SavePrescription(Prescription prescription, string patientId)

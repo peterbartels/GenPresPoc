@@ -10,9 +10,13 @@ Ext.define('GenPres.view.prescription.Patient', {
 
     width:270,
 
-    height:141,
+    height:111,
 
-    bodyPadding:'25 0 0 0',
+    bodyPadding:'25 0 0 5',
+
+    bodyCls: 'presriptionFormCategory',
+
+    bodyStyle:"margin-left:1px;",
 
     title:'Patient',
 

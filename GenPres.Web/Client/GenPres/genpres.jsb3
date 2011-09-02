@@ -29,6 +29,9 @@
                     "path": "./app/session/",
                     "name": "PatientSession.js"
                 },{
+                    "path": "./app/store/",
+                    "name": "PrescriptionStores.js"
+                },{
                     "path": "./app/model/database/",
                     "name": "Database.js"
                 },{

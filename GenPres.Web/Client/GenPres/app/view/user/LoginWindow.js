@@ -5,18 +5,15 @@ Ext.define('GenPres.view.user.LoginWindow', {
     bodyPadding: 5,
     closable: false,
 
-    requires : 'GenPres.session.PatientSession',
-    
+    requires : ['GenPres.session.PatientSession', 'GenPres.store.PrescriptionStores'],
+
     title: 'GenPres Login',
     defaultDatabase: 'Default Database',
 
     initComponent: function() {
         var me = this;
-        //noinspection JSUnusedGlobalSymbols
         me.dockedItems = me.createDockedItems();
-
         me.items = this.createItems();
-
         me.callParent(arguments);
     },
 
@@ -36,7 +33,7 @@ Ext.define('GenPres.view.user.LoginWindow', {
 
     createItems: function () {
         var me = this;
-
+        
         return [
             me.getHtmlImage(),
             me.getLoginForm2()

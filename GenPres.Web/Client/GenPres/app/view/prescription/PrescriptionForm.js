@@ -10,6 +10,8 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
 
     width:870,
 
+    bodyPadding: '10',
+
     constructor : function(){
         var me = this;
         me.callParent(arguments);

@@ -2,10 +2,8 @@
 using System.Threading;
 using GenPres.Business.Domain.Users;
 using GenPres.Data.Connections;
-using GenPres.Data.Managers;
 using NHibernate;
 using NHibernate.Context;
-using StructureMap;
 
 namespace GenPres.Data
 {
@@ -43,14 +41,14 @@ namespace GenPres.Data
                 _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);
             }
             var session = _factory.OpenSession();
+            
+            if(exposeConfiguration) SessionFactoryCreator.BuildSchema(session);
             CurrentSessionContext.Bind(session);
-
-            SessionFactoryCreator.BuildSchema(session);
 
             var u = User.NewUser();
             u.UserName = "test";
             u.PassCrypt = "0cbc6611f5540bd0809a388dc95a615b";
-            //u.Save();
+            if (exposeConfiguration) u.Save();
             return _factory;
         }
 

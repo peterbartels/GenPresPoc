@@ -16,9 +16,22 @@ namespace GenPres.Business.Allowance
 
             if(prescription.Drug.Generic != "" && prescription.Drug.Route != "" && prescription.Drug.Shape != "")
             {
-                prescription.Quantity.CanBeSet = true;
+                //prescription.Quantity.CanBeSet = true;
                 prescription.Drug.Components[0].Substances[0].Quantity.CanBeSet = true;
-                prescription.Drug.Quantity.CanBeSet = true;
+                prescription.Quantity.CanBeSet = true;
+                prescription.Total.CanBeSet = true;
+
+                prescription.Frequency.CanBeSet = true;
+
+                prescription.Doses[0].Quantity.CanBeSet = true;
+                prescription.Doses[0].Total.CanBeSet = true;
+
+                //prescription.Drug.Quantity.CanBeSet = true;
+
+                if(prescription.Solution)
+                {
+                    
+                }
             }
         }
     }

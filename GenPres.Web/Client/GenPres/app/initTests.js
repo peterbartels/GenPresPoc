@@ -22,8 +22,6 @@ Ext.onReady(function () {
 
     Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
 
-
-
     Ext.app.config.appFolder = '../Client/GenPres/app';
     //noinspection JSUnusedGlobalSymbols
     Ext.app.config.launch = function() {

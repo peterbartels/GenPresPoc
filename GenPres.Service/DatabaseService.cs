@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using GenPres.Business.Domain.Databases;
-using Settings;
 using StructureMap;
 
 namespace GenPres.Business.Service

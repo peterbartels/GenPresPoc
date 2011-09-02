@@ -11,7 +11,11 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
 
     width:600,
 
-    height:141,
+    height:111,
+
+    bodyPadding:'0 0 0 5',
+
+    bodyCls: 'presriptionFormCategory',
 
     initComponent : function(){
         var me = this;
@@ -57,7 +61,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             width:140,
             padding:'26 0 0 0',
             id:'drugQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
             name:'drugQuantity'
         });
 
@@ -69,6 +73,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             margin:'0 0 0 20',
             id:'substanceDrugConcentration',
             unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            totalStore:Ext.create('GenPres.store.prescription.ComponentUnit'),
             name:'substanceDrugConcentration'
         });
 
@@ -79,13 +84,12 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             width:120,
             id:'drugSolution',
             action:'solution',
-            fieldLabel: 'Solution'
+            style:{visibility:'hidden'},
+            fieldLabel: 'Oplossing'
         });
-
 
         var tablePanel = Ext.create('Ext.Panel', {
             border:false,
-            margin:'10 10 10 10',
             layout : {
                type:'table',
                 columns:4

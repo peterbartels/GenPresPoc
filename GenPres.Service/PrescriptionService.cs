@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using GenPres.Business.Allowance;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
@@ -31,6 +32,10 @@ namespace GenPres.Service
         public static PrescriptionDto UpdatePrescription(PrescriptionDto prescriptionDto, string patientId)
         {
             var prescription = PrescriptionAssembler.AssemblePrescriptionBo(prescriptionDto);
+            
+            var prescriptionAllowance = new PrescriptionPropertySetAllowance();
+            prescriptionAllowance.DetemineCanBeSet(prescription);
+
             //TEMPWEG prescription.Save(patientId);
             return PrescriptionAssembler.AssemblePrescriptionDto(prescription);
         }
@@ -58,24 +63,21 @@ namespace GenPres.Service
 
             return prescriptionDtos.ToList().AsReadOnly();
         }
-        public static PrescriptionDto GetPrescriptionById(int id)
+        public static PrescriptionDto GetPrescriptionById(string id)
         {
-            //TEMPWEG return PrescriptionAssembler.AssemblePrescriptionDto(Prescription.GetPrescriptionById(id));
-            return PrescriptionAssembler.AssemblePrescriptionDto(Prescription.NewPrescription());
+            return PrescriptionAssembler.AssemblePrescriptionDto(Repository.GetPrescriptionById(Guid.Parse(id)));
         }
 
-        public static ReadOnlyCollection<ValueDto> GetSubstanceUnits(string generic, string shape, string route)
+        public static ReadOnlyCollection<ComboValue> GetSubstanceUnits(string generic, string shape, string route)
         {
             var genFormService = new GenFormService();
-            var units = genFormService.GetSubstanceUnits(generic, shape, route);
-            return ValueListAssembler.AssembleValueListDto(units);
+            return genFormService.GetSubstanceUnits(generic, shape, route);
         }
 
-        public static ReadOnlyCollection<ValueDto> GetComponentUnits(string generic, string shape, string route)
+        public static ReadOnlyCollection<ComboValue> GetComponentUnits(string generic, string shape, string route)
         {
             var genFormService = new GenFormService();
-            var units = genFormService.GetComponentUnits(generic, shape, route);
-            return ValueListAssembler.AssembleValueListDto(units);
+            return genFormService.GetComponentUnits(generic, shape, route);
         }
     }
 }

@@ -7,16 +7,14 @@ Ext.define('GenPres.view.prescription.Options', {
         columns:4
     },
     alias:'widget.prescriptionformoptions',
-
-    collapsible:true,
     
     border:false,
 
-    title:'Opties',
+    title:'&nbsp;',
 
     width:270,
 
-    height:73,
+    height:53,
 
     initComponent : function(){
         var me = this;
@@ -27,6 +25,7 @@ Ext.define('GenPres.view.prescription.Options', {
             labelSeparator:'',
             style: { textAlign: 'center'},
             width:60,
+            fieldStyle :'visibility:hidden;',
             name:'prescriptionContinuous'
         });
 
@@ -36,6 +35,7 @@ Ext.define('GenPres.view.prescription.Options', {
             style: { textAlign: 'center'},
             width:70,
             labelSeparator:'',
+            fieldStyle :'visibility:hidden;',
             name:'prescriptionInfusion'
         });
 
@@ -48,7 +48,7 @@ Ext.define('GenPres.view.prescription.Options', {
             name:'prescriptionOnRequest'
         });
 
-        solution = Ext.create('Ext.form.field.Checkbox',{
+        var solution = Ext.create('Ext.form.field.Checkbox',{
             fieldLabel : 'Oplossing',
             labelAlign:'top',
             style: { textAlign: 'center'},
@@ -56,7 +56,16 @@ Ext.define('GenPres.view.prescription.Options', {
             labelSeparator:'',
             name:'prescriptionSolution'
         });
-
+        
+        solution.on("change", function(field, newValue, oldValue, eOpts){
+            if(newValue == true){
+                continuous.setFieldStyle("visibility:visible;");
+                infusion.setFieldStyle("visibility:visible;");
+            }else{
+                continuous.setFieldStyle("visibility:hidden;");
+                infusion.setFieldStyle("visibility:hidden;");
+            }
+        })
 
 
         me.items = [continuous, infusion, onRequest, solution];

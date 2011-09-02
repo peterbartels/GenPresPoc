@@ -19,15 +19,12 @@ namespace GenPres.Data
             
             if(databaseName == DatabaseConnection.DatabaseName.GenPresTest)
             {
-                //fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory());
-                fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
+                fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory().Raw("hbm2ddl.keywords", "none").ShowSql());
             }else
             {
                 fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
             }
 
-            //fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory());
-            
             fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.PrescriptionMap>()
                 .ExportTo(@"C:\development\GenPres\MappingsXml"))
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
@@ -41,9 +38,9 @@ namespace GenPres.Data
         internal static void BuildSchema(ISession session)
         {
             var export = new SchemaExport(_configuration);
-            export.Drop(false, true);
-            export.Create(false, true);
-            //export.Execute(true, true, false, session.Connection, null);
+            //export.Drop(false, true);
+            //export.Create(false, true);
+            export.Execute(true, true, false, session.Connection, null);
         }
 
         private static string GetConnectionString(DatabaseConnection.DatabaseName databaseName)

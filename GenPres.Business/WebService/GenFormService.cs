@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
@@ -46,22 +47,31 @@ namespace GenPres.Business.WebService
             return new[] { 0.05m, 0.075m, 0,1m, 0.225m, 0.5m };
         }
 
-        public string[] GetSubstanceUnits(string generic, string shape, string route)
+        public ReadOnlyCollection<ComboValue> GetSubstanceUnits(string generic, string shape, string route)
         {
-            return new[] {"g","mg","microg"};
+            return new[]
+                       {
+                           new ComboValue() {selected = false, Value = "gram"},
+                           new ComboValue() {selected = true, Value = "mg"},
+                           new ComboValue(){selected = false, Value = "microgr"}
+                       }.ToList().AsReadOnly(); ;
         }
-        
-        public string[] GetComponentUnits(string generic, string shape, string route)
+
+        public ReadOnlyCollection<ComboValue> GetComponentUnits(string generic, string shape, string route)
         {
             if(generic == "paracetamol")
             {
-                return new[] { "zetp" };    
+                return new[] { new ComboValue() { selected = true, Value = "zetp" } }.ToList().AsReadOnly(); ;    
             }
             if (generic == "dopamine")
             {
-                return new[] { "l","ml" };
+                return new[]
+                       {
+                           new ComboValue() {selected = false, Value = "l"},
+                           new ComboValue() {selected = true, Value = "ml"}
+                       }.ToList().AsReadOnly();
             }
-            return new string[] {};   
+            return new ComboValue[] { }.ToList().AsReadOnly(); ;   
         }
     }
 }

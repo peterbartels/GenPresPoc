@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-
+using Ext.Direct.Mvc;
 namespace Informedica.GenForm.Mvc3.Controllers
 {
     public class TestsController : Controller
@@ -16,6 +16,11 @@ namespace Informedica.GenForm.Mvc3.Controllers
         {
             ViewBag.Title = "GenPres Tests";
             return View();
+        }
+
+        public ActionResult GetTestData()
+        {
+            return this.Direct("test");
         }
     }
 }

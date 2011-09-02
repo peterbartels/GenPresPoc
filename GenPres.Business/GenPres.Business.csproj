@@ -48,14 +48,7 @@
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Xml.Linq">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Allowance\PrescriptionPropertySetAllowance.cs" />
@@ -121,6 +114,7 @@
     <Compile Include="Domain\Prescriptions\Prescription.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebService\ComboValue.cs" />
     <Compile Include="WebService\GenFormService.cs" />
     <Compile Include="WebService\IGenFormService.cs" />
   </ItemGroup>

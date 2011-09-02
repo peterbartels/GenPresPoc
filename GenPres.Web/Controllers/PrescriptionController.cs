@@ -25,7 +25,7 @@ namespace GenPres.Controllers
         {
             return this.Direct(PrescriptionService.GetSubstanceUnits(generic, shape, route));
         }
-        public ActionResult GetComponengtUnits(string generic, string shape, string route)
+        public ActionResult GetComponentUnits(string generic, string shape, string route)
         {
             return this.Direct(PrescriptionService.GetComponentUnits(generic, shape, route));
         }
@@ -33,7 +33,7 @@ namespace GenPres.Controllers
         {
             return this.Direct(PrescriptionService.GetPrescriptions(patientId));
         }
-        public ActionResult GetPrescriptionById(int id)
+        public ActionResult GetPrescriptionById(string id)
         {
             return this.Direct(PrescriptionService.GetPrescriptionById(id));
         }

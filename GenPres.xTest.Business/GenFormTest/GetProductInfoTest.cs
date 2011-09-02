@@ -31,14 +31,14 @@ namespace GenPres.xTest.Business.GenFormTest
         public void CanGetSubstanceUnits()
         {
             var substanceUnits = _genFormService.GetSubstanceUnits("paracetamol", "rect", "zetp");
-            Assert.IsTrue(substanceUnits.Length > 0);
+            Assert.IsTrue(substanceUnits.Count > 0);
         }
 
         [TestMethod]
         public void CanGetComponentUnits()
         {
             var componentUnits = _genFormService.GetComponentUnits("paracetamol", "rect", "zetp");
-            Assert.IsTrue(componentUnits.Length > 0);
+            Assert.IsTrue(componentUnits.Count > 0);
         }
     }
 }

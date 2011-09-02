@@ -7,16 +7,18 @@ Ext.define('GenPres.view.prescription.Dose', {
         columns:3
     },
     alias:'widget.prescriptionformdose',
-
-    collapsible:true,
     
     border:false,
 
     title:'Dosering',
 
-    width:700,
+    width:870,
 
     colspan:2,
+
+    bodyPadding:'0 0 0 5',
+
+    bodyCls: 'presriptionFormCategory',
 
     initComponent : function(){
         var me = this;
@@ -27,7 +29,8 @@ Ext.define('GenPres.view.prescription.Dose', {
             width:200,
             labelAlign:'top',
             id:'doseQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
+            adjustStore: Ext.create('GenPres.store.prescription.AdjustUnit'),
             name:'doseQuantity'
         });
 
@@ -37,7 +40,9 @@ Ext.define('GenPres.view.prescription.Dose', {
             width:200,
             labelAlign:'top',
             id:'doseTotal',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
+            adjustStore: Ext.create('GenPres.store.prescription.AdjustUnit'),
+            totalStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
             name:'doseTotal'
         });
 
@@ -46,7 +51,9 @@ Ext.define('GenPres.view.prescription.Dose', {
             unit:'mg',
             labelAlign:'top',
             id:'doseRate',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
+            adjustStore: Ext.create('GenPres.store.prescription.AdjustUnit'),
+            timeStore: Ext.create('GenPres.store.prescription.RateUnit'),
             name:'doseRate'
         });
         me.items = [quantity, total, rate];

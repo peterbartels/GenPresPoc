@@ -36,11 +36,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseService.cs" />
@@ -59,10 +54,6 @@
     <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
-      <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
-      <Name>GenPres.Settings</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

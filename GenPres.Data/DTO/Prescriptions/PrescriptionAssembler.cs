@@ -21,15 +21,19 @@ namespace GenPres.Data.DTO.Prescriptions
             
             prescription.PID = prescriptionDto.PID;
 
+            prescription.Frequency = UnitValueDto.AssembleUnitValue(prescription.Frequency, prescriptionDto.prescriptionFrequency);
+            prescription.Duration = UnitValueDto.AssembleUnitValue(prescription.Duration, prescriptionDto.prescriptionDuration);
+
             prescription.Continuous = prescriptionDto.continuous;
-            prescription.Continuous = prescriptionDto.continuous;
-            prescription.Continuous = prescriptionDto.continuous;
+            prescription.OnRequest = prescriptionDto.onrequest;
+            prescription.Solution = prescriptionDto.solution;
+            prescription.Solution = prescriptionDto.infusion;
 
             prescription.Drug.Quantity = UnitValueDto.AssembleUnitValue(prescription.Drug.Quantity, prescriptionDto.drugQuantity);
 
-            prescription.Quantity = UnitValueDto.AssembleUnitValue(prescription.Quantity, prescriptionDto.prescriptionQuantity);
-            prescription.Rate = UnitValueDto.AssembleUnitValue(prescription.Rate, prescriptionDto.prescriptionRate);
-            prescription.Total = UnitValueDto.AssembleUnitValue(prescription.Total, prescriptionDto.prescriptionTotal);
+            prescription.Quantity = UnitValueDto.AssembleUnitValue(prescription.Quantity, prescriptionDto.adminQuantity);
+            prescription.Rate = UnitValueDto.AssembleUnitValue(prescription.Rate, prescriptionDto.adminRate);
+            prescription.Total = UnitValueDto.AssembleUnitValue(prescription.Total, prescriptionDto.adminTotal);
 
             prescription.Doses[0].Quantity = UnitValueDto.AssembleUnitValue(prescription.Doses[0].Quantity, prescriptionDto.doseQuantity);
             prescription.Doses[0].Total = UnitValueDto.AssembleUnitValue(prescription.Doses[0].Total, prescriptionDto.doseTotal);
@@ -51,12 +55,16 @@ namespace GenPres.Data.DTO.Prescriptions
             prescriptionDto.drugRoute = prescription.Drug.Route;
             prescriptionDto.drugShape = prescription.Drug.Shape;
 
+            prescriptionDto.prescriptionFrequency = UnitValueDto.AssembleUnitValueDto(prescription.Frequency);
+            prescriptionDto.prescriptionDuration = UnitValueDto.AssembleUnitValueDto(prescription.Duration);
+
+
             prescriptionDto.substanceQuantity = UnitValueDto.AssembleUnitValueDto(prescription.Drug.Components[0].Substances[0].Quantity);
             prescriptionDto.substanceDrugConcentration = UnitValueDto.AssembleUnitValueDto(prescription.Drug.Components[0].Substances[0].DrugConcentration);
 
-            prescriptionDto.prescriptionQuantity = UnitValueDto.AssembleUnitValueDto(prescription.Quantity);
-            prescriptionDto.prescriptionTotal = UnitValueDto.AssembleUnitValueDto(prescription.Total);
-            prescriptionDto.prescriptionRate = UnitValueDto.AssembleUnitValueDto(prescription.Rate);
+            prescriptionDto.adminQuantity = UnitValueDto.AssembleUnitValueDto(prescription.Quantity);
+            prescriptionDto.adminTotal = UnitValueDto.AssembleUnitValueDto(prescription.Total);
+            prescriptionDto.adminRate = UnitValueDto.AssembleUnitValueDto(prescription.Rate);
 
             prescriptionDto.drugQuantity = UnitValueDto.AssembleUnitValueDto(prescription.Drug.Quantity);
 

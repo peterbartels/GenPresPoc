@@ -17,6 +17,8 @@ namespace GenPres.Business.Domain.Prescriptions
         public virtual IList<Dose> Doses { get; set; }
 
         public virtual UnitValue Frequency { get; set; }
+        public virtual UnitValue Duration { get; set; }
+
         public virtual UnitValue Quantity { get; set; }
         public virtual UnitValue Total { get; set; }
         public virtual UnitValue Rate { get; set; }

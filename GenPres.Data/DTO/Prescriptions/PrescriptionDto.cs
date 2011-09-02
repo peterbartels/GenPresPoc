@@ -19,13 +19,16 @@
         public UnitValueDto drugQuantity { get; set; }
         public UnitValueDto substanceDrugConcentration { get; set; }
 
-        public UnitValueDto prescriptionQuantity { get; set; }
-        public UnitValueDto prescriptionTotal { get; set; }
-        public UnitValueDto prescriptionRate { get; set; }
+        public UnitValueDto prescriptionFrequency { get; set; }
+        public UnitValueDto prescriptionDuration { get; set; }
 
         public UnitValueDto doseQuantity { get; set; }
         public UnitValueDto doseTotal { get; set; }
         public UnitValueDto doseRate { get; set; }
+
+        public UnitValueDto adminQuantity { get; set; }
+        public UnitValueDto adminTotal { get; set; }
+        public UnitValueDto adminRate { get; set; }
     }
 }
 
