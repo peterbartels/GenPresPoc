@@ -3,45 +3,109 @@ Ext.define('GenPres.lib.util.ASyncEventManager', {
 
     isBusy:false,
 
-    syncEvents : [],
+    queue : [],
 
-    queueLength : 0,
+    queueIndex : 0,
+
+    isFirst : true,
 
     checkQueue : function(){
         var me = this;
-        if(typeof(me.syncEvents[me.queueLength]) == "undefined"){
-            me.syncEvents[me.queueLength] = [];
+        if(typeof(me.queue[me.queueIndex]) == "undefined"){
+            me.queue[me.queueIndex] = [];
         }
     },
 
-    registerEvent : function(func, params){
+    registerFunction : function(instance, eventName, params){
         var me = this;
         me.checkQueue();
-        me.syncEvents[me.queueLength].push({func:func, params:params});
+
+        //check if isOservarable
+        //check if events[eventName] is object
+        //check if listener exists
+        
+        if(typeof(instance.events[eventName].listeners) == "undefined"){
+            var emptyFunc = function(){};
+            instance.on(eventName, emptyFunc);
+        }
+        
+        var returnFunc = instance.events[eventName].listeners[0].fn;//func.events[eventName].listeners[0];
+        var obj = {
+            instance:instance,
+            func:instance[eventName],
+            eventName:eventName,
+            returnFunc:returnFunc,
+            params:params
+        };
+        me.queue[me.queueIndex].push(obj);
+
     },
 
-    execute : function(){
+    registerDirectEvent : function(func, params){
+        var me = this;
+        me.checkQueue();
+        var returnFunc = params.pop();
+        
+        me.queue[me.queueIndex].push({
+            directFunc:func,
+            returnFunc:returnFunc,
+            params:params
+        });
+    },
+
+    execute : function(disableUpdateIndex){
         var me = this;
         
-        me.queueLength++;
+        if(typeof(disableUpdateIndex) == "undefined"){
+            me.queueIndex++;
+        }
 
         if(me.isBusy == true) return;
 
-        me.isBusy = true;
-        
-        if(me.syncEvents.length > 0){
-            for(var i=0; i<me.syncEvents[0].length; i++){
-                var returnFunc = me.syncEvents[0][i]['params'][0];
+        if(me.queue.length > 0){
+            me.isBusy = true;
+            var funcs = [];
+            for(var i=me.queue[0].length-1; i>=0; i--){
+
+                var returnFunc = me.queue[0][i]['returnFunc'];
+
                 returnFunc = Ext.Function.createSequence(returnFunc, function(){
-                    me.syncEvents[0].pop();
-                    if(me.syncEvents[0].length == 0){
-                        me.syncEvents.shift();
+                    me.queue[0].pop();
+                    if(me.queue[0].length == 0){
+                        me.queue.shift();
+                        me.queueIndex--;
                         me.isBusy = false;
-                        me.executeASync();
+                        if(me.queue.length > 0) me.execute(true);
                         return;
                     }
                 });
-                var newFunc = me.syncEvents[0][i]['func'](returnFunc);
+
+                var funcConfig = me.queue[0][i];
+
+                for(var p=0;p<funcConfig['params'].length;p++){
+                    if(typeof(funcConfig['params'][p]) == "function"){
+                        var d = funcConfig['params'][p]();
+                        funcConfig['params'][p] = d;
+                    }
+                }
+
+                if(typeof(me.queue[0][i]['directFunc']) != "undefined"){
+                    var params = Ext.Array.merge(funcConfig['params'], returnFunc);
+                    var newFunc = Ext.Function.pass(funcConfig['directFunc'], params);
+                    funcs.push(newFunc);
+                } else{
+                    if(!funcConfig["instance"].events[funcConfig["eventName"]].listeners[0].linkedToQueue){
+                        funcConfig["instance"].events[funcConfig["eventName"]].listeners[0].linkedToQueue = true;
+                        funcConfig["instance"].events[funcConfig["eventName"]].listeners[0].fn = returnFunc;
+                        funcConfig["instance"].events[funcConfig["eventName"]].listeners[0].fireFn = returnFunc;
+                    }
+                    var newFunc = Ext.Function.bind(funcConfig['func'], funcConfig['instance'], params);
+                    funcs.push(newFunc);
+                }
+            }
+            
+            for(var i=0; i<funcs.length; i++){
+                funcs[i]();
             }
         }
     }

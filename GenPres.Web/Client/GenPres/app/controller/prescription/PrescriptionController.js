@@ -33,7 +33,9 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
                 blur : this.updatePrescription
             },
             'combobox[isFormField=false]' :{
-                change : this.updatePrescription
+                change : function(a){
+                    this.updatePrescription
+                }
             },
             'checkboxfield' :{
                 change : this.updatePrescription
@@ -43,17 +45,17 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     updatePrescription: function(){
         var me = this;
-        if(this.getDrugCompositionController().drugIsChosen()){
-            var PID = GenPres.session.PatientSession.patient.PID;
-            me.prescriptionIsLoading = true;
 
-            Ext.Function.defer(function(){
-                Prescription.UpdatePrescription(PID, me.getValues(), function(newValues){
-                    me.setValues(newValues);
-                    me.prescriptionIsLoading = false;
-                });
-            }, 200);
-        }
+        var PID = GenPres.session.PatientSession.patient.PID;
+        me.prescriptionIsLoading = true;
+        
+        var returnFunc = function(newValues){
+            me.setValues(newValues);
+            me.prescriptionIsLoading = false;
+        };
+
+        GenPres.ASyncEventManager.registerDirectEvent(Prescription.UpdatePrescription, [PID, Ext.Function.bind(me.getValues, me), returnFunc]);
+        GenPres.ASyncEventManager.execute();
     },
 
     getDrugCompositionController : function(){
@@ -68,13 +70,15 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     loadPrescription : function(view, record, htmlItem, index, event, options){
-        Prescription.GetPrescriptionById(record.data.Id, function(result){
+        var resultFunc = function(result){
             this.setValues(record.data);
             var drugController = GenPres.application.getController('prescription.DrugComposition');
             drugController.changeSelection(drugController.getComboBox("generic"));
             drugController.changeSelection(drugController.getComboBox("route"));
             drugController.changeSelection(drugController.getComboBox("shape"));
-        }, this);
+        };
+        //GenPres.ASyncEventManager.registerDirectEvent(Prescription.GetPrescriptionById, [record.data.Id, resultFunc]);
+        //GenPres.ASyncEventManager.execute();
     },
 
     setValues: function(data){
@@ -109,9 +113,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     clearPrescription : function(){
         this.getDrugCompositionController().clear();
         var me = this;
-        Prescription.ClearPrescription(function(newValues){
+        GenPres.ASyncEventManager.registerDirectEvent(Prescription.ClearPrescription, [function(newValues){
             me.setValues(newValues);
-        });
+        }]);
+        GenPres.ASyncEventManager.execute();
     },
 
     getForm : function(){
@@ -128,11 +133,14 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
     getValues:function(){
         var vals = {};
+        console.log("getting values");
         var form = this.getForm();
 
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });
+        console.log("finished get values");
+
         return vals;
     }
 });

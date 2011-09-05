@@ -44769,7 +44769,7 @@ Ext.define('Ext.data.Store', {
                 callback: options
             };
         }
-
+        
         Ext.applyIf(options, {
             groupers: me.groupers.items,
             page: me.currentPage,

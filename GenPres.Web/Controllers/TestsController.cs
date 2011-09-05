@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Ext.Direct.Mvc;
 namespace Informedica.GenForm.Mvc3.Controllers
 {
@@ -18,9 +19,17 @@ namespace Informedica.GenForm.Mvc3.Controllers
             return View();
         }
 
-        public ActionResult GetTestData()
+        public ActionResult GetTestData(string contents)
         {
-            return this.Direct("test");
+            return this.Direct(contents);
+        }
+
+        public ActionResult GetTestStoreData(string contents)
+        {
+            var res = new Dictionary<int, Dictionary<string, string>>();
+            res[0] = new Dictionary<string, string>();
+            res[0]["test"] = "contents";
+            return this.Direct(res);
         }
     }
 }

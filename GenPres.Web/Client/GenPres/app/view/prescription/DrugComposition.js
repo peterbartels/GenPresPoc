@@ -34,7 +34,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             width:140,
             labelAlign:'top',
             id:'substanceQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
             name:'substanceQuantity'
         });
         
@@ -61,7 +61,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             width:140,
             padding:'26 0 0 0',
             id:'drugQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'drugQuantity'
         });
 
@@ -72,8 +72,8 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             colspan:2,
             margin:'0 0 0 20',
             id:'substanceDrugConcentration',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
-            totalStore:Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'substanceDrugConcentration'
         });
 

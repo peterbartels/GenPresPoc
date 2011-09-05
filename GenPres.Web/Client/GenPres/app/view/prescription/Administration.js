@@ -29,7 +29,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             labelAlign:'top',
             fieldLabel:'Per keer',
             id:'adminQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'adminQuantity'
         });
 
@@ -39,7 +39,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             width:260,
             labelAlign:'top',
             id:'adminTotal',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             totalStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
             name:'adminTotal'
         });
@@ -49,7 +49,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             unit:'mg',
             labelAlign:'top',
             id:'adminRate',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             timeStore: Ext.create('GenPres.store.prescription.RateUnit'),
             name:'adminRate'
         });

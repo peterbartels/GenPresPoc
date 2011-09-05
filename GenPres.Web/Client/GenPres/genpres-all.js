@@ -527,9 +527,7 @@ Ext.define('GenPres.control.UnitValueField', {
                 for(var i=0;i<store.data.items.length;i++){
                     var val = store.data.items[i].raw;
                     if(val.selected == true){
-                        Ext.Function.defer(function(){
-                            combo.setValue(val["Value"]);
-                        },200);
+                        combo.setValue(val["Value"]);
                     }
                 }
             }
@@ -622,12 +620,14 @@ Ext.define('GenPres.control.UnitValueField', {
         me.callParent();
         
         me.on("afterrender", function(){
+            me.suspendEvents();
             me.setValue({
                value : me.value,
                unit: me.unit,
                canBeSet:me.canBeSet,
                state:me.state
             });
+            me.resumeEvents();
         })
     },
 
@@ -639,15 +639,15 @@ Ext.define('GenPres.control.UnitValueField', {
 
     suspendEvents : function(){
         var me = this;
-        //me.valueField.suspendEvents();
-        //me.unitCombo.suspendEvents();
+        me.valueField.suspendEvents();
+        me.unitCombo.suspendEvents();
         me.callParent();
     },
 
     resumeEvents : function(){
         var me = this;
-        //me.valueField.resumeEvents();
-        //me.unitCombo.resumeEvents();
+        me.valueField.resumeEvents();
+        me.unitCombo.resumeEvents();
         me.callParent();
     },
 
@@ -1133,6 +1133,7 @@ Ext.define('GenPres.store.prescription.ValueStore', {
 Ext.define('GenPres.store.prescription.GenericStore', {
     extend: 'GenPres.store.prescription.ValueStore',
     alias: 'widget.genericstore',
+    autoLoad:false,
     proxy : {
         type:'direct',
         directFn : Prescription.GetGenerics,
@@ -1147,6 +1148,7 @@ Ext.define('GenPres.store.prescription.GenericStore', {
 Ext.define('GenPres.store.prescription.RouteStore', {
     extend: 'GenPres.store.prescription.ValueStore',
     alias: 'widget.routestore',
+    autoLoad:false,
     proxy : {
         type:'direct',
         directFn : Prescription.GetRoutes,
@@ -1220,6 +1222,7 @@ Ext.define('GenPres.lib.view.window.SaveCancelWindow', {
 Ext.define('GenPres.store.prescription.ShapeStore', {
     extend: 'GenPres.store.prescription.ValueStore',
     alias: 'widget.shapestore',
+    autoLoad:false,
     proxy : {
         type:'direct',
         directFn : Prescription.GetShapes,
@@ -1609,7 +1612,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             width:140,
             labelAlign:'top',
             id:'substanceQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
             name:'substanceQuantity'
         });
         
@@ -1636,7 +1639,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             width:140,
             padding:'26 0 0 0',
             id:'drugQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'drugQuantity'
         });
 
@@ -1647,8 +1650,8 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             colspan:2,
             margin:'0 0 0 20',
             id:'substanceDrugConcentration',
-            unitStore: Ext.create('GenPres.store.prescription.SubstanceUnit'),
-            totalStore:Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'substanceDrugConcentration'
         });
 
@@ -1882,7 +1885,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             labelAlign:'top',
             fieldLabel:'Per keer',
             id:'adminQuantity',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'adminQuantity'
         });
 
@@ -1892,7 +1895,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             width:260,
             labelAlign:'top',
             id:'adminTotal',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             totalStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
             name:'adminTotal'
         });
@@ -1902,7 +1905,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             unit:'mg',
             labelAlign:'top',
             id:'adminRate',
-            unitStore: Ext.create('GenPres.store.prescription.ComponentUnit'),
+            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             timeStore: Ext.create('GenPres.store.prescription.RateUnit'),
             name:'adminRate'
         });
@@ -2531,7 +2534,9 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
                 blur : this.updatePrescription
             },
             'combobox[isFormField=false]' :{
-                change1 : this.updatePrescription
+                change : function(a){
+                    this.updatePrescription
+                }
             },
             'checkboxfield' :{
                 change : this.updatePrescription
@@ -2541,17 +2546,17 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     updatePrescription: function(){
         var me = this;
-        if(this.getDrugCompositionController().drugIsChosen()){
-            var PID = GenPres.session.PatientSession.patient.PID;
-            me.prescriptionIsLoading = true;
 
-            Ext.Function.defer(function(){
-                Prescription.UpdatePrescription(PID, me.getValues(), function(newValues){
-                    me.setValues(newValues);
-                    me.prescriptionIsLoading = false;
-                });
-            }, 200);
-        }
+        var PID = GenPres.session.PatientSession.patient.PID;
+        me.prescriptionIsLoading = true;
+        
+        var returnFunc = function(newValues){
+            me.setValues(newValues);
+            me.prescriptionIsLoading = false;
+        };
+
+        GenPres.ASyncEventManager.registerDirectEvent(Prescription.UpdatePrescription, [PID, Ext.Function.bind(me.getValues, me), returnFunc]);
+        GenPres.ASyncEventManager.execute();
     },
 
     getDrugCompositionController : function(){
@@ -2566,13 +2571,15 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     loadPrescription : function(view, record, htmlItem, index, event, options){
-        Prescription.GetPrescriptionById(record.data.Id, function(result){
+        var resultFunc = function(result){
             this.setValues(record.data);
             var drugController = GenPres.application.getController('prescription.DrugComposition');
             drugController.changeSelection(drugController.getComboBox("generic"));
             drugController.changeSelection(drugController.getComboBox("route"));
             drugController.changeSelection(drugController.getComboBox("shape"));
-        }, this);
+        };
+        //GenPres.ASyncEventManager.registerDirectEvent(Prescription.GetPrescriptionById, [record.data.Id, resultFunc]);
+        //GenPres.ASyncEventManager.execute();
     },
 
     setValues: function(data){
@@ -2607,9 +2614,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     clearPrescription : function(){
         this.getDrugCompositionController().clear();
         var me = this;
-        Prescription.ClearPrescription(function(newValues){
+        GenPres.ASyncEventManager.registerDirectEvent(Prescription.ClearPrescription, [function(newValues){
             me.setValues(newValues);
-        });
+        }]);
+        GenPres.ASyncEventManager.execute();
     },
 
     getForm : function(){
@@ -2626,11 +2634,14 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
     getValues:function(){
         var vals = {};
+        console.log("getting values");
         var form = this.getForm();
 
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });
+        console.log("finished get values");
+
         return vals;
     }
 });
@@ -2660,20 +2671,15 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
 
     checkValues : function(store, records, succesful, options){
         if(store.getCount() == 1){
-            options.comboBox.select(options.comboBox.store.data.getAt(0))
+            options.comboBox.setValue(options.comboBox.store.data.getAt(0).data.Value);
+            //options.comboBox.setValue(options.comboBox.store.data.getAt(0));
+            console.log("check value complete");
+
         }
     },
 
     addStoreListeners : function(combo){
         combo.store.on("load", this.checkValues, this, {comboBox:combo});
-        combo.store.on("load", this.checkUpdatePrescription, this, {comboBox:combo});
-        combo.store.on("change", this.checkUpdatePrescription, this, {comboBox:combo});
-    },
-
-    checkUpdatePrescription : function(){
-        if(this.getDrugCompositionController().drugIsChosen()){
-            if(!this.prescriptionIsLoading) this.updatePrescription();
-        }
     },
 
     changeSelection : function(combo){
@@ -2689,35 +2695,44 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             this.generic = combo.getValue();
             this.setExtraParams('route', 'generic', this.generic);
             this.setExtraParams('shape', 'generic', this.generic);
-            this.getComboBox('route').store.load();
-            this.getComboBox('shape').store.load();
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
         }
+
+
+
         if(combo.action == "route"){
             this.route = combo.getValue();
             this.setExtraParams('generic', 'route', this.route);
             this.setExtraParams('shape', 'route', this.route);
-            this.getComboBox('generic').store.load();
-            this.getComboBox('shape').store.load();
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
         }
         if(combo.action == "shape"){
             this.shape = combo.getValue();
             this.setExtraParams('generic', 'shape', this.shape);
             this.setExtraParams('route', 'shape', this.shape);
-            this.getComboBox('generic').store.load();
-            this.getComboBox('route').store.load();
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
         }
-
+        
         var extraParams = {
             generic:this.generic,
             route:this.route,
             shape:this.shape
         };
+        
+        var subststanceUnitStore = GenPres.store.PrescriptionStores.getSubstanceUnitStore();
+        subststanceUnitStore.proxy.extraParams = extraParams;
+        GenPres.ASyncEventManager.registerFunction(subststanceUnitStore, "load", []);
+        //subststanceUnitStore.load();
 
-        GenPres.store.PrescriptionStores.getSubstanceUnitStore().proxy.extraParams = extraParams;
-        GenPres.store.PrescriptionStores.getSubstanceUnitStore().load();
+        var componentUnitStore = GenPres.store.PrescriptionStores.getComponentUnitStore();
+        componentUnitStore.proxy.extraParams = extraParams;
+        GenPres.ASyncEventManager.registerFunction(componentUnitStore, "load", []);
 
-        GenPres.store.PrescriptionStores.getComponentUnitStore().proxy.extraParams = extraParams;
-        GenPres.store.PrescriptionStores.getComponentUnitStore().load();
+        GenPres.ASyncEventManager.execute();
+        Ext.Function.defer(this.updatePrescription, 200, this);
     },
 
     drugIsChosen : function(){
@@ -2750,9 +2765,13 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         this.setExtraParams('shape', 'generic', '');
         this.setExtraParams('shape', 'route', '');
 
-        this.getComboBox('generic').store.load();
-        this.getComboBox('route').store.load();
-        this.getComboBox('shape').store.load();
+        //this.getComboBox('generic').store.load();
+        //this.getComboBox('route').store.load();
+        //this.getComboBox('shape').store.load();
+        GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
+        GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
+        GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
+        GenPres.ASyncEventManager.execute();
 
     }
 });

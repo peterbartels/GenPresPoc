@@ -4,7 +4,6 @@ Ext.define('GenPres.store.prescription.ComponentUnit', {
     proxy : {
         type:'direct',
         directFn : Prescription.GetComponentUnits,
-        directFn : Prescription.GetComponentUnits,
         autoLoad:true,
         extraParams:{
             generic:"",

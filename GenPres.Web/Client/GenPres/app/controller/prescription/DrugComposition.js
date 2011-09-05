@@ -24,20 +24,15 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
 
     checkValues : function(store, records, succesful, options){
         if(store.getCount() == 1){
-            options.comboBox.select(options.comboBox.store.data.getAt(0))
+            options.comboBox.setValue(options.comboBox.store.data.getAt(0).data.Value);
+            //options.comboBox.setValue(options.comboBox.store.data.getAt(0));
+            console.log("check value complete");
+
         }
     },
 
     addStoreListeners : function(combo){
         combo.store.on("load", this.checkValues, this, {comboBox:combo});
-        combo.store.on("load", this.checkUpdatePrescription, this, {comboBox:combo});
-        combo.store.on("change", this.checkUpdatePrescription, this, {comboBox:combo});
-    },
-
-    checkUpdatePrescription : function(){
-        if(this.getDrugCompositionController().drugIsChosen()){
-            if(!this.prescriptionIsLoading) this.updatePrescription();
-        }
     },
 
     changeSelection : function(combo){
@@ -53,35 +48,44 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             this.generic = combo.getValue();
             this.setExtraParams('route', 'generic', this.generic);
             this.setExtraParams('shape', 'generic', this.generic);
-            this.getComboBox('route').store.load();
-            this.getComboBox('shape').store.load();
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
         }
+
+
+
         if(combo.action == "route"){
             this.route = combo.getValue();
             this.setExtraParams('generic', 'route', this.route);
             this.setExtraParams('shape', 'route', this.route);
-            this.getComboBox('generic').store.load();
-            this.getComboBox('shape').store.load();
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
         }
         if(combo.action == "shape"){
             this.shape = combo.getValue();
             this.setExtraParams('generic', 'shape', this.shape);
             this.setExtraParams('route', 'shape', this.shape);
-            this.getComboBox('generic').store.load();
-            this.getComboBox('route').store.load();
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
+            GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
         }
-
+        
         var extraParams = {
             generic:this.generic,
             route:this.route,
             shape:this.shape
         };
+        
+        var subststanceUnitStore = GenPres.store.PrescriptionStores.getSubstanceUnitStore();
+        subststanceUnitStore.proxy.extraParams = extraParams;
+        GenPres.ASyncEventManager.registerFunction(subststanceUnitStore, "load", []);
+        //subststanceUnitStore.load();
 
-        GenPres.store.PrescriptionStores.getSubstanceUnitStore().proxy.extraParams = extraParams;
-        GenPres.store.PrescriptionStores.getSubstanceUnitStore().load();
+        var componentUnitStore = GenPres.store.PrescriptionStores.getComponentUnitStore();
+        componentUnitStore.proxy.extraParams = extraParams;
+        GenPres.ASyncEventManager.registerFunction(componentUnitStore, "load", []);
 
-        GenPres.store.PrescriptionStores.getComponentUnitStore().proxy.extraParams = extraParams;
-        GenPres.store.PrescriptionStores.getComponentUnitStore().load();
+        GenPres.ASyncEventManager.execute();
+        Ext.Function.defer(this.updatePrescription, 200, this);
     },
 
     drugIsChosen : function(){
@@ -114,9 +118,13 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         this.setExtraParams('shape', 'generic', '');
         this.setExtraParams('shape', 'route', '');
 
-        this.getComboBox('generic').store.load();
-        this.getComboBox('route').store.load();
-        this.getComboBox('shape').store.load();
+        //this.getComboBox('generic').store.load();
+        //this.getComboBox('route').store.load();
+        //this.getComboBox('shape').store.load();
+        GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
+        GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
+        GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
+        GenPres.ASyncEventManager.execute();
 
     }
 });

@@ -3,7 +3,7 @@ Ext.app.config = {
 
     'autoCreateViewport': false,
 
-    requires : ['GenPres.test.util.Query'],
+    requires : ['GenPres.test.util.Query','GenPres.lib.util.ASyncEventManager'],
 
     controllers: [
         'user.Login',
@@ -15,8 +15,8 @@ Ext.app.config = {
     launch: function() {
         var me = this;
         GenPres.application = me;
-        GenPres.ASyncEventManager = Ext.create('GenPres.lib.util.ASyncEventManager');
-        
+        GenPres.ASyncEventManager = GenPres.lib.util.ASyncEventManager;
+
         me.setDefaults();
 
         this.viewport = Ext.create('Ext.container.Viewport', {

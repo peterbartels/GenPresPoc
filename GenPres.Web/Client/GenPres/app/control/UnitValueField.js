@@ -115,9 +115,7 @@ Ext.define('GenPres.control.UnitValueField', {
                 for(var i=0;i<store.data.items.length;i++){
                     var val = store.data.items[i].raw;
                     if(val.selected == true){
-                        Ext.Function.defer(function(){
-                            combo.setValue(val["Value"]);
-                        },200);
+                        combo.setValue(val["Value"]);
                     }
                 }
             }
@@ -210,12 +208,14 @@ Ext.define('GenPres.control.UnitValueField', {
         me.callParent();
         
         me.on("afterrender", function(){
+            me.suspendEvents();
             me.setValue({
                value : me.value,
                unit: me.unit,
                canBeSet:me.canBeSet,
                state:me.state
             });
+            me.resumeEvents();
         })
     },
 
@@ -227,15 +227,15 @@ Ext.define('GenPres.control.UnitValueField', {
 
     suspendEvents : function(){
         var me = this;
-        //me.valueField.suspendEvents();
-        //me.unitCombo.suspendEvents();
+        me.valueField.suspendEvents();
+        me.unitCombo.suspendEvents();
         me.callParent();
     },
 
     resumeEvents : function(){
         var me = this;
-        //me.valueField.resumeEvents();
-        //me.unitCombo.resumeEvents();
+        me.valueField.resumeEvents();
+        me.unitCombo.resumeEvents();
         me.callParent();
     },
 
