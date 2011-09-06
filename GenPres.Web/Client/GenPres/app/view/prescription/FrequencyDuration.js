@@ -33,7 +33,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             width:200,
             labelAlign:'top',
             id:'prescriptionFrequency',
-            unitStore: frequencyStore,
+            timeStore: frequencyStore,
             name:'prescriptionFrequency'
         });
 
@@ -46,7 +46,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             unit:'mg',
             labelAlign:'top',
             id:'prescriptionDuration',
-            unitStore: durationStore,
+            timeStore: durationStore,
             name:'prescriptionDuration'
         });
 

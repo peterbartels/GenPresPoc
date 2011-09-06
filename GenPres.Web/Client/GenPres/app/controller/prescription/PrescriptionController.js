@@ -13,7 +13,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     prescriptionIsLoading: false,
 
     init: function() {
-        this.control({
+
+        var me = this;
+
+        me.control({
             'gridpanel' : {
                 itemdblclick: this.loadPrescription
             },
@@ -32,15 +35,21 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             'valuefield' : {
                 blur : this.updatePrescription
             },
-            'combobox[isFormField=false]' :{
-                change : function(a){
-                    this.updatePrescription
+            'unitvaluefield' :{
+                userChange : function(){
+                    GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
                 }
             },
             'checkboxfield' :{
                 change : this.updatePrescription
             }
         });
+    },
+
+    getControls: function(){
+        var me = this;
+        var form = me.getForm();
+        return form.query('unitvaluefield');
     },
 
     updatePrescription: function(){
@@ -133,13 +142,11 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
     getValues:function(){
         var vals = {};
-        console.log("getting values");
         var form = this.getForm();
 
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });
-        console.log("finished get values");
 
         return vals;
     }

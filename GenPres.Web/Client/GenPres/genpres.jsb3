@@ -71,14 +71,29 @@
                     "path": "./app/store/prescription/",
                     "name": "SubstanceUnit.js"
                 },{
+                    "path": "./app/store/prescription/",
+                    "name": "ShapeStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "ComponentUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "LocalUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "AdjustUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "TotalTimeUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "RateUnit.js"
+                },{
                     "path": "./app/lib/view/component/",
                     "name": "SaveCancelToolbar.js"
                 },{
                     "path": "./app/lib/view/window/",
                     "name": "SaveCancelWindow.js"
-                },{
-                    "path": "./app/store/prescription/",
-                    "name": "ShapeStore.js"
                 },{
                     "path": "./app/view/prescription/",
                     "name": "OverView.js"

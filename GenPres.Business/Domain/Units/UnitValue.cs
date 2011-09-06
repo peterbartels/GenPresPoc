@@ -14,7 +14,7 @@ namespace GenPres.Business.Domain.Units
         private string _adjust = "";
         private string _total = "";
         private string _time = "";
-        private string _uistate = "";
+        private string _uistate = "user";
         private decimal[] _increments = new decimal[1] { 0 };
         private Boolean _allowIncrementStep = true;
         private string _incrementDirection = "";

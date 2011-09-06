@@ -61,8 +61,15 @@ namespace GenPres.Business.Domain.Prescriptions
                 Doses = new List<Dose> {Dose.NewDose()},
                 Quantity = UnitValue.NewUnitValue(false),
                 Frequency = UnitValue.NewUnitValue(false),
-                Total = UnitValue.NewUnitValue(false)
+                Total = UnitValue.NewUnitValue(false),
+                Rate = UnitValue.NewUnitValue(false),
+                Duration = UnitValue.NewUnitValue(false)
             };
+            prescription.Frequency.Time = "dag";
+            prescription.Total.Time = "dag";
+            prescription.Rate.Time = "uur";
+            prescription.Duration.Time = "uur";
+
             prescription.Drug = Drug.NewDrug(prescription);
             return prescription;
         }

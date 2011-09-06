@@ -413,8 +413,8 @@ Ext.define('GenPres.control.NumericBoundListKeyNav', {
 
 GenPres.control = {
     states : {
-        user : 1,
-        calculated: 2
+        user : 'user',
+        calculated: 'calculated'
     }
 }
 GenPres.control.stateColors = {}
@@ -443,8 +443,6 @@ Ext.define('GenPres.control.UnitValueField', {
 
     unit : "",
 
-
-
     setHidden : function (hidden){
         if(hidden) {
             this.getEl().dom.style.visibility = "hidden";
@@ -454,8 +452,12 @@ Ext.define('GenPres.control.UnitValueField', {
     },
 
     setState : function(state){
-        this.state = state;
+        if(state != null && state!="") this.state = state;
         this.setInputColor(GenPres.control.stateColors[state]);
+    },
+
+    getState : function(){
+        return this.state;
     },
 
     setInputColor : function(color){
@@ -477,6 +479,11 @@ Ext.define('GenPres.control.UnitValueField', {
         return result;
     },
 
+    getInputValue : function(){
+        var me = this;
+        return me.valueField.getValue();
+    },
+
     getValue : function(){
         var me = this;
         return {
@@ -484,7 +491,8 @@ Ext.define('GenPres.control.UnitValueField', {
             unit: (!me.unitStore ?  "" : me.unitCombo.getValue()),
             timeUnit: (!me.timeStore ?  "" : me.timeCombo.getValue()),
             totalUnit: (!me.totalStore ?  "" : me.totalCombo.getValue()),
-            adjustUnit: (!me.adjustStore ?  "" : me.adjustCombo.getValue())
+            adjustUnit: (!me.adjustStore ?  "" : me.adjustCombo.getValue()),
+            state:me.getState()
         };
     },
 
@@ -503,7 +511,9 @@ Ext.define('GenPres.control.UnitValueField', {
     processValues : function(){
         var me = this;
         me.valueField.setValue(me.value);
-        if(me.unitStore) me.unitCombo.setValue(me.unit);
+        if(me.unitStore) {
+            me.unitCombo.setValue(me.unit);
+        }
         if(me.timeStore) me.timeCombo.setValue(me.timeUnit);
         if(me.adjustStore) me.adjustCombo.setValue(me.adjustUnit);
         if(me.totalStore) me.totalCombo.setValue(me.totalUnit);
@@ -527,7 +537,9 @@ Ext.define('GenPres.control.UnitValueField', {
                 for(var i=0;i<store.data.items.length;i++){
                     var val = store.data.items[i].raw;
                     if(val.selected == true){
+                        combo.suspendEvents();
                         combo.setValue(val["Value"]);
+                        combo.resumeEvents();
                     }
                 }
             }
@@ -551,7 +563,7 @@ Ext.define('GenPres.control.UnitValueField', {
             isFormField:false,
             width:80
         });
-        
+
         var items = [me.valueField];
 
         if(me.unitStore){
@@ -562,6 +574,9 @@ Ext.define('GenPres.control.UnitValueField', {
                 width:60
             })
             items.push(me.unitCombo);
+
+            me.unitCombo.on("change", function(){me.fireEvent('userChange');});
+            
             me.setDefaultComboValue(me.unitCombo, me.unitStore);
         }
 
@@ -576,6 +591,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.adjustCombo);
+            me.adjustCombo.on("change", function(){me.fireEvent('userChange');});
             me.setDefaultComboValue(me.adjustCombo, me.adjustStore);
         }
         
@@ -589,6 +605,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.totalCombo);
+            me.totalCombo.on("change", function(){me.fireEvent('userChange');});
             me.setDefaultComboValue(me.totalCombo, me.totalStore);
         }
 
@@ -602,6 +619,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.timeCombo);
+            me.timeCombo.on("change", function(){me.fireEvent('userChange');});
             me.setDefaultComboValue(me.timeCombo, me.timeStore);
         }
 
@@ -640,14 +658,20 @@ Ext.define('GenPres.control.UnitValueField', {
     suspendEvents : function(){
         var me = this;
         me.valueField.suspendEvents();
-        me.unitCombo.suspendEvents();
+        if(me.unitCombo) me.unitCombo.suspendEvents();
+        if(me.totalCombo) me.totalCombo.suspendEvents();
+        if(me.adjustCombo) me.adjustCombo.suspendEvents();
+        if(me.timeCombo) me.timeCombo.suspendEvents();
         me.callParent();
     },
 
     resumeEvents : function(){
         var me = this;
         me.valueField.resumeEvents();
-        me.unitCombo.resumeEvents();
+        if(me.unitCombo) me.unitCombo.resumeEvents();
+        if(me.totalCombo) me.totalCombo.resumeEvents();
+        if(me.adjustCombo) me.adjustCombo.resumeEvents();
+        if(me.timeCombo) me.timeCombo.resumeEvents();
         me.callParent();
     },
 
@@ -1174,6 +1198,61 @@ Ext.define('GenPres.store.prescription.SubstanceUnit', {
         paramOrder : ['generic', 'route', 'shape']
     }
 });
+Ext.define('GenPres.store.prescription.ShapeStore', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    alias: 'widget.shapestore',
+    autoLoad:false,
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetShapes,
+        extraParams:{
+            generic: "",
+            route : ""
+        },
+        paramOrder : ['generic', 'route']
+    }
+});
+Ext.define('GenPres.store.prescription.ComponentUnit', {
+    extend: 'GenPres.store.prescription.ValueStore',
+    id: 'componentunit',
+    proxy : {
+        type:'direct',
+        directFn : Prescription.GetComponentUnits,
+        autoLoad:true,
+        extraParams:{
+            generic:"",
+            route: "",
+            shape:""
+        },
+        paramOrder : ['generic', 'route', 'shape']
+    }
+});
+Ext.define('GenPres.store.prescription.LocalUnit', {
+    extend: 'Ext.data.Store',
+    id: 'localUnit',
+    fields: ['Value']
+});
+Ext.define('GenPres.store.prescription.AdjustUnit', {
+    extend:'GenPres.store.prescription.LocalUnit',
+    data : [
+        {"Value":"kg", selected: false},
+        {"Value":"m2", selected: false}
+    ]
+});
+Ext.define('GenPres.store.prescription.TotalTimeUnit', {
+    extend:'GenPres.store.prescription.LocalUnit',
+    data : [
+        {"Value":"dag", selected: true},
+        {"Value":"week", selected: false}
+    ]
+});
+Ext.define('GenPres.store.prescription.RateUnit', {
+    extend:'GenPres.store.prescription.LocalUnit',
+    data : [
+        {"Value":"min", selected: false},
+        {"Value":"uur", selected: true}
+    ]
+});
 Ext.define('GenPres.lib.view.component.SaveCancelToolbar', {
     extend: 'Ext.toolbar.Toolbar',
     alias: 'widget.savecanceltoolbar',
@@ -1218,20 +1297,6 @@ Ext.define('GenPres.lib.view.window.SaveCancelWindow', {
         return Ext.create('GenPres.lib.view.component.SaveCancelToolbar', { dock: 'bottom'});
     }
 
-});
-Ext.define('GenPres.store.prescription.ShapeStore', {
-    extend: 'GenPres.store.prescription.ValueStore',
-    alias: 'widget.shapestore',
-    autoLoad:false,
-    proxy : {
-        type:'direct',
-        directFn : Prescription.GetShapes,
-        extraParams:{
-            generic: "",
-            route : ""
-        },
-        paramOrder : ['generic', 'route']
-    }
 });
 Ext.define('GenPres.view.main.MainView', {
 
@@ -1833,7 +1898,7 @@ Ext.define('GenPres.view.prescription.Dose', {
             id:'doseTotal',
             unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
             adjustStore: Ext.create('GenPres.store.prescription.AdjustUnit'),
-            totalStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
+            timeStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
             name:'doseTotal'
         });
 
@@ -1896,7 +1961,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             labelAlign:'top',
             id:'adminTotal',
             unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
-            totalStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
+            timeStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
             name:'adminTotal'
         });
 
@@ -1952,7 +2017,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             width:200,
             labelAlign:'top',
             id:'prescriptionFrequency',
-            unitStore: frequencyStore,
+            timeStore: frequencyStore,
             name:'prescriptionFrequency'
         });
 
@@ -1965,7 +2030,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             unit:'mg',
             labelAlign:'top',
             id:'prescriptionDuration',
-            unitStore: durationStore,
+            timeStore: durationStore,
             name:'prescriptionDuration'
         });
 
@@ -2078,7 +2143,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             width:200,
             labelAlign:'top',
             id:'prescriptionFrequency',
-            unitStore: frequencyStore,
+            timeStore: frequencyStore,
             name:'prescriptionFrequency'
         });
 
@@ -2091,7 +2156,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             unit:'mg',
             labelAlign:'top',
             id:'prescriptionDuration',
-            unitStore: durationStore,
+            timeStore: durationStore,
             name:'prescriptionDuration'
         });
 
@@ -2514,7 +2579,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     prescriptionIsLoading: false,
 
     init: function() {
-        this.control({
+
+        var me = this;
+
+        me.control({
             'gridpanel' : {
                 itemdblclick: this.loadPrescription
             },
@@ -2533,15 +2601,21 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             'valuefield' : {
                 blur : this.updatePrescription
             },
-            'combobox[isFormField=false]' :{
-                change : function(a){
-                    this.updatePrescription
+            'unitvaluefield' :{
+                userChange : function(){
+                    GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
                 }
             },
             'checkboxfield' :{
                 change : this.updatePrescription
             }
         });
+    },
+
+    getControls: function(){
+        var me = this;
+        var form = me.getForm();
+        return form.query('unitvaluefield');
     },
 
     updatePrescription: function(){
@@ -2634,13 +2708,11 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
     getValues:function(){
         var vals = {};
-        console.log("getting values");
         var form = this.getForm();
 
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });
-        console.log("finished get values");
 
         return vals;
     }
@@ -2672,9 +2744,6 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
     checkValues : function(store, records, succesful, options){
         if(store.getCount() == 1){
             options.comboBox.setValue(options.comboBox.store.data.getAt(0).data.Value);
-            //options.comboBox.setValue(options.comboBox.store.data.getAt(0));
-            console.log("check value complete");
-
         }
     },
 
@@ -2684,36 +2753,27 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
 
     changeSelection : function(combo){
 
-        if(this.panel == null) {
-            this.panel = combo.up('panel');
-            this.addStoreListeners(this.getComboBox('generic'));
-            this.addStoreListeners(this.getComboBox('route'));
-            this.addStoreListeners(this.getComboBox('shape'));
-        }
-
         if(combo.action == "generic"){
             this.generic = combo.getValue();
             this.setExtraParams('route', 'generic', this.generic);
             this.setExtraParams('shape', 'generic', this.generic);
-            GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
-            GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
+            GenPres.ASyncEventManager.registerEventListener(this.getComboBox('route').store, "load", []);
+            GenPres.ASyncEventManager.registerEventListener(this.getComboBox('shape').store, "load", []);
         }
-
-
 
         if(combo.action == "route"){
             this.route = combo.getValue();
             this.setExtraParams('generic', 'route', this.route);
             this.setExtraParams('shape', 'route', this.route);
-            GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
-            GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
+            GenPres.ASyncEventManager.registerEventListener(this.getComboBox('generic').store, "load", []);
+            GenPres.ASyncEventManager.registerEventListener(this.getComboBox('shape').store, "load", []);
         }
         if(combo.action == "shape"){
             this.shape = combo.getValue();
             this.setExtraParams('generic', 'shape', this.shape);
             this.setExtraParams('route', 'shape', this.shape);
-            GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
-            GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
+            GenPres.ASyncEventManager.registerEventListener(this.getComboBox('generic').store, "load", []);
+            GenPres.ASyncEventManager.registerEventListener(this.getComboBox('route').store, "load", []);
         }
         
         var extraParams = {
@@ -2724,15 +2784,15 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         
         var subststanceUnitStore = GenPres.store.PrescriptionStores.getSubstanceUnitStore();
         subststanceUnitStore.proxy.extraParams = extraParams;
-        GenPres.ASyncEventManager.registerFunction(subststanceUnitStore, "load", []);
+        GenPres.ASyncEventManager.registerEventListener(subststanceUnitStore, "load", []);
         //subststanceUnitStore.load();
 
         var componentUnitStore = GenPres.store.PrescriptionStores.getComponentUnitStore();
         componentUnitStore.proxy.extraParams = extraParams;
-        GenPres.ASyncEventManager.registerFunction(componentUnitStore, "load", []);
+        GenPres.ASyncEventManager.registerEventListener(componentUnitStore, "load", []);
 
         GenPres.ASyncEventManager.execute();
-        Ext.Function.defer(this.updatePrescription, 200, this);
+        Ext.Function.defer(this.updatePrescription, 0, this);
     },
 
     drugIsChosen : function(){
@@ -2765,12 +2825,16 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         this.setExtraParams('shape', 'generic', '');
         this.setExtraParams('shape', 'route', '');
 
-        //this.getComboBox('generic').store.load();
-        //this.getComboBox('route').store.load();
-        //this.getComboBox('shape').store.load();
-        GenPres.ASyncEventManager.registerFunction(this.getComboBox('generic').store, "load", []);
-        GenPres.ASyncEventManager.registerFunction(this.getComboBox('route').store, "load", []);
-        GenPres.ASyncEventManager.registerFunction(this.getComboBox('shape').store, "load", []);
+        if(this.panel == null) {
+            this.panel = this.getComboBox('generic').up('panel');
+            this.addStoreListeners(this.getComboBox('generic'));
+            this.addStoreListeners(this.getComboBox('route'));
+            this.addStoreListeners(this.getComboBox('shape'));
+        }
+        
+        GenPres.ASyncEventManager.registerEventListener(this.getComboBox('generic').store, "load", []);
+        GenPres.ASyncEventManager.registerEventListener(this.getComboBox('route').store, "load", []);
+        GenPres.ASyncEventManager.registerEventListener(this.getComboBox('shape').store, "load", []);
         GenPres.ASyncEventManager.execute();
 
     }

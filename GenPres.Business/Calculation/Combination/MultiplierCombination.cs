@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Linq.Expressions;
 using GenPres.Business.Calculation.Calculation;
 using GenPres.Business.Calculation.Increment;
@@ -95,12 +96,13 @@ namespace GenPres.Business.Calculation.Combination
         {
             var pc = new PropertyCombinationCalculate();
             CorrectPropertyIncrements();
-            pc.Calculate(this, 2);
+            if(CanBeCalculated()) pc.Calculate(this, 2);
         }
 
         public bool CanBeCalculated()
         {
-            return true;
+            int noSetCount = values.Count(t => t == 0);
+            return noSetCount == values.Length - 2;
         }
 
         public void Finish()
@@ -125,6 +127,7 @@ namespace GenPres.Business.Calculation.Combination
                 values[i] = System.Math.Round(GetConvertedValue(i), 8, MidpointRounding.AwayFromZero);
             }
         }
+
 
         public void CorrectPropertyIncrements()
         {

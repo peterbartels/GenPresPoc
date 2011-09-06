@@ -29,8 +29,10 @@ namespace GenPres.Business.Domain.Prescriptions
             s.Quantity.Unit = "mg";
             s.Total = UnitValue.NewUnitValue(false);
             s.Total.Unit = "mg";
+            s.Total.Time = "dag";
             s.Rate = UnitValue.NewUnitValue(false);
             s.Rate.Unit = "mg";
+            s.Rate.Time = "uur";
             return s;
         }
     }

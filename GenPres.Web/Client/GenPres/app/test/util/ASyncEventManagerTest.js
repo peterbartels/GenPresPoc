@@ -48,7 +48,7 @@ Ext.define('GenPres.test.util.ASyncEventManagerTest', {
             getStore().on("load", function(store,items){
                 console.log(getStore().data.items[0].data);
             });
-            ASyncEventManager.registerFunction(getStore(),"load",[]);
+            ASyncEventManager.registerEventListener(getStore(),"load",[]);
             expect(ASyncEventManager.queue.length == 1).toBeTruthy();
             expect(ASyncEventManager.queue[0].length == 1).toBeTruthy();
             ASyncEventManager.execute();

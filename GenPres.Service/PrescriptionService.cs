@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GenPres.Business.Allowance;
+using GenPres.Business.Calculation;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
@@ -35,6 +36,9 @@ namespace GenPres.Service
             
             var prescriptionAllowance = new PrescriptionPropertySetAllowance();
             prescriptionAllowance.DetemineCanBeSet(prescription);
+            
+            var pc = new PrescriptionCalculator(prescription);
+            pc.Start();
 
             //TEMPWEG prescription.Save(patientId);
             return PrescriptionAssembler.AssemblePrescriptionDto(prescription);

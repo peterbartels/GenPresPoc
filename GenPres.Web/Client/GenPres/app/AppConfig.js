@@ -3,7 +3,7 @@ Ext.app.config = {
 
     'autoCreateViewport': false,
 
-    requires : ['GenPres.test.util.Query','GenPres.lib.util.ASyncEventManager'],
+    requires : ['GenPres.test.util.Query','GenPres.lib.util.ASyncEventManager','GenPres.lib.Prescription.UserStateCheck'],
 
     controllers: [
         'user.Login',

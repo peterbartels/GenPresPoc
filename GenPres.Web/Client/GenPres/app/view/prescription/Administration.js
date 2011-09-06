@@ -40,7 +40,7 @@ Ext.define('GenPres.view.prescription.Administration', {
             labelAlign:'top',
             id:'adminTotal',
             unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
-            totalStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
+            timeStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
             name:'adminTotal'
         });
 

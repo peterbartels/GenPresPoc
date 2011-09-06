@@ -28,6 +28,7 @@ namespace GenPres.Business.Calculation
                 _prescription,
                 () => _prescription.Total, () => _prescription.Frequency, () => _prescription.Quantity
             ));
+            ExecuteCalculation();
             _combinations[0].Finish();
         }
 

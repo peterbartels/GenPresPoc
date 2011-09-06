@@ -42,7 +42,7 @@ Ext.define('GenPres.view.prescription.Dose', {
             id:'doseTotal',
             unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
             adjustStore: Ext.create('GenPres.store.prescription.AdjustUnit'),
-            totalStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
+            timeStore: Ext.create('GenPres.store.prescription.TotalTimeUnit'),
             name:'doseTotal'
         });
 
