@@ -24,10 +24,10 @@ namespace GenPres.Data.DTO.Prescriptions
             prescription.Frequency = UnitValueDto.AssembleUnitValue(prescription.Frequency, prescriptionDto.prescriptionFrequency);
             prescription.Duration = UnitValueDto.AssembleUnitValue(prescription.Duration, prescriptionDto.prescriptionDuration);
 
-            prescription.Continuous = prescriptionDto.continuous;
-            prescription.OnRequest = prescriptionDto.onrequest;
-            prescription.Solution = prescriptionDto.solution;
-            prescription.Solution = prescriptionDto.infusion;
+            prescription.Continuous = (prescriptionDto.prescriptionContinuous == "on");
+            prescription.OnRequest = (prescriptionDto.prescriptionOnrequest == "on");
+            prescription.Solution = (prescriptionDto.prescriptionSolution == "on");
+            prescription.Infusion = (prescriptionDto.prescriptionInfusion == "on");
 
             prescription.Drug.Quantity = UnitValueDto.AssembleUnitValue(prescription.Drug.Quantity, prescriptionDto.drugQuantity);
 

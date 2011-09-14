@@ -73,7 +73,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             margin:'0 0 0 20',
             id:'substanceDrugConcentration',
             unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
-            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
+            totalStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'substanceDrugConcentration'
         });
 

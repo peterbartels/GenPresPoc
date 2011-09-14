@@ -72,19 +72,28 @@ namespace GenPres.xTest.Calculation.Calculator
             
             var valid = true;
 
-            var combi = new MultiplierCombination(
+            var combi1 = new MultiplierCombination(
                 prescription,
                 () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity
             );
 
-            pc.AddCalculation(combi);
+            GenPres.Business.Domain.Prescriptions.Dose d = prescription.Doses[0];
+
+            var combi2 = new MultiplierCombination(
+                prescription,
+                () => d.Total, () => prescription.Frequency, () => d.Quantity
+            );
+
+            pc.AddCalculation(combi1);
+            pc.AddCalculation(combi2);
             
             for (var i = 0; i < 5000; i++)
             {
-                CombinationRandomizer.RandomizeCombination(combi);
+                CombinationRandomizer.RandomizeCombination(combi1);
                 pc.ConvertCombinationsValuesToArray();
                 pc.ExecuteCalculation();
-                Assert.IsTrue(combi.Validate());
+                Assert.IsTrue(combi1.Validate());
+                Assert.IsTrue(combi2.Validate());
             }
         }
 

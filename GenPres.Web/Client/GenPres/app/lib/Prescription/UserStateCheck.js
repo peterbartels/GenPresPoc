@@ -17,16 +17,13 @@ Ext.define('GenPres.lib.Prescription.UserStateCheck', {
             var foundCombinations = [];
             var component = components[comp];
             
-            //co
             for(var i=0;i<combinations.length;i++){
                 stateCount = 0;
                 var containsFieldName = false;
                 for(var c=0;c<combinations[i].length;c++){
+
                     if (component.getState() == GenPres.control.states.user && component.getInputValue() > 0) stateCount++;
 
-                    console.log(component.getState() + "=" + GenPres.control.states.user + "=" + component.getInputValue());
-                    console.log(combinations[i][c] + "=" + component.name);
-                    
                     if(combinations[i][c] == component.name){
                         containsFieldName = true;
                         foundCombinations.push(combinations[i]);

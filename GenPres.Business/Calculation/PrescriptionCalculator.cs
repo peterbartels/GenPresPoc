@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using GenPres.Business.Calculation.Combination;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Business.Domain.Units;
+using GenPres.Business.Util;
 
 namespace GenPres.Business.Calculation
 {
@@ -28,6 +29,14 @@ namespace GenPres.Business.Calculation
                 _prescription,
                 () => _prescription.Total, () => _prescription.Frequency, () => _prescription.Quantity
             ));
+
+            //Doesn't work needs nested check in PropertyHelper
+            /*Dose d = _prescription.Doses[0];
+
+            _combinations.Add(new MultiplierCombination(
+                _prescription,
+                () => d.Total, () => _prescription.Frequency, () => d.Quantity
+            ));*/
             ExecuteCalculation();
             _combinations[0].Finish();
         }

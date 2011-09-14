@@ -31,8 +31,8 @@ namespace GenPres.Business.Calculation.Calculation
             decimal[] values = new decimal[3];
 
             //Get the property to be corrected
-            int propertyToRectify = 0;
-            int correctIndex = 0;
+            int propertyToRectify = 2;
+            int correctIndex = 2;
 
             /*
              * Loop through all possible substanceIncrements to calculate the index (=not calculated property in combination)

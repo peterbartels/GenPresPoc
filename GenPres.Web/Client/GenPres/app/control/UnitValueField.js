@@ -31,6 +31,8 @@ Ext.define('GenPres.control.UnitValueField', {
 
     unit : "",
 
+    changedByUser:false,
+
     setHidden : function (hidden){
         if(hidden) {
             this.getEl().dom.style.visibility = "hidden";
@@ -52,7 +54,7 @@ Ext.define('GenPres.control.UnitValueField', {
         if(typeof(color) != "undefined" && color != ""){
             this.getInputEl().style.border = "solid 1px " + color;
         }else{
-            //TODO: find why sometimes color is not set.
+            console.log("Color not defined.");
         }
     },
 
@@ -75,11 +77,12 @@ Ext.define('GenPres.control.UnitValueField', {
     getValue : function(){
         var me = this;
         return {
-            value : me.valueField.getValue(),
+            value : (me.getState() == GenPres.control.states.user ? me.valueField.getValue() : 0),
             unit: (!me.unitStore ?  "" : me.unitCombo.getValue()),
             timeUnit: (!me.timeStore ?  "" : me.timeCombo.getValue()),
             totalUnit: (!me.totalStore ?  "" : me.totalCombo.getValue()),
             adjustUnit: (!me.adjustStore ?  "" : me.adjustCombo.getValue()),
+            changedByUser:me.changedByUser,
             state:me.getState()
         };
     },
@@ -151,6 +154,10 @@ Ext.define('GenPres.control.UnitValueField', {
             isFormField:false,
             width:80
         });
+        
+        me.valueField.on("blur", function(){
+            me.fireEvent('inputfieldChange', me);
+        });
 
         var items = [me.valueField];
 
@@ -163,7 +170,7 @@ Ext.define('GenPres.control.UnitValueField', {
             })
             items.push(me.unitCombo);
 
-            me.unitCombo.on("change", function(){me.fireEvent('userChange');});
+            me.unitCombo.on("change", function(){me.fireEvent('comboChange');});
             
             me.setDefaultComboValue(me.unitCombo, me.unitStore);
         }
@@ -179,7 +186,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.adjustCombo);
-            me.adjustCombo.on("change", function(){me.fireEvent('userChange');});
+            me.adjustCombo.on("change", function(){me.fireEvent('comboChange');});
             me.setDefaultComboValue(me.adjustCombo, me.adjustStore);
         }
         
@@ -193,7 +200,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.totalCombo);
-            me.totalCombo.on("change", function(){me.fireEvent('userChange');});
+            me.totalCombo.on("change", function(){me.fireEvent('comboChange');});
             me.setDefaultComboValue(me.totalCombo, me.totalStore);
         }
 
@@ -207,7 +214,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.timeCombo);
-            me.timeCombo.on("change", function(){me.fireEvent('userChange');});
+            me.timeCombo.on("change", function(){me.fireEvent('comboChange');});
             me.setDefaultComboValue(me.timeCombo, me.timeStore);
         }
 

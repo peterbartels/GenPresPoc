@@ -33,6 +33,24 @@ namespace GenPres.Business.Domain.Prescriptions
         public virtual bool Infusion { get; set; }
         public virtual bool OnRequest { get; set; }
 
+        private static List<string> _volumeList = new List<string>() { "ml", "cl", "dl", "l" };
+
+        public virtual bool AdminVolume
+        {
+            get
+            {
+                return _volumeList.Contains(Quantity.Unit);
+            }
+        }
+
+        public virtual bool DoseVolume
+        {
+            get
+            {
+                return _volumeList.Contains(Doses[0].Quantity.Unit);
+            }
+        }
+
         public virtual DateTime? CreationDate
         {
             get {

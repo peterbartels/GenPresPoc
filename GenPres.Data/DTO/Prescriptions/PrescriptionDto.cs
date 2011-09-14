@@ -10,10 +10,10 @@
         public string drugShape { get; set; }
         public string PID { get; set; }
 
-        public bool continuous { get; set; }
-        public bool infusion { get; set; }
-        public bool onrequest { get; set; }
-        public bool solution { get; set; }
+        public string prescriptionContinuous { get; set; }
+        public string prescriptionInfusion { get; set; }
+        public string prescriptionOnrequest { get; set; }
+        public string prescriptionSolution { get; set; }
 
         public UnitValueDto substanceQuantity { get; set; }
         public UnitValueDto drugQuantity { get; set; }

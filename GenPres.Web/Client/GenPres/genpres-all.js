@@ -443,6 +443,8 @@ Ext.define('GenPres.control.UnitValueField', {
 
     unit : "",
 
+    changedByUser:false,
+
     setHidden : function (hidden){
         if(hidden) {
             this.getEl().dom.style.visibility = "hidden";
@@ -464,7 +466,7 @@ Ext.define('GenPres.control.UnitValueField', {
         if(typeof(color) != "undefined" && color != ""){
             this.getInputEl().style.border = "solid 1px " + color;
         }else{
-            //TODO: find why sometimes color is not set.
+            console.log("Color not defined.");
         }
     },
 
@@ -487,7 +489,7 @@ Ext.define('GenPres.control.UnitValueField', {
     getValue : function(){
         var me = this;
         return {
-            value : me.valueField.getValue(),
+            value : (me.getState() == GenPres.control.states.user ? me.valueField.getValue() : 0),
             unit: (!me.unitStore ?  "" : me.unitCombo.getValue()),
             timeUnit: (!me.timeStore ?  "" : me.timeCombo.getValue()),
             totalUnit: (!me.totalStore ?  "" : me.totalCombo.getValue()),
@@ -563,6 +565,10 @@ Ext.define('GenPres.control.UnitValueField', {
             isFormField:false,
             width:80
         });
+        
+        me.valueField.on("blur", function(){
+            me.fireEvent('inputfieldChange', me);
+        });
 
         var items = [me.valueField];
 
@@ -575,7 +581,7 @@ Ext.define('GenPres.control.UnitValueField', {
             })
             items.push(me.unitCombo);
 
-            me.unitCombo.on("change", function(){me.fireEvent('userChange');});
+            me.unitCombo.on("change", function(){me.fireEvent('comboChange');});
             
             me.setDefaultComboValue(me.unitCombo, me.unitStore);
         }
@@ -591,7 +597,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.adjustCombo);
-            me.adjustCombo.on("change", function(){me.fireEvent('userChange');});
+            me.adjustCombo.on("change", function(){me.fireEvent('comboChange');});
             me.setDefaultComboValue(me.adjustCombo, me.adjustStore);
         }
         
@@ -605,7 +611,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.totalCombo);
-            me.totalCombo.on("change", function(){me.fireEvent('userChange');});
+            me.totalCombo.on("change", function(){me.fireEvent('comboChange');});
             me.setDefaultComboValue(me.totalCombo, me.totalStore);
         }
 
@@ -619,7 +625,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.timeCombo);
-            me.timeCombo.on("change", function(){me.fireEvent('userChange');});
+            me.timeCombo.on("change", function(){me.fireEvent('comboChange');});
             me.setDefaultComboValue(me.timeCombo, me.timeStore);
         }
 
@@ -1716,7 +1722,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             margin:'0 0 0 20',
             id:'substanceDrugConcentration',
             unitStore: GenPres.store.PrescriptionStores.getSubstanceUnitStore(),
-            unitStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
+            totalStore: GenPres.store.PrescriptionStores.getComponentUnitStore(),
             name:'substanceDrugConcentration'
         });
 
@@ -1837,12 +1843,18 @@ Ext.define('GenPres.view.prescription.Options', {
         });
         
         solution.on("change", function(field, newValue, oldValue, eOpts){
+            var solution = Ext.ComponentQuery.query("#drugSolution")[0];
             if(newValue == true){
                 continuous.setFieldStyle("visibility:visible;");
                 infusion.setFieldStyle("visibility:visible;");
+                solution.el.dom.style.visibility = "visible"
             }else{
                 continuous.setFieldStyle("visibility:hidden;");
                 infusion.setFieldStyle("visibility:hidden;");
+                continuous.setValue(false);
+                infusion.setValue(false);
+                solution.el.dom.style.visibility = "hidden"
+                solution.setValue("");
             }
         })
 
@@ -2582,34 +2594,49 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
         var me = this;
 
+        var updatePrescription = function(){
+            GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
+            me.updatePrescription();
+        };
+        
         me.control({
             'gridpanel' : {
-                itemdblclick: this.loadPrescription
+                itemdblclick: me.loadPrescription
             },
             'treepanel': {
-                itemclick: this.loadPrescriptionForm
+                itemclick: me.loadPrescriptionForm
             },
             'button[action=home]': {
-                click : this.loadHome
+                click : me.loadHome
             },
             'button[action=new]': {
-                click : this.clearPrescription
+                click : me.clearPrescription
             },
             'button[action=save]': {
-                click : this.savePrescription
+                click : me.savePrescription
             },
             'valuefield' : {
-                blur : this.updatePrescription
+                blur : Ext.Function.bind(updatePrescription, me)
             },
             'unitvaluefield' :{
-                userChange : function(){
-                    GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
-                }
+                comboChange : Ext.Function.bind(updatePrescription, me)
+            },
+            'unitvaluefield' :{
+                inputfieldChange : me.resetLatestChangedUnitValueField
             },
             'checkboxfield' :{
-                change : this.updatePrescription
+                change : me.updatePrescription
             }
         });
+    },
+
+    resetLatestChangedUnitValueField:function(unitValueField){
+
+        var latestChangedUnitValueFields = GenPres.application.MainCenter.query('unitvaluefield[changedByUser=true]');
+        for(var i=0;i<latestChangedUnitValueFields.length;i++){
+            latestChangedUnitValueFields[i].changedByUser = false;
+        }
+        unitValueField.changedByUser = true;
     },
 
     getControls: function(){

@@ -1,10 +1,10 @@
 ﻿using System;
 using GenPres.Business.Calculation.Math;
 using GenPres.Business.Domain.Prescriptions;
-
+using GenPres.Business.Allowance;
 namespace GenPres.Business.Domain.Units
 {
-    public class UnitValue : ICalculationStateTrackable
+    public class UnitValue : ICalculationStateTrackable, IPropertyAllowance
     {
         #region Private Properties
         private Guid _id = Guid.Empty;
@@ -20,7 +20,8 @@ namespace GenPres.Business.Domain.Units
         private string _incrementDirection = "";
         private bool _propertyChanged = false;
         private int _currentIncrement = 0;
-
+        public virtual bool ChangedByUser { get; set; }
+        
         private Factor _factor;
         #endregion
 

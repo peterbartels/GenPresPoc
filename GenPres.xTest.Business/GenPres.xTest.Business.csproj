@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserTest\Authenticate.cs" />
     <Compile Include="UserTest\UserTest.cs" />
+    <Compile Include="Util\PropertyHelperTest.cs" />
     <Compile Include="VisibilityTest\CanBeSetOfPrescriptionPropertiesTests.cs" />
   </ItemGroup>
   <ItemGroup>

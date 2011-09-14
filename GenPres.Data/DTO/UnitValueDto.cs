@@ -11,6 +11,7 @@ namespace GenPres.Data.DTO
         public string timeUnit { get; set; }
         public string adjustUnit { get; set; }
         public string state { get; set; }
+        public bool changedByUser { get; set; }
 
         public static UnitValueDto AssembleUnitValueDto(UnitValue unitValue)
         {
@@ -35,7 +36,8 @@ namespace GenPres.Data.DTO
             if (unitValueDto == null) unitValueDto = new UnitValueDto();
             unitValue.Value = unitValueDto.value;
             unitValue.Unit = unitValueDto.unit;
-            
+
+            unitValue.ChangedByUser = unitValueDto.changedByUser;
             unitValue.Adjust = unitValueDto.adjustUnit;
             unitValue.Time = unitValueDto.timeUnit;
             unitValue.Total = unitValueDto.totalUnit;

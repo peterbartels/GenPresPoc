@@ -7,6 +7,7 @@ using GenPres.Business.Calculation.Increment;
 using GenPres.Business.Calculation.Math;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Business.Domain.Units;
+using GenPres.Business.Util;
 
 namespace GenPres.Business.Calculation.Combination
 {
@@ -96,7 +97,7 @@ namespace GenPres.Business.Calculation.Combination
         {
             var pc = new PropertyCombinationCalculate();
             CorrectPropertyIncrements();
-            if(CanBeCalculated()) pc.Calculate(this, 2);
+            if(CanBeCalculated()) pc.Calculate(this, 0);
         }
 
         public bool CanBeCalculated()

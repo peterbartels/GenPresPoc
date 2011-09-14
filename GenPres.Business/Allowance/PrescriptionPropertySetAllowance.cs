@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
+using System.Collections.Generic;
+using GenPres.Business.Allowance.Scenarios;
 
 namespace GenPres.Business.Allowance
 {
@@ -8,15 +11,15 @@ namespace GenPres.Business.Allowance
     {
         public void DetemineCanBeSet(Prescription prescription)
         {
-            if (prescription == null) return;
-            if (prescription.Drug == null) return;
-            if (prescription.Drug.Generic == null) return;
-            if (prescription.Drug.Route == null) return;
-            if (prescription.Drug.Shape == null) return;
-
             if(prescription.Drug.Generic != "" && prescription.Drug.Route != "" && prescription.Drug.Shape != "")
             {
-                //prescription.Quantity.CanBeSet = true;
+                var dose = prescription.Doses[0];
+                var drug = prescription.Drug;
+                var substance = prescription.Drug.Components[0].Substances[0];
+
+                //var scenarios = new List<PropertyAllowanceConfig>[13];
+                //scenarios[0] = new List<PropertyAllowanceConfig>(){
+
                 prescription.Drug.Components[0].Substances[0].Quantity.CanBeSet = true;
                 prescription.Quantity.CanBeSet = true;
                 prescription.Total.CanBeSet = true;
@@ -30,7 +33,21 @@ namespace GenPres.Business.Allowance
 
                 if(prescription.Solution)
                 {
-                    
+                    prescription.Drug.Components[0].Substances[0].DrugConcentration.CanBeSet = true;
+                    prescription.Drug.Quantity.CanBeSet = true;
+                    if(prescription.Continuous)
+                    {
+                        prescription.Quantity.CanBeSet = false;
+                        prescription.Total.CanBeSet = false;
+
+                        prescription.Frequency.CanBeSet = false;
+
+                        prescription.Doses[0].Quantity.CanBeSet = false;
+                        prescription.Doses[0].Total.CanBeSet = false;
+
+                        prescription.Doses[0].Rate.CanBeSet = true;
+                        prescription.Rate.CanBeSet = true;
+                    }
                 }
             }
         }

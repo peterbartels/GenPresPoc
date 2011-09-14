@@ -16,34 +16,49 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
         var me = this;
 
+        var updatePrescription = function(){
+            GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
+            me.updatePrescription();
+        };
+        
         me.control({
             'gridpanel' : {
-                itemdblclick: this.loadPrescription
+                itemdblclick: me.loadPrescription
             },
             'treepanel': {
-                itemclick: this.loadPrescriptionForm
+                itemclick: me.loadPrescriptionForm
             },
             'button[action=home]': {
-                click : this.loadHome
+                click : me.loadHome
             },
             'button[action=new]': {
-                click : this.clearPrescription
+                click : me.clearPrescription
             },
             'button[action=save]': {
-                click : this.savePrescription
+                click : me.savePrescription
             },
             'valuefield' : {
-                blur : this.updatePrescription
+                blur : Ext.Function.bind(updatePrescription, me)
             },
             'unitvaluefield' :{
-                userChange : function(){
-                    GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
-                }
+                comboChange : Ext.Function.bind(updatePrescription, me)
+            },
+            'unitvaluefield' :{
+                inputfieldChange : me.resetLatestChangedUnitValueField
             },
             'checkboxfield' :{
-                change : this.updatePrescription
+                change : me.updatePrescription
             }
         });
+    },
+
+    resetLatestChangedUnitValueField:function(unitValueField){
+
+        var latestChangedUnitValueFields = GenPres.application.MainCenter.query('unitvaluefield[changedByUser=true]');
+        for(var i=0;i<latestChangedUnitValueFields.length;i++){
+            latestChangedUnitValueFields[i].changedByUser = false;
+        }
+        unitValueField.changedByUser = true;
     },
 
     getControls: function(){

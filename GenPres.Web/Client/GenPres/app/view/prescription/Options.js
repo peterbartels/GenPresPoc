@@ -58,12 +58,18 @@ Ext.define('GenPres.view.prescription.Options', {
         });
         
         solution.on("change", function(field, newValue, oldValue, eOpts){
+            var solution = Ext.ComponentQuery.query("#drugSolution")[0];
             if(newValue == true){
                 continuous.setFieldStyle("visibility:visible;");
                 infusion.setFieldStyle("visibility:visible;");
+                solution.el.dom.style.visibility = "visible"
             }else{
                 continuous.setFieldStyle("visibility:hidden;");
                 infusion.setFieldStyle("visibility:hidden;");
+                continuous.setValue(false);
+                infusion.setValue(false);
+                solution.el.dom.style.visibility = "hidden"
+                solution.setValue("");
             }
         })
 
