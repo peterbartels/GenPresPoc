@@ -41,7 +41,7 @@ namespace GenPres.xTest.Data.PrescriptionTest
         {
             var pr = new PatientRepository();
 
-            var prescription = CreatePrescriptionWithAllPropertiesSet();
+            var prescription = CreateNoVolumes();
 
             var pat = Patient.NewPatient();
             pat.Pid = PatientId;

@@ -5,6 +5,7 @@ using GenPres.Business.Calculation;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
+using GenPres.Business.Verbalization;
 using GenPres.Business.WebService;
 using GenPres.Data.DTO.GenForm;
 using GenPres.Data.DTO.Prescriptions;
@@ -34,13 +35,11 @@ namespace GenPres.Service
         {
             var prescription = PrescriptionAssembler.AssemblePrescriptionBo(prescriptionDto);
             
-            var prescriptionAllowance = new PrescriptionPropertySetAllowance();
-            prescriptionAllowance.DetemineCanBeSet(prescription);
+            PrescriptionAllowance.Determine(prescription);
             
             var pc = new PrescriptionCalculator(prescription);
             pc.Start();
-
-            //TEMPWEG prescription.Save(patientId);
+            
             return PrescriptionAssembler.AssemblePrescriptionDto(prescription);
         }
 

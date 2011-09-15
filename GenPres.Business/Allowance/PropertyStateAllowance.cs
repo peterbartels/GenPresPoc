@@ -8,11 +8,11 @@ using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.Business.Allowance
 {
-    public class PrescriptionPropertyCombinations
+    public class PropertyStateAllowance
     {
         private Prescription _prescription;
 
-        public PrescriptionPropertyCombinations(Prescription prescription)
+        public PropertyStateAllowance(Prescription prescription)
         {
             _prescription = prescription;
         }

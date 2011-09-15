@@ -19,25 +19,16 @@ namespace GenPres.xTest.Business.VisibilityTest
         [TestMethod]
         public void WhenDrugHasNoGenericSubstanceQuantityCanBeSet()
         {
-            var prescription = CreatePrescriptionWithAllPropertiesSet();
+            var prescription = CreateNoVolumes();
             prescription.Drug.Generic = "";
             Assert.IsTrue(!prescription.Drug.Quantity.CanBeSet);
         }
 
-        [TestMethod]
-        public void WhenDrugGenericIsSetDetemineCanBeSetIsCalled()
-        {
-            var prescription = CreatePrescriptionWithAllPropertiesSet();
-            var setter = Isolate.Fake.Instance<PrescriptionPropertySetAllowance>();
-            //Drug.PrescriptionAllowance = setter;
-            //prescription.Drug.Generic = "paracetamol";
-            //Isolate.Verify.WasCalledWithAnyArguments(() => setter.DetemineCanBeSet(prescription));
-        }
-
+        
         [TestMethod]
         public void WhenDrugGenericRouteAndShapeIsSetSubstanceQuantityCanBeSet()
         {
-            var prescription = CreatePrescriptionWithAllPropertiesSet();
+            var prescription = CreateNoVolumes();
             prescription.Drug.Generic = "paracetamol";
             prescription.Drug.Route = "rect";
             prescription.Drug.Shape = "zetp";

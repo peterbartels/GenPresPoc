@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GenPres.Business.Calculation.Combination;
 using GenPres.Business.Domain.Units;
 
@@ -75,6 +76,11 @@ namespace GenPres.Operations.Calculation
             throw new System.NotImplementedException();
         }
 
+        public bool CanBeCalculated()
+        {
+            throw new NotImplementedException();
+        }
+
         public void ConvertCombinationsValuesToArray()
         {
             throw new System.NotImplementedException();
@@ -83,6 +89,11 @@ namespace GenPres.Operations.Calculation
         public void CorrectPropertyIncrements()
         {
             throw new System.NotImplementedException();
+        }
+
+        public int GetUserCount()
+        {
+            throw new NotImplementedException();
         }
 
 

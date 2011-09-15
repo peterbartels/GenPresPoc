@@ -29,6 +29,8 @@
         public UnitValueDto adminQuantity { get; set; }
         public UnitValueDto adminTotal { get; set; }
         public UnitValueDto adminRate { get; set; }
+
+        public string verbalization { get; set; }
     }
 }
 

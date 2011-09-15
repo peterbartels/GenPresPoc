@@ -8,6 +8,6 @@ namespace GenPres.Business.Allowance.Scenarios
     public interface IScenario
     {
         PropertyAllowanceConfig[] PropertyAllowance { get; }
-        bool[] Criteria();
+        bool IsTrue();
     }
 }

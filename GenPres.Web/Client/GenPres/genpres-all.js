@@ -494,6 +494,7 @@ Ext.define('GenPres.control.UnitValueField', {
             timeUnit: (!me.timeStore ?  "" : me.timeCombo.getValue()),
             totalUnit: (!me.totalStore ?  "" : me.totalCombo.getValue()),
             adjustUnit: (!me.adjustStore ?  "" : me.adjustCombo.getValue()),
+            changedByUser:me.changedByUser,
             state:me.getState()
         };
     },
@@ -2028,6 +2029,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             unit:'mg',
             width:200,
             labelAlign:'top',
+            
             id:'prescriptionFrequency',
             timeStore: frequencyStore,
             name:'prescriptionFrequency'
@@ -2154,6 +2156,7 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
             unit:'mg',
             width:200,
             labelAlign:'top',
+            
             id:'prescriptionFrequency',
             timeStore: frequencyStore,
             name:'prescriptionFrequency'

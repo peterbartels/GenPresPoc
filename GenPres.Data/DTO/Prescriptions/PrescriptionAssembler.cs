@@ -1,5 +1,6 @@
 ﻿using System;
 using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Verbalization;
 
 namespace GenPres.Data.DTO.Prescriptions
 {
@@ -73,7 +74,8 @@ namespace GenPres.Data.DTO.Prescriptions
             prescriptionDto.doseRate = UnitValueDto.AssembleUnitValueDto(prescription.Doses[0].Rate);
 
             prescriptionDto.PID = prescription.PID;
-            
+
+            prescriptionDto.verbalization = PrescriptionVerbalization.Verbalize(prescription);
             return prescriptionDto;
         }
     }

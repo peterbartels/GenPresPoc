@@ -8,7 +8,7 @@ namespace GenPres.Business.Util
 {
     public static class PropertyHelper
     {
-        public static UnitValue GetUnitValue(object obj, Expression<Func<UnitValue>> expression)
+        public static UnitValue GetUnitValue(Expression<Func<UnitValue>> expression)
         {
             Expression ex = expression;
             return (UnitValue)Expression.Lambda(expression.Body).Compile().DynamicInvoke();

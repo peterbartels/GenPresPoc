@@ -1,5 +1,9 @@
-﻿using GenPres.Business.Calculation;
+﻿using System;
+using System.Linq.Expressions;
+using GenPres.Business.Calculation;
 using GenPres.Business.Calculation.Combination;
+using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,39 +17,88 @@ namespace GenPres.xTest.Calculation.Calculator
         [TestMethod]
         public void CalculatorSetsIncrements()
         {
-            var prescription = PrescriptionTestFunctions.GetTestPrescription();
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
             var pc = new PrescriptionCalculator(prescription);
             Assert.IsTrue(prescription.Frequency.Factor.IncrementSizes.Length > 0);
             Assert.IsTrue(prescription.Quantity.Factor.IncrementSizes.Length > 0);
             Assert.IsTrue(prescription.Total.Factor.IncrementSizes.Length > 0);
         }
 
-        [TestMethod]
-        public void CalculatorCanCalculateSimpleCalculation()
+        public void AddCombiToCalculator(Prescription p, PrescriptionCalculator pc, params Expression<Func<UnitValue>>[] properties)
         {
-            var prescription = PrescriptionTestFunctions.GetTestPrescription();
-            prescription.Total.Value = 8;
-            var pc = new PrescriptionCalculator(prescription);
-
-            var combi = new MultiplierCombination(
-                prescription,
-                () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity
-            );
-
+            var combi = new MultiplierCombination(p,properties);
             pc.AddCalculation(combi);
-            pc.ExecuteCalculation();
-            pc.FinishCalculation();
-
-            Assert.AreEqual(2, prescription.Frequency.Value, "wrong frequency value");
-            Assert.AreEqual(8, prescription.Total.Value, "wrong total value");
-            Assert.AreEqual(4, prescription.Quantity.Value, "woring quantity value");
         }
 
+        [TestMethod]
+        public void CalculatorCanCalculateFrequency()
+        {
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
+            prescription.Total.Value = 8;
+            prescription.Quantity.Value = 4;
+            var pc = new PrescriptionCalculator(prescription);
+            AddCombiToCalculator(prescription, pc, () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity);
+            pc.Execute();
+            pc.Finish();
+            Assert.AreEqual(2, prescription.Frequency.Value, "wrong prescription frequency value");
+        }
 
+        [TestMethod]
+        public void CalculatorCanCalculatePrescriptionQuantity()
+        {
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
+            prescription.Frequency.Value = 2;
+            prescription.Total.Value = 8;
+            var pc = new PrescriptionCalculator(prescription);
+            AddCombiToCalculator(prescription, pc, () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity);
+            pc.Execute();
+            pc.Finish();
+            Assert.AreEqual(4, prescription.Quantity.Value, "wrong admin quantity value");
+        }
+
+        [TestMethod]
+        public void CalculatorCanCalculatePrescriptionTotal()
+        {
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
+            prescription.Frequency.Value = 2;
+            prescription.Quantity.Value = 4;
+            var pc = new PrescriptionCalculator(prescription);
+            AddCombiToCalculator(prescription, pc, () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity);
+            pc.Execute();
+            pc.Finish();
+            Assert.AreEqual(8, prescription.Total.Value, "wrong admin total value");
+        }
+
+        [TestMethod]
+        public void CalculatorCanCalculateDoseQuantity()
+        {
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
+            prescription.Frequency.Value = 2;
+            prescription.Doses[0].Total.Value = 8;
+            var pc = new PrescriptionCalculator(prescription);
+            AddCombiToCalculator(prescription, pc, () => prescription.Doses[0].Total, () => prescription.Frequency, () => prescription.Doses[0].Quantity);
+            pc.Execute();
+            pc.Finish();
+            Assert.AreEqual(4, prescription.Doses[0].Quantity.Value, "wrong dose quantity value");
+        }
+
+        [TestMethod]
+        public void CalculatorCanCalculateDoseTotal()
+        {
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
+            prescription.Frequency.Value = 2;
+            prescription.Doses[0].Quantity.Value = 4;
+            var pc = new PrescriptionCalculator(prescription);
+            AddCombiToCalculator(prescription, pc, () => prescription.Doses[0].Total, () => prescription.Frequency, () => prescription.Doses[0].Quantity);
+            pc.Execute();
+            pc.Finish();
+            Assert.AreEqual(8, prescription.Doses[0].Total.Value, "wrong dose total value");
+        }
+        /*
         [TestMethod]
         public void CalculatorCanRectifySimpleCalculation()
         {
-            var prescription = PrescriptionTestFunctions.GetTestPrescription();
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
             var pc = new PrescriptionCalculator(prescription);
             
             var combi = new MultiplierCombination(
@@ -54,8 +107,8 @@ namespace GenPres.xTest.Calculation.Calculator
             );
 
             pc.AddCalculation(combi);
-            pc.ExecuteCalculation();
-            pc.FinishCalculation();
+            pc.Execute();
+            pc.Finish();
 
             Assert.AreEqual(2, prescription.Frequency.Value, "wrong frequency value");
             Assert.AreEqual(8, prescription.Total.Value, "wrong total value");
@@ -66,7 +119,7 @@ namespace GenPres.xTest.Calculation.Calculator
         [TestMethod]
         public void CalculatorCanCalculateUsingIncrements()
         {
-            var prescription = PrescriptionTestFunctions.GetTestPrescription();
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
 
             var pc = new PrescriptionCalculator(prescription);
             
@@ -91,7 +144,7 @@ namespace GenPres.xTest.Calculation.Calculator
             {
                 CombinationRandomizer.RandomizeCombination(combi1);
                 pc.ConvertCombinationsValuesToArray();
-                pc.ExecuteCalculation();
+                pc.Execute();
                 Assert.IsTrue(combi1.Validate());
                 Assert.IsTrue(combi2.Validate());
             }
@@ -109,7 +162,7 @@ namespace GenPres.xTest.Calculation.Calculator
                 var calculatedResult = Math.Round(prescription.Total.BaseValue, 8, MidpointRounding.AwayFromZero);
                 var expectedResult = Math.Round((prescription.Frequency.BaseValue * prescription.Quantity.BaseValue), 8, MidpointRounding.AwayFromZero);
                 Assert.IsTrue(calculatedResult == expectedResult);
-            }*/
-        }
+            }
+        }*/
     }
 }

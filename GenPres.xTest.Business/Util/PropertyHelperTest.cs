@@ -16,7 +16,7 @@ namespace GenPres.xTest.Business.Util
         {
             var prescription = Prescription.NewPrescription();
             prescription.Quantity.CanBeSet = true;
-            var qty = PropertyHelper.GetUnitValue(prescription, () => prescription.Quantity);
+            var qty = PropertyHelper.GetUnitValue(() => prescription.Quantity);
             Assert.IsTrue(qty.CanBeSet);
         }
         [TestMethod]
@@ -24,7 +24,7 @@ namespace GenPres.xTest.Business.Util
         {
             var prescription = Prescription.NewPrescription();
             prescription.Doses[0].Quantity.CanBeSet = true;
-            var qty = PropertyHelper.GetUnitValue(prescription, () => prescription.Doses[0].Quantity);
+            var qty = PropertyHelper.GetUnitValue(() => prescription.Doses[0].Quantity);
             Assert.IsTrue(qty.CanBeSet);
         }
         [TestMethod]
@@ -33,7 +33,7 @@ namespace GenPres.xTest.Business.Util
             var prescription = Prescription.NewPrescription();
             var dose = prescription.Doses[0];
             dose.Quantity.CanBeSet = true;
-            var qty = PropertyHelper.GetUnitValue(prescription, () => dose.Quantity);
+            var qty = PropertyHelper.GetUnitValue(() => dose.Quantity);
             Assert.IsTrue(qty.CanBeSet);
         }
         [TestMethod]
@@ -42,7 +42,7 @@ namespace GenPres.xTest.Business.Util
             var prescription = Prescription.NewPrescription();
             var quantity = prescription.Doses[0].Quantity;
             quantity.CanBeSet = true;
-            var qty = PropertyHelper.GetUnitValue(prescription, () => quantity);
+            var qty = PropertyHelper.GetUnitValue(() => quantity);
             Assert.IsTrue(qty.CanBeSet);
         }
     }

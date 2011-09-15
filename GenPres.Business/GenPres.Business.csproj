@@ -51,15 +51,22 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Allowance\PrescriptionPropertyCombinations.cs" />
-    <Compile Include="Allowance\PrescriptionPropertySetAllowance.cs" />
-    <Compile Include="Allowance\Scenarios\IAllowanceScenario.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Allowance\PropertyStateAllowance.cs" />
+    <Compile Include="Allowance\PrescriptionAllowance.cs" />
     <Compile Include="Allowance\IPropertyAllowance.cs" />
-    <Compile Include="Allowance\Scenarios\IScenario.cs" />
-    <Compile Include="Allowance\Scenarios\PropertyAllowanceConfig.cs" />
-    <Compile Include="Allowance\Scenarios\Scenario1.cs" />
+    <Compile Include="Allowance\Scenarios\AdminVolume.cs" />
+    <Compile Include="Allowance\Scenarios\AdminVolumeDoseVolume.cs" />
+    <Compile Include="Allowance\Scenarios\Continuous.cs" />
+    <Compile Include="Allowance\Scenarios\ContinuousInfusion.cs" />
+    <Compile Include="Allowance\Scenarios\Infusion.cs" />
+    <Compile Include="Allowance\IScenario.cs" />
+    <Compile Include="Allowance\Scenarios\NoOptions.cs" />
+    <Compile Include="Allowance\Scenarios\OnRequest.cs" />
+    <Compile Include="Allowance\Scenarios\OnRequestContinuous.cs" />
+    <Compile Include="Allowance\Scenarios\OnRequestContinuousInfusion.cs" />
+    <Compile Include="Allowance\Scenarios\OnRequestInfusion.cs" />
+    <Compile Include="Allowance\PropertyAllowanceConfig.cs" />
+    <Compile Include="Allowance\Scenarios\NoVolumes.cs" />
     <Compile Include="Aspect\ChangeStateAttribute.cs" />
     <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />
@@ -122,6 +129,7 @@
     <Compile Include="Domain\Prescriptions\Prescription.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Verbalization\PrescriptionVerbalization.cs" />
     <Compile Include="WebService\ComboValue.cs" />
     <Compile Include="WebService\GenFormService.cs" />
     <Compile Include="WebService\IGenFormService.cs" />

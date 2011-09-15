@@ -1,4 +1,5 @@
-﻿using GenPres.xTest.Base;
+﻿using GenPres.Business.Domain.Prescriptions;
+using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace GenPres.xTest.Calculation.Calculator
@@ -9,12 +10,12 @@ namespace GenPres.xTest.Calculation.Calculator
         [TestMethod]
         public void CanRectifyPropertyToClosestIncrement()
         {
-            var prescription = PrescriptionTestFunctions.GetTestPrescription();
+            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
             prescription.Frequency.Value = 1.5m;
             var pc = PrescriptionTestFunctions.SetCombinations(prescription);
 
-            pc.ExecuteCalculation();
-            pc.FinishCalculation();
+            pc.Execute();
+            pc.Finish();
             Assert.IsTrue(prescription.Frequency.Value == 2);
         }
     }

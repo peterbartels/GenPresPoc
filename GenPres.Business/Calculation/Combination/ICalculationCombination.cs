@@ -5,7 +5,9 @@ namespace GenPres.Business.Calculation.Combination
     {
         void Calculate();
         void Finish();
+        bool CanBeCalculated();
         void ConvertCombinationsValuesToArray();
         void CorrectPropertyIncrements();
+        int GetUserCount();
     }
 }

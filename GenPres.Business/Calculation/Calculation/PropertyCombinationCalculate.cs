@@ -27,12 +27,12 @@ namespace GenPres.Business.Calculation.Calculation
             if (!_combination.CanBeCalculated()) return false;
 
             //In case multiple substance increments are available, retrieve all fd 
-            decimal[] substanceIncrements = PrescriptionCalculator.SubstanceIncrements;
+            decimal[] substanceIncrements = new[]{0.002m};
             decimal[] values = new decimal[3];
 
             //Get the property to be corrected
-            int propertyToRectify = 2;
-            int correctIndex = 2;
+            int propertyToRectify = combination.GetIndexToRectify();
+            int correctIndex = combination.GetIndexToRectify();
 
             /*
              * Loop through all possible substanceIncrements to calculate the index (=not calculated property in combination)
@@ -49,7 +49,7 @@ namespace GenPres.Business.Calculation.Calculation
                 values[correctIndex] = 0;
                 _calculate(correctIndex, values);
                 
-                AddToValues(combination, values, increment);
+                AddToValues(values, increment);
             }
 
             //Determine the closes possible value determined by the user
@@ -104,7 +104,7 @@ namespace GenPres.Business.Calculation.Calculation
             return 0;
         }
 
-        private void AddToValues(MultiplierCombination combination, decimal[] values, decimal increment)
+        private void AddToValues(decimal[] values, decimal increment)
         {
             var valueArray = new decimal[values.Length];
             

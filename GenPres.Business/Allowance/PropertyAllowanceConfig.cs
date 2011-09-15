@@ -9,10 +9,16 @@ namespace GenPres.Business.Allowance.Scenarios
     {
         private bool _allow;
         private IPropertyAllowance _property;
+
         public PropertyAllowanceConfig(bool allow, IPropertyAllowance property)
         {
             _allow = allow;
             _property = property;
+        }
+
+        public void SetPropertyAllowance()
+        {
+            _property.CanBeSet = _allow;
         }
     }
 }
