@@ -4,10 +4,10 @@ using GenPres.Business.Allowance.Scenarios;
 
 namespace GenPres.Business.Allowance
 {
-    public class PrescriptionAllowance : IPrescriptionAllowance
+    public class PrescriptionAllowance 
     {
         private Prescription _prescription;
-        
+
         private PrescriptionAllowance(Prescription prescription)
         {
             _prescription = prescription;
@@ -15,7 +15,7 @@ namespace GenPres.Business.Allowance
 
         public void CheckCombinations()
         {
-            if (_prescription.Drug.Generic == "" && _prescription.Drug.Route == "" && _prescription.Drug.Shape == "")
+            if (_prescription.Drug.Generic == "" || _prescription.Drug.Route == "" || _prescription.Drug.Shape == "")
                 return;
 
             var scenarios = new IScenario[]{
@@ -40,6 +40,7 @@ namespace GenPres.Business.Allowance
                         scenarios[i].PropertyAllowance[p].SetPropertyAllowance();
                 }
             }
+            _prescription.Drug.Components[0].Substances[0].Quantity.CanBeSet = true;
         }
 
         public static PrescriptionAllowance Determine(Prescription prescription)
@@ -48,10 +49,5 @@ namespace GenPres.Business.Allowance
             pa.CheckCombinations();
             return pa;
         }
-    }
-
-    internal interface IPrescriptionAllowance
-    {
-        void CheckCombinations();
     }
 }

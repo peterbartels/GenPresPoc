@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using GenPres.Business.Domain.Units;
 using GenPres.Data.DTO.Prescriptions;
 using GenPres.Data.Repositories;
 using GenPres.xTest.Base;
@@ -76,6 +77,40 @@ namespace GenPres.xTest.Business.PrescriptionTest
             p.Drug.Route = "rect";
             p.Drug.Shape = "zetp";
             Assert.IsTrue(p.Drug.Components[0].ComponentIncrement != 0);
+        }
+
+        [TestMethod]
+        public void PrescriptionCanSetPatientweight()
+        {
+            Prescription p = Prescription.NewPrescription();
+            
+            p.PatientWeight = UnitConverter.GetBaseValue("kg", 10);
+            p.PatientWeightUnit = "kg";
+
+            p.FirstDose.Quantity.Unit = "mg";
+            p.FirstDose.Quantity.Value = 10000;
+            p.FirstDose.Quantity.Adjust = "kg";
+            
+            Assert.AreEqual(p.FirstDose.Quantity.AdjustWeightValue, 10000);
+            Assert.AreEqual(p.FirstDose.Quantity.Value, 10000);
+            Assert.AreEqual(p.FirstDose.Quantity.BaseValue, 100);
+        }
+
+        [TestMethod]
+        public void PrescriptionCanSetPatientLength()
+        {
+            Prescription p = Prescription.NewPrescription();
+            p.PatientLength = UnitConverter.GetBaseValue("cm", 180);
+            p.PatientLengthUnit = "cm";
+
+            p.FirstDose.Quantity.Unit = "mg";
+            p.FirstDose.Quantity.Value = 200;
+            p.FirstDose.Quantity.Adjust = "cm";
+
+            Assert.AreEqual(1.8m, p.FirstDose.Quantity.AdjustLengthValue);
+            Assert.AreEqual(p.FirstDose.Quantity.Value, 200m);
+            Assert.AreEqual(p.FirstDose.Quantity.BaseValue, 32m);
+
         }
     }
 }

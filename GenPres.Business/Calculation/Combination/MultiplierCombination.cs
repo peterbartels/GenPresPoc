@@ -21,11 +21,11 @@ namespace GenPres.Business.Calculation.Combination
         private readonly UnitValue[] _unitValues = new UnitValue[3];
 
         private Expression<Func<UnitValue>>[] _properties;
-        private Prescription _root;
+        private Prescription _prescription;
 
-        public MultiplierCombination(Prescription root, params Expression<Func<UnitValue>>[] properties)
+        public MultiplierCombination(Prescription prescription, params Expression<Func<UnitValue>>[] properties)
         {
-            _root = root;
+            _prescription = prescription;
             _properties = properties;
             ConvertCombinationsValuesToArray();
         }
@@ -54,9 +54,14 @@ namespace GenPres.Business.Calculation.Combination
             values[index] = System.Math.Round(value, 8, MidpointRounding.AwayFromZero);
         }
 
+        public Expression<Func<UnitValue>>[] GetProperties()
+        {
+            return _properties;
+        }
+
         private static MemberExpression GetMemberInfo(Expression method)
         {
-            LambdaExpression lambda = method as LambdaExpression;
+            var lambda = method as LambdaExpression;
             if (lambda == null)
                 throw new ArgumentNullException("method");
 
@@ -93,20 +98,20 @@ namespace GenPres.Business.Calculation.Combination
         public decimal GetConvertedValue(int index)
         {
             var prop = _properties[index];
-            if (PropertyExpressionsAreEqual(prop, () =>_root.Frequency))
-                return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
+            if (PropertyExpressionsAreEqual(prop, () =>_prescription.Frequency))
+                return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_prescription.Frequency.Time, 1);
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Quantity))
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Quantity))
                 return _unitValues[index].BaseValue;
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Total))
-                return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Total))
+                return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_prescription.Frequency.Time, 1);
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Doses[0].Quantity))
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Doses[0].Quantity))
                 return _unitValues[index].BaseValue;
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Doses[0].Total))
-                return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Doses[0].Total))
+                return _unitValues[index].BaseValue / UnitConverter.GetUnitValue(_prescription.Frequency.Time, 1);
 
             throw new Exception("property has no convert configuration.");
         }
@@ -114,20 +119,20 @@ namespace GenPres.Business.Calculation.Combination
         public decimal SetBaseValue(int index)
         {
             var prop = _properties[index];
-            if (PropertyExpressionsAreEqual(prop, () => _root.Frequency))
-                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_root.Frequency.Time, 1); ;
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Frequency))
+                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_prescription.Frequency.Time, 1); ;
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Quantity))
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Quantity))
                 _unitValues[index].BaseValue = values[index];
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Total))
-                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Total))
+                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_prescription.Frequency.Time, 1);
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Doses[0].Quantity))
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Doses[0].Quantity))
                 _unitValues[index].BaseValue = values[index];
 
-            if (PropertyExpressionsAreEqual(prop, () => _root.Doses[0].Total))
-                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_root.Frequency.Time, 1);
+            if (PropertyExpressionsAreEqual(prop, () => _prescription.Doses[0].Total))
+                _unitValues[index].BaseValue = values[index] * UnitConverter.GetUnitValue(_prescription.Frequency.Time, 1);
 
             return 0;
         }
@@ -148,7 +153,12 @@ namespace GenPres.Business.Calculation.Combination
         }
 
         
-
+        public UnitValue GetPropertyByName(string name)
+        {
+            var prop = (from i in _properties where PropertyHelper.MemberName(i) == name select i).FirstOrDefault();
+            if (prop == null) return null;
+            return PropertyHelper.GetUnitValue(prop);
+        }
         public int GetCalculatedIndex()
         {
             for (int i = 0; i < values.Length; i++)
@@ -183,12 +193,17 @@ namespace GenPres.Business.Calculation.Combination
 
         public bool CanBeCalculated()
         {
-            return (GetUserCount() == 2);
+            return (GetValuesCount() == 2);
         }
 
         public int GetUserCount()
         {
-            return _unitValues.Count(t => t.UIState == "user" || t.Value == 0);
+            return _unitValues.Count(t => t.UIState == "user");
+        }
+
+        public int GetValuesCount()
+        {
+            return _unitValues.Count(t => t.Value > 0);
         }
 
         public void Finish()
@@ -213,7 +228,6 @@ namespace GenPres.Business.Calculation.Combination
                 values[i] = System.Math.Round(GetConvertedValue(i), 8, MidpointRounding.AwayFromZero);
             }
         }
-
 
         public void CorrectPropertyIncrements()
         {

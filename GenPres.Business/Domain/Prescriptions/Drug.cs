@@ -10,11 +10,11 @@ namespace GenPres.Business.Domain.Prescriptions
     {
         #region Private Fields
         
-        private string _generic;
+        private string _generic = "";
 
-        private string _route;
+        private string _route = "";
 
-        private string _shape;
+        private string _shape = "";
         
         #endregion 
 
@@ -27,7 +27,6 @@ namespace GenPres.Business.Domain.Prescriptions
             get { return _generic; }
             set { _generic = value;
                 CheckIncrements();
-                CheckAllowance();
             }
         }
 
@@ -36,7 +35,6 @@ namespace GenPres.Business.Domain.Prescriptions
             get { return _route; }
             set { _route = value;
                 CheckIncrements();
-                CheckAllowance();
             }
         }
 
@@ -45,7 +43,6 @@ namespace GenPres.Business.Domain.Prescriptions
             get { return _shape; }
             set { _shape = value;
                 CheckIncrements();
-                CheckAllowance();
             }
         }
 
@@ -92,11 +89,5 @@ namespace GenPres.Business.Domain.Prescriptions
         public virtual bool IsNew { get { return (Id == Guid.Empty); } }
 
         public virtual Guid Id { get; set; }
-
-        
-        private void CheckAllowance()
-        {
-            
-        }
     }
 }

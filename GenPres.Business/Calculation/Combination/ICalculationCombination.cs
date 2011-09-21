@@ -1,4 +1,8 @@
 ﻿
+using System;
+using System.Linq.Expressions;
+using GenPres.Business.Domain.Units;
+
 namespace GenPres.Business.Calculation.Combination
 {
     public interface ICalculationCombination
@@ -9,5 +13,7 @@ namespace GenPres.Business.Calculation.Combination
         void ConvertCombinationsValuesToArray();
         void CorrectPropertyIncrements();
         int GetUserCount();
+        Expression<Func<UnitValue>>[] GetProperties();
+        UnitValue GetPropertyByName(string name);
     }
 }

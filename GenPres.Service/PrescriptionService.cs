@@ -71,16 +71,16 @@ namespace GenPres.Service
             return PrescriptionAssembler.AssemblePrescriptionDto(Repository.GetPrescriptionById(Guid.Parse(id)));
         }
 
-        public static ReadOnlyCollection<ComboValue> GetSubstanceUnits(string generic, string shape, string route)
+        public static ReadOnlyCollection<SelectionItem> GetSubstanceUnits(string generic, string route, string shape)
         {
             var genFormService = new GenFormService();
-            return genFormService.GetSubstanceUnits(generic, shape, route);
+            return genFormService.GetSubstanceUnits(generic, route, shape);
         }
 
-        public static ReadOnlyCollection<ComboValue> GetComponentUnits(string generic, string shape, string route)
+        public static ReadOnlyCollection<SelectionItem> GetComponentUnits(string generic, string route, string shape)
         {
             var genFormService = new GenFormService();
-            return genFormService.GetComponentUnits(generic, shape, route);
+            return genFormService.GetComponentUnits(generic, route, shape);
         }
     }
 }

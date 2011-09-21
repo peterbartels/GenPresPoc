@@ -27,7 +27,9 @@ namespace GenPres.xTest.Business.StatesTest
             PrescriptionCalculator pc = new PrescriptionCalculator(prescription);
             pc.CheckStates();
 
-
+            Assert.IsTrue(prescription.Total.UIState == "calculated");
+            Assert.IsTrue(prescription.Frequency.UIState == "user");
+            Assert.IsTrue(prescription.Quantity.UIState == "user");
         }
     }
 }

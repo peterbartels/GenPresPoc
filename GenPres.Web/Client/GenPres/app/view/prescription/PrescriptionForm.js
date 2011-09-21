@@ -26,6 +26,7 @@ Ext.define('GenPres.view.prescription.PrescriptionForm', {
         }
 
         me.items = [
+            Ext.create('GenPres.view.prescription.Verbalization'),
             Ext.create('GenPres.view.prescription.DrugComposition'),
             Ext.create('GenPres.view.prescription.Patient'),
             Ext.create('GenPres.view.prescription.FrequencyDuration'),

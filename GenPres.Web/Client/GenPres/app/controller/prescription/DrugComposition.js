@@ -16,8 +16,8 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
 
     init: function() {
         this.control({
-            'combobox' : {
-                select : this.changeSelection
+            'combobox[isFormField=true]' : {
+                select : this.updateStores
             }
         });
     },
@@ -32,8 +32,8 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
         combo.store.on("load", this.checkValues, this, {comboBox:combo});
     },
 
-    changeSelection : function(combo){
-
+    updateStores : function(combo){
+        var me = this;
         if(combo.action == "generic"){
             this.generic = combo.getValue();
             this.setExtraParams('route', 'generic', this.generic);
@@ -57,23 +57,11 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             GenPres.ASyncEventManager.registerEventListener(this.getComboBox('route').store, "load", []);
         }
         
-        var extraParams = {
-            generic:this.generic,
-            route:this.route,
-            shape:this.shape
-        };
-        
-        var subststanceUnitStore = GenPres.store.PrescriptionStores.getSubstanceUnitStore();
-        subststanceUnitStore.proxy.extraParams = extraParams;
-        GenPres.ASyncEventManager.registerEventListener(subststanceUnitStore, "load", []);
-        //subststanceUnitStore.load();
+        GenPres.ASyncEventManager.execute();
 
-        var componentUnitStore = GenPres.store.PrescriptionStores.getComponentUnitStore();
-        componentUnitStore.proxy.extraParams = extraParams;
-        GenPres.ASyncEventManager.registerEventListener(componentUnitStore, "load", []);
+        GenPres.ASyncEventManager.registerFunction(Ext.Function.bind(me.reloadUnitStores, me), [function(){}])
 
         GenPres.ASyncEventManager.execute();
-        Ext.Function.defer(this.updatePrescription, 0, this);
     },
 
     drugIsChosen : function(){
@@ -81,6 +69,28 @@ Ext.define('GenPres.controller.prescription.DrugComposition', {
             return true;
         }
         return false;
+    },
+
+    reloadUnitStores: function(){
+        var extraParams = {
+            generic:this.getComboBox('generic').getValue(),
+            route:this.getComboBox('route').getValue(),
+            shape:this.getComboBox('shape').getValue()
+        };
+
+        var me = this;
+
+        var subststanceUnitStore = GenPres.store.PrescriptionStores.getSubstanceUnitStore();
+        subststanceUnitStore.proxy.extraParams = extraParams;
+        GenPres.ASyncEventManager.registerEventListener(subststanceUnitStore, "load", []);
+
+        var componentUnitStore = GenPres.store.PrescriptionStores.getComponentUnitStore();
+        componentUnitStore.proxy.extraParams = extraParams;
+        GenPres.ASyncEventManager.registerEventListener(componentUnitStore, "load", []);
+
+        GenPres.ASyncEventManager.execute();
+
+        me.updatePrescription();
     },
 
     getComboBox : function(name){

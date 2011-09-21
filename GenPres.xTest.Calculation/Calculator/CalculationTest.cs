@@ -10,7 +10,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace GenPres.xTest.Calculation.Calculator
 {
     [TestClass]
-    public class CombinationTest : BaseGenPresTest
+    public class CalculationTest : BaseGenPresTest
     {
         public static string _testPath = @"c:\temp\test.txt";
 

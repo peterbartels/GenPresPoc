@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using GenPres.Business.Calculation.Combination;
 using GenPres.Business.Domain.Prescriptions;
@@ -42,8 +43,10 @@ namespace GenPres.Business.Calculation
             SetIncrements(_prescription);
         }
 
-        public void Start()
+        public void SetCombinations()
         {
+            if (_combinations.Count != 0) return;
+            
             _combinations.Add(new MultiplierCombination(
                 _prescription,
                 () => _prescription.Total, () => _prescription.Frequency, () => _prescription.Quantity
@@ -53,6 +56,11 @@ namespace GenPres.Business.Calculation
                 _prescription,
                 () => _prescription.Doses[0].Total, () => _prescription.Frequency, () => _prescription.Doses[0].Quantity
             ));
+        }
+
+        public void Start()
+        {
+            SetCombinations();
             Execute();
 
             for (int i = 0; i < _combinations.Count; i++) _combinations[i].Finish();
@@ -114,13 +122,30 @@ namespace GenPres.Business.Calculation
             unitValue.Factor.IncrementStepping = incrementStepping;
         }
 
+        
+
         public void CheckStates()
         {
+            SetCombinations();
             for (int i = 0; i < _combinations.Count; i++)
             {
-                if (_combinations[i].GetUserCount() > 0)
+                var combinationsCheck = (from c in _combinations where c.GetUserCount() == 3 select c);
+                
+                var sequence = PropertySequence();
+
+                for (int j = 0; j < sequence.Count; j++)
                 {
-                    
+                    var property = _combinations[i].GetPropertyByName(sequence[j]);
+                    if(property != null)
+                    {
+                        if (!property.ChangedByUser)
+                        {
+                            property.UIState = "calculated";
+                            property.Value = 0;
+                            break;
+                        }
+   
+                    }
                 }
             }
         }

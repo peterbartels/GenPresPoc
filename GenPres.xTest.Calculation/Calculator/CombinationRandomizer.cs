@@ -19,7 +19,7 @@ namespace GenPres.xTest.Calculation.Calculator
             combi.GetUnitValue(0).Value = total;
             combi.GetUnitValue(1).Value = nr1;
             combi.GetUnitValue(2).Value = nr2;
-            File.AppendAllText(CombinationTest._testPath, "1: Value0=" + total + " Value1=" + nr1 + " Value2=" + nr2 + "\r\n");
+            File.AppendAllText(CalculationTest._testPath, "1: Value0=" + total + " Value1=" + nr1 + " Value2=" + nr2 + "\r\n");
         }
     }
 }

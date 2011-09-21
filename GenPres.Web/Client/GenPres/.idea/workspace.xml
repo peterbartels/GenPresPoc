@@ -23,37 +23,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UnitValueField.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/control/UnitValueField.js">
+      <file leaf-file-name="PrescriptionForm.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="31" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.2144522">
+            <state line="28" column="63" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dose.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/prescription/Dose.js">
+      <file leaf-file-name="DrugComposition.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="78" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0">
+            <state line="92" column="12" selection-start="2781" selection-end="2861" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PrescriptionController.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="PatientInfo.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/main/PatientInfo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="33" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Verbalization.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/prescription/Verbalization.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="5" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PrescriptionController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ASyncEventManager.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/lib/util/ASyncEventManager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="2" selection-start="2955" selection-end="2955" vertical-scroll-proportion="-30.24">
+            <state line="100" column="10" selection-start="3558" selection-end="3558" vertical-scroll-proportion="0.5275862">
               <folding />
             </state>
           </provider>
@@ -62,7 +71,16 @@
       <file leaf-file-name="DrugComposition.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controller/prescription/DrugComposition.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="121" column="3" selection-start="4730" selection-end="4730" vertical-scroll-proportion="0.0">
+            <state line="64" column="6" selection-start="2433" selection-end="2433" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocalUnit.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/store/prescription/LocalUnit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="4" selection-start="108" selection-end="125" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -71,16 +89,7 @@
       <file leaf-file-name="FrequencyDuration.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/prescription/FrequencyDuration.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="29" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PrescriptionStores.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/store/PrescriptionStores.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="19" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
+            <state line="16" column="14" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -100,22 +109,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/store/prescription/GenericStore.js" />
-        <option value="$PROJECT_DIR$/app/test/util/ASyncEventManagerTest.js" />
-        <option value="$PROJECT_DIR$/genpres-all.js" />
-        <option value="$PROJECT_DIR$/genpres.jsb3" />
         <option value="$PROJECT_DIR$/app/view/prescription/Dose.js" />
         <option value="$PROJECT_DIR$/app/view/prescription/Administration.js" />
         <option value="$PROJECT_DIR$/app/appConfig.js" />
         <option value="$PROJECT_DIR$/app/view/prescription/Options.js" />
-        <option value="$PROJECT_DIR$/app/view/prescription/DrugComposition.js" />
         <option value="$USER_HOME$/Desktop/scenarios.js" />
         <option value="$PROJECT_DIR$/app/lib/Prescription/UserStateCheck.js" />
+        <option value="$PROJECT_DIR$/genpres-all.js" />
         <option value="$PROJECT_DIR$/app/lib/util/ASyncEventManager.js" />
+        <option value="$PROJECT_DIR$/app/control/UnitValueField.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/DrugComposition.js" />
+        <option value="$PROJECT_DIR$/app/view/main/PatientInfo.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/FrequencyDuration.js" />
+        <option value="$PROJECT_DIR$/app/view/prescription/Verbalization.js" />
         <option value="$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js" />
         <option value="$PROJECT_DIR$/app/controller/prescription/DrugComposition.js" />
-        <option value="$PROJECT_DIR$/app/control/UnitValueField.js" />
-        <option value="$PROJECT_DIR$/app/view/prescription/FrequencyDuration.js" />
       </list>
     </option>
   </component>
@@ -164,7 +173,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
@@ -246,6 +254,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="store" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -286,12 +334,93 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="util" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="prescription" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="control" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -299,8 +428,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="Usage Scope" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PublishConfig" serverName="GenPres_Acceptatie" serverId="b953ea21-af7e-43da-b4a1-baddf4919b8f" />
   <component name="RecentsManager">
@@ -387,7 +516,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -395,7 +524,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2642819" sideWeight="0.67142856" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28029898" sideWeight="0.67142856" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -451,95 +580,86 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/view/prescription/Options.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="54" selection-start="2054" selection-end="2054" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/control/ValueField.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="22" selection-start="2114" selection-end="2114" vertical-scroll-proportion="0.30690828" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/test/control/UnitValueFieldTest.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="31" selection-start="2555" selection-end="2568" vertical-scroll-proportion="0.2876557" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/initApp.js">
+    <entry file="file://$PROJECT_DIR$/app/util/Process.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/initAppTest.js">
+    <entry file="file://$PROJECT_DIR$/app/store/prescription/RouteStore.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/fff.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/jj.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/PrescriptionStores.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="19" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/prescription/Dose.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="78" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/lib/util/ASyncEventManager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="2" selection-start="2955" selection-end="2955" vertical-scroll-proportion="-30.24">
-          <folding />
-        </state>
+        <state line="13" column="26" selection-start="230" selection-end="230" vertical-scroll-proportion="-0.61608154" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/prescription/DrugComposition.js">
+    <entry file="file://$PROJECT_DIR$/app/control/UnitValueField.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="121" column="3" selection-start="4730" selection-end="4730" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="199" column="37" selection-start="5398" selection-end="5398" vertical-scroll-proportion="0.5314685" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/DrugComposition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="862" selection-end="862" vertical-scroll-proportion="0.61608154" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/prescription/Patient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.020385051" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/model/prescription/Prescription.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="31" selection-start="452" selection-end="452" vertical-scroll-proportion="0.3272933" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/prescription/Prescription.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="0" selection-start="127" selection-end="127" vertical-scroll-proportion="0.09626274" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="63" selection-start="540" selection-end="540" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="92" column="12" selection-start="2781" selection-end="2861" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/main/PatientInfo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="33" selection-start="126" selection-end="126" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/prescription/Verbalization.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="5" selection-start="384" selection-end="384" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/FrequencyDuration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="29" selection-start="778" selection-end="778" vertical-scroll-proportion="0.0">
+        <state line="16" column="14" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/prescription/LocalUnit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="4" selection-start="108" selection-end="125" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/prescription/DrugComposition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="6" selection-start="2433" selection-end="2433" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/control/UnitValueField.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="31" selection-start="2141" selection-end="2141" vertical-scroll-proportion="0.2144522">
+        <state line="100" column="10" selection-start="3558" selection-end="3558" vertical-scroll-proportion="0.5275862">
           <folding />
         </state>
       </provider>

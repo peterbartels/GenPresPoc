@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using GenPres.Business.Calculation.Combination;
 using GenPres.Business.Domain.Units;
 
@@ -92,6 +93,16 @@ namespace GenPres.Operations.Calculation
         }
 
         public int GetUserCount()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Expression<Func<UnitValue>>[] GetProperties()
+        {
+            throw new NotImplementedException();
+        }
+
+        public UnitValue GetPropertyByName(string name)
         {
             throw new NotImplementedException();
         }

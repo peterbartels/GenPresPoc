@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GenPres.Business.WebService
 {
-    public class ComboValue
+    public class SelectionItem
     {
         public string Value;
         public bool selected;

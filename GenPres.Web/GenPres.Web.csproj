@@ -983,6 +983,7 @@
     <Content Include="Client\Library\jasmine\lib\jasmine-1.0.2\jasmine.js" />
     <Content Include="Client\Library\jasmine\lib\jasmine-1.0.2\json2.js" />
     <Content Include="Client\Library\jasmine\RunJasmine.js" />
+    <Content Include="generics.xml" />
     <Content Include="Copy of Settings.xml" />
     <Content Include="Global.asax" />
     <Content Include="Settings.xml" />

@@ -21,13 +21,13 @@ namespace GenPres.Controllers
         {
             return this.Direct(MedicineService.GetShapes(generic, route));
         }
-        public ActionResult GetSubstanceUnits(string generic, string shape, string route)
+        public ActionResult GetSubstanceUnits(string generic, string route, string shape)
         {
-            return this.Direct(PrescriptionService.GetSubstanceUnits(generic, shape, route));
+            return this.Direct(PrescriptionService.GetSubstanceUnits(generic, route, shape));
         }
-        public ActionResult GetComponentUnits(string generic, string shape, string route)
+        public ActionResult GetComponentUnits(string generic, string route, string shape)
         {
-            return this.Direct(PrescriptionService.GetComponentUnits(generic, shape, route));
+            return this.Direct(PrescriptionService.GetComponentUnits(generic, route, shape));
         }
         public ActionResult GetPrescriptions(string patientId)
         {

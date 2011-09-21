@@ -72,7 +72,58 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public virtual string PID {get; set; }
 
-        public virtual UnitValue PatientWeight { get; set; }
+        private string _patientWeightUnit;
+        public virtual string PatientWeightUnit
+        {
+            get { return _patientWeightUnit; }
+            set { _patientWeightUnit = value; SetPatientWeightLengthBaseValue(_patientWeight, _patientLength); }
+        }
+
+        private string _patientLengthUnit;
+        public virtual string PatientLengthUnit
+        {
+            get { return _patientLengthUnit; }
+            set { _patientLengthUnit = value; SetPatientWeightLengthBaseValue(_patientWeight, _patientLength); }
+        }
+
+        private decimal _patientWeight;
+        public virtual decimal PatientWeight
+        {
+            get { return _patientWeight; }
+            set { _patientWeight = value; SetPatientWeightLengthBaseValue(_patientWeight, _patientLength); }
+        }
+
+        private decimal _patientLength;
+        public virtual decimal PatientLength
+        {
+            get { return _patientLength; }
+            set { _patientLength = value;
+            SetPatientWeightLengthBaseValue(_patientWeight, _patientLength);
+            }
+        }
+
+        public virtual void SetPatientWeightLengthBaseValue(decimal weightBaseValue, decimal lengthBaseValue)
+        {
+            FirstDose.Quantity.SetWeightLength(weightBaseValue, lengthBaseValue);
+            FirstDose.Total.SetWeightLength(weightBaseValue, lengthBaseValue);
+            FirstDose.Rate.SetWeightLength(weightBaseValue, lengthBaseValue);
+        }
+
+
+        public virtual Substance FirstSubstance
+        {
+            get { return Drug.Components[0].Substances[0]; }
+        }
+
+        public virtual Component FirstComponent
+        {
+            get { return Drug.Components[0]; }
+        }
+
+        public virtual Dose FirstDose
+        {
+            get { return Doses[0]; }
+        }
 
         public static Prescription NewPrescription()
         {
@@ -84,13 +135,11 @@ namespace GenPres.Business.Domain.Prescriptions
                 Total = UnitValue.NewUnitValue(false),
                 Rate = UnitValue.NewUnitValue(false),
                 Duration = UnitValue.NewUnitValue(false),
-                PatientWeight = UnitValue.NewUnitValue(true)
             };
             prescription.Frequency.Time = "dag";
             prescription.Total.Time = "dag";
             prescription.Rate.Time = "uur";
             prescription.Duration.Time = "uur";
-            prescription.PatientWeight.Unit = "kg";
 
             prescription.Drug = Drug.NewDrug(prescription);
             return prescription;

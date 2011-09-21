@@ -41,7 +41,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
                 blur : Ext.Function.bind(updatePrescription, me)
             },
             'unitvaluefield' :{
-                comboChange : Ext.Function.bind(updatePrescription, me)
+                comboChange :me.updatePrescription
             },
             'unitvaluefield' :{
                 inputfieldChange : me.resetLatestChangedUnitValueField
@@ -53,7 +53,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     resetLatestChangedUnitValueField:function(unitValueField){
-
         var latestChangedUnitValueFields = GenPres.application.MainCenter.query('unitvaluefield[changedByUser=true]');
         for(var i=0;i<latestChangedUnitValueFields.length;i++){
             latestChangedUnitValueFields[i].changedByUser = false;
@@ -69,7 +68,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     updatePrescription: function(){
         var me = this;
-
         var PID = GenPres.session.PatientSession.patient.PID;
         me.prescriptionIsLoading = true;
         
@@ -77,7 +75,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             me.setValues(newValues);
             me.prescriptionIsLoading = false;
         };
-
+        
         GenPres.ASyncEventManager.registerDirectEvent(Prescription.UpdatePrescription, [PID, Ext.Function.bind(me.getValues, me), returnFunc]);
         GenPres.ASyncEventManager.execute();
     },
@@ -97,12 +95,12 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         var resultFunc = function(result){
             this.setValues(record.data);
             var drugController = GenPres.application.getController('prescription.DrugComposition');
-            drugController.changeSelection(drugController.getComboBox("generic"));
-            drugController.changeSelection(drugController.getComboBox("route"));
-            drugController.changeSelection(drugController.getComboBox("shape"));
+            drugController.updateStores(drugController.getComboBox("generic"));
+            drugController.updateStores(drugController.getComboBox("route"));
+            drugController.updateStores(drugController.getComboBox("shape"));
         };
-        //GenPres.ASyncEventManager.registerDirectEvent(Prescription.GetPrescriptionById, [record.data.Id, resultFunc]);
-        //GenPres.ASyncEventManager.execute();
+        GenPres.ASyncEventManager.registerDirectEvent(Prescription.GetPrescriptionById, [record.data.Id, resultFunc]);
+        GenPres.ASyncEventManager.execute();
     },
 
     setValues: function(data){
@@ -117,6 +115,8 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
                 component.resumeEvents();
             }
         }, this);
+        var verbalization = GenPres.application.MainCenter.query('verbalization')[0];
+        verbalization.store.loadData([data], false);
     },
 
     loadPrescriptionForm : function(tree, record){

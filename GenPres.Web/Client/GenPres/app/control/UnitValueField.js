@@ -124,14 +124,12 @@ Ext.define('GenPres.control.UnitValueField', {
         var me = this;
         var store = combo.store;
         var setSelected = function(){
-            if(combo.getValue() == "" || combo.getValue() == null){
-                for(var i=0;i<store.data.items.length;i++){
-                    var val = store.data.items[i].raw;
-                    if(val.selected == true){
-                        combo.suspendEvents();
-                        combo.setValue(val["Value"]);
-                        combo.resumeEvents();
-                    }
+            for(var i=0;i<store.data.items.length;i++){
+                var val = store.data.items[i].raw;
+                if(val.selected == true){
+                    combo.suspendEvents();
+                    combo.setValue(val["Value"]);
+                    combo.resumeEvents();
                 }
             }
         };
@@ -170,7 +168,9 @@ Ext.define('GenPres.control.UnitValueField', {
             })
             items.push(me.unitCombo);
 
-            me.unitCombo.on("change", function(){me.fireEvent('comboChange');});
+            me.unitCombo.on("change", function(){
+                me.fireEvent('inputfieldChange', me);
+            });
             
             me.setDefaultComboValue(me.unitCombo, me.unitStore);
         }
@@ -186,7 +186,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.adjustCombo);
-            me.adjustCombo.on("change", function(){me.fireEvent('comboChange');});
+            me.adjustCombo.on("change", function(){me.fireEvent('comboChange', me);});
             me.setDefaultComboValue(me.adjustCombo, me.adjustStore);
         }
         
@@ -200,7 +200,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.totalCombo);
-            me.totalCombo.on("change", function(){me.fireEvent('comboChange');});
+            me.totalCombo.on("change", function(){me.fireEvent('comboChange', me);});
             me.setDefaultComboValue(me.totalCombo, me.totalStore);
         }
 
@@ -214,7 +214,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.width = me.width + 60;
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.timeCombo);
-            me.timeCombo.on("change", function(){me.fireEvent('comboChange');});
+            me.timeCombo.on("change", function(){me.fireEvent('comboChange', me);});
             me.setDefaultComboValue(me.timeCombo, me.timeStore);
         }
 

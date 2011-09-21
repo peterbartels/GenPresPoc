@@ -21,7 +21,22 @@ namespace GenPres.Business.Domain.Units
         private bool _propertyChanged = false;
         private int _currentIncrement = 0;
         public virtual bool ChangedByUser { get; set; }
-        
+        private decimal _adjustWeightValue;
+        public virtual decimal AdjustWeightValue
+        {
+            get { return _adjustWeightValue; }
+            set { _adjustWeightValue = value;
+            }
+        }
+
+        private decimal _adjustLengthValue;
+        public virtual decimal AdjustLengthValue
+        {
+            get { return _adjustLengthValue; }
+            set { _adjustLengthValue = value;
+            }
+        }
+
         private Factor _factor;
         #endregion
 
@@ -108,6 +123,16 @@ namespace GenPres.Business.Domain.Units
                 CalculateBaseValue();
             }
         }
+
+
+
+        public virtual void SetWeightLength(decimal weight, decimal length)
+        {
+            AdjustWeightValue = weight;
+            AdjustLengthValue = length;
+            CalculateBaseValue();
+        }
+
 
         public virtual string Total
         {
@@ -236,6 +261,17 @@ namespace GenPres.Business.Domain.Units
             {
                 value = value / UnitConverter.GetBaseValue(_total, 1);
             }
+            if (!string.IsNullOrEmpty(_adjust))
+            {
+                if(AdjustWeightValue > 0)
+                {
+                    value = value * UnitConverter.GetUnitValue(_adjust, AdjustWeightValue);
+                }
+                if (AdjustLengthValue > 0)
+                {
+                    value = value * UnitConverter.GetUnitValue(_adjust, AdjustLengthValue);
+                }
+            }
             _baseValue = value;
         }
 
@@ -252,7 +288,19 @@ namespace GenPres.Business.Domain.Units
             }
             if (!string.IsNullOrEmpty(_total))
             {
-                value = value*UnitConverter.GetBaseValue(_total, 1);
+                value = value * UnitConverter.GetBaseValue(_total, 1);
+            }
+            if (!string.IsNullOrEmpty(_adjust))
+            {
+                if (AdjustWeightValue > 0)
+                {
+                    value = value / UnitConverter.GetUnitValue(_adjust, AdjustWeightValue);
+                }
+
+                if (AdjustLengthValue > 0)
+                {
+                    value = value * UnitConverter.GetUnitValue(_adjust, AdjustLengthValue);
+                }
             }
 
             _value = value;

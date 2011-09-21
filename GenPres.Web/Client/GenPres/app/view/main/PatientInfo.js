@@ -2,6 +2,8 @@ Ext.define('GenPres.view.main.PatientInfo', {
 
     extend: 'Ext.view.View',
 
+    colspan:4,
+
     alias : 'widget.patientinfo',
 
     itemSelector : 'patientInfo',

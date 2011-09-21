@@ -13,6 +13,7 @@ namespace GenPres.Data.Mappings
             Map(x => x.Time);
             Map(x => x.Adjust);
             Map(x => x.Total);
+            
         }
     }
 }

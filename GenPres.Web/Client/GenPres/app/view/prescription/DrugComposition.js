@@ -47,7 +47,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
         });
 
         var shapeCombo = Ext.create('Ext.form.field.ComboBox', {
-            store: Ext.create('GenPres.store.prescription.ShapeStore'),
+            store: 'prescription.ShapeStore',
             id:'drugShape',
             name:'drugShape',
             action:'shape',
@@ -88,7 +88,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             fieldLabel: 'Oplossing'
         });
 
-        var tablePanel = Ext.create('Ext.Panel', {
+        var tablePanel = Ext.create('Ext.Container', {
             border:false,
             layout : {
                type:'table',
@@ -96,7 +96,7 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
             },
             items : [genericCombo, substanceQuantity, solutionCombo, drugQuantity, routeCombo, shapeCombo, substanceDrugConcentration]
         });
-
+        
         me.items = tablePanel;
 
         me.callParent();
