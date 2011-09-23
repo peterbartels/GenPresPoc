@@ -72,25 +72,25 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public virtual string PID {get; set; }
 
-        private string _patientWeightUnit;
+        private string _patientWeightUnit = "kg";
         public virtual string PatientWeightUnit
         {
             get { return _patientWeightUnit; }
-            set { _patientWeightUnit = value; SetPatientWeightLengthBaseValue(_patientWeight, _patientLength); }
+            set { _patientWeightUnit = value; SetPatientWeightLengthBaseValue(); }
         }
 
-        private string _patientLengthUnit;
+        private string _patientLengthUnit = "cm";
         public virtual string PatientLengthUnit
         {
             get { return _patientLengthUnit; }
-            set { _patientLengthUnit = value; SetPatientWeightLengthBaseValue(_patientWeight, _patientLength); }
+            set { _patientLengthUnit = value; SetPatientWeightLengthBaseValue(); }
         }
 
         private decimal _patientWeight;
         public virtual decimal PatientWeight
         {
             get { return _patientWeight; }
-            set { _patientWeight = value; SetPatientWeightLengthBaseValue(_patientWeight, _patientLength); }
+            set { _patientWeight = value; SetPatientWeightLengthBaseValue(); }
         }
 
         private decimal _patientLength;
@@ -98,15 +98,15 @@ namespace GenPres.Business.Domain.Prescriptions
         {
             get { return _patientLength; }
             set { _patientLength = value;
-            SetPatientWeightLengthBaseValue(_patientWeight, _patientLength);
+            SetPatientWeightLengthBaseValue();
             }
         }
 
-        public virtual void SetPatientWeightLengthBaseValue(decimal weightBaseValue, decimal lengthBaseValue)
+        public virtual void SetPatientWeightLengthBaseValue()
         {
-            FirstDose.Quantity.SetWeightLength(weightBaseValue, lengthBaseValue);
-            FirstDose.Total.SetWeightLength(weightBaseValue, lengthBaseValue);
-            FirstDose.Rate.SetWeightLength(weightBaseValue, lengthBaseValue);
+            FirstDose.Quantity.SetWeightLengthBsa(_patientWeight, _patientLength, PatientBsa);
+            FirstDose.Total.SetWeightLengthBsa(_patientWeight, _patientLength, PatientBsa);
+            FirstDose.Rate.SetWeightLengthBsa(_patientWeight, _patientLength, PatientBsa);
         }
 
 
@@ -124,6 +124,11 @@ namespace GenPres.Business.Domain.Prescriptions
         {
             get { return Doses[0]; }
         }
+
+        public virtual decimal PatientBsa { get
+        {
+            return 0.20247m * (decimal)Math.Pow((double)_patientLength, 0.725) * (decimal)Math.Pow((double)UnitConverter.GetUnitValue("kg", _patientWeight), 0.425);
+        } }
 
         public static Prescription NewPrescription()
         {

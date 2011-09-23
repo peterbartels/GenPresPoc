@@ -7,8 +7,8 @@ Ext.app.config = {
 
     controllers: [
         'user.Login',
-        'patient.Patient',
         'prescription.PrescriptionController',
+        'patient.Patient',
         'prescription.DrugComposition'
     ],
 

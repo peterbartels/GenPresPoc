@@ -21,7 +21,9 @@ namespace GenPres.Business.Domain.Units
         private bool _propertyChanged = false;
         private int _currentIncrement = 0;
         public virtual bool ChangedByUser { get; set; }
+        
         private decimal _adjustWeightValue;
+        
         public virtual decimal AdjustWeightValue
         {
             get { return _adjustWeightValue; }
@@ -34,6 +36,16 @@ namespace GenPres.Business.Domain.Units
         {
             get { return _adjustLengthValue; }
             set { _adjustLengthValue = value;
+            }
+        }
+
+        private decimal _adjustBsaValue;
+        public virtual decimal AdjustBsaValue
+        {
+            get { return _adjustBsaValue; }
+            set
+            {
+                _adjustBsaValue = value;
             }
         }
 
@@ -126,10 +138,11 @@ namespace GenPres.Business.Domain.Units
 
 
 
-        public virtual void SetWeightLength(decimal weight, decimal length)
+        public virtual void SetWeightLengthBsa(decimal weight, decimal length, decimal bsa)
         {
             AdjustWeightValue = weight;
             AdjustLengthValue = length;
+            AdjustBsaValue = bsa;
             CalculateBaseValue();
         }
 

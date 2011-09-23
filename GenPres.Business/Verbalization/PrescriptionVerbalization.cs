@@ -31,8 +31,7 @@ namespace GenPres.Business.Verbalization
                     SpaceEnd(_prescription.Drug.Shape) +
                     SpaceEnd(_prescription.Drug.Route) +
                     GetfrequencyVerbalization(_prescription.Frequency) +
-                    VerbalizeUnitValueExplanation(_prescription.Quantity, _prescription.FirstDose.Quantity) + 
-                    ", " + 
+                    CommaEnd(VerbalizeUnitValueExplanation(_prescription.Quantity, _prescription.FirstDose.Quantity)) + 
                     VerbalizeUnitValueExplanation(_prescription.Total, _prescription.FirstDose.Total) 
                 ;
             return "";

@@ -25,14 +25,14 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             'gridpanel' : {
                 itemdblclick: me.loadPrescription
             },
-            'treepanel': {
-                itemclick: me.loadPrescriptionForm
-            },
             'button[action=home]': {
                 click : me.loadHome
             },
             'button[action=new]': {
-                click : me.clearPrescription
+                click : function(){
+                    me.clearPrescription();
+                    me.updatePrescription();
+                }
             },
             'button[action=save]': {
                 click : me.savePrescription
@@ -92,8 +92,9 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     loadPrescription : function(view, record, htmlItem, index, event, options){
+        var me = this;
         var resultFunc = function(result){
-            this.setValues(record.data);
+            me.setValues(record.data);
             var drugController = GenPres.application.getController('prescription.DrugComposition');
             drugController.updateStores(drugController.getComboBox("generic"));
             drugController.updateStores(drugController.getComboBox("route"));
@@ -108,8 +109,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
         Ext.Object.each(data, function(key, value){
             var components = form.query('#'+ key);
+            
             if(components.length > 0){
                 var component = components[0];
+
                 component.suspendEvents();
                 component.setValue(value);
                 component.resumeEvents();
@@ -127,7 +130,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             GenPres.application.MainCenterContainer.doLayout();
         }
         GenPres.application.MainCenterContainer.layout.setActiveItem(1);
-        me.clearPrescription();
     },
 
     loadHome : function(){
@@ -136,11 +138,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     clearPrescription : function(){
         this.getDrugCompositionController().clear();
-        var me = this;
-        GenPres.ASyncEventManager.registerDirectEvent(Prescription.ClearPrescription, [function(newValues){
-            me.setValues(newValues);
-        }]);
-        GenPres.ASyncEventManager.execute();
     },
 
     getForm : function(){
@@ -158,7 +155,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     getValues:function(){
         var vals = {};
         var form = this.getForm();
-
+        
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });

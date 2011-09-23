@@ -19,7 +19,7 @@ namespace GenPres.xTest.Business.PrescriptionVerbalizationTest
             prescription.Drug.Route = "rect";
 
             prescription.Frequency.Value = 3;
-            prescription.SetPatientWeightLengthBaseValue(UnitConverter.GetBaseValue("kg", 10), 0);
+            prescription.PatientLength = UnitConverter.GetBaseValue("kg", 10);
             prescription.FirstDose.Quantity.Value = 240;
 
             prescription.FirstDose.Total.Value = 72;

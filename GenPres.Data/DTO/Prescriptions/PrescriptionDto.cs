@@ -1,7 +1,15 @@
-﻿namespace GenPres.Data.DTO.Prescriptions
+﻿using System;
+
+namespace GenPres.Data.DTO.Prescriptions
 {
     public class PrescriptionDto
     {
+        public PrescriptionDto()
+        {
+            drugGeneric = "";
+            drugRoute = "";
+            drugShape = "";
+        }
         public string Id { get; set; }
         
         public string startDate { get; set; }
@@ -31,6 +39,13 @@
         public UnitValueDto adminRate { get; set; }
 
         public string verbalization { get; set; }
+
+        public UnitValueDto patientWeight { get; set; }
+        public UnitValueDto patientLength { get; set; }
+        public UnitValueDto patientBSA { get; set; }
+
+        public bool DoseVolume { get; set; }
+        public bool AdminVolume { get; set; }
     }
 }
 

@@ -2083,43 +2083,43 @@ Ext.define('GenPres.view.prescription.Patient', {
         var patientWeight = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Gewicht',
             labelAlign:'left',
-            isHidden:false,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],
                 data : [['gram'],['kg']]
             }),
             unit:'kg',
+            id:'patientWeight',
             name:'patientWeight'
         });
 
-        var patientHeight = Ext.create('GenPres.control.UnitValueField', {
+        var patientLength = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Lengte',
             labelAlign:'left',
-            isHidden:false,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],
                 data : [['cm']]
             }),
             unit:'cm',
-            name:'patientHeight'
+            id:'patientLength',
+            name:'patientLength'
         });
 
         var patientBSA = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'BSA',
             labelAlign:'left',
-            isHidden:false,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],
                 data : [['m2']]
             }),
             unit:'m2',
+            id:'patientBSA',
             name:'patientBSA'
         });
 
-        me.items = [patientWeight, patientHeight, patientBSA];
+        me.items = [patientWeight, patientLength, patientBSA];
 
         me.callParent();
     }
@@ -2467,9 +2467,14 @@ Ext.define('GenPres.view.database.RegisterDatabaseWindow', {
         var gridPanel = this.getGridPanel();
         gridPanel.store.proxy.extraParams.PID = GenPres.session.PatientSession.patient.PID;
         gridPanel.store.load();
+
         Patient.SelectPatient(GenPres.session.PatientSession.patient.PID, function(patientDto){
+            var prescriptionController = GenPres.application.getController('prescription.PrescriptionController');
+            prescriptionController.loadPrescriptionForm();
+            prescriptionController.clearPrescription();
             me.setPatientWeight(patientDto.Weight);
-            me.setPatientHeight(patientDto.Height);
+            me.setPatientLength(patientDto.Height);
+            prescriptionController.updatePrescription();
         });
     },
 
@@ -2478,9 +2483,9 @@ Ext.define('GenPres.view.database.RegisterDatabaseWindow', {
         prescriptionPatientComp.down('unitvaluefield[name=patientWeight]').setValue(weight);
     },
 
-    setPatientHeight : function(height, unit){
+    setPatientLength : function(height, unit){
         var prescriptionPatientComp = this.getPrescriptionPatientComponent();
-        prescriptionPatientComp.down('unitvaluefield[name=patientHeight]').setValue(height);
+        prescriptionPatientComp.down('unitvaluefield[name=patientLength]').setValue(height);
     },
 
     getPrescriptionPatientComponent : function(){
@@ -2607,14 +2612,14 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             'gridpanel' : {
                 itemdblclick: me.loadPrescription
             },
-            'treepanel': {
-                itemclick: me.loadPrescriptionForm
-            },
             'button[action=home]': {
                 click : me.loadHome
             },
             'button[action=new]': {
-                click : me.clearPrescription
+                click : function(){
+                    me.clearPrescription();
+                    me.updatePrescription();
+                }
             },
             'button[action=save]': {
                 click : me.savePrescription
@@ -2674,15 +2679,16 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
 
     loadPrescription : function(view, record, htmlItem, index, event, options){
+        var me = this;
         var resultFunc = function(result){
-            this.setValues(record.data);
+            me.setValues(record.data);
             var drugController = GenPres.application.getController('prescription.DrugComposition');
             drugController.updateStores(drugController.getComboBox("generic"));
             drugController.updateStores(drugController.getComboBox("route"));
             drugController.updateStores(drugController.getComboBox("shape"));
         };
-        //GenPres.ASyncEventManager.registerDirectEvent(Prescription.GetPrescriptionById, [record.data.Id, resultFunc]);
-        //GenPres.ASyncEventManager.execute();
+        GenPres.ASyncEventManager.registerDirectEvent(Prescription.GetPrescriptionById, [record.data.Id, resultFunc]);
+        GenPres.ASyncEventManager.execute();
     },
 
     setValues: function(data){
@@ -2690,8 +2696,10 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
         Ext.Object.each(data, function(key, value){
             var components = form.query('#'+ key);
+            
             if(components.length > 0){
                 var component = components[0];
+
                 component.suspendEvents();
                 component.setValue(value);
                 component.resumeEvents();
@@ -2709,7 +2717,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             GenPres.application.MainCenterContainer.doLayout();
         }
         GenPres.application.MainCenterContainer.layout.setActiveItem(1);
-        me.clearPrescription();
     },
 
     loadHome : function(){
@@ -2718,11 +2725,6 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     clearPrescription : function(){
         this.getDrugCompositionController().clear();
-        var me = this;
-        GenPres.ASyncEventManager.registerDirectEvent(Prescription.ClearPrescription, [function(newValues){
-            me.setValues(newValues);
-        }]);
-        GenPres.ASyncEventManager.execute();
     },
 
     getForm : function(){
@@ -2740,7 +2742,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     getValues:function(){
         var vals = {};
         var form = this.getForm();
-
+        
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });

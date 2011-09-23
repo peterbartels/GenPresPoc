@@ -56,7 +56,7 @@ namespace GenPres.xTest.Business.PrescriptionTest
             Prescription p = Prescription.NewPrescription();
             p.StartDate = DateTime.Parse("2011-07-01 12:00:00");
             PrescriptionDto pDto = PrescriptionAssembler.AssemblePrescriptionDto(p);
-            Assert.AreEqual(pDto.startDate, "1-7-2011 12:00:00");
+            Assert.AreEqual(pDto.startDate, "7/1/2011 12:00:00 PM");
         }
 
         [TestMethod]
@@ -108,9 +108,18 @@ namespace GenPres.xTest.Business.PrescriptionTest
             p.FirstDose.Quantity.Adjust = "cm";
 
             Assert.AreEqual(1.8m, p.FirstDose.Quantity.AdjustLengthValue);
-            Assert.AreEqual(p.FirstDose.Quantity.Value, 200m);
-            Assert.AreEqual(p.FirstDose.Quantity.BaseValue, 32m);
-
         }
+
+        [TestMethod]
+        public void PrescriptionCanCalculateBSA()
+        {
+            Prescription p = Prescription.NewPrescription();
+            p.PatientLength = UnitConverter.GetBaseValue("cm", 185);
+            p.PatientLengthUnit = "cm";
+            p.PatientWeight = UnitConverter.GetBaseValue("kg", 90); ;
+            p.PatientWeightUnit = "kg";
+            Assert.AreEqual(2.14m, Math.Round(p.PatientBsa, 2));
+        }
+
     }
 }

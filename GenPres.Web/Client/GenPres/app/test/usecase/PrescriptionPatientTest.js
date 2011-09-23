@@ -31,7 +31,7 @@ Ext.define('GenPres.test.usecase.PrescriptionPatientTest', {
         });
         it('Patient length can be set', function () {
             var prController = GenPres.application.getController('patient.Patient');
-            prController.setPatientHeight(120, 'cm');
+            prController.setPatientLength(120, 'cm');
             var weightComponent = me.getPatientComponent('patientHeight');
             expect(weightComponent.getValue().value).toBe(120);
             expect(weightComponent.getValue().unit).toBe("cm");

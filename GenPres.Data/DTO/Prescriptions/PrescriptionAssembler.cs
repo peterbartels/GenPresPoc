@@ -1,5 +1,6 @@
 ﻿using System;
 using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
 using GenPres.Business.Verbalization;
 
 namespace GenPres.Data.DTO.Prescriptions
@@ -42,7 +43,15 @@ namespace GenPres.Data.DTO.Prescriptions
             
             prescription.Drug.Components[0].Substances[0].Quantity = UnitValueDto.AssembleUnitValue(prescription.Drug.Components[0].Substances[0].Quantity, prescriptionDto.substanceQuantity);
             prescription.Drug.Components[0].Substances[0].DrugConcentration = UnitValueDto.AssembleUnitValue(prescription.Drug.Components[0].Substances[0].DrugConcentration, prescriptionDto.substanceDrugConcentration);
-            
+
+            var weightUnitValue = UnitValueDto.AssembleUnitValue(null, prescriptionDto.patientWeight);
+            prescription.PatientWeightUnit = weightUnitValue.Unit;
+            prescription.PatientWeight = weightUnitValue.BaseValue;
+
+            var lengthUnitValue = UnitValueDto.AssembleUnitValue(null, prescriptionDto.patientLength);
+            prescription.PatientLengthUnit = lengthUnitValue.Unit;
+            prescription.PatientLength = lengthUnitValue.BaseValue;
+
             return prescription;
         }
 
@@ -73,9 +82,32 @@ namespace GenPres.Data.DTO.Prescriptions
             prescriptionDto.doseTotal = UnitValueDto.AssembleUnitValueDto(prescription.Doses[0].Total);
             prescriptionDto.doseRate = UnitValueDto.AssembleUnitValueDto(prescription.Doses[0].Rate);
 
+            var weightUnitValue = UnitValue.NewUnitValue(true);
+            weightUnitValue.Unit = prescription.PatientWeightUnit;
+            weightUnitValue.BaseValue = prescription.PatientWeight;
+            prescriptionDto.patientWeight = UnitValueDto.AssembleUnitValueDto(weightUnitValue);
+
+            var lengthUnitValue = UnitValue.NewUnitValue(true);
+            lengthUnitValue.Unit = prescription.PatientLengthUnit;
+            lengthUnitValue.BaseValue = prescription.PatientLength;
+            prescriptionDto.patientLength = UnitValueDto.AssembleUnitValueDto(lengthUnitValue);
+
             prescriptionDto.PID = prescription.PID;
 
             prescriptionDto.verbalization = PrescriptionVerbalization.Verbalize(prescription);
+
+            prescriptionDto.AdminVolume = prescription.AdminVolume;
+            prescriptionDto.DoseVolume = prescription.DoseVolume;
+
+            var bsa = prescription.PatientBsa;
+            prescriptionDto.patientBSA = new UnitValueDto()
+            {
+                unit = "m2",
+                value = bsa,
+                state = "calculated",
+                canBeSet = true
+            };
+
             return prescriptionDto;
         }
     }

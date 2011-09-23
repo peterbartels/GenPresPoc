@@ -40,9 +40,14 @@
         var gridPanel = this.getGridPanel();
         gridPanel.store.proxy.extraParams.PID = GenPres.session.PatientSession.patient.PID;
         gridPanel.store.load();
+
         Patient.SelectPatient(GenPres.session.PatientSession.patient.PID, function(patientDto){
+            var prescriptionController = GenPres.application.getController('prescription.PrescriptionController');
+            prescriptionController.loadPrescriptionForm();
+            prescriptionController.clearPrescription();
             me.setPatientWeight(patientDto.Weight);
-            me.setPatientHeight(patientDto.Height);
+            me.setPatientLength(patientDto.Height);
+            prescriptionController.updatePrescription();
         });
     },
 
@@ -51,9 +56,9 @@
         prescriptionPatientComp.down('unitvaluefield[name=patientWeight]').setValue(weight);
     },
 
-    setPatientHeight : function(height, unit){
+    setPatientLength : function(height, unit){
         var prescriptionPatientComp = this.getPrescriptionPatientComponent();
-        prescriptionPatientComp.down('unitvaluefield[name=patientHeight]').setValue(height);
+        prescriptionPatientComp.down('unitvaluefield[name=patientLength]').setValue(height);
     },
 
     getPrescriptionPatientComponent : function(){

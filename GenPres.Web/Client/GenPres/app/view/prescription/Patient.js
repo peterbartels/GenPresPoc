@@ -26,43 +26,43 @@ Ext.define('GenPres.view.prescription.Patient', {
         var patientWeight = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Gewicht',
             labelAlign:'left',
-            isHidden:false,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],
                 data : [['gram'],['kg']]
             }),
             unit:'kg',
+            id:'patientWeight',
             name:'patientWeight'
         });
 
-        var patientHeight = Ext.create('GenPres.control.UnitValueField', {
+        var patientLength = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Lengte',
             labelAlign:'left',
-            isHidden:false,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],
                 data : [['cm']]
             }),
             unit:'cm',
-            name:'patientHeight'
+            id:'patientLength',
+            name:'patientLength'
         });
 
         var patientBSA = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'BSA',
             labelAlign:'left',
-            isHidden:false,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],
                 data : [['m2']]
             }),
             unit:'m2',
+            id:'patientBSA',
             name:'patientBSA'
         });
 
-        me.items = [patientWeight, patientHeight, patientBSA];
+        me.items = [patientWeight, patientLength, patientBSA];
 
         me.callParent();
     }
