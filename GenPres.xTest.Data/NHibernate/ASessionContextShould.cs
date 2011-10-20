@@ -8,8 +8,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace GenPres.xTest.Data.NHibernate
 {
     [TestClass]
-    public class ASessionContextShould : BaseGenPresTest
+    public class ASessionContextShould
     {
+        /*TODO: Check
         [TestMethod]
         public void AlwaysReturnASessionObject()
         {
@@ -36,6 +37,6 @@ namespace GenPres.xTest.Data.NHibernate
             {
                 Assert.IsTrue(true);
             }
-        }
+        }*/
     }
 }

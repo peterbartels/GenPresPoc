@@ -1,4 +1,6 @@
-﻿using GenPres.Business.Service;
+﻿using GenPres.Business;
+using GenPres.Business.Domain.Users;
+using GenPres.Business.Service;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -36,8 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PostSharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
-    <Reference Include="PostSharp.Laos, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
+    <Reference Include="PostSharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="StructureMap">
       <HintPath>..\..\..\StructureMap\deploy\StructureMap.dll</HintPath>
     </Reference>
@@ -96,6 +95,8 @@
     <Compile Include="Calculation\PrescriptionCalculator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Exceptions\InvalidIdException.cs" />
+    <Compile Include="Exceptions\UnknownIdException.cs" />
     <Compile Include="Util\PropertyHelper.cs">
       <SubType>Code</SubType>
     </Compile>

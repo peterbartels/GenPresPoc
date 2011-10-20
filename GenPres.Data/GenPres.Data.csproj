@@ -26,6 +26,7 @@
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -40,6 +41,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\NHibernate3.2\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender">
+      <HintPath>E:\apps\NHProfiler\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\NHibernate3.2\Iesi.Collections.dll</HintPath>
@@ -53,7 +57,17 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.76.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\SQLite32\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.76.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\SQLite32\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.XML" />
+    <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
+    <Reference Include="Typemock.ArrangeActAssert, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connections\DatabaseConnection.cs" />
@@ -106,6 +120,7 @@
     <Compile Include="Repositories\UserSqlRepository.cs" />
     <Compile Include="SessionFactoryCreator.cs" />
     <Compile Include="SessionManager.cs" />
+    <Compile Include="System.Data.SQLite.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
@@ -116,11 +131,6 @@
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="sqlite3.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

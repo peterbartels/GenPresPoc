@@ -6,7 +6,7 @@ namespace GenPres.Business.Data.IRepositories
 {
     public interface IPatientRepository : IEnumerable<Patient>
     {
-        Patient GetByPid(string pid);
+        Patient GetPatientByPatientId(string pid);
         bool PatientExists(string patientId);
         void Save(Patient pat);
     }

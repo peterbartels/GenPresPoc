@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
+using GenPres.Business.Exceptions;
 using GenPres.Data.DTO.Patients;
 using StructureMap;
 
@@ -30,7 +31,10 @@ namespace GenPres.Service
 
         public static Patient GetPatientByPid(string Pid)
         {
-            return Repository.GetByPid(Pid);
+            if (Pid == "")
+                throw new InvalidIdException();
+
+            return Repository.GetPatientByPatientId(Pid);
         }
 
         public static PatientDto InsertFromPdms(string pid)

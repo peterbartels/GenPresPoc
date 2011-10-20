@@ -27,12 +27,18 @@ namespace GenPres.xTest.Business.UserTest
             return;
         }
 
+        private IUserRepository IsolateUserRepository()
+        {
+            var repos = Isolate.Fake.Instance<IUserRepository>();
+            ObjectFactory.Inject(repos);
+            return repos;
+        }
+
         [Isolated]
         [TestMethod]
         public void UserServiceLoginCallsRepositoryGetUserByUsername()
         {
-            InitializeUserTest();
-            var userRepository = StructureMap.ObjectFactory.GetInstance<UserRepository>();
+            var userRepository = IsolateUserRepository();
             UserService.AuthenticateUser("test", "test");
             Isolate.Verify.WasCalledWithAnyArguments(() => userRepository.GetUserByUsername("", ""));
         }
@@ -42,7 +48,11 @@ namespace GenPres.xTest.Business.UserTest
         public void UserRepositoryGetUserbyUsernameReturnsAvailableUser()
         {
             var userRepository = StructureMap.ObjectFactory.GetInstance<UserRepository>();
-            var user = userRepository.GetUserByUsername("Test", "test");
+            var newUser = User.NewUser();
+            newUser.UserName = "Test";
+            newUser.PassCrypt = AuthenticationFunctions.MD5("test");
+            newUser.Save();
+            var user = userRepository.GetUserByUsername("test", "test");
             Assert.IsTrue(user);
         }
 

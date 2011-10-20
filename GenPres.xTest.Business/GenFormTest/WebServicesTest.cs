@@ -18,6 +18,7 @@ namespace GenPres.xTest.Business.GenFormTest
         {
             var generics = _genFormService.GetGenerics("","");
             Assert.IsTrue(generics.Length > 0);
+            
         }
 
         [TestMethod]

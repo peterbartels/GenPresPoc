@@ -24,7 +24,6 @@ namespace GenPres.Data.Repositories
         }
         public T FindSingle(Func<T, bool> s)
         {
-            
             return this.SingleOrDefault(s);
         }
 

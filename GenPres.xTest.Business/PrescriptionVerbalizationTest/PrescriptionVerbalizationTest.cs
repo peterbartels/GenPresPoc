@@ -15,7 +15,7 @@ namespace GenPres.xTest.Business.PrescriptionVerbalizationTest
         {
             var prescription = CreateParacetamolRect(Prescription.NewPrescription());
 
-            prescription.Drug.Shape = "zetpil";
+            prescription.Drug.Shape = "zetp";
             prescription.Drug.Route = "rect";
 
             prescription.Frequency.Value = 3;
@@ -34,7 +34,7 @@ namespace GenPres.xTest.Business.PrescriptionVerbalizationTest
             prescription.FirstSubstance.Quantity.Value = 240;
             
             var verbalization = PrescriptionVerbalization.Verbalize(prescription);
-            Assert.IsTrue(verbalization == "paracetamol 240 mg zetpil rect 3 keer per dag 1 zetpil = 240 mg, 21 zetpil/week = 72 mg/ kg/dag");
+            Assert.AreEqual(verbalization, "paracetamol 240 mg zetp rect 3 keer per dag 1 zetp = 240 mg, 21 zetp/week = 72 mg/kg/dag");
         }
     }
 }

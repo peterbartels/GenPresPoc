@@ -22,7 +22,7 @@ namespace GenPres.Data.Repositories
             return foundPatient != null;
         }
 
-        public Patient GetByPid(string pid)
+        public Patient GetPatientByPatientId(string pid)
         {
             return FindSingle(x => x.Pid == pid);
         }
@@ -32,9 +32,5 @@ namespace GenPres.Data.Repositories
             base.SaveOrUpdate(pat);
         }
 
-        public int Count()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

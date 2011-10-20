@@ -13,7 +13,7 @@ namespace GenPres.xTest.Business.LogicalUnitTest
         private static void InitializeLogicalUnitTest()
         {
             var repository = Isolate.Fake.Instance<LogicalUnitRepository>(Members.CallOriginal);
-            StructureMap.ObjectFactory.Configure(x => x.For<LogicalUnitRepository>().Use(repository));
+            StructureMap.ObjectFactory.Configure(x => x.For<ILogicalUnitRepository>().Use(repository));
             return;
         }
 
@@ -22,7 +22,7 @@ namespace GenPres.xTest.Business.LogicalUnitTest
         public void LogicalUnitGetLogicalUnitsCallsRepositoryGetLogicalUnits()
         {
             InitializeLogicalUnitTest();
-            var logicalUnitRepository = StructureMap.ObjectFactory.GetInstance<LogicalUnitRepository>();
+            var logicalUnitRepository = StructureMap.ObjectFactory.GetInstance<ILogicalUnitRepository>();
             LogicalUnit.GetLogicalUnits();
             Isolate.Verify.WasCalledWithAnyArguments(() => logicalUnitRepository.GetLogicalUnits());
         }

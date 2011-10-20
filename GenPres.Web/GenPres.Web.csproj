@@ -25,6 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -987,10 +988,9 @@
     <Content Include="Copy of Settings.xml" />
     <Content Include="Global.asax" />
     <Content Include="Settings.xml" />
-    <Content Include="sqlite3.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

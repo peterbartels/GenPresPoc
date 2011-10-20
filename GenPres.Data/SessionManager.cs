@@ -9,12 +9,12 @@ namespace GenPres.Data
 {
     public class SessionManager
     {
-        private static ISessionFactory _factory;
+        protected static ISessionFactory _factory;
 
-        private static readonly Object LockThis = new object();
+        protected static readonly Object LockThis = new object();
 
-        private static SessionManager _instance;
-
+        protected static SessionManager _instance;
+        
         public static SessionManager Instance
         {
             get
@@ -34,21 +34,43 @@ namespace GenPres.Data
             }
         }
 
-        public ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
+        public void InsertData()
         {
+            var u = User.NewUser();
+            u.UserName = "test";
+            u.PassCrypt = "0cbc6611f5540bd0809a388dc95a615b";
+            u.Save();
+        }
+
+        protected static ISession _currentSession;
+
+        public static ISession InitSession()
+        {
+            if (_currentSession == null)
+            {
+                _currentSession = _factory.OpenSession();
+                CurrentSessionContext.Bind(_currentSession);
+            }
+
+            return _currentSession;
+        }
+
+        public virtual ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
+        {
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
+            
             if (_factory == null)
             {
                 _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);
             }
-            var session = _factory.OpenSession();
-            
-            if(exposeConfiguration) SessionFactoryCreator.BuildSchema(session);
-            CurrentSessionContext.Bind(session);
 
-            var u = User.NewUser();
-            u.UserName = "test";
-            u.PassCrypt = "0cbc6611f5540bd0809a388dc95a615b";
-            if (exposeConfiguration) u.Save();
+            var session = _factory.OpenSession();
+            if (exposeConfiguration)
+            {
+                SessionFactoryCreator.BuildSchema(session);
+                InsertData();
+            }
+            
             return _factory;
         }
 
@@ -63,7 +85,6 @@ namespace GenPres.Data
             get { return Instance.SessionFactoryFromInstance; }
         }
 
-        [Obsolete]
         public ISessionFactory SessionFactoryFromInstance
         {
             get { return _factory; }

@@ -16,6 +16,7 @@ namespace GenPres.Assembler.Contexts
         {
             var session = CurrentSessionContext.Unbind(SessionManager.Instance.SessionFactoryFromInstance);
             session.Close();
+            session.Dispose();
         }
 
         public ISession CurrentSession()

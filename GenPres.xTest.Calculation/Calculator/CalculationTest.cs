@@ -74,12 +74,12 @@ namespace GenPres.xTest.Calculation.Calculator
         {
             var prescription = CreateParacetamolRect(Prescription.NewPrescription());
             prescription.Frequency.Value = 2;
-            prescription.Doses[0].Total.Value = 8;
+            prescription.Doses[0].Total.Value = 480;
             var pc = new PrescriptionCalculator(prescription);
             AddCombiToCalculator(prescription, pc, () => prescription.Doses[0].Total, () => prescription.Frequency, () => prescription.Doses[0].Quantity);
             pc.Execute();
             pc.Finish();
-            Assert.AreEqual(4, prescription.Doses[0].Quantity.Value, "wrong dose quantity value");
+            Assert.AreEqual(240, prescription.Doses[0].Quantity.Value, "wrong dose quantity value");
         }
 
         [TestMethod]
@@ -87,18 +87,20 @@ namespace GenPres.xTest.Calculation.Calculator
         {
             var prescription = CreateParacetamolRect(Prescription.NewPrescription());
             prescription.Frequency.Value = 2;
-            prescription.Doses[0].Quantity.Value = 4;
+            prescription.Doses[0].Quantity.Value = 480;
             var pc = new PrescriptionCalculator(prescription);
             AddCombiToCalculator(prescription, pc, () => prescription.Doses[0].Total, () => prescription.Frequency, () => prescription.Doses[0].Quantity);
             pc.Execute();
             pc.Finish();
-            Assert.AreEqual(8, prescription.Doses[0].Total.Value, "wrong dose total value");
+            Assert.AreEqual(960, prescription.Doses[0].Total.Value, "wrong dose total value");
         }
-        /*
+        
         [TestMethod]
         public void CalculatorCanRectifySimpleCalculation()
         {
             var prescription = CreateParacetamolRect(Prescription.NewPrescription());
+            prescription.Frequency.Value = 2;
+            prescription.Quantity.Value = 4;
             var pc = new PrescriptionCalculator(prescription);
             
             var combi = new MultiplierCombination(
@@ -115,7 +117,8 @@ namespace GenPres.xTest.Calculation.Calculator
             Assert.AreEqual(4, prescription.Quantity.Value, "woring quantity value");
             
         }
-
+        /*
+        
         [TestMethod]
         public void CalculatorCanCalculateUsingIncrements()
         {
@@ -149,6 +152,7 @@ namespace GenPres.xTest.Calculation.Calculator
                 Assert.IsTrue(combi2.Validate());
             }
         }
+        
 
         [TestMethod]
         public void RunAutomatedCalcSingle()

@@ -17,7 +17,7 @@ public interface IChangeTrackable
 namespace GenPres.Business.Domain.Users
 {
     
-    public class User
+    public class User : IChangeTrackable
     {
         private StatusEnum _state = StatusEnum.New;
 
@@ -56,7 +56,7 @@ namespace GenPres.Business.Domain.Users
 
         public static bool AuthenticateUser(string username, string password)
         {
-            return Repository.GetUserByUsername(username, password);
+            return Repository.GetUserByUsername(username.ToLower(), password);
         }
     }
 }

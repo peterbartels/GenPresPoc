@@ -56,9 +56,6 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\Program Files\System.Data.SQLite\bin\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.XML" />
     <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
@@ -72,6 +69,7 @@
   <ItemGroup>
     <Compile Include="GenFormTest\GetProductInfoTest.cs" />
     <Compile Include="GenFormTest\WebServicesTest.cs" />
+    <Compile Include="GenPresInitialize\GenPresInitializeTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitRepositoryTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
     <Compile Include="PatientTest\PatientRepositoryTest.cs" />
@@ -84,8 +82,8 @@
     <Compile Include="UserTest\Authenticate.cs" />
     <Compile Include="UserTest\UserTest.cs" />
     <Compile Include="Util\PropertyHelperTest.cs" />
-    <Compile Include="VisibilityTest\CanBeSetOfPrescriptionPropertiesTests.cs" />
-    <Compile Include="VisibilityTest\Scenarios\ScenariosTest.cs" />
+    <Compile Include="PropertyEnablingTest\CanBeSetOfPrescriptionPropertiesTests.cs" />
+    <Compile Include="PropertyEnablingTest\SolutionBasedScenario\ScenariosTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">

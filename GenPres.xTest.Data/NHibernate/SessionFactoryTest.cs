@@ -1,12 +1,15 @@
 ﻿using System;
 using GenPres.Assembler;
 using GenPres.Assembler.Contexts;
+using GenPres.Business.Domain.Prescriptions;
 using GenPres.Data;
 using GenPres.Data.Connections;
 using GenPres.Data.Repositories;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NHibernate;
+using NHibernate.Context;
+using NHibernate.Metadata;
 using StructureMap;
 
 namespace GenPres.xTest.Data.NHibernate
@@ -15,7 +18,7 @@ namespace GenPres.xTest.Data.NHibernate
     /// Summary description for SessionFactoryTest
     /// </summary>
     [TestClass]
-    public class SessionFactoryTest : BaseGenPresTest
+    public class SessionFactoryTest
     {
         #region Constructor and Context
         public SessionFactoryTest()
@@ -68,17 +71,51 @@ namespace GenPres.xTest.Data.NHibernate
         #endregion 
 
         [TestMethod]
-        public void BeAbleToCreateASessionFactory()
+        public void BeAbleToCreateAProductionSessionFactory()
         {
             var factory = SessionFactoryCreator.CreateSessionFactory(DatabaseConnection.DatabaseName.GenPres);
             Assert.IsNotNull(factory);
         }
 
         [TestMethod]
-        public void BeRetreivedByGenFormApplication()
+        public void ProductionSessionFactoryCanBeRetreivedByGenPresApplication()
         {
             var factory = SessionFactoryCreator.CreateSessionFactory(DatabaseConnection.DatabaseName.GenPres);
             Assert.IsInstanceOfType(factory, typeof(ISessionFactory));
         }
+
+        [TestMethod]
+        public void BeAbleToCreateATestSessionFactory()
+        {
+            var factory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            Assert.IsNotNull(factory);
+        }
+
+        [TestMethod]
+        public void TestSessionFactoryCanCreateASession()
+        {
+            var factory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            var session = factory.OpenSession();
+            Assert.IsNotNull(session);
+        }
+
+        [TestMethod]
+        public void TestSessionFactoryHasClassMetadata()
+        {
+            var factory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            var classMetadata = factory.GetClassMetadata(typeof(Prescription));
+            Assert.IsNotNull(classMetadata);
+        }
+
+        [TestMethod]
+        public void TestSessionFactoryCanOpenMultipleSessionsWithoutMakingNewConnections()
+        {
+            /*var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, false);
+            var session1 = TestSessionManager.InitSession();
+            var session2 = TestSessionManager.InitSession();
+            Assert.IsTrue(session1.Connection == session2.Connection);
+            */
+        }
+
     }
 }

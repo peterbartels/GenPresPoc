@@ -36,6 +36,10 @@
     <Reference Include="FluentNHibernate">
       <HintPath>..\Dependencies\NHibernate3.2\FluentNHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\apps\NHProfiler\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections">
       <HintPath>..\Dependencies\NHibernate3.2\Iesi.Collections.dll</HintPath>
     </Reference>
@@ -43,12 +47,18 @@
     <Reference Include="NHibernate">
       <HintPath>..\Dependencies\NHibernate3.2\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
+    <Reference Include="Typemock.ArrangeActAssert, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -57,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseGenPresTest.cs" />
+    <Compile Include="DatabaseCleaner.cs" />
     <Compile Include="Mappers\PrescriptionMap.cs" />
     <Compile Include="PrescriptionBo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,6 +76,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="TestSessionContext.cs" />
+    <Compile Include="TestSessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">

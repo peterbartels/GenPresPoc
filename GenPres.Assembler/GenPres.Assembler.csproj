@@ -26,6 +26,7 @@
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,7 +57,7 @@
   <ItemGroup>
     <Compile Include="Contexts\SessionContext.cs" />
     <Compile Include="DatabaseRegistrationAssembler.cs" />
-    <Compile Include="GenFormAssembler.cs" />
+    <Compile Include="GenFormWebServiceAssembler.cs" />
     <Compile Include="GenPresApplication.cs" />
     <Compile Include="PatientAssembler.cs" />
     <Compile Include="PrescriptionAssembler.cs" />

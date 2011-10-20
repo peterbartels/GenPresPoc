@@ -7,26 +7,38 @@ using NHibernate.Linq;
 
 namespace GenPres.Data.Repositories
 {
+    
     public class PrescriptionRepository : NHibernateRepository<Prescription, Guid>, IPrescriptionRepository
     {
         public PrescriptionRepository() : base(SessionManager.SessionFactory){}
 
         public Prescription[] GetPrescriptionsByPatientId(string patientId)
         {
-            var prescriptions = Session.Query<Prescription>().Where(x=>x.Patient.Pid == patientId);
-            return prescriptions.ToArray();
+            return GetByPatientId(patientId);
         }
 
         public Prescription GetPrescriptionById(Guid id)
         {
-            var prescription = Session.Query<Prescription>().Single(x => x.Id == id);
-            return prescription;
+            return GetById(id);
         }
+
+        private Prescription GetById(Guid id)
+        {
+            return Session.Query<Prescription>().SingleOrDefault(x => x.Id == id);
+        }
+
+
+        private Prescription[] GetByPatientId(string patientId)
+        {
+            var prescriptions = Session.Query<Prescription>().Where(x => x.Patient.Pid == patientId);
+            return prescriptions.ToArray();
+        }
+
 
         public void SavePrescription(Prescription prescription, string patientId)
         {
             var pr = new PatientRepository();
-            var pat = pr.GetByPid(patientId);
+            var pat = pr.GetPatientByPatientId(patientId);
             if(pat == null)
             {
                 pat = Patient.NewPatient();

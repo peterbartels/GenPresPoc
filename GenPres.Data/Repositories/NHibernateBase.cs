@@ -6,7 +6,7 @@ namespace GenPres.Data.Repositories
     public abstract class NHibernateBase
     {
         protected readonly ISessionFactory Factory;
-
+        
         protected NHibernateBase(ISessionFactory factory)
         {
             Factory = factory;

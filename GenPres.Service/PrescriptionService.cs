@@ -5,6 +5,7 @@ using GenPres.Business.Calculation;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
+using GenPres.Business.Exceptions;
 using GenPres.Business.Verbalization;
 using GenPres.Business.WebService;
 using GenPres.Data.DTO.GenForm;
@@ -15,19 +16,11 @@ namespace GenPres.Service
 {
     public static class PrescriptionService
     {
-        public static void NewPrescription()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static IPrescriptionRepository _prescriptionRepository;
-
         private static IPrescriptionRepository Repository
         {
             get
             {
-                if (_prescriptionRepository == null) _prescriptionRepository = ObjectFactory.GetInstance<IPrescriptionRepository>();
-                return _prescriptionRepository;
+                return ObjectFactory.GetInstance<IPrescriptionRepository>();;
             }
         }
 
@@ -57,6 +50,9 @@ namespace GenPres.Service
 
         public static ReadOnlyCollection<PrescriptionDto> GetPrescriptions(string patientId)
         {
+            if (patientId == "") 
+                throw new InvalidIdException();
+
             var prescriptions = Repository.GetPrescriptionsByPatientId(patientId);
 
             var prescriptionDtos = new PrescriptionDto[prescriptions.Length];
@@ -68,7 +64,14 @@ namespace GenPres.Service
         }
         public static PrescriptionDto GetPrescriptionById(string id)
         {
-            return PrescriptionAssembler.AssemblePrescriptionDto(Repository.GetPrescriptionById(Guid.Parse(id)));
+            var guid = new Guid();
+            
+            if (id == Guid.Empty.ToString() || !Guid.TryParse(id, out guid)) 
+                throw new InvalidIdException();
+
+            var prescription = Repository.GetPrescriptionById(guid);
+            if(prescription == null) throw new UnknownIdException();
+            return PrescriptionAssembler.AssemblePrescriptionDto(prescription);
         }
 
         public static ReadOnlyCollection<SelectionItem> GetSubstanceUnits(string generic, string route, string shape)

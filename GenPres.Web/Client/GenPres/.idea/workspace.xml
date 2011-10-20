@@ -35,7 +35,7 @@
       <file leaf-file-name="PrescriptionController.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="18" selection-start="3436" selection-end="3436" vertical-scroll-proportion="0.5714286">
+            <state line="107" column="34" selection-start="3822" selection-end="3822" vertical-scroll-proportion="0.17425968">
               <folding />
             </state>
           </provider>
@@ -325,8 +325,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
       <pane id="Scope" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,8 +334,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="Usage Scope" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" serverName="GenPres_Acceptatie" serverId="b953ea21-af7e-43da-b4a1-baddf4919b8f" />
   <component name="RecentsManager">
@@ -421,23 +421,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
+    <frame x="-4" y="-4" width="1928" height="1064" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32995194" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33422318" sideWeight="0.67142856" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3384944" sideWeight="0.67142856" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32857144" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -508,9 +508,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/test/usecase/PrescriptionPatientTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="41" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="33" column="41" selection-start="1489" selection-end="1489" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/Verbalization.js">
@@ -520,70 +518,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/main/PatientInfo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="33" selection-start="126" selection-end="126" vertical-scroll-proportion="0.15582192">
-          <folding />
-        </state>
+        <state line="6" column="33" selection-start="126" selection-end="126" vertical-scroll-proportion="0.15582192" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/genpres-all.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="508" column="7" selection-start="13158" selection-end="13158" vertical-scroll-proportion="-1.16">
-          <folding />
-        </state>
+        <state line="508" column="7" selection-start="13158" selection-end="13158" vertical-scroll-proportion="-1.16" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/DrugComposition.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="44" selection-start="2110" selection-end="2110" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="73" column="44" selection-start="2110" selection-end="2110" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/FrequencyDuration.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="14" selection-start="319" selection-end="319" vertical-scroll-proportion="0.02910959">
-          <folding />
-        </state>
+        <state line="16" column="14" selection-start="319" selection-end="319" vertical-scroll-proportion="0.02910959" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/Patient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="30" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.55136985">
-          <folding />
-        </state>
+        <state line="53" column="30" selection-start="1364" selection-end="1364" vertical-scroll-proportion="0.55136985" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="63" selection-start="540" selection-end="540" vertical-scroll-proportion="-0.018835617">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/AppConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="26" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/prescription/DrugComposition.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="4363" selection-end="4363" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="28" column="63" selection-start="540" selection-end="540" vertical-scroll-proportion="-0.018835617" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/patient/Patient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="51" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="48" column="51" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controller/prescription/DrugComposition.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="0" selection-start="4363" selection-end="4363" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/AppConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="26" selection-start="313" selection-end="313" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="18" selection-start="3436" selection-end="3436" vertical-scroll-proportion="0.5714286">
+        <state line="107" column="34" selection-start="3822" selection-end="3822" vertical-scroll-proportion="0.17425968">
           <folding />
         </state>
       </provider>

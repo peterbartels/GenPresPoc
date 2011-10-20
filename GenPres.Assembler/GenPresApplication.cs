@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Threading;
 using GenPres.Data;
+using GenPres.Data.Connections;
 using GenPres.Data.Managers;
 using NHibernate;
 using NHibernate.Cfg;
@@ -35,18 +37,41 @@ namespace GenPres.Assembler
                 return _instance;
             }
         }
+        
+        public static ISessionFactory SessionFactory
+        {
+            get { return Instance.SessionFactoryFromInstance; }
+        }
+
+        private ISessionFactory SessionFactoryFromInstance
+        {
+            get
+            {
+                return SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            }
+        }
 
         public static void Initialize()
+        {
+            InitializeObjectFactory();
+            SetCultureInfo();
+        }
+
+        private static void InitializeObjectFactory()
         {
             ObjectFactory.Initialize(x =>
             {
                 x.AddRegistry(PatientAssembler.RegisterDependencies());
                 x.AddRegistry(UserAssembler.RegisterDependencies());
-                x.AddRegistry(GenFormAssembler.RegisterDependencies());
+                x.AddRegistry(GenFormWebServiceAssembler.RegisterDependencies());
                 x.AddRegistry(PrescriptionAssembler.RegisterDependencies());
                 x.AddRegistry(DatabaseRegistrationAssembler.RegisterDependencies());
             });
+        }
 
+        public static void SetCultureInfo()
+        {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
         }
     }
 }

@@ -53,9 +53,9 @@ namespace GenPres.Business.Calculation
             ));
 
             _combinations.Add(new MultiplierCombination(
-                _prescription,
-                () => _prescription.Doses[0].Total, () => _prescription.Frequency, () => _prescription.Doses[0].Quantity
-            ));
+               _prescription,
+               () => _prescription.Doses[0].Total, () => _prescription.Frequency, () => _prescription.Doses[0].Quantity
+           ));
         }
 
         public void Start()

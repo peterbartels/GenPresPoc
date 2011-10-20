@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Collections.Generic;
+using System.Globalization;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
 using GenPres.Data.DAO.Mapper.Patient;
@@ -68,10 +69,10 @@ namespace GenPres.xTest.Business.PatientTest
             patientDao["HospitalNumber"] = "1234567";
             patientDao["LOGICALUNITID"] = 1;
 
-            patientDao["Length"] = 120;
-            patientDao["Weight"] = 30;
+            patientDao["Length"] = 1.2;
+            patientDao["Weight"] = 30000;
             
-            patientDao["AddmissionDate"] = (DateTime?) DateTime.Parse("20-3-2010 13:48:00");
+            patientDao["AddmissionDate"] = (DateTime?) DateTime.Parse("20-3-2010 13:48:00", new CultureInfo("nl-NL"));
             patientDao["LogicalUnitName"] = "Test";
             patientDao["BedName"] = "E100";
             
@@ -80,14 +81,14 @@ namespace GenPres.xTest.Business.PatientTest
             var patient = Patient.NewPatient();
 
             pdmsMapper.MapDaoToBusinessObject(patientDao, patient);
-            Assert.AreEqual(int.Parse(patientDao["PatientID"].ToString()), patient.Id);
+            
             Assert.AreEqual(int.Parse(patientDao["LOGICALUNITID"].ToString()), patient.LogicalUnitId);
             Assert.AreEqual(patientDao["LastName"], patient.LastName);
             Assert.AreEqual(patientDao["FirstName"], patient.FirstName);
             Assert.AreEqual(patientDao["HospitalNumber"], patient.Pid);
 
-            Assert.AreEqual(patientDao["Length"], patient.Height);
-            Assert.AreEqual(patientDao["Weight"], patient.Weight);
+            Assert.AreEqual(patientDao["Length"], patient.Height.BaseValue);
+            Assert.AreEqual(patientDao["Weight"], patient.Weight.BaseValue);
             Assert.AreEqual(patientDao["AddmissionDate"], patient.RegisterDate);
             Assert.AreEqual(patientDao["LogicalUnitName"], patient.Unit);
             Assert.AreEqual(patientDao["BedName"], patient.Bed);
@@ -97,6 +98,7 @@ namespace GenPres.xTest.Business.PatientTest
         [TestMethod]
         public void PatientTreeAssemblerCanAssemblePatientTreeDto()
         {
+            
             var assembler = new PatientTreeAssembler();
             var patient1 = Patient.NewPatient();
             patient1.FirstName = "Peter";
@@ -107,7 +109,9 @@ namespace GenPres.xTest.Business.PatientTest
 
             patient1.Height.Value = 120;
             patient1.Weight.Value = 75;
-            patient1.RegisterDate = DateTime.Parse("20-3-2010 13:48:00");
+            
+            patient1.RegisterDate = DateTime.Parse("20-3-2010 13:48:00", new CultureInfo("nl-NL"));
+
             patient1.Unit = "unit1";
             patient1.Bed = "2";
 

@@ -1,27 +1,58 @@
 ﻿using System;
+using System.Collections.Generic;
 using GenPres.Assembler;
+using GenPres.Assembler.Contexts;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Data;
 using GenPres.Data.Connections;
 using GenPres.Data.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NHibernate;
+using NHibernate.Context;
+using StructureMap;
+using TypeMock;
+using TypeMock.ArrangeActAssert;
 
 namespace GenPres.xTest.Base
 {
     [TestClass]
     public class BaseGenPresTest
     {
+        private ISessionFactory _sessionFactory;
+
         public BaseGenPresTest()
         {
             GenPresApplication.Initialize();
-            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             Settings.SettingsManager.Instance.Initialize();
         }
 
-        [TestCleanup()]
+        [TestInitialize]
+        public void MyTestInitialize()
+        {
+            _sessionFactory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            TestSessionManager.InitSession();
+        }
+
+        [TestCleanup]
         public void MyTestCleanup()
         {
-            SessionManager.Instance.CloseSession();
+            TestSessionManager.CloseSession();
+        }
+
+        protected T IsolateObject<T>()
+        {
+            var repos = Isolate.Fake.Instance<T>();
+            ObjectFactory.Inject(repos);
+            return repos;
+        }
+
+        protected static void CheckVerifiyException(Exception e, string message)
+        {
+            if (!(e is VerifyException))
+            {
+                throw e;
+            }
+            Assert.Fail(message);
         }
 
         public string InsertPrescription(NHibernateRepository<Prescription, Guid> _repository  )
