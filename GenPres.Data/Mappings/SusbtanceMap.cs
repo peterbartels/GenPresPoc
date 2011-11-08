@@ -9,7 +9,7 @@ namespace GenPres.Data.Mappings
         {
             Id(s => s.Id).GeneratedBy.GuidComb();
             Map(x => x.Name);
-            Component(x => x.ComponentConcentration).ColumnPrefix("ComponentConcentration");
+            Component(x => x.ComponentConcentration).ColumnPrefix("ComponentConcentration_");
             Component(x => x.DrugConcentration).ColumnPrefix("DrugConcentration_");
             Component(x => x.Quantity).ColumnPrefix("Quantity_");
         }

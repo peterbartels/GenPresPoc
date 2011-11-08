@@ -1,0 +1,6 @@
+!3 !-slim-!
+|'''Date: '''|!-10:53:42 AM (CET) on Tuesday, November 8, 2011-!|
+|'''Test Page: '''|.GenPres.TestSlim|
+|'''Command: '''|!-fitsharp\Runner.exe -r fitSharp.Slim.Service.Runner,fitsharp\fitsharp.dll C:\Development\GenPres\GenPres.xTest.Acceptance\bin\Debug\GenPres.xTest.Acceptance.dll    8086-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-0.695 seconds-!|

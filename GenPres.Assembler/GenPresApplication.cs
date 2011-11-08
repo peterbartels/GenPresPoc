@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using GenPres.Data;
@@ -14,6 +16,9 @@ namespace GenPres.Assembler
     public class GenPresApplication
     {
         private static ISessionFactory _factory;
+
+        private static readonly IDictionary<string, ISessionFactory> Factories = new ConcurrentDictionary<string, ISessionFactory>();
+
         private static readonly Object LockThis = new object();
 
         [ThreadStatic]
@@ -72,6 +77,17 @@ namespace GenPres.Assembler
         public static void SetCultureInfo()
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+        }
+
+
+        public static ISessionFactory GetSessionFactory(DatabaseConnection.DatabaseName environment)
+        {
+            if (!Factories.ContainsKey(environment.ToString()))
+            {
+                Factories.Add(environment.ToString(), SessionFactoryCreator.CreateSessionFactory(DatabaseConnection.DatabaseName.GenPresTest));
+            }
+
+            return Factories[environment.ToString()];
         }
     }
 }

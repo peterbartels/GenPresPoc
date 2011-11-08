@@ -1,0 +1,7 @@
+1.	Fill in user name
+2.	Fill in password
+4.	Select a department
+5.	Login
+6.	System validates data
+7.	System loads main screen
+8.	System loads and shows patients

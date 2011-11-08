@@ -13,16 +13,16 @@ namespace GenPres.Data.Mappings
             Map(s => s.StartDate);
             Map(s => s.EndDate);
             Map(s => s.CreationDate);
-
+            
             Map(s => s.PID);
-
+            
             Map(s => s.Continuous);
             Map(s => s.Infusion);
             Map(s => s.OnRequest);
             Map(s => s.Solution);
-
-            Component(x => x.Drug).ColumnPrefix("Drug"); ;
-
+            
+            Component(x => x.Drug).ColumnPrefix("Drug1"); ;
+            
             Component(s => s.Frequency).ColumnPrefix("Frequency");
             
             Component(s => s.Quantity).ColumnPrefix("Quantity"); ;
@@ -32,7 +32,7 @@ namespace GenPres.Data.Mappings
             References(x => x.Patient);
             
             HasMany(x => x.Doses).Cascade.All();
-
+            
         }
     }
 }

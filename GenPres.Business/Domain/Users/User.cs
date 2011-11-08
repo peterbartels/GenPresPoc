@@ -56,7 +56,7 @@ namespace GenPres.Business.Domain.Users
 
         public static bool AuthenticateUser(string username, string password)
         {
-            return Repository.GetUserByUsername(username.ToLower(), password);
+            return Repository.AuthenticateUserByUsernamePassword(username.ToLower(), password);
         }
     }
 }

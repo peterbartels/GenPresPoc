@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.Linq;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
@@ -55,6 +56,11 @@ namespace GenPres.Business.Domain.Patients
             
         }
 
+        private static IPdsmRepository Repository
+        {
+            get { return StructureMap.ObjectFactory.GetInstance<IPdsmRepository>(); }
+        }
+
         public static Patient NewPatient()
         {
             var patient = new Patient();
@@ -68,6 +74,13 @@ namespace GenPres.Business.Domain.Patients
 
             return patient;
         }
+
+
+        public static ReadOnlyCollection<Patient> GetPatientsByLogicalUnit(int logicalUnitId)
+        {
+            return Repository.GetPatientsByLogicalUnitId(logicalUnitId);
+        }
+
 
     }
 }

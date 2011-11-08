@@ -1,0 +1,3 @@
+!|GenPresFitnesse.GenPresFitnesseTest|
+|TestGenPresFitnesse?|
+|Fitnesse is working!|

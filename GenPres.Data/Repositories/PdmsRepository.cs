@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
@@ -25,7 +26,13 @@ namespace GenPres.Data.Repositories
             sqlQuery += "WHERE ";
             return sqlQuery;
         }
-        public List<Patient> GetPatientsByLogicalUnitId(int logicalUnitId)
+
+        public ReadOnlyCollection<Patient> GetPatientsByLogicalUnitId(int logicalUnitId)
+        {
+            return GetPatientsByLogicalUnitFromDatabase(logicalUnitId).ToList().AsReadOnly();
+        }
+
+        public Patient[] GetPatientsByLogicalUnitFromDatabase(int logicalUnitId)
         {
             var sqlQuery = GetSql();
             sqlQuery += "pat.DischargeDate IS NULL AND pat.LOGICALUNITID='" + logicalUnitId + "' ORDER BY pat.LastName;";
@@ -39,23 +46,30 @@ namespace GenPres.Data.Repositories
                 patients[i] = _pdmsMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[i], Patient.NewPatient());
             }
 
-            return patients.ToList();
+            return patients;
         }
 
-        public Patient GetPatientByPid(string pid)
+        public Patient GetPatientByByPidFromDatabase(string pid)
         {
             var sqlQuery = GetSql();
             sqlQuery += "pat.DischargeDate IS NULL AND pat.HospitalNumber='" + pid + "' ORDER BY pat.LastName;";
 
             var sqlResult = PDMSDataRetriever.ExecuteSQL(sqlQuery);
 
-            if(sqlResult.Tables[0].Rows.Count != 1)
+            Patient patient = null;
+
+            if (sqlResult.Tables[0].Rows.Count == 1)
             {
-                throw new Exception("Trying to find a non-existing Pid:" + pid);
+                patient = _pdmsMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[0], Patient.NewPatient());
             }
 
-            var patient = _pdmsMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[0], Patient.NewPatient());
             return patient;
+        }
+
+
+        public Patient GetPatientByPid(string pid)
+        {
+            return GetPatientByByPidFromDatabase(pid);
         }
 
         public Patient GetPatientsByPatientId(string patientId)

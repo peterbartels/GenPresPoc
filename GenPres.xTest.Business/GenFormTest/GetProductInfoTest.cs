@@ -10,7 +10,7 @@ namespace GenPres.xTest.Business.GenFormTest
     [TestClass]
     public class GetProductInfoTest
     {
-        private readonly GenFormService _genFormService = new GenFormService();
+        private readonly GenFormWebServices _genFormService = new GenFormWebServices();
 
         [TestMethod]
         public void CanGetComponentIncrements()

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
@@ -136,31 +137,40 @@ namespace GenPres.xTest.Service
             }
         }
 
-        
         [Isolated]
         [TestMethod]
         public void GetPatientByLogicalUnitShouldCallPdmsRepository()
         {
-            //TODO: doesn't work gives error, check error
+            var repos = IsolateObject<IPdsmRepository>();
+            Isolate.WhenCalled(() => repos.GetPatientsByLogicalUnitId(1)).WillReturn(new ReadOnlyCollection<Patient>(new List<Patient>()));
+            var patients = PatientService.GetPatientsByLogicalUnit(1);
+            try
+            {
+                Isolate.Verify.WasCalledWithAnyArguments(() => repos.GetPatientsByLogicalUnitId(1));
+            }
+            catch (Exception e)
+            {
+                CheckVerifiyException(e, "PdmsRepository method GetPatientsByLogicalUnit was not called by PatientService method GetPatientsByLogicalUnit");
+            }
+        }
+
+        [TestMethod]
+        public void ThatPatientServiceCanGetLogicalUnits()
+        {
+            var logicalUnits = PatientService.GetLogicalUnits();
+            Assert.IsTrue(logicalUnits.Length > 0);
         }
 
 
         [TestMethod]
-        public void ThatPatientServiceCanGetPatientsByLogicalId()
+        public void ThatPatientServiceCanGetPatientsByLogicalUnit()
         {
             ReadOnlyCollection<PatientTreeDto> patients = PatientService.GetPatientsByLogicalUnit(1);
             Assert.IsTrue(patients.Count > 0);
         }
 
         [TestMethod]
-        public void ThatPatientServiceCanGetPatientsByPid()
-        {
-            ReadOnlyCollection<PatientTreeDto> patients = PatientService.GetPatientsByLogicalUnit(1);
-            Assert.IsTrue(patients.Count > 0);
-        }
-
-        [TestMethod]
-        public void ThatPatientServiceCanSaveAPatient()
+        public void ThatPatientServiceCanGetAPatientById()
         {
             PatientService.SavePatient("0004588");
             var patient = PatientService.GetPatientByPid("0004588");
@@ -168,7 +178,7 @@ namespace GenPres.xTest.Service
         }
         
         [TestMethod]
-        public void ThatPatientServiceCanSelectPatient()
+        public void ThatPatientServiceCanSavePatient()
         {
             var pid = "0004588";
             var patientDto = PatientService.SavePatient(pid);

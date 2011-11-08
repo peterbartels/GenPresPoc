@@ -24,6 +24,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
+    <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -66,10 +67,18 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MappingsTest\ComponentMapTest.cs" />
+    <Compile Include="MappingsTest\DoseMapTest.cs" />
+    <Compile Include="MappingsTest\PatientMapTest.cs" />
+    <Compile Include="MappingsTest\SubstanceMapTest.cs" />
     <Compile Include="NHibernate\ASessionContextShould.cs" />
     <Compile Include="NHibernate\NHibernatePersitencyAndMappingTest.cs" />
-    <Compile Include="PrescriptionTest\PrescriptionMapTests.cs" />
-    <Compile Include="PrescriptionTest\PrescriptionRepositoryTests.cs" />
+    <Compile Include="MappingsTest\PrescriptionMapTest.cs" />
+    <Compile Include="MappingsTest\UserMapTest.cs" />
+    <Compile Include="RepositoriesTest\LogicalUnitRepositoryTest.cs" />
+    <Compile Include="RepositoriesTest\PatientRepositoryTest.cs" />
+    <Compile Include="RepositoriesTest\PdmsRepositoryTest.cs" />
+    <Compile Include="RepositoriesTest\PrescriptionRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -77,6 +86,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="NHibernate\SessionFactoryTest.cs" />
+    <Compile Include="RepositoriesTest\UserReposiroryTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">
@@ -105,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AssemblersTest\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

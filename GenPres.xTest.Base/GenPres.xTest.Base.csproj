@@ -68,7 +68,7 @@
   <ItemGroup>
     <Compile Include="BaseGenPresTest.cs" />
     <Compile Include="DatabaseCleaner.cs" />
-    <Compile Include="Mappers\PrescriptionMap.cs" />
+    <Compile Include="Mappers\CustomEqualityComparer.cs" />
     <Compile Include="PrescriptionBo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

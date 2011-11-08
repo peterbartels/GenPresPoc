@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Security;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Business.Exceptions;
+using GenPres.Business.WebService;
 using GenPres.Data.DTO;
 using GenPres.Data.DTO.Prescriptions;
 using GenPres.Service;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using StructureMap;
 using TypeMock;
 using TypeMock.ArrangeActAssert;
 
@@ -19,6 +21,11 @@ namespace GenPres.xTest.Service
     {
         #region TestContext
         private TestContext testContextInstance;
+
+        public static void Test()
+        {
+            StartSessionFactory();
+        }
 
         public TestContext TestContext
         {
@@ -109,6 +116,38 @@ namespace GenPres.xTest.Service
             }
         }
 
+        [TestMethod]
+        public void PrescriptionServiceGetSubstanceUnitsShouldCallGenFormWebServices()
+        {
+            var repos = IsolateObject<IGenFormWebServices>();
+            Isolate.WhenCalled(() => repos.GetSubstanceUnits("", "", "")).WillReturn(new ReadOnlyCollection<SelectionItem>(new List<SelectionItem>()));
+            var substanceUnits = PrescriptionService.GetSubstanceUnits("", "", "");
+            try
+            {
+                Isolate.Verify.WasCalledWithAnyArguments(() => repos.GetSubstanceUnits("", "", ""));
+            }
+            catch (Exception e)
+            {
+                CheckVerifiyException(e, "GenFormWebServices GetSubstanceUnits Gen was not called by Prescription Service method GetSubstanceUnits");
+            }
+        }
+
+        [TestMethod]
+        public void PrescriptionServiceGetComponentUnitsShouldCallGenFormWebServices()
+        {
+            var repos = IsolateObject<IGenFormWebServices>();
+            Isolate.WhenCalled(() => repos.GetComponentUnits("", "", "")).WillReturn(new ReadOnlyCollection<SelectionItem>(new List<SelectionItem>()));
+            var componentUnits = PrescriptionService.GetComponentUnits("", "", "");
+            try
+            {
+                Isolate.Verify.WasCalledWithAnyArguments(() => repos.GetComponentUnits("", "", ""));
+            }
+            catch (Exception e)
+            {
+                CheckVerifiyException(e, "GenFormWebServices GetComponentUnits Gen was not called by Prescription Service method GetComponentUnits");
+            }
+        }
+
 
         [Isolated]
         [TestMethod]
@@ -141,7 +180,6 @@ namespace GenPres.xTest.Service
 
             }
         }
-
 
         [TestMethod]
         public void ThatPrescriptionsServiceCanGetPrescriptionById()

@@ -10,23 +10,18 @@ namespace GenPres.Service
 {
     public static class PatientService
     {
-        private static IPatientRepository _patientRepository;
-
+        
         private static IPatientRepository Repository
         {
             get
             {
-                if (_patientRepository == null) _patientRepository = ObjectFactory.GetInstance<IPatientRepository>();
-                return _patientRepository;
+                return ObjectFactory.GetInstance<IPatientRepository>();
             }
         }
 
-        private static readonly IPdsmRepository PdmsPatientRepository =
-            ObjectFactory.GetInstance<IPdsmRepository>();
-
         private static IPdsmRepository PdmsRepository
         {
-            get { return PdmsPatientRepository; }
+            get { return ObjectFactory.GetInstance<IPdsmRepository>(); }
         }
 
         public static Patient GetPatientByPid(string Pid)
@@ -67,7 +62,7 @@ namespace GenPres.Service
 
         public static ReadOnlyCollection<PatientTreeDto> GetPatientsByLogicalUnit(int logicalUnit)
         {
-            return PatientTreeAssembler.AssemblePatientTreeDto(PatientCollection.GetPatientsByLogicalUnit(logicalUnit));
+            return PatientTreeAssembler.AssemblePatientTreeDto(Patient.GetPatientsByLogicalUnit(logicalUnit));
         }
 
         public static PatientDto SavePatient(string patientId)

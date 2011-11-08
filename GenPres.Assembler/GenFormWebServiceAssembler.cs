@@ -14,7 +14,7 @@ namespace GenPres.Assembler
             if (_hasBeenCalled) return _registry;
             _registry = new Registry();
             
-            _registry.For<IGenFormService>().Use<GenFormService>();
+            _registry.For<IGenFormWebServices>().Use<GenFormWebServices>();
 
             _hasBeenCalled = true;
             return _registry;

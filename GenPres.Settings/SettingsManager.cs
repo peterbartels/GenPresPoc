@@ -68,6 +68,7 @@ namespace Settings
         public void Initialize()
         {
             string file = _path + "Settings.xml";
+
             if (!System.IO.File.Exists(file))
             {
                 throw new Exception("Could not find settings file in path: " + file);

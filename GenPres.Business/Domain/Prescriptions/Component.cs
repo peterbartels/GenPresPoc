@@ -14,7 +14,19 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public virtual UnitValue Quantity { get; set; }
         public virtual UnitValue DrugConcentration { get; set; }
-        public virtual decimal ComponentIncrement { get; set; }
+        private decimal _componentIncrement;
+        public virtual decimal ComponentIncrement
+        {
+            get
+            {
+                return _componentIncrement;
+            }
+            set
+            {
+                _componentIncrement = value;
+            }
+        }
+
         public virtual IList<Substance> Substances { get; set; }
 
         public virtual string Name { get; set; }

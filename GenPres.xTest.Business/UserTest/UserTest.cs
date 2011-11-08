@@ -40,9 +40,8 @@ namespace GenPres.xTest.Business.UserTest
         {
             var userRepository = IsolateUserRepository();
             UserService.AuthenticateUser("test", "test");
-            Isolate.Verify.WasCalledWithAnyArguments(() => userRepository.GetUserByUsername("", ""));
+            Isolate.Verify.WasCalledWithAnyArguments(() => userRepository.AuthenticateUserByUsernamePassword("", ""));
         }
-
 
         [TestMethod]
         public void UserRepositoryGetUserbyUsernameReturnsAvailableUser()
@@ -52,7 +51,7 @@ namespace GenPres.xTest.Business.UserTest
             newUser.UserName = "Test";
             newUser.PassCrypt = AuthenticationFunctions.MD5("test");
             newUser.Save();
-            var user = userRepository.GetUserByUsername("test", "test");
+            var user = userRepository.AuthenticateUserByUsernamePassword("test", "test");
             Assert.IsTrue(user);
         }
 

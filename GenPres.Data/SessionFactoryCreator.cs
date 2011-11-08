@@ -24,14 +24,15 @@ namespace GenPres.Data
             {
                 fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
             }
-
-            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.PrescriptionMap>()
+            
+            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.UserMap>()
                 .ExportTo(@"C:\development\GenPres\MappingsXml"))
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
                 .ExposeConfiguration(cfg => _configuration = cfg)
                 .Diagnostics(x => x.OutputToFile("c:\\temp\\test.-txt"));
                         
             _sessionFactory =  fluentConfiguration.BuildSessionFactory();
+             
             return _sessionFactory;
         }
 

@@ -53,7 +53,7 @@ namespace GenPres.xTest.Base
 
         public override ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
         {
-            //HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
+            HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
             if (_factory == null)
             {
                 _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);

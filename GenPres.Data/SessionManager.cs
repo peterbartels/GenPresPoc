@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using GenPres.Business;
 using GenPres.Business.Domain.Users;
 using GenPres.Data.Connections;
 using NHibernate;
@@ -37,8 +38,8 @@ namespace GenPres.Data
         public void InsertData()
         {
             var u = User.NewUser();
-            u.UserName = "test";
-            u.PassCrypt = "0cbc6611f5540bd0809a388dc95a615b";
+            u.UserName = "Peter";
+            u.PassCrypt = AuthenticationFunctions.MD5("Secret");
             u.Save();
         }
 

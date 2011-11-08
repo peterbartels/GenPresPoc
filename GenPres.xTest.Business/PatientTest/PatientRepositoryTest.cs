@@ -8,7 +8,6 @@ using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
 
-
 namespace GenPres.xTest.Business.PatientTest
 {
     [TestClass]
@@ -19,16 +18,6 @@ namespace GenPres.xTest.Business.PatientTest
             var repository = Isolate.Fake.Instance<PdmsRepository>(Members.CallOriginal);
             StructureMap.ObjectFactory.Configure(x => x.For<IPdsmRepository>().Use(repository));
             return;
-        }
-
-        [Isolated]
-        [TestMethod]
-        public void PatientServiceGetPatientsByLogicalUnitIdCallsRepository()
-        {
-            InitializePatientRepositoryTest();
-            var patientRepository = StructureMap.ObjectFactory.GetInstance<IPdsmRepository>();
-            PatientService.GetPatientsByLogicalUnit(1);
-            Isolate.Verify.WasCalledWithExactArguments(() => patientRepository.GetPatientsByLogicalUnitId(1));
         }
 
         [TestMethod]

@@ -4,21 +4,23 @@ namespace GenPres.Business.Domain.Prescriptions.Medicine
 {
     public class Medicine
     {
+        private static IGenFormWebServices GenFormWebService
+        {
+            get { return StructureMap.ObjectFactory.GetInstance<IGenFormWebServices>(); }
+        }
         #region Generics, Shapes and Routes
-
-        private static readonly GenFormService GenFormService = new GenFormService();
 
         public static string[] GetGenerics(string route, string shape)
         {
-            return GenFormService.GetGenerics(route, shape);
+            return GenFormWebService.GetGenerics(route, shape);
         }
         public static string[] GeRoutes(string generic, string shape)
         {
-            return GenFormService.GetRoutes(generic, shape);
+            return GenFormWebService.GetRoutes(generic, shape);
         }
         public static string[] GetShapes(string generic, string route)
         {
-            return GenFormService.GetShapes(generic, route);
+            return GenFormWebService.GetShapes(generic, route);
         }
 
         #endregion

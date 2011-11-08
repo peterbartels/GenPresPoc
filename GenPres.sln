@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Service", "Ge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Calculation", "GenPres.xTest.Calculation\GenPres.xTest.Calculation.csproj", "{0376BBE3-4F5F-473C-A4F0-F651F31387C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenPres.xTest.Acceptance", "GenPres.xTest.Acceptance\GenPres.xTest.Acceptance.csproj", "{59833108-A78D-4FF7-B90F-593B0565FCD1}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = GenPres.vsmdi
@@ -104,6 +106,12 @@ Global
 		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Testing|Any CPU.ActiveCfg = Release|Any CPU
 		{0376BBE3-4F5F-473C-A4F0-F651F31387C9}.Testing|Any CPU.Build.0 = Release|Any CPU
+		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Testing|Any CPU.ActiveCfg = Release|Any CPU
+		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Testing|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

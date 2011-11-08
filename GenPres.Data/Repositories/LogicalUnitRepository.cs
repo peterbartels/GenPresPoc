@@ -13,8 +13,13 @@ namespace GenPres.Data.Repositories
 
         public LogicalUnit[] GetLogicalUnits()
         {
+            return GetLogicalUnitsFromDatabase();
+        }
+
+        public LogicalUnit[] GetLogicalUnitsFromDatabase()
+        {
             var sqlResult = PDMSDataRetriever.ExecuteSQL("SELECT * FROM LogicalUnits WHERE LogicalUnitID IN(1,50,57)");
-            
+
             LogicalUnit[] logicalUnits = new LogicalUnit[sqlResult.Tables[0].Rows.Count];
 
             for (int i = 0; i < sqlResult.Tables[0].Rows.Count; i++)

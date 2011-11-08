@@ -10,7 +10,7 @@ namespace GenPres.xTest.Calculation.Calculator
     public class SimpleCalculationTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void ThatASimpleCalculationCanBeDonewithDecimals()
         {
             decimal d1 = 0.0000000000000000000000000002m;
             decimal d2 = 0.0000000000000000000000000001m;

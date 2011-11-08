@@ -1,0 +1,3 @@
+[[User can Login][ScenarioCases.UserLoginCase]]
+[[User can create prescriptions][ScenarioCases.CreatePrescriptionsCase]]
+[[User can retreive prescriptions][ScenarioCases.RetrievePrescriptionsCase]]

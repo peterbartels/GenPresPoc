@@ -11,7 +11,7 @@ namespace GenPres.xTest.Business.GenFormTest
     [TestClass]
     public class WebServicesTest : BaseGenPresTest
     {
-        private readonly GenFormService _genFormService = new GenFormService();
+        private readonly GenFormWebServices _genFormService = new GenFormWebServices();
 
         [TestMethod]
         public void CanGetGenericsFromGenFormService()

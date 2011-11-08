@@ -18,6 +18,11 @@ namespace GenPres.xTest.Base
     [TestClass]
     public class BaseGenPresTest
     {
+        public static void StartSessionFactory()
+        {
+            TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            TestSessionManager.InitSession();
+        }
         private ISessionFactory _sessionFactory;
 
         public BaseGenPresTest()
@@ -44,6 +49,13 @@ namespace GenPres.xTest.Base
             var repos = Isolate.Fake.Instance<T>();
             ObjectFactory.Inject(repos);
             return repos;
+        }
+
+        protected T IsolateObjectMethod<T>(string methodName, object returnValue)
+        {
+            var obj = ObjectFactory.GetInstance<T>();
+            Isolate.NonPublic.WhenCalled(obj, methodName).WillReturn(returnValue);
+            return obj;
         }
 
         protected static void CheckVerifiyException(Exception e, string message)

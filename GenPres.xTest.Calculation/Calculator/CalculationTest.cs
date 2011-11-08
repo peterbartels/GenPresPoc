@@ -114,59 +114,25 @@ namespace GenPres.xTest.Calculation.Calculator
 
             Assert.AreEqual(2, prescription.Frequency.Value, "wrong frequency value");
             Assert.AreEqual(8, prescription.Total.Value, "wrong total value");
-            Assert.AreEqual(4, prescription.Quantity.Value, "woring quantity value");
-            
+            Assert.AreEqual(4, prescription.Quantity.Value, "woring quantity value");   
         }
-        /*
-        
-        [TestMethod]
-        public void CalculatorCanCalculateUsingIncrements()
-        {
-            var prescription = CreateParacetamolRect(Prescription.NewPrescription());
-
-            var pc = new PrescriptionCalculator(prescription);
-            
-            var valid = true;
-
-            var combi1 = new MultiplierCombination(
-                prescription,
-                () => prescription.Total, () => prescription.Frequency, () => prescription.Quantity
-            );
-
-            GenPres.Business.Domain.Prescriptions.Dose d = prescription.Doses[0];
-
-            var combi2 = new MultiplierCombination(
-                prescription,
-                () => d.Total, () => prescription.Frequency, () => d.Quantity
-            );
-
-            pc.AddCalculation(combi1);
-            pc.AddCalculation(combi2);
-            
-            for (var i = 0; i < 5000; i++)
-            {
-                CombinationRandomizer.RandomizeCombination(combi1);
-                pc.ConvertCombinationsValuesToArray();
-                pc.Execute();
-                Assert.IsTrue(combi1.Validate());
-                Assert.IsTrue(combi2.Validate());
-            }
-        }
-        
 
         [TestMethod]
-        public void RunAutomatedCalcSingle()
+        public void CannotSetStatesOfCombination()
         {
-            /*for (int i = 0; i < 5000; i++)
-            {
-                IPrescription prescription = GetTestPrescription();
-                CalculatorCreator.SetRandomValue(prescription.Frequency, 1);
-                CalculatorCreator.SetRandomValue(prescription.Total, 1);
-                PrescriptionCalculator.Calculate(prescription);
-                var calculatedResult = Math.Round(prescription.Total.BaseValue, 8, MidpointRounding.AwayFromZero);
-                var expectedResult = Math.Round((prescription.Frequency.BaseValue * prescription.Quantity.BaseValue), 8, MidpointRounding.AwayFromZero);
-                Assert.IsTrue(calculatedResult == expectedResult);
-            }
-        }*/
+            var prescription = Prescription.NewPrescription();
+            prescription.Total.Unit = "zetp";
+            prescription.Total.Value = 2;
+            prescription.Quantity.Unit = "zetp";
+            prescription.Quantity.Value = 1;
+            prescription.Frequency.Value = 2;
+
+            PrescriptionCalculator pc = new PrescriptionCalculator(prescription);
+            pc.CheckStates();
+
+            Assert.IsTrue(prescription.Total.UIState == "calculated");
+            Assert.IsTrue(prescription.Frequency.UIState == "user");
+            Assert.IsTrue(prescription.Quantity.UIState == "user");
+        }
     }
 }

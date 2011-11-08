@@ -134,8 +134,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Verbalization\PrescriptionVerbalization.cs" />
     <Compile Include="WebService\SelectionItem.cs" />
-    <Compile Include="WebService\GenFormService.cs" />
-    <Compile Include="WebService\IGenFormService.cs" />
+    <Compile Include="WebService\GenFormWebServices.cs" />
+    <Compile Include="WebService\IGenFormWebServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">

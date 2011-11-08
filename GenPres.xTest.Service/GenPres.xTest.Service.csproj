@@ -23,6 +23,7 @@
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,22 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentNHibernate, Version=1.3.0.0, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\NHibernate3.2\FluentNHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\NHibernate3.2\Iesi.Collections.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\NHibernate3.2\NHibernate.dll</HintPath>
-    </Reference>
-    <Reference Include="StructureMap">
-      <HintPath>..\Dependencies\StructureMap.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -63,17 +49,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="UserTest.cs" />
-    <Compile Include="LogicalUnitTest.cs" />
     <Compile Include="MedicineTest.cs" />
     <Compile Include="PatientTest.cs" />
     <Compile Include="PrescriptionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">
-      <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
-      <Name>GenPres.Assembler</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>
@@ -85,10 +66,6 @@
     <ProjectReference Include="..\GenPres.Service\GenPres.Service.csproj">
       <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
       <Name>GenPres.Service</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenPres.Web\GenPres.Web.csproj">
-      <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
-      <Name>GenPres.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.xTest.Base\GenPres.xTest.Base.csproj">
       <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using GenPres.Business.Allowance;
 using GenPres.Business.Domain.Units;
 using GenPres.Business.WebService;
+using StructureMap;
 
 namespace GenPres.Business.Domain.Prescriptions
 {
@@ -21,6 +22,11 @@ namespace GenPres.Business.Domain.Prescriptions
         #region Public Properties
 
         public virtual UnitValue Quantity { get; set; }
+
+        private IGenFormWebServices GenFormWebServices
+        {
+            get { return ObjectFactory.GetInstance<IGenFormWebServices>(); }
+        }
 
         public virtual string Generic
         {
@@ -61,10 +67,14 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public virtual void CheckIncrements()
         {
-            if (Generic != "" && Route != "" && Shape != "")
+            if (Generic != "" && Route != "" && Shape != "" && Components != null)
             {
-                var genFormService = new GenFormService();
+                var genFormService = new GenFormWebServices();
                 var substanceIncrements = genFormService.GetSubstanceIncrements(Generic, Route, Shape);
+                
+                if(Components.Count == 0) return;
+                if(Components[0].Substances.Count == 0) return;
+
                 Components[0].Substances[0].SubstanceIncrements = substanceIncrements;
                 var componentIncrements = genFormService.GetComponentIncrements(Generic, Route, Shape);
                 if(componentIncrements.Length == 1)
@@ -84,10 +94,5 @@ namespace GenPres.Business.Domain.Prescriptions
             };
             return drug;
         }
-
-
-        public virtual bool IsNew { get { return (Id == Guid.Empty); } }
-
-        public virtual Guid Id { get; set; }
     }
 }

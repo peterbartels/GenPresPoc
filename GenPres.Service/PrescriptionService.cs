@@ -16,11 +16,20 @@ namespace GenPres.Service
 {
     public static class PrescriptionService
     {
+        
         private static IPrescriptionRepository Repository
         {
             get
             {
                 return ObjectFactory.GetInstance<IPrescriptionRepository>();;
+            }
+        }
+
+        private static IGenFormWebServices GenFormWebServices
+        {
+            get
+            {
+                return ObjectFactory.GetInstance<IGenFormWebServices>(); ;
             }
         }
 
@@ -76,14 +85,12 @@ namespace GenPres.Service
 
         public static ReadOnlyCollection<SelectionItem> GetSubstanceUnits(string generic, string route, string shape)
         {
-            var genFormService = new GenFormService();
-            return genFormService.GetSubstanceUnits(generic, route, shape);
+            return GenFormWebServices.GetSubstanceUnits(generic, route, shape);
         }
 
         public static ReadOnlyCollection<SelectionItem> GetComponentUnits(string generic, string route, string shape)
         {
-            var genFormService = new GenFormService();
-            return genFormService.GetComponentUnits(generic, route, shape);
+            return GenFormWebServices.GetComponentUnits(generic, route, shape);
         }
     }
 }
