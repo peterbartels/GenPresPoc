@@ -24,7 +24,7 @@
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -98,7 +98,40 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ActionResultParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\AppTestController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\BaseController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\BugController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\DatabaseController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\PrescriptionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\SettingsController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\TestController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\TestsController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\UserController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Environments\NHibernateSessionAttribute.cs" />
     <Compile Include="Environments\TransactionAttribute.cs" />
     <Compile Include="Global.asax.cs">
