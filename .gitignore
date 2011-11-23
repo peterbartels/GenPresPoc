@@ -20,8 +20,6 @@ GenPres.ObjectModel/bin
 GenPres.ObjectModel/obj
 GenPres.Settings/bin
 GenPres.Settings/obj
-GenPres.Web/bin
-GenPres.Web/obj
 *.user
 *.suo
 *.sln.cache
