@@ -39,9 +39,9 @@ namespace GenPres.Web
         }
 
 
-        public static ISessionFactory GetSessionFactory(GenPres.Data.Connections.DatabaseConnection.DatabaseName environment)
+        public static ISessionFactory GetSessionFactory()
         {
-            return GenPresApplication.GetSessionFactory(environment);
+            return GenPresApplication.GetDefaultSessionFactory();
         }
 
         public static ISessionFactory SessionFactory

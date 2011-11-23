@@ -88,5 +88,10 @@ namespace GenPres.Assembler
 
             return Factories[environment.ToString()];
         }
+
+        public static ISessionFactory GetDefaultSessionFactory()
+        {
+            return GetSessionFactory(DatabaseConnection.DatabaseName.GenPres);
+        }
     }
 }

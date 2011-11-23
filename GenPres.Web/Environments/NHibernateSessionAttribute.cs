@@ -2,9 +2,6 @@
 using System.Web;
 using System.Web.Mvc;
 using GenPres.Assembler;
-using GenPres.Data;
-using GenPres.Data.Connections;
-using GenPres.Web3;
 using NHibernate;
 using NHibernate.Context;
 using StructureMap;
@@ -21,20 +18,20 @@ namespace GenPres.Web.Environments
         {
             get
             {
-                return MvcApplication.GetSessionFactory(GetEnvironment());
+                return MvcApplication.GetSessionFactory();
             }
         }
-
+        /*
         private static DatabaseConnection.DatabaseName GetEnvironment()
         {
             var environment = (DatabaseConnection.DatabaseName?)HttpContext.Current.Session["environment"];
             return environment ?? DatabaseConnection.DatabaseName.GenPres;
-        }
+        }*/
 
         public override void OnActionExecuting(
           ActionExecutingContext filterContext)
         {
-            ObjectFactory.Configure(x => x.For<ISessionFactory>().HttpContextScoped().Use(GenPresApplication.GetSessionFactory(GetEnvironment())));
+            ObjectFactory.Configure(x => x.For<ISessionFactory>().HttpContextScoped().Use(GenPresApplication.GetDefaultSessionFactory()));
             //var sessionFactory = SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false);
             var session = SessionFactory.OpenSession();
             CurrentSessionContext.Bind(session);

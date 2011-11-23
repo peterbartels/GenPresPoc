@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>..\GenPresBuild\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -103,18 +103,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\ActionResultParser.cs" />
-    <Compile Include="Controllers\AppTestController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\BugController.cs" />
-    <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PatientController.cs" />
-    <Compile Include="Controllers\PrescriptionController.cs" />
-    <Compile Include="Controllers\SettingsController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Controllers\TestsController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Environments\NHibernateSessionAttribute.cs" />
     <Compile Include="Environments\TransactionAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -1335,10 +1324,6 @@
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
-      <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
-      <Name>GenPres.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Service\GenPres.Service.csproj">
       <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>

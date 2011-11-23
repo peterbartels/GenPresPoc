@@ -1,7 +1,4 @@
 ﻿using System.Web.Mvc;
-using GenPres.Assembler;
-using GenPres.Data;
-using GenPres.Data.Connections;
 
 namespace GenPres.Web.Controllers
 {
