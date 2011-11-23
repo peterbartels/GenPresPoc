@@ -1,5 +1,20 @@
 
-GenPres.Web/Client/Library/extjs
+GenPres.Web/Client/Library/bck
+GenPres.Web/Client/Library/Library2
+GenPres.Web/Client/Library/platform
+GenPres.Web/Client/Library/extjs/.svn
+GenPres.Web/Client/Library/extjs/bootstrap
+GenPres.Web/Client/Library/extjs/build
+GenPres.Web/Client/Library/extjs/doc-resources
+GenPres.Web/Client/Library/extjs/examples
+GenPres.Web/Client/Library/extjs/examples-legacy
+GenPres.Web/Client/Library/extjs/jsbuilder
+GenPres.Web/Client/Library/extjs/locale
+GenPres.Web/Client/Library/extjs/misc
+GenPres.Web/Client/Library/extjs/overview
+GenPres.Web/Client/Library/extjs/src
+GenPres.Web/Client/Library/extjs/test
+GenPres.Web/Client/Library/extjs/welcome
 GenPres.Web/Client/Library/Library2
 GenPres.Web/Client/Library/platform
 Enterprise.Data/bin
