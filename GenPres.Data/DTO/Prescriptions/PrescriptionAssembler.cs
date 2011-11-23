@@ -68,7 +68,6 @@ namespace GenPres.Data.DTO.Prescriptions
             prescriptionDto.prescriptionFrequency = UnitValueDto.AssembleUnitValueDto(prescription.Frequency);
             prescriptionDto.prescriptionDuration = UnitValueDto.AssembleUnitValueDto(prescription.Duration);
 
-
             prescriptionDto.substanceQuantity = UnitValueDto.AssembleUnitValueDto(prescription.Drug.Components[0].Substances[0].Quantity);
             prescriptionDto.substanceDrugConcentration = UnitValueDto.AssembleUnitValueDto(prescription.Drug.Components[0].Substances[0].DrugConcentration);
 
@@ -94,7 +93,7 @@ namespace GenPres.Data.DTO.Prescriptions
 
             prescriptionDto.PID = prescription.PID;
 
-            prescriptionDto.verbalization = PrescriptionVerbalization.Verbalize(prescription);
+            prescriptionDto.verbalization = "";// PrescriptionVerbalization.Verbalize(prescription);
 
             prescriptionDto.AdminVolume = prescription.AdminVolume;
             prescriptionDto.DoseVolume = prescription.DoseVolume;

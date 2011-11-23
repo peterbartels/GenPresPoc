@@ -7,6 +7,6 @@
     Then dose quantity should be 200 mg
 ]!
 ![ script
-    Given a Prescription with quantity 200 mg and dose total 400 mg / dag
+    Given a Prescription with dose quantity 200 mg and dose total 400 mg / dag
     Then frequency should be 2 / dag
 ]!

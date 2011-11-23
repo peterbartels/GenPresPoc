@@ -70,10 +70,11 @@ namespace GenPres.Data
                 _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);
             }
 
-            //SessionFactoryCreator.BuildSchema(_currentSession);
-            //var session = _factory.OpenSession();
-            //CurrentSessionContext.Bind(session);
-            //InsertData();
+            SessionFactoryCreator.BuildSchema(_currentSession);
+            var session = _factory.OpenSession();
+            CurrentSessionContext.Bind(session);
+            SessionFactoryCreator.BuildSchema(session);
+            InsertData();
             //CurrentSessionContext.Unbind(_factory);
             //session.Close();
             //if (exposeConfiguration)

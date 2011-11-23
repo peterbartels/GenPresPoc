@@ -1,10 +1,10 @@
+|GenPres.ScenarioCases.CalculatePrescription.DosageCalculate.SetUp||10:03:49 Wed, Nov 23, 2011|
+|GenPres.ScenarioCases.CalculatePrescription.DosageCalculate||10:03:46 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.CalculatePrescription.DoseTotalWithAdminTotalConcentrationCalculcate||09:06:50 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.CalculatePrescription.DoseQuantityAdminQuantityConcentrationCalculcate||09:06:41 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.CalculatePrescription.DrugCalculate||09:06:33 Wed, Nov 23, 2011|
-|GenPres.ScenarioCases.CalculatePrescription.DosageCalculate.SetUp||09:06:20 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.CalculatePrescription.AdministrationWithFrequencyCalculate||09:05:45 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.CalculatePrescription.AdministrationWithFrequencyCalculate.SetUp||09:05:13 Wed, Nov 23, 2011|
-|GenPres.ScenarioCases.CalculatePrescription.DosageCalculate||08:31:13 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.CalculatePrescription||08:29:39 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.PrescriptionScenarios||08:26:49 Wed, Nov 23, 2011|
 |GenPres.ScenarioCases.CalculatePrescription.SetUp||11:02:00 Mon, Nov 21, 2011|

@@ -53,14 +53,6 @@
       <HintPath>..\Dependencies\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.SQLite, Version=1.0.76.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\SQLite64\System.Data.SQLite.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.SQLite.Linq, Version=1.0.76.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\SQLite64\System.Data.SQLite.Linq.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -200,7 +192,6 @@
     <Content Include="Client\GenPres\app\test\usecase\LoginTest.js" />
     <Content Include="Client\GenPres\app\test\usecase\PrescriptionTest.js" />
     <Content Include="Client\GenPres\app\test\usecase\SelectPatientTest.js" />
-    <Content Include="Client\GenPres\app\test\util\HelperFunctions.js" />
     <Content Include="Client\GenPres\app\test\view\DatabaseRegistrationWindowTests.js" />
     <Content Include="Client\GenPres\app\test\view\SaveCancelWindowTests.js" />
     <Content Include="Client\GenPres\app\util\Process.js" />
@@ -1015,6 +1006,7 @@
   <ItemGroup>
     <Folder Include="Client\GenPres\app\controller\main\" />
     <Folder Include="Client\GenPres\app\lib\view\form\" />
+    <Folder Include="Client\GenPres\app\test\util\" />
     <Folder Include="Client\GenPres\style\images\New folder %282%29\" />
     <Folder Include="Client\GenPres\style\images\New folder %283%29\" />
     <Folder Include="Client\GenPres\style\images\New folder %284%29\" />
