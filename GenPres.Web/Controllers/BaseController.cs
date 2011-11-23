@@ -10,8 +10,8 @@ namespace GenPres.Web.Controllers
         protected override void Initialize(System.Web.Routing.RequestContext requestContext)
         {
             base.Initialize(requestContext);
-            GenPresApplication.Initialize();
-            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false);
+            //GenPresApplication.Initialize();
+            //SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false);
             Settings.SettingsManager.Instance.Initialize(HttpContext.ApplicationInstance.Server.MapPath("~/"));
         }
     }

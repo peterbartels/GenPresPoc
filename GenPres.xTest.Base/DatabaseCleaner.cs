@@ -65,7 +65,7 @@ Deallocate curAllTables
 Close curAllForeignKeys
 Deallocate curAllForeignKeys  
 ";
-
+        /*
 
         public static void CleanDataBase()
         {
@@ -112,6 +112,6 @@ Deallocate curAllForeignKeys
            ,'Admin')", Guid.NewGuid());
 
             return sql.ToString();
-        }
+        }*/
     }
 }

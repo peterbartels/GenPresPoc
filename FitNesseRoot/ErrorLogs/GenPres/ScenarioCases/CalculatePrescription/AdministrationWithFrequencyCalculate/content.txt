@@ -1,0 +1,6 @@
+!3 !-slim-!
+|'''Date: '''|!-9:05:46 AM (CET) on Wednesday, November 23, 2011-!|
+|'''Test Page: '''|.GenPres.ScenarioCases.CalculatePrescription.AdministrationWithFrequencyCalculate|
+|'''Command: '''|!-GenPresBuild\Runner.exe -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll C:\Development\GenPres\GenPresBuild\GenPres.xTest.Acceptance.dll    8093-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-0.82 seconds-!|

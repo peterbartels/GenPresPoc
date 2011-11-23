@@ -34,7 +34,7 @@ namespace GenPres.xTest.Service
         [TestMethod]
         public void ThatUserServiceShouldBeAbleToAuthenticateAUser()
         {
-            var result = UserService.AuthenticateUser("Test", "Test");
+            var result = UserService.AuthenticateUser("Peter", "Secret");
             Assert.IsTrue(result);
         }
     }

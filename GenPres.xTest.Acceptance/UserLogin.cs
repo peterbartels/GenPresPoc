@@ -3,9 +3,7 @@ using GenPres.Business.Service;
 using GenPres.Data.Connections;
 using GenPres.Service;
 using GenPres.xTest.Base;
-using GenPres.xTest.Business.PrescriptionTest;
 using NHibernate;
-using NHibernate.Context;
 
 namespace GenPres.xTest.Acceptance
 {

@@ -1,0 +1,38 @@
+!|import                 |
+|GenPres.xTest.Acceptance|
+
+!|script|PrescriptionCalculate|
+
+|scenario          |Given a Prescription with frequency _ / _ and dose quantity _ _|frequency,unitforfrequency,dosequantity,unitfordosequantity|
+|Create Prescription                                                                                                                           |
+|Frequency         |@frequency                                                                                                                 |
+|Frequency Unit    |@unitforfrequency                                                                                                          |
+|Dose Quantity     |@dosequantity                                                                                                              |
+|Dose Quantity Unit|@unitfordosequantity                                                                                                       |
+
+
+|scenario|Then dose total should be _ _ / _|doseTotal,doseTotalUnit,doseTotalTimeUnit|
+|Calculate Prescription                                                              |
+|check   |Dose Total                       |@doseTotal                               |
+
+|scenario      |Given a Prescription with frequency _ / _ and dose total_ _ / _|frequency,timeunitforfrequency,dosetotal,unitfordosetotal,timeunitfordosetotal|
+|Create Prescription                                                                                                                                          |
+|Frequency     |@frequency                                                                                                                                    |
+|Frequency Unit|@timeunitforfrequency                                                                                                                         |
+|Dose Total    |@dosetotal                                                                                                                                    |
+
+
+|scenario|Then dose quantity should be _ _|doseQuantity,doseQuantityUnit|
+|Calculate Prescription                                                 |
+|check   |Dose Quantity                   |@doseQuantity                |
+
+|scenario          |Given a Prescription with administration quantity _ _ and dose total _ _ / _|dosequantity,unitfordosequantity,dosetotal,unitfordosetotal,timeunitfordosetotal|
+|Create Prescription                                                                                                                                              |
+|Dose Quantity     |@dosequantity                                                                                                                                 |
+|Dose Quantity Unit|@unitfordosequantity                                                                                                                          |
+|Dose Total        |@dosetotal                                                                                                                                    |
+
+|scenario|Then frequency should be _ / _|frequency,timeunitforfrequency|
+|Calculate Prescription                                                |
+|check   |Frequency                     |@frequency                    |
+

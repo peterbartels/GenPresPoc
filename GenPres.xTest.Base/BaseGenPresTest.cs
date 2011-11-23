@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using GenPres.Assembler;
-using GenPres.Assembler.Contexts;
 using GenPres.Business.Domain.Prescriptions;
-using GenPres.Data;
-using GenPres.Data.Connections;
 using GenPres.Data.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NHibernate;
-using NHibernate.Context;
 using StructureMap;
 using TypeMock;
 using TypeMock.ArrangeActAssert;
@@ -18,13 +12,6 @@ namespace GenPres.xTest.Base
     [TestClass]
     public class BaseGenPresTest
     {
-        public static void StartSessionFactory()
-        {
-            TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
-            TestSessionManager.InitSession();
-        }
-        private ISessionFactory _sessionFactory;
-
         public BaseGenPresTest()
         {
             GenPresApplication.Initialize();
@@ -34,14 +21,14 @@ namespace GenPres.xTest.Base
         [TestInitialize]
         public void MyTestInitialize()
         {
-            _sessionFactory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
-            TestSessionManager.InitSession();
+            TestSessionManager.Instance.InitTestSessionFactory();
+            TestSessionManager.Init();
         }
 
         [TestCleanup]
         public void MyTestCleanup()
         {
-            TestSessionManager.CloseSession();
+            TestSessionManager.Close();
         }
 
         protected T IsolateObject<T>()

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using GenPres.Business.Allowance;
+﻿using System.Collections.Generic;
 using GenPres.Business.Domain.Units;
 using GenPres.Business.WebService;
-using StructureMap;
 
 namespace GenPres.Business.Domain.Prescriptions
 {
@@ -23,10 +20,6 @@ namespace GenPres.Business.Domain.Prescriptions
 
         public virtual UnitValue Quantity { get; set; }
 
-        private IGenFormWebServices GenFormWebServices
-        {
-            get { return ObjectFactory.GetInstance<IGenFormWebServices>(); }
-        }
 
         public virtual string Generic
         {

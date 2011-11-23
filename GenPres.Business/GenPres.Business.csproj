@@ -22,7 +22,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\GenPresBuild\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -38,7 +38,7 @@
   <ItemGroup>
     <Reference Include="PostSharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="StructureMap">
-      <HintPath>..\..\..\StructureMap\deploy\StructureMap.dll</HintPath>
+      <HintPath>..\Dependencies\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -71,30 +71,33 @@
     <Compile Include="Aspect\ChangeStateAttribute.cs" />
     <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />
-    <Compile Include="Calculation\Calculation\PropertyCombinationCalculate.cs">
+    <Compile Include="Calculation\PrescriptionCalculator.cs" />
+    <Compile Include="Calculation\ICalculationCombination.cs" />
+    <Compile Include="Calculation\Old\Calculation\PropertyCombinationCalculate.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Calculation\Combination\AbstractCombination.cs">
+    <Compile Include="Calculation\Old\Combination\AbstractCombination.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Calculation\Combination\ContinuousCombination.cs">
+    <Compile Include="Calculation\Old\Combination\ContinuousCombination.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Calculation\Combination\ICalculationCombination.cs">
+    <Compile Include="Calculation\Old\Combination\ICalculationCombination.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Calculation\Combination\MultiplierCombination.cs">
+    <Compile Include="Calculation\Old\Combination\MultiplierCombination.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Calculation\Increment\PropertyIncrement.cs">
+    <Compile Include="Calculation\Old\Increment\PropertyIncrement.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Calculation\Math\MathExt.cs">
+    <Compile Include="Calculation\Old\Math\MathExt.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Calculation\PrescriptionCalculator.cs">
+    <Compile Include="Calculation\Old\OldPrescriptionCalculator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Calculation\CalculationCombination.cs" />
     <Compile Include="Exceptions\InvalidIdException.cs" />
     <Compile Include="Exceptions\UnknownIdException.cs" />
     <Compile Include="Util\PropertyHelper.cs">
@@ -115,7 +118,6 @@
     <Compile Include="Domain\ICalcalutorBusiness.cs" />
     <Compile Include="Domain\ICalculationStateTrackable.cs" />
     <Compile Include="Domain\ISavable.cs" />
-    <Compile Include="Domain\ObjectCreator.cs" />
     <Compile Include="Domain\Prescriptions\Component.cs" />
     <Compile Include="Domain\Prescriptions\Dose.cs" />
     <Compile Include="Domain\Prescriptions\Drug.cs" />
@@ -141,6 +143,7 @@
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

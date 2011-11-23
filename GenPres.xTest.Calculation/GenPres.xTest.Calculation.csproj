@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\GenPresBuild\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,6 +39,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
+    <Reference Include="Typemock.ArrangeActAssert, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -46,22 +48,33 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator\CalculatorCreator.cs" />
-    <Compile Include="Calculator\CombinationRandomizer.cs" />
-    <Compile Include="Calculator\CalculationTest.cs" />
-    <Compile Include="Calculator\PrescriptionTestFunctions.cs" />
-    <Compile Include="Calculator\PropertyIncrementTest.cs" />
-    <Compile Include="Calculator\SimpleCalculationTest.cs" />
+    <Compile Include="AdminQuantityAdminRateCalculationTest.cs" />
+    <Compile Include="CalculatorTests\CalculatorCreator.cs" />
+    <Compile Include="CalculatorTests\CombinationRandomizer.cs" />
+    <Compile Include="CalculatorTests\CalculationTest.cs" />
+    <Compile Include="CalculatorTests\PrescriptionTestFunctions.cs" />
+    <Compile Include="CalculatorTests\PropertyIncrementTest.cs" />
+    <Compile Include="CalculatorTests\SimpleCalculationTest.cs" />
+    <Compile Include="DoseQuantityDoseRateCalculationTests.cs" />
+    <Compile Include="QuantityConcentrationCalculationTests.cs" />
+    <Compile Include="DrugCalculationTests.cs" />
+    <Compile Include="FreqAdminCalculationTests.cs" />
+    <Compile Include="FreqDosageCalculationTests.cs" />
+    <Compile Include="PrescriptionCalulatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RateConcentrationTests.cs" />
+    <Compile Include="TotalConcentrationCalculationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.xTest.Base\GenPres.xTest.Base.csproj">
       <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
       <Name>GenPres.xTest.Base</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

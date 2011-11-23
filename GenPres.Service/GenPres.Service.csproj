@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\GenPresBuild\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -51,10 +51,12 @@
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.Data</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

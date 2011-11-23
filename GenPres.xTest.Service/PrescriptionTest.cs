@@ -22,10 +22,6 @@ namespace GenPres.xTest.Service
         #region TestContext
         private TestContext testContextInstance;
 
-        public static void Test()
-        {
-            StartSessionFactory();
-        }
 
         public TestContext TestContext
         {

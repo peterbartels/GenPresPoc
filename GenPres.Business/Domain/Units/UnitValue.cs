@@ -1,5 +1,5 @@
 ﻿using System;
-using GenPres.Business.Calculation.Math;
+using GenPres.Business.Calculation.Old.Math;
 using GenPres.Business.Domain.Prescriptions;
 using GenPres.Business.Allowance;
 namespace GenPres.Business.Domain.Units
@@ -354,6 +354,15 @@ namespace GenPres.Business.Domain.Units
         #endregion
 
         public virtual CalculationState CalculationState { get; set; }
+
+        public void SetValue(decimal value, string unit, string time, string total, string adjust)
+        {
+            Value = value;
+            if(unit != "") Unit = unit;
+            if (time != "") Time = time;
+            if (total != "") Total = total;
+            if (adjust != "") Adjust = adjust;
+        }
 
         public static UnitValue NewUnitValue(bool canBeSet)
         {

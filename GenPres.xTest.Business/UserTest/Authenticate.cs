@@ -13,8 +13,8 @@ namespace GenPres.xTest.Business.UserTest
         [TestMethod]
         public void UserCanAuthenticate()
         {
-            string username = "test";
-            string password = "Test";
+            string username = "Peter";
+            string password = "Secret";
             Assert.IsTrue(UserService.AuthenticateUser(username, password));
         }       
     }

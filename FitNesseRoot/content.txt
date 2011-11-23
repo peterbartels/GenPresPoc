@@ -1,0 +1,4 @@
+!define TEST_SYSTEM {slim}
+!define COMMAND_PATTERN {%m -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll %p  }
+!define TEST_RUNNER {GenPresBuild\Runner.exe}
+!path C:\Development\GenPres\GenPresBuild\GenPres.xTest.Acceptance.dll

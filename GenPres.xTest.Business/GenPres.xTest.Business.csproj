@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\GenPresBuild\</OutputPath>
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -89,30 +89,37 @@
     <ProjectReference Include="..\GenPres.Assembler\GenPres.Assembler.csproj">
       <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
       <Name>GenPres.Assembler</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Business\GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>GenPres.Business</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Data\GenPres.Data.csproj">
       <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
       <Name>GenPres.Data</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Service\GenPres.Service.csproj">
       <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
       <Name>GenPres.Service</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.Web\GenPres.Web.csproj">
       <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
       <Name>GenPres.Web</Name>
+      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\GenPres.xTest.Base\GenPres.xTest.Base.csproj">
       <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
       <Name>GenPres.xTest.Base</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

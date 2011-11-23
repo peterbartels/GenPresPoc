@@ -1,0 +1,6 @@
+!3 !-slim-!
+|'''Date: '''|!-8:32:23 AM (CET) on Wednesday, November 23, 2011-!|
+|'''Test Page: '''|.GenPres.ScenarioCases.CalculatePrescription.DosageCalculate|
+|'''Command: '''|!-GenPresBuild\Runner.exe -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll C:\Development\GenPres\GenPresBuild\GenPres.xTest.Acceptance.dll    8092-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-0.826 seconds-!|

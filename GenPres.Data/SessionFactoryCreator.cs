@@ -1,5 +1,4 @@
-﻿using System;
-using FluentNHibernate.Cfg;
+﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using GenPres.Data.Connections;
 using NHibernate;
@@ -19,7 +18,8 @@ namespace GenPres.Data
             
             if(databaseName == DatabaseConnection.DatabaseName.GenPresTest)
             {
-                fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory().ConnectionString("Data Source=:memory:; Version=3; New=True;").Raw("connection.release_mode", "on_close").ShowSql());
+                //fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory().ConnectionString("Data Source=:memory:; Version=3; New=True;").Raw("connection.release_mode", "on_close").ShowSql());
+                fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
             }else
             {
                 fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
@@ -39,7 +39,9 @@ namespace GenPres.Data
         public static void BuildSchema(ISession session)
         {
             var export = new SchemaExport(_configuration);
-            export.Execute(true, true, false, session.Connection, null);
+            export.Execute(false, true, false);
+            //new SchemaExport(_configuration).Drop(false, true);
+            //new SchemaExport(_configuration).Create(false, true);
         }
 
         private static string GetConnectionString(DatabaseConnection.DatabaseName databaseName)

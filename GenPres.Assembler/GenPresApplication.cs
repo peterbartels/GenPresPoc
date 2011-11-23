@@ -15,7 +15,6 @@ namespace GenPres.Assembler
 {
     public class GenPresApplication
     {
-        private static ISessionFactory _factory;
 
         private static readonly IDictionary<string, ISessionFactory> Factories = new ConcurrentDictionary<string, ISessionFactory>();
 
@@ -84,7 +83,7 @@ namespace GenPres.Assembler
         {
             if (!Factories.ContainsKey(environment.ToString()))
             {
-                Factories.Add(environment.ToString(), SessionFactoryCreator.CreateSessionFactory(DatabaseConnection.DatabaseName.GenPresTest));
+                Factories.Add(environment.ToString(), SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false));
             }
 
             return Factories[environment.ToString()];

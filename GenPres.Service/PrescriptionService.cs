@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using GenPres.Business.Allowance;
-using GenPres.Business.Calculation;
+using GenPres.Business.Calculation.Old;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
@@ -39,7 +39,7 @@ namespace GenPres.Service
             
             PrescriptionAllowance.Determine(prescription);
             
-            var pc = new PrescriptionCalculator(prescription);
+            var pc = new OldPrescriptionCalculator(prescription);
             pc.Start();
             
             return PrescriptionAssembler.AssemblePrescriptionDto(prescription);

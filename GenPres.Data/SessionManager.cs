@@ -56,22 +56,36 @@ namespace GenPres.Data
             return _currentSession;
         }
 
+        public virtual void InitTestSessionFactory()
+        {
+            InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+        }
+
         public virtual ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
         {
             HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
-            
+
             if (_factory == null)
             {
                 _factory = SessionFactoryCreator.CreateSessionFactory(databaseName);
             }
 
-            var session = _factory.OpenSession();
-            if (exposeConfiguration)
+            //SessionFactoryCreator.BuildSchema(_currentSession);
+            //var session = _factory.OpenSession();
+            //CurrentSessionContext.Bind(session);
+            //InsertData();
+            //CurrentSessionContext.Unbind(_factory);
+            //session.Close();
+            //if (exposeConfiguration)
             {
-                SessionFactoryCreator.BuildSchema(session);
-                InsertData();
+                //var session = _factory.OpenSession();
+                //CurrentSessionContext.Bind(session);
+                //SessionFactoryCreator.BuildSchema(session);
+                //InsertData();
+                //CurrentSessionContext.Unbind(_factory);
+                //session.Close();
             }
-            
+
             return _factory;
         }
 

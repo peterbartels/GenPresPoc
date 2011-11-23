@@ -1,153 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using GenPres.Business.Calculation.Combination;
+﻿using System.Collections.Generic;
 using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.Util;
 
 namespace GenPres.Business.Calculation
 {
-
     public class PrescriptionCalculator
     {
-        public decimal[] SubstanceIncrements = new decimal[1]{0.24m};
-        public decimal[] ComponentIncrements = new decimal[1] { 1 };
-
-        private readonly List<ICalculationCombination> _combinations = new List<ICalculationCombination>();
-        private readonly Prescription _prescription;
-
-        public static List<string> PropertySequence()
-        {
-            var prescription = Prescription.NewPrescription();
-            return new List<string>()
-            {
-                PropertyHelper.MemberName(() => prescription.Doses[0].Total),
-                PropertyHelper.MemberName(() => prescription.Doses[0].Quantity),
-                PropertyHelper.MemberName(() => prescription.Drug.Components[0].Substances[0].DrugConcentration),
-                PropertyHelper.MemberName(() => prescription.Duration),
-                PropertyHelper.MemberName(() => prescription.Drug.Components[0].Substances[0].Quantity),
-                PropertyHelper.MemberName(() => prescription.Drug.Components[0].Quantity),
-                PropertyHelper.MemberName(() => prescription.Doses[0].Rate),
-                PropertyHelper.MemberName(() => prescription.Drug.Quantity),
-                PropertyHelper.MemberName(() => prescription.Total),
-                PropertyHelper.MemberName(() => prescription.Quantity),
-                PropertyHelper.MemberName(() => prescription.Rate),
-            };
-        }
-
+        private Prescription _prescription;
         public PrescriptionCalculator(Prescription prescription)
         {
             _prescription = prescription;
-            SetIncrements(_prescription);
+            setCombinations();
         }
-
-        public void SetCombinations()
-        {
-            if (_combinations.Count != 0) return;
-            
-            _combinations.Add(new MultiplierCombination(
-                _prescription,
-                () => _prescription.Total, () => _prescription.Frequency, () => _prescription.Quantity
-            ));
-
-            _combinations.Add(new MultiplierCombination(
-               _prescription,
-               () => _prescription.Doses[0].Total, () => _prescription.Frequency, () => _prescription.Doses[0].Quantity
-           ));
-        }
-
-        public void Start()
-        {
-            SetCombinations();
-            Execute();
-
-            for (int i = 0; i < _combinations.Count; i++) _combinations[i].Finish();
-        }
-
-        public void AddCalculation(ICalculationCombination combi)
-        {
-            _combinations.Add(combi);
-        }
-
-        private void CorrectPropertyIncrements(int index)
-        {
-            
-        }
-
-        public void Execute()
-        {
-            for (int i = 0; i < _combinations.Count; i++)
-                _combinations[i].Calculate();   
-        }
-
-        public void ConvertCombinationsValuesToArray()
-        {
-            for (int i = 0; i < _combinations.Count; i++)
-            {
-                _combinations[i].ConvertCombinationsValuesToArray();    
-            }
-        }
-
-        public void Finish()
-        {
-            _combinations[0].Finish();
-        }
-
-        public static void Calculate(Prescription prescription)
-        {
-            var pc = new PrescriptionCalculator(prescription);
-            pc.Start();
-        }
-
-        private static void SetIncrements(Prescription prescription)
-        {
-            var componentInc = new decimal[] { 1 };
-            var substanceInc = new decimal[] { 0.24m };
-            var freqInc = new decimal[] { 1 };
-
-            SetIncrementValues(prescription, () => prescription.Frequency, freqInc, true);
-            SetIncrementValues(prescription, () => prescription.Quantity, componentInc, true);
-            SetIncrementValues(prescription, () => prescription.Total, componentInc, true);
-
-            SetIncrementValues(prescription, () => prescription.Doses[0].Quantity, substanceInc, true);
-            SetIncrementValues(prescription, () => prescription.Doses[0].Total, substanceInc, true);
-        }
-
-        private static void SetIncrementValues(Prescription p, Expression<Func<UnitValue>> property, decimal[] values, bool incrementStepping)
-        {
-            UnitValue unitValue = PropertyHelper.GetUnitValue(property);
-            unitValue.Factor.IncrementSizes = values;
-            unitValue.Factor.IncrementStepping = incrementStepping;
-        }
-
         
+        private readonly List<ICalculationCombination> _calculationCombination = new List<ICalculationCombination>();
 
-        public void CheckStates()
+        public void AddCombination(ICalculationCombination combination)
         {
-            SetCombinations();
-            for (int i = 0; i < _combinations.Count; i++)
-            {
-                var combinationsCheck = (from c in _combinations where c.GetUserCount() == 3 select c);
-                
-                var sequence = PropertySequence();
+            _calculationCombination.Add(combination);
+        }
 
-                for (int j = 0; j < sequence.Count; j++)
-                {
-                    var property = _combinations[i].GetPropertyByName(sequence[j]);
-                    if(property != null)
-                    {
-                        if (!property.ChangedByUser)
-                        {
-                            property.UIState = "calculated";
-                            property.Value = 0;
-                            break;
-                        }
-   
-                    }
-                }
+        public void Calculate()
+        {
+            for (int i = 0; i < _calculationCombination.Count; i++)
+            {
+                _calculationCombination[i].Calculate();
+                _calculationCombination[i].Finish();
             }
         }
-    } 
+
+        private void setCombinations()
+        {
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstDose.Total, () => _prescription.Frequency, () => _prescription.FirstDose.Quantity));
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.Total, () => _prescription.Frequency, () => _prescription.Quantity));
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstSubstance.Quantity, () => _prescription.FirstSubstance.DrugConcentration, () => _prescription.Drug.Quantity));
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstDose.Quantity, () => _prescription.Quantity, () => _prescription.FirstSubstance.DrugConcentration));
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstDose.Total, () => _prescription.Total, () => _prescription.FirstSubstance.DrugConcentration));
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstDose.Rate, () => _prescription.Rate, () => _prescription.FirstSubstance.DrugConcentration));
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstDose.Quantity, () => _prescription.FirstDose.Rate, () => _prescription.Duration));
+            AddCombination(new CalculationCombination(_prescription, () => _prescription.Quantity, () => _prescription.Rate, () => _prescription.Duration));
+        }
+    }
 }
