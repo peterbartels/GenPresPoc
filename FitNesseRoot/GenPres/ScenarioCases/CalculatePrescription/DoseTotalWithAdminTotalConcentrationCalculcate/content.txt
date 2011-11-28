@@ -1,0 +1,12 @@
+![ script
+    Given a Prescription with dose total 200 mg / dag and admin total 2 ml / dag
+    Then substance drugconcentration should be 100 mg / ml
+]!
+![ script
+    Given a Prescription with dose total 200 mg / dag and substance drugconcentration 100 mg / ml
+    Then admin total should be 2 ml / dag
+]!
+![ script
+    Given a Prescription with substance drugconcentration 100 mg / ml and admin total 2 ml / dag
+    Then dose total should be 200 mg / dag
+]!

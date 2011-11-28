@@ -488,6 +488,7 @@ Ext.define('GenPres.control.UnitValueField', {
 
     getValue : function(){
         var me = this;
+        
         return {
             value : (me.getState() == GenPres.control.states.user ? me.valueField.getValue() : 0),
             unit: (!me.unitStore ?  "" : me.unitCombo.getValue()),
@@ -536,6 +537,9 @@ Ext.define('GenPres.control.UnitValueField', {
         var me = this;
         var store = combo.store;
         var setSelected = function(){
+            if(combo==timeCombo){
+                debugger;
+            }
             for(var i=0;i<store.data.items.length;i++){
                 var val = store.data.items[i].raw;
                 if(val.selected == true){
@@ -1720,7 +1724,6 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
 
         var substanceDrugConcentration = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Concentratie',
-            unit:'mg',
             width:240,
             colspan:2,
             margin:'0 0 0 20',
@@ -2029,7 +2032,6 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
 
         var frequency = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Frequentie',
-            unit:'mg',
             width:200,
             labelAlign:'top',
             id:'prescriptionFrequency',
@@ -2155,7 +2157,6 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
 
         var frequency = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Frequentie',
-            unit:'mg',
             width:200,
             labelAlign:'top',
             id:'prescriptionFrequency',
@@ -2294,8 +2295,8 @@ Ext.define('GenPres.view.user.LoginWindow', {
                 allowBlank: false
             },
             items:[
-                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam2', name:'username', margin: '10 0 10 10', value: 'test' },
-                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: 'Test' },
+                { xtype: 'textfield', fieldLabel: 'Gebruikersnaam2', name:'username', margin: '10 0 10 10', value: 'peter' },
+                { xtype: 'textfield', inputType: 'password', fieldLabel: 'Wachtwoord', name: 'password', margin: '0 0 10 10',  value: 'Secret' },
                 Ext.create('GenPres.view.user.LogicalUnitSelector',{name:'loginLogicalUnitSelector'}),
                 me.advancedLoginFieldSet()
 
@@ -2655,6 +2656,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     updatePrescription: function(){
         var me = this;
+        
         var PID = GenPres.session.PatientSession.patient.PID;
         me.prescriptionIsLoading = true;
         

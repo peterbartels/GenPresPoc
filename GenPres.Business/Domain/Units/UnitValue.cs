@@ -246,11 +246,9 @@ namespace GenPres.Business.Domain.Units
         }
         #endregion
 
+        //public virtual bool CanBeSet { get; set; }
         
-        public virtual bool CanBeSet { get { return true; } set
-        {
-            
-        } }
+         public virtual bool CanBeSet { get { return true; } set{} }
 
         protected UnitValue()
         {

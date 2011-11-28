@@ -21,7 +21,7 @@
 |Frequency Unit       |@timeunitforfrequency                                                                                                                                       |
 |Admin Total          |@admintotal                                                                                                                                                 |
 |Admin Total Unit     |@unitforadmintotal                                                                                                                                          |
-|Admin Total Time Unit|@timeunitforadmintotal                                                                                                                                      |
+|Admin Total Time|@timeunitforadmintotal                                                                                                                                      |
 
 |scenario           |Then administration quantity should be _ _|adminQuantity,unitforadminQuantity|
 |Admin Quantity Unit|@unitforadminQuantity                                                        |
@@ -35,7 +35,7 @@
 |Admin Quantity Unit  |@timeunitforadminquantity                                                                                                                                                       |
 |Admin Total          |@admintotal                                                                                                                                                                     |
 |Admin Total Unit     |@unitforadmintotal                                                                                                                                                              |
-|Admin Total Time Unit|@timeunitforadmintotal                                                                                                                                                          |
+|Admin Total Time|@timeunitforadmintotal                                                                                                                                                          |
 
 |scenario      |Then frequency should be _ / _|frequency,unitforfrequency|
 |Frequency Unit|@unitforfrequency                                        |

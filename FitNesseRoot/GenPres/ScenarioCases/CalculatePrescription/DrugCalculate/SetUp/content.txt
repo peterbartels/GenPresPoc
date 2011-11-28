@@ -1,0 +1,44 @@
+!|import                 |
+|GenPres.xTest.Acceptance|
+
+!|script|PrescriptionCalculate|
+
+|scenario                          |Given a Prescription with drug quantity _ _ and substance drugconcentration _ _ / _|drugquantity,unitfordrugquantity,drugconcentration,unitfordrugconcentration,totalunitfordrugconcentration|
+|Create Prescription                                                                                                                                                                                                             |
+|Drug Quantity                     |@drugquantity                                                                                                                                                                                |
+|Drug Quantity Unit                |@unitfordrugquantity                                                                                                                                                                         |
+|Substance Drug Concentration      |@drugconcentration                                                                                                                                                                           |
+|Substance Drug Concentration Unit |@unitfordrugconcentration                                                                                                                                                                    |
+|Substance Drug Concentration total|@totalunitfordrugconcentration                                                                                                                                                               |
+
+|scenario|Then substance quantity should be _ _|susbtancequantity,unitforsubstancequantity|
+|Calculate Prescription                                                                   |
+|check   |Substance Quantity                   |@susbtancequantity                        |
+
+
+|scenario             |Given a Prescription with frequency _ / _ and administration total _ _ / _|frequency,timeunitforfrequency,admintotal,unitforadmintotal,timeunitforadmintotal|
+|Create Prescription                                                                                                                                                               |
+|Frequency            |@frequency                                                                                                                                                  |
+|Frequency Unit       |@timeunitforfrequency                                                                                                                                       |
+|Admin Total          |@admintotal                                                                                                                                                 |
+|Admin Total Unit     |@unitforadmintotal                                                                                                                                          |
+|Admin Total Time Unit|@timeunitforadmintotal                                                                                                                                      |
+
+|scenario           |Then administration quantity should be _ _|adminQuantity,unitforadminQuantity|
+|Admin Quantity Unit|@unitforadminQuantity                                                        |
+|Calculate Prescription                                                                           |
+|check              |Admin Quantity                            |@adminQuantity                    |
+
+
+|scenario             |Given a Prescription with administration quantity _ _ and administration total _ _ / _|adminquantity,timeunitforadminquantity,admintotal,unitforadmintotal,timeunitforadmintotal|
+|Create Prescription                                                                                                                                                                                   |
+|Admin Quantity       |@adminquantity                                                                                                                                                                  |
+|Admin Quantity Unit  |@timeunitforadminquantity                                                                                                                                                       |
+|Admin Total          |@admintotal                                                                                                                                                                     |
+|Admin Total Unit     |@unitforadmintotal                                                                                                                                                              |
+|Admin Total Time Unit|@timeunitforadmintotal                                                                                                                                                          |
+
+|scenario      |Then frequency should be _ / _|frequency,unitforfrequency|
+|Frequency Unit|@unitforfrequency                                        |
+|Calculate Prescription                                                  |
+|check         |Frequency                     |@frequency                |

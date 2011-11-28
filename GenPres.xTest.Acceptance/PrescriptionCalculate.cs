@@ -28,5 +28,15 @@ namespace GenPres.xTest.Acceptance
         {
             
         }
+
+        public void execute()
+        {
+            CalculatePrescription();
+        }
+
+        public void reset()
+        {
+            CreatePrescription();
+        }
     }
 }

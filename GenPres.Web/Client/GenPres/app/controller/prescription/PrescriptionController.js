@@ -68,6 +68,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     updatePrescription: function(){
         var me = this;
+        
         var PID = GenPres.session.PatientSession.patient.PID;
         me.prescriptionIsLoading = true;
         

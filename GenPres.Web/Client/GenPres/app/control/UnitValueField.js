@@ -76,6 +76,7 @@ Ext.define('GenPres.control.UnitValueField', {
 
     getValue : function(){
         var me = this;
+        
         return {
             value : (me.getState() == GenPres.control.states.user ? me.valueField.getValue() : 0),
             unit: (!me.unitStore ?  "" : me.unitCombo.getValue()),
@@ -124,6 +125,9 @@ Ext.define('GenPres.control.UnitValueField', {
         var me = this;
         var store = combo.store;
         var setSelected = function(){
+            if(combo==timeCombo){
+                debugger;
+            }
             for(var i=0;i<store.data.items.length;i++){
                 var val = store.data.items[i].raw;
                 if(val.selected == true){

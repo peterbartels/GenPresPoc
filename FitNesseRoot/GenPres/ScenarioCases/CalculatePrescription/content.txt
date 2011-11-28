@@ -1,6 +1,7 @@
-[[Dosage calculate with frequency][CalculatePrescription.DosageCalculate]]
-[[Administration calculate with frequency][CalculatePrescription.AdministrationWithFrequencyCalculate]]
-[[Drug composition calculate][CalculatePrescription.DrugCalculate]]
-[[Dosage quantity with administration quantity concentration calculate][CalculatePrescription.DoseQuantityAdminQuantityConcentrationCalculcate]]
-[[Dosage total with administration total concentration calculate][CalculatePrescription.DoseTotalWithAdminTotalConcentrationCalculcate]]
+[[Calculate Dose with frequency][CalculatePrescription.DosageCalculate]]
+[[Calculate Administration with frequency][CalculatePrescription.AdministrationWithFrequencyCalculate]]
+[[Calculate Drug composition][CalculatePrescription.DrugCalculate]]
+[[Calculate Dose-Admin concentration][CalculatePrescription.DoseQuantityAdminQuantityConcentrationCalculcate]]
+[[Calculate Dose-Admin total concentration][CalculatePrescription.DoseTotalWithAdminTotalConcentrationCalculcate]]
+[[Calculate Dose-Admin rate concentration][CalculatePrescription.DoseRateWithAdminRateConcentrationCalculcate]]
 

@@ -2267,6 +2267,7 @@
     <Content Include="Views\AppTest\Index.cshtml" />
     <Content Include="Views\Bug\FieldsetInTableView.cshtml" />
     <Content Include="Views\Tests\ValueField.cshtml" />
+    <Content Include="Views\Settings\BuildDatabase.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

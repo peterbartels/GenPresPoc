@@ -67,7 +67,6 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
 
         var substanceDrugConcentration = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Concentratie',
-            unit:'mg',
             width:240,
             colspan:2,
             margin:'0 0 0 20',

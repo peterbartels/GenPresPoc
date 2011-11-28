@@ -29,7 +29,6 @@ Ext.define('GenPres.view.prescription.FrequencyDuration', {
 
         var frequency = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Frequentie',
-            unit:'mg',
             width:200,
             labelAlign:'top',
             id:'prescriptionFrequency',

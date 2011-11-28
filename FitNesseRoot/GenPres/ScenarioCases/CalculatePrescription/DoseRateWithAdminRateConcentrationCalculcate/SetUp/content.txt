@@ -1,0 +1,53 @@
+!|import                 |
+|GenPres.xTest.Acceptance|
+
+!|script|PrescriptionCalculate|
+
+|scenario       |Given a Prescription with dose rate _ _ / _ and admin rate _ _ / _|dose,unitfordose,timefordose,admin,unitforadmin,timeforadmin|
+|Create Prescription                                                                                                                            |
+|Dose Rate      |@dose                                                                                                                          |
+|Dose Rate Unit |@unitfordose                                                                                                                   |
+|Dose Rate Time |@timefordose                                                                                                                   |
+|Admin Rate     |@admin                                                                                                                         |
+|Admin Rate Unit|@unitforadmin                                                                                                                  |
+|Admin Rate Time|@timeforadmin                                                                                                                  |
+
+
+|scenario                          |Then substance drugconcentration should be _ _ / _|substancedrugconcentration,unitforsubstancedrugconcentration,totalforsubstancedrugconcentration|
+|Substance Drug Concentration Unit |@unitforsubstancedrugconcentration                                                                                                                |
+|Substance Drug Concentration Total|@totalforsubstancedrugconcentration                                                                                                               |
+|Calculate Prescription                                                                                                                                                               |
+|check                             |Substance Drug Concentration                      |@substancedrugconcentration                                                                    |
+
+|scenario                          |Given a Prescription with dose rate _ _ / _ and substance drugconcentration _ _ / _|dose,unitfordose,timefordose,substancedrugconcentration,unitforsubstancedrugconcentration,totalforsubstancedrugconcentration|
+|Create Prescription                                                                                                                                                                                                                                |
+|Dose Rate                         |@dose                                                                                                                                                                                                           |
+|Dose Rate Unit                    |@unitfordose                                                                                                                                                                                                    |
+|Dose Rate Time                    |@timefordose                                                                                                                                                                                                    |
+|Substance Drug Concentration Unit |@unitforsubstancedrugconcentration                                                                                                                                                                              |
+|Substance Drug Concentration Total|@totalforsubstancedrugconcentration                                                                                                                                                                             |
+
+|scenario       |Then admin rate should be _ _ / _|admin,unitforadmin,timeforadmin|
+|Admin Rate     |@admin                                                           |
+|Admin Rate Unit|@unitforadmin                                                    |
+|Admin Rate Time|@timeforadmin                                                    |
+|Calculate Prescription                                                           |
+|check          |Admin Rate                       |@admin                         |
+
+|scenario                          |Given a Prescription with substance drugconcentration _ _ / _ and admin rate _ _ / _|substancedrugconcentration,unitforsubstancedrugconcentration,totalforsubstancedrugconcentration,admin,unitforadmin,timeforadmin|
+|Create Prescription                                                                                                                                                                                                                                    |
+|Substance Drug Concentration Unit |@unitforsubstancedrugconcentration                                                                                                                                                                                  |
+|Substance Drug Concentration Total|@totalforsubstancedrugconcentration                                                                                                                                                                                 |
+|Admin Rate                        |@admin                                                                                                                                                                                                              |
+|Admin Rate Unit                   |@unitforadmin                                                                                                                                                                                                       |
+|Admin Rate Time                   |@timeforadmin                                                                                                                                                                                                       |
+
+
+|scenario      |Then dose rate should be _ _ / _|dose,unitfordose,timefordose|
+|Dose Rate     |@dose                                                        |
+|Dose Rate Unit|@unitfordose                                                 |
+|Dose Rate Time|@timefordose                                                 |
+|Calculate Prescription                                                      |
+|check         |Dose Rate                       |@dose                       |
+
+

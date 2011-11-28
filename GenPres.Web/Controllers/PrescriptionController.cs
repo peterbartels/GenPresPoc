@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Ext.Direct.Mvc;
 using GenPres.Business.Service;
+using GenPres.Data.DTO.Prescriptions;
 using GenPres.Service;
 using GenPres.Web.Controllers;
 using GenPres.Web.Environments;
@@ -50,7 +51,7 @@ namespace GenPres.Controllers
         {
             return this.Direct(PrescriptionService.GetPrescriptionById(id));
         }
-        /*
+        
         [Transaction]
         public ActionResult SavePrescription(string patientId, PrescriptionDto prescriptionDto)
         {
@@ -61,7 +62,7 @@ namespace GenPres.Controllers
         public ActionResult UpdatePrescription(string patientId, PrescriptionDto prescriptionDto)
         {
             return this.Direct(PrescriptionService.UpdatePrescription(prescriptionDto, patientId));
-        }*/
+        }
 
         [Transaction]
         public ActionResult ClearPrescription()

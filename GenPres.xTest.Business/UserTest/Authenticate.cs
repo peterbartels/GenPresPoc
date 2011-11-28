@@ -16,6 +16,6 @@ namespace GenPres.xTest.Business.UserTest
             string username = "Peter";
             string password = "Secret";
             Assert.IsTrue(UserService.AuthenticateUser(username, password));
-        }       
+        }
     }
 }

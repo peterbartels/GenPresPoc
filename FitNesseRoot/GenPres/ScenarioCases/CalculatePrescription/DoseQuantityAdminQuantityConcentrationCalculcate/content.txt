@@ -1,0 +1,12 @@
+![ script
+    Given a Prescription with dose quantity 200 mg and admin quantity 2 ml
+    Then substance drugconcentration should be 100 mg / ml
+]!
+![ script
+    Given a Prescription with dose quantity 200 mg and substance drugconcentration 100 mg / ml
+    Then admin quantity should be 2 ml
+]!
+![ script
+    Given a Prescription with substance drugconcentration 100 mg / ml and admin quantity 2 ml
+    Then dose quantity should be 200 mg
+]!

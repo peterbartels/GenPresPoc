@@ -1,0 +1,12 @@
+![ script
+    Given a Prescription with drug quantity 2 zetp and substance drugconcentration 200 mg / zetp
+    Then substance quantity should be 400 mg
+]!
+![ script
+    Given a Prescription with substance quantity 400 mg and substance drugconcentration 200 mg / zetp
+    Then drug quantity should be 2 zetp
+]!
+![ script
+    Given a Prescription with drug quantity 2 zetp and substance quantity 400 mg
+    Then susbtance drugconcentration should be 200 mg / zetp
+]!
