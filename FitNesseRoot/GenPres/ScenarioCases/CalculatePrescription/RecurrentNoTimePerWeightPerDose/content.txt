@@ -1,0 +1,3 @@
+!|PrescriptionCalculate                                                                                                                                  |
+|Generic    |Substance Quantity|Drug Quantity|Substance Drug Concentration|Frequency|Admin Quantity|Admin Total|Dose Quantity|Dose Total?|Dose Total Unit|
+|epinephrine|0.1 mg            |1 ml         |0.1 mg/ml                   |3/dag    |1 ml          |3 ml/dag   |0.1 mg       |0.3        |mg/dag         |

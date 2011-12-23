@@ -165,6 +165,8 @@
     <Content Include="Client\GenPres\app\initAppTest.js" />
     <Content Include="Client\GenPres\app\initDebug.js" />
     <Content Include="Client\GenPres\app\initTests.js" />
+    <Content Include="Client\GenPres\app\lib\Prescription\UserStateCheck.js" />
+    <Content Include="Client\GenPres\app\lib\util\ASyncEventManager.js" />
     <Content Include="Client\GenPres\app\lib\util\DomClicker.js" />
     <Content Include="Client\GenPres\app\lib\util\MessageChecker.js" />
     <Content Include="Client\GenPres\app\lib\util\QueryHelper.js" />
@@ -184,10 +186,17 @@
     <Content Include="Client\GenPres\app\store\patient\LogicalUnitStore.js" />
     <Content Include="Client\GenPres\app\store\patient\PatientInfoStore.js" />
     <Content Include="Client\GenPres\app\store\patient\PatientTreeStore.js" />
+    <Content Include="Client\GenPres\app\store\PrescriptionStores.js" />
+    <Content Include="Client\GenPres\app\store\prescription\AdjustUnit.js" />
+    <Content Include="Client\GenPres\app\store\prescription\ComponentUnit.js" />
     <Content Include="Client\GenPres\app\store\prescription\GenericStore.js" />
+    <Content Include="Client\GenPres\app\store\prescription\LocalUnit.js" />
     <Content Include="Client\GenPres\app\store\prescription\Prescription.js" />
+    <Content Include="Client\GenPres\app\store\prescription\RateUnit.js" />
     <Content Include="Client\GenPres\app\store\prescription\RouteStore.js" />
     <Content Include="Client\GenPres\app\store\prescription\ShapeStore.js" />
+    <Content Include="Client\GenPres\app\store\prescription\SubstanceUnit.js" />
+    <Content Include="Client\GenPres\app\store\prescription\TotalTimeUnit.js" />
     <Content Include="Client\GenPres\app\store\prescription\ValueStore.js" />
     <Content Include="Client\GenPres\app\style\css\HiddenGuiTests.css" />
     <Content Include="Client\GenPres\app\style\css\VisibleGuiTest.css" />
@@ -200,6 +209,7 @@
     <Content Include="Client\GenPres\app\style\images\template_32.png" />
     <Content Include="Client\GenPres\app\style\images\tpn_32.png" />
     <Content Include="Client\GenPres\app\test\controller\LoginControllerTests.js" />
+    <Content Include="Client\GenPres\app\test\control\UnitValueFieldTest.js" />
     <Content Include="Client\GenPres\app\test\extjs\ClassTests.js" />
     <Content Include="Client\GenPres\app\test\extjs\ComponentQueryTests.js" />
     <Content Include="Client\GenPres\app\test\extjs\LoaderTests.js" />
@@ -212,12 +222,22 @@
     <Content Include="Client\GenPres\app\test\mvc\controller\module1\TestController.js" />
     <Content Include="Client\GenPres\app\test\mvc\TestApplication.js" />
     <Content Include="Client\GenPres\app\test\store\ProductSubstanceStoreTests.js" />
+    <Content Include="Client\GenPres\app\test\store\SubstanceUnit.js" />
+    <Content Include="Client\GenPres\app\test\TestList.js" />
+    <Content Include="Client\GenPres\app\test\TestLoader.js" />
     <Content Include="Client\GenPres\app\test\usecase\AdvancedLoginTest.js" />
     <Content Include="Client\GenPres\app\test\usecase\DrugCompositionTest.js" />
     <Content Include="Client\GenPres\app\test\usecase\LoginTest.js" />
+    <Content Include="Client\GenPres\app\test\usecase\PrescriptionPatientTest.js" />
     <Content Include="Client\GenPres\app\test\usecase\PrescriptionTest.js" />
     <Content Include="Client\GenPres\app\test\usecase\SelectPatientTest.js" />
+    <Content Include="Client\GenPres\app\test\util\ASyncEventManagerTest.js" />
+    <Content Include="Client\GenPres\app\test\util\Query.js" />
     <Content Include="Client\GenPres\app\test\view\DatabaseRegistrationWindowTests.js" />
+    <Content Include="Client\GenPres\app\test\view\DrugCompositionTest.js" />
+    <Content Include="Client\GenPres\app\test\view\PrescriptionFormTest.js" />
+    <Content Include="Client\GenPres\app\test\view\PrescriptionPatientTest.js" />
+    <Content Include="Client\GenPres\app\test\view\PrescriptionVisibilityTest.js" />
     <Content Include="Client\GenPres\app\test\view\SaveCancelWindowTests.js" />
     <Content Include="Client\GenPres\app\util\Process.js" />
     <Content Include="Client\GenPres\app\util\Spotlight.js" />
@@ -229,12 +249,19 @@
     <Content Include="Client\GenPres\app\view\main\PatientInfo.js" />
     <Content Include="Client\GenPres\app\view\main\PatientTree.js" />
     <Content Include="Client\GenPres\app\view\main\TopToolbar.js" />
+    <Content Include="Client\GenPres\app\view\prescription\Administration.js" />
+    <Content Include="Client\GenPres\app\view\prescription\Dose.js" />
     <Content Include="Client\GenPres\app\view\prescription\DrugComposition.js" />
+    <Content Include="Client\GenPres\app\view\prescription\FrequencyDuration.js" />
+    <Content Include="Client\GenPres\app\view\prescription\Options.js" />
     <Content Include="Client\GenPres\app\view\prescription\OverView.js" />
+    <Content Include="Client\GenPres\app\view\prescription\Patient.js" />
     <Content Include="Client\GenPres\app\view\prescription\PrescriptionForm.js" />
     <Content Include="Client\GenPres\app\view\prescription\PrescriptionGrid.js" />
     <Content Include="Client\GenPres\app\view\prescription\PrescriptionTabs.js" />
     <Content Include="Client\GenPres\app\view\prescription\PrescriptionToolbar.js" />
+    <Content Include="Client\GenPres\app\view\prescription\Solution.js" />
+    <Content Include="Client\GenPres\app\view\prescription\Verbalization.js" />
     <Content Include="Client\GenPres\app\view\user\LogicalUnitSelector.js" />
     <Content Include="Client\GenPres\app\view\user\LoginWindow.js" />
     <Content Include="Client\GenPres\app\view\user\LoginWindow.old.js" />
@@ -1013,7 +1040,9 @@
     <Content Include="generics.xml" />
     <Content Include="Copy of Settings.xml" />
     <Content Include="Global.asax" />
-    <Content Include="Settings.xml" />
+    <Content Include="Settings.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1031,7 +1060,6 @@
   <ItemGroup>
     <Folder Include="Client\GenPres\app\controller\main\" />
     <Folder Include="Client\GenPres\app\lib\view\form\" />
-    <Folder Include="Client\GenPres\app\test\util\" />
     <Folder Include="Client\GenPres\style\images\New folder %282%29\" />
     <Folder Include="Client\GenPres\style\images\New folder %283%29\" />
     <Folder Include="Client\GenPres\style\images\New folder %284%29\" />

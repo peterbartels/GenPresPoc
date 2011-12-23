@@ -1,12 +1,17 @@
-![ script
-    Given a Prescription with drug quantity 2 zetp and substance drugconcentration 200 mg / zetp
-    Then substance quantity should be 400 mg
-]!
-![ script
-    Given a Prescription with substance quantity 400 mg and substance drugconcentration 200 mg / zetp
-    Then drug quantity should be 2 zetp
-]!
-![ script
-    Given a Prescription with drug quantity 2 zetp and substance quantity 400 mg
-    Then susbtance drugconcentration should be 200 mg / zetp
-]!
+!|PrescriptionCalculate                                                               |
+|SubstanceQuantity?|Substance Quantity Unit|Drug Quantity|Substance Drug Concentration|
+|2                 |mg                     |1 ml         |2 mg/ml                     |
+|6                 |mg                     |2 ml         |3 mg/ml                     |
+|8                 |mg                     |4 ml         |2 mg/ml                     |
+
+!|PrescriptionCalculate                                                          |
+|SubstanceQuantity|Drug Quantity?|Drug Quantity Unit|Substance Drug Concentration|
+|2 mg             |1             |ml                |2 mg/ml                     |
+|6 mg             |2             |ml                |3 mg/ml                     |
+|8 mg             |4             |ml                |2 mg/ml                     |
+
+!|PrescriptionCalculate                                                                         |
+|SubstanceQuantity|Drug Quantity|Substance Drug Concentration?|Substance Drug Concentration Unit|
+|2 mg             |1 ml         |2                            |mg/ml                            |
+|6 mg             |2 ml         |3                            |mg/ml                            |
+|8 mg             |4 ml         |2                            |mg/ml                            |

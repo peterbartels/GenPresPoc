@@ -1,6 +1,6 @@
 !3 !-slim-!
-|'''Date: '''|!-6:01:49 AM (CET) on Monday, November 28, 2011-!|
+|'''Date: '''|!-8:06:30 AM (CET) on Tuesday, December 20, 2011-!|
 |'''Test Page: '''|.GenPres.ScenarioCases.CalculatePrescription.DrugCalculate|
-|'''Command: '''|!-GenPresBuild\Runner.exe -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll C:\Development\GenPres\GenPresBuild\GenPres.xTest.Acceptance.dll    8089-!|
+|'''Command: '''|!-GenPresBuild\RunnerW.exe -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll GenPresBuild\GenPres.xTest.Acceptance.dll    8092-!|
 |'''Exit code: '''|!-0-!|
-|'''Time elapsed: '''|!-0.789 seconds-!|
+|'''Time elapsed: '''|!-4.069 seconds-!|

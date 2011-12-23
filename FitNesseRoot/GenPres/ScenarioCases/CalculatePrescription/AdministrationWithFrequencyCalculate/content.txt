@@ -1,12 +1,17 @@
-![ script
-    Given a Prescription with frequency 2 / dag and administration quantity 2 zetp
-    Then administration total should be 4 zetp / dag
-]!
-![ script
-    Given a Prescription with frequency 2 / dag and administration total 4 zetp / dag
-    Then administration quantity should be 2 zetp
-]!
-![ script
-    Given a Prescription with administration quantity 2 zetp and administration total 4 zetp / dag
-    Then frequency should be 2 / dag
-]!
+!|PrescriptionCalculate                                |
+|Frequency|Admin Quantity|Admin Total?|Admin total unit|
+|2/dag    |1 zetp        |2           |zetp/dag        |
+|3/dag    |2 zetp        |6           |zetp/dag        |
+|2/dag    |4 zetp        |56          |zetp/week       |
+
+!|PrescriptionCalculate                                    |
+|Frequency|Admin Quantity?|Admin Quantity Unit|Admin Total |
+|2/dag    |1              |zetp               |2 zetp/dag  |
+|3/dag    |2              |zetp               |6 zetp/dag  |
+|2/dag    |4              |zetp               |56 zetp/week|
+
+!|PrescriptionCalculate                               |
+|Frequency?|Frequency Unit|Admin Quantity|Admin Total |
+|2         |dag           |1 zetp        |2 zetp/dag  |
+|3         |dag           |2 zetp        |6 zetp/dag  |
+|2         |dag           |4 zetp        |56 zetp/week|

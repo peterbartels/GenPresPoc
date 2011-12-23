@@ -1,33 +1,17 @@
-![ script
-    Given a Prescription with frequency 2 / dag and dose quantity 200 mg
-    Then dose total should be 400 mg / dag
-]!
-![ script
-    Given a Prescription with frequency 2 / dag and dose total 400 mg / dag
-    Then dose quantity should be 200 mg
-]!
-![ script
-    Given a Prescription with dose quantity 200 mg and dose total 400 mg / dag
-    Then frequency should be 2 / dag
-]!
+!|PrescriptionCalculate                             |
+|Frequency|Dose Quantity|Dose Total?|Dose total unit|
+|2/dag    |100 mg       |200        |mg/dag         |
+|3/dag    |200 mg       |600        |mg/dag         |
+|3/dag    |2 mg         |6000       |microg/dag     |
 
+!|PrescriptionCalculate                                     |
+|Frequency|Dose Quantity?|Dose Quantity Unit|Dose Total     |
+|2/dag    |100           |mg                |200 mg/dag     |
+|3/dag    |200           |mg                |600 mg/dag     |
+|3/dag    |2             |mg                |6000 microg/dag|
 
-!|PrescriptionCalculate|
-|Dose Total|Dose Total Unit|Dose Total?|Frequency|Frequency Unit|Frequency?|Dose Quantity|Dose Quantity Unit|Dose Quantity?|
-|200|mg||2|dag|||mg|100|
-|600|mg||3|dag|||mg|200|
-|6000|microg||3|dag|||mg|2|
-
-!|PrescriptionCalculate|
-|Dose Total|Dose Total Unit|Dose Total?|Frequency|Frequency Unit|Frequency?|Dose Quantity|Dose Quantity Unit|Dose Quantity?|
-||mg|200|2|dag||100|mg||
-||mg|600|3|dag||200|mg||
-||microg|6000|3|dag||2|mg||
-
-!|PrescriptionCalculate|
-|Dose Total|Dose Total Unit|Dose Total?|Frequency|Frequency Unit|Frequency?|Dose Quantity|Dose Quantity Unit|Dose Quantity?|
-|200|mg|||dag|2|100|mg||
-|600|mg|||dag|3|200|mg||
-|6000|microg|||dag|3|2|mg||
-
-
+!|PrescriptionCalculate                                 |
+|Frequency?|Frequency Unit|Dose Quantity|Dose Total     |
+|3         |dag           |200 mg       |600 mg/dag     |
+|3         |dag           |200 mg       |600 mg/dag     |
+|3         |dag           |2 mg         |6000 microg/dag|

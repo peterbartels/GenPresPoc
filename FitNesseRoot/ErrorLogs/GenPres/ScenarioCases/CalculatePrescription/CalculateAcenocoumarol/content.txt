@@ -1,0 +1,6 @@
+!3 !-slim-!
+|'''Date: '''|!-8:14:57 AM (CET) on Tuesday, December 20, 2011-!|
+|'''Test Page: '''|.GenPres.ScenarioCases.CalculatePrescription.CalculateAcenocoumarol|
+|'''Command: '''|!-GenPresBuild\RunnerW.exe -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll GenPresBuild\GenPres.xTest.Acceptance.dll    8086-!|
+|'''Exit code: '''|!-0-!|
+|'''Time elapsed: '''|!-4.082 seconds-!|

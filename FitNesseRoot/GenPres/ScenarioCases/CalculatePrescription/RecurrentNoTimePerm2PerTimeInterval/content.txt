@@ -1,0 +1,3 @@
+!|PrescriptionCalculate                                                                                                                                        |
+|Generic         |Substance Quantity|Drug Quantity|Substance Drug Concentration|Frequency|Admin Quantity|Admin Total |Dose Quantity|Dose Total?|Dose Total Unit|
+|propylthiouracil|50 mg             |1 tabl       |50 mg/tabl                  |3/dag    |0.5 tabl      |1.5 tabl/dag|25 mg        |75         |mg/dag         |

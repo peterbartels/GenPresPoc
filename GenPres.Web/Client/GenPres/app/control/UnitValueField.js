@@ -125,9 +125,6 @@ Ext.define('GenPres.control.UnitValueField', {
         var me = this;
         var store = combo.store;
         var setSelected = function(){
-            if(combo==timeCombo){
-                debugger;
-            }
             for(var i=0;i<store.data.items.length;i++){
                 var val = store.data.items[i].raw;
                 if(val.selected == true){
@@ -141,9 +138,8 @@ Ext.define('GenPres.control.UnitValueField', {
         if(store.proxy.type != "memory"){
             store.on("load", setSelected);
         }else{
-            combo.on("afterrender", setSelected);
+            me.on("afterrender", Ext.Function.createBuffered(setSelected, 200, me));
         }
-
     },
 
     initComponent : function(){
@@ -209,9 +205,11 @@ Ext.define('GenPres.control.UnitValueField', {
         }
 
         if(me.timeStore){
+
             me.timeCombo = new Ext.create('Ext.form.ComboBox',{
                 xtype:'combobox',
                 isFormField:false,
+                id:me.id+"_timecombo",
                 store:me.timeStore,
                 width:60
             });
@@ -219,6 +217,7 @@ Ext.define('GenPres.control.UnitValueField', {
             if(items.length > 0) items.push(me.createSeperator());
             items.push(me.timeCombo);
             me.timeCombo.on("change", function(){me.fireEvent('comboChange', me);});
+
             me.setDefaultComboValue(me.timeCombo, me.timeStore);
         }
 

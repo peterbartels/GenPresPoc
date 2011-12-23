@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using GenPres.Business.Domain.Prescriptions;
+using GenPres.Business.Domain.Units;
 
 namespace GenPres.xTest.Acceptance
 {
@@ -10,21 +12,37 @@ namespace GenPres.xTest.Acceptance
     {
         protected Prescription _prescription = Prescription.NewPrescription();
 
+        public string Generic
+        {
+            get { return _prescription.Drug.Generic; }
+            set { _prescription.Drug.Generic = value; }
+        }
+
         public string Frequency
         {
             get { return _prescription.Frequency.Value.ToString("0.####"); }
-            set { _prescription.Frequency.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithTime(value, _prescription.Frequency);
+            }
         }
 
         public string DoseQuantity
         {
             get { return _prescription.FirstDose.Quantity.Value.ToString("0.####"); }
-            set { _prescription.FirstDose.Quantity.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitAndAdjust(value, _prescription.FirstDose.Quantity);
+            }
         }
+
         public string DoseTotal
         {
             get { return _prescription.FirstDose.Total.Value.ToString("0.####"); }
-            set { _prescription.FirstDose.Total.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitTimeAndAdjust(value, _prescription.FirstDose.Total);
+            }
         }
         public string AdminQuantity
         {
@@ -32,12 +50,18 @@ namespace GenPres.xTest.Acceptance
             {
                 return _prescription.Quantity.Value.ToString("0.####");
             }
-            set { _prescription.Quantity.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitAndAdjust(value, _prescription.Quantity);
+            }
         }
         public string AdminTotal
         {
             get { return _prescription.Total.Value.ToString("0.####"); }
-            set { _prescription.Total.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitTimeAndAdjust(value, _prescription.Total);
+            }
         }
 
         public string DrugQuantity
@@ -46,7 +70,10 @@ namespace GenPres.xTest.Acceptance
             {
                 return _prescription.Drug.Quantity.Value.ToString("0.####");
             }
-            set { _prescription.Drug.Quantity.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitAndAdjust(value, _prescription.Drug.Quantity);
+            }
         }
 
         public string SubstanceQuantity
@@ -55,7 +82,10 @@ namespace GenPres.xTest.Acceptance
             {
                 return _prescription.FirstSubstance.Quantity.Value.ToString("0.####");
             }
-            set { _prescription.FirstSubstance.Quantity.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitAndAdjust(value, _prescription.FirstSubstance.Quantity);
+            }
         }
 
         public string SubstanceDrugConcentration
@@ -64,7 +94,10 @@ namespace GenPres.xTest.Acceptance
             {
                 return _prescription.FirstSubstance.DrugConcentration.Value.ToString("0.####");
             }
-            set { _prescription.FirstSubstance.DrugConcentration.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitTotal(value, _prescription.FirstSubstance.DrugConcentration);
+            }
         }
 
         public string DoseRate
@@ -117,18 +150,9 @@ namespace GenPres.xTest.Acceptance
             get { return _prescription.FirstDose.Total.Unit; }
             set
             {
-                _prescription.FirstDose.Total.Unit = value;
+                SetUnitWithTimeAndAdjust(value, _prescription.FirstDose.Total);
             }
         }
-        public string DoseTotalTime
-        {
-            get { return _prescription.FirstDose.Total.Time; }
-            set
-            {
-                _prescription.FirstDose.Total.Time = value;
-            }
-        }
-
         public string AdminQuantityUnit
         {
             get { return _prescription.Quantity.Unit; }
@@ -142,24 +166,24 @@ namespace GenPres.xTest.Acceptance
             get { return _prescription.Total.Unit; }
             set
             {
-                _prescription.Total.Unit = value;
+                SetUnitWithTime(value, _prescription.Total); 
             }
         }
-        public string AdminTotalTime
-        {
-            get { return _prescription.Total.Time; }
-            set
-            {
-                _prescription.Total.Time = value;
-            }
-        }
-
         public string DrugQuantityUnit
         {
             get { return _prescription.Drug.Quantity.Unit; }
             set
             {
-                _prescription.Drug.Quantity.Unit = value;
+                SetUnitWithAdjust(value, _prescription.Drug.Quantity);
+            }
+        }
+
+        public string SubstanceQuantityUnit
+        {
+            get { return _prescription.FirstSubstance.Quantity.Unit; }
+            set
+            {
+                SetUnitWithAdjust(value, _prescription.FirstSubstance.Quantity);
             }
         }
 
@@ -168,16 +192,7 @@ namespace GenPres.xTest.Acceptance
             get { return _prescription.FirstSubstance.DrugConcentration.Unit; }
             set
             {
-                _prescription.FirstSubstance.DrugConcentration.Unit = value;
-            }
-        }
-
-        public string SubstanceDrugConcentrationTotal
-        {
-            get { return _prescription.FirstSubstance.DrugConcentration.Total; }
-            set
-            {
-                _prescription.FirstSubstance.DrugConcentration.Total = value;
+                SetUnitWithTotal(value, _prescription.FirstSubstance.DrugConcentration);
             }
         }
 
@@ -190,14 +205,6 @@ namespace GenPres.xTest.Acceptance
             }
         }
 
-        public string DoseRateTime
-        {
-            get { return _prescription.FirstDose.Rate.Time; }
-            set
-            {
-                _prescription.FirstDose.Rate.Time = value;
-            }
-        }
 
         public string AdminRateUnit
         {
@@ -208,16 +215,7 @@ namespace GenPres.xTest.Acceptance
             }
         }
 
-        public string AdminRateTime
-        {
-            get { return _prescription.Rate.Time; }
-            set
-            {
-                _prescription.Rate.Time = value;
-            }
-        }
-
-        public string DurationTime
+        public string DurationUnit
         {
             get { return _prescription.Duration.Time; }
             set
@@ -226,7 +224,93 @@ namespace GenPres.xTest.Acceptance
             }
         }
 
+        private static void SetUnitWithAdjust(string input, UnitValue uv)
+        {
+            var inputSplit = input.Trim().Split('/');
+            
+            uv.Unit = inputSplit[0].Trim();
+            
+            if(inputSplit.Length == 2)
+                uv.Adjust = inputSplit[1].Trim();   
+        }
+
+        private static void SetUnitWithTime(string input, UnitValue uv)
+        {
+            var inputSplit = input.Trim().Split('/');
+
+            uv.Unit = inputSplit[0].Trim();
+
+            if (inputSplit.Length == 2)
+                uv.Time = inputSplit[1].Trim();
+        }
+
+        private static void SetTime(string input, UnitValue uv)
+        {
+            var inputSplit = input.Trim().Split('/');
+            uv.Time = inputSplit[0].Trim();
+        }
+
+        private static void SetUnitWithTotal(string input, UnitValue uv)
+        {
+            var inputSplit = input.Trim().Split('/');
+            uv.Unit = inputSplit[0].Trim();
+            uv.Total = inputSplit[1].Trim();
+        }
+
+        private static void SetUnitWithTimeAndAdjust(string input, UnitValue uv)
+        {
+            var inputSplit = input.Trim().Split('/');
+            uv.Unit = inputSplit[0].Trim();
+            
+            if (inputSplit.Length == 2)
+                uv.Time = inputSplit[1].Trim();
+
+            if (inputSplit.Length == 3)
+            {
+                uv.Time = inputSplit[1].Trim();
+                uv.Adjust = inputSplit[2].Trim();
+            }
+        }
+
+        private static void SetValueWithTime(string input, UnitValue uv)
+        {
+            uv.Value = ExtractValue(input);
+            string units = ExtractUnits(input);
+            if (units != "") SetTime(units, uv);
+        }
+
+        private static void SetValueWithUnitAndAdjust(string input, UnitValue uv)
+        {
+            uv.Value = ExtractValue(input);
+            string units = ExtractUnits(input);
+            if (units != "") SetUnitWithAdjust(units, uv);
+        }
 
 
+        private static void SetValueWithUnitTotal(string input, UnitValue uv)
+        {
+            uv.Value = ExtractValue(input);
+            string units = ExtractUnits(input);
+            if (units != "") SetUnitWithTotal(units, uv);
+        }
+
+        private static void SetValueWithUnitTimeAndAdjust(string input, UnitValue uv)
+        {
+            uv.Value = ExtractValue(input);
+            string units = ExtractUnits(input);
+            if (units != "") SetUnitWithTimeAndAdjust(units, uv);
+        }
+
+        private static string ExtractUnits(string input)
+        {
+            if(input.Trim() == "") return "";
+            return Regex.Replace(Regex.Match(input.Trim(), @"^[\d|\.]*(\D*)").Groups[1].Value.Trim(), @"^\/", "").Trim();
+        }
+
+        private static decimal ExtractValue(string input)
+        {
+            if (input == "") return 0;
+            return decimal.Parse(Regex.Match(input, @"(^[\d|\.]*)").Groups[1].Value);
+        }
     }
 }

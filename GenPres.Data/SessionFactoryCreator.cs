@@ -22,15 +22,14 @@ namespace GenPres.Data
                 //fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
             }else
             {
-                //fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
-                fluentConfiguration.Database(SQLiteConfiguration.Standard.UsingFile(@"c:\development\GenPres\GenPres.s3db"));
+                fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
+                //fluentConfiguration.Database(SQLiteConfiguration.Standard.UsingFile(@"c:\development\GenPres\GenPres.s3db"));
             }
-            
-            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.UserMap>()
-                .ExportTo(@"C:\development\GenPres\MappingsXml"))
+
+            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.UserMap>())
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
-                .ExposeConfiguration(cfg => _configuration = cfg)
-                .Diagnostics(x => x.OutputToFile("c:\\temp\\test.-txt"));
+                .ExposeConfiguration(cfg => _configuration = cfg);
+                //.Diagnostics(x => x.OutputToFile("c:\\temp\\test.-txt"));
                         
             _sessionFactory =  fluentConfiguration.BuildSessionFactory();
              

@@ -1,12 +1,17 @@
-![ script
-    Given a Prescription with dose quantity 200 mg and admin quantity 2 ml
-    Then substance drugconcentration should be 100 mg / ml
-]!
-![ script
-    Given a Prescription with dose quantity 200 mg and substance drugconcentration 100 mg / ml
-    Then admin quantity should be 2 ml
-]!
-![ script
-    Given a Prescription with substance drugconcentration 100 mg / ml and admin quantity 2 ml
-    Then dose quantity should be 200 mg
-]!
+!|PrescriptionCalculate                                                                                                             |
+|Dose Quantity?|Dose Quantity Unit|Admin Quantity|Admin Quantity Unit|Substance Drug Concentration|Substance Drug Concentration Unit|
+|2             |mg                |1             |ml                 |2                           |mg/ml                            |
+|6             |mg                |2             |ml                 |3                           |mg/ml                            |
+|8             |mg                |4             |ml                 |2                           |mg/ml                            |
+
+!|PrescriptionCalculate                                                                                                             |
+|Dose Quantity|Dose Quantity Unit|Admin Quantity?|Admin Quantity Unit|Substance Drug Concentration|Substance Drug Concentration Unit|
+|2            |mg                |1              |ml                 |2                           |mg/ml                            |
+|6            |mg                |2              |ml                 |3                           |mg/ml                            |
+|8            |mg                |4              |ml                 |2                           |mg/ml                            |
+
+!|PrescriptionCalculate                                                                                                             |
+|Dose Quantity|Dose Quantity Unit|Admin Quantity|Admin Quantity Unit|Substance Drug Concentration?|Substance Drug Concentration Unit|
+|2            |mg                |1             |ml                 |2                            |mg/ml                            |
+|6            |mg                |2             |ml                 |3                            |mg/ml                            |
+|8            |mg                |4             |ml                 |2                            |mg/ml                            |

@@ -5,3 +5,30 @@
 [[Calculate Dose-Admin total concentration][CalculatePrescription.DoseTotalWithAdminTotalConcentrationCalculcate]]
 [[Calculate Dose-Admin rate concentration][CalculatePrescription.DoseRateWithAdminRateConcentrationCalculcate]]
 
+|Recurrent|None|Per Weight|Per Time Interval|[[open][CalculatePrescription.RecurrentNoTimePerWeightPerTimeInterval]]|
+|Recurrent |None|Per Weight|Per Dose         |[[open][CalculatePrescription.RecurrentNoTimePerWeightPerDose]]        |
+|Recurrent |None|Per m2    |Per Time Interval|[[open][CalculatePrescription.RecurrentNoTimePerm2PerTimeInterval]]    |
+|Recurrent |None|Per m2    |Per Dose         |[[open][CalculatePrescription.RecurrentNoTimePerm2PerDose]]            |
+|Recurrent |None|None      |Per Time Interval|[[open][CalculatePrescription.RecurrentNoTimeNoAdjustPerTimeInterval]] |
+|Recurrent |None|None      |Per Dose         |[[open][CalculatePrescription.RecurrentNoTimeNoAdjustPerDose]]         |
+
+|Recurrent|Time|Per Weight|Per Time Interval|[[open][CalculatePrescription.RecurrentTimePerWeightPerTimeInterval]]|
+|Recurrent |Time|Per Weight|Per Time Unit    |[[open][CalculatePrescription.RecurrentTimePerWeightPerTimeUnit]]    |
+|Recurrent |Time|Per Weight|Per Dose         |[[open][CalculatePrescription.RecurrentTimePerWeightPerDose]]        |
+|Recurrent |Time|Per m2    |Per Time Interval|[[open][CalculatePrescription.RecurrentTimePerm2PerTimeInterval]]    |
+|Recurrent |Time|Per m2    |Per Time Unit    |[[open][CalculatePrescription.RecurrentTimePerm2PerTimeUnit]]        |
+|Recurrent |Time|Per m2    |Per Dose         |[[open][CalculatePrescription.RecurrentTimePerm2PerDose]]            |
+|Recurrent |Time|None      |Per Time Interval|[[open][CalculatePrescription.RecurrentTimeNoAdjustPerTimeInterval]] |
+|Recurrent |Time|None      |Per Time Unit    |[[open][CalculatePrescription.RecurrentTimeNoAdjustPerTimeUnit]]     |
+|Recurrent |Time|None      |Per Dose         |[[open][CalculatePrescription.RecurrentTimeNoAdjustPerDose]]         |
+
+|Continuous|Time|Per Weight|Per Time Interval|[[open][CalculatePrescription.ContinuousTimePerWeightPerTimeInterval]]|
+|Continuous |Time|Per Weight|Per Time Unit    |[[open][CalculatePrescription.ContinuousTimePerWeightPerTimeUnit]]    |
+|Continuous |Time|Per Weight|Per Dose         |[[open][CalculatePrescription.ContinuousTimePerWeightPerDose]]        |
+|Continuous |Time|Per m2    |Per Time Interval|[[open][CalculatePrescription.ContinuousTimePerm2PerTimeInterval]]    |
+|Continuous |Time|Per m2    |Per Time Unit    |[[open][CalculatePrescription.ContinuousTimePerm2tPerTimeUnit]]       |
+|Continuous |Time|Per m2    |Per Dose         |[[open][CalculatePrescription.ContinuousTimePerm2PerDose]]            |
+|Continuous |Time|None      |Per Time Interval|[[open][CalculatePrescription.ContinuousTimeNoAdjustPerTimeInterval]] |
+|Continuous |Time|None      |Per Time Unit    |[[open][CalculatePrescription.ContinuousTimeNoAdjustPerTimeUnit]]     |
+|Continuous |Time|None      |Per Dose         |[[open][CalculatePrescription.ContinuousTimeNoAdjustPerDose]]         |
+

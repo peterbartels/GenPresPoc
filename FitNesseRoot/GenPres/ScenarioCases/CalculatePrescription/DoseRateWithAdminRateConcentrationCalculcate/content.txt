@@ -1,12 +1,17 @@
-![ script
-    Given a Prescription with dose rate 200 mg / uur and admin rate 2 ml / uur
-    Then substance drugconcentration should be 100 mg / ml
-]!
-![ script
-    Given a Prescription with dose rate 200 mg / uur and substance drugconcentration 100 mg / ml
-    Then admin rate should be 2 ml / uur
-]!
-![ script
-    Given a Prescription with substance drugconcentration 100 mg / ml and admin rate 2 ml / uur
-    Then dose rate should be 200 mg / uur
-]!
+!|PrescriptionCalculate                                                                                             |
+|Dose Rate?|Dose Rate Unit|Admin Rate|Admin Rate Unit|Substance Drug Concentration|Substance Drug Concentration Unit|
+|2         |mg/uur        |1         |ml/uur         |2                           |mg/ml                            |
+|6         |mg/uur        |2         |ml/uur         |3                           |mg/ml                            |
+|8         |mg/uur        |4         |ml/uur         |2                           |mg/ml                            |
+
+!|PrescriptionCalculate                                                                                             |
+|Dose Rate|Dose Rate Unit|Admin Rate?|Admin Rate Unit|Substance Drug Concentration|Substance Drug Concentration Unit|
+|2        |mg/uur        |1          |ml/uur         |2                           |mg/ml                            |
+|6        |mg/uur        |2          |ml/uur         |3                           |mg/ml                            |
+|8        |mg/uur        |4          |ml/uur         |2                           |mg/ml                            |
+
+!|PrescriptionCalculate                                                                                             |
+|Dose Rate|Dose Rate Unit|Admin Rate|Admin Rate Unit|Substance Drug Concentration?|Substance Drug Concentration Unit|
+|2        |mg/uur        |1         |ml/uur         |2                            |mg/ml                            |
+|6        |mg/uur        |2         |ml/uur         |3                            |mg/ml                            |
+|8        |mg/uur        |4         |ml/uur         |2                            |mg/ml                            |

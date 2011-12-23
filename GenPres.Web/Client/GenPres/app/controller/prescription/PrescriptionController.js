@@ -17,7 +17,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
         var me = this;
 
         var updatePrescription = function(){
-            GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
+            //GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
             me.updatePrescription();
         };
         
