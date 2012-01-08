@@ -83,19 +83,19 @@ namespace GenPres.Business.Util
         private static decimal GetConvertedValue(Expression<Func<UnitValue>> prop, Prescription prescription)
         {
             if (PropertyExpressionsEquals(prop, () => prescription.Frequency))
-                return GetUnitValue(prop).BaseValue / UnitConverter.GetUnitValue(prescription.Frequency.Time, 1);
+                return GetUnitValue(prop).BaseValue / UnitConverter.GetBaseValue(prescription.Frequency.Time, 1);
 
             if (PropertyExpressionsEquals(prop, () => prescription.Doses[0].Quantity))
                 return GetUnitValue(prop).BaseValue;
 
             if (PropertyExpressionsEquals(prop, () => prescription.Doses[0].Total))
-                return GetUnitValue(prop).BaseValue / UnitConverter.GetUnitValue(prescription.Frequency.Time, 1);
+                return GetUnitValue(prop).BaseValue / UnitConverter.GetBaseValue(prescription.Frequency.Time, 1);
 
             if (PropertyExpressionsEquals(prop, () => prescription.Quantity))
                 return GetUnitValue(prop).BaseValue;
 
             if (PropertyExpressionsEquals(prop, () => prescription.Total))
-                return GetUnitValue(prop).BaseValue / UnitConverter.GetUnitValue(prescription.Frequency.Time, 1);
+                return GetUnitValue(prop).BaseValue / UnitConverter.GetBaseValue(prescription.Frequency.Time, 1);
 
             if (PropertyExpressionsEquals(prop, () => prescription.FirstSubstance.Quantity))
                 return GetUnitValue(prop).BaseValue;
@@ -107,13 +107,13 @@ namespace GenPres.Business.Util
                 return GetUnitValue(prop).BaseValue;
 
             if (PropertyExpressionsEquals(prop, () => prescription.Rate))
-                return GetUnitValue(prop).BaseValue / UnitConverter.GetUnitValue("uur", 1);
+                return GetUnitValue(prop).BaseValue / UnitConverter.GetBaseValue("uur", 1);
 
             if (PropertyExpressionsEquals(prop, () => prescription.FirstDose.Rate))
-                return GetUnitValue(prop).BaseValue / UnitConverter.GetUnitValue("uur", 1);
+                return GetUnitValue(prop).BaseValue / UnitConverter.GetBaseValue("uur", 1);
 
             if (PropertyExpressionsEquals(prop, () => prescription.Duration))
-                return UnitConverter.GetBaseValue("uur", prescription.Duration.BaseValue);
+                return prescription.Duration.BaseValue / UnitConverter.GetBaseValue("uur", 1);
 
             throw new Exception("property has no convert configuration " + ((MemberExpression)prop.Body).Member.DeclaringType.FullName + "." + ((MemberExpression)prop.Body).Member.Name);
         }
@@ -122,16 +122,16 @@ namespace GenPres.Business.Util
         public static void SetBaseValue(Expression<Func<UnitValue>> prop, decimal value, Prescription prescription)
         {
             if (PropertyExpressionsEquals(prop, () => prescription.Frequency))
-                GetUnitValue(prop).BaseValue = value * UnitConverter.GetUnitValue(prescription.Frequency.Time, 1); ;
+                GetUnitValue(prop).BaseValue = value * UnitConverter.GetBaseValue(prescription.Frequency.Time, 1); ;
 
             if (PropertyExpressionsEquals(prop, () => prescription.Doses[0].Quantity))
                 GetUnitValue(prop).BaseValue = value;
 
             if (PropertyExpressionsEquals(prop, () => prescription.Doses[0].Total))
-                GetUnitValue(prop).BaseValue = value * UnitConverter.GetUnitValue(prescription.Frequency.Time, 1);
+                GetUnitValue(prop).BaseValue = value * UnitConverter.GetBaseValue(prescription.Frequency.Time, 1);
 
             if (PropertyExpressionsEquals(prop, () => prescription.Total))
-                GetUnitValue(prop).BaseValue = value * UnitConverter.GetUnitValue(prescription.Frequency.Time, 1);
+                GetUnitValue(prop).BaseValue = value * UnitConverter.GetBaseValue(prescription.Frequency.Time, 1);
 
             if (PropertyExpressionsEquals(prop, () => prescription.Quantity))
                 GetUnitValue(prop).BaseValue = value;
@@ -146,13 +146,13 @@ namespace GenPres.Business.Util
                 GetUnitValue(prop).BaseValue = value;
 
             if (PropertyExpressionsEquals(prop, () => prescription.FirstDose.Rate))
-                GetUnitValue(prop).BaseValue = value * UnitConverter.GetUnitValue("uur", 1); ;
+                GetUnitValue(prop).BaseValue = value * UnitConverter.GetBaseValue("uur", 1); ;
 
             if (PropertyExpressionsEquals(prop, () => prescription.Rate))
-                GetUnitValue(prop).BaseValue = value * UnitConverter.GetUnitValue("uur", 1); ;
+                GetUnitValue(prop).BaseValue = value * UnitConverter.GetBaseValue("uur", 1); ;
 
             if (PropertyExpressionsEquals(prop, () => prescription.Duration))
-                GetUnitValue(prop).BaseValue = UnitConverter.GetUnitValue("uur", value);
+                GetUnitValue(prop).BaseValue = value * UnitConverter.GetBaseValue("uur", 1);
         }
     }
 }

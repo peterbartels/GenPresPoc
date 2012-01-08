@@ -106,7 +106,10 @@ namespace GenPres.xTest.Acceptance
             {
                 return _prescription.FirstDose.Rate.Value.ToString("0.####");
             }
-            set { _prescription.FirstDose.Rate.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithUnitTimeAndAdjust(value, _prescription.FirstDose.Rate);
+            }
         }
 
         public string AdminRate
@@ -115,7 +118,9 @@ namespace GenPres.xTest.Acceptance
             {
                 return _prescription.Rate.Value.ToString("0.####");
             }
-            set { _prescription.Rate.Value = value == "" ? 0 : decimal.Parse(value); }
+            set { 
+                SetValueWithUnitTimeAndAdjust(value, _prescription.Rate);
+            }
         }
 
         public string Duration
@@ -124,7 +129,20 @@ namespace GenPres.xTest.Acceptance
             {
                 return _prescription.Duration.Value.ToString("0.####");
             }
-            set { _prescription.Duration.Value = value == "" ? 0 : decimal.Parse(value); }
+            set
+            {
+                SetValueWithTime(value, _prescription.Duration);
+            }
+        }
+
+
+        public string Time
+        {
+            get
+            {
+                return Duration;
+            }
+            set { Duration = value; }
         }
 
 
@@ -201,7 +219,7 @@ namespace GenPres.xTest.Acceptance
             get { return _prescription.FirstDose.Rate.Unit; }
             set
             {
-                _prescription.FirstDose.Rate.Unit = value;
+                SetUnitWithTimeAndAdjust(value, _prescription.FirstDose.Rate);
             }
         }
 
@@ -211,7 +229,7 @@ namespace GenPres.xTest.Acceptance
             get { return _prescription.Rate.Unit; }
             set
             {
-                _prescription.Rate.Unit = value;
+                SetUnitWithTimeAndAdjust(value, _prescription.Rate);
             }
         }
 
@@ -260,8 +278,9 @@ namespace GenPres.xTest.Acceptance
         private static void SetUnitWithTimeAndAdjust(string input, UnitValue uv)
         {
             var inputSplit = input.Trim().Split('/');
+
             uv.Unit = inputSplit[0].Trim();
-            
+
             if (inputSplit.Length == 2)
                 uv.Time = inputSplit[1].Trim();
 

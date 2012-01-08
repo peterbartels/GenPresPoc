@@ -270,7 +270,7 @@ namespace GenPres.Business.Domain.Units
             if (!string.IsNullOrEmpty(_unit)) value = UnitConverter.GetBaseValue(_unit, _value);
             if (!string.IsNullOrEmpty(_time))
             {
-                value = value / UnitConverter.GetBaseValue(_time, 1);
+                value = value * UnitConverter.GetBaseValue(_time, 1);
             }
             if (!string.IsNullOrEmpty(_total))
             {
@@ -299,7 +299,7 @@ namespace GenPres.Business.Domain.Units
             if (!string.IsNullOrEmpty(_unit)) value = UnitConverter.GetUnitValue(_unit, value);
             if (!string.IsNullOrEmpty(_time))
             {
-                value = value * UnitConverter.GetBaseValue(_time, 1);
+                value = value / UnitConverter.GetBaseValue(_time, 1);
             }
             if (!string.IsNullOrEmpty(_total))
             {

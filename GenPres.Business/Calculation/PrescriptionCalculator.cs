@@ -21,15 +21,21 @@ namespace GenPres.Business.Calculation
 
         public void Calculate()
         {
-            for (int i = 0; i < _calculationCombination.Count; i++)
+            for (int a = 0; a < 10; a++)
             {
-                _calculationCombination[i].Calculate();
-                _calculationCombination[i].Finish();
-            }
+                for (int i = 0; i < _calculationCombination.Count; i++)
+                {
+                    _calculationCombination[i].Calculate();
+                    _calculationCombination[i].Finish();
+                }
+                setCombinations();
+            }    
         }
+
 
         private void setCombinations()
         {
+            _calculationCombination.Clear();
             AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstDose.Total, () => _prescription.Frequency, () => _prescription.FirstDose.Quantity));
             AddCombination(new CalculationCombination(_prescription, () => _prescription.Total, () => _prescription.Frequency, () => _prescription.Quantity));
             AddCombination(new CalculationCombination(_prescription, () => _prescription.FirstSubstance.Quantity, () => _prescription.FirstSubstance.DrugConcentration, () => _prescription.Drug.Quantity));

@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenPresFitnesseTest.cs" />
+    <Compile Include="PatientScenarios.cs" />
     <Compile Include="PrescriptionCalculate.cs" />
     <Compile Include="PrescriptionCalculateProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

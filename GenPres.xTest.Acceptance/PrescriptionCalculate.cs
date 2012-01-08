@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using GenPres.Business.Calculation;
+﻿using GenPres.Business.Calculation;
 using GenPres.Business.Domain.Prescriptions;
 
 namespace GenPres.xTest.Acceptance
