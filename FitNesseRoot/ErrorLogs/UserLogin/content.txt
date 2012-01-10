@@ -1,6 +1,0 @@
-!3 !-slim-!
-|'''Date: '''|!-10:24:45 AM (CET) on Tuesday, November 8, 2011-!|
-|'''Test Page: '''|.UserLogin|
-|'''Command: '''|!-fitnesse.slim.SlimService -r fitSharp.Slim.Service.Runner,fitsharp\fit.dll defaultPath  8086-!|
-|'''Exit code: '''|!--1-!|
-|'''Time elapsed: '''|!-0.022 seconds-!|

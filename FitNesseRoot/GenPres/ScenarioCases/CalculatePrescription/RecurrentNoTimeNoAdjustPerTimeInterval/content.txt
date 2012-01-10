@@ -1,3 +1,0 @@
-!|PrescriptionCalculate                                                                                        |
-|Generic      |Substance Quantity|Drug Quantity|Substance Drug Concentration|Frequency|Admin Quantity|Admin Total|Dose Quantity|Dose Total?|Dose Total Unit|
-|acenocoumarol|1 mg|1 tabl|1 mg/tabl|1/dag|0.5 tabl|0.5 tabl/dag|0.5 mg|0.5|mg/dag|

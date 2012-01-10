@@ -1,3 +1,0 @@
-!|PrescriptionCalculate                                                                                                                                 |
-|Generic   |Substance Quantity|Drug Quantity|Substance Drug Concentration|Frequency|Admin Quantity|Admin Total|Dose Quantity|Dose Total?|Dose Total Unit|
-|salbutamol|1 mg              |1 ml         |1 mg/ml                     |3/dag    |2.5 ml        |7.5 ml/dag |2.5 mg       |7.5        |mg/dag         |

@@ -1,3 +1,0 @@
-- [[Test Slim Configuration][GenPres.TestSlim]]
-- [[Use Cases][GenPres.UseCases]]
-- [[Scenario's][GenPres.ScenarioCases]]
