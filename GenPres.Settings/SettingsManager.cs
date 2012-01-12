@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using CodeProject.Chidi.Cryptography;
+
 namespace Settings
 {
     public class SettingsManager

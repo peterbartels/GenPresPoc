@@ -111,7 +111,8 @@ namespace GenPres.xTest.Data.NHibernate
         [TestMethod]
         public void TestSessionFactoryCanOpenMultipleSessionsWithoutMakingNewConnections()
         {
-            /*var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, false);
+            /*TODO: Makes all other tests fail
+             * var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, false);
             var session1 = TestSessionManager.InitSession();
             var session2 = TestSessionManager.InitSession();
             Assert.IsTrue(session1.Connection == session2.Connection);

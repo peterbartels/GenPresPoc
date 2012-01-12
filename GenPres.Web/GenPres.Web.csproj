@@ -26,6 +26,10 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <SkipPostSharp>True</SkipPostSharp>
+    <PublishDatabaseSettings>
+      <Objects>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -1038,7 +1042,6 @@
     <Content Include="Client\Library\jasmine\lib\jasmine-1.0.2\json2.js" />
     <Content Include="Client\Library\jasmine\RunJasmine.js" />
     <Content Include="generics.xml" />
-    <Content Include="Copy of Settings.xml" />
     <Content Include="Global.asax" />
     <Content Include="Settings.xml">
       <SubType>Designer</SubType>
@@ -1064,11 +1067,6 @@
     <Folder Include="Client\GenPres\style\images\New folder %283%29\" />
     <Folder Include="Client\GenPres\style\images\New folder %284%29\" />
     <Folder Include="Client\GenPres\style\images\New folder\" />
-    <Folder Include="Client\Library\extjs\resources\css\.svn\prop-base\" />
-    <Folder Include="Client\Library\extjs\resources\css\.svn\props\" />
-    <Folder Include="Client\Library\extjs\resources\css\.svn\tmp\prop-base\" />
-    <Folder Include="Client\Library\extjs\resources\css\.svn\tmp\props\" />
-    <Folder Include="Client\Library\extjs\resources\css\.svn\tmp\text-base\" />
     <Folder Include="Client\Library\extjs\resources\themes\images\default\.svn\prop-base\" />
     <Folder Include="Client\Library\extjs\resources\themes\images\default\.svn\props\" />
     <Folder Include="Client\Library\extjs\resources\themes\images\default\.svn\text-base\" />
@@ -1401,26 +1399,6 @@
     <None Include="Client\GenPres\CopyGenPres.bat" />
     <None Include="Client\GenPres\genpres.jsb3" />
     <None Include="Client\Library\buildExt.bat" />
-    <None Include="Client\Library\extjs\resources\css\.svn\all-wcprops" />
-    <None Include="Client\Library\extjs\resources\css\.svn\entries" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-all-access.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-all-gray.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-all-scoped.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-all.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-ie-scoped.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-ie.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-sandbox.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-standard-scoped.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\text-base\ext-standard.css.svn-base" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-all-access.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-all-gray.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-all-scoped.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-all.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-ie-scoped.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-ie.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-sandbox.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-standard-scoped.css.tmp" />
-    <None Include="Client\Library\extjs\resources\css\.svn\tmp\ext-standard.css.tmp" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Client\Library\extjs\resources\themes\images\default\.svn\all-wcprops" />
     <None Include="Client\Library\extjs\resources\themes\images\default\.svn\entries" />
