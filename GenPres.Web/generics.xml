@@ -1,7 +1,7 @@
 ﻿<products>
   <generic name="paracetamol" shape="zetp" route="rect">
     
-    <componentIncrement>5</componentIncrement>
+    <componentIncrement>2</componentIncrement>
     
     <substanceIncrements>
       <increment>0.05</increment>
