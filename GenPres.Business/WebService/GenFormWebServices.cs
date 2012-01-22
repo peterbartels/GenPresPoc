@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Xml.Linq;
 
 namespace GenPres.Business.WebService
 {
     public class GenFormWebServices : IGenFormWebServices
     {
-        public static XDocument genericsDoc = XDocument.Load(@"C:\Development\GenPres\GenPres.Web\generics.xml");
+        public static XDocument genericsDoc = XDocument.Parse(Properties.Resources.generics);
         
         public string[] GetGenerics(string route, string shape)
         {    
@@ -23,8 +21,6 @@ namespace GenPres.Business.WebService
 
         public string[] GetRoutes(string generic, string shape)
         {
-            
-
             var routes = (genericsDoc.Descendants("generic").Where(
                 route =>
                     route.Attribute("shape").Value == ((shape.Trim() == "") ? route.Attribute("shape").Value : shape) &&
@@ -35,7 +31,6 @@ namespace GenPres.Business.WebService
 
         public string[] GetShapes(string generic, string route)
         {
-            XDocument genericsDoc = XDocument.Load(@"C:\Development\GenPres\GenPres.Web\generics.xml");
             var shapes = (genericsDoc.Descendants("generic").Where(
                 shape =>
                     shape.Attribute("name").Value == ((generic.Trim() == "") ? shape.Attribute("name").Value : generic) &&
@@ -77,7 +72,6 @@ namespace GenPres.Business.WebService
 
         public ReadOnlyCollection<SelectionItem> GetComponentUnits(string generic, string route, string shape)
         {
-            XDocument genericsDoc = XDocument.Load(@"C:\Development\GenPres\GenPres.Web\generics.xml");
             var items = genericsDoc.Descendants("generic").Where(
                 item =>
                     item.Attribute("shape").Value == shape && 

@@ -9,19 +9,19 @@ namespace GenPres.Assembler.Contexts
     {
         public SessionContext()
         {
-            CurrentSessionContext.Bind(SessionManager.Instance.SessionFactoryFromInstance.OpenSession());
+            CurrentSessionContext.Bind(SessionManager.SessionFactoryFromInstance.OpenSession());
         }
 
         public void Dispose()
         {
-            var session = CurrentSessionContext.Unbind(SessionManager.Instance.SessionFactoryFromInstance);
+            var session = CurrentSessionContext.Unbind(SessionManager.SessionFactoryFromInstance);
             session.Close();
             session.Dispose();
         }
 
         public ISession CurrentSession()
         {
-            return SessionManager.Instance.SessionFactoryFromInstance.GetCurrentSession();
+            return SessionManager.SessionFactoryFromInstance.GetCurrentSession();
         }
 
         public static SessionContext UseContext()

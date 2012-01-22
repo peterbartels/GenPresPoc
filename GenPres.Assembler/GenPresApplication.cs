@@ -51,7 +51,7 @@ namespace GenPres.Assembler
         {
             get
             {
-                return SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+                return SessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             }
         }
 
@@ -83,7 +83,7 @@ namespace GenPres.Assembler
         {
             if (!Factories.ContainsKey(environment.ToString()))
             {
-                Factories.Add(environment.ToString(), SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false));
+                Factories.Add(environment.ToString(), SessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false));
             }
 
             return Factories[environment.ToString()];

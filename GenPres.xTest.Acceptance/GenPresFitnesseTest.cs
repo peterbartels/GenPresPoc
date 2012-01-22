@@ -1,6 +1,6 @@
 ﻿namespace GenPresFitnesse
 {
-    public class GenPresFitnesseTest : fit.ColumnFixture
+    public class GenPresFitnesseTest 
     {
         
         public string TestGenPresFitnesse()

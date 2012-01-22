@@ -52,5 +52,14 @@
         <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
       </database>
     </machine>
+    <machine>
+      <key>Q5MXmXppIEgluaFnqPrRPA==</key>
+      <database>
+        <name>GenPres</name>
+        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWLPKy/MB6tIbcepxtlylmkVbkrEBfxpSYMf0k1VV1NdY=</GenPresConnectionString>
+        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWLPKy/MB6tIbcepxtlylmkVbkrEBfxpSYMf0k1VV1NdY=</PdmsConnectionString>
+        <GenFormWebservice>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWLPKy/MB6tIbcepxtlylmkVbkrEBfxpSYMf0k1VV1NdY=</GenFormWebservice>
+      </database>
+    </machine>
   </serversettings>
 </settings>

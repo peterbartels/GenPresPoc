@@ -14,28 +14,7 @@ namespace GenPres.Data
 
         protected static readonly Object LockThis = new object();
 
-        protected static SessionManager _instance;
-        
-        public static SessionManager Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    lock (LockThis)
-                    {
-                        if (_instance == null)
-                        {
-                            var instance = new SessionManager();
-                            Thread.MemoryBarrier();
-                            _instance = instance;
-                            Thread.MemoryBarrier();
-                        }
-                    }
-                return _instance;
-            }
-        }
-
-        public void InsertData()
+        public static void InsertData()
         {
             var u = User.NewUser();
             u.UserName = "Peter";
@@ -56,12 +35,7 @@ namespace GenPres.Data
             return _currentSession;
         }
 
-        public virtual void InitTestSessionFactory()
-        {
-            InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
-        }
-
-        public virtual ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
+        public static ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
         {
             HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();
 
@@ -79,7 +53,7 @@ namespace GenPres.Data
             return _factory;
         }
 
-        public void CloseSession()
+        public static void CloseSession()
         {
             var session = CurrentSessionContext.Unbind(_factory);
             session.Close();
@@ -87,10 +61,10 @@ namespace GenPres.Data
 
         public static ISessionFactory SessionFactory
         {
-            get { return Instance.SessionFactoryFromInstance; }
+            get { return SessionFactoryFromInstance; }
         }
 
-        public ISessionFactory SessionFactoryFromInstance
+        public static ISessionFactory SessionFactoryFromInstance
         {
             get { return _factory; }
         }
