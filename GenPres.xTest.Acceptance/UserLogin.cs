@@ -13,7 +13,7 @@ namespace GenPres.xTest.Acceptance
         public string Username;
         public string Password;
 
-        private ISessionFactory _sessionFactory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+        private ISessionFactory _sessionFactory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             
         public UserLogin()
         {

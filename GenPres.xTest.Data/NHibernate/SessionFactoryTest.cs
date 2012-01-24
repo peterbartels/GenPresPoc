@@ -73,7 +73,7 @@ namespace GenPres.xTest.Data.NHibernate
         [TestMethod]
         public void BeAbleToCreateAProductionSessionFactory()
         {
-            var factory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             Assert.IsNotNull(factory);
         }
 
@@ -88,14 +88,14 @@ namespace GenPres.xTest.Data.NHibernate
         [TestMethod]
         public void BeAbleToCreateATestSessionFactory()
         {
-            var factory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             Assert.IsNotNull(factory);
         }
 
         [TestMethod]
         public void TestSessionFactoryCanCreateASession()
         {
-            var factory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             var session = factory.OpenSession();
             Assert.IsNotNull(session);
         }
@@ -103,7 +103,7 @@ namespace GenPres.xTest.Data.NHibernate
         [TestMethod]
         public void TestSessionFactoryHasClassMetadata()
         {
-            var factory = TestSessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             var classMetadata = factory.GetClassMetadata(typeof(Prescription));
             Assert.IsNotNull(classMetadata);
         }
@@ -111,7 +111,8 @@ namespace GenPres.xTest.Data.NHibernate
         [TestMethod]
         public void TestSessionFactoryCanOpenMultipleSessionsWithoutMakingNewConnections()
         {
-            /*var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, false);
+            /*TODO: Makes all other tests fail
+             * var factory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, false);
             var session1 = TestSessionManager.InitSession();
             var session2 = TestSessionManager.InitSession();
             Assert.IsTrue(session1.Connection == session2.Connection);

@@ -1,6 +1,0 @@
-!3 !-slim-!
-|'''Date: '''|!-7:26:16 AM (CET) on Friday, December 23, 2011-!|
-|'''Test Page: '''|.GenPres.ScenarioCases.CalculatePrescription.RecurrentNoTimePerm2PerDose|
-|'''Command: '''|!-GenPresBuild\Runner.exe -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll GenPresBuild\GenPres.xTest.Acceptance.dll    8092-!|
-|'''Exit code: '''|!-0-!|
-|'''Time elapsed: '''|!-0.758 seconds-!|

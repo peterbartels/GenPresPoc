@@ -16,8 +16,8 @@ namespace GenPres.Controllers
 
         public ActionResult BuildDatabase()
         {
-            SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, true);
-            SessionManager.Instance.InsertData();
+            SessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, true);
+            SessionManager.InsertData();
             return View();
         }
 

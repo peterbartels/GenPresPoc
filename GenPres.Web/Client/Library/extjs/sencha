@@ -1,7 +1,0 @@
-#!/bin/sh
-UNAME="$(uname)"
-ARGUMENTS=$*
-DIRNAME="Command"
-
-CMD="Command/dispatch.sh $DIRNAME $ARGUMENTS"
-$CMD

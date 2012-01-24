@@ -19,17 +19,14 @@ namespace GenPres.Data
             if(databaseName == DatabaseConnection.DatabaseName.GenPresTest)
             {
                 fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory().ConnectionString("Data Source=:memory:; Version=3; New=True;").Raw("connection.release_mode", "on_close").ShowSql());
-                //fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
             }else
             {
                 fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
-                //fluentConfiguration.Database(SQLiteConfiguration.Standard.UsingFile(@"c:\development\GenPres\GenPres.s3db"));
             }
 
             fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.UserMap>())
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
                 .ExposeConfiguration(cfg => _configuration = cfg);
-                //.Diagnostics(x => x.OutputToFile("c:\\temp\\test.-txt"));
                         
             _sessionFactory =  fluentConfiguration.BuildSessionFactory();
              
@@ -40,8 +37,6 @@ namespace GenPres.Data
         {
             var export = new SchemaExport(_configuration);
             export.Execute(false, true, false, session.Connection, null);
-            //new SchemaExport(_configuration).Drop(false, true);
-            //new SchemaExport(_configuration).Create(false, true);
         }
 
         private static string GetConnectionString(DatabaseConnection.DatabaseName databaseName)

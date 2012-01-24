@@ -38,7 +38,6 @@ namespace GenPres.Web
             GenPresApplication.Initialize();
         }
 
-
         public static ISessionFactory GetSessionFactory(GenPres.Data.Connections.DatabaseConnection.DatabaseName environment)
         {
             return GenPresApplication.GetSessionFactory(environment);

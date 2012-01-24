@@ -21,7 +21,7 @@ namespace GenPres.xTest.Base
         [TestInitialize]
         public void MyTestInitialize()
         {
-            TestSessionManager.Instance.InitTestSessionFactory();
+            TestSessionManager.InitTestSessionFactory();
             TestSessionManager.Init();
         }
 

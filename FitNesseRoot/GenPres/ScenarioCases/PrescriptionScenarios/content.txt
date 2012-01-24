@@ -1,4 +1,0 @@
-[[Calculating Prescriptions][CalculatePrescription]]
-[[Prescription Allowance Scenarios][PrescriptionAllowance]]
-[[Retrieving prescriptions][RetrievePrescription]]
-[[Saving prescritions][SavePrescription]]

@@ -23,10 +23,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ext-all-debug.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../Library/ext-all-debug.js">
+      <file leaf-file-name="Patient.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controller/patient/Patient.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62009" column="29" selection-start="1664127" selection-end="1664140" vertical-scroll-proportion="-0.5638921">
+            <state line="48" column="51" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginWindow.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/user/LoginWindow.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="38" column="30" selection-start="977" selection-end="977" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogicalUnitStore.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="42" selection-start="325" selection-end="325" vertical-scroll-proportion="0.28619528">
               <folding />
             </state>
           </provider>
@@ -46,6 +64,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
+        <option value="$PROJECT_DIR$/app/lib/util/ASyncEventManager.js" />
         <option value="$PROJECT_DIR$/app/view/main/PatientInfo.js" />
         <option value="$PROJECT_DIR$/app/view/prescription/PrescriptionForm.js" />
         <option value="$PROJECT_DIR$/app/view/prescription/Verbalization.js" />
@@ -54,14 +73,13 @@
         <option value="$PROJECT_DIR$/app/AppConfig.js" />
         <option value="$PROJECT_DIR$/app/controller/patient/Patient.js" />
         <option value="$PROJECT_DIR$/app/controller/prescription/DrugComposition.js" />
-        <option value="$PROJECT_DIR$/app/view/user/LoginWindow.js" />
         <option value="$PROJECT_DIR$/app/view/prescription/FrequencyDuration.js" />
         <option value="$PROJECT_DIR$/app/view/prescription/DrugComposition.js" />
         <option value="$PROJECT_DIR$/app/store/prescription/LocalUnit.js" />
         <option value="$PROJECT_DIR$/genpres-all.js" />
         <option value="$PROJECT_DIR$/app/controller/prescription/PrescriptionController.js" />
         <option value="$PROJECT_DIR$/app/control/UnitValueField.js" />
-        <option value="$PROJECT_DIR$/../Library/ext-all-debug.js" />
+        <option value="$PROJECT_DIR$/app/view/user/LoginWindow.js" />
       </list>
     </option>
   </component>
@@ -110,7 +128,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Favorites" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -137,18 +154,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GenPres" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="store" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="patient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Favorites" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="Usage Scope" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Library" />
-    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" serverName="GenPres_Acceptatie" serverId="b953ea21-af7e-43da-b4a1-baddf4919b8f" />
   <component name="RecentsManager">
@@ -235,7 +293,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1064" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -243,7 +301,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32930845" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3598505" sideWeight="0.6721133" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28937533" sideWeight="0.6721133" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -319,16 +377,6 @@
         <state line="117" column="0" selection-start="4363" selection-end="4363" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/patient/Patient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="51" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.37037036" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/user/LoginWindow.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="18" selection-start="164" selection-end="164" vertical-scroll-proportion="-4.76" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/AppConfig.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="8" selection-start="451" selection-end="451" vertical-scroll-proportion="0.0" />
@@ -374,9 +422,21 @@
         <state line="126" column="37" selection-start="3196" selection-end="3196" vertical-scroll-proportion="0.3322034" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Library/ext-all-debug.js">
+    <entry file="file://$PROJECT_DIR$/app/controller/patient/Patient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="62009" column="29" selection-start="1664127" selection-end="1664140" vertical-scroll-proportion="-0.5638921">
+        <state line="48" column="51" selection-start="1837" selection-end="1837" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/user/LoginWindow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="38" column="30" selection-start="977" selection-end="977" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store/patient/LogicalUnitStore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="42" selection-start="325" selection-end="325" vertical-scroll-proportion="0.28619528">
           <folding />
         </state>
       </provider>

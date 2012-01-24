@@ -1,6 +1,0 @@
-!3 !-slim-!
-|'''Date: '''|!-9:20:00 AM (CET) on Thursday, December 22, 2011-!|
-|'''Test Page: '''|.GenPres.ScenarioCases.CalculatePrescription.DoseQuantityAdminQuantityConcentrationCalculcate|
-|'''Command: '''|!-GenPresBuild\Runner.exe -r fitSharp.Slim.Service.Runner,GenPresBuild\fitsharp.dll GenPresBuild\GenPres.xTest.Acceptance.dll    8088-!|
-|'''Exit code: '''|!-0-!|
-|'''Time elapsed: '''|!-0.975 seconds-!|
