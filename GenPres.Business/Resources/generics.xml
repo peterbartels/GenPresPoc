@@ -1,0 +1,84 @@
+﻿<products>
+  <generic name="paracetamol" shape="zetp" route="rect">
+    
+    <componentIncrement>8</componentIncrement>
+    
+    <substanceIncrements>
+      <increment>0.05</increment>
+      <increment>0.075</increment>
+      <increment>0.12</increment>
+      <increment>0.15</increment>
+      <increment>0.24</increment>
+      <increment>0.5</increment>
+      <increment>1</increment>
+    </substanceIncrements>
+    
+    <substanceUnits>
+      <substanceUnit selected="true">mg</substanceUnit>
+      <substanceUnit selected="false">g</substanceUnit>
+    </substanceUnits>
+    
+    <componentUnits>
+      <componentUnit selected="true">zetp</componentUnit>
+    </componentUnits>
+  
+  </generic>
+
+  <generic name="paracetamol" shape="tabl" route="or">
+    
+    <componentIncrement>1</componentIncrement>
+    
+    <substanceIncrements>
+      <increment>0.05</increment>
+      <increment>0.24</increment>
+      <increment>1</increment>
+    </substanceIncrements>
+    
+    <substanceUnits>
+      <substanceUnit selected="true">mg</substanceUnit>
+      <substanceUnit selected="false">g</substanceUnit>
+    </substanceUnits>
+    
+    <componentUnits>
+      <componentUnit selected="true">tabl</componentUnit>
+    </componentUnits>
+  
+</generic>
+  
+  <generic name="paracetamol" shape="infusievloeistof" route="iv">
+    <componentIncrement>0.0001</componentIncrement>
+    <substanceIncrements>
+      <increment>0.007</increment>
+    </substanceIncrements>
+
+
+    <substanceUnits>
+      <substanceUnit selected="true">mg</substanceUnit>
+      <substanceUnit selected="false">g</substanceUnit>
+    </substanceUnits>
+    
+    <componentUnits>
+      <componentUnit selected="true">ml</componentUnit>
+      <componentUnit selected="false">l</componentUnit>
+    </componentUnits>
+    
+  </generic>
+  
+  <generic name="dopamine" shape="infusievloeistof" route="iv">
+    <componentIncrement>0.0001</componentIncrement>
+    <substanceIncrements>
+      <increment>0.004</increment>
+    </substanceIncrements>
+
+    <substanceUnits>
+      <substanceUnit selected="true">mg</substanceUnit>
+      <substanceUnit selected="false">g</substanceUnit>
+    </substanceUnits>
+    
+    <componentUnits>
+      <componentUnit selected="true">ml</componentUnit>
+      <componentUnit selected="false">l</componentUnit>
+    </componentUnits>
+  </generic>
+  
+</products>
