@@ -10,7 +10,7 @@ namespace GenPres.Controllers
     {
         [Transaction]
         public ActionResult GetLogicalUnits()
-        {
+        {   
             return this.Direct(PatientService.GetLogicalUnits());
         }
 

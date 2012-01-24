@@ -1,65 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <settings>
   <serversettings>
-    <machine>
-      <key>XBoOLMopK6+KVqdpUdhc7Q==</key>
-      <database>
-        <name>GenPres</name>
-        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Itjou/0Cvsp6V1ki/TdE5+J52T5fiURAbvus5laV/XRVB5IM5tGl608LHD0whcW+G8=</GenPresConnectionString>
-        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IsW0LUsvHUz1Ct61wYRjLylE58oI6nlcyZbDgNCrQ8si5DGX3VmmzJ+EBHESV+WcXA=</PdmsConnectionString>
-        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
-      </database>
-    </machine>
-    <machine>
-      <key>XBoOLMopK6+KVqdpUdhc7Q==</key>
-      <database>
-        <name>TestDatabase</name>
-        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Itjou/0Cvsp6V1ki/TdE5+J52T5fiURAbvus5laV/XRVB5IM5tGl608LHD0whcW+G8=</GenPresConnectionString>
-        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IsW0LUsvHUz1Ct61wYRjLylE58oI6nlcyZbDgNCrQ8si5DGX3VmmzJ+EBHESV+WcXA=</PdmsConnectionString>
-        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
-      </database>
-    </machine>
-    <machine>
-      <key>i4I1/Ds0dGQaWAYUpHIr0g==</key>
-      <database>
-        <name>GenPres</name>
-        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWhe2O1WnUldBS/aWem9H8bmyzBCFkjk1Jb6W1MZeDFVQ=</GenPresConnectionString>
-        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IuAQHZMMbr1c4wi3YueYFOZE7AAI9g3gTShKjUISMX3JPBMvN6zkjnfk8MQjbeN32Q=</PdmsConnectionString>
-        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
-      </database>
-    </machine>
-    <machine>
-      <key>ss69pyon0XCBwrY7eVT4vA==</key>
-      <database>
-        <name>GenPres</name>
-        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWhe2O1WnUldBS/aWem9H8bmyzBCFkjk1Jb6W1MZeDFVQ=</GenPresConnectionString>
-        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IuAQHZMMbr1c4wi3YueYFOZE7AAI9g3gTShKjUISMX3JPBMvN6zkjnfk8MQjbeN32Q=</PdmsConnectionString>
-        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
-      </database>
-      <database>
-        <name>GenPresTest</name>
-        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IuSXcakTEwTBhcLfzVuWkNjh9RecDhUyXo1Biru94gHDKKpyA7jKNpp934rscu5suA=</GenPresConnectionString>
-        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5IuAQHZMMbr1c4wi3YueYFOZE7AAI9g3gTShKjUISMX3JPBMvN6zkjnfk8MQjbeN32Q=</PdmsConnectionString>
-        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
-      </database>
-    </machine>
-    <machine>
-      <key>zs/2/oW07MxK9ZAB1bueVw==</key>
-      <database>
-        <name>GenPres</name>
-        <GenPresConnectionString>etIGmGC+4+H11+uxkA4OjRQfIXUE5ZZcA8mvX1F/NRP57ID0q/Q87AgoAXXaml084ZGveG/b8N9Uu71+L8afTSqqt/kPvFyqNVQiJJydo+URLr3Cptz9c1SqJAY9bPbFo5g/9ZVkW8AjqbJcfH8O1E3HfSX2RVUml+5q9Nkt6ThVamVwP3p2LbTpAQVBmcf/</GenPresConnectionString>
-        <PdmsConnectionString>etIGmGC+4+H11+uxkA4OjRQfIXUE5ZZcA8mvX1F/NRP57ID0q/Q87AgoAXXaml084ZGveG/b8N9Uu71+L8afTSqqt/kPvFyqNVQiJJydo+URLr3Cptz9c1SqJAY9bPbFo5g/9ZVkW8AjqbJcfH8O1E3HfSX2RVUml+5q9Nkt6TjQJuLVU9YgsRIH586BIooo</PdmsConnectionString>
-        <GenFormWebservice>7HSjHgEqTGQO06kfDcQcAiwYWHXwDc6//6zsG17OKqXNB7iPaBpboa39wYyP+uNi</GenFormWebservice>
-      </database>
-    </machine>
-    <machine>
-      <key>Q5MXmXppIEgluaFnqPrRPA==</key>
-      <database>
-        <name>GenPres</name>
-        <GenPresConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWLPKy/MB6tIbcepxtlylmkVbkrEBfxpSYMf0k1VV1NdY=</GenPresConnectionString>
-        <PdmsConnectionString>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWLPKy/MB6tIbcepxtlylmkVbkrEBfxpSYMf0k1VV1NdY=</PdmsConnectionString>
-        <GenFormWebservice>nPfQkqu6V7g92YIxNgk5ih+Ze5OMHcb6hnA6CMQA5Iumk9GcbE1uz0Yjkx2a1uKWLPKy/MB6tIbcepxtlylmkVbkrEBfxpSYMf0k1VV1NdY=</GenFormWebservice>
-      </database>
-    </machine>
+    
   </serversettings>
 </settings>
