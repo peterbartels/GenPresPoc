@@ -35,13 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Iesi.Collections">
-      <HintPath>..\Dependencies\NHibernate3.2\Iesi.Collections.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="StructureMap, Version=2.6.1.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -49,6 +45,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <HintPath>..\packages\SQLitex64.1.0.66\lib\32\System.Data.SQLite.DLL</HintPath>
+    </Reference>
     <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
     <Reference Include="Typemock.ArrangeActAssert, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
@@ -96,6 +95,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

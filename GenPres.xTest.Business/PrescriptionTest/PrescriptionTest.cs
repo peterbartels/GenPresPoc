@@ -79,9 +79,6 @@ namespace GenPres.xTest.Business.PrescriptionTest
             Assert.IsTrue(p.Drug.Components[0].ComponentIncrement != 0);
         }
 
-
-
-
         [TestMethod]
         public void PrescriptionCanSetPatientweight()
         {
