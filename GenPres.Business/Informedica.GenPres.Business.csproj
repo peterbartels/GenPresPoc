@@ -145,7 +145,7 @@
     <Compile Include="WebService\IGenFormWebServices.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GenPres.Settings\GenPres.Settings.csproj">
+    <ProjectReference Include="..\GenPres.Settings\Informedica.GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>GenPres.Settings</Name>
       <Private>False</Private>
