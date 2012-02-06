@@ -5,10 +5,7 @@ using System.Globalization;
 using System.Threading;
 using GenPres.Data;
 using GenPres.Data.Connections;
-using GenPres.Data.Managers;
 using NHibernate;
-using NHibernate.Cfg;
-using NHibernate.Context;
 using StructureMap;
 
 namespace GenPres.Assembler

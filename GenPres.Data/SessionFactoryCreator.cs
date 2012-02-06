@@ -1,47 +1,36 @@
-﻿using FluentNHibernate.Cfg;
-using FluentNHibernate.Cfg.Db;
-using GenPres.Data.Connections;
+﻿using GenPres.Data.Mappings;
+using Informedica.DataAccess.Configurations;
 using NHibernate;
-using NHibernate.Cfg;
-using NHibernate.Tool.hbm2ddl;
 
 namespace GenPres.Data
 {
-    public static class SessionFactoryCreator
+    public static class SessionFactoryManagerNew
     {
-        private static Configuration _configuration;
-        private static ISessionFactory _sessionFactory;
-      
-        public static ISessionFactory CreateSessionFactory(DatabaseConnection.DatabaseName databaseName)
-        {
-            var fluentConfiguration = Fluently.Configure();
-            
-            if(databaseName == DatabaseConnection.DatabaseName.GenPresTest)
-            {
-                fluentConfiguration.Database(SQLiteConfiguration.Standard.InMemory().ConnectionString("Data Source=:memory:; Version=3; New=True;").Raw("connection.release_mode", "on_close").ShowSql());
-            }else
-            {
-                fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
-            }
+        private const string Test = "Test";
 
-            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.UserMap>())
-                .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
-                .ExposeConfiguration(cfg => _configuration = cfg);
-                        
-            _sessionFactory =  fluentConfiguration.BuildSessionFactory();
-             
-            return _sessionFactory;
+        static SessionFactoryManagerNew()
+        {
+            ConfigurationManager.Instance.AddInMemorySqLiteEnvironment<SubstanceMap>(Test);
         }
 
-        public static void BuildSchema(ISession session)
+        public static ISessionFactory GetSessionFactory()
         {
-            var export = new SchemaExport(_configuration);
-            export.Execute(false, true, false, session.Connection, null);
+            return GetSessionFactory("Test");
         }
 
-        private static string GetConnectionString(DatabaseConnection.DatabaseName databaseName)
+        public static void BuildSchema(string environment, ISession session)
         {
-            return DatabaseConnection.GetLocalConnectionString(databaseName);
+            GetEnvironmentConfiguration(environment).BuildSchema(session);
+        }
+
+        public static ISessionFactory GetSessionFactory(string environment)
+        {
+            return GetEnvironmentConfiguration(environment).GetSessionFactory();
+        }
+
+        private static IEnvironmentConfiguration GetEnvironmentConfiguration(string name)
+        {
+            return ConfigurationManager.Instance.GetConfiguration(name);
         }
     }
 }

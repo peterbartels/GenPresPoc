@@ -47,9 +47,13 @@
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="Informedica.DataAccess">
+      <HintPath>..\..\NhRepository\Informedica.DataAccess\bin\Debug\Informedica.DataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -101,6 +105,7 @@
     <Compile Include="Repositories\PrescriptionRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="SessionFactoryCreator.cs" />
+    <Compile Include="SessionFactoryCreatorOld.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="TestSessionManager.cs" />
   </ItemGroup>

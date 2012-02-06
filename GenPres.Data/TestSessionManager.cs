@@ -2,11 +2,22 @@
 using GenPres.Data.Connections;
 using NHibernate;
 using NHibernate.Context;
+using StructureMap;
 
 namespace GenPres.xTest.Base
 {
     public class TestSessionManager : SessionManager
     {   
+        public TestSessionManager()
+        {
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            //ObjectFactory.Configure(x => x.For<ISessionFactory>().HybridHttpOrThreadLocalScoped().Use());
+        }
+
         public static void CloseSession()
         {
             CurrentSessionContext.Unbind(_factory);
