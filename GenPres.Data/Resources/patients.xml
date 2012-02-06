@@ -1,0 +1,46 @@
+<logicalunits>
+  <logicalunit name="pediatrie">
+    <patients>
+      <lastname>Jan</lastname>
+      <firstname>Janssen</firstname>
+      <hospitalnumber>1234567</hospitalnumber>
+      <length>1.2</length>
+      <weight>12000</weight>
+      <admissiondate>2012/01/01</admissiondate>
+      <unit>2</unit>
+      <bedname>E200</bedname>
+    </patients>
+    <patients>
+      <lastname>Piet</lastname>
+      <firstname>Janssen</firstname>
+      <hospitalnumber>1234568</hospitalnumber>
+      <length>0.6</length>
+      <weight>1200</weight>
+      <admissiondate>2012/01/01</admissiondate>
+      <unit>2</unit>
+      <bedname>E200</bedname>
+    </patients>
+  </logicalunit>
+  <logicalunit name="neonatologie">
+    <patients>
+      <lastname>Jan</lastname>
+      <firstname>Janssen</firstname>
+      <hospitalnumber>1234569</hospitalnumber>
+      <length>0.6</length>
+      <weight>1200</weight>
+      <admissiondate>2012/01/01</admissiondate>
+      <unit>2</unit>
+      <bedname>E200</bedname>
+    </patients>
+    <patients>
+      <lastname>Piet</lastname>
+      <firstname>Janssen</firstname>
+      <hospitalnumber>1234560</hospitalnumber>
+      <length>0.6</length>
+      <weight>1200</weight>
+      <admissiondate>2012/01/01</admissiondate>
+      <unit>2</unit>
+      <bedname>E200</bedname>
+    </patients>
+  </logicalunit>
+</logicalunits>

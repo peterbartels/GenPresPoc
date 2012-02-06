@@ -14,7 +14,7 @@ namespace GenPres.xTest.Data.RepositoriesTest
         [TestMethod]
         public void ThatPdmsRepositoryCanGetPatientByPid()
         {
-            var repos = IsolateObjectMethod<IPdsmRepository>("GetPatientByByPidFromDatabase", Patient.NewPatient());
+            var repos = IsolateObjectMethod<IPdsmPatientRepository>("GetPatientByByPidFromDatabase", Patient.NewPatient());
             Assert.IsNotNull(repos.GetPatientByPid("1234567"));
         }
 
@@ -22,7 +22,7 @@ namespace GenPres.xTest.Data.RepositoriesTest
         [TestMethod]
         public void ThatPdmsRepositoryCanGetPatientsByLogicalUnit()
         {
-            var repos = IsolateObjectMethod<IPdsmRepository>("GetPatientsByLogicalUnitFromDatabase", new[] { Patient.NewPatient() });
+            var repos = IsolateObjectMethod<IPdsmPatientRepository>("GetPatientsByLogicalUnitFromDatabase", new[] { Patient.NewPatient() });
             Assert.IsTrue(repos.GetPatientsByLogicalUnitId(1).Count > 0);
         }
 
@@ -30,7 +30,7 @@ namespace GenPres.xTest.Data.RepositoriesTest
         [TestMethod]
         public void ThatPdmsRepositoryCanNotGetPatientsByLogicalUnitWithNonExistingId()
         {
-            var repos = ObjectFactory.GetInstance<IPdsmRepository>();
+            var repos = ObjectFactory.GetInstance<IPdsmPatientRepository>();
             Assert.IsTrue(repos.GetPatientsByLogicalUnitId(999999).Count == 0);
         }
 
@@ -38,7 +38,7 @@ namespace GenPres.xTest.Data.RepositoriesTest
         [TestMethod]
         public void ThatPdmsRepositoryCanNotGetPatientByPidWithEmptyId()
         {
-            var repos = ObjectFactory.GetInstance<IPdsmRepository>();
+            var repos = ObjectFactory.GetInstance<IPdsmPatientRepository>();
             Assert.IsNull(repos.GetPatientByPid(""));
         }
     }

@@ -19,9 +19,9 @@ namespace GenPres.Service
             }
         }
 
-        private static IPdsmRepository PdmsRepository
+        private static IPdsmPatientRepository PdmsRepository
         {
-            get { return ObjectFactory.GetInstance<IPdsmRepository>(); }
+            get { return ObjectFactory.GetInstance<IPdsmPatientRepository>(); }
         }
 
         public static Patient GetPatientByPid(string Pid)

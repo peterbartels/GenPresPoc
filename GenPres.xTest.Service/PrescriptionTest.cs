@@ -180,14 +180,14 @@ namespace GenPres.xTest.Service
         [TestMethod]
         public void ThatPrescriptionsServiceCanGetPrescriptionById()
         {
-            PatientService.SavePatient("0004588");
+            PatientService.SavePatient("1234567");
             var prescriptionDto = new PrescriptionDto();
             prescriptionDto.drugGeneric = "paracetamol";
             prescriptionDto.drugRoute = "rect";
             prescriptionDto.drugShape = "zetp";
 
-            PrescriptionService.SavePrescription(prescriptionDto, "0004588");
-            var prescriptions = PrescriptionService.GetPrescriptions("0004588");
+            PrescriptionService.SavePrescription(prescriptionDto, "1234567");
+            var prescriptions = PrescriptionService.GetPrescriptions("1234567");
             var lastPrescription = prescriptions[0];
             var prescription = PrescriptionService.GetPrescriptionById(lastPrescription.Id);
             Assert.IsTrue(prescription.PID != "" && prescription.Id != Guid.Empty.ToString());

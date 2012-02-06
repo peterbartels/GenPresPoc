@@ -16,17 +16,6 @@ namespace GenPres.xTest.Business.UserTest
     [TestClass]
     public class UserTest : BaseGenPresTest
     {
-        private static void InitializeUserTest()
-        {
-            var registry = new Registry();
-            
-            var repository = Isolate.Fake.Instance<UserRepository>(Members.CallOriginal);
-            registry.For<UserRepository>().Use(repository);
-
-            ObjectFactory.Configure(x => x.AddRegistry(registry));
-            return;
-        }
-
         private IUserRepository IsolateUserRepository()
         {
             var repos = Isolate.Fake.Instance<IUserRepository>();
@@ -36,7 +25,7 @@ namespace GenPres.xTest.Business.UserTest
 
         [Isolated]
         [TestMethod]
-        public void UserServiceLoginCallsRepositoryGetUserByUsername()
+        public void ThatUserServiceLoginCallsRepositoryGetUserByUsername()
         {
             var userRepository = IsolateUserRepository();
             UserService.AuthenticateUser("test", "test");
@@ -44,7 +33,7 @@ namespace GenPres.xTest.Business.UserTest
         }
 
         [TestMethod]
-        public void UserRepositoryGetUserbyUsernameReturnsAvailableUser()
+        public void ThatUserRepositoryCanGetUserbyUsernameAndReturnsAvailableUser()
         {
             var userRepository = StructureMap.ObjectFactory.GetInstance<UserRepository>();
             var newUser = User.NewUser();
@@ -56,7 +45,7 @@ namespace GenPres.xTest.Business.UserTest
         }
 
         [TestMethod]
-        public void CanCheckMd5()
+        public void ThatAuthenticationFunctionCanCheckMd5()
         {
             string md5 = "098f6bcd4621d373cade4e832627b4f6";
             string password = "test";
@@ -64,7 +53,7 @@ namespace GenPres.xTest.Business.UserTest
         }
 
         [TestMethod]
-        public void UserUserNameIsLowerCase()
+        public void ThatUserUserNameIsLowerCase()
         {
             User user = User.NewUser();
             user.UserName = "TeSt";
@@ -72,7 +61,7 @@ namespace GenPres.xTest.Business.UserTest
         }
 
         [TestMethod]
-        public void _User_IsDirty_after_propertyChange()
+        public void ThatUserIsDirtyAfterPropertyChange()
         {
             User user = User.NewUser();
             Assert.IsTrue(user.State == StatusEnum.New, "User (state) should be new after creation.");

@@ -1,9 +1,12 @@
-﻿using GenPres.Business.Domain.Patients;
-using GenPres.Data.DAO.Mapper.Patient;
+﻿using GenPres.Business.Data.IRepositories;
+using GenPres.Business.Domain.Patients;
+using GenPres.Data.DAO.Mapper.Patients;
 using GenPres.Data.Managers;
+using GenPres.Data.Repositories;
 using GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Data;
+using TypeMock.ArrangeActAssert;
 
 namespace GenPres.xTest.Business.LogicalUnitTest
 {
@@ -13,27 +16,24 @@ namespace GenPres.xTest.Business.LogicalUnitTest
         [TestMethod]
         public void PdmsDataRetrieverCanFetchLogicalUnits()
         {
-            var ds = PDMSDataRetriever.ExecuteSQL("SELECT * FROM LogicalUnits WHERE LogicalUnitID IN(1,50,57)");
-            Assert.IsTrue(ds.Tables[0].Rows.Count > 0);
+            //var ds = PDMSDataRetriever.ExecuteSQL("SELECT * FROM LogicalUnits WHERE LogicalUnitID IN(1,50,57)");
+            //Assert.IsTrue(ds.Tables[0].Rows.Count > 0);
         }
 
-        [TestMethod]
-        public void LogicalUnitMapperInDataAccessCanMapLogicalUnitDaoToLogicalUnitBo()
+        private static void InitializeLogicalUnitTest()
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("LogicalUnitID");
-            dt.Columns.Add("Name");
-            var logicalUnitDao = dt.NewRow();
-            
-            logicalUnitDao["LogicalUnitID"] = 1;
-            logicalUnitDao["Name"] = "Test";
-            var logicalUnitMapper = new LogicalUnitMapper();
-            
-            var logicalUnit = LogicalUnit.NewLogicalUnit();
+            var repository = Isolate.Fake.Instance<LogicalUnitRepository>(Members.CallOriginal);
+            StructureMap.ObjectFactory.Configure(x => x.For<ILogicalUnitRepository>().Use(repository));
+        }
 
-            logicalUnitMapper.MapFromBoToDao(logicalUnitDao, logicalUnit);
-            Assert.AreEqual(int.Parse(logicalUnitDao["LogicalUnitID"].ToString()), logicalUnit.Id);
-            Assert.AreEqual(logicalUnitDao["Name"], logicalUnit.Name);
+        [Isolated]
+        [TestMethod]
+        public void LogicalUnitGetLogicalUnitsCallsRepositoryGetLogicalUnits()
+        {
+            InitializeLogicalUnitTest();
+            var logicalUnitRepository = StructureMap.ObjectFactory.GetInstance<ILogicalUnitRepository>();
+            LogicalUnit.GetLogicalUnits();
+            Isolate.Verify.WasCalledWithAnyArguments(() => logicalUnitRepository.GetLogicalUnits());
         }
     }
 }

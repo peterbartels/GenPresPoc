@@ -42,24 +42,6 @@ namespace GenPres.xTest.Business.PrescriptionTest
         }
         
         [TestMethod]
-        public void PrescriptionDtoCanMapToPrescriptionBo()
-        {
-            var pDto = new PrescriptionDto();
-            pDto.startDate = DateTime.Parse("2011-07-01 12:00:00").ToString();
-            Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
-            Assert.AreEqual(p.StartDate, DateTime.Parse("2011-07-01 12:00:00"));
-        }
-
-        [TestMethod]
-        public void PrescriptionBoCanMapToPrescriptionDto()
-        {
-            Prescription p = Prescription.NewPrescription();
-            p.StartDate = DateTime.Parse("2011-07-01 12:00:00");
-            PrescriptionDto pDto = PrescriptionAssembler.AssemblePrescriptionDto(p);
-            Assert.AreEqual(pDto.startDate, "7/1/2011 12:00:00 PM");
-        }
-
-        [TestMethod]
         public void DrugShouldRetreiveSubstanceIncrementsWhenDrugGenericRouteShapeAreKnown()
         {
             Prescription p = Prescription.NewPrescription();
@@ -111,7 +93,7 @@ namespace GenPres.xTest.Business.PrescriptionTest
         }
 
         [TestMethod]
-        public void PrescriptionCanCalculateBSA()
+        public void PrescriptionCanCalculateBsa()
         {
             Prescription p = Prescription.NewPrescription();
             p.PatientLength = UnitConverter.GetBaseValue("cm", 185);

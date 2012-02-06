@@ -1,17 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Xml.Linq;
 using GenPres.Business.Data.IRepositories;
 using GenPres.Business.Domain.Patients;
-using GenPres.Data.DAO.Mapper.Patient;
+using GenPres.Data.DAO.Mapper.Patients;
 using GenPres.Data.Managers;
 
 namespace GenPres.Data.Repositories
 {
-    public class PdmsRepository : IPdsmRepository
+    public class PdmsRepository : IPdsmPatientRepository
     {
-        private PdmsMapper _pdmsMapper = new PdmsMapper();
+        private PdmsPatientMapper _pdmsMapper = new PdmsPatientMapper();
+        private XmlPatientMapper _xmlMapper = new XmlPatientMapper();
 
         public static string GetSql()
         {
@@ -29,7 +30,55 @@ namespace GenPres.Data.Repositories
 
         public ReadOnlyCollection<Patient> GetPatientsByLogicalUnitId(int logicalUnitId)
         {
-            return GetPatientsByLogicalUnitFromDatabase(logicalUnitId).ToList().AsReadOnly();
+            return GetPatientsByLogicalUnitFromXml(logicalUnitId).ToList().AsReadOnly();
+        }
+
+        public Patient GetPatientByPidFromXml(string pid)
+        {
+            var xmlDoc = XDocument.Parse(Properties.Resources.patients);
+            
+            if(pid == "")
+            {
+                return null;
+            }
+
+            var patientObj =
+                from c in xmlDoc.Descendants("patients")
+                where c.Descendants("hospitalnumber").ElementAt(0).Value == pid
+                select c;
+            
+            var patient = _xmlMapper.MapDaoToBusinessObject(patientObj.ElementAt(0), Patient.NewPatient());
+            
+            return patient;
+        }
+
+        public Patient[] GetPatientsByLogicalUnitFromXml(int logicalUnitId)
+        {
+            var xmlDoc = XDocument.Parse(Properties.Resources.patients);
+
+            XElement logicalUnitElement;
+            try
+            {
+                logicalUnitElement = xmlDoc.Descendants("logicalunit").ElementAt(logicalUnitId);
+            }catch(Exception e)
+            {
+                return new Patient[0];
+            }
+
+            var patientsObj =
+                from c in logicalUnitElement.Descendants("patients")
+                select c;
+
+            var patients = new Patient[patientsObj.Count()];
+
+            int id = 0;
+            foreach (var patientObj in patientsObj)
+            {
+                patients[id] = _xmlMapper.MapDaoToBusinessObject(patientObj, Patient.NewPatient());
+                id++;
+            }
+
+            return patients;
         }
 
         public Patient[] GetPatientsByLogicalUnitFromDatabase(int logicalUnitId)
@@ -69,24 +118,7 @@ namespace GenPres.Data.Repositories
 
         public Patient GetPatientByPid(string pid)
         {
-            return GetPatientByByPidFromDatabase(pid);
-        }
-
-        public Patient GetPatientsByPatientId(string patientId)
-        {
-            string sqlQuery = "";
-            sqlQuery += "SELECT pat.*, b.BedName, lu.Name as LogicalUnitName, ";
-            sqlQuery += "(SELECT TOP 1 Signals.Value FROM Signals WHERE (Signals.ParameterID = 9505 OR Signals.ParameterID = 2896) AND Signals.PatientID = pat.PatientID AND Signals.Error = 0 ORDER BY Signals.Time DESC) as Length, ";
-            sqlQuery += "(SELECT TOP 1 Signals.Value FROM Signals WHERE (Signals.ParameterID = 8458 OR Signals.ParameterID = 8460) AND Signals.PatientID = pat.PatientID AND Signals.Error = 0 ORDER BY Signals.Time DESC) as Weight ";
-            sqlQuery += "FROM Patients pat ";
-            sqlQuery += "LEFT JOIN LogicalUnits lu ON lu.LogicalUnitID = pat.LOGICALUNITID ";
-            sqlQuery += "LEFT JOIN Beds b ON b.BedID = pat.BedID ";
-            sqlQuery += "WHERE ";
-            sqlQuery += "pat.DischargeDate IS NULL AND pat.HospitalNumber='" + patientId + "' ORDER BY pat.LastName;";
-
-            var sqlResult = PDMSDataRetriever.ExecuteSQL(sqlQuery);
-
-            return _pdmsMapper.MapDaoToBusinessObject(sqlResult.Tables[0].Rows[0], Patient.NewPatient());
+            return GetPatientByPidFromXml(pid);
         }
     }
 }

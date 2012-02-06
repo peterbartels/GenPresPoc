@@ -56,9 +56,9 @@ namespace GenPres.Business.Domain.Patients
             
         }
 
-        private static IPdsmRepository Repository
+        private static IPdsmPatientRepository Repository
         {
-            get { return StructureMap.ObjectFactory.GetInstance<IPdsmRepository>(); }
+            get { return StructureMap.ObjectFactory.GetInstance<IPdsmPatientRepository>(); }
         }
 
         public static Patient NewPatient()

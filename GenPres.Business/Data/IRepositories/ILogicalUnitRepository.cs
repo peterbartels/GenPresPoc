@@ -5,5 +5,6 @@ namespace GenPres.Business.Data.IRepositories
     public interface ILogicalUnitRepository
     {
         LogicalUnit[] GetLogicalUnits();
+        LogicalUnit[] GetLogicalUnitsFromXml();
     }
 }
