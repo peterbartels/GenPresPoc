@@ -104,8 +104,8 @@
     <Compile Include="Repositories\PdmsRepository.cs" />
     <Compile Include="Repositories\PrescriptionRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="SessionFactoryManager.cs" />
     <Compile Include="SessionFactoryCreator.cs" />
-    <Compile Include="SessionFactoryCreatorOld.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="TestSessionManager.cs" />
   </ItemGroup>

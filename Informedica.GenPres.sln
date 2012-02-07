@@ -26,7 +26,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Service
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Service", "GenPres.xTest.Service\Informedica.GenPres.xTest.Service.csproj", "{5FB5C1F3-251B-46F3-B01D-EB7668A43928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Calculation", "GenPres.xTest.Calculation\Informedica.GenPres.xTest.Calculation.csproj", "{0376BBE3-4F5F-473C-A4F0-F651F31387C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Calculation", "Informedica.GenPres.xTest.Calculation\Informedica.GenPres.xTest.Calculation.csproj", "{0376BBE3-4F5F-473C-A4F0-F651F31387C9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Acceptance", "GenPres.xTest.Acceptance\Informedica.GenPres.xTest.Acceptance.csproj", "{59833108-A78D-4FF7-B90F-593B0565FCD1}"
 EndProject

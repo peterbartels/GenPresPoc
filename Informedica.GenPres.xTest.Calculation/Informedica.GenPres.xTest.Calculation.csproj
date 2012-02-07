@@ -9,8 +9,8 @@
     <ProjectGuid>{0376BBE3-4F5F-473C-A4F0-F651F31387C9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GenPres.xTest.Calculation</RootNamespace>
-    <AssemblyName>GenPres.xTest.Calculation</AssemblyName>
+    <RootNamespace>Informedica.GenPres.xTest.Calculation</RootNamespace>
+    <AssemblyName>Informedica.GenPres.xTest.Calculation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
