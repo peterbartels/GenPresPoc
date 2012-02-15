@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0376BBE3-4F5F-473C-A4F0-F651F31387C9}</ProjectGuid>
+    <ProjectGuid>{0EA0DA3C-A1A2-44EC-BC7E-5BF4206E19D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Informedica.GenPres.xTest.Calculation</RootNamespace>
-    <AssemblyName>Informedica.GenPres.xTest.Calculation</AssemblyName>
+    <RootNamespace>Informedica.GenPres.xTest.Business</RootNamespace>
+    <AssemblyName>Informedica.GenPres.xTest.Business</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,13 +35,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <HintPath>..\packages\SQLitex64.1.0.66\lib\32\System.Data.SQLite.DLL</HintPath>
     </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.XML" />
     <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
     <Reference Include="Typemock.ArrangeActAssert, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
@@ -51,27 +58,50 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminQuantityAdminRateCalculationTest.cs" />
-    <Compile Include="CalculatorTests\CalculatorCreator.cs" />
-    <Compile Include="CalculatorTests\CombinationRandomizer.cs" />
-    <Compile Include="CalculatorTests\CalculationTest.cs" />
-    <Compile Include="CalculatorTests\PrescriptionTestFunctions.cs" />
-    <Compile Include="CalculatorTests\PropertyIncrementTest.cs" />
-    <Compile Include="CalculatorTests\SimpleCalculationTest.cs" />
-    <Compile Include="DoseQuantityDoseRateCalculationTests.cs" />
-    <Compile Include="QuantityConcentrationCalculationTests.cs" />
-    <Compile Include="DrugCalculationTests.cs" />
-    <Compile Include="FreqAdminCalculationTests.cs" />
-    <Compile Include="FreqDosageCalculationTests.cs" />
-    <Compile Include="PrescriptionCalulatorTests.cs" />
+    <Compile Include="GenFormTest\GetProductInfoTest.cs" />
+    <Compile Include="GenFormTest\WebServicesTest.cs" />
+    <Compile Include="GenPresInitialize\GenPresInitializeTest.cs" />
+    <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
+    <Compile Include="PatientTest\PatientTest.cs" />
+    <Compile Include="PrescriptionTest\DrugTest.cs" />
+    <Compile Include="PrescriptionTest\PrescriptionTest.cs" />
+    <Compile Include="PrescriptionVerbalizationTest\PrescriptionVerbalizationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RateConcentrationTests.cs" />
-    <Compile Include="TotalConcentrationCalculationTests.cs" />
+    <Compile Include="UserTest\Authenticate.cs" />
+    <Compile Include="UserTest\UserTest.cs" />
+    <Compile Include="Util\PropertyHelperTest.cs" />
+    <Compile Include="PropertyEnablingTest\CanBeSetOfPrescriptionPropertiesTests.cs" />
+    <Compile Include="PropertyEnablingTest\SolutionBasedScenario\ScenariosTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Informedica.GenPres.Assembler\Informedica.GenPres.Assembler.csproj">
+      <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
+      <Name>Informedica.GenPres.Assembler</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenPres.Business\Informedica.GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>Informedica.GenPres.Business</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenPres.Data\Informedica.GenPres.Data.csproj">
+      <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
+      <Name>Informedica.GenPres.Data</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenPres.Service\Informedica.GenPres.Service.csproj">
+      <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
+      <Name>Informedica.GenPres.Service</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenPres.Settings\Informedica.GenPres.Settings.csproj">
+      <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
+      <Name>Informedica.GenPres.Settings</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\GenPres.Web\Informedica.GenPres.Web.csproj">
+      <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
+      <Name>Informedica.GenPres.Web</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Informedica.GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj">
@@ -81,6 +111,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

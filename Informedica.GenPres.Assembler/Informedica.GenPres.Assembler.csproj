@@ -3,17 +3,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0376BBE3-4F5F-473C-A4F0-F651F31387C9}</ProjectGuid>
+    <ProjectGuid>{0812617A-AA94-4A2F-926E-814C531B94E7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Informedica.GenPres.xTest.Calculation</RootNamespace>
-    <AssemblyName>Informedica.GenPres.xTest.Calculation</AssemblyName>
+    <RootNamespace>Informedica.GenPres.Assembler</RootNamespace>
+    <AssemblyName>Informedica.GenPres.Assembler</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,39 +37,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <HintPath>..\packages\SQLitex64.1.0.66\lib\32\System.Data.SQLite.DLL</HintPath>
     </Reference>
-    <Reference Include="TypeMock, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
-    <Reference Include="Typemock.ArrangeActAssert, Version=6.1.1.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
-      <Visible>False</Visible>
-    </CodeAnalysisDependentAssemblyPaths>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AdminQuantityAdminRateCalculationTest.cs" />
-    <Compile Include="CalculatorTests\CalculatorCreator.cs" />
-    <Compile Include="CalculatorTests\CombinationRandomizer.cs" />
-    <Compile Include="CalculatorTests\CalculationTest.cs" />
-    <Compile Include="CalculatorTests\PrescriptionTestFunctions.cs" />
-    <Compile Include="CalculatorTests\PropertyIncrementTest.cs" />
-    <Compile Include="CalculatorTests\SimpleCalculationTest.cs" />
-    <Compile Include="DoseQuantityDoseRateCalculationTests.cs" />
-    <Compile Include="QuantityConcentrationCalculationTests.cs" />
-    <Compile Include="DrugCalculationTests.cs" />
-    <Compile Include="FreqAdminCalculationTests.cs" />
-    <Compile Include="FreqDosageCalculationTests.cs" />
-    <Compile Include="PrescriptionCalulatorTests.cs" />
+    <Compile Include="Contexts\SessionContext.cs" />
+    <Compile Include="DatabaseRegistrationAssembler.cs" />
+    <Compile Include="GenFormWebServiceAssembler.cs" />
+    <Compile Include="GenPresApplication.cs" />
+    <Compile Include="PatientAssembler.cs" />
+    <Compile Include="PrescriptionAssembler.cs" />
+    <Compile Include="UserAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RateConcentrationTests.cs" />
-    <Compile Include="TotalConcentrationCalculationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Business\Informedica.GenPres.Business.csproj">
@@ -74,16 +71,21 @@
       <Name>Informedica.GenPres.Business</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj">
-      <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
-      <Name>Informedica.GenPres.xTest.Base</Name>
+    <ProjectReference Include="..\Informedica.GenPres.Data\Informedica.GenPres.Data.csproj">
+      <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
+      <Name>Informedica.GenPres.Data</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenPres.Service\Informedica.GenPres.Service.csproj">
+      <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
+      <Name>Informedica.GenPres.Service</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

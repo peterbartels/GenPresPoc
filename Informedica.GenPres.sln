@@ -6,29 +6,29 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Business", "GenPres.Business\Informedica.GenPres.Business.csproj", "{1630C188-7ECB-4944-827E-20E6F6F522C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Business", "Informedica.GenPres.Business\Informedica.GenPres.Business.csproj", "{1630C188-7ECB-4944-827E-20E6F6F522C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Web", "GenPres.Web\Informedica.GenPres.Web.csproj", "{6702A117-385F-4CC1-AC3A-AFD900A07C82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Web", "Informedica.GenPres.Web\Informedica.GenPres.Web.csproj", "{6702A117-385F-4CC1-AC3A-AFD900A07C82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Settings", "GenPres.Settings\Informedica.GenPres.Settings.csproj", "{1F0DD355-EA3A-4293-BF30-81FE49DD6767}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Settings", "Informedica.GenPres.Settings\Informedica.GenPres.Settings.csproj", "{1F0DD355-EA3A-4293-BF30-81FE49DD6767}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Data", "GenPres.Data\Informedica.GenPres.Data.csproj", "{4627C997-7861-4410-8CF7-1966D36E5921}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Data", "Informedica.GenPres.Data\Informedica.GenPres.Data.csproj", "{4627C997-7861-4410-8CF7-1966D36E5921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Assembler", "GenPres.Assembler\Informedica.GenPres.Assembler.csproj", "{0812617A-AA94-4A2F-926E-814C531B94E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Assembler", "Informedica.GenPres.Assembler\Informedica.GenPres.Assembler.csproj", "{0812617A-AA94-4A2F-926E-814C531B94E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Base", "GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj", "{7A32985F-5695-41E8-99DB-627E5E327B9D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Base", "Informedica.GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj", "{7A32985F-5695-41E8-99DB-627E5E327B9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Business", "GenPres.xTest.Business\Informedica.GenPres.xTest.Business.csproj", "{0EA0DA3C-A1A2-44EC-BC7E-5BF4206E19D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Business", "Informedica.GenPres.xTest.Business\Informedica.GenPres.xTest.Business.csproj", "{0EA0DA3C-A1A2-44EC-BC7E-5BF4206E19D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Data", "GenPres.xTest.Data\Informedica.GenPres.xTest.Data.csproj", "{82615AFA-2981-4D76-AAD7-40B7833843DC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Data", "Informedica.GenPres.xTest.Data\Informedica.GenPres.xTest.Data.csproj", "{82615AFA-2981-4D76-AAD7-40B7833843DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Service", "GenPres.Service\Informedica.GenPres.Service.csproj", "{344DA972-B381-4A0D-91D4-F6DB3F67D86A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.Service", "Informedica.GenPres.Service\Informedica.GenPres.Service.csproj", "{344DA972-B381-4A0D-91D4-F6DB3F67D86A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Service", "GenPres.xTest.Service\Informedica.GenPres.xTest.Service.csproj", "{5FB5C1F3-251B-46F3-B01D-EB7668A43928}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Service", "Informedica.GenPres.xTest.Service\Informedica.GenPres.xTest.Service.csproj", "{5FB5C1F3-251B-46F3-B01D-EB7668A43928}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Calculation", "Informedica.GenPres.xTest.Calculation\Informedica.GenPres.xTest.Calculation.csproj", "{0376BBE3-4F5F-473C-A4F0-F651F31387C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Acceptance", "GenPres.xTest.Acceptance\Informedica.GenPres.xTest.Acceptance.csproj", "{59833108-A78D-4FF7-B90F-593B0565FCD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Acceptance", "Informedica.GenPres.xTest.Acceptance\Informedica.GenPres.xTest.Acceptance.csproj", "{59833108-A78D-4FF7-B90F-593B0565FCD1}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

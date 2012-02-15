@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0376BBE3-4F5F-473C-A4F0-F651F31387C9}</ProjectGuid>
+    <ProjectGuid>{5FB5C1F3-251B-46F3-B01D-EB7668A43928}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Informedica.GenPres.xTest.Calculation</RootNamespace>
-    <AssemblyName>Informedica.GenPres.xTest.Calculation</AssemblyName>
+    <RootNamespace>Informedica.GenPres.xTest.Service</RootNamespace>
+    <AssemblyName>Informedica.GenPres.xTest.Service</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -51,22 +51,11 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminQuantityAdminRateCalculationTest.cs" />
-    <Compile Include="CalculatorTests\CalculatorCreator.cs" />
-    <Compile Include="CalculatorTests\CombinationRandomizer.cs" />
-    <Compile Include="CalculatorTests\CalculationTest.cs" />
-    <Compile Include="CalculatorTests\PrescriptionTestFunctions.cs" />
-    <Compile Include="CalculatorTests\PropertyIncrementTest.cs" />
-    <Compile Include="CalculatorTests\SimpleCalculationTest.cs" />
-    <Compile Include="DoseQuantityDoseRateCalculationTests.cs" />
-    <Compile Include="QuantityConcentrationCalculationTests.cs" />
-    <Compile Include="DrugCalculationTests.cs" />
-    <Compile Include="FreqAdminCalculationTests.cs" />
-    <Compile Include="FreqDosageCalculationTests.cs" />
-    <Compile Include="PrescriptionCalulatorTests.cs" />
+    <Compile Include="UserTest.cs" />
+    <Compile Include="MedicineTest.cs" />
+    <Compile Include="PatientTest.cs" />
+    <Compile Include="PrescriptionTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RateConcentrationTests.cs" />
-    <Compile Include="TotalConcentrationCalculationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Business\Informedica.GenPres.Business.csproj">
@@ -74,14 +63,21 @@
       <Name>Informedica.GenPres.Business</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenPres.Data\Informedica.GenPres.Data.csproj">
+      <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
+      <Name>Informedica.GenPres.Data</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenPres.Service\Informedica.GenPres.Service.csproj">
+      <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
+      <Name>Informedica.GenPres.Service</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj">
       <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
       <Name>Informedica.GenPres.xTest.Base</Name>
       <Private>False</Private>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,11 +6,11 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{0376BBE3-4F5F-473C-A4F0-F651F31387C9}</ProjectGuid>
+    <ProjectGuid>{7A32985F-5695-41E8-99DB-627E5E327B9D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Informedica.GenPres.xTest.Calculation</RootNamespace>
-    <AssemblyName>Informedica.GenPres.xTest.Calculation</AssemblyName>
+    <RootNamespace>Informedica.GenPres.xTest.Base</RootNamespace>
+    <AssemblyName>Informedica.GenPres.xTest.Base</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -23,6 +23,7 @@
     <DefineConstants>TRACE;DEBUG;SkipPostSharp</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
     <SkipPostSharp>True</SkipPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -35,10 +36,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.3\lib\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
       <HintPath>..\packages\SQLitex64.1.0.66\lib\32\System.Data.SQLite.DLL</HintPath>
     </Reference>
@@ -51,37 +57,55 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminQuantityAdminRateCalculationTest.cs" />
-    <Compile Include="CalculatorTests\CalculatorCreator.cs" />
-    <Compile Include="CalculatorTests\CombinationRandomizer.cs" />
-    <Compile Include="CalculatorTests\CalculationTest.cs" />
-    <Compile Include="CalculatorTests\PrescriptionTestFunctions.cs" />
-    <Compile Include="CalculatorTests\PropertyIncrementTest.cs" />
-    <Compile Include="CalculatorTests\SimpleCalculationTest.cs" />
-    <Compile Include="DoseQuantityDoseRateCalculationTests.cs" />
-    <Compile Include="QuantityConcentrationCalculationTests.cs" />
-    <Compile Include="DrugCalculationTests.cs" />
-    <Compile Include="FreqAdminCalculationTests.cs" />
-    <Compile Include="FreqDosageCalculationTests.cs" />
-    <Compile Include="PrescriptionCalulatorTests.cs" />
+    <Compile Include="BaseGenPresTest.cs" />
+    <Compile Include="DatabaseCleaner.cs" />
+    <Compile Include="Mappers\CustomEqualityComparer.cs" />
+    <Compile Include="PrescriptionBo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RateConcentrationTests.cs" />
-    <Compile Include="TotalConcentrationCalculationTests.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="SimpleCalculationTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Informedica.GenPres.Assembler\Informedica.GenPres.Assembler.csproj">
+      <Project>{0812617A-AA94-4A2F-926E-814C531B94E7}</Project>
+      <Name>Informedica.GenPres.Assembler</Name>
+      <Private>False</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Informedica.GenPres.Business\Informedica.GenPres.Business.csproj">
       <Project>{1630C188-7ECB-4944-827E-20E6F6F522C9}</Project>
       <Name>Informedica.GenPres.Business</Name>
       <Private>False</Private>
     </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj">
-      <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
-      <Name>Informedica.GenPres.xTest.Base</Name>
+    <ProjectReference Include="..\Informedica.GenPres.Data\Informedica.GenPres.Data.csproj">
+      <Project>{4627C997-7861-4410-8CF7-1966D36E5921}</Project>
+      <Name>Informedica.GenPres.Data</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Informedica.GenPres.Settings\Informedica.GenPres.Settings.csproj">
+      <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
+      <Name>Informedica.GenPres.Settings</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
