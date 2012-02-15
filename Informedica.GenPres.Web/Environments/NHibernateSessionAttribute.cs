@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
-using GenPres.Assembler;
-using GenPres.Data.Connections;
+using Informedica.GenPres.Assembler;
+using Informedica.GenPres.Data.Connections;
 using NHibernate;
 using NHibernate.Context;
 using StructureMap;
 
-namespace GenPres.Web.Environments
+namespace Informedica.GenPres.Web.Environments
 {
     [AttributeUsage(AttributeTargets.Method,
       AllowMultiple = false)]

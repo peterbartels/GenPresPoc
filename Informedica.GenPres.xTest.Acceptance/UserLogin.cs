@@ -1,11 +1,10 @@
-﻿using GenPres.Assembler;
-using GenPres.Business.Service;
-using GenPres.Data.Connections;
-using GenPres.Service;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Assembler;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.Data.Connections;
+using Informedica.GenPres.Service;
 using NHibernate;
 
-namespace GenPres.xTest.Acceptance
+namespace Informedica.GenPres.xTest.Acceptance
 {
     public class UserLogin
     {

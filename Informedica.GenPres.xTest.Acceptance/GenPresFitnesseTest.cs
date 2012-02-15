@@ -1,4 +1,4 @@
-﻿namespace GenPresFitnesse
+﻿namespace Informedica.GenPres.xTest.Acceptance
 {
     public class GenPresFitnesseTest 
     {

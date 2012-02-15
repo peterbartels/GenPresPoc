@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Web.Mvc;
 using Ext.Direct.Mvc;
-using GenPres.Business.Domain.Databases;
-using GenPres.Business.Service;
-using GenPres.Web.Controllers;
+using Informedica.GenPres.Business.Domain.Databases;
+using Informedica.GenPres.Service;
 using StructureMap;
 
-namespace GenPres.Controllers
+namespace Informedica.GenPres.Web.Controllers
 {
     public class DatabaseController : BaseController
     {

@@ -1,12 +1,10 @@
 ﻿using System.Web.Mvc;
 using Ext.Direct.Mvc;
-using GenPres.Business.Service;
-using GenPres.Data.DTO.Prescriptions;
-using GenPres.Service;
-using GenPres.Web.Controllers;
-using GenPres.Web.Environments;
+using Informedica.GenPres.Data.DTO.Prescriptions;
+using Informedica.GenPres.Service;
+using Informedica.GenPres.Web.Environments;
 
-namespace GenPres.Controllers
+namespace Informedica.GenPres.Web.Controllers
 {
     public class PrescriptionController : BaseController
     {

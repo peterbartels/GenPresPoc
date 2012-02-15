@@ -1,8 +1,8 @@
 ﻿using System;
-using GenPres.xTest.Data.SessionFactoryTest.Fixtures.Class;
 using Informedica.DataAccess.Mappings;
+using Informedica.GenPres.xTest.Data.SessionFactoryTest.Fixtures.Class;
 
-namespace GenPres.xTest.Data.SessionFactoryTest.Fixtures.Map
+namespace Informedica.GenPres.xTest.Data.SessionFactoryTest.Fixtures.Map
 {
     class EntityClassMap : EntityMap<EntityClass, Guid>
     {

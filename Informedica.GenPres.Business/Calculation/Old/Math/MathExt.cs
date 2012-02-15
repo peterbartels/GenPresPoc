@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GenPres.Business.Calculation.Old.Math
+namespace Informedica.GenPres.Business.Calculation.Old.Math
 {
     public static class MathExt
     {

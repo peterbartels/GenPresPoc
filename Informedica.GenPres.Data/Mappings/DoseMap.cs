@@ -1,8 +1,7 @@
-﻿using System;
-using FluentNHibernate.Mapping;
-using GenPres.Business.Domain.Prescriptions;
+﻿using FluentNHibernate.Mapping;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.Data.Mappings
+namespace Informedica.GenPres.Data.Mappings
 {
     public sealed class DoseMap : ClassMap<Dose>
     {

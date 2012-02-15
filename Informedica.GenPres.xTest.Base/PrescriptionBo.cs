@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GenPres.Business.Domain;
+using Informedica.GenPres.Business.Domain;
 
-namespace GenPres.xTest.Data
+namespace Informedica.GenPres.xTest.Base
 {
     public class PrescriptionBo
     {

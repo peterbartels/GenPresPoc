@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Business.Util
+namespace Informedica.GenPres.Business.Util
 {
     public class PropertyHelper
     {

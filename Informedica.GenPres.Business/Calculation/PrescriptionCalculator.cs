@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.Business.Calculation
+namespace Informedica.GenPres.Business.Calculation
 {
     public class PrescriptionCalculator
     {

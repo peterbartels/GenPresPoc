@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using GenPres.Business.Domain.Patients;
+﻿using Informedica.GenPres.Business.Domain.Patients;
 
-namespace GenPres.Data.DTO.Patients
+namespace Informedica.GenPres.Data.DTO.Patients
 {
     public class PatientAssembler
     {

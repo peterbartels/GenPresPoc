@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
+﻿using System.Text.RegularExpressions;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.xTest.Acceptance
+namespace Informedica.GenPres.xTest.Acceptance
 {
     public class PrescriptionCalculateProperties
     {

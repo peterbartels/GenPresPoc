@@ -1,10 +1,8 @@
-﻿using GenPres.Data;
-using GenPres.Data.Connections;
+﻿using Informedica.GenPres.Data.Connections;
 using NHibernate;
 using NHibernate.Context;
-using StructureMap;
 
-namespace GenPres.xTest.Base
+namespace Informedica.GenPres.Data
 {
     public class TestSessionManager : SessionManager
     {   

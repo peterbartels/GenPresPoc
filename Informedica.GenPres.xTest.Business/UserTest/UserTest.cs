@@ -1,17 +1,14 @@
-﻿using System.Linq;
-using GenPres.Business;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Users;
-using GenPres.Data.Managers;
-using GenPres.Data.Repositories;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Users;
+using Informedica.GenPres.Data.Repositories;
+using Informedica.GenPres.Service;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Service;
 using TypeMock.ArrangeActAssert;
 using StructureMap;
-using StructureMap.Configuration.DSL;
 
-namespace GenPres.xTest.Business.UserTest
+namespace Informedica.GenPres.xTest.Business.UserTest
 {
     [TestClass]
     public class UserTest : BaseGenPresTest

@@ -1,7 +1,7 @@
 ﻿using System;
 using Informedica.EntityRepository.Entities;
 
-namespace GenPres.xTest.Data.SessionFactoryTest.Fixtures.Class
+namespace Informedica.GenPres.xTest.Data.SessionFactoryTest.Fixtures.Class
 {
     public class EntityClass : Entity<EntityClass, Guid>
     {

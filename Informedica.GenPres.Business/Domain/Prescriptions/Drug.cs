@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.WebService;
+using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.WebService;
 
-namespace GenPres.Business.Domain.Prescriptions
+namespace Informedica.GenPres.Business.Domain.Prescriptions
 {
     public class Drug
     {

@@ -1,10 +1,10 @@
 ﻿using System;
-using GenPres.Business.Domain.Databases;
-using GenPres.Business.Service;
-using GenPres.Data.Connections;
+using Informedica.GenPres.Business.Domain.Databases;
+using Informedica.GenPres.Data.Connections;
+using Informedica.GenPres.Service;
 using StructureMap.Configuration.DSL;
 
-namespace GenPres.Assembler
+namespace Informedica.GenPres.Assembler
 {
     class DatabaseRegistrationAssembler
     {

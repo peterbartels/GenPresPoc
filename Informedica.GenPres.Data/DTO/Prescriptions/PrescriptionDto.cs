@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GenPres.Data.DTO.Prescriptions
+﻿namespace Informedica.GenPres.Data.DTO.Prescriptions
 {
     public class PrescriptionDto
     {

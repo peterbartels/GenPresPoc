@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GenPres.Business.Exceptions
+namespace Informedica.GenPres.Business.Exceptions
 {
     public class InvalidIdException : Exception
     {

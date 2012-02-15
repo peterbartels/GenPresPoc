@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Ext.Direct.Mvc;
+﻿using System.Web.Mvc;
 
-
-namespace GenPres.Controllers
+namespace Informedica.GenPres.Web.Controllers
 {
     [HandleError]
     public class HomeController : Controller

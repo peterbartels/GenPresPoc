@@ -1,6 +1,6 @@
-﻿using GenPres.Business.Domain.Databases;
+﻿using Informedica.GenPres.Business.Domain.Databases;
 
-namespace GenPres.Data.Connections
+namespace Informedica.GenPres.Data.Connections
 {
     public class DatabaseSetting : IDatabaseSetting
     {

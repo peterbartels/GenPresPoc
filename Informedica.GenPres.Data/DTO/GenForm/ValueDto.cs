@@ -1,4 +1,4 @@
-﻿namespace GenPres.Data.DTO.GenForm
+﻿namespace Informedica.GenPres.Data.DTO.GenForm
 {
     public class ValueDto
     {

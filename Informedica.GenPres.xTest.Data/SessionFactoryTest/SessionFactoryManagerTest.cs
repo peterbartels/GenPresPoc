@@ -1,12 +1,11 @@
 ﻿using System.Data;
 using System.Data.SQLite;
-using GenPres.Data;
-using GenPres.xTest.Data.SessionFactoryTest.Fixtures.Class;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.xTest.Data.SessionFactoryTest.Fixtures.Class;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NHibernate;
 using NHibernate.Context;
 
-namespace GenPres.xTest.Data.SessionFactoryTest
+namespace Informedica.GenPres.xTest.Data.SessionFactoryTest
 {
     /// <summary>
     /// Summary description for NHibernatePersitencyAndMappingTest

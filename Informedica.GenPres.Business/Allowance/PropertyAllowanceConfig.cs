@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GenPres.Business.Domain.Units;
-namespace GenPres.Business.Allowance.Scenarios
+﻿namespace Informedica.GenPres.Business.Allowance
 {
     public class PropertyAllowanceConfig
     {

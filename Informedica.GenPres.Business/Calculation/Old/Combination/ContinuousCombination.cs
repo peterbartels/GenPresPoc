@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Business.Calculation.Old.Combination
+namespace Informedica.GenPres.Business.Calculation.Old.Combination
 {
     
     public class ContinuousCombination : AbstractCombination, ICalculationCombination

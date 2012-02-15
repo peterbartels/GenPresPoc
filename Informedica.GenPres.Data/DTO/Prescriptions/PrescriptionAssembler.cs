@@ -1,9 +1,8 @@
 ﻿using System;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.Verbalization;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Data.DTO.Prescriptions
+namespace Informedica.GenPres.Data.DTO.Prescriptions
 {
     public class PrescriptionAssembler
     {

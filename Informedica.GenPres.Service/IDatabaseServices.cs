@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GenPres.Business.Domain.Databases;
+using Informedica.GenPres.Business.Domain.Databases;
 
-namespace GenPres.Business.Service
+namespace Informedica.GenPres.Service
 {
     public interface IDatabaseServices
 

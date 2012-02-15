@@ -1,6 +1,6 @@
-﻿using GenPres.Business.Domain.Users;
+﻿using Informedica.GenPres.Business.Domain.Users;
 
-namespace GenPres.Business.Data.IRepositories
+namespace Informedica.GenPres.Business.Data.IRepositories
 {
     public interface IUserRepository
     {

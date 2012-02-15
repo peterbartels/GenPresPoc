@@ -1,7 +1,7 @@
 ﻿using System;
 using NHibernate;
 
-namespace GenPres.Data.Repositories
+namespace Informedica.GenPres.Data.Repositories
 {
     public abstract class NHibernateBase
     {

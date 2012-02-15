@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using GenPres.Business.Calculation.Old.Combination;
+using Informedica.GenPres.Business.Calculation.Old.Combination;
 
-namespace GenPres.xTest.Calculation.CalculatorTests
+namespace Informedica.GenPres.xTest.Calculation.CalculatorTests
 {
     public class CombinationRandomizer
     {

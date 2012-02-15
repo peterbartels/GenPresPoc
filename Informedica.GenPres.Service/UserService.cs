@@ -1,7 +1,6 @@
-﻿using GenPres.Business.Domain;
-using GenPres.Business.Domain.Users;
+﻿using Informedica.GenPres.Business.Domain.Users;
 
-namespace GenPres.Business.Service
+namespace Informedica.GenPres.Service
 {
     public static class UserService
     {

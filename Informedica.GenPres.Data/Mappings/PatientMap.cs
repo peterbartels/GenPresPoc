@@ -1,10 +1,7 @@
-﻿using System;
-using FluentNHibernate.Mapping;
-using GenPres.Business.Domain.Patients;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
+﻿using FluentNHibernate.Mapping;
+using Informedica.GenPres.Business.Domain.Patients;
 
-namespace GenPres.Data.Mappings
+namespace Informedica.GenPres.Data.Mappings
 {
     public sealed class PatientMap : ClassMap<Patient>
     {

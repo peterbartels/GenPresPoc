@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Base
+namespace Informedica.GenPres.xTest.Base
 {
     [TestClass]
     public class SimpleCalculationTest : BaseGenPresTest

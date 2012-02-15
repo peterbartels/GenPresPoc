@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using GenPres.Business.Calculation.Old.Math;
-using GenPres.Business.Calculation.Old.Combination;
+using Informedica.GenPres.Business.Calculation.Old.Combination;
+using Informedica.GenPres.Business.Calculation.Old.Math;
 
-namespace GenPres.Business.Calculation.Old.Calculation
+namespace Informedica.GenPres.Business.Calculation.Old.Calculation
 {
     class PropertyCombinationCalculate
     {

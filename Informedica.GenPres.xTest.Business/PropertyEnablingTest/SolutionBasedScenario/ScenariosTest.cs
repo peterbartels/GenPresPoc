@@ -1,13 +1,10 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using GenPres.Business.Allowance;
-using GenPres.Business.Domain.Prescriptions;
+﻿using System.Linq;
+using Informedica.GenPres.Business.Allowance;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.xTest.Base;
 
-namespace GenPres.xTest.Business.VisibilityTest.Scenarios 
+namespace Informedica.GenPres.xTest.Business.PropertyEnablingTest.SolutionBasedScenario 
 {
     [TestClass]
     public class ScenariosTest : BaseGenPresTest

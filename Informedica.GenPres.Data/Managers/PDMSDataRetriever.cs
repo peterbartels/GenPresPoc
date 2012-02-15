@@ -1,7 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Data;
 
-namespace GenPres.Data.Managers
+namespace Informedica.GenPres.Data.Managers
 {
     public class PDMSDataRetriever
     {

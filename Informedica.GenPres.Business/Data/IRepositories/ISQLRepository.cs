@@ -1,6 +1,6 @@
-﻿using GenPres.Business.Domain;
+﻿using Informedica.GenPres.Business.Domain;
 
-namespace GenPres.Business.Data.IRepositories
+namespace Informedica.GenPres.Business.Data.IRepositories
 {
     public interface ISQLRepository<TBo> where TBo : ISavable
     {

@@ -1,6 +1,6 @@
-﻿using GenPres.Business.WebService;
+﻿using Informedica.GenPres.Business.WebService;
 
-namespace GenPres.Business.Domain.Prescriptions.Medicine
+namespace Informedica.GenPres.Business.Domain.Prescriptions.Medicine
 {
     public class Medicine
     {

@@ -1,6 +1,6 @@
-﻿using GenPres.Business.Domain.Patients;
+﻿using Informedica.GenPres.Business.Domain.Patients;
 
-namespace GenPres.Business.Data.IRepositories
+namespace Informedica.GenPres.Business.Data.IRepositories
 {
     public interface ILogicalUnitRepository
     {

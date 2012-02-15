@@ -3,12 +3,12 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Globalization;
 using System.Collections.Generic;
-using GenPres.Business.Domain.Patients;
-using GenPres.Data.DAO.Mapper.Patients;
-using GenPres.Data.DTO.Patients;
+using Informedica.GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Data.DAO.Mapper.Patients;
+using Informedica.GenPres.Data.DTO.Patients;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Data.DaoMappingsTest
+namespace Informedica.GenPres.xTest.Data.DaoMappingsTest
 {
     [TestClass]
     public class PatientDaoTest

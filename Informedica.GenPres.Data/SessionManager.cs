@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Threading;
-using GenPres.Business;
-using GenPres.Business.Domain.Users;
-using GenPres.Data.Connections;
+using Informedica.GenPres.Business;
+using Informedica.GenPres.Business.Domain.Users;
+using Informedica.GenPres.Data.Connections;
 using NHibernate;
 using NHibernate.Context;
 
-namespace GenPres.Data
+namespace Informedica.GenPres.Data
 {
     public class SessionManager
     {

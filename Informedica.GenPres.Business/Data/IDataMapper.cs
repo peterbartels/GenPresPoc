@@ -1,6 +1,6 @@
-﻿using GenPres.Business.Domain;
+﻿using Informedica.GenPres.Business.Domain;
 
-namespace GenPres.Business.Data.DataAccess.Mappers
+namespace Informedica.GenPres.Business.Data
 {
     public interface IDataMapper<T, TC> where T : ISavable
     {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using FluentNHibernate.Mapping;
-using GenPres.Business.Domain.Users;
+﻿using FluentNHibernate.Mapping;
+using Informedica.GenPres.Business.Domain.Users;
 
-namespace GenPres.Data.Mappings
+namespace Informedica.GenPres.Data.Mappings
 {
     public class UserMap : ClassMap<User>
     {

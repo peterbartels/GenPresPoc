@@ -1,8 +1,8 @@
-﻿using GenPres.Business.Calculation;
-using GenPres.Business.Domain.Prescriptions;
+﻿using Informedica.GenPres.Business.Calculation;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Calculation
+namespace Informedica.GenPres.xTest.Calculation
 {
     [TestClass]
     public class DrugCalculationTests

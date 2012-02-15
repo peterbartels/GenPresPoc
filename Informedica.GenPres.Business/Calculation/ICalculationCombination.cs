@@ -1,4 +1,4 @@
-﻿namespace GenPres.Business.Calculation
+﻿namespace Informedica.GenPres.Business.Calculation
 {
     public interface ICalculationCombination
     {

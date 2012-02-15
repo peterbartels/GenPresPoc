@@ -1,11 +1,10 @@
-﻿using GenPres.Business.Calculation.Old;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.Verbalization;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Verbalization;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Business.PrescriptionVerbalizationTest
+namespace Informedica.GenPres.xTest.Business.PrescriptionVerbalizationTest
 {
     [TestClass]
     public class PrescriptionVerbalizationTest : BaseGenPresTest

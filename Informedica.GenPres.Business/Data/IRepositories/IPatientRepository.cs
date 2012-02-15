@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using GenPres.Business.Domain.Patients;
+﻿using System.Collections.Generic;
+using Informedica.GenPres.Business.Domain.Patients;
 
-namespace GenPres.Business.Data.IRepositories
+namespace Informedica.GenPres.Business.Data.IRepositories
 {
     public interface IPatientRepository : IEnumerable<Patient>
     {

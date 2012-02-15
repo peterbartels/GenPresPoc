@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GenPres.Business.Domain
+﻿namespace Informedica.GenPres.Business.Domain
 {
     //public abstract class Entity<TId, TDto> where TDto: DataTransferObject<TDto, TId>
     public abstract class Entity<TId> 

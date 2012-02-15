@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
-using GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.Data.Mappings
+namespace Informedica.GenPres.Data.Mappings
 {
     public sealed class SubstanceMap : ClassMap<Substance>
     {

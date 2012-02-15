@@ -1,6 +1,6 @@
-﻿using GenPres.Business.Data.IRepositories;
+﻿using Informedica.GenPres.Business.Data.IRepositories;
 
-namespace GenPres.Business.Domain.Patients
+namespace Informedica.GenPres.Business.Domain.Patients
 {
     public class LogicalUnit 
     {

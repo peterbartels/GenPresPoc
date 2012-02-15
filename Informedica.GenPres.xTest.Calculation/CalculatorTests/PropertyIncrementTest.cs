@@ -1,8 +1,8 @@
-﻿using GenPres.Business.Domain.Prescriptions;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Calculation.CalculatorTests
+namespace Informedica.GenPres.xTest.Calculation.CalculatorTests
 {
     [TestClass]
     public class PropertyIncrementTest : BaseGenPresTest

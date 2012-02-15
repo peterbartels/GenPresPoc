@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace GenPres.Business.Domain.Units
+namespace Informedica.GenPres.Business.Domain.Units
 {
     public class Factor
     {

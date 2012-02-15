@@ -1,7 +1,7 @@
 ﻿using System;
-using GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.Business.Data.IRepositories
+namespace Informedica.GenPres.Business.Data.IRepositories
 {
     public interface IPrescriptionRepository
     {

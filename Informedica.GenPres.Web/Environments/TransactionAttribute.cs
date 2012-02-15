@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using NHibernate;
 
-namespace GenPres.Web.Environments
+namespace Informedica.GenPres.Web.Environments
 {
 
     [AttributeUsage(AttributeTargets.Method,

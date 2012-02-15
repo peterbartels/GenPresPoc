@@ -1,8 +1,9 @@
 ﻿using System;
-using GenPres.Business.Calculation.Old.Math;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Allowance;
-namespace GenPres.Business.Domain.Units
+using Informedica.GenPres.Business.Allowance;
+using Informedica.GenPres.Business.Calculation.Old.Math;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+
+namespace Informedica.GenPres.Business.Domain.Units
 {
     public class UnitValue : ICalculationStateTrackable, IPropertyAllowance
     {

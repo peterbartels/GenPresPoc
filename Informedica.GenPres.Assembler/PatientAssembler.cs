@@ -1,9 +1,9 @@
 ﻿using System;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Data.Repositories;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Data.Repositories;
 using StructureMap.Configuration.DSL;
 
-namespace GenPres.Assembler
+namespace Informedica.GenPres.Assembler
 {
     public class PatientAssembler
     {

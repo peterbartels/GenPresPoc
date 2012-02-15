@@ -1,13 +1,11 @@
 ﻿using System;
-using GenPres.Business;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Users;
-using GenPres.Business.Service;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Service;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
 
-namespace GenPres.xTest.Service
+namespace Informedica.GenPres.xTest.Service
 {
     /// <summary>
     /// Summary description for GetUserTest

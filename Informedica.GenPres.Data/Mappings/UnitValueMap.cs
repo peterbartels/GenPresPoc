@@ -1,7 +1,7 @@
 ﻿using FluentNHibernate.Mapping;
-using GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Data.Mappings
+namespace Informedica.GenPres.Data.Mappings
 {
     public class UnitValueMap : ComponentMap<UnitValue>
     {

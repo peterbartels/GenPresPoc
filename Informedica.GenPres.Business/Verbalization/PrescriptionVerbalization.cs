@@ -1,8 +1,8 @@
-﻿using GenPres.Business.Allowance.Scenarios;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
+﻿using Informedica.GenPres.Business.Allowance.Scenarios;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Business.Verbalization
+namespace Informedica.GenPres.Business.Verbalization
 {
     
     public class PrescriptionVerbalization

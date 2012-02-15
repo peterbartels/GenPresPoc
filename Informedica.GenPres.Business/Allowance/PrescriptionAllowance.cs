@@ -1,8 +1,7 @@
-﻿using GenPres.Business.Domain.Prescriptions;
-using System.Collections.Generic;
-using GenPres.Business.Allowance.Scenarios;
+﻿using Informedica.GenPres.Business.Allowance.Scenarios;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.Business.Allowance
+namespace Informedica.GenPres.Business.Allowance
 {
     public class PrescriptionAllowance 
     {

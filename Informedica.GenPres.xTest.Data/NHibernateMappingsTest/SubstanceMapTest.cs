@@ -1,10 +1,10 @@
 ﻿using FluentNHibernate.Testing;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Data;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Data.NHibernateMappingsTest
+namespace Informedica.GenPres.xTest.Data.NHibernateMappingsTest
 {
     [TestClass]
     public class SubstanceMapTest : BaseGenPresTest

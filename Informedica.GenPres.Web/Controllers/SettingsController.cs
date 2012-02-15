@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Ext.Direct.Mvc;
-using GenPres.Data;
-using GenPres.Data.Connections;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.Data.Connections;
 
-namespace GenPres.Controllers
+namespace Informedica.GenPres.Web.Controllers
 {
     public class SettingsController : Controller
     {

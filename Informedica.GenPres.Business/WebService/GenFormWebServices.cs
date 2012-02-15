@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace GenPres.Business.WebService
+namespace Informedica.GenPres.Business.WebService
 {
     public class GenFormWebServices : IGenFormWebServices
     {

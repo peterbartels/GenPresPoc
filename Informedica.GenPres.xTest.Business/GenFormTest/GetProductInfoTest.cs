@@ -1,11 +1,7 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using GenPres.Business.WebService;
+﻿using Informedica.GenPres.Business.WebService;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Business.GenFormTest
+namespace Informedica.GenPres.xTest.Business.GenFormTest
 {
     [TestClass]
     public class GetProductInfoTest

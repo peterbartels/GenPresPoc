@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Linq.Expressions;
-using GenPres.Business.Calculation.Old;
-using GenPres.Business.Calculation.Old.Combination;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.Calculation.Old;
+using Informedica.GenPres.Business.Calculation.Old.Combination;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Calculation.CalculatorTests
+namespace Informedica.GenPres.xTest.Calculation.CalculatorTests
 {
     [TestClass]
     public class CalculationTest : BaseGenPresTest

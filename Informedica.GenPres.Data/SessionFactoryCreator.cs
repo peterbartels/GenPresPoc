@@ -1,11 +1,12 @@
 ﻿using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using GenPres.Data.Connections;
+using Informedica.GenPres.Data.Connections;
+using Informedica.GenPres.Data.Mappings;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
 
-namespace GenPres.Data
+namespace Informedica.GenPres.Data
 {
     public static class SessionFactoryCreator
     {
@@ -24,7 +25,7 @@ namespace GenPres.Data
                 fluentConfiguration.Database(MsSqlConfiguration.MsSql2008.ConnectionString(GetConnectionString(databaseName)));
             }
 
-            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<Mappings.UserMap>())
+            fluentConfiguration.Mappings(x => x.FluentMappings.AddFromAssemblyOf<UserMap>())
                 .CurrentSessionContext<NHibernate.Context.ThreadStaticSessionContext>()
                 .ExposeConfiguration(cfg => _configuration = cfg);
                         

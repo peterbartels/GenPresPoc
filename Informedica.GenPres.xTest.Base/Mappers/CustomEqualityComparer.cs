@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 
-namespace GenPres.xTest.Base.Mappers
+namespace Informedica.GenPres.xTest.Base.Mappers
 {
     public class CustomEqualityComparer : IEqualityComparer
     {

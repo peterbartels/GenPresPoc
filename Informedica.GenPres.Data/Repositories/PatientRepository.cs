@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Patients;
-using NHibernate;
-using NHibernate.Linq;
-using System.Linq;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Patients;
 
-namespace GenPres.Data.Repositories
+namespace Informedica.GenPres.Data.Repositories
 {
     public class PatientRepository : NHibernateRepository<Patient, Guid>, IPatientRepository
     {

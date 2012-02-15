@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using GenPres.Business.Domain.Prescriptions;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.Business.Allowance.Scenarios
+namespace Informedica.GenPres.Business.Allowance.Scenarios
 {
     public class AdminVolumeDoseVolume : IScenario
     {

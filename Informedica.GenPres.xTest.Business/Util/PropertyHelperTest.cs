@@ -1,12 +1,8 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Util;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Util;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Business.Util
+namespace Informedica.GenPres.xTest.Business.Util
 {
     [TestClass]
     public class PropertyHelperTest

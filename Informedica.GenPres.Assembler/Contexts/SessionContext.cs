@@ -1,9 +1,9 @@
 ﻿using System;
-using GenPres.Data;
+using Informedica.GenPres.Data;
 using NHibernate;
 using NHibernate.Context;
 
-namespace GenPres.Assembler.Contexts
+namespace Informedica.GenPres.Assembler.Contexts
 {
     public class SessionContext : ICurrentSessionContext, IDisposable
     {

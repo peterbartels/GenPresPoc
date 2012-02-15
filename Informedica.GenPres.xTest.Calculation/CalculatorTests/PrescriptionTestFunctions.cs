@@ -1,8 +1,8 @@
-﻿using GenPres.Business.Calculation.Old;
-using GenPres.Business.Calculation.Old.Combination;
-using GenPres.Business.Domain.Prescriptions;
+﻿using Informedica.GenPres.Business.Calculation.Old;
+using Informedica.GenPres.Business.Calculation.Old.Combination;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.xTest.Calculation.CalculatorTests
+namespace Informedica.GenPres.xTest.Calculation.CalculatorTests
 {
     public static class PrescriptionTestFunctions
     {

@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Business.Allowance
+namespace Informedica.GenPres.Business.Allowance
 {
     public class PropertyStateAllowance
     {

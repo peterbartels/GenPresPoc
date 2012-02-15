@@ -1,4 +1,4 @@
-﻿namespace GenPres.Business
+﻿namespace Informedica.GenPres.Business
 {
     public static class AuthenticationFunctions
     {

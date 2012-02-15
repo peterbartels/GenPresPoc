@@ -1,8 +1,8 @@
-﻿using GenPres.Data.Mappings;
-using Informedica.DataAccess.Configurations;
+﻿using Informedica.DataAccess.Configurations;
+using Informedica.GenPres.Data.Mappings;
 using NHibernate;
 
-namespace GenPres.Data
+namespace Informedica.GenPres.Data
 {
     public static class SessionFactoryManager
     {

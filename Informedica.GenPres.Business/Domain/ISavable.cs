@@ -1,4 +1,4 @@
-﻿namespace GenPres.Business.Domain
+﻿namespace Informedica.GenPres.Business.Domain
 {
     public interface ISavable
     {

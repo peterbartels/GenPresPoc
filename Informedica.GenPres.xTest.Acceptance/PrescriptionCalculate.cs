@@ -1,7 +1,7 @@
-﻿using GenPres.Business.Calculation;
-using GenPres.Business.Domain.Prescriptions;
+﻿using Informedica.GenPres.Business.Calculation;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.xTest.Acceptance
+namespace Informedica.GenPres.xTest.Acceptance
 {
     public class PrescriptionCalculate : PrescriptionCalculateProperties
     {

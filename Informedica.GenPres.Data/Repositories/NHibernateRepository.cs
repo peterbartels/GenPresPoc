@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Data.IRepositories;
 using NHibernate;
 using NHibernate.Linq;
 
-namespace GenPres.Data.Repositories
+namespace Informedica.GenPres.Data.Repositories
 {
     public class NHibernateRepository<T, TId> : NHibernateBase, IRepository<T, TId>
         where T : class

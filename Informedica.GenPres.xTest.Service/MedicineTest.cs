@@ -1,11 +1,11 @@
 ﻿using System;
-using GenPres.Business.Service;
-using GenPres.Business.WebService;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.WebService;
+using Informedica.GenPres.Service;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
 
-namespace GenPres.xTest.Service
+namespace Informedica.GenPres.xTest.Service
 {
     [TestClass]
     public class MedicineTest : BaseGenPresTest

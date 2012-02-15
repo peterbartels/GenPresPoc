@@ -1,9 +1,9 @@
-﻿using GenPres.Business.Domain.Prescriptions;
-using GenPres.Data.Connections;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.Data.Connections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Data.SessionFactoryTest
+namespace Informedica.GenPres.xTest.Data.SessionFactoryTest
 {
     /// <summary>
     /// Summary description for SessionFactoryTest

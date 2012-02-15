@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Ext.Direct.Mvc;
-namespace Informedica.GenForm.Mvc3.Controllers
+
+namespace Informedica.GenPres.Web.Controllers
 {
     public class TestsController : Controller
     {

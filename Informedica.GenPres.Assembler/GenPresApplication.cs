@@ -3,12 +3,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
-using GenPres.Data;
-using GenPres.Data.Connections;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.Data.Connections;
 using NHibernate;
 using StructureMap;
 
-namespace GenPres.Assembler
+namespace Informedica.GenPres.Assembler
 {
     public class GenPresApplication
     {

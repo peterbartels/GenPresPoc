@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace GenPres.Web.Controllers
+namespace Informedica.GenPres.Web.Controllers
 {
     public class BaseController : Controller
     {

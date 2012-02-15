@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace GenPres.Business.Domain
+namespace Informedica.GenPres.Business.Domain
 {
     
     public class StateManager

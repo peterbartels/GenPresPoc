@@ -2,12 +2,12 @@
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Xml.Linq;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Patients;
-using GenPres.Data.DAO.Mapper.Patients;
-using GenPres.Data.Managers;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Data.DAO.Mapper.Patients;
+using Informedica.GenPres.Data.Managers;
 
-namespace GenPres.Data.Repositories
+namespace Informedica.GenPres.Data.Repositories
 {
     public class PdmsRepository : IPdsmPatientRepository
     {

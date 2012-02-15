@@ -1,4 +1,4 @@
-﻿namespace GenPres.Data.DTO
+﻿namespace Informedica.GenPres.Data.DTO
 {
     public class DtoFactory
     {

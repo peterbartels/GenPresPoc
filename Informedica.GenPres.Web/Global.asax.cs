@@ -1,9 +1,10 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
-using GenPres.Assembler;
+using Informedica.GenPres.Assembler;
+using Informedica.GenPres.Data.Connections;
 using NHibernate;
 
-namespace GenPres.Web
+namespace Informedica.GenPres.Web
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -38,7 +39,7 @@ namespace GenPres.Web
             GenPresApplication.Initialize();
         }
 
-        public static ISessionFactory GetSessionFactory(GenPres.Data.Connections.DatabaseConnection.DatabaseName environment)
+        public static ISessionFactory GetSessionFactory(DatabaseConnection.DatabaseName environment)
         {
             return GenPresApplication.GetSessionFactory(environment);
         }

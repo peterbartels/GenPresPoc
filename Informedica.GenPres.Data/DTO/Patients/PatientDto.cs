@@ -1,5 +1,5 @@
 ﻿
-namespace GenPres.Data.DTO.Patients
+namespace Informedica.GenPres.Data.DTO.Patients
 {
     public class PatientDto
     {

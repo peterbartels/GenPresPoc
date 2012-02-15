@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
-using GenPres.Business.Calculation.Old.Increment;
-using GenPres.Business.Calculation.Old.Math;
-using GenPres.Business.Calculation.Old.Calculation;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.Util;
+using Informedica.GenPres.Business.Calculation.Old.Calculation;
+using Informedica.GenPres.Business.Calculation.Old.Increment;
+using Informedica.GenPres.Business.Calculation.Old.Math;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Util;
 
-namespace GenPres.Business.Calculation.Old.Combination
+namespace Informedica.GenPres.Business.Calculation.Old.Combination
 {
 
     public class MultiplierCombination : ICalculationCombination

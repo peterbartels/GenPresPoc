@@ -1,14 +1,8 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using GenPres.Business.Allowance;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business.Allowance;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TypeMock.ArrangeActAssert;
 
-namespace GenPres.xTest.Business.VisibilityTest
+namespace Informedica.GenPres.xTest.Business.PropertyEnablingTest
 {
     /// <summary>
     /// Summary description for CanBeSetOfPrescriptionPropertiesTests

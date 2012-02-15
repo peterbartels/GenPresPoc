@@ -1,13 +1,14 @@
 ﻿using System;
-using GenPres.Assembler;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Data.Repositories;
+using Informedica.GenPres.Assembler;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.Data.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StructureMap;
 using TypeMock;
 using TypeMock.ArrangeActAssert;
 
-namespace GenPres.xTest.Base
+namespace Informedica.GenPres.xTest.Base
 {
     [TestClass]
     public class BaseGenPresTest

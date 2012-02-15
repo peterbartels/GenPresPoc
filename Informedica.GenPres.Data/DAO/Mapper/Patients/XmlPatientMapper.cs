@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Xml.Linq;
-using GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Business.Domain.Patients;
 
-namespace GenPres.Data.DAO.Mapper.Patients
+namespace Informedica.GenPres.Data.DAO.Mapper.Patients
 {
     public class XmlPatientMapper
     {

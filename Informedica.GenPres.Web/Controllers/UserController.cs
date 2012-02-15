@@ -1,11 +1,10 @@
 ﻿using System.Web.Mvc;
 using Ext.Direct.Mvc;
-using GenPres.Assembler;
-using GenPres.Business.Service;
-using GenPres.Web.Controllers;
-using GenPres.Web.Environments;
+using Informedica.GenPres.Assembler;
+using Informedica.GenPres.Service;
+using Informedica.GenPres.Web.Environments;
 
-namespace GenPres.Controllers
+namespace Informedica.GenPres.Web.Controllers
 {
     public class UserController : BaseController
     {

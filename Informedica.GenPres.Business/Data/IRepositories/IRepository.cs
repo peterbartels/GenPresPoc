@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using GenPres.Business.Domain;
 
-namespace GenPres.Business.Data.IRepositories
+namespace Informedica.GenPres.Business.Data.IRepositories
 {
     public interface IRepository<T, TId> : IEnumerable<T>
         where T : class

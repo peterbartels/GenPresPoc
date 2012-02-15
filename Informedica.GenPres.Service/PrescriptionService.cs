@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Linq;
-using GenPres.Business.Allowance;
-using GenPres.Business.Calculation;
-using GenPres.Business.Calculation.Old;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Prescriptions;
 using System.Collections.ObjectModel;
-using GenPres.Business.Exceptions;
-using GenPres.Business.Verbalization;
-using GenPres.Business.WebService;
-using GenPres.Data.DTO.GenForm;
-using GenPres.Data.DTO.Prescriptions;
+using Informedica.GenPres.Business.Calculation;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Exceptions;
+using Informedica.GenPres.Business.WebService;
+using Informedica.GenPres.Data.DTO.Prescriptions;
 using StructureMap;
 
-namespace GenPres.Service
+namespace Informedica.GenPres.Service
 {
     public static class PrescriptionService
     {

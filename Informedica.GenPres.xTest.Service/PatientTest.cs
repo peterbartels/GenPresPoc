@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Patients;
-using GenPres.Business.Exceptions;
-using GenPres.Data.DTO.Patients;
-using GenPres.Service;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Business.Exceptions;
+using Informedica.GenPres.Data.DTO.Patients;
+using Informedica.GenPres.Service;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
 
-namespace GenPres.xTest.Service
+namespace Informedica.GenPres.xTest.Service
 {
     [TestClass]
     public class PatientTest : BaseGenPresTest

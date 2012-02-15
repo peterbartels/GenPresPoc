@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GenPres.Business.Domain.Databases
+namespace Informedica.GenPres.Business.Domain.Databases
 {
     public interface IDatabaseSetting
     {

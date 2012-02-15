@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using GenPres.Assembler;
-
-namespace GenPres.xTest.Base
+﻿namespace Informedica.GenPres.xTest.Base
 {
     public static class DatabaseCleaner
     {

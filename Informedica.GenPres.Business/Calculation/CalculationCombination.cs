@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.Util;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Util;
 
-namespace GenPres.Business.Calculation
+namespace Informedica.GenPres.Business.Calculation
 {
     public class CalculationCombination : ICalculationCombination
     {

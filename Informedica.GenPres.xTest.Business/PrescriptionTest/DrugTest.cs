@@ -1,9 +1,9 @@
-﻿using GenPres.Data.DTO.Prescriptions;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Data.DTO.Prescriptions;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.xTest.Business.PrescriptionTest
+namespace Informedica.GenPres.xTest.Business.PrescriptionTest
 {
     [TestClass]
     public class DrugTest : BaseGenPresTest

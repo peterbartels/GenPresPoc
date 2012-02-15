@@ -1,22 +1,20 @@
 ﻿using System;
-using GenPres.Business.Data;
-using GenPres.Business.Aspect;
-using GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Aspect;
+using Informedica.GenPres.Business.Data.IRepositories;
 
-public enum StatusEnum
+namespace Informedica.GenPres.Business.Domain.Users
 {
-    New = 0,
-    Dirty = 1
-}
+    public enum StatusEnum
+    {
+        New = 0,
+        Dirty = 1
+    }
 
-public interface IChangeTrackable
-{
-    StatusEnum State { get; set; }
-}
+    public interface IChangeTrackable
+    {
+        StatusEnum State { get; set; }
+    }
 
-namespace GenPres.Business.Domain.Users
-{
-    
     public class User : IChangeTrackable
     {
         private StatusEnum _state = StatusEnum.New;
@@ -60,4 +58,3 @@ namespace GenPres.Business.Domain.Users
         }
     }
 }
-

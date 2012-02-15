@@ -1,14 +1,11 @@
-﻿using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Patients;
-using GenPres.Data.DAO.Mapper.Patients;
-using GenPres.Data.Managers;
-using GenPres.Data.Repositories;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Data.Repositories;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Data;
 using TypeMock.ArrangeActAssert;
 
-namespace GenPres.xTest.Business.LogicalUnitTest
+namespace Informedica.GenPres.xTest.Business.LogicalUnitTest
 {
     [TestClass]
     public class LogicalUnitTest : BaseGenPresTest

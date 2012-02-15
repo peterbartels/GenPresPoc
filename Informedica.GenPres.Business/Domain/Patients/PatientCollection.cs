@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using GenPres.Business.Data.IRepositories;
 
-namespace GenPres.Business.Domain.Patients
+namespace Informedica.GenPres.Business.Domain.Patients
 {
     public class PatientCollection
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GenPres.Business.Domain.Units
+namespace Informedica.GenPres.Business.Domain.Units
 {
     public static class UnitConverter
     {

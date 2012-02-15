@@ -1,11 +1,11 @@
 ﻿using FluentNHibernate.Testing;
-using GenPres.Business;
-using GenPres.Business.Domain.Users;
-using GenPres.Data;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business;
+using Informedica.GenPres.Business.Domain.Users;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Data.NHibernateMappingsTest
+namespace Informedica.GenPres.xTest.Data.NHibernateMappingsTest
 {
     [TestClass]
     public class UserMapTest : BaseGenPresTest

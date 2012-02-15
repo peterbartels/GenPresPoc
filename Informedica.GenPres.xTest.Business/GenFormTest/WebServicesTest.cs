@@ -1,9 +1,9 @@
-﻿using GenPres.Business.WebService;
-using GenPres.Data.DTO.GenForm;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Business.WebService;
+using Informedica.GenPres.Data.DTO.GenForm;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Business.GenFormTest
+namespace Informedica.GenPres.xTest.Business.GenFormTest
 {
     /// <summary>
     /// Summary description for WebServicesTest

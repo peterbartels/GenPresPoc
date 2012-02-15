@@ -1,8 +1,8 @@
-﻿using GenPres.xTest.Base;
+﻿using Informedica.GenPres.Service;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Service;
 
-namespace GenPres.xTest.Business.UserTest
+namespace Informedica.GenPres.xTest.Business.UserTest
 {
     /// <summary>
     /// Summary description for UserTest

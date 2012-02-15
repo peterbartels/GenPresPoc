@@ -1,4 +1,4 @@
-﻿namespace GenPres.Business.Data
+﻿namespace Informedica.GenPres.Business.Data
 {
     public class AvailableObject<T>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
-using GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Business.Domain.Prescriptions
+namespace Informedica.GenPres.Business.Domain.Prescriptions
 {
     public class Substance 
     {

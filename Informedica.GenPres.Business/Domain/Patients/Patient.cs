@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Linq;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Business.Domain.Patients
+namespace Informedica.GenPres.Business.Domain.Patients
 {
     public class Patient
     {

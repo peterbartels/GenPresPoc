@@ -1,7 +1,8 @@
 ﻿using System;
+using Informedica.GenPres.Business.Domain.Users;
 using PostSharp.Aspects;
 
-namespace GenPres.Business.Aspect
+namespace Informedica.GenPres.Business.Aspect
 {
     [Serializable]
     [AttributeUsage(AttributeTargets.Property)]

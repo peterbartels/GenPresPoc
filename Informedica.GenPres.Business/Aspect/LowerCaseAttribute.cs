@@ -1,7 +1,7 @@
 ﻿using System;
 using PostSharp.Aspects;
 
-namespace GenPres.Business.Aspect
+namespace Informedica.GenPres.Business.Aspect
 {
     [Serializable]
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]

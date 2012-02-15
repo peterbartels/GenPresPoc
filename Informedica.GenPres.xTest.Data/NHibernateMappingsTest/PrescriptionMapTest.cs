@@ -1,14 +1,14 @@
 ﻿using System;
 using FluentNHibernate.Testing;
-using GenPres.Business.Domain.Patients;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.Data;
-using GenPres.xTest.Base;
-using GenPres.xTest.Base.Mappers;
+using Informedica.GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.Data;
+using Informedica.GenPres.xTest.Base;
+using Informedica.GenPres.xTest.Base.Mappers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Data.NHibernateMappingsTest
+namespace Informedica.GenPres.xTest.Data.NHibernateMappingsTest
 {
     [TestClass]
     public class PrescriptionMapTest : BaseGenPresTest

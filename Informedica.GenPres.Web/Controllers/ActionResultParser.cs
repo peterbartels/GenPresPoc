@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace GenPres.Controllers
+namespace Informedica.GenPres.Web.Controllers
 {
     public class ActionResultParser
     {

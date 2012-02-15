@@ -1,13 +1,8 @@
 ﻿using System;
-using GenPres.Assembler;
-using GenPres.Business.Domain.Prescriptions;
-using GenPres.Business.Domain.Units;
-using GenPres.Business.Service;
-using GenPres.Data.Connections;
-using GenPres.Service;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.xTest.Acceptance
+namespace Informedica.GenPres.xTest.Acceptance
 {
     public class PatientScenarios
     {

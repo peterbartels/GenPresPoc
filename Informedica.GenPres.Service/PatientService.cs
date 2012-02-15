@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Patients;
-using GenPres.Business.Exceptions;
-using GenPres.Data.DTO.Patients;
+﻿using System.Collections.ObjectModel;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Business.Exceptions;
+using Informedica.GenPres.Data.DTO.Patients;
 using StructureMap;
 
-namespace GenPres.Service
+namespace Informedica.GenPres.Service
 {
     public static class PatientService
     {

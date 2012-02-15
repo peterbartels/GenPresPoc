@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Linq;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Patients;
-using GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Patients;
+using Informedica.GenPres.Business.Domain.Prescriptions;
 using NHibernate.Linq;
 
-namespace GenPres.Data.Repositories
+namespace Informedica.GenPres.Data.Repositories
 {
     
     public class PrescriptionRepository : NHibernateRepository<Prescription, Guid>, IPrescriptionRepository

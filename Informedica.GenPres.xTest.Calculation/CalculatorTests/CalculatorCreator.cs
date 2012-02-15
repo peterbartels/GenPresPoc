@@ -1,7 +1,7 @@
 ﻿using System;
-using GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.xTest.Business.CalculatorTests
+namespace Informedica.GenPres.xTest.Calculation.CalculatorTests
 {
     public class CalculatorCreator
     {

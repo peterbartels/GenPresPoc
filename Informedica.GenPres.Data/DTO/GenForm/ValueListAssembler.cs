@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
 
-namespace GenPres.Data.DTO.GenForm
+namespace Informedica.GenPres.Data.DTO.GenForm
 {
     public class ValueListAssembler
     {

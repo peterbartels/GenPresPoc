@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Linq;
-using GenPres.Business.Domain.Units;
-using GenPres.Data.DTO.Prescriptions;
-using GenPres.Data.Repositories;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.xTest.Business.PrescriptionTest
+namespace Informedica.GenPres.xTest.Business.PrescriptionTest
 {
     [TestClass]
     public class PrescriptionTest : BaseGenPresTest

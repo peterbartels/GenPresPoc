@@ -1,8 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using GenPres.Business.Domain.Prescriptions.Medicine;
-using GenPres.Data.DTO.GenForm;
+using Informedica.GenPres.Business.Domain.Prescriptions.Medicine;
+using Informedica.GenPres.Data.DTO.GenForm;
 
-namespace GenPres.Business.Service
+namespace Informedica.GenPres.Service
 {
     public static class MedicineService
     {

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GenPres.Business.Calculation.Old.Math;
-using GenPres.Business.Domain.Units;
+using Informedica.GenPres.Business.Calculation.Old.Math;
+using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Business.Calculation.Old.Increment
+namespace Informedica.GenPres.Business.Calculation.Old.Increment
 {
     public class PropertyIncrement
     {

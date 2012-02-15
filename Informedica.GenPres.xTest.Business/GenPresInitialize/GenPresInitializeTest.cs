@@ -1,13 +1,9 @@
-﻿using System;
-using System.Globalization;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Globalization;
 using System.Threading;
-using GenPres.Assembler;
+using Informedica.GenPres.Assembler;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GenPres.xTest.Business.GenPresInitialize
+namespace Informedica.GenPres.xTest.Business.GenPresInitialize
 {
     [TestClass]
     public class GenPresInitializeTest

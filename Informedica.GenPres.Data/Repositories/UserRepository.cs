@@ -1,9 +1,9 @@
 ﻿using System;
-using GenPres.Business;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Users;
+using Informedica.GenPres.Business;
+using Informedica.GenPres.Business.Data.IRepositories;
+using Informedica.GenPres.Business.Domain.Users;
 
-namespace GenPres.Data.Repositories
+namespace Informedica.GenPres.Data.Repositories
 {
     public class UserRepository : NHibernateRepository<User, Guid>, IUserRepository
     {
@@ -16,7 +16,7 @@ namespace GenPres.Data.Repositories
 
         public User GetByName(string name)
         {
-            var user = Business.Domain.Users.User.NewUser();
+            var user = User.NewUser();
             user.UserName = name;
             return user;
         }

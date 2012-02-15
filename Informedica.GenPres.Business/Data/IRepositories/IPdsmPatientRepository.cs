@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using GenPres.Business.Domain.Patients;
+﻿using System.Collections.ObjectModel;
+using Informedica.GenPres.Business.Domain.Patients;
 
-namespace GenPres.Business.Data.IRepositories
+namespace Informedica.GenPres.Business.Data.IRepositories
 {
     public interface IPdsmPatientRepository
     {

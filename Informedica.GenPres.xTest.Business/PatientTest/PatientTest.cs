@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Collections.Generic;
-using System.Globalization;
-using GenPres.Business.Data.IRepositories;
-using GenPres.Business.Domain.Patients;
-using GenPres.Data.DAO.Mapper.Patients;
-using GenPres.Data.DTO.Patients;
-using GenPres.Data.Managers;
-using GenPres.Data.Repositories;
-using GenPres.xTest.Base;
+﻿using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using TypeMock.ArrangeActAssert;
 
-namespace GenPres.xTest.Business.PatientTest
+namespace Informedica.GenPres.xTest.Business.PatientTest
 {
     [TestClass]
     public class PatientTest : BaseGenPresTest

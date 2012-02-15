@@ -1,8 +1,8 @@
 ﻿using System;
-using GenPres.Business.WebService;
+using Informedica.GenPres.Business.WebService;
 using StructureMap.Configuration.DSL;
 
-namespace GenPres.Assembler
+namespace Informedica.GenPres.Assembler
 {
     public class GenFormWebServiceAssembler
     {

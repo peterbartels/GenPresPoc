@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Globalization;
-using GenPres.Business.Domain.Units;
-using GenPres.Data.DTO.Prescriptions;
-using GenPres.xTest.Base;
+using Informedica.GenPres.Business.Domain.Prescriptions;
+using Informedica.GenPres.Data.DTO.Prescriptions;
+using Informedica.GenPres.xTest.Base;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GenPres.Business.Domain.Prescriptions;
 
-namespace GenPres.xTest.Data.DtoMappingsTest
+namespace Informedica.GenPres.xTest.Data.DtoMappingsTest
 {
     [TestClass]
     public class PrescriptionDtoTest : BaseGenPresTest

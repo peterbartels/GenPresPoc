@@ -1,6 +1,6 @@
-﻿using GenPres.Business.Domain.Units;
+﻿using Informedica.GenPres.Business.Domain.Units;
 
-namespace GenPres.Data.DTO
+namespace Informedica.GenPres.Data.DTO
 {
     public class UnitValueDto
     {
