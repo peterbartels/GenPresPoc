@@ -34,6 +34,7 @@ namespace Informedica.GenPres.Data
             return _currentSession;
         }
 
+        
         public static ISessionFactory InitSessionFactory(DatabaseConnection.DatabaseName databaseName, bool exposeConfiguration)
         {
             HibernatingRhinos.Profiler.Appender.NHibernate.NHibernateProfiler.Initialize();

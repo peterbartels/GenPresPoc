@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using Informedica.GenPres.Assembler;
+using Informedica.GenPres.Data;
 using Informedica.GenPres.Data.Connections;
 using NHibernate;
 using NHibernate.Context;
@@ -19,23 +20,20 @@ namespace Informedica.GenPres.Web.Environments
         {
             get
             {
-                return MvcApplication.GetSessionFactory(GetEnvironment());
+                return MvcApplication.GetSessionFactory(DatabaseConnection.DatabaseName.GenPresTest);
             }
         }
 
-        private static DatabaseConnection.DatabaseName GetEnvironment()
-        {
-            var environment = (DatabaseConnection.DatabaseName?)HttpContext.Current.Session["environment"];
-            return environment ?? DatabaseConnection.DatabaseName.GenPres;
-        }
 
         public override void OnActionExecuting(
           ActionExecutingContext filterContext)
         {
-            ObjectFactory.Configure(x => x.For<ISessionFactory>().HttpContextScoped().Use(GenPresApplication.GetSessionFactory(GetEnvironment())));
-            //var sessionFactory = SessionManager.Instance.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false);
-            var session = SessionFactory.OpenSession();
-            CurrentSessionContext.Bind(session);
+            var sessionFactory = GenPresApplication.GetSessionFactory(DatabaseConnection.DatabaseName.GenPresTest);
+            ObjectFactory.Configure(x => x.For<ISessionFactory>().HttpContextScoped().Use(sessionFactory));
+            TestSessionManager.Init();
+            //var sessionFactory = SessionManager.Instance.InitSessionFactory(DatabaseConnection.Databa =Name.GenPres, false);
+            //replaced for test, var session = SessionFactory.OpenSession();
+            //replaced for test, CurrentSessionContext.Bind(session);
         }
 
         public override void OnActionExecuted(
@@ -43,9 +41,9 @@ namespace Informedica.GenPres.Web.Environments
         {
             try
             {
-                var session = CurrentSessionContext.Unbind(SessionFactory);
-                session.Close();
-
+                //replaced for test, var session = CurrentSessionContext.Unbind(SessionFactory);
+                //replaced for test, session.Close();
+                GenPresApplication.CloseSessionFactory();
             }
             // ReSharper disable EmptyGeneralCatchClause
             catch (Exception)

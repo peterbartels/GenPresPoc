@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="https://95.128.4.30:8172/msdeploy.axd" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="Applications/GenPres" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="True" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="True" profileName="PublicServer" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="GENadmin" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoST5kwxuFk+6r8i/E8kgNwAAAAACAAAAAAAQZgAAAAEAACAAAADr1ceuoTpqVOn8OfPF0UAsV7O0rm1BhkBSU+6pggE/qwAAAAAOgAAAAAIAACAAAABU2N2WnKmH+VvLWj9IG26jPqPbTSckSEL7znhm9REhYCAAAACWHCbu1Xhyz43qEyN4pZaskiMDdFu17nCk0glr3DANGUAAAABmPxtnMTYhi3ugp6fBKbQyPQxrb+M7mCbj4+sTapBXYNb3wPC++aW5otBBEp8bINKb49c9GQ66vcNfQG4mfp4G" SelectedForPublish="True" />
+</publishData>

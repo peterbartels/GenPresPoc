@@ -31,21 +31,17 @@ namespace Informedica.GenPres.Data
             CloseSession();
         }
 
-        public static void InitTestSessionFactory()
+        public ISessionFactory InitTestSessionFactory()
         {
-            InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
+            return InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
         }
 
         public static ISession InitSession()
         {
-            if (_currentSession == null)
-            {
-                _currentSession = _factory.OpenSession();
-                SessionFactoryCreator.BuildSchema(_currentSession);
-                CurrentSessionContext.Bind(_currentSession);
-                InsertData();
-            }
-
+            _currentSession = _factory.OpenSession();
+            SessionFactoryCreator.BuildSchema(_currentSession);
+            CurrentSessionContext.Bind(_currentSession);
+            InsertData();
             return _currentSession;
         }
 

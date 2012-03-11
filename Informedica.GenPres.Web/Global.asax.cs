@@ -43,10 +43,5 @@ namespace Informedica.GenPres.Web
         {
             return GenPresApplication.GetSessionFactory(environment);
         }
-
-        public static ISessionFactory SessionFactory
-        {
-            get { return GenPresApplication.SessionFactory; }
-        }
     }
 }

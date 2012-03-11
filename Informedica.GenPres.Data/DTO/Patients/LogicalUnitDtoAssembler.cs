@@ -7,7 +7,7 @@ namespace Informedica.GenPres.Data.DTO.Patients
         public static LogicalUnitDto AssembleDto(LogicalUnit logicalUnit)
         {
             LogicalUnitDto logicalUnitDto = new LogicalUnitDto();
-            logicalUnitDto.id = logicalUnit.Id;
+            logicalUnitDto.id = logicalUnit.Id + 1;
             logicalUnitDto.text = logicalUnit.Name;
             logicalUnitDto.leaf = true;
 

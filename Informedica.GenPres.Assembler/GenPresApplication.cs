@@ -12,14 +12,12 @@ namespace Informedica.GenPres.Assembler
 {
     public class GenPresApplication
     {
-
-        private static readonly IDictionary<string, ISessionFactory> Factories = new ConcurrentDictionary<string, ISessionFactory>();
-
         private static readonly Object LockThis = new object();
 
         [ThreadStatic]
         private static GenPresApplication _instance;
-        
+
+        private static ISessionFactory _sessionFactory;
         public static GenPresApplication Instance
         {
             get
@@ -39,17 +37,9 @@ namespace Informedica.GenPres.Assembler
             }
         }
         
-        public static ISessionFactory SessionFactory
+        public static void CloseSessionFactory()
         {
-            get { return Instance.SessionFactoryFromInstance; }
-        }
-
-        private ISessionFactory SessionFactoryFromInstance
-        {
-            get
-            {
-                return SessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
-            }
+            TestSessionManager.CloseSession();
         }
 
         public static void Initialize()
@@ -78,12 +68,15 @@ namespace Informedica.GenPres.Assembler
 
         public static ISessionFactory GetSessionFactory(DatabaseConnection.DatabaseName environment)
         {
-            if (!Factories.ContainsKey(environment.ToString()))
+            if(_sessionFactory == null)
             {
-                Factories.Add(environment.ToString(), SessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPres, false));
+                _sessionFactory = TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             }
+            return _sessionFactory;  
+            //Factories.Add(environment.ToString(), SessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true));
+            //}
 
-            return Factories[environment.ToString()];
+            //return Factories[environment.ToString()];
         }
     }
 }

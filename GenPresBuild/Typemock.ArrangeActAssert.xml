@@ -4544,13 +4544,6 @@
             </code>
             </example>
         </member>
-        <member name="M:TypeMock.ArrangeActAssert.Isolate.TypeMock#ArrangeActAssert#IHideObjectMethods#GetType">
-            <summary>
-            This is the entry point to all AAA APIs. 
-            Use it to fake, swap, set method behavior and verify calls.
-            The Isolate APIs use fluent interfaces, thus 
-            </summary>
-        </member>
         <member name="P:TypeMock.ArrangeActAssert.Isolate.Swap">
              <summary>
              A read-only property, used to swap objects and behaviors

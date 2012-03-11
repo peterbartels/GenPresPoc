@@ -2,6 +2,7 @@
 using Informedica.GenPres.Assembler;
 using Informedica.GenPres.Business.Domain.Prescriptions;
 using Informedica.GenPres.Data;
+using Informedica.GenPres.Data.Connections;
 using Informedica.GenPres.Data.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using StructureMap;
@@ -22,7 +23,7 @@ namespace Informedica.GenPres.xTest.Base
         [TestInitialize]
         public void MyTestInitialize()
         {
-            TestSessionManager.InitTestSessionFactory();
+            TestSessionManager.InitSessionFactory(DatabaseConnection.DatabaseName.GenPresTest, true);
             TestSessionManager.Init();
         }
 
