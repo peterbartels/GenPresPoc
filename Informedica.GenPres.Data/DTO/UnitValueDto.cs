@@ -1,8 +1,9 @@
 ﻿using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.Data.Visibility;
 
 namespace Informedica.GenPres.Data.DTO
 {
-    public class UnitValueDto
+    public class UnitValueDto : IPropertyVisibility
     {
         public decimal value { get; set; }
         public string unit { get; set; }
@@ -12,6 +13,7 @@ namespace Informedica.GenPres.Data.DTO
         public string adjustUnit { get; set; }
         public string state { get; set; }
         public bool changedByUser { get; set; }
+        public bool IsVisible { get; set; }
 
         public static UnitValueDto AssembleUnitValueDto(UnitValue unitValue)
         {
@@ -20,7 +22,6 @@ namespace Informedica.GenPres.Data.DTO
 
             unitValueDto.value = unitValue.Value;
             unitValueDto.unit = unitValue.Unit;
-            unitValueDto.canBeSet = unitValue.CanBeSet;
 
             unitValueDto.adjustUnit = unitValue.Adjust;
             unitValueDto.timeUnit = unitValue.Time;

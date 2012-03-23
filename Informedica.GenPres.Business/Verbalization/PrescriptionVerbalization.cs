@@ -1,10 +1,8 @@
-﻿using Informedica.GenPres.Business.Allowance.Scenarios;
-using Informedica.GenPres.Business.Domain.Prescriptions;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
 using Informedica.GenPres.Business.Domain.Units;
 
 namespace Informedica.GenPres.Business.Verbalization
 {
-    
     public class PrescriptionVerbalization
     {
         private static Prescription _prescription;
@@ -24,7 +22,7 @@ namespace Informedica.GenPres.Business.Verbalization
 
         public string _verbalize()
         {
-            if (new NoVolumes(_prescription).IsTrue() && new NoOptions(_prescription).IsTrue())
+            /*if (new NoVolumes(_prescription).IsTrue() && new NoOptions(_prescription).IsTrue())
                 return
                     SpaceEnd(_prescription.Drug.Generic) +
                     SpaceEnd(GetUnitVerbalization(_prescription.FirstSubstance.Quantity)) +
@@ -33,7 +31,7 @@ namespace Informedica.GenPres.Business.Verbalization
                     GetfrequencyVerbalization(_prescription.Frequency) +
                     CommaEnd(VerbalizeUnitValueExplanation(_prescription.Quantity, _prescription.FirstDose.Quantity)) + 
                     VerbalizeUnitValueExplanation(_prescription.Total, _prescription.FirstDose.Total) 
-                ;
+                ;*/
             return "";
         }
 

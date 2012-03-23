@@ -147,6 +147,7 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
             prescription.Duration.Time = "uur";
 
             prescription.Drug = Drug.NewDrug(prescription);
+
             return prescription;
         }
 

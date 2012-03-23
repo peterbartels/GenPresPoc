@@ -1,4 +1,6 @@
-﻿namespace Informedica.GenPres.Data.DTO.Prescriptions
+﻿using Informedica.GenPres.Data.Visibility;
+
+namespace Informedica.GenPres.Data.DTO.Prescriptions
 {
     public class PrescriptionDto
     {
@@ -7,6 +9,26 @@
             drugGeneric = "";
             drugRoute = "";
             drugShape = "";
+
+            substanceQuantity = new UnitValueDto();
+            drugQuantity = new UnitValueDto();
+            substanceDrugConcentration = new UnitValueDto();
+            prescriptionFrequency = new UnitValueDto();
+            prescriptionDuration = new UnitValueDto();
+            doseQuantity = new UnitValueDto();
+            doseTotal = new UnitValueDto();
+            doseRate = new UnitValueDto();
+            adminQuantity = new UnitValueDto();
+            adminTotal = new UnitValueDto();
+            adminRate = new UnitValueDto();
+            patientWeight = new UnitValueDto();
+            patientLength = new UnitValueDto();
+            patientBSA = new UnitValueDto();
+
+            prescriptionContinuous = new VisibleOption();
+            prescriptionInfusion = new VisibleOption();
+            prescriptionOnrequest = new VisibleOption();
+            prescriptionSolution = new VisibleOption();
         }
         public string Id { get; set; }
         
@@ -16,10 +38,10 @@
         public string drugShape { get; set; }
         public string PID { get; set; }
 
-        public string prescriptionContinuous { get; set; }
-        public string prescriptionInfusion { get; set; }
-        public string prescriptionOnrequest { get; set; }
-        public string prescriptionSolution { get; set; }
+        public VisibleOption prescriptionContinuous { get; set; }
+        public VisibleOption prescriptionInfusion { get; set; }
+        public VisibleOption prescriptionOnrequest { get; set; }
+        public VisibleOption prescriptionSolution { get; set; }
 
         public UnitValueDto substanceQuantity { get; set; }
         public UnitValueDto drugQuantity { get; set; }
@@ -44,6 +66,12 @@
 
         public bool DoseVolume { get; set; }
         public bool AdminVolume { get; set; }
+    }
+
+    public class VisibleOption : IPropertyVisibility
+    {
+        public bool IsVisible { get; set; }
+        public string Value { get; set; }
     }
 }
 

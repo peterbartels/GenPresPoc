@@ -1,11 +1,10 @@
 ﻿using System;
-using Informedica.GenPres.Business.Allowance;
 using Informedica.GenPres.Business.Calculation.Old.Math;
 using Informedica.GenPres.Business.Domain.Prescriptions;
 
 namespace Informedica.GenPres.Business.Domain.Units
 {
-    public class UnitValue : ICalculationStateTrackable, IPropertyAllowance
+    public class UnitValue : ICalculationStateTrackable
     {
         #region Private Properties
         private Guid _id = Guid.Empty;
@@ -248,8 +247,6 @@ namespace Informedica.GenPres.Business.Domain.Units
         #endregion
 
         //public virtual bool CanBeSet { get; set; }
-        
-         public virtual bool CanBeSet { get { return true; } set{} }
 
         protected UnitValue()
         {
@@ -370,7 +367,6 @@ namespace Informedica.GenPres.Business.Domain.Units
         public static UnitValue NewUnitValue(bool canBeSet)
         {
             var uv = new UnitValue();
-            uv.CanBeSet = canBeSet;
             return uv;
         }
     }

@@ -57,22 +57,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Allowance\PropertyStateAllowance.cs" />
-    <Compile Include="Allowance\PrescriptionAllowance.cs" />
-    <Compile Include="Allowance\IPropertyAllowance.cs" />
-    <Compile Include="Allowance\Scenarios\AdminVolume.cs" />
-    <Compile Include="Allowance\Scenarios\AdminVolumeDoseVolume.cs" />
-    <Compile Include="Allowance\Scenarios\Continuous.cs" />
-    <Compile Include="Allowance\Scenarios\ContinuousInfusion.cs" />
-    <Compile Include="Allowance\Scenarios\Infusion.cs" />
-    <Compile Include="Allowance\IScenario.cs" />
-    <Compile Include="Allowance\Scenarios\NoOptions.cs" />
-    <Compile Include="Allowance\Scenarios\OnRequest.cs" />
-    <Compile Include="Allowance\Scenarios\OnRequestContinuous.cs" />
-    <Compile Include="Allowance\Scenarios\OnRequestContinuousInfusion.cs" />
-    <Compile Include="Allowance\Scenarios\OnRequestInfusion.cs" />
-    <Compile Include="Allowance\PropertyAllowanceConfig.cs" />
-    <Compile Include="Allowance\Scenarios\NoVolumes.cs" />
     <Compile Include="Aspect\ChangeStateAttribute.cs" />
     <Compile Include="Aspect\LowerCaseAttribute.cs" />
     <Compile Include="AuthenticationFunctions.cs" />

@@ -1,4 +1,5 @@
 ﻿using FluentNHibernate.Mapping;
+using Informedica.GenPres.Business.Domain;
 using Informedica.GenPres.Business.Domain.Prescriptions;
 
 namespace Informedica.GenPres.Data.Mappings
@@ -14,7 +15,7 @@ namespace Informedica.GenPres.Data.Mappings
             Map(s => s.CreationDate);
             
             Map(s => s.PID);
-            
+
             Map(s => s.Continuous);
             Map(s => s.Infusion);
             Map(s => s.OnRequest);
@@ -31,7 +32,6 @@ namespace Informedica.GenPres.Data.Mappings
             References(x => x.Patient);
             
             HasMany(x => x.Doses).Cascade.All();
-            
         }
     }
 }

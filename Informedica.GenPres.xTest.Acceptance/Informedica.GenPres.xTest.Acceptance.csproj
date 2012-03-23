@@ -52,16 +52,11 @@
     <Reference Include="System.Data.SQLite.Linq">
       <HintPath>..\packages\System.Data.SQLite.x64.1.0.79.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GenPresFitnesseTest.cs" />
     <Compile Include="PatientScenarios.cs" />
-    <Compile Include="PrescriptionAllowance.cs" />
+    <Compile Include="PrescriptionVisibilityTest.cs" />
     <Compile Include="PrescriptionCalculate.cs" />
     <Compile Include="PrescriptionCalculateProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,16 +86,6 @@
     <ProjectReference Include="..\Informedica.GenPres.Settings\Informedica.GenPres.Settings.csproj">
       <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
       <Name>Informedica.GenPres.Settings</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj">
-      <Project>{7A32985F-5695-41E8-99DB-627E5E327B9D}</Project>
-      <Name>Informedica.GenPres.xTest.Base</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenPres.xTest.Business\Informedica.GenPres.xTest.Business.csproj">
-      <Project>{0EA0DA3C-A1A2-44EC-BC7E-5BF4206E19D8}</Project>
-      <Name>Informedica.GenPres.xTest.Business</Name>
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>

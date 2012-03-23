@@ -11,35 +11,35 @@ namespace Informedica.GenPres.xTest.Business.Util
         public void PropertyHelperCanGetPropertyInfo()
         {
             var prescription = Prescription.NewPrescription();
-            prescription.Quantity.CanBeSet = true;
+            prescription.Quantity.Unit = "mg";
             var qty = PropertyHelper.GetUnitValue(() => prescription.Quantity);
-            Assert.IsTrue(qty.CanBeSet);
+            Assert.IsTrue(qty.Unit == "mg");
         }
         [TestMethod]
         public void PropertyHelperCanGetPropertyInfoWithNestedExpression()
         {
             var prescription = Prescription.NewPrescription();
-            prescription.Doses[0].Quantity.CanBeSet = true;
+            prescription.Doses[0].Quantity.Unit = "mg";
             var qty = PropertyHelper.GetUnitValue(() => prescription.Doses[0].Quantity);
-            Assert.IsTrue(qty.CanBeSet);
+            Assert.IsTrue(qty.Unit == "mg");
         }
         [TestMethod]
         public void PropertyHelperCanGetPropertyInfoWithAnyParent()
         {
             var prescription = Prescription.NewPrescription();
             var dose = prescription.Doses[0];
-            dose.Quantity.CanBeSet = true;
+            dose.Quantity.Unit = "mg";
             var qty = PropertyHelper.GetUnitValue(() => dose.Quantity);
-            Assert.IsTrue(qty.CanBeSet);
+            Assert.IsTrue(qty.Unit == "mg");
         }
         [TestMethod]
         public void PropertyHelperCanGetPropertyInfoWithSelfElement()
         {
             var prescription = Prescription.NewPrescription();
             var quantity = prescription.Doses[0].Quantity;
-            quantity.CanBeSet = true;
+            quantity.Unit = "mg";
             var qty = PropertyHelper.GetUnitValue(() => quantity);
-            Assert.IsTrue(qty.CanBeSet);
+            Assert.IsTrue(qty.Unit == "mg");
         }
     }
 }

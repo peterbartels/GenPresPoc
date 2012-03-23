@@ -69,11 +69,12 @@
     <Compile Include="PrescriptionTest\PrescriptionTest.cs" />
     <Compile Include="PrescriptionVerbalizationTest\PrescriptionVerbalizationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyVisibilityTest\CanExecuteVisibilityMethods.cs" />
     <Compile Include="UserTest\Authenticate.cs" />
     <Compile Include="UserTest\UserTest.cs" />
     <Compile Include="Util\PropertyHelperTest.cs" />
-    <Compile Include="PropertyEnablingTest\CanBeSetOfPrescriptionPropertiesTests.cs" />
-    <Compile Include="PropertyEnablingTest\SolutionBasedScenario\ScenariosTest.cs" />
+    <Compile Include="PropertyVisibilityTest\DefaultVisibilitySettingsTest.cs" />
+    <Compile Include="PropertyVisibilityTest\SolutionBasedScenarioTest\ScenariosTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Assembler\Informedica.GenPres.Assembler.csproj">

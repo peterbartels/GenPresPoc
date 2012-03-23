@@ -25,10 +25,10 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
             prescription.Frequency = UnitValueDto.AssembleUnitValue(prescription.Frequency, prescriptionDto.prescriptionFrequency);
             prescription.Duration = UnitValueDto.AssembleUnitValue(prescription.Duration, prescriptionDto.prescriptionDuration);
 
-            prescription.Continuous = (prescriptionDto.prescriptionContinuous == "on");
-            prescription.OnRequest = (prescriptionDto.prescriptionOnrequest == "on");
-            prescription.Solution = (prescriptionDto.prescriptionSolution == "on");
-            prescription.Infusion = (prescriptionDto.prescriptionInfusion == "on");
+            prescription.Continuous = (prescriptionDto.prescriptionContinuous.Value == "on");
+            prescription.OnRequest = (prescriptionDto.prescriptionOnrequest.Value == "on");
+            prescription.Solution = (prescriptionDto.prescriptionSolution.Value == "on");
+            prescription.Infusion = (prescriptionDto.prescriptionInfusion.Value == "on");
 
             prescription.Drug.Quantity = UnitValueDto.AssembleUnitValue(prescription.Drug.Quantity, prescriptionDto.drugQuantity);
 
