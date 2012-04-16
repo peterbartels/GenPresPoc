@@ -13,7 +13,7 @@ namespace Informedica.GenPres.Data.DTO
         public string adjustUnit { get; set; }
         public string state { get; set; }
         public bool changedByUser { get; set; }
-        public bool IsVisible { get; set; }
+        public bool visible { get; set; }
 
         public static UnitValueDto AssembleUnitValueDto(UnitValue unitValue)
         {

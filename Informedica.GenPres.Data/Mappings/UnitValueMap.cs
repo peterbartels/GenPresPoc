@@ -3,7 +3,7 @@ using Informedica.GenPres.Business.Domain.Units;
 
 namespace Informedica.GenPres.Data.Mappings
 {
-    public class UnitValueMap : ComponentMap<UnitValue>
+    /*public class UnitValueMap : ComponentMap<UnitValue>
     {
         public UnitValueMap()
         {
@@ -14,5 +14,5 @@ namespace Informedica.GenPres.Data.Mappings
             Map(x => x.Adjust);
             Map(x => x.Total);
         }
-    }
+    }*/
 }

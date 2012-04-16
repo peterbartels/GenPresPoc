@@ -1,25 +1,2 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Symbols xmlns="http://schemas.postsharp.org/2.0/symbols">
-  <Class Class="#1=T:[Informedica.GenPres.Business]Informedica.GenPres.Business.Aspect.ChangeStateAttribute">
-    <Instance Declaration="#2=P:[Informedica.GenPres.Business]Informedica.GenPres.Business.Domain.Users.User::UserName()" Id="9a260703fcd744d6">
-      <Target>
-        <JoinPoint Advised="#3=M:[Informedica.GenPres.Business]Informedica.GenPres.Business.Domain.Users.User::set_UserName(System.String)" Description="#4=Intercepted by advice OnSetValue" Semantic="Setter" Ordinal="3" />
-      </Target>
-    </Instance>
-    <Instance Declaration="#5=P:[Informedica.GenPres.Business]Informedica.GenPres.Business.Domain.Users.User::PassCrypt()" Id="9a260703ca724c5e">
-      <Target>
-        <JoinPoint Advised="#6=M:[Informedica.GenPres.Business]Informedica.GenPres.Business.Domain.Users.User::set_PassCrypt(System.String)" Description="#4" Semantic="Setter" />
-      </Target>
-    </Instance>
-  </Class>
-  <Class Class="#7=T:[Informedica.GenPres.Business]Informedica.GenPres.Business.Aspect.LowerCaseAttribute">
-    <Instance Declaration="#2" Id="9a2607036c1caceb">
-      <Target Target="#8=M:[Informedica.GenPres.Business]Informedica.GenPres.Business.Domain.Users.User::get_UserName()">
-        <JoinPoint Description="#9=Intercepted by OnInvoke" Semantic="Getter" Ordinal="2" />
-      </Target>
-      <Target Target="#3">
-        <JoinPoint Description="#9" Semantic="Setter" Ordinal="2" />
-      </Target>
-    </Instance>
-  </Class>
-</Symbols>
+<Symbols xmlns="http://schemas.postsharp.org/2.0/symbols" />

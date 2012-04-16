@@ -14,16 +14,11 @@ Ext.require([
 ]);
 
 Ext.onReady(function () {
-    var classTests, componentQueryTests, loaderTests, modelTests,
-        storeTests,
-        loginModelTests,
-        saveCancelWindowTests, loginControllerTests,
-        databaseRegistrationWindowTests;
 
     Ext.direct.Manager.addProvider(Ext.app.REMOTING_API);
 
     Ext.app.config.appFolder = '../Client/GenPres/app';
-    //noinspection JSUnusedGlobalSymbols
+
     Ext.app.config.launch = function() {
         var me = this, test,
             testList = Ext.create('GenPres.test.TestList'),
@@ -32,8 +27,6 @@ Ext.onReady(function () {
         GenPres.application = me;
 
         me.setDefaults();
-
-        //var query = Ext.create('GenPres.test.util.Query');
 
         this.viewport = Ext.create('Ext.container.Viewport', {
             layout: 'fit'

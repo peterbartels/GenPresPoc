@@ -19,7 +19,7 @@ Ext.define('GenPres.view.prescription.Options', {
     initComponent : function(){
         var me = this;
 
-        var continuous = Ext.create('Ext.form.field.Checkbox',{
+        var continuous = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Continu',
             labelAlign:'top',
             labelSeparator:'',
@@ -29,7 +29,7 @@ Ext.define('GenPres.view.prescription.Options', {
             name:'prescriptionContinuous'
         });
 
-        var infusion = Ext.create('Ext.form.field.Checkbox',{
+        var infusion = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Inlooptijd',
             labelAlign:'top',
             style: { textAlign: 'center'},
@@ -39,7 +39,7 @@ Ext.define('GenPres.view.prescription.Options', {
             name:'prescriptionInfusion'
         });
 
-        var onRequest = Ext.create('Ext.form.field.Checkbox',{
+        var onRequest = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Indien nodig',
             labelAlign:'top',
             style: { textAlign: 'center'},
@@ -48,7 +48,7 @@ Ext.define('GenPres.view.prescription.Options', {
             name:'prescriptionOnRequest'
         });
 
-        var solution = Ext.create('Ext.form.field.Checkbox',{
+        var solution = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Oplossing',
             labelAlign:'top',
             style: { textAlign: 'center'},

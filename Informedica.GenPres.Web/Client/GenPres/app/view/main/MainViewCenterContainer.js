@@ -16,6 +16,7 @@ Ext.define('GenPres.view.main.MainViewCenterContainer', {
         me.items = [
             {
                 id: 'card-0',
+                xtype:'box',
                 html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>',
                 border:false
             }

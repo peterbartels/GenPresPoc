@@ -21,14 +21,14 @@ namespace Informedica.GenPres.Data.Mappings
             Map(s => s.OnRequest);
             Map(s => s.Solution);
             
-            Component(x => x.Drug).ColumnPrefix("Drug1"); ;
-            
+            Component(x => x.Drug);
+            /*
             Component(s => s.Frequency).ColumnPrefix("Frequency");
             
             Component(s => s.Quantity).ColumnPrefix("Quantity"); ;
             Component(s => s.Total).ColumnPrefix("Total"); ;
             Component(s => s.Rate).ColumnPrefix("Rate"); ;
-
+            */
             References(x => x.Patient);
             
             HasMany(x => x.Doses).Cascade.All();

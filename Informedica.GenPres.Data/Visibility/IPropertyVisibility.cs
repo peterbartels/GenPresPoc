@@ -2,6 +2,6 @@
 {
     public interface IPropertyVisibility
     {
-        bool IsVisible { get; set; }
+        bool visible { get; set; }
     }
 }

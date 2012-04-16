@@ -9,6 +9,8 @@ Ext.define('GenPres.view.prescription.PrescriptionGrid', {
 
     store: 'prescription.Prescription',
 
+    title:'voorscrhiften',
+
     columns: [
         {header: 'StartDate',  dataIndex: 'StartDate'},
         {header: 'Generiek',  dataIndex: 'drugGeneric'}
@@ -18,4 +20,4 @@ Ext.define('GenPres.view.prescription.PrescriptionGrid', {
         var me = this;
         me.callParent();
     }
-})
+});

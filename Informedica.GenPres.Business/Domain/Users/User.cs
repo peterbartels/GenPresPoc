@@ -1,5 +1,5 @@
 ﻿using System;
-using Informedica.GenPres.Business.Aspect;
+//TEMPWEG using Informedica.GenPres.Business.Aspect;
 using Informedica.GenPres.Business.Data.IRepositories;
 
 namespace Informedica.GenPres.Business.Domain.Users
@@ -32,12 +32,12 @@ namespace Informedica.GenPres.Business.Domain.Users
 
         public virtual Guid Id { get; set; }
 
-        [LowerCase]
-        [ChangeState]
+        //TEMPWEG [LowerCase]
+        //TEMPWEG [ChangeState]
         public virtual string UserName { get; set; }
 
 
-        [ChangeState]
+        //TEMPWEG [ChangeState]
         public virtual string PassCrypt { get; set; }
 
         public virtual bool IsNew { get { return (Id == Guid.Empty); } }

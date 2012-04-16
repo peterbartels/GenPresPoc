@@ -13,7 +13,7 @@
 
         public void SetPropertyAllowance()
         {
-            _property.IsVisible = _allow;
+            _property.visible = _allow;
         }
     }
 }

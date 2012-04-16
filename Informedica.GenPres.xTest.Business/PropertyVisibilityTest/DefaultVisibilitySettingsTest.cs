@@ -18,8 +18,8 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
             var prescription = NoVolumeNoOptionsFixture.CreateParacetamolGeneric();
             prescription.Drug.Generic = "";
             var prescriptionDto = new PrescriptionDto();
-            PrescriptionVisbility.Determine(prescription, prescriptionDto);
-            Assert.IsFalse(prescriptionDto.substanceQuantity.IsVisible);
+            PrescriptionVisibility.Determine(prescription, prescriptionDto);
+            Assert.IsFalse(prescriptionDto.substanceQuantity.visible);
         }
 
         
@@ -28,8 +28,8 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
         {
             var prescription = NoVolumeNoOptionsFixture.CreateParacetamolGeneric();
             var prescriptionDto = new PrescriptionDto();
-            PrescriptionVisbility.Determine(prescription, prescriptionDto);
-            Assert.IsTrue(prescriptionDto.substanceQuantity.IsVisible);
+            PrescriptionVisibility.Determine(prescription, prescriptionDto);
+            Assert.IsTrue(prescriptionDto.substanceQuantity.visible);
         }
     }
 

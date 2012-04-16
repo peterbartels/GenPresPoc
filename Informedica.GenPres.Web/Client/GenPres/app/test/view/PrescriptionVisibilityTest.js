@@ -3,7 +3,7 @@ Ext.define('GenPres.test.view.PrescriptionVisibilityTest', {
     describe: 'GenPres.view.Prescription.PrescriptionVisibility',
 
     tests: function () {
-        var me = this, instance, win, queryUtil = GenPres.test.util.Query;;
+        var me = this, instance, win, queryUtil = GenPres.test.util.Query;
 
         me.getPrescriptionView = function (config) {
             if (!instance) {
@@ -27,22 +27,29 @@ Ext.define('GenPres.test.view.PrescriptionVisibilityTest', {
             expect(instance).toBeDefined();
         });
 
-        it('has set substanceQuantity hidden', function () {
-            expect(instance).toBeDefined();
-        });
-
-        it('new prescriptionform should hide unnecessary fields', function () {
+        it('substanceQuantity is default hidden', function () {
             var substanceQuantity = GenPres.test.util.Query.GetControl('substanceQuantity', me.getPrescriptionView());
-            expect(substanceQuantity.isHidden).toBeTruthy();
+            expect(substanceQuantity.visible).toBeFalsy();
         });
 
+        it('substanceQuantity can be set to hidden', function () {
+            var substanceQuantity = GenPres.test.util.Query.GetControl('substanceQuantity', me.getPrescriptionView());
+            substanceQuantity.setVisibile(true);
+            expect(substanceQuantity.visible).toBeTruthy();
+        });
+
+        /*
         it('when generic, route and shape is selected substance quantity should be visible', function () {
+
+            var genericCombo = queryUtil.GetControl('drugGeneric');
+            var routeCombo = queryUtil.GetControl('drugRoute');
+            var shapeCombo = queryUtil.GetControl('drugShape');
+
+            genericCombo.store.load();
+            routeCombo.store.load();
+            shapeCombo.store.load();
+
             waitsFor(function () {
-
-                var genericCombo = queryUtil.GetControl('drugGeneric');
-                var routeCombo = queryUtil.GetControl('drugRoute');
-                var shapeCombo = queryUtil.GetControl('drugShape');
-
                 if(queryUtil.controlStoreIsLoaded(shapeCombo)){
                     var substanceQuantity = queryUtil.GetControl('substanceQuantity', me.getPrescriptionView());
                     queryUtil.SelectFirstComboboxValue('drugGeneric');
@@ -52,7 +59,6 @@ Ext.define('GenPres.test.view.PrescriptionVisibilityTest', {
                 }
                 return false;
             }, 'comboboxes to be rendered', 2000);
-        });
-
+        });*/
     }
 });

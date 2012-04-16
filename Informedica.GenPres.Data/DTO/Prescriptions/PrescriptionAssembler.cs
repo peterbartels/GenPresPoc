@@ -1,6 +1,7 @@
 ﻿using System;
 using Informedica.GenPres.Business.Domain.Prescriptions;
 using Informedica.GenPres.Business.Domain.Units;
+using Informedica.GenPres.Data.Visibility;
 
 namespace Informedica.GenPres.Data.DTO.Prescriptions
 {
@@ -25,10 +26,10 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
             prescription.Frequency = UnitValueDto.AssembleUnitValue(prescription.Frequency, prescriptionDto.prescriptionFrequency);
             prescription.Duration = UnitValueDto.AssembleUnitValue(prescription.Duration, prescriptionDto.prescriptionDuration);
 
-            prescription.Continuous = (prescriptionDto.prescriptionContinuous.Value == "on");
-            prescription.OnRequest = (prescriptionDto.prescriptionOnrequest.Value == "on");
-            prescription.Solution = (prescriptionDto.prescriptionSolution.Value == "on");
-            prescription.Infusion = (prescriptionDto.prescriptionInfusion.Value == "on");
+            prescription.Continuous = (prescriptionDto.prescriptionContinuous.value == "on");
+            prescription.OnRequest = (prescriptionDto.prescriptionOnrequest.value == "on");
+            prescription.Solution = (prescriptionDto.prescriptionSolution.value == "on");
+            prescription.Infusion = (prescriptionDto.prescriptionInfusion.value == "on");
 
             prescription.Drug.Quantity = UnitValueDto.AssembleUnitValue(prescription.Drug.Quantity, prescriptionDto.drugQuantity);
 
@@ -105,6 +106,8 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
                 state = "calculated",
                 canBeSet = true
             };
+
+            PrescriptionVisibility.Determine(prescription, prescriptionDto);
 
             return prescriptionDto;
         }

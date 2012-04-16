@@ -1,6 +1,7 @@
 ﻿.x-panel-header .x-component {
   text-align:right !important;
 }
+
 .x-panel-header .x-panel-header-text{
     padding-right:15px;
 }
@@ -95,4 +96,10 @@ body {
 .PatientInfoPid {
     padding-top:46px;
     font-weight:bold;
+}
+
+.x-form-item-label {
+    font-size:11px;
+    font-weighh:bold;
+    backgroung-color:gray;
 }

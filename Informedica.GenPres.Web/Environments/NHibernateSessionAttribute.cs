@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Web;
 using System.Web.Mvc;
 using Informedica.GenPres.Assembler;
 using Informedica.GenPres.Data;
 using Informedica.GenPres.Data.Connections;
 using NHibernate;
-using NHibernate.Context;
 using StructureMap;
 
 namespace Informedica.GenPres.Web.Environments

@@ -70,8 +70,8 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
 
     public class VisibleOption : IPropertyVisibility
     {
-        public bool IsVisible { get; set; }
-        public string Value { get; set; }
+        public bool visible { get; set; }
+        public string value { get; set; }
     }
 }
 

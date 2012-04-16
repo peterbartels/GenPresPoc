@@ -15,6 +15,7 @@ Ext.app.config = {
     launch: function() {
         var me = this;
         GenPres.application = me;
+        
         GenPres.ASyncEventManager = GenPres.lib.util.ASyncEventManager;
 
         me.setDefaults();

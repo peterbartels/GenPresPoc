@@ -1,6 +1,7 @@
 @mixin extjs-drawcomponent {
     .#{$prefix}surface {
         @include inline-block;
+        overflow: hidden;
     }
 
     .rvml {
@@ -8,11 +9,7 @@
     }
 
     .#{$prefix}surface tspan {
-        user-select: none;
-        -o-user-select: none;
-        -ms-user-select: none;
-        -moz-user-select: none;
-        -webkit-user-select: none;
+        @include no-select;
     }
 
     .#{$prefix}vml-sprite {
@@ -54,6 +51,10 @@
         left: 0;
         overflow: hidden;
         display: inline-block;
+    }
+    
+    svg, vml {
+        overflow: hidden;
     }
 }
 

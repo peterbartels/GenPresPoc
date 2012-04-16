@@ -49,9 +49,6 @@
     <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
       <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="Informedica.DataAccess">
-      <HintPath>..\..\NhRepository\Informedica.DataAccess\bin\Debug\Informedica.DataAccess.dll</HintPath>
-    </Reference>
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
@@ -61,6 +58,12 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\packages\System.Data.SQLite.x64.1.0.79.0\lib\net40\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq">
+      <HintPath>..\packages\System.Data.SQLite.x64.1.0.79.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -86,7 +89,7 @@
     <Compile Include="DTO\UnitValueDto.cs" />
     <Compile Include="Visibility\IPropertyVisibility.cs" />
     <Compile Include="Visibility\IScenario.cs" />
-    <Compile Include="Visibility\PrescriptionVisbility.cs" />
+    <Compile Include="Visibility\PrescriptionVisibility.cs" />
     <Compile Include="Visibility\PropertyStates.cs" />
     <Compile Include="Visibility\PropertyVisibilityConfig.cs" />
     <Compile Include="Visibility\Scenarios\AdminVolume.cs" />
@@ -122,7 +125,6 @@
     <Compile Include="Repositories\PdmsRepository.cs" />
     <Compile Include="Repositories\PrescriptionRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
-    <Compile Include="SessionFactoryManager.cs" />
     <Compile Include="SessionFactoryCreator.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="TestSessionManager.cs" />

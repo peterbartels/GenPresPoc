@@ -33,10 +33,7 @@ namespace Informedica.GenPres.Service
         public static PrescriptionDto UpdatePrescription(PrescriptionDto prescriptionDto, string patientId)
         {
             var prescription = PrescriptionAssembler.AssemblePrescriptionBo(prescriptionDto);
-            
-            //PrescriptionAllowance.Determine(prescription);
-            
-            //var pc = new OldPrescriptionCalculator(prescription);
+
             var pc = new PrescriptionCalculator(prescription);
             pc.Calculate();
             

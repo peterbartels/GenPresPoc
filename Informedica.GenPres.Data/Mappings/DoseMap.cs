@@ -9,9 +9,9 @@ namespace Informedica.GenPres.Data.Mappings
         {
             Id(s => s.Id).GeneratedBy.GuidComb();
 
-            Component(s => s.Quantity).ColumnPrefix("Quantity");
-            Component(s => s.Total).ColumnPrefix("Total"); ;
-            Component(s => s.Rate).ColumnPrefix("Rate"); ;
+            //Component(s => s.Quantity).ColumnPrefix("Quantity");
+            //Component(s => s.Total).ColumnPrefix("Total"); ;
+            //Component(s => s.Rate).ColumnPrefix("Rate"); ;
         }
 
     }

@@ -9,16 +9,15 @@ Ext.define('GenPres.view.prescription.PrescriptionTabs', {
         var me = this;
 
         me.items = [
-            {
-                title: 'Voorschriften',
-                items : Ext.create('GenPres.view.prescription.PrescriptionGrid')
-            },
+            Ext.create('GenPres.view.prescription.PrescriptionGrid'),
             {
                 title: 'Totalen',
+                xtype:'box',
                 html : 'Under construction'
             },
             {
                 title: 'Overzicht',
+                xtype:'box',
                 html : 'Under construction'
             }
         ];

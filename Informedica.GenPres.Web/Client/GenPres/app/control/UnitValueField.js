@@ -23,7 +23,7 @@ Ext.define('GenPres.control.UnitValueField', {
 
     isFormField : true,
 
-    canBeSet: true,
+    visible: false,
 
     state: GenPres.control.states.user,
 
@@ -31,10 +31,15 @@ Ext.define('GenPres.control.UnitValueField', {
 
     unit : "",
 
+    mixins: {
+        picker: 'Ext.form.field.Picker'
+    },
+
     changedByUser:false,
 
-    setHidden : function (hidden){
-        if(hidden) {
+    setVisibile : function (visible){
+        this.visible = visible;
+        if(!this.visible) {
             this.getEl().dom.style.visibility = "hidden";
         }else{
             this.getEl().dom.style.visibility = "";
@@ -96,7 +101,7 @@ Ext.define('GenPres.control.UnitValueField', {
         me.adjustUnit = obj.adjustUnit;
         me.unit = obj.unit;
         me.state = obj.state;
-        me.canBeSet = obj.canBeSet;
+        me.visible = obj.visible;
         me.processValues();
     },
 
@@ -109,7 +114,7 @@ Ext.define('GenPres.control.UnitValueField', {
         if(me.timeStore) me.timeCombo.setValue(me.timeUnit);
         if(me.adjustStore) me.adjustCombo.setValue(me.adjustUnit);
         if(me.totalStore) me.totalCombo.setValue(me.totalUnit);
-        me.setHidden(!me.canBeSet);
+        me.setVisibile(me.visible);
         me.setState(me.state);
     },
 
@@ -240,7 +245,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.setValue({
                value : me.value,
                unit: me.unit,
-               canBeSet:me.canBeSet,
+               visible:me.visible,
                state:me.state
             });
             me.resumeEvents();

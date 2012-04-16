@@ -11,9 +11,9 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
 
     width:600,
 
-    height:111,
+    height:115,
 
-    bodyPadding:'0 0 0 5',
+    bodyPadding:'0 0 0 2',
 
     bodyCls: 'presriptionFormCategory',
 

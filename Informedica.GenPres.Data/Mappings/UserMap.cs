@@ -3,7 +3,7 @@ using Informedica.GenPres.Business.Domain.Users;
 
 namespace Informedica.GenPres.Data.Mappings
 {
-    public class UserMap : ClassMap<User>
+    public sealed class UserMap : ClassMap<User>
     {
         public UserMap()
         {

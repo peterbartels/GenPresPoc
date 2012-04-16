@@ -95,5 +95,6 @@ Ext.define('GenPres.test.control.UnitValueFieldTest', {
             expect(me.getViewForControl().isDestroyed).toBeTruthy();
             win.close();
         });
+
     }
 });

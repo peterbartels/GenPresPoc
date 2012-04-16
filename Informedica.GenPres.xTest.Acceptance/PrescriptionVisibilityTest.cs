@@ -1,4 +1,4 @@
-﻿ using Informedica.GenPres.Business.Domain.Prescriptions;
+﻿using Informedica.GenPres.Business.Domain.Prescriptions;
 using Informedica.GenPres.Data.DTO.Prescriptions;
 using Informedica.GenPres.Data.Visibility;
 
@@ -100,13 +100,13 @@ namespace Informedica.GenPres.xTest.Acceptance
 
         private string FormatVisibility(IPropertyVisibility visibleProperty)
         {
-            return (visibleProperty.IsVisible) ? "XXXXX" : "------"; 
+            return (visibleProperty.visible) ? "XXXXX" : "------"; 
         }
 
 
         public void SetVisibility()
         {
-            PrescriptionVisbility.Determine(_prescription, _prescriptionDto);
+            PrescriptionVisibility.Determine(_prescription, _prescriptionDto);
         }
 
         public void CreatePrescription()

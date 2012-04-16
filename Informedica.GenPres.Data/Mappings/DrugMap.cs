@@ -10,7 +10,7 @@ namespace Informedica.GenPres.Data.Mappings
             Map(x => x.Generic);
             Map(x => x.Route);
             Map(x => x.Shape);
-            Component(x => x.Quantity).ColumnPrefix("Quantity_");
+            //Component(x => x.Quantity).ColumnPrefix("Quantity_");
             HasMany(x => x.Components).Cascade.All();
         }
     }

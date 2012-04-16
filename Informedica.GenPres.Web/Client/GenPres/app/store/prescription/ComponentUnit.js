@@ -1,10 +1,10 @@
 Ext.define('GenPres.store.prescription.ComponentUnit', {
     extend: 'GenPres.store.prescription.ValueStore',
     id: 'componentunit',
+    autoLoad:false,
     proxy : {
         type:'direct',
         directFn : Prescription.GetComponentUnits,
-        autoLoad:true,
         extraParams:{
             generic:"",
             route: "",

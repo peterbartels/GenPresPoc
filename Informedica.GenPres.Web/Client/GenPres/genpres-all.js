@@ -435,7 +435,7 @@ Ext.define('GenPres.control.UnitValueField', {
 
     isFormField : true,
 
-    canBeSet: true,
+    visible: false,
 
     state: GenPres.control.states.user,
 
@@ -443,10 +443,15 @@ Ext.define('GenPres.control.UnitValueField', {
 
     unit : "",
 
+    mixins: {
+        picker: 'Ext.form.field.Picker'
+    },
+
     changedByUser:false,
 
-    setHidden : function (hidden){
-        if(hidden) {
+    setVisibile : function (visible){
+        this.visible = visible;
+        if(!this.visible) {
             this.getEl().dom.style.visibility = "hidden";
         }else{
             this.getEl().dom.style.visibility = "";
@@ -508,7 +513,7 @@ Ext.define('GenPres.control.UnitValueField', {
         me.adjustUnit = obj.adjustUnit;
         me.unit = obj.unit;
         me.state = obj.state;
-        me.canBeSet = obj.canBeSet;
+        me.visible = obj.visible;
         me.processValues();
     },
 
@@ -521,7 +526,7 @@ Ext.define('GenPres.control.UnitValueField', {
         if(me.timeStore) me.timeCombo.setValue(me.timeUnit);
         if(me.adjustStore) me.adjustCombo.setValue(me.adjustUnit);
         if(me.totalStore) me.totalCombo.setValue(me.totalUnit);
-        me.setHidden(!me.canBeSet);
+        me.setVisibile(me.visible);
         me.setState(me.state);
     },
 
@@ -652,7 +657,7 @@ Ext.define('GenPres.control.UnitValueField', {
             me.setValue({
                value : me.value,
                unit: me.unit,
-               canBeSet:me.canBeSet,
+               visible:me.visible,
                state:me.state
             });
             me.resumeEvents();
@@ -953,6 +958,7 @@ Ext.define('GenPres.control.ValueField', {
     }
 });
 
+
 Ext.define('GenPres.session.PatientSession', {
 
     currentLogicalUnitId:0,
@@ -1196,10 +1202,10 @@ Ext.define('GenPres.store.prescription.RouteStore', {
 Ext.define('GenPres.store.prescription.SubstanceUnit', {
     extend: 'GenPres.store.prescription.ValueStore',
     id: 'substanceunit',
+    autoLoad:false,
     proxy : {
         type:'direct',
         directFn : Prescription.GetSubstanceUnits,
-        autoLoad:true,
         extraParams:{
             generic:"",
             route: "",
@@ -1225,10 +1231,10 @@ Ext.define('GenPres.store.prescription.ShapeStore', {
 Ext.define('GenPres.store.prescription.ComponentUnit', {
     extend: 'GenPres.store.prescription.ValueStore',
     id: 'componentunit',
+    autoLoad:false,
     proxy : {
         type:'direct',
         directFn : Prescription.GetComponentUnits,
-        autoLoad:true,
         extraParams:{
             generic:"",
             route: "",
@@ -1438,7 +1444,7 @@ Ext.define('GenPres.view.main.TopToolbar', {
 ﻿Ext.define('GenPres.view.main.PatientTree', {
     extend: 'Ext.tree.Panel',
     alias: 'widget.patienttree',
-
+    xtype:'treepanel',
     border:false,
 
     folderSort: true,
@@ -1506,6 +1512,7 @@ Ext.define('GenPres.view.main.MainViewCenterContainer', {
         me.items = [
             {
                 id: 'card-0',
+                xtype:'box',
                 html:'<br /><br /><h1>&nbsp;&nbsp;&nbsp;Welkom bij GenPres - Development version</h1>',
                 border:false
             }
@@ -1667,9 +1674,9 @@ Ext.define('GenPres.view.prescription.DrugComposition', {
 
     width:600,
 
-    height:111,
+    height:115,
 
-    bodyPadding:'0 0 0 5',
+    bodyPadding:'0 0 0 2',
 
     bodyCls: 'presriptionFormCategory',
 
@@ -1768,16 +1775,15 @@ Ext.define('GenPres.view.prescription.PrescriptionTabs', {
         var me = this;
 
         me.items = [
-            {
-                title: 'Voorschriften',
-                items : Ext.create('GenPres.view.prescription.PrescriptionGrid')
-            },
+            Ext.create('GenPres.view.prescription.PrescriptionGrid'),
             {
                 title: 'Totalen',
+                xtype:'box',
                 html : 'Under construction'
             },
             {
                 title: 'Overzicht',
+                xtype:'box',
                 html : 'Under construction'
             }
         ];
@@ -1810,7 +1816,7 @@ Ext.define('GenPres.view.prescription.Options', {
     initComponent : function(){
         var me = this;
 
-        var continuous = Ext.create('Ext.form.field.Checkbox',{
+        var continuous = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Continu',
             labelAlign:'top',
             labelSeparator:'',
@@ -1820,7 +1826,7 @@ Ext.define('GenPres.view.prescription.Options', {
             name:'prescriptionContinuous'
         });
 
-        var infusion = Ext.create('Ext.form.field.Checkbox',{
+        var infusion = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Inlooptijd',
             labelAlign:'top',
             style: { textAlign: 'center'},
@@ -1830,7 +1836,7 @@ Ext.define('GenPres.view.prescription.Options', {
             name:'prescriptionInfusion'
         });
 
-        var onRequest = Ext.create('Ext.form.field.Checkbox',{
+        var onRequest = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Indien nodig',
             labelAlign:'top',
             style: { textAlign: 'center'},
@@ -1839,7 +1845,7 @@ Ext.define('GenPres.view.prescription.Options', {
             name:'prescriptionOnRequest'
         });
 
-        var solution = Ext.create('Ext.form.field.Checkbox',{
+        var solution = Ext.create('GenPres.control.Option',{
             fieldLabel : 'Oplossing',
             labelAlign:'top',
             style: { textAlign: 'center'},
@@ -2068,9 +2074,9 @@ Ext.define('GenPres.view.prescription.Patient', {
 
     width:270,
 
-    height:111,
+    height:115,
 
-    bodyPadding:'25 0 0 5',
+    bodyPadding:'25 0 0 2',
 
     bodyCls: 'presriptionFormCategory',
 
@@ -2192,6 +2198,8 @@ Ext.define('GenPres.view.prescription.PrescriptionGrid', {
 
     store: 'prescription.Prescription',
 
+    title:'voorscrhiften',
+
     columns: [
         {header: 'StartDate',  dataIndex: 'StartDate'},
         {header: 'Generiek',  dataIndex: 'drugGeneric'}
@@ -2201,7 +2209,7 @@ Ext.define('GenPres.view.prescription.PrescriptionGrid', {
         var me = this;
         me.callParent();
     }
-})
+});
 
 Ext.define('GenPres.view.user.LogicalUnitSelector', {
     extend: 'Ext.view.View',

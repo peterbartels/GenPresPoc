@@ -12,7 +12,7 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
         [TestMethod]
         public void CanCreatePrescriptionVisibilityClass()
         {
-            PrescriptionVisbility.Determine(Prescription.NewPrescription(), new PrescriptionDto());
+            PrescriptionVisibility.Determine(Prescription.NewPrescription(), new PrescriptionDto());
         }
 
         [TestMethod]
@@ -23,7 +23,7 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
             p.Drug.Route = "";
             p.Drug.Shape = "";
             var prescriptionDto = new PrescriptionDto();
-            var pv = new PrescriptionVisbility(p, prescriptionDto);
+            var pv = new PrescriptionVisibility(p, prescriptionDto);
             Isolate.NonPublic.WhenCalled(pv, "ExecuteDetermination").CallOriginal();
             pv.CheckCombinations();
             Isolate.Verify.NonPublic.WasNotCalled(pv, "ExecuteDetermination");
@@ -37,7 +37,7 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
             p.Drug.Route = "rect";
             p.Drug.Shape = "zetp";
             var prescriptionDto = new PrescriptionDto();
-            var pv = new PrescriptionVisbility(p, prescriptionDto);
+            var pv = new PrescriptionVisibility(p, prescriptionDto);
             Isolate.NonPublic.WhenCalled(pv, "ExecuteDetermination").CallOriginal();
             pv.CheckCombinations();
             Isolate.Verify.NonPublic.WasNotCalled(pv, "ExecuteDetermination");
@@ -52,7 +52,7 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
             p.Drug.Route = "";
             p.Drug.Shape = "zetp";
             var prescriptionDto = new PrescriptionDto();
-            var pv = new PrescriptionVisbility(p, prescriptionDto);
+            var pv = new PrescriptionVisibility(p, prescriptionDto);
             Isolate.NonPublic.WhenCalled(pv, "ExecuteDetermination").CallOriginal();
             pv.CheckCombinations();
             Isolate.Verify.NonPublic.WasNotCalled(pv, "ExecuteDetermination");
@@ -66,7 +66,7 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
             p.Drug.Route = "rect";
             p.Drug.Shape = "";
             var prescriptionDto = new PrescriptionDto();
-            var pv = new PrescriptionVisbility(p, prescriptionDto);
+            var pv = new PrescriptionVisibility(p, prescriptionDto);
             Isolate.NonPublic.WhenCalled(pv, "ExecuteDetermination").CallOriginal();
             pv.CheckCombinations();
             Isolate.Verify.NonPublic.WasNotCalled(pv, "ExecuteDetermination");
@@ -79,7 +79,7 @@ namespace Informedica.GenPres.xTest.Business.PropertyVisibilityTest
             p.Drug.Shape = "zetp";
             p.Drug.Route = "rect";
             var prescriptionDto = new PrescriptionDto();
-            var pv = new PrescriptionVisbility(p, prescriptionDto);
+            var pv = new PrescriptionVisibility(p, prescriptionDto);
             Isolate.NonPublic.WhenCalled(pv, "ExecuteDetermination").CallOriginal();
             pv.CheckCombinations();
             Isolate.Verify.NonPublic.WasCalled(pv, "ExecuteDetermination");

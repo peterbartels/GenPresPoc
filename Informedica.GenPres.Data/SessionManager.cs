@@ -16,7 +16,7 @@ namespace Informedica.GenPres.Data
         public static void InsertData()
         {
             var u = User.NewUser();
-            u.UserName = "Peter";
+            u.UserName = "peter";
             u.PassCrypt = AuthenticationFunctions.MD5("Secret");
             u.Save();
         }

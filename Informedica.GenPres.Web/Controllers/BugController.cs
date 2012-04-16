@@ -26,5 +26,10 @@ namespace Informedica.GenPres.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult BorderLayout()
+        {
+            return View(); 
+        }
     }
 }

@@ -10,8 +10,8 @@ namespace Informedica.GenPres.Data.Mappings
             Id(s => s.Id).GeneratedBy.GuidComb();
             Map(s => s.Pid).Not.Nullable();
             HasMany(x=>x.Prescriptions).Cascade.All();
-            Component(x => x.Height).ColumnPrefix("Height_");
-            Component(x => x.Weight).ColumnPrefix("Weight_");
+            //Component(x => x.Height).ColumnPrefix("Height_");
+            //Component(x => x.Weight).ColumnPrefix("Weight_");
         }
     }
 }

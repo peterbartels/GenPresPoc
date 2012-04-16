@@ -1,7 +1,7 @@
 ﻿Ext.define('GenPres.view.main.PatientTree', {
     extend: 'Ext.tree.Panel',
     alias: 'widget.patienttree',
-
+    xtype:'treepanel',
     border:false,
 
     folderSort: true,

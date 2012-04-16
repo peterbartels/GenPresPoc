@@ -26,6 +26,9 @@
                     "path": "./app/control/",
                     "name": "ValueField.js"
                 },{
+                    "path": "./app/contol/",
+                    "name": "Option.js"
+                },{
                     "path": "./app/session/",
                     "name": "PatientSession.js"
                 },{
