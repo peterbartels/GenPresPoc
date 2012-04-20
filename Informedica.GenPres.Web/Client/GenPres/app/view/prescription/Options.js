@@ -25,7 +25,7 @@ Ext.define('GenPres.view.prescription.Options', {
             labelSeparator:'',
             style: { textAlign: 'center'},
             width:60,
-            fieldStyle :'visibility:hidden;',
+            visible:false,
             name:'prescriptionContinuous'
         });
 
@@ -35,7 +35,7 @@ Ext.define('GenPres.view.prescription.Options', {
             style: { textAlign: 'center'},
             width:70,
             labelSeparator:'',
-            fieldStyle :'visibility:hidden;',
+            visible:false,
             name:'prescriptionInfusion'
         });
 
@@ -60,16 +60,16 @@ Ext.define('GenPres.view.prescription.Options', {
         solution.on("change", function(field, newValue, oldValue, eOpts){
             var solution = Ext.ComponentQuery.query("#drugSolution")[0];
             if(newValue == true){
-                continuous.setFieldStyle("visibility:visible;");
-                infusion.setFieldStyle("visibility:visible;");
+                //continuous.setFieldStyle("visibility:visible;");
+                //infusion.setFieldStyle("visibility:visible;");
                 solution.el.dom.style.visibility = "visible"
             }else{
-                continuous.setFieldStyle("visibility:hidden;");
-                infusion.setFieldStyle("visibility:hidden;");
-                continuous.setValue(false);
-                infusion.setValue(false);
-                solution.el.dom.style.visibility = "hidden"
-                solution.setValue("");
+                //continuous.setFieldStyle("visibility:hidden;");
+                //infusion.setFieldStyle("visibility:hidden;");
+                //continuous.setValue(false);
+                //infusion.setValue(false);
+                //solution.el.dom.style.visibility = "hidden"
+                //solution.setValue("");
             }
         })
 

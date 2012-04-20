@@ -5,10 +5,13 @@ Ext.define('GenPres.test.view.PrescriptionVisibilityTest', {
     tests: function () {
         var me = this, instance, win, queryUtil = GenPres.test.util.Query;
 
+        GenPres.application.getController("prescription.PrescriptionController").views =[];
+
         me.getPrescriptionView = function (config) {
             if (!instance) {
                 instance = Ext.create('GenPres.view.prescription.PrescriptionForm', config)
             }
+
             return instance;
         };
 
@@ -27,18 +30,24 @@ Ext.define('GenPres.test.view.PrescriptionVisibilityTest', {
             expect(instance).toBeDefined();
         });
 
-        it('substanceQuantity is default hidden', function () {
-            var substanceQuantity = GenPres.test.util.Query.GetControl('substanceQuantity', me.getPrescriptionView());
-            expect(substanceQuantity.visible).toBeFalsy();
-        });
+        var visibilityItems = ["prescriptionContinuous", "substanceQuantity"];
+        for(var i=0;i<visibilityItems.length;i++){
+            var itemName = visibilityItems[i];
+            it(itemName + ' is default hidden', function () {
+                var item = GenPres.test.util.Query.GetControl(itemName, me.getPrescriptionView());
+                expect(item.getVisibility()).toBeFalsy();
+            });
+        }
+        for(var i=0;i<visibilityItems.length;i++){
+            var itemName = visibilityItems[i];
+            it(itemName + ' can be set to visible', function () {
+                var item = GenPres.test.util.Query.GetControl(itemName, me.getPrescriptionView());
+                item.setVisibility(true);
+                expect(item.getVisibility()).toBeTruthy();
+            });
+        }
 
-        it('substanceQuantity can be set to hidden', function () {
-            var substanceQuantity = GenPres.test.util.Query.GetControl('substanceQuantity', me.getPrescriptionView());
-            substanceQuantity.setVisibile(true);
-            expect(substanceQuantity.visible).toBeTruthy();
-        });
-
-        /*
+/*
         it('when generic, route and shape is selected substance quantity should be visible', function () {
 
             var genericCombo = queryUtil.GetControl('drugGeneric');

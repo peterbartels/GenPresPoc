@@ -23,27 +23,18 @@ Ext.define('GenPres.control.UnitValueField', {
 
     isFormField : true,
 
-    visible: false,
-
     state: GenPres.control.states.user,
 
     value : 0,
 
     unit : "",
 
-    mixins: {
-        picker: 'Ext.form.field.Picker'
-    },
-
     changedByUser:false,
 
-    setVisibile : function (visible){
-        this.visible = visible;
-        if(!this.visible) {
-            this.getEl().dom.style.visibility = "hidden";
-        }else{
-            this.getEl().dom.style.visibility = "";
-        }
+    visible:false,
+
+    mixins: {
+        visibility: 'GenPres.control.Visible'
     },
 
     setState : function(state){
@@ -101,7 +92,6 @@ Ext.define('GenPres.control.UnitValueField', {
         me.adjustUnit = obj.adjustUnit;
         me.unit = obj.unit;
         me.state = obj.state;
-        me.visible = obj.visible;
         me.processValues();
     },
 
@@ -114,7 +104,6 @@ Ext.define('GenPres.control.UnitValueField', {
         if(me.timeStore) me.timeCombo.setValue(me.timeUnit);
         if(me.adjustStore) me.adjustCombo.setValue(me.adjustUnit);
         if(me.totalStore) me.totalCombo.setValue(me.totalUnit);
-        me.setVisibile(me.visible);
         me.setState(me.state);
     },
 
@@ -149,8 +138,6 @@ Ext.define('GenPres.control.UnitValueField', {
 
     initComponent : function(){
         var me = this;
-
-        //me.width = 500;
 
         me.valueField = Ext.create('GenPres.control.ValueField', {
             step:0.1,
@@ -239,17 +226,19 @@ Ext.define('GenPres.control.UnitValueField', {
         }];
         
         me.callParent();
-        
+
+        me.mixins.visibility.constructor.call(me);
+
         me.on("afterrender", function(){
             me.suspendEvents();
             me.setValue({
                value : me.value,
                unit: me.unit,
-               visible:me.visible,
                state:me.state
             });
             me.resumeEvents();
         })
+
     },
 
     createSeperator : function(){

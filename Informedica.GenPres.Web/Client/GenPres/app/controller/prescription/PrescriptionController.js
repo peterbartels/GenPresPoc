@@ -20,7 +20,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             //GenPres.lib.Prescription.UserStateCheck.checkStates(me.getControls());
             me.updatePrescription();
         };
-        
+
         me.control({
             'gridpanel' : {
                 itemdblclick: me.loadPrescription
@@ -76,9 +76,9 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
             me.setValues(newValues);
             me.prescriptionIsLoading = false;
         };
-        
-        GenPres.ASyncEventManager.registerDirectEvent(Prescription.UpdatePrescription, [PID, Ext.Function.bind(me.getValues, me), returnFunc]);
-        GenPres.ASyncEventManager.execute();
+
+        GenPres.lib.util.ASyncEventManager.registerDirectEvent(Prescription.UpdatePrescription, [PID, Ext.Function.bind(me.getValues, me), returnFunc]);
+        GenPres.lib.util.ASyncEventManager.execute();
     },
 
     getDrugCompositionController : function(){
@@ -94,6 +94,7 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
 
     loadPrescription : function(view, record, htmlItem, index, event, options){
         var me = this;
+
         var resultFunc = function(result){
             me.setValues(record.data);
             var drugController = GenPres.application.getController('prescription.DrugComposition');
@@ -155,8 +156,9 @@ Ext.define('GenPres.controller.prescription.PrescriptionController', {
     },
     getValues:function(){
         var vals = {};
+
         var form = this.getForm();
-        
+
         Ext.Object.each(form.getValues(), function(key, value, myself) {
             vals[key] = value;
         });

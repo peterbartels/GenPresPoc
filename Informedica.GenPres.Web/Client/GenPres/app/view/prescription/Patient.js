@@ -12,7 +12,7 @@ Ext.define('GenPres.view.prescription.Patient', {
 
     height:115,
 
-    bodyPadding:'25 0 0 2',
+    bodyPadding:'12 0 0 2',
 
     bodyCls: 'presriptionFormCategory',
 
@@ -32,6 +32,7 @@ Ext.define('GenPres.view.prescription.Patient', {
                 data : [['gram'],['kg']]
             }),
             unit:'kg',
+            visible:true,
             id:'patientWeight',
             name:'patientWeight'
         });
@@ -39,6 +40,7 @@ Ext.define('GenPres.view.prescription.Patient', {
         var patientLength = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'Lengte',
             labelAlign:'left',
+            visible:true,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],
@@ -52,6 +54,7 @@ Ext.define('GenPres.view.prescription.Patient', {
         var patientBSA = Ext.create('GenPres.control.UnitValueField', {
             fieldLabel: 'BSA',
             labelAlign:'left',
+            visible:true,
             unitStore: Ext.create('Ext.data.ArrayStore', {
                 autoDestroy: true,
                 fields: ['Value'],

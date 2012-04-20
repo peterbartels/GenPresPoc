@@ -443,10 +443,6 @@ Ext.define('GenPres.control.UnitValueField', {
 
     unit : "",
 
-    mixins: {
-        picker: 'Ext.form.field.Picker'
-    },
-
     changedByUser:false,
 
     setVisibile : function (visible){
@@ -1857,16 +1853,16 @@ Ext.define('GenPres.view.prescription.Options', {
         solution.on("change", function(field, newValue, oldValue, eOpts){
             var solution = Ext.ComponentQuery.query("#drugSolution")[0];
             if(newValue == true){
-                continuous.setFieldStyle("visibility:visible;");
-                infusion.setFieldStyle("visibility:visible;");
+                //continuous.setFieldStyle("visibility:visible;");
+                //infusion.setFieldStyle("visibility:visible;");
                 solution.el.dom.style.visibility = "visible"
             }else{
-                continuous.setFieldStyle("visibility:hidden;");
-                infusion.setFieldStyle("visibility:hidden;");
-                continuous.setValue(false);
-                infusion.setValue(false);
-                solution.el.dom.style.visibility = "hidden"
-                solution.setValue("");
+                //continuous.setFieldStyle("visibility:hidden;");
+                //infusion.setFieldStyle("visibility:hidden;");
+                //continuous.setValue(false);
+                //infusion.setValue(false);
+                //solution.el.dom.style.visibility = "hidden"
+                //solution.setValue("");
             }
         })
 
