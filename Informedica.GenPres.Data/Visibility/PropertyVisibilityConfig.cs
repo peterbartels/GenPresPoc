@@ -1,19 +1,10 @@
 ﻿namespace Informedica.GenPres.Data.Visibility
 {
-    public class PropertyVisibilityConfig
+    public static class PropertyVisibilityConfig
     {
-        private bool _allow;
-        private IPropertyVisibility _property;
-
-        public PropertyVisibilityConfig(bool allow, IPropertyVisibility property)
+        public static void SetPropertyAllowance(IVisibility property, bool allow)
         {
-            _allow = allow;
-            _property = property;
-        }
-
-        public void SetPropertyAllowance()
-        {
-            _property.visible = _allow;
+            property.visible = allow;
         }
     }
 }

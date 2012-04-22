@@ -3,7 +3,7 @@ using Informedica.GenPres.Data.Visibility;
 
 namespace Informedica.GenPres.Data.DTO
 {
-    public class UnitValueDto : IPropertyVisibility
+    public class UnitValueDto : IVisibility
     {
         public decimal value { get; set; }
         public string unit { get; set; }
@@ -18,7 +18,7 @@ namespace Informedica.GenPres.Data.DTO
         public static UnitValueDto AssembleUnitValueDto(UnitValue unitValue)
         {
             var unitValueDto = new UnitValueDto();
-            if (unitValue == null) unitValue = UnitValue.NewUnitValue(false);
+            if (unitValue == null) unitValue = UnitValue.NewUnitValue();
 
             unitValueDto.value = unitValue.Value;
             unitValueDto.unit = unitValue.Unit;
@@ -33,7 +33,7 @@ namespace Informedica.GenPres.Data.DTO
 
         public static UnitValue AssembleUnitValue(UnitValue unitValue, UnitValueDto unitValueDto)
         {
-            if(unitValue == null) unitValue = UnitValue.NewUnitValue(false);
+            if(unitValue == null) unitValue = UnitValue.NewUnitValue();
             if (unitValueDto == null) unitValueDto = new UnitValueDto();
             unitValue.Value = unitValueDto.value;
             unitValue.Unit = unitValueDto.unit;

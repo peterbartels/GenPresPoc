@@ -81,7 +81,7 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
         {
             var drug = new Drug
             {
-                Quantity = UnitValue.NewUnitValue(false), 
+                Quantity = UnitValue.NewUnitValue(), 
                 Components = new List<Component> {Component.NewComponent()},
                 Prescription = p
             };

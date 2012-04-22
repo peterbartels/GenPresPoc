@@ -25,10 +25,10 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
             patientLength = new UnitValueDto();
             patientBSA = new UnitValueDto();
 
-            prescriptionContinuous = new VisibleOption();
-            prescriptionInfusion = new VisibleOption();
-            prescriptionOnrequest = new VisibleOption();
-            prescriptionSolution = new VisibleOption();
+            prescriptionContinuous = new OptionDto();
+            prescriptionInfusion = new OptionDto();
+            prescriptionOnrequest = new OptionDto();
+            prescriptionSolution = new OptionDto();
         }
         public string Id { get; set; }
         
@@ -38,10 +38,10 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
         public string drugShape { get; set; }
         public string PID { get; set; }
 
-        public VisibleOption prescriptionContinuous { get; set; }
-        public VisibleOption prescriptionInfusion { get; set; }
-        public VisibleOption prescriptionOnrequest { get; set; }
-        public VisibleOption prescriptionSolution { get; set; }
+        public OptionDto prescriptionContinuous { get; set; }
+        public OptionDto prescriptionInfusion { get; set; }
+        public OptionDto prescriptionOnrequest { get; set; }
+        public OptionDto prescriptionSolution { get; set; }
 
         public UnitValueDto substanceQuantity { get; set; }
         public UnitValueDto drugQuantity { get; set; }
@@ -68,7 +68,7 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
         public bool AdminVolume { get; set; }
     }
 
-    public class VisibleOption : IPropertyVisibility
+    public class OptionDto : IVisibility
     {
         public bool visible { get; set; }
         public string value { get; set; }

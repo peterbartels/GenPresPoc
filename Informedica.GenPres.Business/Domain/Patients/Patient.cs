@@ -64,10 +64,10 @@ namespace Informedica.GenPres.Business.Domain.Patients
         public static Patient NewPatient()
         {
             var patient = new Patient();
-            patient.Height = UnitValue.NewUnitValue(true);
+            patient.Height = UnitValue.NewUnitValue();
             patient.Height.Unit = "cm";
 
-            patient.Weight = UnitValue.NewUnitValue(true);
+            patient.Weight = UnitValue.NewUnitValue();
             patient.Weight.Unit = "kg";
 
             patient.Prescriptions = new EntitySet<Prescription>();

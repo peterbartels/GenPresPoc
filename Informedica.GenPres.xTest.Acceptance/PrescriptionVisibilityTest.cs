@@ -98,7 +98,7 @@ namespace Informedica.GenPres.xTest.Acceptance
         }
 
 
-        private string FormatVisibility(IPropertyVisibility visibleProperty)
+        private string FormatVisibility(IVisibility visibleProperty)
         {
             return (visibleProperty.visible) ? "XXXXX" : "------"; 
         }
@@ -106,7 +106,7 @@ namespace Informedica.GenPres.xTest.Acceptance
 
         public void SetVisibility()
         {
-            PrescriptionVisibility.Determine(_prescription, _prescriptionDto);
+            PrescriptionVisibility.Execute(_prescription, _prescriptionDto);
         }
 
         public void CreatePrescription()

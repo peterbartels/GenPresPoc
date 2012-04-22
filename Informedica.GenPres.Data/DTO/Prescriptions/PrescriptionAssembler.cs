@@ -81,12 +81,12 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
             prescriptionDto.doseTotal = UnitValueDto.AssembleUnitValueDto(prescription.Doses[0].Total);
             prescriptionDto.doseRate = UnitValueDto.AssembleUnitValueDto(prescription.Doses[0].Rate);
 
-            var weightUnitValue = UnitValue.NewUnitValue(true);
+            var weightUnitValue = UnitValue.NewUnitValue();
             weightUnitValue.Unit = prescription.PatientWeightUnit;
             weightUnitValue.BaseValue = prescription.PatientWeight;
             prescriptionDto.patientWeight = UnitValueDto.AssembleUnitValueDto(weightUnitValue);
 
-            var lengthUnitValue = UnitValue.NewUnitValue(true);
+            var lengthUnitValue = UnitValue.NewUnitValue();
             lengthUnitValue.Unit = prescription.PatientLengthUnit;
             lengthUnitValue.BaseValue = prescription.PatientLength;
             prescriptionDto.patientLength = UnitValueDto.AssembleUnitValueDto(lengthUnitValue);
@@ -107,7 +107,7 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
                 canBeSet = true
             };
 
-            PrescriptionVisibility.Determine(prescription, prescriptionDto);
+            PrescriptionVisibility.Execute(prescription, prescriptionDto);
 
             return prescriptionDto;
         }

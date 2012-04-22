@@ -50,7 +50,7 @@ namespace Informedica.GenPres.xTest.Data.NHibernateMappingsTest
 
         private static UnitValue GetFakeUnitValue()
         {
-            var fakeUnitValue = UnitValue.NewUnitValue(true);
+            var fakeUnitValue = UnitValue.NewUnitValue();
             fakeUnitValue.BaseValue = 2;
             fakeUnitValue.BaseValue = 2000;
             fakeUnitValue.Unit = "mg";

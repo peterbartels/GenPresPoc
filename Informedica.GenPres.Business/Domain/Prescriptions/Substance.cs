@@ -24,10 +24,10 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
         public static Substance NewSubstance()
         {
             var s = new Substance();
-            s.Quantity = UnitValue.NewUnitValue(false);
+            s.Quantity = UnitValue.NewUnitValue();
             s.Quantity.Unit = "mg";
-            s.DrugConcentration = UnitValue.NewUnitValue(false);
-            s.ComponentConcentration = UnitValue.NewUnitValue(false);
+            s.DrugConcentration = UnitValue.NewUnitValue();
+            s.ComponentConcentration = UnitValue.NewUnitValue();
             return s;
         }
     }

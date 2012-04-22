@@ -246,8 +246,6 @@ namespace Informedica.GenPres.Business.Domain.Units
         }
         #endregion
 
-        //public virtual bool CanBeSet { get; set; }
-
         protected UnitValue()
         {
             
@@ -364,7 +362,7 @@ namespace Informedica.GenPres.Business.Domain.Units
             if (adjust != "") Adjust = adjust;
         }
 
-        public static UnitValue NewUnitValue(bool canBeSet)
+        public static UnitValue NewUnitValue()
         {
             var uv = new UnitValue();
             return uv;

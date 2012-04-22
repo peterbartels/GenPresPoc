@@ -38,8 +38,8 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
         {
             var c = new Component();
             c.Substances = new List<Substance> { Substance.NewSubstance() };
-            c.Quantity = UnitValue.NewUnitValue(false);
-            c.DrugConcentration = UnitValue.NewUnitValue(false);
+            c.Quantity = UnitValue.NewUnitValue();
+            c.DrugConcentration = UnitValue.NewUnitValue();
             return c;
         }
     }

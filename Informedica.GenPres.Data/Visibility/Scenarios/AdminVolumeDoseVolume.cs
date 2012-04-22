@@ -5,39 +5,25 @@ namespace Informedica.GenPres.Data.Visibility.Scenarios
 {
     public class AdminVolumeDoseVolume : IScenario
     {
-        private readonly Prescription _prescription;
-        private readonly PrescriptionDto _prescriptionDto;
-
-        public AdminVolumeDoseVolume(Prescription prescription, PrescriptionDto prescriptionDto)
+        public void SetVisibilities(Prescription prescription, PrescriptionDto _prescriptionDto)
         {
-            _prescription = prescription;
-            _prescriptionDto = prescriptionDto;
-        }
-
-        public PropertyVisibilityConfig[] PropertyVisibility
-        {
-            get
+            if (_scenarioIsTrue(prescription))
             {
-                var drug = _prescription.Drug;
-                var substance = _prescription.Drug.Components[0].Substances[0];
-
-                return new []
-                {
-                    new PropertyVisibilityConfig(true, _prescriptionDto.drugQuantity),
-                    new PropertyVisibilityConfig(false, _prescriptionDto.substanceDrugConcentration),
-                    new PropertyVisibilityConfig(false, _prescriptionDto.prescriptionSolution),
-                    new PropertyVisibilityConfig(true, _prescriptionDto.prescriptionOnrequest),
-                    new PropertyVisibilityConfig(true, _prescriptionDto.prescriptionContinuous),
-                    new PropertyVisibilityConfig(true, _prescriptionDto.prescriptionInfusion)
-                };
+                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.drugQuantity, true);
+                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.substanceDrugConcentration, true);
+                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionSolution, true);
+                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionOnrequest, true);
+                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionContinuous, true);
+                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionInfusion, true);
             }
         }
 
-        public bool IsTrue()
+
+        private bool _scenarioIsTrue(Prescription prescription)
         {
             return (
-                _prescription.DoseVolume && 
-                _prescription.AdminVolume 
+                prescription.DoseVolume &&
+                prescription.AdminVolume
             );
         }
     }

@@ -135,11 +135,11 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
             var prescription = new Prescription
             {
                 Doses = new List<Dose> {Dose.NewDose()},
-                Quantity = UnitValue.NewUnitValue(false),
-                Frequency = UnitValue.NewUnitValue(false),
-                Total = UnitValue.NewUnitValue(false),
-                Rate = UnitValue.NewUnitValue(false),
-                Duration = UnitValue.NewUnitValue(false),
+                Quantity = UnitValue.NewUnitValue(),
+                Frequency = UnitValue.NewUnitValue(),
+                Total = UnitValue.NewUnitValue(),
+                Rate = UnitValue.NewUnitValue(),
+                Duration = UnitValue.NewUnitValue(),
             };
             prescription.Frequency.Time = "dag";
             prescription.Total.Time = "dag";

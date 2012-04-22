@@ -22,12 +22,12 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
         public static Dose NewDose()
         {
             var s = new Dose();
-            s.Quantity = UnitValue.NewUnitValue(false);
+            s.Quantity = UnitValue.NewUnitValue();
             s.Quantity.Unit = "mg";
-            s.Total = UnitValue.NewUnitValue(false);
+            s.Total = UnitValue.NewUnitValue();
             s.Total.Unit = "mg";
             s.Total.Time = "dag";
-            s.Rate = UnitValue.NewUnitValue(false);
+            s.Rate = UnitValue.NewUnitValue();
             s.Rate.Unit = "mg";
             s.Rate.Time = "uur";
             return s;
