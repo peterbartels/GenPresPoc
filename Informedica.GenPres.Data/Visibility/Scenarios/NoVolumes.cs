@@ -9,12 +9,12 @@ namespace Informedica.GenPres.Data.Visibility.Scenarios
         {
             if (_scenarioIsTrue(prescription))
             {
-                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.drugQuantity, false);
-                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.substanceDrugConcentration, false);
-                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionSolution, false);
-                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionOnrequest, true);
-                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionContinuous, false);
-                PropertyVisibilityConfig.SetPropertyAllowance(_prescriptionDto.prescriptionInfusion, false);
+                _prescriptionDto.drugQuantity.visible = false;
+                _prescriptionDto.substanceDrugConcentration.visible = false;
+                _prescriptionDto.prescriptionSolution.visible = false;
+                _prescriptionDto.prescriptionOnrequest.visible = true;
+                _prescriptionDto.prescriptionContinuous.visible = false;
+                _prescriptionDto.prescriptionInfusion.visible = false;
             }
         }
 

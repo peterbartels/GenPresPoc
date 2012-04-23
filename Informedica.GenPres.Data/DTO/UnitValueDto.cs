@@ -3,11 +3,10 @@ using Informedica.GenPres.Data.Visibility;
 
 namespace Informedica.GenPres.Data.DTO
 {
-    public class UnitValueDto : IVisibility
+    public class UnitValueDto : IVisible
     {
         public decimal value { get; set; }
         public string unit { get; set; }
-        public bool canBeSet { get; set; }
         public string totalUnit { get; set; }
         public string timeUnit { get; set; }
         public string adjustUnit { get; set; }

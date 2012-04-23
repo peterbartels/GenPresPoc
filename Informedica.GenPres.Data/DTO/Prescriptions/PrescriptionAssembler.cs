@@ -103,8 +103,7 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
             {
                 unit = "m2",
                 value = bsa,
-                state = "calculated",
-                canBeSet = true
+                state = "calculated"
             };
 
             PrescriptionVisibility.Execute(prescription, prescriptionDto);

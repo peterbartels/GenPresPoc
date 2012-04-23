@@ -1,6 +1,6 @@
 ﻿namespace Informedica.GenPres.Data.Visibility
 {
-    public interface IVisibility
+    public interface IVisible
     {
         bool visible { get; set; }
     }

@@ -96,6 +96,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="RepositoriesTest\UserReposiroryTest.cs" />
+    <Compile Include="VisibilityTest\VisibilityTests.cs" />
+    <Compile Include="VisibilityTest\DefaultVisibilitySettingsTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Assembler\Informedica.GenPres.Assembler.csproj">

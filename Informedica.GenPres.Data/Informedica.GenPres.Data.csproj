@@ -91,7 +91,6 @@
     <Compile Include="Visibility\IScenario.cs" />
     <Compile Include="Visibility\PrescriptionVisibility.cs" />
     <Compile Include="Visibility\PropertyStates.cs" />
-    <Compile Include="Visibility\PropertyVisibilityConfig.cs" />
     <Compile Include="Visibility\Scenarios\AdminVolume.cs" />
     <Compile Include="Visibility\Scenarios\AdminVolumeDoseVolume.cs" />
     <Compile Include="Visibility\Scenarios\Continuous.cs" />

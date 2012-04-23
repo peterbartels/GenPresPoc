@@ -98,7 +98,7 @@ namespace Informedica.GenPres.xTest.Acceptance
         }
 
 
-        private string FormatVisibility(IVisibility visibleProperty)
+        private string FormatVisibility(IVisible visibleProperty)
         {
             return (visibleProperty.visible) ? "XXXXX" : "------"; 
         }

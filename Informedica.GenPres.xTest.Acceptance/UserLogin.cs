@@ -35,5 +35,4 @@ namespace Informedica.GenPres.xTest.Acceptance
         {
             return (PatientService.GetPatientsByLogicalUnit(Department).Count > 0);
         }
-    }
-}
+    }}

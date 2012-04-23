@@ -68,7 +68,7 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
         public bool AdminVolume { get; set; }
     }
 
-    public class OptionDto : IVisibility
+    public class OptionDto : IVisible
     {
         public bool visible { get; set; }
         public string value { get; set; }
