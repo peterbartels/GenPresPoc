@@ -1,0 +1,195 @@
+{
+    "projectName": "GenPres",
+    "licenseText": "GenPres (c) 2011",
+    "packages": [
+        {
+            "name": "GenPres",
+            "target": "genpkgs/genpres.js",
+            "id": "genpres",
+            "files": [
+                {
+                    "path": "./app/lib/util/",
+                    "name": "QueryHelper.js"
+                },{
+                    "path": "./app/util/",
+                    "name": "Process.js"
+                },{
+                    "path": "./app/util/",
+                    "name": "Spotlight.js"
+                },{
+                    "path": "./app/control/",
+                    "name": "NumericBoundListKeyNav.js"
+                },{
+                    "path": "./app/control/",
+                    "name": "UnitValueField.js"
+                },{
+                    "path": "./app/control/",
+                    "name": "ValueField.js"
+                },{
+                    "path": "./app/contol/",
+                    "name": "Option.js"
+                },{
+                    "path": "./app/session/",
+                    "name": "PatientSession.js"
+                },{
+                    "path": "./app/store/",
+                    "name": "PrescriptionStores.js"
+                },{
+                    "path": "./app/model/database/",
+                    "name": "Database.js"
+                },{
+                    "path": "./app/model/prescription/",
+                    "name": "Prescription.js"
+                },{
+                    "path": "./app/model/patient/",
+                    "name": "LogicalUnitModel.js"
+                },{
+                    "path": "./app/model/patient/",
+                    "name": "PatientModel.js"
+                },{
+                    "path": "./app/store/database/",
+                    "name": "Database.js"
+                },{
+                    "path": "./app/store/patient/",
+                    "name": "LogicalUnitStore.js"
+                },{
+                    "path": "./app/store/patient/",
+                    "name": "PatientInfoStore.js"
+                },{
+                    "path": "./app/store/patient/",
+                    "name": "PatientTreeStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "Prescription.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "ValueStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "GenericStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "RouteStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "SubstanceUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "ShapeStore.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "ComponentUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "LocalUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "AdjustUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "TotalTimeUnit.js"
+                },{
+                    "path": "./app/store/prescription/",
+                    "name": "RateUnit.js"
+                },{
+                    "path": "./app/lib/view/component/",
+                    "name": "SaveCancelToolbar.js"
+                },{
+                    "path": "./app/lib/view/window/",
+                    "name": "SaveCancelWindow.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "OverView.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "PatientInfo.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "TopToolbar.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "PatientTree.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "MainViewCenter.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "MainViewCenterContainer.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "MainViewLeft.js"
+                },{
+                    "path": "./app/view/main/",
+                    "name": "MainView.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "PrescriptionToolbar.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "PrescriptionForm.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "DrugComposition.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "PrescriptionTabs.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Options.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Dose.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Administration.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "FrequencyDuration.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "Patient.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "FrequencyDuration.js"
+                },{
+                    "path": "./app/view/prescription/",
+                    "name": "PrescriptionGrid.js"
+                },{
+                    "path": "./app/view/user/",
+                    "name": "LogicalUnitSelector.js"
+                },{
+                    "path": "./app/view/user/",
+                    "name": "LoginWindow.js"
+                },{
+                    "path": "./app/view/database/",
+                    "name": "RegisterDatabaseWindow.js"
+                },{
+                    "path": "./app/view/",
+                    "name": "Viewport.js"
+                },{
+                    "path": "./app/controller/patient/",
+                    "name": "Patient.js"
+                },{
+                    "path": "./app/controller/user/",
+                    "name": "LoginController.js"
+                },{
+                    "path": "./app/controller/prescription/",
+                    "name": "PrescriptionController.js"
+                },{
+                    "path": "./app/controller/prescription/",
+                    "name": "DrugComposition.js"
+                }
+            ]
+        }
+    ],
+    "builds": [
+        {
+            "name": "All",
+            "target": "genpres-all.js",
+            "compress": false,
+            "packages": [
+                "genpres"
+            ]
+        }
+    ]
+}

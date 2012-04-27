@@ -32,21 +32,24 @@ Ext.define('GenPres.test.view.PrescriptionVisibilityTest', {
 
         var visibilityItems = ["prescriptionContinuous", "substanceQuantity"];
         for(var i=0;i<visibilityItems.length;i++){
-            var itemName = visibilityItems[i];
-            it(itemName + ' is default hidden', function () {
+            var visibilitySetHiddenCounter = 0;
+            var visibilitySetVisibleCounter = 0;
+
+            it(visibilityItems[i] + ' is default hidden', function () {
+                var itemName = visibilityItems[visibilitySetHiddenCounter];
+                visibilitySetHiddenCounter++;
                 var item = GenPres.test.util.Query.GetControl(itemName, me.getPrescriptionView());
                 expect(item.getVisibility()).toBeFalsy();
             });
-        }
-        for(var i=0;i<visibilityItems.length;i++){
-            var itemName = visibilityItems[i];
-            it(itemName + ' can be set to visible', function () {
+
+            it(visibilityItems[i] + ' can be set to visible', function () {
+                var itemName = visibilityItems[visibilitySetVisibleCounter];
+                visibilitySetVisibleCounter++;
                 var item = GenPres.test.util.Query.GetControl(itemName, me.getPrescriptionView());
                 item.setVisibility(true);
                 expect(item.getVisibility()).toBeTruthy();
             });
         }
-
 /*
         it('when generic, route and shape is selected substance quantity should be visible', function () {
 
