@@ -4,7 +4,7 @@ using Informedica.GenPres.Data.Visibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TypeMock.ArrangeActAssert;
 
-namespace Informedica.GenPres.xTest.Data.PropertyVisibilityTest
+namespace Informedica.GenPres.xTest.Data.VisibilityTest
 {
     [TestClass]
     public class VisibilityTests

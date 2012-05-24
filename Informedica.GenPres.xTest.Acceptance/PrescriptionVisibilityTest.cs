@@ -8,6 +8,33 @@ namespace Informedica.GenPres.xTest.Acceptance
     {
         private const string FilledInToken = "AAAAA";
 
+        public void setGenericSet(string value)
+        {
+            _prescription.Drug.Generic = (value == "Yes" ? "paracetamol" : string.Empty);
+        }
+        public string genericVisible()
+        {
+            return (_prescriptionDto.newDrugGeneric.Visible ? "yes" : "No");
+        }
+
+        public void setShapeSet(string value)
+        {
+            _prescription.Drug.Shape = (value == "Yes" ? "zetp" : string.Empty);
+        }
+        public string shapeVisible()
+        {
+            return (_prescription.Drug.Shape != string.Empty ? "yes" : "No");
+        }
+        public void setRouteSet(string value)
+        {
+            _prescription.Drug.Route = (value == "Yes" ? "rect" : string.Empty);
+        }
+
+        public string routeVisible()
+        {
+            return (_prescription.Drug.Route != string.Empty ? "yes" : "No");
+        }
+
         public string DoseVolume
         {
             set

@@ -43,7 +43,7 @@
       <file leaf-file-name="PrescriptionVisibilityTest.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/test/view/PrescriptionVisibilityTest.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="45" selection-start="1390" selection-end="1390" vertical-scroll-proportion="0.4848485">
+            <state line="47" column="43" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.35129067">
               <folding />
             </state>
           </provider>
@@ -296,8 +296,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="Usage Scope" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Library" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="PublishConfig" serverName="GenPres_Acceptatie" serverId="b953ea21-af7e-43da-b4a1-baddf4919b8f" />
   <component name="RecentsManager">
@@ -550,7 +550,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/test/view/PrescriptionVisibilityTest.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="45" selection-start="1390" selection-end="1390" vertical-scroll-proportion="0.4848485">
+        <state line="47" column="43" selection-start="1808" selection-end="1808" vertical-scroll-proportion="0.35129067">
           <folding />
         </state>
       </provider>

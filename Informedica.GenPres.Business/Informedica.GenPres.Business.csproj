@@ -37,6 +37,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestingBusiness|AnyCPU'">
+    <OutputPath>bin\TestingBusiness\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="PostSharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b13fd38b8f9c99d7, processorArchitecture=MSIL" />
     <Reference Include="StructureMap, Version=2.6.3.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
@@ -90,6 +93,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Calculation\CalculationCombination.cs" />
+    <Compile Include="Domain\Prescriptions\Scenarios\IScenario.cs" />
+    <Compile Include="Domain\Prescriptions\Scenarios\OptionScenario.cs" />
+    <Compile Include="Domain\Prescriptions\Scenarios\VolumeScenario.cs" />
     <Compile Include="Exceptions\InvalidIdException.cs" />
     <Compile Include="Exceptions\UnknownIdException.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

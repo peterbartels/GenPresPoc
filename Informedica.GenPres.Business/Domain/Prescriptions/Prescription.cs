@@ -5,7 +5,7 @@ using Informedica.GenPres.Business.Domain.Units;
 
 namespace Informedica.GenPres.Business.Domain.Prescriptions
 {
-    public class Prescription 
+    public class Prescription
     {   
         public Prescription()
         {
@@ -172,7 +172,6 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
             Doses[0].Quantity.Unit = substanceUnit;
             Doses[0].Total.Unit = substanceUnit;
             Doses[0].Rate.Unit = substanceUnit;
-
         }
     }
 }

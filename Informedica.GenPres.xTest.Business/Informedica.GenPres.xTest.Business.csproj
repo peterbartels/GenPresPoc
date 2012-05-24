@@ -35,6 +35,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'TestingBusiness|AnyCPU'">
+    <OutputPath>bin\TestingBusiness\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="StructureMap">
@@ -52,8 +55,6 @@
     <Reference Include="System.Data.SQLite.Linq">
       <HintPath>..\packages\System.Data.SQLite.x64.1.0.79.0\lib\net40\System.Data.SQLite.Linq.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.XML" />
     <Reference Include="TypeMock, Version=6.2.3.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
     <Reference Include="Typemock.ArrangeActAssert, Version=6.2.3.0, Culture=neutral, PublicKeyToken=3dae460033b8d8e2, processorArchitecture=MSIL" />
   </ItemGroup>
@@ -68,6 +69,8 @@
     <Compile Include="GenPresInitialize\GenPresInitializeTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
     <Compile Include="PatientTest\PatientTest.cs" />
+    <Compile Include="PrescriptionScenarios\AnOptionScenarioShould.cs" />
+    <Compile Include="PrescriptionScenarios\AVolumeScenarioShould.cs" />
     <Compile Include="PrescriptionTest\DrugTest.cs" />
     <Compile Include="PrescriptionTest\PrescriptionTest.cs" />
     <Compile Include="PrescriptionVerbalizationTest\PrescriptionVerbalizationTest.cs" />
@@ -96,16 +99,6 @@
     <ProjectReference Include="..\Informedica.GenPres.Service\Informedica.GenPres.Service.csproj">
       <Project>{344DA972-B381-4A0D-91D4-F6DB3F67D86A}</Project>
       <Name>Informedica.GenPres.Service</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenPres.Settings\Informedica.GenPres.Settings.csproj">
-      <Project>{1F0DD355-EA3A-4293-BF30-81FE49DD6767}</Project>
-      <Name>Informedica.GenPres.Settings</Name>
-      <Private>False</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\Informedica.GenPres.Web\Informedica.GenPres.Web.csproj">
-      <Project>{6702A117-385F-4CC1-AC3A-AFD900A07C82}</Project>
-      <Name>Informedica.GenPres.Web</Name>
       <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\Informedica.GenPres.xTest.Base\Informedica.GenPres.xTest.Base.csproj">

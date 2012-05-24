@@ -9,6 +9,7 @@ namespace Informedica.GenPres.Data
         public TestSessionManager()
         {
             Initialize();
+            
         }
 
         private void Initialize()
