@@ -6,36 +6,13 @@ namespace Informedica.GenPres.xTest.Acceptance
 {
     public class PrescriptionVisibilityTest
     {
-        private const string FilledInToken = "AAAAA";
-
-        public void setGenericSet(string value)
+        private bool useConfiguration = false;
+        public PrescriptionVisibilityTest(string configurationSetting)
         {
-            _prescription.Drug.Generic = (value == "Yes" ? "paracetamol" : string.Empty);
+            useConfiguration = configurationSetting
         }
-        public string genericVisible()
-        {
-            return (_prescriptionDto.newDrugGeneric.Visible ? "yes" : "No");
-        }
-
-        public void setShapeSet(string value)
-        {
-            _prescription.Drug.Shape = (value == "Yes" ? "zetp" : string.Empty);
-        }
-        public string shapeVisible()
-        {
-            return (_prescription.Drug.Shape != string.Empty ? "yes" : "No");
-        }
-        public void setRouteSet(string value)
-        {
-            _prescription.Drug.Route = (value == "Yes" ? "rect" : string.Empty);
-        }
-
-        public string routeVisible()
-        {
-            return (_prescription.Drug.Route != string.Empty ? "yes" : "No");
-        }
-
-        public string DoseVolume
+        private const string FilledInToken = "yes";
+        public string DoseIsAVolume
         {
             set
             {
@@ -43,97 +20,117 @@ namespace Informedica.GenPres.xTest.Acceptance
                 _prescription.FirstDose.Quantity.Unit = (value == FilledInToken) ? "ml" : "mg";
             }
         }
-        public string AdminVolume {set
+        public string AdminIsAVolume
         {
-            _prescription.Drug.Quantity.Unit = (value == FilledInToken) ? "ml" : "mg";
-            _prescription.Quantity.Unit = (value == FilledInToken) ? "ml" : "mg";
-        }}
+            set
+            {
+                _prescription.Drug.Quantity.Unit = (value == FilledInToken) ? "ml" : "mg";
+                _prescription.Quantity.Unit = (value == FilledInToken) ? "ml" : "mg";
+            }
+        }
 
-        public string Solution
+        public string SolutionIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.prescriptionSolution); }
         }
 
-        public string Concentration
+        public string ConcentrationIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.substanceDrugConcentration); }
         }
-        
-        public string OnRequest { get
+
+        public string OnRequestIsVisible
         {
-            return FormatVisibility(_prescriptionDto.prescriptionOnrequest);
+            get
+            {
+                return FormatVisibility(_prescriptionDto.prescriptionOnrequest);
+            }
         }
+
+        public string OnRequestIsChecked
+        {
             set { _prescription.OnRequest = (value == FilledInToken); }
         }
 
-        public string Infusion
+        public string InfusionIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.prescriptionInfusion); }
+        }
+
+        public string InfusionIsChecked
+        {
             set { _prescription.Infusion = (value == FilledInToken); }
         }
 
-        public string Continuous
+        public string ContinuousIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.prescriptionContinuous); }
+        }
+
+        public string ContinuousIsChecked
+        {
             set { _prescription.Continuous = (value == FilledInToken); }
         }
 
-        public string Frequency
+
+        public string FrequencyIsVisible 
         {
             get { return FormatVisibility(_prescriptionDto.prescriptionFrequency); }
         }
 
-        public string Duration
+        public string DurationIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.prescriptionDuration); }
         }
-        public string DoseQuantity
+        public string DoseQuantityIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.doseQuantity); }
         }
 
-        public string AdminQuantity
+        public string AdminQuantityIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.adminQuantity); }
         }
 
-        public string DoseTotal
+        public string DoseTotalIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.doseTotal); }
         }
 
-        public string AdminTotal
+        public string AdminTotalIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.adminTotal); }
         }
 
-        public string DoseRate
+        public string DoseRateIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.doseRate); }
         }
 
-        public string AdminRate
+        public string AdminRateIsVisible
         {
             get { return FormatVisibility(_prescriptionDto.adminRate); }
         }
+
         private Prescription _prescription = Prescription.NewPrescription();
         private PrescriptionDto _prescriptionDto = new PrescriptionDto();
 
-        public  PrescriptionVisibilityTest()
+        public PrescriptionVisibilityTest()
         {
-                
+
         }
 
 
         private string FormatVisibility(IVisible visibleProperty)
         {
-            return (visibleProperty.visible) ? "XXXXX" : "------"; 
+            return (visibleProperty.visible) ? "yes" : "no";
         }
 
 
         public void SetVisibility()
         {
-            PrescriptionVisibility.Execute(_prescription, _prescriptionDto);
+            //PrescriptionVisibility.Execute(_prescription, _prescriptionDto);
+
         }
 
         public void CreatePrescription()
