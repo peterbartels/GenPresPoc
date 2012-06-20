@@ -7,10 +7,12 @@ namespace Informedica.GenPres.xTest.Acceptance
     public class PrescriptionVisibilityTest
     {
         private bool useConfiguration = false;
+        
         public PrescriptionVisibilityTest(string configurationSetting)
         {
-            useConfiguration = configurationSetting
+            
         }
+
         private const string FilledInToken = "yes";
         public string DoseIsAVolume
         {

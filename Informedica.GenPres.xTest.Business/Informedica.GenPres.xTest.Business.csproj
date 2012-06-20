@@ -70,8 +70,7 @@
     <Compile Include="GenPresInitialize\GenPresInitializeTest.cs" />
     <Compile Include="LogicalUnitTest\LogicalUnitTest.cs" />
     <Compile Include="PatientTest\PatientTest.cs" />
-    <Compile Include="PrescriptionScenarios\AnOptionScenarioShould.cs" />
-    <Compile Include="PrescriptionScenarios\AVolumeScenarioShould.cs" />
+    <Compile Include="PrescriptionScenarios\AVisibilityScenarioShould.cs" />
     <Compile Include="PrescriptionTest\DrugTest.cs" />
     <Compile Include="PrescriptionTest\PrescriptionTest.cs" />
     <Compile Include="PrescriptionVerbalizationTest\PrescriptionVerbalizationTest.cs" />
@@ -79,7 +78,7 @@
     <Compile Include="UserTest\Authenticate.cs" />
     <Compile Include="UserTest\UserTest.cs" />
     <Compile Include="Util\PropertyHelperTest.cs" />
-    <Compile Include="PrescriptionScenarios\ScenariosTest.cs" />
+    <Compile Include="PrescriptionScenarios\PrescriptionPropertiesShould.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Assembler\Informedica.GenPres.Assembler.csproj">

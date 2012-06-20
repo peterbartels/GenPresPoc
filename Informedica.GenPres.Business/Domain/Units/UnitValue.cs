@@ -248,7 +248,7 @@ namespace Informedica.GenPres.Business.Domain.Units
 
         protected UnitValue()
         {
-            
+            _unit = "";
         }
 
         #region Calculations

@@ -7,6 +7,6 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions.Scenarios
 {
     public interface IScenario
     {
-        bool AppliesTo(Prescription prescription);
+        bool process(Prescription prescription);
     }
 }

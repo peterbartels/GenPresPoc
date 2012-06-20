@@ -94,8 +94,7 @@
     </Compile>
     <Compile Include="Calculation\CalculationCombination.cs" />
     <Compile Include="Domain\Prescriptions\Scenarios\IScenario.cs" />
-    <Compile Include="Domain\Prescriptions\Scenarios\OptionScenario.cs" />
-    <Compile Include="Domain\Prescriptions\Scenarios\VolumeScenario.cs" />
+    <Compile Include="Domain\Prescriptions\Scenarios\VisibilityScenario.cs" />
     <Compile Include="Exceptions\InvalidIdException.cs" />
     <Compile Include="Exceptions\UnknownIdException.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
