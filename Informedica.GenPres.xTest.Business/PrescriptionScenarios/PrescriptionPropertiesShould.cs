@@ -28,7 +28,7 @@ namespace Informedica.GenPres.xTest.Business.PrescriptionScenarios
         {
             var prescription = Prescription.NewPrescription();
             prescription.FirstSubstance.Quantity.Unit = "ml";
-            Assert.IsFalse(prescription.DoseVolume, "DoseVolume should be default false");
+            Assert.IsTrue(prescription.DoseVolume);
         }
 
         [TestMethod]
@@ -36,7 +36,23 @@ namespace Informedica.GenPres.xTest.Business.PrescriptionScenarios
         {
             var prescription = Prescription.NewPrescription();
             prescription.Drug.Quantity.Unit = "ml";
-            Assert.IsFalse(prescription.DoseVolume, "DoseVolume should be default false");
+            Assert.IsTrue(prescription.AdminVolume);
+        }
+
+        [TestMethod]
+        public void Check_admin_volume_case_insensitive()
+        {
+            var prescription = Prescription.NewPrescription();
+            prescription.Drug.Quantity.Unit = "mL";
+            Assert.IsTrue(prescription.AdminVolume);
+        }
+
+        [TestMethod]
+        public void Check_dose_volume_case_insensitive()
+        {
+            var prescription = Prescription.NewPrescription();
+            prescription.FirstSubstance.Quantity.Unit = "mL";
+            Assert.IsTrue(prescription.DoseVolume);
         }
 
     }

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:complexType name="solutionCheck">
+    <xs:simpleContent>
+      <xs:extension base='xs:boolean'>
+        <xs:attribute name='Solution' type='xs:boolean' use='required'  />
+        <xs:attribute name='Concentration' type='xs:boolean' use='required'  />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  
+  <xs:element name="PrescriptionVisibilityData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Scenarios" minOccurs="1" maxOccurs="unbounded" >
+          <xs:complexType>
+            <xs:sequence minOccurs="1" maxOccurs="1">
+              <xs:element name="SubstanceQuantityVisible" type="solutionCheck" />
+              <xs:element name="DrugQuantityVisible" type="solutionCheck" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -112,10 +112,7 @@ namespace Informedica.GenPres.Business.Domain.Units
 
         public virtual string Unit
         {
-            get
-            {
-                return _unit;
-            }
+            get { return _unit ?? (_unit = ""); }
             set
             {
                 _unit = value;

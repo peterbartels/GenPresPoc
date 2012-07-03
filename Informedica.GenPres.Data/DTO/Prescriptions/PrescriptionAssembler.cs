@@ -106,8 +106,6 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
                 state = "calculated"
             };
 
-            PrescriptionVisibility.Execute(prescription, prescriptionDto);
-
             return prescriptionDto;
         }
     }

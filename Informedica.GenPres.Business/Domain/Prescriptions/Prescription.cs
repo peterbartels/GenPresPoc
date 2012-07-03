@@ -39,7 +39,7 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
         {
             get
             {
-                return _volumeList.Contains(Quantity.Unit.ToLower());
+                return _volumeList.Contains(Drug.Quantity.Unit.ToLower());
             }
         }
 
@@ -47,7 +47,7 @@ namespace Informedica.GenPres.Business.Domain.Prescriptions
         {
             get
             {
-                return _volumeList.Contains(Doses[0].Quantity.Unit.ToLower());
+                return _volumeList.Contains(FirstSubstance.Quantity.Unit.ToLower());
             }
         }
 

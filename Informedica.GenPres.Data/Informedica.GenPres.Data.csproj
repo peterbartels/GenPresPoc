@@ -93,6 +93,7 @@
     <Compile Include="DAO\Mapper\Patients\PdmsLogicalUnitMapper.cs" />
     <Compile Include="DAO\Mapper\Patients\PdmsPatientMapper.cs" />
     <Compile Include="DTO\UnitValueDto.cs" />
+    <Compile Include="VisibilityScenarios.designer.cs" />
     <Compile Include="Visibility\IPropertyVisibility.cs" />
     <Compile Include="Visibility\IScenario.cs" />
     <Compile Include="Visibility\PrescriptionVisibility.cs" />
@@ -133,9 +134,7 @@
     <Compile Include="SessionFactoryCreator.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="TestSessionManager.cs" />
-    <Compile Include="VolumeScenario.cs">
-      <DependentUpon>volumescenario.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="VolumeScenario.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Business\Informedica.GenPres.Business.csproj">
@@ -165,7 +164,9 @@
     <None Include="Resources\patients.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Xsd Include="VolumeScenario.xsd" />
+    <Xsd Include="VisibilityScenarios.xsd">
+      <SubType>Designer</SubType>
+    </Xsd>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

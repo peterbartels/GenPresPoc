@@ -8,10 +8,10 @@ using Informedica.GenPres.Business.Domain.Prescriptions;
 namespace Informedica.GenPres.xTest.Data.PropertyVisibilityTest
 {
     [TestClass]
-    public class DefaultVisibilitySettingsTest : BaseGenPresTest
+    public class DefaultVisibilitySettingsShould : BaseGenPresTest
     {
         [TestMethod]
-        public void ThatIfDrugGenericRouteAndShapeAreNotSetSubstanceQuantityIsNotVisible()
+        public void ThatIfDrugGenericRouteAndShapeAreNotSetSuldbstanceQuantityIsNotVisible()
         {
             var prescription = Prescription.NewPrescription();
             prescription.Drug.Generic = "";
