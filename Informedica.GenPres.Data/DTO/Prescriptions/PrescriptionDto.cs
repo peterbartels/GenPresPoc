@@ -34,7 +34,6 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
         
         public string startDate { get; set; }
         public string drugGeneric { get; set; }
-        public StringDto newDrugGeneric { get; set; }
         public string drugRoute { get; set; }
         public string drugShape { get; set; }
         public string PID { get; set; }
@@ -70,9 +69,9 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
 
     }
 
-    public class StringDto
+    public class StringDto : IVisible
     {
-        public bool Visible { get; set; }
+        public bool visible { get; set; }
     }
 
     public class OptionDto : IVisible

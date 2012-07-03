@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B3A155
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Informedica.GenPres.xTest.Assembler", "Informedica.GenPres.xTest.Assembler\Informedica.GenPres.xTest.Assembler.csproj", "{72BBFEED-303D-4DCF-A356-4298A87420B3}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = GenPres.vsmdi
@@ -132,6 +134,14 @@ Global
 		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
 		{59833108-A78D-4FF7-B90F-593B0565FCD1}.Testing|Any CPU.Build.0 = Debug|Any CPU
 		{59833108-A78D-4FF7-B90F-593B0565FCD1}.TestingBusiness|Any CPU.ActiveCfg = TestingBusiness|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.Testing|Any CPU.ActiveCfg = Release|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.Testing|Any CPU.Build.0 = Release|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.TestingBusiness|Any CPU.ActiveCfg = Release|Any CPU
+		{72BBFEED-303D-4DCF-A356-4298A87420B3}.TestingBusiness|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
