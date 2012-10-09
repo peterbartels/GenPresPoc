@@ -14,9 +14,9 @@ namespace Informedica.GenPres.xTest.Business.PrescriptionTest
         {
             var pDto = new PrescriptionDto();
 
-            pDto.drugGeneric = "paracetamol";
-            pDto.drugRoute = "rect";
-            pDto.drugShape = "zetp";
+            pDto.drugGeneric.value = "paracetamol";
+            pDto.drugRoute.value = "rect";
+            pDto.drugShape.value = "zetp";
             
             Prescription p = PrescriptionAssembler.AssemblePrescriptionBo(pDto);
             Drug d = p.Drug;

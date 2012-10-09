@@ -6,9 +6,9 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
     {
         public PrescriptionDto()
         {
-            drugGeneric = "";
-            drugRoute = "";
-            drugShape = "";
+            drugGeneric = new StringDto() {value = "", visible = false};
+            drugRoute = new StringDto() { value = "", visible = false };
+            drugShape = new StringDto() { value = "", visible = false };
 
             substanceQuantity = new UnitValueDto();
             drugQuantity = new UnitValueDto();
@@ -33,9 +33,9 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
         public string Id { get; set; }
         
         public string startDate { get; set; }
-        public string drugGeneric { get; set; }
-        public string drugRoute { get; set; }
-        public string drugShape { get; set; }
+        public StringDto drugGeneric { get; set; }
+        public StringDto drugRoute { get; set; }
+        public StringDto drugShape { get; set; }
         public string PID { get; set; }
 
         public OptionDto prescriptionContinuous { get; set; }
@@ -72,6 +72,7 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
     public class StringDto : IVisible
     {
         public bool visible { get; set; }
+        public string value { get; set; }
     }
 
     public class OptionDto : IVisible

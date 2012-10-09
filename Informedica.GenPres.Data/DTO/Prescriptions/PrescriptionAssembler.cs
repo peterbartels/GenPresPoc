@@ -17,9 +17,9 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
                 prescription.StartDate = dt;
             }
              
-            prescription.Drug.Generic = prescriptionDto.drugGeneric;
-            prescription.Drug.Route = prescriptionDto.drugRoute;
-            prescription.Drug.Shape = prescriptionDto.drugShape;
+            prescription.Drug.Generic = prescriptionDto.drugGeneric.value;
+            prescription.Drug.Route = prescriptionDto.drugRoute.value;
+            prescription.Drug.Shape = prescriptionDto.drugShape.value;
             
             prescription.PID = prescriptionDto.PID;
 
@@ -61,9 +61,9 @@ namespace Informedica.GenPres.Data.DTO.Prescriptions
             prescriptionDto.startDate = prescription.StartDate.ToString();
             prescriptionDto.Id = prescription.Id.ToString();
 
-            prescriptionDto.drugGeneric = prescription.Drug.Generic;
-            prescriptionDto.drugRoute = prescription.Drug.Route;
-            prescriptionDto.drugShape = prescription.Drug.Shape;
+            prescriptionDto.drugGeneric.value = prescription.Drug.Generic;
+            prescriptionDto.drugRoute.value = prescription.Drug.Route;
+            prescriptionDto.drugShape.value = prescription.Drug.Shape;
 
             prescriptionDto.prescriptionFrequency = UnitValueDto.AssembleUnitValueDto(prescription.Frequency);
             prescriptionDto.prescriptionDuration = UnitValueDto.AssembleUnitValueDto(prescription.Duration);

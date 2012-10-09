@@ -49,7 +49,7 @@ namespace Informedica.GenPres.xTest.Acceptance
             }
         }
 
-        public string OnRequestIsChecked
+        public string OnRequestInput
         {
             set { _prescription.OnRequest = (value == FilledInToken); }
         }
@@ -59,9 +59,39 @@ namespace Informedica.GenPres.xTest.Acceptance
             get { return FormatVisibility(_prescriptionDto.prescriptionInfusion); }
         }
 
-        public string InfusionIsChecked
+        public string InfusionInput
         {
             set { _prescription.Infusion = (value == FilledInToken); }
+        }
+
+        public string GenericInput
+        {
+            set { _prescription.Drug.Generic = "Paracetamol"; }
+        }
+
+        public string RouteInput
+        {
+            set { _prescription.Drug.Route = "rect"; }
+        }
+
+        public string ShapeInput
+        {
+            set { _prescription.Drug.Shape = "zetp"; }
+        }
+
+        public string GenericVisible
+        {
+            get { return FormatVisibility(_prescriptionDto.drugGeneric); }
+        }
+        
+        public string RouteVisible
+        {
+            get { return FormatVisibility(_prescriptionDto.drugRoute); }
+        }
+        
+        public string ShapeVisible
+        {
+            get { return FormatVisibility(_prescriptionDto.drugShape); }
         }
 
         public string ContinuousIsVisible
@@ -69,11 +99,10 @@ namespace Informedica.GenPres.xTest.Acceptance
             get { return FormatVisibility(_prescriptionDto.prescriptionContinuous); }
         }
 
-        public string ContinuousIsChecked
+        public string ContinuousInput
         {
             set { _prescription.Continuous = (value == FilledInToken); }
         }
-
 
         public string FrequencyIsVisible 
         {
@@ -114,6 +143,8 @@ namespace Informedica.GenPres.xTest.Acceptance
             get { return FormatVisibility(_prescriptionDto.adminRate); }
         }
 
+        
+
         private Prescription _prescription = Prescription.NewPrescription();
         private PrescriptionDto _prescriptionDto = new PrescriptionDto();
 
@@ -125,7 +156,12 @@ namespace Informedica.GenPres.xTest.Acceptance
 
         private string FormatVisibility(IVisible visibleProperty)
         {
-            return (visibleProperty.visible) ? "yes" : "no";
+            return FormatVisibilityBool(visibleProperty.visible);
+        }
+
+        private string FormatVisibilityBool(bool isVisible)
+        {
+            return (isVisible) ? "yes" : "no";
         }
 
 
@@ -138,10 +174,6 @@ namespace Informedica.GenPres.xTest.Acceptance
         public void CreatePrescription()
         {
             _prescription = Prescription.NewPrescription();
-            _prescription.Drug.Generic = "paracetamol";
-            _prescription.Drug.Shape = "zetp";
-            _prescription.Drug.Route = "rect";
-
             _prescriptionDto = new PrescriptionDto();
         }
 

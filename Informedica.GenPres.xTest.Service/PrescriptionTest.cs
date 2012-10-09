@@ -179,9 +179,9 @@ namespace Informedica.GenPres.xTest.Service
         {
             PatientService.SavePatient("1234567");
             var prescriptionDto = new PrescriptionDto();
-            prescriptionDto.drugGeneric = "paracetamol";
-            prescriptionDto.drugRoute = "rect";
-            prescriptionDto.drugShape = "zetp";
+            prescriptionDto.drugGeneric.value = "paracetamol";
+            prescriptionDto.drugRoute.value = "rect";
+            prescriptionDto.drugShape.value = "zetp";
 
             PrescriptionService.SavePrescription(prescriptionDto, "1234567");
             var prescriptions = PrescriptionService.GetPrescriptions("1234567");
@@ -194,9 +194,9 @@ namespace Informedica.GenPres.xTest.Service
         public void ThatPrescriptionsServiceCanSavePrescription()
         {   
             var pDto = new PrescriptionDto();
-            pDto.drugGeneric = "paracetamol";
-            pDto.drugRoute = "rect";
-            pDto.drugShape = "zetp";
+            pDto.drugGeneric.value = "paracetamol";
+            pDto.drugRoute.value = "rect";
+            pDto.drugShape.value = "zetp";
             pDto.startDate = "2011-07-01 12:00:00";
             pDto.substanceQuantity = new UnitValueDto();
             pDto.substanceQuantity.unit = "mg";
@@ -208,9 +208,9 @@ namespace Informedica.GenPres.xTest.Service
         public void ThatPrescriptionsServiceCanGetPrescriptions()
         {
             var prescriptionDto = new PrescriptionDto();
-            prescriptionDto.drugGeneric = "paracetamol";
-            prescriptionDto.drugRoute = "rect";
-            prescriptionDto.drugShape = "zetp";
+            prescriptionDto.drugGeneric.value = "paracetamol";
+            prescriptionDto.drugRoute.value = "rect";
+            prescriptionDto.drugShape.value = "zetp";
             PrescriptionService.SavePrescription(prescriptionDto, "0004588");
             var prescriptions = PrescriptionService.GetPrescriptions("0004588");
             Assert.IsTrue(prescriptions.Count > 0);
