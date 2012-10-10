@@ -6,12 +6,12 @@
       <xs:sequence>
         <xs:element name="Scenario" minOccurs="1" maxOccurs="unbounded">
           <xs:complexType>
-            <xs:sequence minOccurs="1" maxOccurs="1">
-              <xs:element name="GenericVisible" type="xs:boolean" />
-              <xs:element name="RouteVisible" type="xs:boolean" />
-              <xs:element name="ShapeVisible" type="xs:boolean" />
+            <xs:sequence minOccurs="0" maxOccurs="1">
+              <xs:element name="GenericVisible" type="xs:boolean" minOccurs="0" />
+              <xs:element name="RouteVisible" type="xs:boolean" minOccurs="0" />
+              <xs:element name="ShapeVisible" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
-            <xs:attribute name='Generic' type='xs:boolean'   />
+            <xs:attribute name='Generic' type='xs:boolean' />
             <xs:attribute name='Route' type='xs:boolean'/>
             <xs:attribute name='Shape' type='xs:boolean'/>
           </xs:complexType>
