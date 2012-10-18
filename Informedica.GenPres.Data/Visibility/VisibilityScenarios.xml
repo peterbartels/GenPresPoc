@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<PrescriptionVisibility >
+  <Scenario Generic="false" Route="false" Shape="false">
+    <GenericVisible>true</GenericVisible>
+    <RouteVisible>true</RouteVisible>
+    <ShapeVisible>true</ShapeVisible>
+  </Scenario>
+</PrescriptionVisibility>

@@ -94,6 +94,7 @@
     <Compile Include="DAO\Mapper\Patients\PdmsPatientMapper.cs" />
     <Compile Include="DTO\UnitValueDto.cs" />
     <Compile Include="Presenters\PrescriptionPresenter.cs" />
+    <Compile Include="Visibility\IScenarioReader.cs" />
     <Compile Include="Visibility\IVisible.cs" />
     <Compile Include="Visibility\PropertyStates.cs" />
     <Compile Include="Managers\PDMSDataRetriever.cs" />
@@ -121,7 +122,11 @@
     <Compile Include="SessionFactoryCreator.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="TestSessionManager.cs" />
-    <Compile Include="Visibility\ScenarioReader.cs" />
+    <Compile Include="Visibility\VisibilityScenarios.cs">
+      <DependentUpon>VisibilityScenarios.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Visibility\ScenarioReader\XmlScenarioDeserializer.cs" />
+    <Compile Include="Visibility\ScenarioReader\XmlScenarioReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Business\Informedica.GenPres.Business.csproj">
@@ -151,12 +156,12 @@
     <None Include="Resources\patients.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Xsd Include="VisibilityScenarios.xsd">
+    <Xsd Include="Visibility\VisibilityScenarios.xsd">
       <SubType>Designer</SubType>
     </Xsd>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="VisibilityScenarios.xml" />
+    <Content Include="Visibility\VisibilityScenarios.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

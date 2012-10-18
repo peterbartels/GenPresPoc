@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0\Bin\NETFX 4.0 Tools\x64\xsd.exe" /n:Informedica.GenPres.Data.Visibility /c VisibilityScenarios.xsd
