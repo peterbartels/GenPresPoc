@@ -1,6 +1,5 @@
 <PrescriptionVisibility>
-	<Scenario Generic="true" Route="true" Shape="true">
-		<GenericVisible>true</GenericVisible>
+  <Scenario Generic="true" Route="true" Shape="true">
 		<RouteVisible>true</RouteVisible>
 		<ShapeVisible>true</ShapeVisible>
 	</Scenario>

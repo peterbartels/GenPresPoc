@@ -27,6 +27,13 @@ namespace Informedica.GenPres.xTest.Data.VisibilityTest
         }
 
         [TestMethod]
+        [ExpectedException(typeof(XmlSchemaValidationException), "A xml could not be validated against a xsd")]
+        public void ThrowExceptionWhenXmlCannotBeValidatedByAXsd()
+        {
+            var scenarioReader = new XmlScenarioReader("<PrescriptionVisibility><b>test</b></PrescriptionVisibility>", _scenariosXsd);
+        }
+
+        [TestMethod]
         public void GetScenariosFromXmlFileWithValidXsd()
         {
             var scenarioReader = new XmlScenarioReader(_scenariosXml, _scenariosXsd);

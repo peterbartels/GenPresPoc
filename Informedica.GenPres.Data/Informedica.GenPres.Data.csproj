@@ -122,11 +122,11 @@
     <Compile Include="SessionFactoryCreator.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="TestSessionManager.cs" />
+    <Compile Include="Visibility\ScenarioReader\XmlScenarioDeserializer.cs" />
+    <Compile Include="Visibility\ScenarioReader\XmlScenarioReader.cs" />
     <Compile Include="Visibility\VisibilityScenarios.cs">
       <DependentUpon>VisibilityScenarios.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Visibility\ScenarioReader\XmlScenarioDeserializer.cs" />
-    <Compile Include="Visibility\ScenarioReader\XmlScenarioReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Informedica.GenPres.Business\Informedica.GenPres.Business.csproj">
